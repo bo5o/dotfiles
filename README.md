@@ -58,7 +58,7 @@ git clone https://github.com/cbows/dotfiles
 cd dotfiles
 ```
 
-4. Use [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) to create the necessary symlinks for each program. For example:
+4. Use [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) to create symlinks for each program. For example:
 
 ```
 stow nvim
