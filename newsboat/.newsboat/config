@@ -1,0 +1,50 @@
+browser w3m
+player mpv
+auto-reload yes
+
+# keybindings ---------------------------------------------------------
+
+bind-key j down feedlist
+bind-key k up feedlist
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key j down article
+bind-key k up article
+bind-key j down tagselection
+bind-key k up tagselection
+bind-key G end
+bind-key g home
+bind-key d pagedown
+bind-key u pageup
+bind-key l open
+bind-key h quit
+bind-key n next-unread
+bind-key N prev-unread
+bind-key D pb-download
+
+# hide articles matching: ---------------------------------------------
+
+ignore-article "*" "title =~ \"Online-Abo\""
+ignore-article "*" "title =~ \"Hörfassung\""
+ignore-mode "display"
+
+# color ---------------------------------------------------------------
+
+color listnormal cyan default
+color listfocus black magenta standout bold
+color listnormal_unread blue default
+color listfocus_unread yellow default bold
+color info red black bold
+color article cyan default
+
+# macro ---------------------------------------------------------------
+
+macro w set browser "i3 exec mpv %u"; open-in-browser ; set browser "w3m %u"
+macro y set browser "youtube-dl -ic -o '~/videos/%%(title)s.%%(ext)s' -f 'bestvideo[height<=480]+bestaudio/best[height<=480]' '%u'"; open-in-browser ; set browser "w3m %u"
+macro c set browser "echo -n %u | xclip -selection clipboard"; open-in-browser ; set browser "w3m %u"
+macro k set browser "i3 urxvt -e curl -o ~/dl.html "; open-in-browser ; set browser "w3m %u"
+macro i set browser "feh -Z %u"; goto-url 2 ; open ; set browser "w3m %u"
+macro o set browser "iceweasel %u"; open-in-browser ; set browser "w3m %u"
+macro s set browser "streamlink %u"; open-in-browser ; set browser "w3m %u"
