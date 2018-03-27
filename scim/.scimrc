@@ -1,0 +1,3 @@
+set autocalc
+
+color "type=HEADINGS bold=1 fg=BLACK bg=YELLOW"
