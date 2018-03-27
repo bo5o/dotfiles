@@ -26,7 +26,7 @@ I use Parabola GNU/Linux-libre.
 * neomutt - mail client
 * neovim - text editor
 * networkmanager - network connection manager
-* newsbeuter - rss reader
+* newsboat - rss reader
 * papis - bibliography management
 * polybar - bar
 * ranger - file browser
