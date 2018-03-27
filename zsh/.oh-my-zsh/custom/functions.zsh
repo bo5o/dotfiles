@@ -33,7 +33,7 @@ www() {
 
 gitcheck() {
     # check all git repositories in specified directories for changes
-    checkdirs=( ~/code ~/latex ~/Documents ~/vimwiki ~/sites )
+    checkdirs=( ~/dotfiles ~/private ~/code ~/latex ~/Documents ~/vimwiki ~/sites )
     if [[ $( git --git-dir=$HOME/.cfg/ --work-tree=$HOME status -s) || $(git --git-dir=$HOME/.cfg/ --work-tree=$HOME cherry) ]]; then
         printf "### ";
         echo "dotfiles";
