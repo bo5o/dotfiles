@@ -15,7 +15,7 @@ I use Parabola GNU/Linux-libre.
 * compton - composite manager
 * feh - image viewer
 * htop - system monitor
-* i3wm - tiling window manager (with i3-gaps)
+* i3wm (with i3-gaps) - tiling window manager
 * iceweasel - web browser
 * keybase - private git repositories
 * mpc - cli music client
