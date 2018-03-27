@@ -1,0 +1,5 @@
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+
+application/pdf; mv %s %s.pdf && zathura %s.pdf > /dev/null; needsterminal;
+
+image/*; ~/.mutt/muttimage.sh %s ; copiousoutput
