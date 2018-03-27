@@ -1,9 +1,9 @@
 ```
-     _       _    __ _ _           
-  __| | ___ | |_ / _(_) | ___  ___ 
- / _` |/ _ \| __| |_| | |/ _ \/ __|
-| (_| | (_) | |_|  _| | |  __/\__ \
- \__,_|\___/ \__|_| |_|_|\___||___/
+      _                          __  _       _    __ _ _           
+  ___| |__   _____      _____   / /_| | ___ | |_ / _(_) | ___  ___ 
+ / __| '_ \ / _ \ \ /\ / / __| / / _` |/ _ \| __| |_| | |/ _ \/ __|
+| (__| |_) | (_) \ V  V /\__ \/ / (_| | (_) | |_|  _| | |  __/\__ \
+ \___|_.__/ \___/ \_/\_/ |___/_/ \__,_|\___/ \__|_| |_|_|\___||___/
 ```
 
 ## Distro
@@ -15,7 +15,7 @@ I use Parabola GNU/Linux-libre.
 * compton - compositor
 * feh - image viewer
 * htop - system monitor
-* i3-gaps - tiling window manager
+* i3wm - tiling window manager (with i3-gaps)
 * iceweasel - web browser
 * keybase - private git repositories
 * mpc - cli music client
@@ -41,14 +41,25 @@ I use Parabola GNU/Linux-libre.
 
 ## Installation
 
-1. Make sure you are in your home directory and clone this repo.
+1. Make sure you are in your home directory.
 
 ```
 cd ~
+```
+
+2. Clone this repo.
+
+```
 git clone https://github.com/cbows/dotfiles
 ```
 
-2. Enter `dotfiles` directory and use [GNU Stow](https://www.gnu.org/software/stow/) to create the necessary symlinks for each program. For example:
+3. Enter the `dotfiles` directory.
+
+```
+cd dotfiles
+```
+
+4. Use [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) to create the necessary symlinks for each program. For example:
 
 ```
 stow nvim

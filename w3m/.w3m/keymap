@@ -1,0 +1,99 @@
+# w3m vim-like keymap file
+
+
+########## command ##########
+keymap :: COMMAND
+keymap :h HELP
+keymap :o OPTIONS
+
+########## history navigation ##########
+keymap L NEXT
+keymap H PREV
+keymap X BACK
+keymap gt SELECT_MENU
+
+########## scrolling ##########
+keymap gg BEGIN
+keymap G END
+keymap d UP
+keymap u DOWN
+keymap C-d NEXT_PAGE
+keymap C-u PREV_PAGE
+keymap zz CENTER_V
+########## cursor ##########
+keymap l MOVE_RIGHT
+keymap h MOVE_LEFT
+keymap j MOVE_DOWN1
+keymap k MOVE_UP1
+keymap RIGHT MOVE_RIGHT
+keymap LEFT MOVE_LEFT
+keymap DOWN MOVE_DOWN1
+keymap UP MOVE_UP1
+keymap 0 LINE_BEGIN
+keymap $ LINE_END
+keymap w NEXT_WORD
+keymap b PREV_WORD
+########## cursor history ##########
+keymap C-l REDO
+keymap C-h UNDO
+########## navigation ##########
+keymap f MOVE_LIST_MENU
+keymap F LIST_MENU
+keymap C-n NEXT_LINK
+keymap TAB NEXT_LINK
+keymap C-p PREV_LINK
+
+# reload
+keymap r RELOAD
+keymap C-r RELOAD
+
+# save/load 
+keymap :w SAVE
+# keymap :W PRINT
+keymap o GOTO
+keymap :e LOAD
+keymap s SAVE_LINK
+
+# jump
+keymap ESC-C-j SUBMIT
+keymap C-] TAB_LINK
+keymap C-j GOTO_LINK
+
+########## info ##########
+keymap y PEEK
+keymap Y PEEK_LINK
+keymap i INFO
+keymap C-g LINE_INFO
+keymap gf VIEW
+
+########## copying ##########
+keymap c EXTERN
+keymap C EXTERN_LINK
+
+########## search ##########
+keymap / ISEARCH
+keymap ? ISEARCH_BACK
+keymap n SEARCH_NEXT
+keymap N SEARCH_PREV
+
+########## bookmarks ##########
+keymap a ADD_BOOKMARK
+keymap :b VIEW_BOOKMARK
+
+########## tab ##########
+keymap x CLOSE_TAB
+keymap gh GOTO https://duckduckgo.com/lite
+keymap gH TAB_GOTO https://duckduckgo.com/lite
+keymap t NEW_TAB
+keymap K NEXT_TAB
+keymap J PREV_TAB
+keymap C-wL TAB_RIGHT
+keymap C-wH TAB_LEFT
+keymap :t TAB_GOTO
+keymap T TAB_MENU
+
+########## quit ##########
+keymap :q QUIT 
+keymap q QUIT 
+keymap ZZ QUIT
+keymap ZQ EXIT

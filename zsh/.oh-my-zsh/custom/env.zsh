@@ -1,0 +1,10 @@
+export MANPATH="/usr/local/texlive/2017/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH"
+export PATH="/usr/local/texlive/2017/bin/x86_64-linux:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.4.0/bin:$PATH"
+export EDITOR="/usr/bin/nvim"
+export VISUAL="/usr/bin/nvim"
+export GPG_TTY=$(tty)
+export SDCV_PAGER="less"
+export BROWSER="iceweasel"
