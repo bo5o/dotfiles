@@ -12,7 +12,7 @@ I use Parabola GNU/Linux-libre.
 
 ## Programs
 
-* compton - compositor
+* compton - composite manager
 * feh - image viewer
 * htop - system monitor
 * i3wm - tiling window manager (with i3-gaps)
