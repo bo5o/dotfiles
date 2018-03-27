@@ -31,7 +31,6 @@ I use Parabola GNU/Linux-libre.
 * polybar - bar
 * ranger - file browser
 * rofi - dmenu replacement
-* stow - dotfile management
 * tmux - terminal multiplexer
 * urxvt - terminal emulator
 * w3m - cli web browser
