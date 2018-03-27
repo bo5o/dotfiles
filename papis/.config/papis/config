@@ -1,0 +1,20 @@
+[diplomarbeit]
+dir = ~/Documents/diplomarbeit
+
+[settings]
+# use nvim as default editor
+editor=nvim
+xeditor=urxvt -e nvim
+
+# use ranger as file browser
+file-browser=ranger
+
+# extra keys and types for bibtex export
+extra-bibtex-keys = keywords
+extra-bibtex-types = techreport, software, online
+
+# default library
+default-library = diplomarbeit
+
+# header format 
+header-format = {doc[type]:<8.8}|{doc[title]:<87.87}|{doc[author]:<17.17} ({doc[year]:-<4})
