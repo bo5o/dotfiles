@@ -1,0 +1,4 @@
+rofi.font: hack 10
+rofi.lines: 4
+rofi.width: 30
+rofi.theme: gruvbox-dark-hard
