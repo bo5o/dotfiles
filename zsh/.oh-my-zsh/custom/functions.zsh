@@ -34,12 +34,6 @@ www() {
 gitcheck() {
     # check all git repositories in specified directories for changes
     checkdirs=( ~/dotfiles ~/private ~/code ~/latex ~/Documents ~/vimwiki ~/sites )
-    if [[ $( git --git-dir=$HOME/.cfg/ --work-tree=$HOME status -s) || $(git --git-dir=$HOME/.cfg/ --work-tree=$HOME cherry) ]]; then
-        printf "### ";
-        echo "dotfiles";
-        git --git-dir=$HOME/.cfg/ --work-tree=$HOME status -bs
-        echo;
-    fi
     for d in "${checkdirs[@]}"
     do
         find $d -maxdepth 2 -name "*.git" -type d -exec sh -c '(cd {} && cd .. && if [[ $(git status -s) || $(git cherry) ]]; then printf "### " && git rev-parse --show-toplevel; git status -bs; echo; fi)' \;
