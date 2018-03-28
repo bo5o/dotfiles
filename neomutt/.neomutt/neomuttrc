@@ -1,7 +1,7 @@
-source ~/.mutt/personalrc
-source ~/.mutt/muttcol
-source ~/.mutt/aliases
-source ~/.mutt/gpgrc
+source ~/.neomutt/private/personalrc
+source ~/.neomutt/muttcol
+source ~/.neomutt/private/aliases
+source ~/.neomutt/gpgrc
 
 set sort = 'reverse-threads'
 set editor = nvim
@@ -9,11 +9,11 @@ set my_msmtp_pass=`gpg -d ~/.password-store/strato.gpg`
 #set copy = no
 set timeout = "5"
 set mail_check = "10"
-set mailcap_path = ~/.mutt/mailcap
+set mailcap_path = ~/.neomutt/mailcap
 set date_format="%m/%d %I:%M"
 set index_format="%2C %Z %d %-15.15F %s (%-4.4c)"
 set use_from = "yes"
-set alias_file = ~/.mutt/aliases
+set alias_file = ~/.neomutt/private/aliases
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
