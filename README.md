@@ -40,6 +40,8 @@ I use Parabola GNU/Linux-libre.
 
 ## Installation
 
+The easiest way to install the configuration for a specific program is as follows:
+
 1. Make sure you are in your home directory.
 
 ```
