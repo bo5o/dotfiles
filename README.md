@@ -10,7 +10,7 @@
 
 I use Parabola GNU/Linux-libre.
 
-## Programs
+## Packages
 
 * compton - composite manager
 * feh - image viewer
@@ -40,7 +40,7 @@ I use Parabola GNU/Linux-libre.
 
 ## Installation
 
-The easiest way to install the configuration for a specific program is as follows:
+The easiest way to install the configuration for a specific package is as follows:
 
 1. Make sure you are in your home directory.
 
@@ -60,7 +60,7 @@ git clone https://github.com/cbows/dotfiles
 cd dotfiles
 ```
 
-4. Use [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) to create symlinks for each program. For example:
+4. Use [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) to create symlinks for each package. For example:
 
 ```
 stow nvim
