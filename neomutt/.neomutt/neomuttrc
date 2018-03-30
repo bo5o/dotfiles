@@ -1,6 +1,6 @@
-source ~/.neomutt/private/personalrc
+source ~/.neomutt/personalrc
 source ~/.neomutt/muttcol
-source ~/.neomutt/private/aliases
+source ~/.neomutt/aliases
 source ~/.neomutt/gpgrc
 
 set sort = 'reverse-threads'
@@ -13,7 +13,7 @@ set mailcap_path = ~/.neomutt/mailcap
 set date_format="%m/%d %I:%M"
 set index_format="%2C %Z %d %-15.15F %s (%-4.4c)"
 set use_from = "yes"
-set alias_file = ~/.neomutt/private/aliases
+set alias_file = ~/.neomutt/aliases
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
