@@ -345,6 +345,7 @@ let g:quicktex_tex = {
             \'sssec':   "\\subsubsection{<+++>}\<CR><++>",
             \'para':    '(<+++>) <++>',
             \'todo':    "\\todo{<+++>}\<CR><++>",
+            \'cmd':    "\<ESC>Bi\\\<ESC>Ea{<+++>}<++>",
             \'texroot': '%!TEX root=.',
             \
         \'Section: Citing and Referencing' : 'COMMENT',
