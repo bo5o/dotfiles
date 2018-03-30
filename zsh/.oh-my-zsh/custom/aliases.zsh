@@ -44,3 +44,5 @@ alias ipy="ipython"
 alias da="cd ~/latex/diplomarbeit"
 alias Gst="gitcheck"
 alias disks='echo "╓───── m o u n t . p o i n t s"; echo "╙────────────────────────────────────── ─ ─ "; lsblk -a; echo ""; echo "╓───── d i s k . u s a g e"; echo "╙────────────────────────────────────── ─ ─ "; df -h;'
+alias dotfiles='cd ~/dotfiles'
+alias Dotflies='cd ~/private'
