@@ -8,7 +8,7 @@
 
 ## Distro
 
-I use Parabola GNU/Linux-libre.
+I use [Parabola GNU/Linux-libre](https://www.parabola.nu/).
 
 ## Packages
 
