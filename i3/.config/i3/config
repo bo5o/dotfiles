@@ -204,6 +204,9 @@ bindsym $mod+c exec $term -e calcurse
 # youtube
 bindsym $mod+y exec $term -e mpsyt
 
+# pdf viewer
+bindsym $mod+z exec zathura
+
 # newsreader
 bindsym $mod+n exec $term -e newsboat
 
