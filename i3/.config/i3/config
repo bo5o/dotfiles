@@ -35,6 +35,9 @@ exec --no-startup-id unclutter
 # Launch polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
+#Network Manager applet
+exec --no-startup-id nm-applet
+
 # # Lock screen after 15 minutes
 # exec xautolock -time 15 -locker '~/.config/i3/lock.sh' &
 
