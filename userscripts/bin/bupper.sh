@@ -60,9 +60,9 @@ then
                   --encrypt-key=9ADCFF18F63D827638C82CF500A50C01312ACC2D \
                   --sign-key=9ADCFF18F63D827638C82CF500A50C01312ACC2D \
                   --full-if-older-than 60D \
-                  --exclude '$HOME/.local/' \
-                  --exclude '$HOME/.Mail/' \
-                  --exclude '$HOME/.cache/' \
+                  --exclude "${HOME}/.local/" \
+                  --exclude "${HOME}/.Mail/" \
+                  --exclude "${HOME}/.cache/" \
                   $HOME "file://$mountpoint/backup/home"
     fi
     exit 0
