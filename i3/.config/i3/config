@@ -131,8 +131,9 @@ bindsym $altmod+space exec rofi -show run -config ~/.config/rofi/launcher.rasi
 # web browser
 bindsym $mod+w exec $BROWSER
 
-# start music player
+# start/stop music player
 bindsym $mod+m  exec --no-startup-id $music
+bindsym $mod+Shift+m exec --no-startup-id mpc stop
 
 # display any paper from default library
 bindsym $mod+p exec --no-startup-id papis gui --rofi
@@ -314,25 +315,3 @@ mode "$mode_display" {
 }
 # Declare here the shortcut to bring the display selection menu
 bindsym XF86Display mode "$mode_display"
-
-## Music mode
-# Set the shortcuts and what they do
-mode "music" {
-    bindsym s exec --no-startup-id mpc stop
-    bindsym Shift+period exec $next
-    bindsym Shift+comma exec $prev
-    bindsym BackSpace exec $beg
-    bindsym p exec $pause
-    bindsym l exec --no-startup-id mpc play
-    bindsym bracketright exec $lilfor
-    bindsym bracketleft exec $lilbak
-    bindsym Shift+bracketright exec $bigfor
-    bindsym Shift+bracketleft 	exec $bigbak
-    bindsym space 	exec $pause
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-# Declare here the shortcut to bring the music menu
-bindsym $mod+Shift+m mode "music"
