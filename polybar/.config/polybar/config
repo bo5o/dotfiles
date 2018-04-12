@@ -193,7 +193,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 label = "%date% %time%"
 
 [module/volume]
-type = internal/alsa
+type = internal/volume
 
 format-volume = <ramp-volume> <label-volume>
 label-volume-foreground = ${root.foreground}
