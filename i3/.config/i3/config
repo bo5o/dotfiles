@@ -116,7 +116,6 @@ bindsym $mod+Shift+bracketright exec $bigfor
 # Extra XF86 Keys
 bindsym XF86PowerOff		exec sudo shutdown -h now
 bindsym XF86ScreenSaver     exec --no-startup-id ~/.config/i3/lock.sh
-bindsym XF86WLAN		    exec --no-startup-id sudo systemctl restart NetworkManager
 
 # start a terminal
 bindsym $mod+Return exec $term
