@@ -104,9 +104,16 @@ bindsym XF86AudioLowerVolume	exec $dec
 bindsym XF86AudioMute		exec $mute
 bindsym XF86AudioMicMute	exec $micmute
 
+# For advancing forward/backward in an mpd song
+bindsym $mod+bracketleft 	exec $lilbak
+bindsym $mod+Shift+bracketleft 	exec $bigbak
+bindsym $mod+bracketright 	exec $lilfor
+bindsym $mod+Shift+bracketright exec $bigfor
+
 # Extra XF86 Keys
 bindsym XF86PowerOff		exec sudo shutdown -h now
 bindsym XF86ScreenSaver     exec --no-startup-id ~/.config/i3/lock.sh
+bindsym XF86WLAN		    exec --no-startup-id sudo systemctl restart NetworkManager
 
 # start a terminal
 bindsym $mod+Return exec $term
@@ -121,11 +128,8 @@ bindsym $mod+Shift+q kill
 # run any program
 bindsym $altmod+space exec rofi -show run -config ~/.config/rofi/launcher.rasi
 
-# switch between windows
+# web browser
 bindsym $mod+w exec $BROWSER
-
-# switch to workspace
-bindsym $mod+Shift+w exec rofi -show window -config ~/.config/rofi/sidetab.rasi
 
 # start music player
 bindsym $mod+m  exec --no-startup-id $music
@@ -158,6 +162,12 @@ bindsym $mod+Shift+h	move left 30
 bindsym $mod+Shift+j	move down 30
 bindsym $mod+Shift+k	move up 30
 bindsym $mod+Shift+l	move right 30
+
+# resize windows
+bindsym $mod+Shift+u    resize shrink width 10 px or 10 ppt
+bindsym $mod+Shift+o    resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+semicolon    resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+y    resize grow width 10 px or 10 ppt
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -193,7 +203,7 @@ bindsym $mod+Tab	workspace back_and_forth
 bindsym $mod+i	exec $term -e htop
 
 # file browser
-bindsym $mod+d exec $term -e ranger
+bindsym $mod+r exec $term -e ranger
 
 # email client
 bindsym $mod+e exec $term -e neomutt
@@ -241,8 +251,13 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# designated workspaces
+# some setings for specific programs
 for_window [class="Iceweasel"] move to workspace 2
+for_window [title="GIMP Startup"] move workspace 5
+for_window [class="Gimp"] move workspace 5
+for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 50 px or 50ppt
+for_window [window_role="gimp-toolbox"] floating disable; move right; resize grow width 30 px or 30ppt
+for_window [window_role="GtkFileChooserDialog"] resize shrink height 10 px
 
 # for advancing forward/backward in an mpd song
 bindsym $mod+Shift+comma 	exec $prev
@@ -284,27 +299,6 @@ bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
 
 ## Manual management of external displays
 # Set the shortcuts and what they do
