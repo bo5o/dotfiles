@@ -662,7 +662,7 @@ let g:NERDTreeMapUpdir = 'H'
 let g:NERDTreeMapChangeRoot = 'L'
 let g:NERDTreeMapToggleHidden = 'zh'
 let g:NERDTreeQuitOnOpen = 1
-let NERDTreeIgnore=['\.aux$', '\.lol$', '\.lof$', '\.lot$', '\.slg$', '\.sls$', '\.not$', '\.ntn$', '\.slo$', '\.acn$', '\.acr$', '\.alg$', '\.glg$', '\.gls$', '\.glo$', '\.ist$', '\.nlg$', '\.log$', '\.gz$', '\.run.xml$', '\.pdf$', '\.toc$', '\.out$', '\.bbl$', '\.bcf$', '\.blg$', '\.fdb_latexmk$', '\.fls$', '^tags$[[file]]', '_minted[[dir]]']
+let NERDTreeIgnore=['\.aux$', '\.lol$', '\.lof$', '\.lot$', '\.slg$', '\.sls$', '\.not$', '\.ntn$', '\.slo$', '\.acn$', '\.acr$', '\.alg$', '\.glg$', '\.gls$', '\.glo$', '\.ist$', '\.nlg$', '\.log$', '\.gz$', '\.run.xml$', '\.pdf$', '\.toc$', '\.out$', '\.bbl$', '\.bcf$', '\.blg$', '\.fdb_latexmk$', '\.fls$', '\.xdv$', '^tags$[[file]]', '_minted[[dir]]']
 
 "" vimtex
 let g:vimtex_view_method = 'zathura'
@@ -730,11 +730,11 @@ let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 let g:ctrlp_root_markers = ['.root']
 nnoremap <leader>/ :CtrlPLine<space>%<enter>
 
-set wildignore+=*.mat,*.pdfpc,*/tmp/*,*.so,*.swp,*.zip,*.aux,*.gz,*.fdb_latexmk,*.fls,*.log,*.pdf,*.glg,*.glo,*.ist,*.bcf,*.bbl,*.blg,*.gls,*.run.xml,*.toc,*.acn,*.acr,*.alg,*.ntn,*.slo,*.not,*.nlg,*.slg,*.sls,*.lof,*.lot,*.lol
+set wildignore+=*.mat,*.pdfpc,*/tmp/*,*.so,*.swp,*.zip,*.aux,*.gz,*.fdb_latexmk,*.fls,*.log,*.pdf,*.glg,*.glo,*.ist,*.bcf,*.bbl,*.blg,*.gls,*.run.xml,*.toc,*.acn,*.acr,*.alg,*.ntn,*.slo,*.not,*.nlg,*.slg,*.sls,*.lof,*.lot,*.lol,*.xdv
 
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-            \ 'file': '\v\.(mat|pdfpc|latexmain|gitignore|root|exe|so|dll|aux|gz|fdb_latexmk|fls|log|pdf|run|blg|toc|bcf|run\.xml|bbl|snm|nav|glg|gls|glo|ist|acn|acr|alg|ntn|slo|not|nlg|slg|sls|lof|lot|lol)$',
+            \ 'file': '\v\.(mat|pdfpc|latexmain|gitignore|root|exe|so|dll|aux|gz|fdb_latexmk|fls|log|pdf|run|blg|toc|bcf|run\.xml|bbl|snm|nav|glg|gls|glo|ist|acn|acr|alg|ntn|slo|not|nlg|slg|sls|lof|lot|lol|xdv)$',
             \ }
 
 let g:ctrlp_custom_ignore = {
