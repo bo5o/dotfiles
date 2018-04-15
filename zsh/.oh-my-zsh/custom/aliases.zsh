@@ -1,3 +1,11 @@
+# global aliases
+alias -g L='| less'
+alias -g C='| wc -l'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+
+# aliases
 alias octave="octave-cli -q"
 alias ydl="youtube-dl"
 alias yta="youtube-dl -xic"
@@ -9,7 +17,6 @@ alias papex="papis export --bibtex"
 alias papa="papis add"
 alias pape="papis edit"
 alias sdn="sudo shutdown -h now"
-alias open="xdg-open"
 alias def="sdcv"
 alias yt="mpsyt"
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles/.git --work-tree=$HOME/dotfiles"
@@ -53,3 +60,8 @@ alias Gst="gitcheck"
 alias disks='echo "╓───── m o u n t . p o i n t s"; echo "╙────────────────────────────────────── ─ ─ "; lsblk -a; echo ""; echo "╓───── d i s k . u s a g e"; echo "╙────────────────────────────────────── ─ ─ "; df -h;'
 alias dotfiles='cd ~/dotfiles'
 alias Dotfiles='cd ~/private'
+alias info='info --vi-keys'
+alias md='mkdir -p -v'
+alias pdfgrep='pdfgrep -in'	# ignorecase, page number
+cpbak() { cp $1{,.bak} ;} # create backup copy
+open() { xdg-open "$@" > /dev/null 2>&1 ;} # open with default GUI program
