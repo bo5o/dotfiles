@@ -1,2 +1,2 @@
 # Exclude these environments from syntax checking
-VerbEnvir { pgfpicture tikzpicture }
+VerbEnvir { pgfpicture tikzpicture ignore }
