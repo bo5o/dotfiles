@@ -33,7 +33,7 @@ www() {
 
 gitcheck() {
     # check all git repositories in specified directories for changes
-    checkdirs=( ~/dotfiles ~/private ~/code ~/latex ~/Documents ~/vimwiki ~/sites )
+    checkdirs=( ~/dotfiles ~/private ~/.password-store ~/code ~/latex ~/Documents ~/vimwiki ~/sites )
     for d in "${checkdirs[@]}"
     do
         find $d -maxdepth 2 -name "*.git" -type d -exec sh -c '(cd {} && cd .. && if [[ $(git status -s) || $(git cherry) ]]; then printf "### " && git rev-parse --show-toplevel; git status -bs; echo; fi)' \;
