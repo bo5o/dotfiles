@@ -30,13 +30,13 @@ I use [Parabola GNU/Linux-libre](https://www.parabola.nu/).
 * papis - bibliography management
 * polybar - bar
 * ranger - file browser
-* rofi - dmenu replacement
+* rofi - multi-purpose menu
 * tmux - terminal multiplexer
+* todotxt - todo list
 * urxvt - terminal emulator
 * w3m - cli web browser
 * zathura - pdf viewer
 * zsh - shell
-* many little scripts...
 
 ## Installation
 
