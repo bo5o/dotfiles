@@ -668,6 +668,9 @@ let NERDTreeIgnore=['\.aux$', '\.lol$', '\.lof$', '\.lot$', '\.slg$', '\.sls$', 
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
 
+" enabled makers
+let g:neomake_tex_enabled_makers = ['chktex']
+
 augroup vimtex_event_1
     au!
     au User VimtexEventQuit     call vimtex#compiler#clean(0)
