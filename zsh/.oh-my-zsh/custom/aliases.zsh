@@ -66,3 +66,4 @@ alias md='mkdir -p -v'
 alias pdfgrep='pdfgrep -in'	# ignorecase, page number
 cpbak() { cp $1{,.bak} ;} # create backup copy
 open() { xdg-open "$@" > /dev/null 2>&1 ;} # open with default GUI program
+alias radioeins='mpc load https://www.radioeins.de/live.m3u'
