@@ -341,6 +341,7 @@ let g:quicktex_tex = {
             \'ul':   "\\begin{itemize}\<CR>\\item <+++>\<CR>\\end{itemize}",
             \'eqn':  "\\begin{equation*}\<CR><+++>\<CR>\\end{equation*}\<CR><++>",
             \'Eqn':  "\\begin{equation}\\label{<+++>}\<CR><++>\<CR>\\end{equation}\<CR><++>",
+            \'frm':  "\\begin{frame}\<CR>\\frametitle{<+++>}\<CR><++>\<CR>\\end{frame}",
             \
         \'Section: Other Commands' : 'COMMENT',
             \'itm':     '\item ',
@@ -571,6 +572,7 @@ let g:quicktex_math = {
             \'vdots'  : '\vdots & ',
             \'ddots'  : '\ddots & ',
             \'cdots'  : '\cdots & ',
+            \'ldots'  : '\ldots ',
             \
         \'Section: Constants' : 'COMMENT',
             \'inf'   : '\infty ',
