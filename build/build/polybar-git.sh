@@ -1,5 +1,5 @@
 #!/bin/bash
 
-git clone https://aur.archlinux.org/packages/polybar-git/
+git clone https://aur.archlinux.org/polybar-git.git
 cd polybar-git
 makepkg -si
