@@ -564,6 +564,7 @@ let g:quicktex_math = {
             \'bar'  : "\<ESC>Bi\\overline{\<ESC>Els} ",
             \'tild'  : "\<ESC>Bi\\tilde{\<ESC>Els} ",
             \'vec' : "\<ESC>Bi\\vect{\<ESC>Els} ",
+            \'comp' : "\<ESC>Bi\\underline{\<ESC>Els} ",
             \'adj' : "\<ESC>Bi\\adj{\<ESC>Els} ",
             \'star'  : "\<BS>^* ",
             \
@@ -656,7 +657,8 @@ nmap ga <Plug>(EasyAlign)
 "" nerd tree
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-nnoremap <leader>t :NERDTreeFind<CR>
+" nnoremap <leader>t :NERDTreeFind<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
 
 let g:NERDTreeMapCloseDir = 'h'
 let g:NERDTreeMapActivateNode = 'l'
