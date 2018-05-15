@@ -122,6 +122,9 @@ set lazyredraw
 " For regular expressions turn magic on
 set magic
 
+" Disable automatic folding
+set nofoldenable
+
 " Show matching brackets when text indicator is over them
 set showmatch
 " How many tenths of a second to blink when matching brackets
@@ -793,6 +796,7 @@ let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_json_frontmatter = 1
 let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_folding_disabled = 1
 
 autocmd FileType markdown nnoremap <localleader>lt :Toc<Enter>
 
