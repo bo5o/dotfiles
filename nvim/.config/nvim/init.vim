@@ -33,6 +33,7 @@ Plug 'tpope/vim-unimpaired'          " some useful keybindings
 Plug 'mhinz/vim-startify'            " fancy start screen
 Plug 'Valloric/ListToggle'           " toggle quickfix and location list
 Plug 'brennier/quicktex'             " very quick latex writing
+Plug 'justinmk/vim-sneak'            " sneak motion
 
 " Initialize plugin system
 call plug#end()
@@ -266,7 +267,7 @@ set noshowmode
 map 0 ^
 
 " search and replace
-nnoremap S :%s//g<Left><Left>
+nnoremap <leader>S :%s//g<Left><Left>
 
 " moving up and down work as you expected
 nnoremap <silent> j gj
@@ -626,7 +627,7 @@ inoremap <F10> <esc>:Goyo<CR>a
 
 " Insert date
 inoremap ;dt <C-R>=strftime('%Y-%m-%d')<CR>
-nnoremap ;dt a<C-R>=strftime('%Y-%m-%d')<CR><Esc>
+" nnoremap ;dt a<C-R>=strftime('%Y-%m-%d')<CR><Esc>
 
 " indent/dedent in visual mode
 vnoremap L >gv
@@ -674,6 +675,11 @@ let g:NERDTreeMapChangeRoot = 'L'
 let g:NERDTreeMapToggleHidden = 'zh'
 let g:NERDTreeQuitOnOpen = 1
 let NERDTreeIgnore=['\.aux$', '\.lol$', '\.lof$', '\.lot$', '\.slg$', '\.sls$', '\.not$', '\.ntn$', '\.slo$', '\.acn$', '\.acr$', '\.alg$', '\.glg$', '\.gls$', '\.glo$', '\.ist$', '\.nlg$', '\.log$', '\.gz$', '\.run.xml$', '\.pdf$', '\.toc$', '\.out$', '\.bbl$', '\.bcf$', '\.blg$', '\.fdb_latexmk$', '\.fls$', '\.xdv$', '^tags$[[file]]', '_minted[[dir]]']
+
+"" sneak
+let g:sneak#use_ic_scs = 1
+hi Sneak guifg=black guibg=red ctermfg=black ctermbg=red
+hi SneakScope guifg=red guibg=yellow ctermfg=black ctermbg=yellow
 
 "" vimtex
 let g:vimtex_view_method = 'zathura'
