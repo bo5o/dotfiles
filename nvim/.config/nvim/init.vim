@@ -1,38 +1,38 @@
 ""Plugins
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'scrooloose/nerdtree'           " nerd tree
-Plug 'roxma/nvim-completion-manager' " auto completion
-Plug 'machakann/vim-swap'            " swap items in comma separated lists
-Plug 'Shougo/echodoc.vim'            " show docstring in cmdline
-Plug 'hkupty/iron.nvim'              " REPL
-Plug 'terryma/vim-multiple-cursors'  " multiple cursors
-Plug 'yggdroot/indentline'           " indentation guides
-Plug 'davidhalter/jedi-vim'          " python jedi
-Plug 'vimwiki/vimwiki'               " wiki
-Plug 'w0rp/ale'                      " asynchronous linting engine
-Plug 'cespare/vim-toml'              " toml
-Plug 'plasticboy/vim-markdown'       " markdown
-Plug 'tpope/vim-surround'            " vim surround
-Plug 'tpope/vim-commentary'          " comment stuff out
-Plug 'tpope/vim-repeat'              " repeat almost anything
-Plug 'tpope/vim-fugitive'            " git
-Plug 'lervag/vimtex'                 " LaTeX
-Plug 'ervandew/supertab'             " Use tab for autocompletion
-Plug 'SirVer/UltiSnips'              " Snippets
-Plug 'honza/vim-snippets'            " default snippets
-Plug 'ctrlpvim/ctrlp.vim'            " fuzzy finding
-Plug 'ludovicchabant/vim-gutentags'  " automate ctags
-Plug 'vim-airline/vim-airline'       " nice status line
+Plug 'scrooloose/nerdtree'            " nerd tree
+Plug 'roxma/nvim-completion-manager'  " auto completion
+Plug 'machakann/vim-swap'             " swap items in comma separated lists
+Plug 'Shougo/echodoc.vim'             " show docstring in cmdline
+Plug 'hkupty/iron.nvim'               " REPL
+Plug 'terryma/vim-multiple-cursors'   " multiple cursors
+Plug 'yggdroot/indentline'            " indentation guides
+Plug 'davidhalter/jedi-vim'           " python jedi
+Plug 'vimwiki/vimwiki'                " wiki
+Plug 'w0rp/ale'                       " asynchronous linting engine
+Plug 'cespare/vim-toml'               " toml
+Plug 'plasticboy/vim-markdown'        " markdown
+Plug 'tpope/vim-surround'             " vim surround
+Plug 'tpope/vim-commentary'           " comment stuff out
+Plug 'tpope/vim-repeat'               " repeat almost anything
+Plug 'tpope/vim-fugitive'             " git
+Plug 'lervag/vimtex'                  " LaTeX
+Plug 'ervandew/supertab'              " Use tab for autocompletion
+Plug 'SirVer/UltiSnips'               " Snippets
+Plug 'honza/vim-snippets'             " default snippets
+Plug 'ctrlpvim/ctrlp.vim'             " fuzzy finding
+Plug 'ludovicchabant/vim-gutentags'   " automate ctags
+Plug 'vim-airline/vim-airline'        " nice status line
 Plug 'vim-airline/vim-airline-themes' " airline themes
-Plug 'junegunn/goyo.vim'             " distraction free mode
-Plug 'Vimjas/vim-python-pep8-indent' " pep8 indenting
-Plug 'thaerkh/vim-workspace'         " workspace management
-Plug 'junegunn/vim-easy-align'       " simple text alignment
-Plug 'tpope/vim-unimpaired'          " some useful keybindings
-Plug 'mhinz/vim-startify'            " fancy start screen
-Plug 'Valloric/ListToggle'           " toggle quickfix and location list
-Plug 'brennier/quicktex'             " very quick latex writing
-Plug 'justinmk/vim-sneak'            " sneak motion
+Plug 'junegunn/goyo.vim'              " distraction free mode
+Plug 'Vimjas/vim-python-pep8-indent'  " pep8 indenting
+Plug 'thaerkh/vim-workspace'          " workspace management
+Plug 'junegunn/vim-easy-align'        " simple text alignment
+Plug 'tpope/vim-unimpaired'           " some useful keybindings
+Plug 'mhinz/vim-startify'             " fancy start screen
+Plug 'Valloric/ListToggle'            " toggle quickfix and location list
+Plug 'brennier/quicktex'              " very quick latex writing
+Plug 'justinmk/vim-sneak'             " sneak motion
 
 " Initialize plugin system
 call plug#end()
@@ -767,8 +767,14 @@ let g:vimtex_quickfix_latexlog = {
 " nnoremap <leader>s :ToggleWorkspace<CR>
 
 "" airline
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
 let g:airline_theme='term'
 let g:airline_symbols_ascii = 1
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = ''
 
 "" vim-markdown
 let g:vim_markdown_toc_autofit = 1
