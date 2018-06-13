@@ -4,13 +4,12 @@ Plug 'scrooloose/nerdtree'           " nerd tree
 Plug 'roxma/nvim-completion-manager' " auto completion
 Plug 'machakann/vim-swap'            " swap items in comma separated lists
 Plug 'Shougo/echodoc.vim'            " show docstring in cmdline
-Plug 'majutsushi/tagbar'             " tag explorer
 Plug 'hkupty/iron.nvim'              " REPL
 Plug 'terryma/vim-multiple-cursors'  " multiple cursors
 Plug 'yggdroot/indentline'           " indentation guides
 Plug 'davidhalter/jedi-vim'          " python jedi
 Plug 'vimwiki/vimwiki'               " wiki
-Plug 'neomake/neomake'               " neomake
+Plug 'w0rp/ale'                      " asynchronous linting engine
 Plug 'cespare/vim-toml'              " toml
 Plug 'plasticboy/vim-markdown'       " markdown
 Plug 'tpope/vim-surround'            " vim surround
@@ -23,8 +22,8 @@ Plug 'SirVer/UltiSnips'              " Snippets
 Plug 'honza/vim-snippets'            " default snippets
 Plug 'ctrlpvim/ctrlp.vim'            " fuzzy finding
 Plug 'ludovicchabant/vim-gutentags'  " automate ctags
-Plug 'easymotion/vim-easymotion'     " vim motion on steroids
-Plug 'itchyny/lightline.vim'         " nice status line
+Plug 'vim-airline/vim-airline'       " nice status line
+Plug 'vim-airline/vim-airline-themes' " airline themes
 Plug 'junegunn/goyo.vim'             " distraction free mode
 Plug 'Vimjas/vim-python-pep8-indent' " pep8 indenting
 Plug 'thaerkh/vim-workspace'         " workspace management
@@ -685,9 +684,6 @@ hi SneakScope guifg=red guibg=yellow ctermfg=black ctermbg=yellow
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
 
-" enabled makers
-let g:neomake_tex_enabled_makers = ['chktex']
-
 augroup vimtex_event_1
     au!
     au User VimtexEventQuit     call vimtex#compiler#clean(0)
@@ -770,34 +766,9 @@ let g:vimtex_quickfix_latexlog = {
 "" vim-workspace
 " nnoremap <leader>s :ToggleWorkspace<CR>
 
-"" lightline
-let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
-      \             [ 'neomake' ] ],
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ 'component_expand': {
-      \   'paste': 'LightlinePaste',
-      \   'neomake': 'LightlineNeomake',
-      \ },
-      \ 'component_type': {
-      \   'paste': 'warning',
-      \   'neomake': 'error',
-      \ },
-      \ }
-
-function! LightlinePaste()
-    return '%{&paste?"PASTE":""}'
-endfunction
-
-function! LightlineNeomake()
-    return '%{neomake#statusline#LoclistStatus()}'
-endfunction
+"" airline
+let g:airline_theme='term'
+let g:airline_symbols_ascii = 1
 
 "" vim-markdown
 let g:vim_markdown_toc_autofit = 1
@@ -810,19 +781,6 @@ let g:vim_markdown_folding_disabled = 1
 
 autocmd FileType markdown nnoremap <localleader>lt :Toc<Enter>
 
-"" neomake
-" When writing a buffer.
-call neomake#configure#automake('w')
-
-" colors
-hi NeomakeWarningDefault cterm=underline ctermfg=0 ctermbg=11 gui=undercurl guisp=orangered
-hi SignColumn term=standout ctermfg=14 ctermbg=None guifg=Cyan guibg=Grey
-hi NeomakeWarningSignDefault ctermfg=15 guifg=orangered guibg=Grey
-hi NeomakeWarningSign ctermfg=15 guifg=orangered guibg=Grey
-
-" enabled makers
-let g:neomake_python_enabled_makers = ['python', 'flake8']
-
 "" Multiple cursors
 " highlighting
 highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
@@ -832,10 +790,27 @@ highlight link multiple_cursors_visual Visual
 let g:indentLine_fileTypeExclude = ['vimwiki', 'markdown']
 let g:indentLine_setConceal = 0
 
-"" tagbar
-nnoremap <silent> <F8> :TagbarToggle<CR>
-let g:tagbar_autoclose = 1
-let g:tagbar_autofocus = 1
+"" ale
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+hi ALEErrorSign cterm=bold ctermfg=red
+hi ALEWarningSign cterm=bold ctermfg=yellow
+highlight clear SignColumn
+let g:airline#extensions#ale#enabled = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'W'
+
+let g:ale_linters = {
+            \   'python': ['flake8'],
+            \   'tex': ['chktex'],
+            \}
+
+let g:ale_fixers = {
+            \   'python': ['autopep8', 'yapf'],
+            \}
+
+nmap <F8> <Plug>(ale_fix)
 
 "" iron
 " deactivate default mappings
