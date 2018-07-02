@@ -124,8 +124,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+BackSpace		exec $flash
 
 # kill focused window
-bindsym $mod+q	kill
-bindsym $mod+Shift+q kill
+bindsym $mod+q			[con_id="__focused__" instance="^(?!dropdown).*$"] kill
+bindsym $mod+Shift+q	[con_id="__focused__" instance="^(?!dropdown).*$"] kill
 
 # run any program
 bindsym $altmod+space exec rofi -show run -config ~/.config/rofi/launcher.rasi
