@@ -655,8 +655,8 @@ let g:startify_files_number = 4
 let g:startify_custom_indices = ['1', '2', '3', '4', '7', '8', '9', '0']
 
 "" EasyAlign
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
@@ -813,7 +813,7 @@ let g:ale_linters = {
             \}
 
 let g:ale_fixers = {
-            \   'python': ['autopep8', 'yapf'],
+            \   'python': ['autopep8', 'yapf', 'add_blank_lines_for_python_control_statements', 'remove_trailing_lines', 'trim_whitespace'],
             \}
 
 nmap <F8> <Plug>(ale_fix)
