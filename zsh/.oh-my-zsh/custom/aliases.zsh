@@ -68,3 +68,9 @@ alias pdfgrep='pdfgrep -in'	# ignorecase, page number
 cpbak() { cp $1{,.bak} ;} # create backup copy
 open() { xdg-open "$@" > /dev/null 2>&1 ;} # open with default GUI program
 alias radioeins='mpc load https://www.radioeins.de/live.m3u'
+alias news='newsboat'
+alias files='ranger'
+alias sv='sudo nvim'
+alias ka='killall'
+alias crep="grep --color=always" # Color grep
+alias ccat="highlight --out-format=xterm256" #Color cat
