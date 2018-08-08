@@ -1,7 +1,13 @@
 ""Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'            " nerd tree
-Plug 'roxma/nvim-completion-manager'  " auto completion
+Plug 'ncm2/ncm2'                      " auto completion
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'              " complete words from current buffer
+Plug 'ncm2/ncm2-path'                 " complete file paths
+Plug 'ncm2/ncm2-jedi'                 " python completion source
+Plug 'ncm2/ncm2-ultisnips'            " snippet completion source
+Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detectin in markdown
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
 Plug 'Shougo/echodoc.vim'             " show docstring in cmdline
 Plug 'hkupty/iron.nvim'               " REPL
@@ -144,6 +150,9 @@ set splitright
 " '-- XXX completion (YYY)', 'match 1 of 2', 'The only match',
 set shortmess+=c
 
+" :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -275,7 +284,7 @@ nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
 
 " Navigating with guides
-inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+inoremap <Space><Space> <Esc>/<Enter>"_c4l
 vnoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 nnoremap <Space><Space> /<++><Enter>"_c4l
 inoremap ;gui <++>
@@ -704,21 +713,79 @@ endfunction
 "" supertab
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
-"" nvim completion manager
+"" nvim completion manager / ncm2
+autocmd BufEnter * call ncm2#enable_for_buffer()
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
 inoremap <c-c> <ESC>
+
+" Press enter key to trigger snippet expansion
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+" Use <TAB> to select the popup menu:
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 
 " ncm vimtex
 augroup my_cm_setup
     autocmd!
-    autocmd User CmSetup call cm#register_source({
-                \ 'name' : 'vimtex',
-                \ 'priority': 8,
-                \ 'scoping': 1,
-                \ 'scopes': ['tex'],
-                \ 'abbreviation': 'tex',
-                \ 'cm_refresh_patterns': g:vimtex#re#ncm,
-                \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+    autocmd Filetype tex call ncm2#register_source({
+                \ 'name' : 'vimtex-cmds',
+                \ 'priority': 8, 
+                \ 'complete_length': -1,
+                \ 'scope': ['tex'],
+                \ 'matcher': {'name': 'prefix', 'key': 'word'},
+                \ 'word_pattern': '\w+',
+                \ 'complete_pattern': g:vimtex#re#ncm2#cmds,
+                \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+                \ })
+    autocmd Filetype tex call ncm2#register_source({
+                \ 'name' : 'vimtex-labels',
+                \ 'priority': 8, 
+                \ 'complete_length': -1,
+                \ 'scope': ['tex'],
+                \ 'matcher': {'name': 'combine',
+                \             'matchers': [
+                \               {'name': 'substr', 'key': 'word'},
+                \               {'name': 'substr', 'key': 'menu'},
+                \             ]},
+                \ 'word_pattern': '\w+',
+                \ 'complete_pattern': g:vimtex#re#ncm2#labels,
+                \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+                \ })
+    autocmd Filetype tex call ncm2#register_source({
+                \ 'name' : 'vimtex-files',
+                \ 'priority': 8, 
+                \ 'complete_length': -1,
+                \ 'scope': ['tex'],
+                \ 'matcher': {'name': 'combine',
+                \             'matchers': [
+                \               {'name': 'abbrfuzzy', 'key': 'word'},
+                \               {'name': 'abbrfuzzy', 'key': 'abbr'},
+                \             ]},
+                \ 'word_pattern': '\w+',
+                \ 'complete_pattern': g:vimtex#re#ncm2#files,
+                \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+                \ })
+    autocmd Filetype tex call ncm2#register_source({
+                \ 'name' : 'bibtex',
+                \ 'priority': 8, 
+                \ 'complete_length': -1,
+                \ 'scope': ['tex'],
+                \ 'matcher': {'name': 'combine',
+                \             'matchers': [
+                \               {'name': 'prefix', 'key': 'word'},
+                \               {'name': 'abbrfuzzy', 'key': 'abbr'},
+                \               {'name': 'abbrfuzzy', 'key': 'menu'},
+                \             ]},
+                \ 'word_pattern': '\w+',
+                \ 'complete_pattern': g:vimtex#re#ncm2#bibtex,
+                \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
                 \ })
 augroup END
 
