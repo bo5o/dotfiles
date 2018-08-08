@@ -31,7 +31,7 @@ set scroll-step 80
 map <C-i> zoom in
 map <C-o> zoom out
 
-map <C-d> toggle_page_mode
+map D toggle_page_mode
 
 map d scroll half-down
 map u scroll half-up
