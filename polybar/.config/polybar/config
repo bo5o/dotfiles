@@ -41,7 +41,7 @@ font-3 = FontAwesome5Free:style=Regular:pixelsize=11;0
 
 modules-left = i3 xwindow
 modules-center = mpd
-modules-right = filesystem memory cpu temperature battery volume date 
+modules-right = filesystem memory cpu temperature battery alsa date 
 
 tray-position = right
 tray-padding = 2
@@ -71,7 +71,7 @@ font-3 = FontAwesome5Free:style=Regular:pixelsize=11;0
 
 modules-left = i3 xwindow
 modules-center = mpd
-modules-right = filesystem memory cpu temperature battery volume date 
+modules-right = filesystem memory cpu temperature battery alsa date 
 
 tray-position = right
 tray-padding = 2
@@ -192,8 +192,8 @@ format-prefix-foreground = ${colors.foreground-alt}
 
 label = "%date% %time%"
 
-[module/volume]
-type = internal/volume
+[module/alsa]
+type = internal/alsa
 
 format-volume = <ramp-volume> <label-volume>
 label-volume-foreground = ${root.foreground}
