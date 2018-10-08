@@ -10,7 +10,7 @@ Plug 'ncm2/ncm2-ultisnips'            " snippet completion source
 Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detectin in markdown
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
 Plug 'Shougo/echodoc.vim'             " show docstring in cmdline
-Plug 'hkupty/iron.nvim'               " REPL
+Plug 'Vigemus/iron.nvim'              " REPL
 Plug 'terryma/vim-multiple-cursors'   " multiple cursors
 Plug 'yggdroot/indentline'            " indentation guides
 Plug 'davidhalter/jedi-vim'           " python jedi
@@ -39,6 +39,11 @@ Plug 'mhinz/vim-startify'             " fancy start screen
 Plug 'Valloric/ListToggle'            " toggle quickfix and location list
 Plug 'brennier/quicktex'              " very quick latex writing
 Plug 'justinmk/vim-sneak'             " sneak motion
+Plug 'tpope/vim-obsession'            " session management
+Plug 'jpalardy/vim-slime'             " tmux repl
+Plug 'MattesGroeger/vim-bookmarks'    " bookmarks
+Plug 'airblade/vim-gitgutter'         " git diff in gutter
+Plug 'jeetsukumaran/vim-pythonsense'  " python text objects
 
 " Initialize plugin system
 call plug#end()
@@ -61,6 +66,9 @@ filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
+
+" Set vim's update time (for gitgutter)
+set updatetime=100
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -159,6 +167,9 @@ set completeopt=noinsert,menuone,noselect
 " Enable syntax highlighting
 syntax enable
 
+" Syntax highlighting is very slow for long lines
+set synmaxcol=176
+
 " colorscheme specific settings
 set background=dark
 
@@ -240,6 +251,11 @@ set diffopt=vertical
 " Esc switches to terminal normal mode
 tnoremap <Esc> <C-\><C-n>
 
+" show current cursor position (crosshairs)
+nnoremap <leader>ch :set<space>cul!<space>cuc!<cr>
+hi CursorLine   cterm=NONE ctermbg=darkgreen ctermfg=black guibg=darkgreen guifg=black
+hi CursorColumn cterm=NONE ctermbg=darkgreen ctermfg=black guibg=darkgreen guifg=black
+
 au TermOpen * setlocal nonumber norelativenumber
 
 " terminal keybindings
@@ -284,13 +300,13 @@ nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
 
 " Navigating with guides
-inoremap <Space><Space> <Esc>/<Enter>"_c4l
+inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 vnoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 nnoremap <Space><Space> /<++><Enter>"_c4l
 inoremap ;gui <++>
 
 " preview latex equations
-vnoremap <leader>m y:!python<space>~/bin/preview_math.py<space>'<C-r>"'<enter>
+" vnoremap <leader>m y:!python<space>~/bin/preview_math.py<space>'<C-r>"'<enter>
 
 " bibtex
 autocmd FileType bib inoremap ;a @article{<Enter>author<Space>=<Space>"<++>",<Enter>year<Space>=<Space>"<++>",<Enter>title<Space>=<Space>"<++>",<Enter>journaltitle<Space>=<Space>"<++>",<Enter>volume<Space>=<Space>"<++>",<Enter>pages<Space>=<Space>"<++>",<Enter>}<Enter><backspace><++><Esc>8kA,<Esc>i
@@ -620,7 +636,7 @@ let g:quicktex_math = {
 autocmd FileType mail inoremap mfg Mit<space>freundlichen<space>Grüßen<Esc>
 
 " Vimwiki
-autocmd FileType vimwiki nnoremap <leader>m :s/%20/\\%20/g<enter>/http<enter>yi)u:noh<enter>:!mpv<space>--quiet<space><C-r>*<enter>
+" autocmd FileType vimwiki nnoremap <leader>m :s/%20/\\%20/g<enter>/http<enter>yi)u:noh<enter>:!mpv<space>--quiet<space><C-r>*<enter>
 
 " Vim-Anywhere
 autocmd BufRead,BufNewFile /tmp/vim-anywhere* set filetype=txt
@@ -673,7 +689,7 @@ nmap ga <Plug>(EasyAlign)
 "" nerd tree
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-" nnoremap <leader>t :NERDTreeFind<CR>
+nnoremap <leader>T :NERDTreeFind<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
 
 let g:NERDTreeMapCloseDir = 'h'
@@ -686,6 +702,7 @@ let NERDTreeIgnore=['\.aux$', '\.lol$', '\.lof$', '\.lot$', '\.slg$', '\.sls$', 
 
 "" sneak
 let g:sneak#use_ic_scs = 1
+map <leader><leader> <Plug>Sneak_,
 hi Sneak guifg=black guibg=red ctermfg=black ctermbg=red
 hi SneakScope guifg=red guibg=yellow ctermfg=black ctermbg=yellow
 
@@ -809,20 +826,15 @@ let g:vimwiki_folding = ''
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 let g:ctrlp_root_markers = ['.root']
 nnoremap <leader>/ :CtrlPLine<space>%<enter>
+nnoremap <leader>ta :CtrlPBufTagAll<enter>
 
 set wildignore+=*.mat,*.pdfpc,*/tmp/*,*.so,*.swp,*.zip,*.aux,*.gz,*.fdb_latexmk,*.fls,*.log,*.pdf,*.glg,*.glo,*.ist,*.bcf,*.bbl,*.blg,*.gls,*.run.xml,*.toc,*.acn,*.acr,*.alg,*.ntn,*.slo,*.not,*.nlg,*.slg,*.sls,*.lof,*.lot,*.lol,*.xdv
 
 let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-            \ 'file': '\v\.(mat|pdfpc|latexmain|gitignore|root|exe|so|dll|aux|gz|fdb_latexmk|fls|log|pdf|run|blg|toc|bcf|run\.xml|bbl|snm|nav|glg|gls|glo|ist|acn|acr|alg|ntn|slo|not|nlg|slg|sls|lof|lot|lol|xdv)$',
-            \ }
-
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]_minted',
-            \ 'file': '\v\.(out)$',
+            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_minted)$',
+            \ 'file': '\v\.(mat|pdfpc|latexmain|gitignore|root|exe|so|dll|aux|gz|fdb_latexmk|fls|log|pdf|run|blg|toc|bcf|run\.xml|png|jpeg|bmp|out|bbl|snm|nav|glg|gls|glo|ist|acn|acr|alg|ntn|slo|not|nlg|slg|sls|lof|lot|lol|xdv)$',
             \ }
 
 let g:vimtex_quickfix_latexlog = {
@@ -832,6 +844,24 @@ let g:vimtex_quickfix_latexlog = {
 
 "" vim-workspace
 " nnoremap <leader>s :ToggleWorkspace<CR>
+
+"" vim-bookmarks
+let g:bookmark_disable_ctrlp = 0
+let g:bookmark_auto_save = 1
+let g:bookmark_auto_close = 1
+let g:bookmark_save_per_working_dir = 1
+let g:bookmark_no_default_key_mappings = 1
+
+nmap <Leader>mm <Plug>BookmarkToggle
+nmap <Leader>mi <Plug>BookmarkAnnotate
+nmap <Leader>ma <Plug>BookmarkShowAll
+nmap <Leader>mn <Plug>BookmarkNext
+nmap <Leader>mp <Plug>BookmarkPrev
+nmap <Leader>mc <Plug>BookmarkClear
+nmap <Leader>mx <Plug>BookmarkClearAll
+nmap <Leader>mkk <Plug>BookmarkMoveUp
+nmap <Leader>mjj <Plug>BookmarkMoveDown
+nmap <Leader>mg <Plug>BookmarkMoveToLine
 
 "" airline
 if !exists('g:airline_symbols')
@@ -850,7 +880,7 @@ let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_json_frontmatter = 1
 let g:vim_markdown_new_list_item_indent = 0
-let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_disabled = 0
 
 autocmd FileType markdown nnoremap <localleader>lt :Toc<Enter>
 
@@ -870,9 +900,13 @@ hi ALEErrorSign cterm=bold ctermfg=red
 hi ALEWarningSign cterm=bold ctermfg=yellow
 highlight clear SignColumn
 let g:airline#extensions#ale#enabled = 1
-let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_text_changed = 1
+let g:ale_lint_delay = 500
+let g:ale_lint_on_enter = 1
+let g:ale_fix_on_save = 1
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
+
 
 let g:ale_linters = {
             \   'python': ['flake8'],
@@ -880,9 +914,8 @@ let g:ale_linters = {
             \}
 
 let g:ale_fixers = {
-            \   'python': ['autopep8', 'yapf', 'add_blank_lines_for_python_control_statements', 'remove_trailing_lines', 'trim_whitespace'],
+            \   'python': ['black', 'isort', 'add_blank_lines_for_python_control_statements', 'remove_trailing_lines', 'trim_whitespace'],
             \}
-
 nmap <F8> <Plug>(ale_fix)
 
 "" iron
@@ -891,12 +924,16 @@ let g:iron_map_defaults=0
 " define custom mappings for the python filetype
 augroup ironmapping
     autocmd!
+    " autocmd FileType python nmap <buffer> <localleader>r :call<space>SetReplSize()<enter>:IronRepl<Enter><C-\><C-n><C-W>p
     autocmd FileType python nmap <buffer> <localleader>r :call<space>SetReplSize()<enter>:IronRepl<Enter><C-\><C-n><C-W>p
+    autocmd FileType python nmap <buffer> <localleader>R :call<space>SetReplSize()<enter>:IronPromptCommand<Enter>
+    autocmd Filetype python nmap <buffer> <localleader><space> :IronFocus<enter>i<enter><enter><C-\><C-n><C-W>p
+    autocmd Filetype python nmap <buffer> <localleader>is yiw:call<space>IronSend('<C-r>+')<enter>
     autocmd Filetype python nmap <buffer> <localleader>t <Plug>(iron-send-motion)
     autocmd Filetype python vmap <buffer> <localleader>t <Plug>(iron-send-motion)
     autocmd Filetype python nmap <buffer> <localleader>p <Plug>(iron-repeat-cmd)
-    autocmd FileType python nmap <buffer> <F5> :w<enter>:call<space>IronSend('run<space><C-r>%')<enter>
-    autocmd FileType python imap <buffer> <F5> <C-o>:w<enter><C-o>:call<space>IronSend('run<space><C-r>%')<enter>
+    " autocmd FileType python nmap <buffer> <F5> :w<enter>:call<space>IronSend('run<space><C-r>%')<enter>
+    " autocmd FileType python imap <buffer> <F5> <C-o>:w<enter><C-o>:call<space>IronSend('run<space><C-r>%')<enter>
 augroup END
 
 " set repl size
@@ -904,9 +941,17 @@ function! SetReplSize()
     " if winwidth(0)>99
         " let g:iron_repl_open_cmd = '50vsplit'
     " else
-    let g:iron_repl_open_cmd = '10split'
+    let g:iron_repl_open_cmd = '15split'
     " endif
 endfunction
+
+"" vim-slime
+
+let g:slime_target = "tmux"
+let g:slime_python_ipython = 1
+autocmd FileType python nmap <buffer> <F5> :w<enter>:SlimeSend1<space>run<space><C-r>%<enter>
+autocmd FileType python imap <buffer> <F5> <C-o>:w<enter><C-o>:SlimeSend1<space>run<space><C-r>%<enter>
+
 
 "" echodoc
 let g:echodoc#enable_at_startup = 1
@@ -914,6 +959,45 @@ let g:echodoc#enable_at_startup = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Press: vai, vii to select outer/inner python blocks by indetation.
+" Press: vii, yii, dii, cii to select/yank/delete/change an indented block.
+onoremap <silent>ii :<C-u>call IndTxtObj(1)<CR>
+vnoremap <silent>ii <Esc>:call IndTxtObj(1)<CR><Esc>gv
+
+function! IndTxtObj(inner)
+    let curline = line(".")
+    let lastline = line("$")
+    let i = indent(line(".")) - &shiftwidth * (v:count1 - 1)
+    let i = i < 0 ? 0 : i
+    if getline(".") =~ "^\\s*$"
+        return
+    endif
+    let p = line(".") - 1
+    let nextblank = getline(p) =~ "^\\s*$"
+    while p > 0 && (nextblank || indent(p) >= i )
+        -
+        let p = line(".") - 1
+        let nextblank = getline(p) =~ "^\\s*$"
+    endwhile
+    if (!a:inner)
+        -
+    endif
+    normal! 0V
+    call cursor(curline, 0)
+    let p = line(".") + 1
+    let nextblank = getline(p) =~ "^\\s*$"
+    while p <= lastline && (nextblank || indent(p) >= i )
+        +
+        let p = line(".") + 1
+        let nextblank = getline(p) =~ "^\\s*$"
+    endwhile
+    if (!a:inner)
+        +
+    endif
+    normal! $
+endfunction
+
 " Returns true if paste mode is enabled
 function! HasPaste()
     if &paste

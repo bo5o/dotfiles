@@ -72,4 +72,12 @@ alias news='newsboat'
 alias sv='sudo nvim'
 alias ka='killall'
 alias crep="grep --color=always" # Color grep
-alias ccat="highlight --out-format=xterm256" #Color cat
+alias ccat="bat" #Color cat
+alias help="tldr"
+alias h="tldr"
+alias ncdu="ncdu -rr -x"
+alias wo="workon"
+alias pf="pip freeze | sort"
+alias pipi="pip install -U"
+alias pyinit="touch __init__.py"
+alias za="zathura"

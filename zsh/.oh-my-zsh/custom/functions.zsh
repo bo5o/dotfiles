@@ -1,7 +1,6 @@
-wttr()
+wetter()
 {
-    # change Paris to your default location
-    curl -H "Accept-Language: ${LANG%_*}" wttr.in/"${1:-Dresden}"
+    curl -H "Accept-Language: ${LANG%_*}" wttr.in/"${1:-Berlin}"
 }
 
 md2pdf() {
@@ -31,24 +30,8 @@ www() {
 	fi
 }
 
-gitcheck() {
-    # check all git repositories in specified directories for changes
-    checkdirs=( ~/dotfiles ~/private ~/.password-store ~/code ~/latex ~/Documents ~/vimwiki ~/sites )
-    for d in "${checkdirs[@]}"
-    do
-        find $d -maxdepth 2 -name "*.git" -type d -exec sh -c '(cd {} && cd .. && if [[ $(git status -s) || $(git cherry) ]]; then printf "### " && git rev-parse --show-toplevel; git status -bs; echo; fi)' \;
-    done
-}
-
-function email() {
-    if [ "$#" -eq 3 ]; then
-        echo $3 | neomutt -s $2 $1
-    elif [ "$#" -gt 3 ]; then
-        echo $3 | neomutt -s $2 -a ${@:4} -- $1
-    else
-        echo "Usage:";
-        echo "\temail recipient subject message [files]"
-    fi
+pycl() {
+    find . -type f -name "*.py[co]" -delete -or -type d -name "__pycache__" -delete
 }
 
 function pretty() {

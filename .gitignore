@@ -1,2 +1,12 @@
 tags
 private/
+newsboat/*/cache.db
+newsboat/*/history.cmdline
+newsboat/*/history.search
+newsboat/*/urls
+nvim/**/undodir
+w3m/**/*.html
+ranger/**/history
+ranger/**/bookmarks
+ranger/**/tagged
+w3m/**/history
