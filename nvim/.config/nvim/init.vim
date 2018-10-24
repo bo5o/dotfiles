@@ -399,6 +399,7 @@ let g:quicktex_python = {
             \';defs'  : "@staticmethod\<CR>def <+++>(<++>):\<CR><++>",
             \';defm'  : "def <+++>(self, <++>):\<CR><++>",
             \';deff'  : "def <+++>(<++>):\<CR><++>",
+            \';defd'  : "def __<+++>__(self, <++>):\<CR><++>",
             \';fun'   : "def <+++>(<++>):\<CR><++>",
         \'Section: keywords' : 'COMMENT',
             \';im'    : "import <+++>",
