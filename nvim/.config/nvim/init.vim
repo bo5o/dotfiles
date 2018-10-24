@@ -369,6 +369,42 @@ autocmd FileType tex inoremap ;sum   \sumunit[]{<++>}{<++>}<Esc>F]i
 autocmd FileType tex inoremap ;isec  \intersec[]{<++>}<Esc>F]i
 
 " quicktex
+autocmd FileType python inoremap ;- <Esc>Ypviwr-o
+
+"" Python
+let g:quicktex_python = {
+            \' '      : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
+        \'Section: docstrings' : 'COMMENT',
+            \';doc'   : "\""."\""."\""."<+++>\<CR>"."\""."\""."\""."\<CR><++>",
+            \';arg'   : "<+++> : <++>",
+            \';par'   : "Parameters\<CR>----------\<CR>",
+            \';args'  : "Parameters\<CR>----------\<CR>",
+            \';ret'   : "Returns\<CR>-------\<CR>",
+            \';rai'   : "Raises\<CR>------\<CR>",
+            \';err'   : "Raises\<CR>------\<CR>",
+            \';yie'   : "Yields\<CR>------\<CR>",
+            \';att'   : "Attributes\<CR>----------\<CR>",
+            \';exa'   : "Examples\<CR>--------\<CR>",
+            \';not'   : "Notes\<CR>-----\<CR>",
+            \';see'   : "See\<CR>---\<CR>",
+            \';key'   : "Keyword\<CR>-------\<CR>",
+            \';ref'   : "References\<CR>----------\<CR>",
+            \';war'   : "Warning\<CR>-------\<CR>",
+            \';oth'   : "Other\<CR>-----\<CR>",
+            \';met'   : "Methods\<CR>-------\<CR>",
+        \'Section: classes and functions' : 'COMMENT',
+            \';cls'   : "class <+++>(<++>):\<CR><++>",
+            \';defi'  : "def __init__(self, <+++>):\<CR><++>",
+            \';defc'  : "@classmethod\<CR>def <+++>(cls, <++>):\<CR><++>",
+            \';defs'  : "@staticmethod\<CR>def <+++>(<++>):\<CR><++>",
+            \';defm'  : "def <+++>(self, <++>):\<CR><++>",
+            \';deff'  : "def <+++>(<++>):\<CR><++>",
+            \';fun'   : "def <+++>(<++>):\<CR><++>",
+        \'Section: keywords' : 'COMMENT',
+            \';im'    : "import <+++>",
+            \}
+
+"" LaTeX
 let g:quicktex_tex = {
             \' '   : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
             \'m'   : '\( <+++> \) <++>',
