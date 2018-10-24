@@ -404,11 +404,15 @@ let g:quicktex_python = {
             \';defc'  : "@classmethod\<CR>def <+++>(cls, <++>):\<CR><++>",
             \';defs'  : "@staticmethod\<CR>def <+++>(<++>):\<CR><++>",
             \';defm'  : "def <+++>(self, <++>):\<CR><++>",
-            \';deff'  : "def <+++>(<++>):\<CR><++>",
             \';defd'  : "def __<+++>__(self, <++>):\<CR><++>",
+            \';def'  : "def <+++>(<++>):\<CR><++>",
             \';fun'   : "def <+++>(<++>):\<CR><++>",
+            \';get'  : "@property\<CR>def <+++>(self):\<CR><++>",
+            \';set'  : "@<+++>.setter\<CR>def <++>(self, value):\<CR><++>",
         \'Section: keywords' : 'COMMENT',
             \';im'    : "import <+++>",
+        \'Section: general' : 'COMMENT',
+            \'print'    : "print(<+++>)<++>",
             \}
 
 "" LaTeX
