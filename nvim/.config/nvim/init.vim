@@ -349,9 +349,10 @@ autocmd FileType tex inoremap ;gls   \gls{}<space><++><Esc>F}i
 autocmd FileType tex inoremap ;Gls   \Gls{}<space><++><Esc>F}i
 autocmd FileType tex inoremap ;m     \(\)<++><Esc>F\i
 
-" Python
-autocmd FileType python setlocal foldmethod=indent
-
+" restructured text
+autocmd Filetype rst inoremap ;1   <Esc>YpVr=o
+autocmd Filetype rst inoremap ;2   <Esc>YpVr-o
+autocmd Filetype rst inoremap ;3   <Esc>YpVr~o
 
 " tikz
 autocmd FileType tex inoremap ;tp    \begin{tikzpicture}[]<enter><++><enter>\end{tikzpicture}<Esc>2kf]i
