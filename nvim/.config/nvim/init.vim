@@ -368,8 +368,14 @@ autocmd FileType tex inoremap ;sigm  \sigmunit[]{<++>}{<++>}<Esc>F]i
 autocmd FileType tex inoremap ;sum   \sumunit[]{<++>}{<++>}<Esc>F]i
 autocmd FileType tex inoremap ;isec  \intersec[]{<++>}<Esc>F]i
 
-" quicktex
+" quicktex (or better 'quick_anything')
 autocmd FileType python inoremap ;- <Esc>Ypviwr-o
+
+autocmd FileType python inoremap " ""<++><Esc>F"i
+autocmd FileType python inoremap ' ''<++><Esc>F'i
+autocmd FileType python inoremap ( ()<++><Esc>F)i
+autocmd FileType python inoremap [ []<++><Esc>F]i
+autocmd FileType python inoremap { {}<++><Esc>F}i
 
 "" Python
 let g:quicktex_python = {
