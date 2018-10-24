@@ -952,8 +952,8 @@ hi ALEErrorSign cterm=bold ctermfg=red
 hi ALEWarningSign cterm=bold ctermfg=yellow
 highlight clear SignColumn
 let g:airline#extensions#ale#enabled = 1
-let g:ale_lint_on_text_changed = 1
-let g:ale_lint_delay = 500
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 1
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = 'E'
@@ -968,7 +968,6 @@ let g:ale_linters = {
 let g:ale_fixers = {
             \   'python': ['black', 'isort', 'add_blank_lines_for_python_control_statements', 'remove_trailing_lines', 'trim_whitespace'],
             \}
-nmap <F8> <Plug>(ale_fix)
 
 "" iron
 " deactivate default mappings
