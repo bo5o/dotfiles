@@ -223,6 +223,10 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+" Python
+autocmd FileType python setlocal foldmethod=indent
+autocmd FileType python setlocal tw=88
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
