@@ -4,6 +4,7 @@ Plug 'scrooloose/nerdtree'            " nerd tree
 Plug 'ncm2/ncm2'                      " auto completion
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'              " complete words from current buffer
+Plug 'ncm2/ncm2-tmux'                 " complete words from tmux panes
 Plug 'ncm2/ncm2-path'                 " complete file paths
 Plug 'ncm2/ncm2-jedi'                 " python completion source
 Plug 'ncm2/ncm2-ultisnips'            " snippet completion source
