@@ -176,10 +176,11 @@ set background=dark
 colorscheme slate
 
 " Highlight colors
-highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+hi DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+hi DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+hi DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+hi DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+
 hi ErrorMsg term=standout cterm=bold ctermfg=0 ctermbg=1 guifg=White guibg=Red
 hi Error term=reverse cterm=bold ctermfg=0 ctermbg=1 guifg=White guibg=Red
 hi IncSearch term=reverse ctermfg=208 ctermbg=10 gui=reverse guifg=green guibg=black
