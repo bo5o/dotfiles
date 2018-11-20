@@ -810,6 +810,8 @@ inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" line completion with C-Space
+inoremap <C-Space> <C-x><C-l>
 
 " ncm vimtex
 augroup my_cm_setup
