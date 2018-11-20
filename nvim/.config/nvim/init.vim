@@ -368,6 +368,9 @@ autocmd FileType tex inoremap ;sigm  \sigmunit[]{<++>}{<++>}<Esc>F]i
 autocmd FileType tex inoremap ;sum   \sumunit[]{<++>}{<++>}<Esc>F]i
 autocmd FileType tex inoremap ;isec  \intersec[]{<++>}<Esc>F]i
 
+" sql
+au BufRead /tmp/psql.edit.* set syntax=sql
+
 " quicktex (or better 'quick_anything')
 autocmd FileType python inoremap ;- <Esc>Ypviwr-o
 
