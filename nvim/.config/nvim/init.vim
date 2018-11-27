@@ -229,6 +229,10 @@ set wrap "Wrap lines
 autocmd FileType python setlocal foldmethod=indent
 autocmd FileType python setlocal tw=88
 
+" gitcommit
+" autocmd BufRead,BufNewFile * if &ft ==# 'gitcommit' | setlocal tw=72 | endif
+autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
