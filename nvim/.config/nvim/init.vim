@@ -364,6 +364,15 @@ autocmd Filetype rst inoremap ;1   <Esc>YpVr=o
 autocmd Filetype rst inoremap ;2   <Esc>YpVr-o
 autocmd Filetype rst inoremap ;3   <Esc>YpVr~o
 
+autocmd Filetype rst inoremap ;b   ****<Space><++><Esc>F*hi
+autocmd Filetype rst inoremap ;c   ````<Space><++><Esc>F`hi
+autocmd Filetype rst inoremap ;e   **<Space><++><Esc>F*i
+autocmd Filetype rst inoremap ;i   `<Space><<++>>`__<++><Esc>2F`a
+autocmd Filetype rst inoremap ;a   ::`<++><Space><<++>>`__<++><Esc>2F:a
+
+autocmd Filetype rst inoremap ..c  ..<Space>code::<CR><CR><Tab><++><Esc>2kA<Space>
+autocmd Filetype rst inoremap ..i  ..<Space>image::<CR><Tab><++><Esc>kA<Space>
+
 " tikz
 autocmd FileType tex inoremap ;tp    \begin{tikzpicture}[]<enter><++><enter>\end{tikzpicture}<Esc>2kf]i
 autocmd FileType tex inoremap ;node  \node[]<space>(<++>)<space>at<space>(<++>)<space>{<++>};<Esc>F]i
