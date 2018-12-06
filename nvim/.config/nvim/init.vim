@@ -395,6 +395,25 @@ autocmd FileType python inoremap ( ()<++><Esc>F)i
 autocmd FileType python inoremap [ []<++><Esc>F]i
 autocmd FileType python inoremap { {}<++><Esc>F}i
 
+let g:quicktex_rst = {
+            \' '      : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
+        \'Section: cross referencing' : 'COMMENT',
+            \':mod'   : ":mod:`<+++>` <++>",
+            \':class' : ":class:`<+++>` <++>",
+            \':meth'   : ":meth:`<+++>` <++>",
+            \':func'   : ":func:`<+++>` <++>",
+            \':math'   : ":math:`<+++>` <++>",
+            \':data'   : ":data:`<+++>` <++>",
+            \':const'   : ":const:`<+++>` <++>",
+            \':attr'   : ":attr:`<+++>` <++>",
+            \':exc'   : ":exc:`<+++>` <++>",
+            \':obj'   : ":obj:`<+++>` <++>",
+            \':program'   : ":program:`<+++>` <++>",
+            \':ref'   : ":ref:`<+++>` <++>",
+            \':doc'   : ":doc:`<+++>` <++>",
+            \':download'   : ":download:`<+++>` <++>",
+            \':file'   : ":file:`<+++>` <++>",
+            \}
 "" Python
 let g:quicktex_python = {
             \' '      : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
