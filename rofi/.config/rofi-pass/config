@@ -6,6 +6,11 @@ _rofi () {
     rofi -i -no-auto-select -config $HOME/.config/rofi/rofi-pass_conf "$@"
 }
 
+# default command to generate passwords
+_pwgen () {
+	pwgen -y "$@"
+}
+
 # xdotool needs the keyboard layout to be set using setxkbmap
 # You can do this in your autostart scripts (e.g. xinitrc)
 
