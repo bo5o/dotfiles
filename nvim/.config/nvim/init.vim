@@ -23,6 +23,8 @@ Plug 'tpope/vim-surround'             " vim surround
 Plug 'tpope/vim-commentary'           " comment stuff out
 Plug 'tpope/vim-repeat'               " repeat almost anything
 Plug 'tpope/vim-fugitive'             " git
+Plug 'airblade/vim-gitgutter'         " git diff in gutter
+Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'lervag/vimtex'                  " LaTeX
 Plug 'ervandew/supertab'              " Use tab for autocompletion
 Plug 'SirVer/UltiSnips'               " Snippets
@@ -43,7 +45,6 @@ Plug 'justinmk/vim-sneak'             " sneak motion
 Plug 'tpope/vim-obsession'            " session management
 Plug 'jpalardy/vim-slime'             " tmux repl
 Plug 'MattesGroeger/vim-bookmarks'    " bookmarks
-Plug 'airblade/vim-gitgutter'         " git diff in gutter
 Plug 'jeetsukumaran/vim-pythonsense'  " python text objects
 
 " Initialize plugin system
