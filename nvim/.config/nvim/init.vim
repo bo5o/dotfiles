@@ -8,7 +8,7 @@ Plug 'ncm2/ncm2-tmux'                 " complete words from tmux panes
 Plug 'ncm2/ncm2-path'                 " complete file paths
 Plug 'ncm2/ncm2-jedi'                 " python completion source
 Plug 'ncm2/ncm2-ultisnips'            " snippet completion source
-Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detectin in markdown
+Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detection in markdown
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
 Plug 'Shougo/echodoc.vim'             " show docstring in cmdline
 Plug 'Vigemus/iron.nvim'              " REPL
