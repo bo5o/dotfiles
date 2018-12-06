@@ -4,8 +4,9 @@ alias -g C='| wc -l'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g G='| grep'
+alias -g F='| fzy'
 
-# aliases
+# personal aliases
 alias octave="octave-cli -q"
 alias ydl="youtube-dl"
 alias yta="youtube-dl -xic"
@@ -51,13 +52,14 @@ alias jn="jupyter notebook"
 alias lt="ls -lAht"
 alias rm="rm -i"
 alias sm="~/bin/syncmail.sh"
+alias t="tmux attach || tmux new-session"
 alias ta="tmux attach -t"
 alias tns="tmux new-session -s"
 alias tls="tmux list-sessions"
 alias pdf="zathura"
 alias ipy="ipython"
 alias da="cd ~/latex/diplomarbeit"
-alias t="todo.sh"
+alias todo="todo.sh"
 alias Gst="gitcheck"
 alias disks='echo "╓───── m o u n t . p o i n t s"; echo "╙────────────────────────────────────── ─ ─ "; lsblk -a; echo ""; echo "╓───── d i s k . u s a g e"; echo "╙────────────────────────────────────── ─ ─ "; df -h;'
 alias dotfiles='cd ~/dotfiles'
@@ -78,6 +80,7 @@ alias h="tldr"
 alias ncdu="ncdu -rr -x"
 alias wo="workon"
 alias pf="pip freeze | sort"
-alias pipi="pip install -U"
+alias pipi="pip install"
+alias pipu="pip install -U"
 alias pyinit="touch __init__.py"
 alias za="zathura"
