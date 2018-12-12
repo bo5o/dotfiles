@@ -1021,12 +1021,14 @@ let g:ale_sign_warning = 'W'
 
 
 let g:ale_linters = {
-            \   'python': ['flake8'],
+            \   'python': ['flake8', 'pydocstyle', 'mypy'],
             \   'tex': ['chktex'],
+            \   'sql': ['sqlint'],
             \}
 
 let g:ale_fixers = {
-            \   'python': ['black', 'isort', 'add_blank_lines_for_python_control_statements', 'remove_trailing_lines', 'trim_whitespace'],
+            \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \   'python': ['black', 'isort'],
             \}
 
 "" iron
