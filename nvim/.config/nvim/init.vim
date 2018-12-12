@@ -46,6 +46,7 @@ Plug 'tpope/vim-obsession'            " session management
 Plug 'jpalardy/vim-slime'             " tmux repl
 Plug 'MattesGroeger/vim-bookmarks'    " bookmarks
 Plug 'jeetsukumaran/vim-pythonsense'  " python text objects
+Plug 'Chiel92/vim-autoformat'         " additional autoformatter
 
 " Initialize plugin system
 call plug#end()
@@ -386,6 +387,8 @@ autocmd FileType tex inoremap ;isec  \intersec[]{<++>}<Esc>F]i
 
 " sql
 au BufRead /tmp/psql.edit.* set syntax=sql
+autocmd BufWrite /tmp/psql.edit.* :Autoformat
+autocmd BufWrite *.sql :Autoformat
 
 " quicktex (or better 'quick_anything')
 autocmd FileType python inoremap ;- <Esc>Ypviwr-o
@@ -771,6 +774,14 @@ map <leader>st 1z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" vim-autoformat
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+
+let g:formatdef_pg_format = '"pg_format"'
+let g:formatters_sql = ['pg_format', 'sqlformat']
+
 ""Startify
 let g:startify_list_order = ['files', 'dir', 'bookmarks']
 let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}]
@@ -854,7 +865,7 @@ augroup my_cm_setup
     autocmd BufEnter * call ncm2#enable_for_buffer()
     autocmd Filetype tex call ncm2#register_source({
                 \ 'name' : 'vimtex-cmds',
-                \ 'priority': 8, 
+                \ 'priority': 8,
                 \ 'complete_length': -1,
                 \ 'scope': ['tex'],
                 \ 'matcher': {'name': 'prefix', 'key': 'word'},
@@ -864,7 +875,7 @@ augroup my_cm_setup
                 \ })
     autocmd Filetype tex call ncm2#register_source({
                 \ 'name' : 'vimtex-labels',
-                \ 'priority': 8, 
+                \ 'priority': 8,
                 \ 'complete_length': -1,
                 \ 'scope': ['tex'],
                 \ 'matcher': {'name': 'combine',
@@ -878,7 +889,7 @@ augroup my_cm_setup
                 \ })
     autocmd Filetype tex call ncm2#register_source({
                 \ 'name' : 'vimtex-files',
-                \ 'priority': 8, 
+                \ 'priority': 8,
                 \ 'complete_length': -1,
                 \ 'scope': ['tex'],
                 \ 'matcher': {'name': 'combine',
@@ -892,7 +903,7 @@ augroup my_cm_setup
                 \ })
     autocmd Filetype tex call ncm2#register_source({
                 \ 'name' : 'bibtex',
-                \ 'priority': 8, 
+                \ 'priority': 8,
                 \ 'complete_length': -1,
                 \ 'scope': ['tex'],
                 \ 'matcher': {'name': 'combine',
