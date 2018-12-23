@@ -11,7 +11,7 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Plugins (can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git z archlinux zsh-syntax-highlighting extract zsh-completions)
+plugins=(git virtualenvwrapper z archlinux zsh-syntax-highlighting extract zsh-completions)
 
 # source fzf files
 source /usr/share/fzf/key-bindings.zsh

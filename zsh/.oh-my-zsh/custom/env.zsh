@@ -8,3 +8,5 @@ export VISUAL="/usr/bin/nvim"
 export GPG_TTY=$(tty)
 export SDCV_PAGER="less"
 export BROWSER="iceweasel"
+export WORKON_HOME="$HOME/.virtualenvs"
+export PROJECT_HOME="$HOME/projects"
