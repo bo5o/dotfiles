@@ -1005,6 +1005,17 @@ highlight link multiple_cursors_visual Visual
 let g:indentLine_fileTypeExclude = ['vimwiki', 'markdown']
 let g:indentLine_setConceal = 0
 
+
+"" gitgutter
+highlight GitGutterAddDefault    guifg=#009900 ctermfg=2
+highlight GitGutterChangeDefault guifg=#bbbb00 ctermfg=3
+highlight GitGutterDeleteDefault guifg=#ff2222 ctermfg=1
+
+highlight link GitGutterAdd          GitGutterAddDefault
+highlight link GitGutterChange       GitGutterChangeDefault
+highlight link GitGutterDelete       GitGutterDeleteDefault
+highlight link GitGutterChangeDelete GitGutterChangeDefault
+
 "" ale
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
