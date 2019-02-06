@@ -47,6 +47,8 @@ Plug 'jpalardy/vim-slime'             " tmux repl
 Plug 'MattesGroeger/vim-bookmarks'    " bookmarks
 Plug 'jeetsukumaran/vim-pythonsense'  " python text objects
 Plug 'Chiel92/vim-autoformat'         " additional autoformatter
+Plug 'jiangmiao/auto-pairs'           " auto close delimiters
+Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
 
 " Initialize plugin system
 call plug#end()
@@ -312,9 +314,9 @@ nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
 
 " Navigating with guides
-inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
-vnoremap <Space><Space> <Esc>/<++><Enter>"_c4l
-nnoremap <Space><Space> /<++><Enter>"_c4l
+" inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+vnoremap <Space><Space> <Esc>:call<space>search('<+.*+>')<CR>"_c/+>/e<CR>
+nnoremap <Space><Space> :call<space>search('<+.*+>')<CR>"_c/+>/e<CR>
 inoremap ;gui <++>
 
 " preview latex equations
@@ -393,12 +395,6 @@ autocmd BufWrite *.sql :Autoformat
 " quicktex (or better 'quick_anything')
 autocmd FileType python inoremap ;- <Esc>Ypviwr-o
 
-autocmd FileType python inoremap " ""<++><Esc>F"i
-autocmd FileType python inoremap ' ''<++><Esc>F'i
-autocmd FileType python inoremap ( ()<++><Esc>F)i
-autocmd FileType python inoremap [ []<++><Esc>F]i
-autocmd FileType python inoremap { {}<++><Esc>F}i
-
 let g:quicktex_rst = {
             \' '      : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
         \'Section: cross referencing' : 'COMMENT',
@@ -418,6 +414,7 @@ let g:quicktex_rst = {
             \':download'   : ":download:`<+++>` <++>",
             \':file'   : ":file:`<+++>` <++>",
             \}
+
 "" Python
 let g:quicktex_python = {
             \' '      : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
@@ -459,9 +456,9 @@ let g:quicktex_python = {
         \'Section: keywords' : 'COMMENT',
             \';im'    : "import <+++>",
         \'Section: general' : 'COMMENT',
-            \';pandas'    : "import pandas as pd",
-            \';pyplot'    : "import matplotlib.pyplot as plt",
-            \';numpy'    : "import numpy as np",
+            \';pd'    : "import pandas as pd",
+            \';plt'    : "import matplotlib.pyplot as plt",
+            \';np'    : "import numpy as np",
             \';#'    : " # ",
             \}
 
@@ -816,6 +813,10 @@ map <leader><leader> <Plug>Sneak_,
 hi Sneak guifg=black guibg=red ctermfg=black ctermbg=red
 hi SneakScope guifg=red guibg=yellow ctermfg=black ctermbg=yellow
 
+"" autopairs
+let g:AutoPairsMapSpace = 0
+let g:AutoPairsMapCR = 0
+
 "" vimtex
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
@@ -928,6 +929,9 @@ let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 let g:UltiSnipsEditSplit="vertical"
 
+"" switch.vim
+let g:switch_mapping = "-"
+
 "" vimwiki
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_table_mappings = 0
@@ -1004,17 +1008,6 @@ highlight link multiple_cursors_visual Visual
 "" indentline
 let g:indentLine_fileTypeExclude = ['vimwiki', 'markdown']
 let g:indentLine_setConceal = 0
-
-
-"" gitgutter
-highlight GitGutterAddDefault    guifg=#009900 ctermfg=2
-highlight GitGutterChangeDefault guifg=#bbbb00 ctermfg=3
-highlight GitGutterDeleteDefault guifg=#ff2222 ctermfg=1
-
-highlight link GitGutterAdd          GitGutterAddDefault
-highlight link GitGutterChange       GitGutterChangeDefault
-highlight link GitGutterDelete       GitGutterDeleteDefault
-highlight link GitGutterChangeDelete GitGutterChangeDefault
 
 "" ale
 highlight clear ALEErrorSign
