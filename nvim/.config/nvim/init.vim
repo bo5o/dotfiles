@@ -265,6 +265,12 @@ set diffopt=vertical
 " Esc switches to terminal normal mode
 tnoremap <Esc> <C-\><C-n>
 
+" alt+hjkl for moving in insert mode
+inoremap <M-h> <Left>
+inoremap <M-j> <Down>
+inoremap <M-k> <Up>
+inoremap <M-l> <Right>
+
 " show current cursor position (crosshairs)
 nnoremap <leader>ch :set<space>cul!<space>cuc!<cr>
 hi CursorLine   cterm=NONE ctermbg=darkgreen ctermfg=black guibg=darkgreen guifg=black
