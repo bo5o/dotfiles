@@ -401,6 +401,10 @@ autocmd BufWrite *.sql :Autoformat
 " quicktex (or better 'quick_anything')
 autocmd FileType python inoremap ;- <Esc>Ypviwr-o
 
+let g:quicktex_markdown = {
+            \' '      : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
+            \}
+
 let g:quicktex_rst = {
             \' '      : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
         \'Section: cross referencing' : 'COMMENT',
