@@ -616,7 +616,10 @@ class CustomPrompt(Prompts):
         retval = [(Token.Prompt, ">>> ")]
 
         if "VIRTUAL_ENV" in os.environ:
-            venv = os.environ["VIRTUAL_ENV"].split(sep="/")[-1]
+            venv_path = os.environ["VIRTUAL_ENV"]
+            venv = venv_path.split(sep="/")[-1]
+            if venv[0] == ".":
+                venv = venv_path.split(sep="/")[-2] + "-" + venv[1:]
             retval.insert(0, (Token, f"({venv}) "))
 
         return retval
