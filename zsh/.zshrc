@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # Theme
-ZSH_THEME="minimal"
+ZSH_THEME="lambda"
 
 # Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -11,7 +11,17 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Plugins (can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git z archlinux zsh-syntax-highlighting extract zsh-completions)
+plugins=(
+    git
+    docker
+    rsync
+    colored-man-pages
+    vi-mode
+    zsh-syntax-highlighting
+    extract
+    zsh-completions
+)
+autoload -U compinit && compinit
 
 # source fzf files
 source /usr/share/fzf/key-bindings.zsh
