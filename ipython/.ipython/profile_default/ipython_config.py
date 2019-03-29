@@ -613,7 +613,7 @@ c.AliasManager.user_aliases = [("venv", "echo $VIRTUAL_ENV | awk -F '/' '{print 
 # Custom prompt
 class CustomPrompt(Prompts):
     def in_prompt_tokens(self, cli=None):
-        retval = [(Token.Prompt, ">>> ")]
+        retval = [(Token.Prompt, "\u03C0 >>> ")]
 
         if "VIRTUAL_ENV" in os.environ:
             venv_path = os.environ["VIRTUAL_ENV"]
