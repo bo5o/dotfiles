@@ -14,6 +14,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
     git
     docker
+    docker-compose
     rsync
     colored-man-pages
     vi-mode
