@@ -5,6 +5,7 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g G='| grep'
 alias -g F='| fzy'
+alias -g A='| xargs'
 
 # personal aliases
 alias octave="octave-cli -q"
@@ -58,6 +59,7 @@ alias tns="tmux new-session -s"
 alias tls="tmux list-sessions"
 alias pdf="zathura"
 alias ipy="ipython"
+alias ipycpu="CUDA_VISIBLE_DEVICES="" ipython"
 alias da="cd ~/latex/diplomarbeit"
 alias todo="todo.sh"
 alias Gst="gitcheck"
@@ -84,3 +86,7 @@ alias pipu="pip install -U"
 alias pyinit="touch __init__.py"
 alias za="zathura"
 alias ncdu="ncdu -rr -x"
+compdef so=source
+alias so="source"
+alias week="date +%V"
+alias year="date +%Y"
