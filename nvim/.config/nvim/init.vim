@@ -49,6 +49,7 @@ Plug 'jeetsukumaran/vim-pythonsense'  " python text objects
 Plug 'Chiel92/vim-autoformat'         " additional autoformatter
 Plug 'jiangmiao/auto-pairs'           " auto close delimiters
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
+Plug 'ekalinin/Dockerfile.vim'      " Dockerfile syntax highlighting
 
 " Initialize plugin system
 call plug#end()
