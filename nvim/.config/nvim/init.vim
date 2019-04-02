@@ -1039,6 +1039,7 @@ let g:ale_linters = {
             \   'python': ['flake8', 'pydocstyle'],
             \   'tex': ['chktex'],
             \   'sql': ['sqlint'],
+            \   'Dockerfile': ['hadolint', 'dockerfile_lint'],
             \}
 
 let g:ale_fixers = {
