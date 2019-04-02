@@ -1040,11 +1040,13 @@ let g:ale_linters = {
             \   'tex': ['chktex'],
             \   'sql': ['sqlint'],
             \   'Dockerfile': ['hadolint', 'dockerfile_lint'],
+            \   'yaml': ['yamllint'],
             \}
 
 let g:ale_fixers = {
             \   '*': ['remove_trailing_lines', 'trim_whitespace'],
             \   'python': ['black', 'isort'],
+            \   'yaml': ['prettier'],
             \}
 
 "" iron
