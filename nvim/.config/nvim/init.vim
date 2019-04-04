@@ -234,6 +234,10 @@ set wrap "Wrap lines
 autocmd FileType python setlocal foldmethod=indent
 autocmd FileType python setlocal tw=88
 
+" YAML
+autocmd Filetype yaml setlocal tabstop=2
+autocmd Filetype yaml setlocal shiftwidth=2
+
 " gitcommit
 " autocmd BufRead,BufNewFile * if &ft ==# 'gitcommit' | setlocal tw=72 | endif
 autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
