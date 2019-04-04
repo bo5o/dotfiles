@@ -16,16 +16,18 @@ plugins=(
     docker
     docker-compose
     rsync
+    virtualenvwrapper
     colored-man-pages
     vi-mode
     zsh-syntax-highlighting
     extract
     zsh-completions
 )
-autoload -U compinit && compinit
 
 # source fzf files
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
 source $ZSH/oh-my-zsh.sh
+
+autoload -Uz compinit && compinit -i
