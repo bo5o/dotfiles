@@ -16,6 +16,7 @@ plugins=(
     docker
     docker-compose
     rsync
+    pip
     virtualenvwrapper
     colored-man-pages
     vi-mode
