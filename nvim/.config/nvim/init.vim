@@ -975,14 +975,12 @@ nmap <Leader>mjj <Plug>BookmarkMoveDown
 nmap <Leader>mg <Plug>BookmarkMoveToLine
 
 "" airline
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
 let g:airline_theme='gruvbox'
-let g:airline_symbols_ascii = 1
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.branch = ''
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 
 "" vim-markdown
 let g:vim_markdown_toc_autofit = 1
