@@ -51,7 +51,8 @@ Plug 'jiangmiao/auto-pairs'           " auto close delimiters
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
 Plug 'ekalinin/Dockerfile.vim'        " Dockerfile syntax highlighting
 Plug 'ryanoasis/vim-devicons'         " fancy glyphs
-Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'                " colorscheme
+Plug 'tmux-plugins/vim-tmux'          " syntax hightlighting etc for .tmux.conf
 
 " Initialize plugin system
 call plug#end()
