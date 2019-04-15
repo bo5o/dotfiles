@@ -26,8 +26,8 @@ plugins=(
 )
 
 # source fzf files
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source ~/.fzf/shell/key-bindings.zsh
+source ~/.fzf/shell/completion.zsh
 
 source $ZSH/oh-my-zsh.sh
 
