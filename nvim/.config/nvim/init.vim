@@ -9,8 +9,8 @@ Plug 'ncm2/ncm2-path'                 " complete file paths
 Plug 'ncm2/ncm2-jedi'                 " python completion source
 Plug 'ncm2/ncm2-ultisnips'            " snippet completion source
 Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detection in markdown
+Plug 'ncm2/float-preview.nvim'        " nvim 0.4 floating window support
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
-Plug 'Shougo/echodoc.vim'             " show docstring in cmdline
 Plug 'Vigemus/iron.nvim'              " REPL
 Plug 'terryma/vim-multiple-cursors'   " multiple cursors
 Plug 'yggdroot/indentline'            " indentation guides
@@ -49,7 +49,9 @@ Plug 'jeetsukumaran/vim-pythonsense'  " python text objects
 Plug 'Chiel92/vim-autoformat'         " additional autoformatter
 Plug 'jiangmiao/auto-pairs'           " auto close delimiters
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
-Plug 'ekalinin/Dockerfile.vim'      " Dockerfile syntax highlighting
+Plug 'ekalinin/Dockerfile.vim'        " Dockerfile syntax highlighting
+Plug 'ryanoasis/vim-devicons'         " fancy glyphs
+Plug 'morhetz/gruvbox'
 
 " Initialize plugin system
 call plug#end()
@@ -178,26 +180,11 @@ set synmaxcol=176
 
 " colorscheme specific settings
 set background=dark
+let g:gruvbox_invert_signs=0
+let g:gitgutter_override_sign_column_highlight=1
 
-colorscheme slate
-
-" Highlight colors
-hi DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-hi DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-hi DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-hi DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
-
-hi ErrorMsg term=standout cterm=bold ctermfg=0 ctermbg=1 guifg=White guibg=Red
-hi Error term=reverse cterm=bold ctermfg=0 ctermbg=1 guifg=White guibg=Red
-hi IncSearch term=reverse ctermfg=208 ctermbg=10 gui=reverse guifg=green guibg=black
-hi Search term=reverse ctermfg=253 ctermbg=12 guifg=wheat guibg=peru
-hi MatchParen term=reverse ctermfg=0 ctermbg=6 guibg=DarkCyan
-hi Visual term=reverse cterm=reverse ctermbg=16 ctermfg=40 guifg=khaki guibg=olivedrab
-hi Terminal ctermbg=none ctermfg=40 guibg=lightgrey guifg=blue
-hi SpellBad ctermbg=9 ctermfg=0 gui=undercurl guisp=Red
-hi SpellCap ctermbg=12 ctermfg=0 gui=undercurl guisp=Blue
-hi SpellRare ctermbg=13 ctermfg=0 gui=undercurl guisp=Magenta
-hi SpellLocal ctermbg=14 ctermfg=0 gui=undercurl guisp=Cyan
+colorscheme gruvbox
+set termguicolors
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -275,11 +262,6 @@ inoremap <M-h> <Left>
 inoremap <M-j> <Down>
 inoremap <M-k> <Up>
 inoremap <M-l> <Right>
-
-" show current cursor position (crosshairs)
-nnoremap <leader>ch :set<space>cul!<space>cuc!<cr>
-hi CursorLine   cterm=NONE ctermbg=darkgreen ctermfg=black guibg=darkgreen guifg=black
-hi CursorColumn cterm=NONE ctermbg=darkgreen ctermfg=black guibg=darkgreen guifg=black
 
 au TermOpen * setlocal nonumber norelativenumber
 
@@ -760,8 +742,8 @@ autocmd BufRead,BufNewFile /tmp/calcurse* set filetype=markdown
 autocmd BufRead,BufNewFile ~/.calcurse/notes/* set filetype=markdown
 
 " Goyo
-map <F10> :Goyo<CR>
-inoremap <F10> <esc>:Goyo<CR>a
+map <F9> :Goyo<CR>
+inoremap <F9> <esc>:Goyo<CR>a
 
 " Insert date
 inoremap ;dt <C-R>=strftime('%Y-%m-%d')<CR>
@@ -825,8 +807,6 @@ let NERDTreeIgnore=['\.aux$', '\.lol$', '\.lof$', '\.lot$', '\.slg$', '\.sls$', 
 "" sneak
 let g:sneak#use_ic_scs = 1
 map <leader><leader> <Plug>Sneak_,
-hi Sneak guifg=black guibg=red ctermfg=black ctermbg=red
-hi SneakScope guifg=red guibg=yellow ctermfg=black ctermbg=yellow
 
 "" autopairs
 let g:AutoPairsMapSpace = 0
@@ -998,7 +978,7 @@ nmap <Leader>mg <Plug>BookmarkMoveToLine
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_theme='term'
+let g:airline_theme='gruvbox'
 let g:airline_symbols_ascii = 1
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
@@ -1015,21 +995,11 @@ let g:vim_markdown_folding_disabled = 0
 
 autocmd FileType markdown nnoremap <localleader>lt :Toc<Enter>
 
-"" Multiple cursors
-" highlighting
-highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
-highlight link multiple_cursors_visual Visual
-
 "" indentline
 let g:indentLine_fileTypeExclude = ['vimwiki', 'markdown']
 let g:indentLine_setConceal = 0
 
 "" ale
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-hi ALEErrorSign cterm=bold ctermfg=red
-hi ALEWarningSign cterm=bold ctermfg=yellow
-highlight clear SignColumn
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_save = 1
