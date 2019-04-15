@@ -76,7 +76,6 @@ alias news='newsboat'
 alias sv='sudo nvim'
 alias ka='killall'
 alias crep="grep --color=always" # Color grep
-alias ccat="bat" #Color cat
 alias help="tldr"
 alias h="tldr"
 alias wo="workon"
