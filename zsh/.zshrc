@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # Theme
-ZSH_THEME="lambda"
+ZSH_THEME="zeta"
 
 # Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
