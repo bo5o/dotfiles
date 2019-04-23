@@ -54,6 +54,7 @@ Plug 'ryanoasis/vim-devicons'         " fancy glyphs
 Plug 'morhetz/gruvbox'                " colorscheme
 Plug 'tmux-plugins/vim-tmux'          " syntax hightlighting etc for .tmux.conf
 Plug 'raimon49/requirements.txt.vim'  " requirements.txt syntax highlighting
+Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-line statements
 
 " Initialize plugin system
 call plug#end()
