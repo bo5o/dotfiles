@@ -1002,6 +1002,7 @@ autocmd FileType markdown nnoremap <localleader>lt :Toc<Enter>
 "" indentline
 let g:indentLine_fileTypeExclude = ['vimwiki', 'markdown']
 let g:indentLine_setConceal = 0
+let g:indentLine_char = '┊'
 
 "" ale
 let g:airline#extensions#ale#enabled = 1
