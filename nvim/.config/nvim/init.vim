@@ -269,6 +269,9 @@ inoremap <M-j> <Down>
 inoremap <M-k> <Up>
 inoremap <M-l> <Right>
 
+" open file under cursor in vertical split
+nnoremap <C-W><C-F> <C-W>vgf
+
 au TermOpen * setlocal nonumber norelativenumber
 
 " terminal keybindings
