@@ -15,6 +15,7 @@ plugins=(
     git
     docker
     docker-compose
+    jira
     rsync
     pip
     virtualenvwrapper
