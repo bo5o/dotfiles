@@ -616,7 +616,7 @@ class CustomPrompt(Prompts):
             venv_path = os.environ["VIRTUAL_ENV"]
             venv = venv_path.split(sep="/")[-1]
             if venv[0] == ".":
-                venv = venv_path.split(sep="/")[-2] + "-" + venv[1:]
+                venv = venv_path.split(sep="/")[-2]
             retval.insert(0, (Token, f"({venv}) "))
 
         return retval
