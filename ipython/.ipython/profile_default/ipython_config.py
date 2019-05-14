@@ -1,4 +1,5 @@
 # Configuration file for ipython.
+import configparser
 import os
 
 from IPython.terminal.prompts import Prompts, Token
@@ -614,10 +615,17 @@ class CustomPrompt(Prompts):
 
         if "VIRTUAL_ENV" in os.environ:
             venv_path = os.environ["VIRTUAL_ENV"]
-            venv = venv_path.split(sep="/")[-1]
-            if venv[0] == ".":
-                venv = venv_path.split(sep="/")[-2]
-            retval.insert(0, (Token, f"({venv}) "))
+            with open(venv_path + os.sep + "pyvenv.cfg") as f:
+                content = "[root]\n" + f.read()
+            cfg = configparser.ConfigParser()
+            cfg.read_string(content)
+            if cfg.has_option("root", "prompt"):
+                prompt = cfg.get("root", "prompt")
+            else:
+                prompt = venv_path.split(sep="/")[-1]
+                if prompt[0] == ".":
+                    prompt = venv_path.split(sep="/")[-2]
+            retval.insert(0, (Token, f"({prompt}) "))
 
         return retval
 
