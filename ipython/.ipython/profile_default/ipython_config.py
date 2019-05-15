@@ -614,17 +614,15 @@ class CustomPrompt(Prompts):
         retval = [(Token.Prompt, "\u03C0 >>> ")]
 
         if "VIRTUAL_ENV" in os.environ:
-            venv_path = os.environ["VIRTUAL_ENV"]
-            with open(venv_path + os.sep + "pyvenv.cfg") as f:
-                content = "[root]\n" + f.read()
-            cfg = configparser.ConfigParser()
-            cfg.read_string(content)
-            if cfg.has_option("root", "prompt"):
-                prompt = cfg.get("root", "prompt")
-            else:
-                prompt = venv_path.split(sep="/")[-1]
-                if prompt[0] == ".":
-                    prompt = venv_path.split(sep="/")[-2]
+            venv_path = Path(os.environ["VIRTUAL_ENV"])
+            cfg_file = venv_path / "pyvenv.cfg"
+            prompt = venv_path.parent if venv_path.name[0] == "." else venv_path.name
+            if cfg_file.exists():
+                content = "[root]\n" + cfg_file.read_text()
+                parser = configparser.ConfigParser()
+                parser.read_string(content)
+                if parser.has_option("root", "prompt"):
+                    prompt = parser.get("root", "prompt")
             retval.insert(0, (Token, f"({prompt}) "))
 
         return retval
