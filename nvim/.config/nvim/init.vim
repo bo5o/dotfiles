@@ -1,6 +1,7 @@
 ""Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'            " nerd tree
+Plug 'Xuyuanp/nerdtree-git-plugin'    " nerd tree git integration
 Plug 'ncm2/ncm2'                      " auto completion
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'              " complete words from current buffer
