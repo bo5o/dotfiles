@@ -616,7 +616,9 @@ class CustomPrompt(Prompts):
         if "VIRTUAL_ENV" in os.environ:
             venv_path = Path(os.environ["VIRTUAL_ENV"])
             cfg_file = venv_path / "pyvenv.cfg"
-            prompt = venv_path.parent if venv_path.name[0] == "." else venv_path.name
+            prompt = (
+                venv_path.parent.name if venv_path.name[0] == "." else venv_path.name
+            )
             if cfg_file.exists():
                 content = "[root]\n" + cfg_file.read_text()
                 parser = configparser.ConfigParser()
