@@ -56,6 +56,7 @@ Plug 'morhetz/gruvbox'                " colorscheme
 Plug 'tmux-plugins/vim-tmux'          " syntax hightlighting etc for .tmux.conf
 Plug 'raimon49/requirements.txt.vim'  " requirements.txt syntax highlighting
 Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-line statements
+Plug 'kovetskiy/sxhkd-vim'            " indent, highlight syntax and detect sxhkd config files
 
 " Initialize plugin system
 call plug#end()
