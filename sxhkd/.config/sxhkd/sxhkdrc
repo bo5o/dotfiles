@@ -1,0 +1,29 @@
+# Basic binds
+super + Return
+	$TERMINAL
+
+super + w
+	$BROWSER
+
+super + z
+	zathura
+
+super + shift + x
+	prompt "Shutdown computer?" "shutdown -h now"
+
+super + shift + BackSpace
+	prompt "Reboot computer?" "shutdown -r now"
+
+super + BackSpace
+	highlight_focus
+
+super + shift + v
+	vim-anywhere
+
+# Take screenshot
+Print
+	maim $HOME/screenshots/pic-full-$(date '+%y%m%d-%H%M-%S').png
+
+# Pick screenshot type
+shift + Print
+	maimpick
