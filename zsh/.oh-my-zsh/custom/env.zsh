@@ -1,6 +1,7 @@
 export TERMINAL="/usr/local/bin/st"
 export MANPATH="/usr/local/texlive/2017/texmf-dist/doc/man:$MANPATH"
 export INFOPATH="/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH"
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export PATH="/usr/local/texlive/2017/bin/x86_64-linux:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.4.0/bin:$PATH"
