@@ -1,6 +1,7 @@
 # Configuration file for ipython.
 import configparser
 import os
+from pathlib import Path
 
 from IPython.terminal.prompts import Prompts, Token
 from pygments.styles import get_style_by_name
