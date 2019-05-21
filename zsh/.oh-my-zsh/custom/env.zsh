@@ -1,3 +1,4 @@
+export TERMINAL="/usr/local/bin/st"
 export MANPATH="/usr/local/texlive/2017/texmf-dist/doc/man:$MANPATH"
 export INFOPATH="/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH"
 export PATH="/usr/local/texlive/2017/bin/x86_64-linux:$PATH"
