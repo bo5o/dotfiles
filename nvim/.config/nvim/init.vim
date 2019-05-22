@@ -233,8 +233,10 @@ autocmd FileType python setlocal tw=88
 autocmd Filetype yaml setlocal tabstop=2
 autocmd Filetype yaml setlocal shiftwidth=2
 
+" markdown
+autocmd Filetype markdown setlocal tw=80
+
 " gitcommit
-" autocmd BufRead,BufNewFile * if &ft ==# 'gitcommit' | setlocal tw=72 | endif
 autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
 
 
