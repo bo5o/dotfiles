@@ -398,6 +398,9 @@ au BufRead /tmp/psql.edit.* set syntax=sql
 autocmd BufWrite /tmp/psql.edit.* :Autoformat
 autocmd BufWrite *.sql :Autoformat
 
+" sphinx
+autocmd BufRead */services/docs/*.rst set makeprg=make\ -f\ Makefile.docs\ html
+
 " quicktex (or better 'quick_anything')
 autocmd FileType python inoremap ;- <Esc>Ypviwr-o
 
