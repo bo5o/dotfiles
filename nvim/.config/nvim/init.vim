@@ -329,69 +329,69 @@ inoremap ;gui <++>
 " vnoremap <leader>m y:!python<space>~/bin/preview_math.py<space>'<C-r>"'<enter>
 
 " bibtex
-autocmd FileType bib inoremap ;a @article{<Enter>author<Space>=<Space>"<++>",<Enter>year<Space>=<Space>"<++>",<Enter>title<Space>=<Space>"<++>",<Enter>journaltitle<Space>=<Space>"<++>",<Enter>volume<Space>=<Space>"<++>",<Enter>pages<Space>=<Space>"<++>",<Enter>}<Enter><backspace><++><Esc>8kA,<Esc>i
-autocmd FileType bib inoremap ;b @book{<Enter>author<Space>=<Space>"<++>",<Enter>year<Space>=<Space>"<++>",<Enter>title<Space>=<Space>"<++>",<Enter>publisher<Space>=<Space>"<++>",<Enter>}<Enter><backspace><++><Esc>6kA,<Esc>i
-autocmd FileType bib inoremap ;c @incollection{<Enter>author<Space>=<Space>"<++>",<Enter>title<Space>=<Space>"<++>",<Enter>booktitle<Space>=<Space>"<++>",<Enter>editor<Space>=<Space>"<++>",<Enter>year<Space>=<Space>"<++>",<Enter>publisher<Space>=<Space>"<++>",<Enter>}<Enter><backspace><++><Esc>8kA,<Esc>i
+autocmd FileType bib inoremap <buffer> ;a @article{<Enter>author<Space>=<Space>"<++>",<Enter>year<Space>=<Space>"<++>",<Enter>title<Space>=<Space>"<++>",<Enter>journaltitle<Space>=<Space>"<++>",<Enter>volume<Space>=<Space>"<++>",<Enter>pages<Space>=<Space>"<++>",<Enter>}<Enter><backspace><++><Esc>8kA,<Esc>i
+autocmd FileType bib inoremap <buffer> ;b @book{<Enter>author<Space>=<Space>"<++>",<Enter>year<Space>=<Space>"<++>",<Enter>title<Space>=<Space>"<++>",<Enter>publisher<Space>=<Space>"<++>",<Enter>}<Enter><backspace><++><Esc>6kA,<Esc>i
+autocmd FileType bib inoremap <buffer> ;c @incollection{<Enter>author<Space>=<Space>"<++>",<Enter>title<Space>=<Space>"<++>",<Enter>booktitle<Space>=<Space>"<++>",<Enter>editor<Space>=<Space>"<++>",<Enter>year<Space>=<Space>"<++>",<Enter>publisher<Space>=<Space>"<++>",<Enter>}<Enter><backspace><++><Esc>8kA,<Esc>i
 
 " Markdown (soon gonna replace this with quicktex shortcuts)
-autocmd FileType markdown inoremap <F5> <esc>:!pandoc<space><c-r>%<space>-o<space>%:r.pdf<space>-f<space>markdown<space>--template<space>eisvogel<space>--listings<space>-V<space>colorlinks<space>--number-sections<space>--toc<enter>a
-autocmd FileType markdown nnoremap <F5> :!pandoc<space><c-r>%<space>-o<space>%:r.pdf<space>-f<space>markdown<space>--template<space>eisvogel<space>--listings<space>-V<space>colorlinks<space>--number-sections<space>--toc<enter>
-autocmd Filetype markdown map <F5> :!pandoc<space><c-r>%<space>-o<space>%:r.pdf<space>-f<space>markdown<space>--template<space>eisvogel<space>--listings<space>-V<space>colorlinks<space>--number-sections<space>--toc<enter><enter>
-autocmd Filetype markdown map <F6> :!zathura<space>%:r.pdf<Enter>
-autocmd Filetype markdown nnoremap <F6> :!zathura<space>%:r.pdf<Enter>
-autocmd Filetype markdown inoremap <F6> <esc>:!zathura<space>%:r.pdf<Enter>
-autocmd Filetype markdown inoremap ;n   ---<Enter><Enter>
-autocmd Filetype markdown inoremap ;b   ****<Space><++><Esc>F*hi
-autocmd Filetype markdown inoremap ;s   ~~~~<Space><++><Esc>F~hi
-autocmd Filetype markdown inoremap ;e   **<Space><++><Esc>F*i
-autocmd Filetype markdown inoremap ;h   ====<Space><++><Esc>F=hi
-autocmd Filetype markdown inoremap ;i   ![](<++>)<Space><++><Esc>F[a
-autocmd Filetype markdown inoremap ;a   [](<++>)<Space><++><Esc>F[a
-autocmd Filetype markdown inoremap ;1   #<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;2   ##<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;3   ###<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ;l   --------<Enter>
-autocmd Filetype markdown inoremap ;bib <Esc>Go<Enter><++><Enter><Enter>#<Space>References<Enter><Enter>---<Enter>bibliography:<Space><c-r>=$HOME<Enter>/latex/.bibfiles/<Enter>csl:<Space><c-r>=$HOME<Enter>/.config/csl/ieee.csl<Enter>---<Esc>2kA
-autocmd Filetype markdown inoremap ;t   \todo{}<Enter><Enter><++><Esc>2k$i
-autocmd Filetype markdown inoremap ;y   ---<Enter>title:<Space>""<Enter>author:<Space>[Christian<Space>Bosdorf]<Enter>date:<Space><C-R>=strftime('%Y-%m-%d')<CR><Enter>...<Esc>3k$i
-autocmd FileType markdown inoremap ;;e  \begin{equation}<Enter>\end{equation}<Enter><++><Esc>kko
+autocmd FileType markdown inoremap <buffer> <F5> <esc>:!pandoc<space><c-r>%<space>-o<space>%:r.pdf<space>-f<space>markdown<space>--template<space>eisvogel<space>--listings<space>-V<space>colorlinks<space>--number-sections<space>--toc<enter>a
+autocmd FileType markdown nnoremap <buffer> <F5> :!pandoc<space><c-r>%<space>-o<space>%:r.pdf<space>-f<space>markdown<space>--template<space>eisvogel<space>--listings<space>-V<space>colorlinks<space>--number-sections<space>--toc<enter>
+autocmd Filetype markdown map <buffer> <F5> :!pandoc<space><c-r>%<space>-o<space>%:r.pdf<space>-f<space>markdown<space>--template<space>eisvogel<space>--listings<space>-V<space>colorlinks<space>--number-sections<space>--toc<enter><enter>
+autocmd Filetype markdown map <buffer> <F6> :!zathura<space>%:r.pdf<Enter>
+autocmd Filetype markdown nnoremap <buffer> <F6> :!zathura<space>%:r.pdf<Enter>
+autocmd Filetype markdown inoremap <buffer> <F6> <esc>:!zathura<space>%:r.pdf<Enter>
+autocmd Filetype markdown inoremap <buffer> ;n   ---<Enter><Enter>
+autocmd Filetype markdown inoremap <buffer> ;b   ****<Space><++><Esc>F*hi
+autocmd Filetype markdown inoremap <buffer> ;s   ~~~~<Space><++><Esc>F~hi
+autocmd Filetype markdown inoremap <buffer> ;e   **<Space><++><Esc>F*i
+autocmd Filetype markdown inoremap <buffer> ;h   ====<Space><++><Esc>F=hi
+autocmd Filetype markdown inoremap <buffer> ;i   ![](<++>)<Space><++><Esc>F[a
+autocmd Filetype markdown inoremap <buffer> ;a   [](<++>)<Space><++><Esc>F[a
+autocmd Filetype markdown inoremap <buffer> ;1   #<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap <buffer> ;2   ##<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap <buffer> ;3   ###<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap <buffer> ;l   --------<Enter>
+autocmd Filetype markdown inoremap <buffer> ;bib <Esc>Go<Enter><++><Enter><Enter>#<Space>References<Enter><Enter>---<Enter>bibliography:<Space><c-r>=$HOME<Enter>/latex/.bibfiles/<Enter>csl:<Space><c-r>=$HOME<Enter>/.config/csl/ieee.csl<Enter>---<Esc>2kA
+autocmd Filetype markdown inoremap <buffer> ;t   \todo{}<Enter><Enter><++><Esc>2k$i
+autocmd Filetype markdown inoremap <buffer> ;y   ---<Enter>title:<Space>""<Enter>author:<Space>[Christian<Space>Bosdorf]<Enter>date:<Space><C-R>=strftime('%Y-%m-%d')<CR><Enter>...<Esc>3k$i
+autocmd FileType markdown inoremap <buffer> ;;e  \begin{equation}<Enter>\end{equation}<Enter><++><Esc>kko
 
 " Latex
-autocmd FileType tex inoremap ;fig   \begin{figure}[ht]<Enter>\centering<Enter>\includegraphics[width=0.8\linewidth]{images/}<Enter>\caption{<++>}\label{fig:<++>}<Enter>\end{figure}<Enter><Enter><++><Esc>4kf}i<C-x><C-f>
-autocmd FileType tex inoremap ;tikz  \begin{figure}[ht]<Enter>\centering<Enter>\input{tikz/}<Enter>\caption{<++>}\label{fig:<++>}<Enter>\end{figure}<Enter><Enter><++><Esc>4kf}i<C-x><C-f>
-autocmd FileType tex inoremap ;plot  \begin{figure}[ht]<Enter>\centering<Enter>\input{plots/}<Enter>\caption{<++>}\label{fig:<++>}<Enter>\end{figure}<Enter><Enter><++><Esc>4kf}i<C-x><C-f>
-autocmd FileType tex inoremap ;gle   \newglossaryentry{}<enter>{%<enter>name={<++>},<enter>description={<++>}<enter>}<enter><enter><++><Esc>6kf}i
-autocmd FileType tex inoremap ;sym   \newglossaryentry{sym:}<enter>{%<enter>type=symbols,<enter>name={\ensuremath{<++>}},<enter>description={<++>},<enter>symbol=\si{<++>},<enter>sort={<++>},<enter>}<enter><enter><++><Esc>9kf}i
-autocmd FileType tex inoremap ;not   \newglossaryentry{not:}<enter>{%<enter>type=notation,<enter>name={<++>},<enter>description={<++>},<enter>sort={<++>},<enter>}<enter><enter><++><Esc>8kf}i
-autocmd FileType tex inoremap ;acr   \newacronym{acr:}{<++>}{<++>}<enter><++><Esc>kf}i
-autocmd FileType tex inoremap ;acs   \acrshort{acr:}<space><++><Esc>F}i
-autocmd FileType tex inoremap ;gls   \gls{}<space><++><Esc>F}i
-autocmd FileType tex inoremap ;Gls   \Gls{}<space><++><Esc>F}i
-autocmd FileType tex inoremap ;m     \(\)<++><Esc>F\i
+autocmd FileType tex inoremap <buffer> ;fig   \begin{figure}[ht]<Enter>\centering<Enter>\includegraphics[width=0.8\linewidth]{images/}<Enter>\caption{<++>}\label{fig:<++>}<Enter>\end{figure}<Enter><Enter><++><Esc>4kf}i<C-x><C-f>
+autocmd FileType tex inoremap <buffer> ;tikz  \begin{figure}[ht]<Enter>\centering<Enter>\input{tikz/}<Enter>\caption{<++>}\label{fig:<++>}<Enter>\end{figure}<Enter><Enter><++><Esc>4kf}i<C-x><C-f>
+autocmd FileType tex inoremap <buffer> ;plot  \begin{figure}[ht]<Enter>\centering<Enter>\input{plots/}<Enter>\caption{<++>}\label{fig:<++>}<Enter>\end{figure}<Enter><Enter><++><Esc>4kf}i<C-x><C-f>
+autocmd FileType tex inoremap <buffer> ;gle   \newglossaryentry{}<enter>{%<enter>name={<++>},<enter>description={<++>}<enter>}<enter><enter><++><Esc>6kf}i
+autocmd FileType tex inoremap <buffer> ;sym   \newglossaryentry{sym:}<enter>{%<enter>type=symbols,<enter>name={\ensuremath{<++>}},<enter>description={<++>},<enter>symbol=\si{<++>},<enter>sort={<++>},<enter>}<enter><enter><++><Esc>9kf}i
+autocmd FileType tex inoremap <buffer> ;not   \newglossaryentry{not:}<enter>{%<enter>type=notation,<enter>name={<++>},<enter>description={<++>},<enter>sort={<++>},<enter>}<enter><enter><++><Esc>8kf}i
+autocmd FileType tex inoremap <buffer> ;acr   \newacronym{acr:}{<++>}{<++>}<enter><++><Esc>kf}i
+autocmd FileType tex inoremap <buffer> ;acs   \acrshort{acr:}<space><++><Esc>F}i
+autocmd FileType tex inoremap <buffer> ;gls   \gls{}<space><++><Esc>F}i
+autocmd FileType tex inoremap <buffer> ;Gls   \Gls{}<space><++><Esc>F}i
+autocmd FileType tex inoremap <buffer> ;m     \(\)<++><Esc>F\i
 
 " restructured text
-autocmd Filetype rst inoremap ;1   <Esc>YpVr=o
-autocmd Filetype rst inoremap ;2   <Esc>YpVr-o
-autocmd Filetype rst inoremap ;3   <Esc>YpVr~o
+autocmd Filetype rst inoremap <buffer> ;1   <Esc>YpVr=o
+autocmd Filetype rst inoremap <buffer> ;2   <Esc>YpVr-o
+autocmd Filetype rst inoremap <buffer> ;3   <Esc>YpVr~o
 
-autocmd Filetype rst inoremap ;b   ****<Space><++><Esc>F*hi
-autocmd Filetype rst inoremap ;c   ````<Space><++><Esc>F`hi
-autocmd Filetype rst inoremap ;e   **<Space><++><Esc>F*i
-autocmd Filetype rst inoremap ;i   `<Space><<++>>`__<++><Esc>2F`a
-autocmd Filetype rst inoremap ;a   ::`<++><Space><<++>>`__<++><Esc>2F:a
+autocmd Filetype rst inoremap <buffer> ;b   ****<Space><++><Esc>F*hi
+autocmd Filetype rst inoremap <buffer> ;c   ````<Space><++><Esc>F`hi
+autocmd Filetype rst inoremap <buffer> ;e   **<Space><++><Esc>F*i
+autocmd Filetype rst inoremap <buffer> ;i   `<Space><<++>>`__<++><Esc>2F`a
+autocmd Filetype rst inoremap <buffer> ;a   ::`<++><Space><<++>>`__<++><Esc>2F:a
 
-autocmd Filetype rst inoremap ..c  ..<Space>code::<CR><CR><Tab><++><Esc>2kA<Space>
-autocmd Filetype rst inoremap ..i  ..<Space>image::<CR><Tab><++><Esc>kA<Space>
+autocmd Filetype rst inoremap <buffer> ..c  ..<Space>code::<CR><CR><Tab><++><Esc>2kA<Space>
+autocmd Filetype rst inoremap <buffer> ..i  ..<Space>image::<CR><Tab><++><Esc>kA<Space>
 
 " tikz
-autocmd FileType tex inoremap ;tp    \begin{tikzpicture}[]<enter><++><enter>\end{tikzpicture}<Esc>2kf]i
-autocmd FileType tex inoremap ;node  \node[]<space>(<++>)<space>at<space>(<++>)<space>{<++>};<Esc>F]i
-autocmd FileType tex inoremap ;draw  \draw[]<space>(<++>)<space><++><space>(<++>);<Esc>F]i
-autocmd FileType tex inoremap ;linu  \linunit[]{<++>}{<++>}<Esc>F]i
-autocmd FileType tex inoremap ;tanh  \tanhunit[]{<++>}{<++>}<Esc>F]i
-autocmd FileType tex inoremap ;sigm  \sigmunit[]{<++>}{<++>}<Esc>F]i
-autocmd FileType tex inoremap ;sum   \sumunit[]{<++>}{<++>}<Esc>F]i
-autocmd FileType tex inoremap ;isec  \intersec[]{<++>}<Esc>F]i
+autocmd FileType tex inoremap <buffer> ;tp    \begin{tikzpicture}[]<enter><++><enter>\end{tikzpicture}<Esc>2kf]i
+autocmd FileType tex inoremap <buffer> ;node  \node[]<space>(<++>)<space>at<space>(<++>)<space>{<++>};<Esc>F]i
+autocmd FileType tex inoremap <buffer> ;draw  \draw[]<space>(<++>)<space><++><space>(<++>);<Esc>F]i
+autocmd FileType tex inoremap <buffer> ;linu  \linunit[]{<++>}{<++>}<Esc>F]i
+autocmd FileType tex inoremap <buffer> ;tanh  \tanhunit[]{<++>}{<++>}<Esc>F]i
+autocmd FileType tex inoremap <buffer> ;sigm  \sigmunit[]{<++>}{<++>}<Esc>F]i
+autocmd FileType tex inoremap <buffer> ;sum   \sumunit[]{<++>}{<++>}<Esc>F]i
+autocmd FileType tex inoremap <buffer> ;isec  \intersec[]{<++>}<Esc>F]i
 
 " sql
 au BufRead /tmp/psql.edit.* set syntax=sql
