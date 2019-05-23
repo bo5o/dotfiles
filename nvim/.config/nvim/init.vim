@@ -296,6 +296,9 @@ tnoremap <C-F> <C-\><C-n>:ZoomToggle<CR>i
 " switch to previous window
 tnoremap <C-Q> <C-\><C-n><C-W>p
 
+" ask before jump if ambigous
+nnoremap <C-]> g<C-]>
+
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
