@@ -611,9 +611,23 @@ c.AliasManager.user_aliases = [("venv", "echo $VIRTUAL_ENV | awk -F '/' '{print 
 
 # Custom prompt
 class CustomPrompt(Prompts):
-    def in_prompt_tokens(self, cli=None):
-        retval = [(Token.Prompt, "\u03C0 >>> ")]
+    def __init__(self, shell):
+        super(CustomPrompt, self).__init__(shell)
+        self.supsc = dict(zip("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹"))
 
+    def to_superscript(self, num):
+        return "".join(map(self.supsc.get, str(num)))
+
+    def vi_mode(self):
+        if (
+            getattr(self.shell.pt_app, "editing_mode", None) == "VI"
+            and self.shell.prompt_includes_vi_mode
+        ):
+            if str(self.shell.pt_app.app.vi_state.input_mode)[3:6] == "nav":
+                return " --- "
+        return " >>> "
+
+    def virtual_env(self):
         if "VIRTUAL_ENV" in os.environ:
             venv_path = Path(os.environ["VIRTUAL_ENV"])
             cfg_file = venv_path / "pyvenv.cfg"
@@ -621,20 +635,28 @@ class CustomPrompt(Prompts):
                 venv_path.parent.name if venv_path.name[0] == "." else venv_path.name
             )
             if cfg_file.exists():
-                content = "[root]\n" + cfg_file.read_text()
                 parser = configparser.ConfigParser()
-                parser.read_string(content)
+                parser.read_string("[root]\n" + cfg_file.read_text())
                 if parser.has_option("root", "prompt"):
                     prompt = parser.get("root", "prompt")
-            retval.insert(0, (Token, f"({prompt}) "))
+            return f"({prompt}) "
+        return ""
 
-        return retval
+    def in_prompt_tokens(self, cli=None):
+        return [
+            (Token.Prompt, self.virtual_env()),
+            (Token.Prompt, "\N{GREEK SMALL LETTER PI}"),
+            (Token.Prompt, self.to_superscript(self.shell.execution_count)),
+            (Token.Prompt, self.vi_mode()),
+        ]
 
     def out_prompt_tokens(self, cli=None):
         return [(Token.Prompt, "")]
 
     def continuation_prompt_tokens(self, cli=None, width=None):
-        return [(Token.Prompt, "")]
+        if width is None:
+            width = self._width()
+        return [(Token.Prompt, (" " * (width - 4)) + "... ")]
 
 
 c.TerminalInteractiveShell.prompts_class = CustomPrompt
