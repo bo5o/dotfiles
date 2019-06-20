@@ -231,8 +231,8 @@ autocmd FileType python setlocal foldmethod=indent
 autocmd FileType python setlocal tw=88
 
 " YAML
-autocmd Filetype yaml setlocal tabstop=2
-autocmd Filetype yaml setlocal shiftwidth=2
+autocmd Filetype yaml,html,css,javascript,json setlocal tabstop=2
+autocmd Filetype yaml,html,css,javascript,json setlocal shiftwidth=2
 
 " markdown
 autocmd Filetype markdown setlocal tw=80
@@ -1034,12 +1034,17 @@ let g:ale_linters = {
             \   'sql': ['sqlint'],
             \   'Dockerfile': ['hadolint', 'dockerfile_lint'],
             \   'yaml': ['yamllint'],
+            \   'json': ['jsonlint'],
             \}
 
 let g:ale_fixers = {
             \   '*': ['remove_trailing_lines', 'trim_whitespace'],
             \   'python': ['black', 'isort'],
             \   'yaml': ['prettier'],
+            \   'html': ['prettier'],
+            \   'css': ['prettier'],
+            \   'javascript': ['prettier'],
+            \   'json': ['prettier'],
             \}
 
 "" iron
