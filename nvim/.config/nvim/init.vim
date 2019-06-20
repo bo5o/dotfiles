@@ -154,6 +154,7 @@ set magic
 
 " Disable automatic folding
 set nofoldenable
+set foldlevelstart=99
 
 " Show matching brackets when text indicator is over them
 set showmatch
