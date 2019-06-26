@@ -89,3 +89,10 @@ compdef so=source
 alias so="source"
 alias week="date +%V"
 alias year="date +%Y"
+alias ternimal-anaconda="ternimal length=100 thickness=1,4,1,0,0 radius=6,12 gradient=0:#666600,0.5:#00ff00,1:#003300"
+alias ternimal-swarm="ternimal length=200 thickness=0,4,19,0,0"
+alias ternimal-rainbow="ternimal length=20 thickness=70,15,0,1,0 padding=10 radius=5 gradient=0.03:#ffff00,0.15:#0000ff,0.3:#ff0000,0.5:#00ff00"
+compdef _docker-compose docker-compose
+compdef dco=docker-compose
+alias pudb=pudb3
+alias ffbare='firefox --new-instance -P bare'
