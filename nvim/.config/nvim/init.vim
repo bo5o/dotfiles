@@ -1029,7 +1029,7 @@ let g:ale_sign_warning = 'W'
 
 
 let g:ale_linters = {
-            \   'python': ['flake8', 'pydocstyle'],
+            \   'python': ['flake8', 'pydocstyle', 'mypy'],
             \   'tex': ['chktex'],
             \   'sql': ['sqlint'],
             \   'Dockerfile': ['hadolint', 'dockerfile_lint'],
@@ -1046,6 +1046,10 @@ let g:ale_fixers = {
             \   'javascript': ['prettier'],
             \   'json': ['prettier'],
             \}
+
+if exists('$VIRTUAL_ENV')
+    let g:ale_python_mypy_options = "--python-executable ".$VIRTUAL_ENV."/bin/python"
+endif
 
 "" iron
 " deactivate default mappings
