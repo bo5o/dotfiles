@@ -62,3 +62,13 @@ pycl() {
 function pretty() {
     pygmentize -f terminal -g $* | less -R
 }
+
+
+function quickvenv() {
+    /usr/bin/python3 -m venv .venv
+    .venv/bin/python -m pip install -U pip setuptools
+    .venv/bin/python -m pip install -U pip-tools
+    echo "#dev\nipython\nipdb" > requirements.in
+    .venv/bin/pip-compile && .venv/bin/pip-sync
+    source .venv/bin/activate
+}
