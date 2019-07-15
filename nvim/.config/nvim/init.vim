@@ -436,8 +436,10 @@ let g:quicktex_rst = {
 let g:quicktex_python = {
             \' '      : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
         \'Section: docstrings' : 'COMMENT',
-            \';doc'   : "\""."\""."\""."<+++>\<CR>"."\""."\""."\""."\<CR><++>",
+            \';doc'   : "\""."\""."\""."<+++>"."\""."\""."\"",
             \';arg'   : "<+++> : <++>",
+            \';tod'   : "# TODO: <+++>",
+            \';todo'  : "# TODO: <+++>",
             \';par'   : "Parameters\<CR>----------\<CR>",
             \';params': "Parameters\<CR>----------\<CR>",
             \';args'  : "Parameters\<CR>----------\<CR>",
