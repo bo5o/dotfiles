@@ -1094,6 +1094,8 @@ let g:echodoc#enable_at_startup = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" turn formatted text into a python string
+xnoremap <leader>x <esc>:'<,'>!sed -e '0,/^.*"\{3\}\\\?/s///' -e 's/"\{3\}$//' -e 's/\s\{4\}/\\t/g' -e 's/^/"/' -e 's/$/",/' -e '1i "\\n".join((' -e '$a ))'<cr>
 
 " Press: vai, vii to select outer/inner python blocks by indetation.
 " Press: vii, yii, dii, cii to select/yank/delete/change an indented block.
