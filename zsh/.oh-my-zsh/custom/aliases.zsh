@@ -82,6 +82,7 @@ alias wo="workon"
 alias pf="pip freeze | sort"
 alias pipi="pip install"
 alias pipu="pip install -U"
+alias pcs="pip-compile && pip-sync"
 alias pyinit="touch __init__.py"
 alias za="zathura"
 alias ncdu="ncdu -rr -x"
@@ -96,3 +97,8 @@ compdef _docker-compose docker-compose
 compdef dco=docker-compose
 alias pudb=pudb3
 alias ffbare='firefox --new-instance -P bare'
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+alias zshrc='${=EDITOR} ~/.zshrc'
+alias vimrc='${=EDITOR} ~/.config/nvim/init.vim'
+alias lS='ls -1FSsh'
