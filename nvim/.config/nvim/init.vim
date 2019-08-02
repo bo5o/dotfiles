@@ -824,7 +824,13 @@ let g:NERDTreeMapUpdir = 'H'
 let g:NERDTreeMapChangeRoot = 'L'
 let g:NERDTreeMapToggleHidden = 'zh'
 let g:NERDTreeQuitOnOpen = 1
-let NERDTreeIgnore=['\.aux$', '\.lol$', '\.lof$', '\.lot$', '\.slg$', '\.sls$', '\.not$', '\.ntn$', '\.slo$', '\.acn$', '\.acr$', '\.alg$', '\.glg$', '\.gls$', '\.glo$', '\.ist$', '\.nlg$', '\.log$', '\.gz$', '\.run.xml$', '\.pdf$', '\.toc$', '\.out$', '\.bbl$', '\.bcf$', '\.blg$', '\.fdb_latexmk$', '\.fls$', '\.xdv$', '^tags$[[file]]', '_minted[[dir]]']
+let NERDTreeIgnore=[
+            \ '\.aux$', '\.lo[lft]$', '\.sl[gso]$', '\.not$', '\.ntn$', '\.ac[nrg]$',
+            \ '\.gl[gso]$', '\.ist$', '\.nlg$', '\.log$', '\.gz$', '\.run.xml$',
+            \ '\.pdf$', '\.toc$', '\.out$', '\.bbl$', '\.bcf$', '\.blg$',
+            \ '\.fdb_latexmk$', '\.fls$', '\.xdv$', '\.py[co]$', '^tags$[[file]]',
+            \ '_minted[[dir]]', '.mypy_cache[[dir]]', '__pycache__[[dir]]'
+            \]
 
 "" sneak
 let g:sneak#use_ic_scs = 1
