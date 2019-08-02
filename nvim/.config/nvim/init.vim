@@ -969,11 +969,17 @@ let g:ctrlp_root_markers = ['.root']
 nnoremap <leader>/ :CtrlPLine<space>%<enter>
 nnoremap <leader>ta :CtrlPBufTagAll<enter>
 
-set wildignore+=*.mat,*.pdfpc,*/tmp/*,*.so,*.swp,*.zip,*.aux,*.gz,*.fdb_latexmk,*.fls,*.log,*.pdf,*.glg,*.glo,*.ist,*.bcf,*.bbl,*.blg,*.gls,*.run.xml,*.toc,*.acn,*.acr,*.alg,*.ntn,*.slo,*.not,*.nlg,*.slg,*.sls,*.lof,*.lot,*.lol,*.xdv
+set wildignore+=*.mat,*.pdfpc,*/tmp/*,*.so,*.swp,*.zip,*.aux,*.gz,*.fdb_latexmk,*.fls,
+            \*.log,*.pdf,*.glg,*.glo,*.ist,*.bcf,*.bbl,*.blg,*.gls,*.run.xml,*.toc,
+            \*.acn,*.acr,*.alg,*.ntn,*.slo,*.not,*.nlg,*.slg,*.sls,*.lof,*.lot,*.lol,
+            \*.xdv
 
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_minted)$',
-            \ 'file': '\v\.(mat|pdfpc|latexmain|gitignore|root|exe|so|dll|aux|gz|fdb_latexmk|fls|log|pdf|run|blg|toc|bcf|run\.xml|png|jpeg|bmp|out|bbl|snm|nav|glg|gls|glo|ist|acn|acr|alg|ntn|slo|not|nlg|slg|sls|lof|lot|lol|xdv)$',
+            \ 'file': '\v\.(mat|pdfpc|latexmain|gitignore|root|exe|so|dll|aux|gz|'.
+                \ 'fdb_latexmk|fls|log|pdf|run|blg|toc|bcf|run\.xml|png|jpeg|bmp|out|bbl|'.
+                \ 'snm|nav|glg|gls|glo|ist|acn|acr|alg|ntn|slo|not|nlg|slg|sls|lof|lot|'.
+                \ 'lol|xdv)$',
             \ }
 
 let g:vimtex_quickfix_latexlog = {
