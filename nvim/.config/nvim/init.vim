@@ -1084,9 +1084,8 @@ endfunction
 
 let g:slime_target = "tmux"
 let g:slime_python_ipython = 1
-autocmd FileType python nmap <buffer> <F5> :w<enter>:SlimeSend1<space>run<space><C-r>%<enter>
-autocmd FileType python imap <buffer> <F5> <C-o>:w<enter><C-o>:SlimeSend1<space>run<space><C-r>%<enter>
-
+autocmd FileType python nmap <buffer> <F5> :w<cr>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
+autocmd FileType python imap <buffer> <F5> <C-o>:w<cr><C-o>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
 
 "" echodoc
 let g:echodoc#enable_at_startup = 1
