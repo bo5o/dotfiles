@@ -1055,10 +1055,6 @@ let g:ale_fixers = {
             \   'json': ['prettier'],
             \}
 
-if exists('$VIRTUAL_ENV')
-    let g:ale_python_mypy_options = "--python-executable ".$VIRTUAL_ENV."/bin/python"
-endif
-
 "" iron
 " deactivate default mappings
 let g:iron_map_defaults=0
