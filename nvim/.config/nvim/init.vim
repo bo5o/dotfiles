@@ -802,6 +802,7 @@ let g:formatters_sql = ['pg_format', 'sqlformat']
 let g:startify_list_order = ['files', 'dir', 'bookmarks']
 let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}]
 let g:startify_change_to_dir = 1
+let g:startify_change_to_vcs_root = 1
 let g:startify_files_number = 4
 let g:startify_custom_indices = ['1', '2', '3', '4', '7', '8', '9', '0']
 
