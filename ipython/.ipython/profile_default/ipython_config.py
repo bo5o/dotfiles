@@ -638,7 +638,7 @@ class CustomPrompt(Prompts):
                 parser = configparser.ConfigParser()
                 parser.read_string("[root]\n" + cfg_file.read_text())
                 if parser.has_option("root", "prompt"):
-                    prompt = parser.get("root", "prompt")
+                    prompt = parser.get("root", "prompt").strip("'")
             return f"({prompt}) "
         return ""
 
