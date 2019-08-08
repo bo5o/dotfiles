@@ -1,2 +1,4 @@
 --exclude=.git
 --exclude=.mypy_cache
+--exclude=.tools
+--exclude=*.pyi
