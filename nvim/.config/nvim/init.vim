@@ -1096,6 +1096,9 @@ let g:slime_python_ipython = 1
 autocmd FileType python nmap <buffer> <F5> :w<cr>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
 autocmd FileType python imap <buffer> <F5> <C-o>:w<cr><C-o>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
 
+"" gutentags
+let g:gutentags_exclude_filetypes = ['gitcommit']
+
 "" echodoc
 let g:echodoc#enable_at_startup = 1
 
