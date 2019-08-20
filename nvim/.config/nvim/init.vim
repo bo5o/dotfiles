@@ -806,6 +806,11 @@ let g:startify_change_to_vcs_root = 1
 let g:startify_files_number = 4
 let g:startify_custom_indices = ['1', '2', '3', '4', '7', '8', '9', '0']
 
+"" fugitive
+nnoremap <leader>gst :Gstatus<CR>
+nnoremap <leader>gc :Gcommit
+nnoremap <leader>gw :Gwrite<CR>
+
 "" EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
