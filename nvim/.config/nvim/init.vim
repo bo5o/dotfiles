@@ -230,9 +230,9 @@ set wrap "Wrap lines
 autocmd FileType python setlocal foldmethod=indent
 autocmd FileType python setlocal tw=88
 
-" YAML
-autocmd Filetype yaml,html,css,javascript,json setlocal tabstop=2
-autocmd Filetype yaml,html,css,javascript,json setlocal shiftwidth=2
+" tabstop and shiftwidth for markup languages
+autocmd Filetype yaml,html,css,javascript,json,tex setlocal tabstop=2
+autocmd Filetype yaml,html,css,javascript,json,tex setlocal shiftwidth=2
 
 " markdown
 autocmd Filetype markdown setlocal tw=80
