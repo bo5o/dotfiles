@@ -1061,6 +1061,7 @@ let g:ale_fixers = {
             \   'css': ['prettier'],
             \   'javascript': ['prettier'],
             \   'json': ['prettier'],
+            \   'tex': ['latexindent'],
             \}
 
 "" iron
