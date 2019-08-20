@@ -828,9 +828,10 @@ let g:NERDTreeQuitOnOpen = 1
 let NERDTreeIgnore=[
             \ '\.aux$', '\.lo[lft]$', '\.sl[gso]$', '\.not$', '\.ntn$', '\.ac[nrg]$',
             \ '\.gl[gso]$', '\.ist$', '\.nlg$', '\.log$', '\.gz$', '\.run.xml$',
-            \ '\.pdf$', '\.toc$', '\.out$', '\.bbl$', '\.bcf$', '\.blg$',
+            \ '\.toc$', '\.out$', '\.bbl$', '\.bcf$', '\.blg$', '\.snm$', '\.nav$',
             \ '\.fdb_latexmk$', '\.fls$', '\.xdv$', '\.py[co]$', '^tags$[[file]]',
-            \ '_minted[[dir]]', '.mypy_cache[[dir]]', '__pycache__[[dir]]'
+            \ '_minted[[dir]]', '.mypy_cache[[dir]]', '__pycache__[[dir]]',
+            \ '\.synctex\(busy\)$'
             \]
 
 "" sneak
