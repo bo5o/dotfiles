@@ -32,4 +32,6 @@ source ~/.fzf/shell/completion.zsh
 
 source $ZSH/oh-my-zsh.sh
 
+eval "$(pyenv init -)"
+
 autoload -Uz compinit && compinit -i
