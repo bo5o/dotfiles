@@ -231,8 +231,8 @@ autocmd FileType python setlocal foldmethod=indent
 autocmd FileType python setlocal tw=88
 
 " tabstop and shiftwidth for markup languages
-autocmd Filetype yaml,html,css,javascript,json,tex setlocal tabstop=2
-autocmd Filetype yaml,html,css,javascript,json,tex setlocal shiftwidth=2
+autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal tabstop=2
+autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal shiftwidth=2
 
 " markdown
 autocmd Filetype markdown setlocal tw=80
@@ -502,7 +502,7 @@ let g:quicktex_tex = {
             \'para':    '(<+++>) <++>',
             \'todo':    "\\todo{<+++>}\<CR><++>",
             \'cmd':    "\<ESC>Bi\\\<ESC>Ea{<+++>}<++>",
-            \'texroot': '%!TEX root=.',
+            \'texroot': '%! TEX root = .',
             \
         \'Section: Citing and Referencing' : 'COMMENT',
             \'cref':  "\\cref{<+++>}<++>",
@@ -561,7 +561,7 @@ let g:quicktex_tex = {
             \'sc'     : "\\textsc{<+++>} <++>",
             \'tt'     : "\\texttt{<+++>} <++>",
             \'bf'     : "\\textbf{<+++>} <++>",
-            \'it'     : "\\textit{<+++>} <++>",
+            \';it'     : "\\textit{<+++>} <++>",
             \
             \}
 
@@ -592,7 +592,8 @@ let g:quicktex_math = {
             \'tau'     : '\tau ',
             \'upsilon' : '\upsilon ',
             \'gu'      : '\upsilon ',
-            \'phi'     : '\varphi ',
+            \'phi'     : '\phi ',
+            \'vphi'    : '\varphi ',
             \'chi'     : '\chi ',
             \'psi'     : '\psi ',
             \
