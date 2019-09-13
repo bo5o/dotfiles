@@ -47,7 +47,6 @@ Plug 'tpope/vim-obsession'            " session management
 Plug 'jpalardy/vim-slime'             " tmux repl
 Plug 'MattesGroeger/vim-bookmarks'    " bookmarks
 Plug 'jeetsukumaran/vim-pythonsense'  " python text objects
-Plug 'Chiel92/vim-autoformat'         " additional autoformatter
 Plug 'jiangmiao/auto-pairs'           " auto close delimiters
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
 Plug 'ekalinin/Dockerfile.vim'        " Dockerfile syntax highlighting
@@ -240,7 +239,6 @@ autocmd Filetype markdown setlocal tw=80
 " gitcommit
 autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -397,10 +395,8 @@ autocmd FileType tex inoremap <buffer> ;sigm  \sigmunit[]{<++>}{<++>}<Esc>F]i
 autocmd FileType tex inoremap <buffer> ;sum   \sumunit[]{<++>}{<++>}<Esc>F]i
 autocmd FileType tex inoremap <buffer> ;isec  \intersec[]{<++>}<Esc>F]i
 
-" sql
+" psql
 au BufRead /tmp/psql.edit.* set syntax=sql
-autocmd BufWrite /tmp/psql.edit.* :Autoformat
-autocmd BufWrite *.sql :Autoformat
 
 " sphinx
 autocmd BufRead */services/docs/*.rst set makeprg=make\ -f\ Makefile.docs\ html
@@ -791,14 +787,6 @@ map <leader>st 1z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" vim-autoformat
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
-
-let g:formatdef_pg_format = '"pg_format"'
-let g:formatters_sql = ['pg_format', 'sqlformat']
-
 ""Startify
 let g:startify_list_order = ['files', 'dir', 'bookmarks']
 let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}]
@@ -1068,6 +1056,7 @@ let g:ale_fixers = {
             \   'javascript': ['prettier'],
             \   'json': ['prettier'],
             \   'tex': ['latexindent'],
+            \   'sql': ['pgformatter'],
             \}
 
 "" iron
