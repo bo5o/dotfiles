@@ -398,6 +398,9 @@ autocmd FileType tex inoremap <buffer> ;isec  \intersec[]{<++>}<Esc>F]i
 " psql
 au BufRead /tmp/psql.edit.* set syntax=sql
 
+" pass
+au BufRead */pass.*.txt set noundofile
+
 " sphinx
 autocmd BufRead */services/docs/*.rst set makeprg=make\ -f\ Makefile.docs\ html
 
