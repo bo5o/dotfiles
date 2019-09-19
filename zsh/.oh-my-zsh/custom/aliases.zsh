@@ -1,5 +1,6 @@
 # global aliases
 alias -g L='| less'
+alias -g Lc='--color=always | less -r'
 alias -g C='| wc -l'
 alias -g H='| head'
 alias -g T='| tail'
