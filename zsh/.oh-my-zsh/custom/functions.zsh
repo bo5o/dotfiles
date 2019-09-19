@@ -74,3 +74,19 @@ function quickvenv() {
         .venv/bin/pip-sync && \
         source .venv/bin/activate
 }
+
+reqa() {
+	if (( $# == 0 )); then
+		cat <<-'EOF' >&2
+			Usage: reqa package1 [package2 [package3 [...]]]
+
+            Add entries `requirements.in`.
+
+		EOF
+    else
+        for pkg in "$@"
+        do
+            echo "$pkg" >> requirements.in
+        done
+    fi
+}
