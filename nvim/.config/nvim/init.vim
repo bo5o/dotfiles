@@ -447,6 +447,7 @@ let g:quicktex_python = {
             \';err'   : "Raises\<CR>------\<CR>",
             \';yie'   : "Yields\<CR>------\<CR>",
             \';att'   : "Attributes\<CR>----------\<CR>",
+            \';catt'  : "Class Attributes\<CR>----------------\<CR>",
             \';exa'   : "Examples\<CR>--------\<CR>",
             \';not'   : "Notes\<CR>-----\<CR>",
             \';see'   : "See Also\<CR>--------\<CR>",
