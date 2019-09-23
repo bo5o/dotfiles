@@ -315,6 +315,10 @@ map 0 ^
 " search and replace
 nnoremap <leader>S :%s//g<Left><Left>
 
+" paste from 0 register
+nnoremap <leader>p "0p
+nnoremap <leader>P "0P
+
 " moving up and down work as you expected
 nnoremap <silent> j gj
 nnoremap <silent> k gk
