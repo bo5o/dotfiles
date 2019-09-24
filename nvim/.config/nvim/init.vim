@@ -1042,9 +1042,8 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 1
 let g:ale_fix_on_save = 1
-let g:ale_sign_error = 'E'
-let g:ale_sign_warning = 'W'
 
+nmap <leader>ad <Plug>(ale_detail)
 
 let g:ale_linters = {
             \   'python': ['flake8', 'pydocstyle', 'mypy'],
