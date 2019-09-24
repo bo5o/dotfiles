@@ -229,6 +229,8 @@ set wrap "Wrap lines
 autocmd FileType python setlocal foldmethod=indent
 autocmd FileType python setlocal tw=88
 
+autocmd FileType python nmap <buffer> <localleader>td :vimgrep /\<\(todo\\|fixme\)\>/gj **/*.py<CR>:copen<CR>
+
 " tabstop and shiftwidth for markup languages
 autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal tabstop=2
 autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal shiftwidth=2
@@ -976,7 +978,7 @@ nnoremap <leader>ta :CtrlPBufTagAll<enter>
 set wildignore+=*.mat,*.pdfpc,*/tmp/*,*.so,*.swp,*.zip,*.aux,*.gz,*.fdb_latexmk,*.fls,
             \*.log,*.pdf,*.glg,*.glo,*.ist,*.bcf,*.bbl,*.blg,*.gls,*.run.xml,*.toc,
             \*.acn,*.acr,*.alg,*.ntn,*.slo,*.not,*.nlg,*.slg,*.sls,*.lof,*.lot,*.lol,
-            \*.xdv
+            \*.xdv,**/.venv/**,**/.tools/**,tags
 
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_minted)$',
