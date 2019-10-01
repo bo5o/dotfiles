@@ -17,7 +17,7 @@ Plug 'terryma/vim-multiple-cursors'   " multiple cursors
 Plug 'yggdroot/indentline'            " indentation guides
 Plug 'davidhalter/jedi-vim'           " python jedi
 Plug 'vimwiki/vimwiki'                " wiki
-Plug 'w0rp/ale'                       " asynchronous linting engine
+Plug 'dense-analysis/ale'             " asynchronous linting engine
 Plug 'cespare/vim-toml'               " toml
 Plug 'plasticboy/vim-markdown'        " markdown
 Plug 'tpope/vim-surround'             " vim surround
