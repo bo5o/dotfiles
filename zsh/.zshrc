@@ -13,6 +13,7 @@ COMPLETION_WAITING_DOTS="true"
 # Plugins (can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
     git
+    pyenv
     docker
     docker-compose
     jira
@@ -28,7 +29,5 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
-eval "$(pyenv init -)"
 
 autoload -Uz compinit && compinit -i
