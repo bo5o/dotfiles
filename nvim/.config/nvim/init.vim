@@ -177,6 +177,8 @@ set shortmess+=c
 " :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
 
+set signcolumn=yes
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
