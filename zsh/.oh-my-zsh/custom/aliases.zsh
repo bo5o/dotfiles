@@ -64,7 +64,7 @@ alias ipycpu="CUDA_VISIBLE_DEVICES="" ipython"
 alias da="cd ~/latex/diplomarbeit"
 alias todo="todo.sh"
 alias Gst="gitcheck"
-alias disks='echo "╓───── m o u n t . p o i n t s"; lsblk -a; echo ""; echo "╓───── d i s k . u s a g e"; df -h;'
+alias disks='echo "-- m o u n t . p o i n t s"; lsblk -a; echo ""; echo "-- d i s k . u s a g e"; df -h;'
 alias dotfiles='cd ~/dotfiles'
 alias Dotfiles='cd ~/private'
 alias info='info --vi-keys'
