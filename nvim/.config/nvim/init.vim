@@ -56,6 +56,7 @@ Plug 'tmux-plugins/vim-tmux'          " syntax hightlighting etc for .tmux.conf
 Plug 'raimon49/requirements.txt.vim'  " requirements.txt syntax highlighting
 Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-line statements
 Plug 'kovetskiy/sxhkd-vim'            " indent, highlight syntax and detect sxhkd config files
+Plug 'mhinz/vim-grepper'              " integration of my favorite grepper
 
 " Initialize plugin system
 call plug#end()
@@ -839,6 +840,21 @@ let NERDTreeIgnore=[
             \ '_minted[[dir]]', '.mypy_cache[[dir]]', '__pycache__[[dir]]',
             \ '\.synctex\(busy\)$'
             \]
+
+"" grepper
+nnoremap <leader>gg :Grepper -tool git<cr>
+nnoremap <leader>ga :Grepper -tool ag<cr>
+nnoremap <leader>gs :Grepper -tool ag -side<cr>
+nnoremap <leader>*  :Grepper -tool ag -cword -noprompt<cr>
+
+let g:grepper = {}
+let g:grepper.tools = ['git', 'ag', 'grep']
+let g:grepper.open = 1
+let g:grepper.jump = 1
+let g:grepper.dir = 'repo,file'
+
+command! Todo Grepper -noprompt -tool git -query -E '(TODO|FIXME|XXX):'
+
 
 "" sneak
 let g:sneak#use_ic_scs = 1
