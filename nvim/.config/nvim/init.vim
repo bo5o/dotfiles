@@ -852,6 +852,7 @@ let g:grepper.tools = ['git', 'ag', 'grep']
 let g:grepper.open = 1
 let g:grepper.jump = 1
 let g:grepper.dir = 'repo,file'
+let g:grepper.quickfix = 0
 
 command! Todo Grepper -noprompt -tool git -query -E '(TODO|FIXME|XXX):'
 
