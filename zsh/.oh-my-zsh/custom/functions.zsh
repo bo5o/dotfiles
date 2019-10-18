@@ -75,12 +75,20 @@ function quickvenv() {
         source .venv/bin/activate
 }
 
-reqa() {
+function reproenv() {
+    pyenv local > /dev/null 2>&1 && [ -z "$VIRTUAL_ENV" ] && \
+        python -m venv --prompt ${PWD##*/} .venv && \
+        .venv/bin/python -m pip install -U pip setuptools && \
+        .venv/bin/python -m pip install -r requirements.txt && \
+        source .venv/bin/activate
+}
+
+addreq() {
 	if (( $# == 0 )); then
 		cat <<-'EOF' >&2
-			Usage: reqa package1 [package2 [package3 [...]]]
+			Usage: addreq package1 [package2 [package3 [...]]]
 
-            Add entries `requirements.in`.
+            Add entries to `requirements.in`.
 
 		EOF
     else
