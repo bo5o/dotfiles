@@ -1073,6 +1073,7 @@ let g:ale_echo_msg_format = '[%linter%] %code%: %s'
 let g:ale_pattern_options = {
 \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
 \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+\ 'crontab$': {'ale_linters': [], 'ale_fixers': ['trim_whitespace']},
 \}
 
 nmap <leader>ad <Plug>(ale_detail)
