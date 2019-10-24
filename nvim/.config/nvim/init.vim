@@ -244,6 +244,9 @@ autocmd Filetype markdown setlocal tw=80
 " gitcommit
 autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
 
+" requirements
+autocmd FileType requirements setlocal commentstring=#\ %s
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
