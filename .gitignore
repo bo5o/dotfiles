@@ -11,3 +11,4 @@ ranger/**/bookmarks
 ranger/**/tagged
 w3m/**/history
 .mypy_cache
+nvim/.config/nvim/local-settings.vim
