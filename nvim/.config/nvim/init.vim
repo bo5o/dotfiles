@@ -25,7 +25,6 @@ Plug 'tpope/vim-commentary'           " comment stuff out
 Plug 'tpope/vim-repeat'               " repeat almost anything
 Plug 'tpope/vim-fugitive'             " git
 Plug 'tpope/vim-rhubarb'              " fugitive github integration
-Plug 'tommcdo/vim-fubitive'           " fugitive bitbucket integration
 Plug 'airblade/vim-gitgutter'         " git diff in gutter
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'lervag/vimtex'                  " LaTeX
