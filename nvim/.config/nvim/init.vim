@@ -58,6 +58,7 @@ Plug 'raimon49/requirements.txt.vim'  " requirements.txt syntax highlighting
 Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-line statements
 Plug 'kovetskiy/sxhkd-vim'            " indent, highlight syntax and detect sxhkd config files
 Plug 'mhinz/vim-grepper'              " integration of my favorite grepper
+Plug 'majutsushi/tagbar'              " easy way to browse tags
 
 " Initialize plugin system
 call plug#end()
@@ -837,6 +838,9 @@ vmap <Enter> <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+"" tagbar
+nnoremap <silent> <F8> :TagbarToggle<CR>
 
 "" nerd tree
 let g:NERDTreeDirArrowExpandable = '▸'
