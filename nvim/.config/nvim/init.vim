@@ -476,6 +476,7 @@ let g:quicktex_python = {
             \';war'   : "Warning\<CR>-------\<CR>",
             \';oth'   : "Other\<CR>-----\<CR>",
             \';met'   : "Methods\<CR>-------\<CR>",
+            \';exp'   : "Examples\<CR>--------\<CR>",
             \';obj'   : ":obj:`<+++>`<++>",
         \'Section: cross referencing' : 'COMMENT',
             \';ref'   : ":ref:`<+++>`<++>",
