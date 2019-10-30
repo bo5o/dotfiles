@@ -24,6 +24,7 @@ plugins=(
     vi-mode
     zsh-syntax-highlighting
     extract
+    tmuxinator
     fzf
     zsh-completions
 )
