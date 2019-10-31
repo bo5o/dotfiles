@@ -25,6 +25,7 @@ plugins=(
     zsh-syntax-highlighting
     extract
     tmuxinator
+    z
     fzf
     zsh-completions
 )
