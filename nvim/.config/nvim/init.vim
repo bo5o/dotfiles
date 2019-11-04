@@ -12,7 +12,6 @@ Plug 'ncm2/ncm2-ultisnips'            " snippet completion source
 Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detection in markdown
 Plug 'ncm2/float-preview.nvim'        " nvim 0.4 floating window support
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
-Plug 'Vigemus/iron.nvim'              " REPL
 Plug 'terryma/vim-multiple-cursors'   " multiple cursors
 Plug 'yggdroot/indentline'            " indentation guides
 Plug 'davidhalter/jedi-vim'           " python jedi
@@ -1118,35 +1117,7 @@ let g:ale_fixers = {
             \   'sql': ['pgformatter'],
             \}
 
-"" iron
-" deactivate default mappings
-let g:iron_map_defaults=0
-" define custom mappings for the python filetype
-augroup ironmapping
-    autocmd!
-    " autocmd FileType python nmap <buffer> <localleader>r :call<space>SetReplSize()<enter>:IronRepl<Enter><C-\><C-n><C-W>p
-    autocmd FileType python nmap <buffer> <localleader>r :call<space>SetReplSize()<enter>:IronRepl<Enter><C-\><C-n><C-W>p
-    autocmd FileType python nmap <buffer> <localleader>R :call<space>SetReplSize()<enter>:IronPromptCommand<Enter>
-    autocmd Filetype python nmap <buffer> <localleader><space> :IronFocus<enter>i<enter><enter><C-\><C-n><C-W>p
-    autocmd Filetype python nmap <buffer> <localleader>is yiw:call<space>IronSend('<C-r>+')<enter>
-    autocmd Filetype python nmap <buffer> <localleader>t <Plug>(iron-send-motion)
-    autocmd Filetype python vmap <buffer> <localleader>t <Plug>(iron-send-motion)
-    autocmd Filetype python nmap <buffer> <localleader>p <Plug>(iron-repeat-cmd)
-    " autocmd FileType python nmap <buffer> <F5> :w<enter>:call<space>IronSend('run<space><C-r>%')<enter>
-    " autocmd FileType python imap <buffer> <F5> <C-o>:w<enter><C-o>:call<space>IronSend('run<space><C-r>%')<enter>
-augroup END
-
-" set repl size
-function! SetReplSize()
-    " if winwidth(0)>99
-        " let g:iron_repl_open_cmd = '50vsplit'
-    " else
-    let g:iron_repl_open_cmd = '15split'
-    " endif
-endfunction
-
 "" vim-slime
-
 let g:slime_target = "tmux"
 let g:slime_python_ipython = 1
 autocmd FileType python nmap <buffer> <F5> :w<cr>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
