@@ -840,6 +840,7 @@ nmap ga <Plug>(EasyAlign)
 
 "" tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
+let g:tagbar_sort = 0
 
 "" nerd tree
 let g:NERDTreeDirArrowExpandable = '▸'
