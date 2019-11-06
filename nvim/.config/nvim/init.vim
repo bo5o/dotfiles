@@ -240,8 +240,6 @@ set wrap "Wrap lines
 autocmd FileType python setlocal foldmethod=indent
 autocmd FileType python setlocal tw=88
 
-autocmd FileType python nmap <buffer> <localleader>td :vimgrep /\<\(todo\\|fixme\)\>/gj **/*.py<CR>:copen<CR>
-
 " tabstop and shiftwidth for markup languages
 autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal tabstop=2
 autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal shiftwidth=2
