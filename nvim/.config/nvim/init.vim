@@ -865,6 +865,7 @@ let g:test#python#pytest#file_pattern = '\.py'
 let g:test#python#runner = 'pytest'
 
 "" dispatch
+" send all command to this tmux session
 let g:tmux_session = 'aux'
 
 " Send 'Enter' to g:tmux_session
