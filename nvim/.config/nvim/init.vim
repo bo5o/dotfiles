@@ -3,7 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'            " nerd tree
 Plug 'Xuyuanp/nerdtree-git-plugin'    " nerd tree git integration
 Plug 'ncm2/ncm2'                      " auto completion
-Plug 'roxma/nvim-yarp'
+Plug 'roxma/nvim-yarp'                " yet another remote plugin
 Plug 'ncm2/ncm2-bufword'              " complete words from current buffer
 Plug 'ncm2/ncm2-tmux'                 " complete words from tmux panes
 Plug 'ncm2/ncm2-path'                 " complete file paths
@@ -24,6 +24,7 @@ Plug 'tpope/vim-commentary'           " comment stuff out
 Plug 'tpope/vim-repeat'               " repeat almost anything
 Plug 'tpope/vim-fugitive'             " git
 Plug 'tpope/vim-rhubarb'              " fugitive github integration
+Plug 'tpope/vim-dispatch'             " asynchronously run jobs
 Plug 'airblade/vim-gitgutter'         " git diff in gutter
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'lervag/vimtex'                  " LaTeX
@@ -52,12 +53,14 @@ Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
 Plug 'ekalinin/Dockerfile.vim'        " Dockerfile syntax highlighting
 Plug 'ryanoasis/vim-devicons'         " fancy glyphs
 Plug 'morhetz/gruvbox'                " colorscheme
+Plug '5long/pytest-vim-compiler'      " pytest output compiler
 Plug 'tmux-plugins/vim-tmux'          " syntax hightlighting etc for .tmux.conf
 Plug 'raimon49/requirements.txt.vim'  " requirements.txt syntax highlighting
 Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-line statements
 Plug 'kovetskiy/sxhkd-vim'            " indent, highlight syntax and detect sxhkd config files
 Plug 'mhinz/vim-grepper'              " integration of my favorite grepper
 Plug 'majutsushi/tagbar'              " easy way to browse tags
+Plug 'janko/vim-test'                 " test-driven development
 
 " Initialize plugin system
 call plug#end()
@@ -839,6 +842,29 @@ nmap ga <Plug>(EasyAlign)
 "" tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
 let g:tagbar_sort = 0
+
+"" vim-test
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
+function! StartStrategy(cmd)
+    execute "Start -wait=always " . a:cmd
+endfunction
+
+let g:test#custom_strategies = {'start': function('StartStrategy')}
+
+let test#strategy = 'start'
+
+let test#filename_modifier = ':p'
+
+let g:test#python#pytest#file_pattern = '\.py'
+let g:test#python#runner = 'pytest'
+
+"" dispatch
+let g:tmux_session = 'aux'
 
 "" nerd tree
 let g:NERDTreeDirArrowExpandable = '▸'
