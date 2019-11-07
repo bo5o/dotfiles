@@ -25,6 +25,7 @@ Plug 'tpope/vim-repeat'               " repeat almost anything
 Plug 'tpope/vim-fugitive'             " git
 Plug 'tpope/vim-rhubarb'              " fugitive github integration
 Plug 'tpope/vim-dispatch'             " asynchronously run jobs
+Plug 'tpope/vim-tbone'                " tmux basics
 Plug 'airblade/vim-gitgutter'         " git diff in gutter
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'lervag/vimtex'                  " LaTeX
@@ -865,6 +866,9 @@ let g:test#python#runner = 'pytest'
 
 "" dispatch
 let g:tmux_session = 'aux'
+
+" Send 'Enter' to g:tmux_session
+nmap <silent> t<C-m> :call execute("Tmux send-keys -t " . g:tmux_session . " Enter")<CR>
 
 "" nerd tree
 let g:NERDTreeDirArrowExpandable = '▸'
