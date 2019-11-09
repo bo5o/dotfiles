@@ -12,7 +12,6 @@ Plug 'ncm2/ncm2-ultisnips'            " snippet completion source
 Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detection in markdown
 Plug 'ncm2/float-preview.nvim'        " nvim 0.4 floating window support
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
-Plug 'terryma/vim-multiple-cursors'   " multiple cursors
 Plug 'yggdroot/indentline'            " indentation guides
 Plug 'davidhalter/jedi-vim'           " python jedi
 Plug 'vimwiki/vimwiki'                " wiki
