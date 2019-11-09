@@ -61,7 +61,8 @@ Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-
 Plug 'kovetskiy/sxhkd-vim'            " indent, highlight syntax and detect sxhkd config files
 Plug 'mhinz/vim-grepper'              " integration of my favorite grepper
 Plug 'majutsushi/tagbar'              " easy way to browse tags
-Plug 'janko/vim-test'                 " test-driven development
+Plug 'janko/vim-test'                 " convenient test invocation
+Plug 'cbows/pytest-vim-compiler'      " pytest output compiler
 
 " Initialize plugin system
 call plug#end()
