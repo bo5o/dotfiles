@@ -25,6 +25,7 @@ Plug 'tpope/vim-fugitive'             " git
 Plug 'tpope/vim-rhubarb'              " fugitive github integration
 Plug 'tpope/vim-dispatch'             " asynchronously run jobs
 Plug 'tpope/vim-tbone'                " tmux basics
+Plug 'tpope/vim-projectionist'        " project-specific configurations
 Plug 'airblade/vim-gitgutter'         " git diff in gutter
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'lervag/vimtex'                  " LaTeX
