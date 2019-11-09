@@ -1,0 +1,3 @@
+--map-syntax dev-requirements.txt:requirements.txt
+--map-syntax dev-requirements.in:requirements.txt
+--map-syntax requirements.in:requirements.txt
