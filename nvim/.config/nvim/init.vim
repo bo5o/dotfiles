@@ -869,8 +869,10 @@ let g:test#python#runner = 'pytest'
 " send all command to this tmux session
 let g:tmux_session = 'aux'
 
-" Send 'Enter' to g:tmux_session
+" Send certain key combinations to g:tmux_session
 nmap <silent> t<C-m> :call execute("Tmux send-keys -t " . g:tmux_session . " Enter")<CR>
+nmap <silent> t<C-c> :call execute("Tmux send-keys -t " . g:tmux_session . " C-c")<CR>
+nmap <silent> t<C-d> :call execute("Tmux send-keys -t " . g:tmux_session . " C-d")<CR>
 
 "" nerd tree
 let g:NERDTreeDirArrowExpandable = '▸'
