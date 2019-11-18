@@ -105,10 +105,6 @@ let g:mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" :w!! sudo saves the file
-" (useful for handling the permission-denied error)
-cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-
 set relativenumber
 set number
 set clipboard=unnamedplus
