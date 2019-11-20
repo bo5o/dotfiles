@@ -41,7 +41,7 @@ md2pdf() {
 		EOF
     else
     FILE=$1;
-    pandoc --template=default --filter pandoc-citeproc -V colorlinks -V papersize:a4 $1 -o ${file%%.*}.pdf 
+    pandoc --template=default --filter pandoc-citeproc -V colorlinks -V papersize:a4 $1 -o ${file%%.*}.pdf
 	fi
 
 }
