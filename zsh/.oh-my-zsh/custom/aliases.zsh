@@ -98,10 +98,9 @@ compdef _docker-compose docker-compose
 compdef dco=docker-compose
 alias pudb=pudb3
 alias ffbare='firefox --new-instance -P bare'
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
 alias zshrc='${=EDITOR} ~/.zshrc'
 alias vimrc='${=EDITOR} ~/.config/nvim/init.vim'
 alias lS='ls -1FSsh'
 alias ackpy='ack --ignore-dir .venv --ignore-dir .tools --python'
 alias qv='quickvenv'
+alias f='fzf'
