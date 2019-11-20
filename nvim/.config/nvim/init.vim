@@ -1133,6 +1133,7 @@ let g:ale_linters = {
             \   'Dockerfile': ['hadolint', 'dockerfile_lint'],
             \   'yaml': ['yamllint'],
             \   'json': ['jsonlint'],
+            \   'sh': ['shellcheck'],
             \}
 
 let g:ale_fixers = {
