@@ -6,7 +6,7 @@ bindkey '^I' $fzf_default_completion
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -f -g ""'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
