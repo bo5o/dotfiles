@@ -8,6 +8,7 @@ j() {
     _z "$@"
   fi
 }
+compctl -U -K _z_zsh_tab_completion j
 
 # Relaunch z with the arguments for the previous command
 # as the default input by using zz
