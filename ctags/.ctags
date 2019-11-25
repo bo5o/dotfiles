@@ -1,4 +1,11 @@
 --exclude=.git
 --exclude=.mypy_cache
 --exclude=.tools
+--exclude=.venv
 --exclude=*.pyi
+--exclude=*/build/*
+--exclude=*/_build/*
+--exclude=__pycache__
+--exclude=*.min.js
+--exclude=*.min.css
+--exclude=.cache
