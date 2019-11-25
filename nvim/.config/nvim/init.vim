@@ -27,8 +27,12 @@ Plug 'tpope/vim-dispatch'             " asynchronously run jobs
 Plug 'tpope/vim-tbone'                " tmux basics
 Plug 'tpope/vim-projectionist'        " project-specific configurations
 Plug 'tpope/vim-eunuch'               " unix helpers
-Plug 'airblade/vim-gitgutter'         " git diff in gutter
 Plug 'junegunn/gv.vim'                " git commit browser
+Plug 'junegunn/goyo.vim'              " distraction free mode
+Plug 'junegunn/vim-easy-align'        " simple text alignment
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'               " fzf integration
+Plug 'airblade/vim-gitgutter'         " git diff in gutter
 Plug 'lervag/vimtex'                  " LaTeX
 Plug 'ervandew/supertab'              " Use tab for autocompletion
 Plug 'SirVer/UltiSnips'               " Snippets
@@ -37,10 +41,8 @@ Plug 'ctrlpvim/ctrlp.vim'             " fuzzy finding
 Plug 'ludovicchabant/vim-gutentags'   " automate ctags
 Plug 'vim-airline/vim-airline'        " nice status line
 Plug 'vim-airline/vim-airline-themes' " airline themes
-Plug 'junegunn/goyo.vim'              " distraction free mode
 Plug 'Vimjas/vim-python-pep8-indent'  " pep8 indenting
 Plug 'thaerkh/vim-workspace'          " workspace management
-Plug 'junegunn/vim-easy-align'        " simple text alignment
 Plug 'tpope/vim-unimpaired'           " some useful keybindings
 Plug 'mhinz/vim-startify'             " fancy start screen
 Plug 'Valloric/ListToggle'            " toggle quickfix and location list
@@ -1020,6 +1022,11 @@ augroup END
 
 "" jedi
 let g:jedi#completions_enabled = 0
+
+"" fzf.vim
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
 "" UltiSnips
 let g:UltiSnipsExpandTrigger		= "<c-j>"
