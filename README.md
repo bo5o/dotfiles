@@ -10,34 +10,6 @@
 
 I use [Parabola GNU/Linux-libre](https://www.parabola.nu/).
 
-## Packages
-
-* compton - composite manager
-* feh - image viewer
-* htop - system monitor
-* i3wm (with i3-gaps) - tiling window manager
-* iceweasel - web browser
-* keybase - private git repositories
-* mpc - cli music client
-* mpd - music server
-* mps-youtube - youtube player
-* mpv - media player
-* ncmpcpp - mpc front-end
-* neomutt - mail client
-* neovim - text editor
-* networkmanager - network connection manager
-* newsboat - rss reader
-* papis - bibliography management
-* polybar - bar
-* ranger - file browser
-* rofi - multi-purpose menu
-* tmux - terminal multiplexer
-* todotxt - todo list
-* urxvt - terminal emulator
-* w3m - cli web browser
-* zathura - pdf viewer
-* zsh - shell
-
 ## Installation
 
 The easiest way to install the configuration for a specific package is as follows:
