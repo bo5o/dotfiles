@@ -1,0 +1,6 @@
+" vim: set ft=vim:
+set clipboard=unnamedplus
+set expandtab
+set smartcase
+let g:mapleader = ","
+nmap ,w :w!<cr>
