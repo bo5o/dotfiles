@@ -26,6 +26,7 @@ plugins=(
     extract
     tmuxinator
     z
+    fd
     fzf
     zsh-completions
 )
