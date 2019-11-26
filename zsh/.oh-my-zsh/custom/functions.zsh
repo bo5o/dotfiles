@@ -61,31 +61,6 @@ www() {
 	fi
 }
 
-a() {
-	if (( $# == 0 )); then
-		cat <<-'EOF' >&2
-			Usage: a [project]
-
-		EOF
-        echo "Projects:\n"
-        echo "`ls $PROJECT_HOME`"
-    else
-        DIR="$PROJECT_HOME/$1"
-        if [ -d "$DIR" ]; then
-            cd $DIR
-            if [ -f "$DIR/activate" ]; then
-                if (( $# == 1)); then
-                    source activate venv
-                elif (( $# == 2)); then
-                    source activate $2
-                fi
-            fi
-        else
-            echo "Project does not exist."
-        fi
-    fi
-}
-
 pycl() {
     find . -type f -name "*.py[co]" -delete -or -type d -name "__pycache__" -delete
 }
