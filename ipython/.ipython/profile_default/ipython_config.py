@@ -1,10 +1,18 @@
 # Configuration file for ipython.
 import configparser
+import importlib
 import os
 from pathlib import Path
 
 from IPython.terminal.prompts import Prompts, Token
 from pygments.styles import get_style_by_name
+
+
+def exists(module):
+    """Check if a module exists in the current environment."""
+    spec = importlib.util.find_spec(module)
+    return spec is not None
+
 
 # ------------------------------------------------------------------------------
 # InteractiveShellApp(Configurable) configuration
@@ -38,7 +46,11 @@ from pygments.styles import get_style_by_name
 c.InteractiveShellApp.exec_lines = ["%autoreload 2"]
 
 ## A list of dotted module names of IPython extensions to load.
-c.InteractiveShellApp.extensions = ["autoreload"]
+extensions = ["autoreload"]
+if exists("dotenv"):
+    extensions.append("dotenv")
+
+c.InteractiveShellApp.extensions = extensions
 
 ## dotted module name of an IPython extension to load.
 # c.InteractiveShellApp.extra_extension = ''
