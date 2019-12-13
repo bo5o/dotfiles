@@ -1092,7 +1092,8 @@ let g:vimwiki_folding = ''
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = ['.root']
+let g:ctrlp_root_markers = ['.root', '.venv']
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 nnoremap <leader>/ :CtrlPLine<space>%<enter>
 nnoremap <leader>ta :CtrlPBufTagAll<enter>
 
@@ -1159,12 +1160,13 @@ let g:indentLine_fileTypeExclude = ['vimwiki', 'markdown']
 let g:indentLine_setConceal = 0
 let g:indentLine_char = '┊'
 
-"" leader f
+"" leaderF
 " popup mode
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
-let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
-let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+let g:Lf_IgnoreCurrentBufferName = 1
+let g:Lf_StlSeparator = { 'left': '', 'right': '' }
+let g:Lf_RootMarkers = ['.root', '.git', '.hg', '.svn', '.venv']
 
 let g:Lf_ShortcutF = "<leader>ff"
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
@@ -1172,7 +1174,155 @@ noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
-"" highglight yank
+let g:Lf_CommandMap = {
+            \ '<C-K>': ['<Up>'],
+            \ '<C-J>': ['<Down>'],
+            \ '<C-]>': ['<C-\>']
+            \}
+
+" gruvbox colors for leaderF
+let g:Lf_PopupPalette = {
+            \  'dark': {
+            \      'Lf_hl_popup_window': {
+            \                'gui': 'NONE',
+            \                'font': 'NONE',
+            \                'guifg': '#ebdbb2',
+            \                'guibg': '#32302f',
+            \                'cterm': 'NONE',
+            \                'ctermfg': '255',
+            \                'ctermbg': '237'
+            \              },
+            \      'Lf_hl_cursorline': {
+            \                'gui': 'NONE',
+            \                'font': 'NONE',
+            \                'guifg': 'NONE',
+            \                'guibg': '#504945',
+            \                'cterm': 'NONE',
+            \                'ctermfg': 'NONE',
+            \                'ctermbg': 'NONE'
+            \              },
+            \      'Lf_hl_match': {
+            \                'gui': 'bold',
+            \                'font': 'NONE',
+            \                'guifg': '#83a598',
+            \                'guibg': 'NONE',
+            \                'cterm': 'bold',
+            \                'ctermfg': '14',
+            \                'ctermbg': 'NONE'
+            \              },
+            \      'Lf_hl_popup_inputText': {
+            \                'gui': 'NONE',
+            \                'font': 'NONE',
+            \                'guifg': '#ebdbb2',
+            \                'guibg': '#32302f',
+            \                'cterm': 'NONE',
+            \                'ctermfg': 'NONE',
+            \                'ctermbg': 'NONE'
+            \              },
+            \      'Lf_hl_popup_blank': {
+            \                'gui': 'NONE',
+            \                'font': 'NONE',
+            \                'guifg': 'NONE',
+            \                'guibg': '#3c3836',
+            \                'cterm': 'NONE',
+            \                'ctermfg': 'NONE',
+            \                'ctermbg': '239'
+            \              },
+            \      'Lf_hl_popup_cwd': {
+            \                'gui': 'NONE',
+            \                'font': 'NONE',
+            \                'guifg': '#a89984',
+            \                'guibg': '#3c3836',
+            \                'cterm': 'NONE',
+            \                'ctermfg': 'NONE',
+            \                'ctermbg': 'NONE'
+            \              },
+            \      'Lf_hl_popup_total': {
+            \                'gui': 'NONE',
+            \                'font': 'NONE',
+            \                'guifg': '#a89984',
+            \                'guibg': '#504945',
+            \                'cterm': 'NONE',
+            \                'ctermfg': 'NONE',
+            \                'ctermbg': 'NONE'
+            \              },
+            \      'Lf_hl_popup_lineInfo': {
+            \                'gui': 'NONE',
+            \                'font': 'NONE',
+            \                'guifg': '#a89984',
+            \                'guibg': '#3c3836',
+            \                'cterm': 'NONE',
+            \                'ctermfg': 'NONE',
+            \                'ctermbg': 'NONE'
+            \              },
+            \      'Lf_hl_popup_normalMode': {
+            \                'gui': 'bold',
+            \                'font': 'NONE',
+            \                'guifg': '#282828',
+            \                'guibg': '#a89984',
+            \                'cterm': 'bold',
+            \                'ctermfg': 'NONE',
+            \                'ctermbg': 'NONE'
+            \              },
+            \      'Lf_hl_popup_inputMode': {
+            \                'gui': 'bold',
+            \                'font': 'NONE',
+            \                'guifg': '#282828',
+            \                'guibg': '#83a598',
+            \                'cterm': 'bold',
+            \                'ctermfg': 'NONE',
+            \                'ctermbg': 'NONE'
+            \              },
+            \      'Lf_hl_popup_fullPathMode': {
+            \                'gui': 'NONE',
+            \                'font': 'NONE',
+            \                'guifg': '#a89984',
+            \                'guibg': '#504945',
+            \                'cterm': 'NONE',
+            \                'ctermfg': 'NONE',
+            \                'ctermbg': 'NONE'
+            \              },
+            \      'Lf_hl_popup_category': {
+            \                'gui': 'NONE',
+            \                'font': 'NONE',
+            \                'guifg': '#a89984',
+            \                'guibg': '#504945',
+            \                'cterm': 'NONE',
+            \                'ctermfg': 'NONE',
+            \                'ctermbg': 'NONE'
+            \              },
+            \      'Lf_hl_popup_fuzzyMode': {
+            \                'gui': 'NONE',
+            \                'font': 'NONE',
+            \                'guifg': '#a89984',
+            \                'guibg': '#504945',
+            \                'cterm': 'NONE',
+            \                'ctermfg': 'NONE',
+            \                'ctermbg': 'NONE'
+            \              },
+            \      'Lf_hl_popup_regexMode': {
+            \                'gui': 'NONE',
+            \                'font': 'NONE',
+            \                'guifg': '#a89984',
+            \                'guibg': '#504945',
+            \                'cterm': 'NONE',
+            \                'ctermfg': 'NONE',
+            \                'ctermbg': 'NONE'
+            \              },
+            \      'Lf_hl_popup_nameOnlyMode': {
+            \                'gui': 'NONE',
+            \                'font': 'NONE',
+            \                'guifg': '#a89984',
+            \                'guibg': '#504945',
+            \                'cterm': 'NONE',
+            \                'ctermfg': 'NONE',
+            \                'ctermbg': 'NONE'
+            \              },
+            \      }
+            \  }
+highlight def link Lf_hl_selection Search
+
+"" highglightyank
 let g:highlightedyank_highlight_duration = 300
 
 "" semshi
@@ -1190,10 +1340,10 @@ let g:ale_set_quickfix = 1
 let g:ale_echo_msg_format = '[%linter%] %code%: %s'
 
 let g:ale_pattern_options = {
-\ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
-\ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-\ 'crontab$': {'ale_linters': [], 'ale_fixers': ['trim_whitespace']},
-\}
+            \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+            \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+            \ 'crontab$': {'ale_linters': [], 'ale_fixers': ['trim_whitespace']},
+            \}
 
 nmap <leader>ad <Plug>(ale_detail)
 
