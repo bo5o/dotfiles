@@ -381,6 +381,18 @@ vnoremap <Space><Space> <Esc>:call<space>search('<+.*+>')<CR>"_c/+>/e<CR>
 nnoremap <Space><Space> :call<space>search('<+.*+>')<CR>"_c/+>/e<CR>
 inoremap ;gui <++>
 
+" Turn the word under cursor to upper case
+inoremap <silent> <c-u> <Esc>viwUea
+
+" Toggle search highlight, see https://goo.gl/3H85hh
+nnoremap <silent><expr> <Leader>hl (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
+
+" Yank from current cursor position to the end of the line
+nnoremap Y y$
+
+" Jump to matching pairs easily in normal mode
+nnoremap <Tab> %
+
 " preview latex equations
 " vnoremap <leader>m y:!python<space>~/bin/preview_math.py<space>'<C-r>"'<enter>
 
