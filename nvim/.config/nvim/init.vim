@@ -13,6 +13,7 @@ Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detection in markdown
 Plug 'ncm2/float-preview.nvim'        " nvim 0.4 floating window support
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
 Plug 'yggdroot/indentline'            " indentation guides
+Plug 'yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'davidhalter/jedi-vim'           " python jedi
 Plug 'vimwiki/vimwiki'                " wiki
 Plug 'dense-analysis/ale'             " asynchronous linting engine
@@ -57,6 +58,7 @@ Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
 Plug 'ekalinin/Dockerfile.vim'        " Dockerfile syntax highlighting
 Plug 'ryanoasis/vim-devicons'         " fancy glyphs
 Plug 'morhetz/gruvbox'                " colorscheme
+Plug 'lifepillar/vim-gruvbox8'        " colorscheme
 Plug '5long/pytest-vim-compiler'      " pytest output compiler
 Plug 'tmux-plugins/vim-tmux'          " syntax hightlighting etc for .tmux.conf
 Plug 'raimon49/requirements.txt.vim'  " requirements.txt syntax highlighting
@@ -66,6 +68,8 @@ Plug 'mhinz/vim-grepper'              " integration of my favorite grepper
 Plug 'majutsushi/tagbar'              " easy way to browse tags
 Plug 'janko/vim-test'                 " convenient test invocation
 Plug 'cbows/pytest-vim-compiler'      " pytest output compiler
+Plug 'machakann/vim-highlightedyank'  " Highlight yanked region
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' } " semantic syntax highlighting for python
 
 " Initialize plugin system
 call plug#end()
@@ -202,12 +206,40 @@ syntax enable
 set synmaxcol=176
 
 " colorscheme specific settings
-set background=dark
-let g:gruvbox_invert_signs=0
-let g:gitgutter_override_sign_column_highlight=1
+let g:gruvbox_italics = 0
+let g:gruvbox_italicize_strings = 0
+let g:gruvbox_filetype_hi_groups = 0
+let g:gruvbox_plugin_hi_groups = 0
+let g:gruvbox_invert_signs = 0
+let g:gitgutter_override_sign_column_highlight = 1
 
-colorscheme gruvbox
+" Custom highlighting
+function! MyHighlights() abort
+    " Try to use more subdued colors in vimdiff mode
+    highlight DiffAdd cterm=bold ctermfg=142 ctermbg=235 gui=NONE guifg=#b8bb26 guibg=#3c3c25
+    highlight DiffChange cterm=bold ctermfg=108 ctermbg=235 gui=NONE guifg=#8ec07c guibg=#383228
+    highlight DiffText cterm=NONE ctermfg=214 ctermbg=235 gui=NONE guifg=#fabd2f guibg=#483D28
+    highlight DiffDelete cterm=bold ctermfg=167 ctermbg=235 gui=NONE guifg=#fb4934 guibg=#372827
+
+    " Use Gruvbox colors for python semshi semantic highlighter
+    hi semshiGlobal          ctermfg=167 guifg=#fb4934
+    hi semshiImported        ctermfg=214 guifg=#fabd2f cterm=bold gui=bold
+    hi semshiParameter       ctermfg=142  guifg=#98971a
+    hi semshiParameterUnused ctermfg=106 guifg=#665c54
+    hi semshiBuiltin         ctermfg=208 guifg=#fe8019
+    hi semshiAttribute       ctermfg=108  guifg=fg
+    hi semshiSelf            ctermfg=109 guifg=#85a598
+    hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
+endfunction
+
+augroup MyColors
+    autocmd!
+    autocmd ColorScheme * call MyHighlights()
+augroup END
+
 set termguicolors
+set background=dark
+colorscheme gruvbox8
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -1114,6 +1146,26 @@ autocmd FileType markdown nnoremap <localleader>lt :Toc<Enter>
 let g:indentLine_fileTypeExclude = ['vimwiki', 'markdown']
 let g:indentLine_setConceal = 0
 let g:indentLine_char = '┊'
+
+"" leader f
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+
+"" highglight yank
+let g:highlightedyank_highlight_duration = 300
+
+"" semshi
+let g:semshi#mark_selected_nodes=0
+let g:semshi#error_sign=v:false
 
 "" ale
 let g:airline#extensions#ale#enabled = 1
