@@ -230,7 +230,7 @@ function! MyHighlights() abort
     hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
 endfunction
 
-augroup MyColors
+augroup my_colors
     autocmd!
     autocmd ColorScheme * call MyHighlights()
 augroup END
@@ -271,21 +271,17 @@ set smartindent
 set wrap " wrap lines
 
 " Python
-autocmd FileType python setlocal foldmethod=indent
-autocmd FileType python setlocal tw=88
-
-" tabstop and shiftwidth for markup languages
-autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal tabstop=2
-autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal shiftwidth=2
-
-" markdown
-autocmd Filetype markdown setlocal tw=80
-
-" gitcommit
-autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
-
-" requirements
-autocmd FileType requirements setlocal commentstring=#\ %s
+augroup filetype_settings
+    autocmd!
+    autocmd FileType python setlocal foldmethod=indent
+    autocmd FileType python setlocal tw=88
+    autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal tabstop=2
+    autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal shiftwidth=2
+    autocmd Filetype markdown setlocal tw=80
+    autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
+    autocmd FileType requirements setlocal commentstring=#\ %s
+    autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -303,7 +299,10 @@ map <leader>ba :bufdo bd<cr>
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Return to last edit position when opening files (You want this!)
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+augroup return_to_last_position
+    autocmd!
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+augroup END
 
 " go back to normal mode
 inoremap jk <ESC>
@@ -395,82 +394,101 @@ nnoremap <Tab> %
 " vnoremap <leader>m y:!python<space>~/bin/preview_math.py<space>'<C-r>"'<enter>
 
 " bibtex
-autocmd FileType bib inoremap <buffer> ;a @article{<Enter>author<Space>=<Space>"<++>",<Enter>year<Space>=<Space>"<++>",<Enter>title<Space>=<Space>"<++>",<Enter>journaltitle<Space>=<Space>"<++>",<Enter>volume<Space>=<Space>"<++>",<Enter>pages<Space>=<Space>"<++>",<Enter>}<Enter><backspace><++><Esc>8kA,<Esc>i
-autocmd FileType bib inoremap <buffer> ;b @book{<Enter>author<Space>=<Space>"<++>",<Enter>year<Space>=<Space>"<++>",<Enter>title<Space>=<Space>"<++>",<Enter>publisher<Space>=<Space>"<++>",<Enter>}<Enter><backspace><++><Esc>6kA,<Esc>i
-autocmd FileType bib inoremap <buffer> ;c @incollection{<Enter>author<Space>=<Space>"<++>",<Enter>title<Space>=<Space>"<++>",<Enter>booktitle<Space>=<Space>"<++>",<Enter>editor<Space>=<Space>"<++>",<Enter>year<Space>=<Space>"<++>",<Enter>publisher<Space>=<Space>"<++>",<Enter>}<Enter><backspace><++><Esc>8kA,<Esc>i
+augroup bibtex_snippets
+    autocmd!
+    autocmd FileType bib inoremap <buffer> ;a @article{<Enter>author<Space>=<Space>"<++>",<Enter>year<Space>=<Space>"<++>",<Enter>title<Space>=<Space>"<++>",<Enter>journaltitle<Space>=<Space>"<++>",<Enter>volume<Space>=<Space>"<++>",<Enter>pages<Space>=<Space>"<++>",<Enter>}<Enter><backspace><++><Esc>8kA,<Esc>i
+    autocmd FileType bib inoremap <buffer> ;b @book{<Enter>author<Space>=<Space>"<++>",<Enter>year<Space>=<Space>"<++>",<Enter>title<Space>=<Space>"<++>",<Enter>publisher<Space>=<Space>"<++>",<Enter>}<Enter><backspace><++><Esc>6kA,<Esc>i
+    autocmd FileType bib inoremap <buffer> ;c @incollection{<Enter>author<Space>=<Space>"<++>",<Enter>title<Space>=<Space>"<++>",<Enter>booktitle<Space>=<Space>"<++>",<Enter>editor<Space>=<Space>"<++>",<Enter>year<Space>=<Space>"<++>",<Enter>publisher<Space>=<Space>"<++>",<Enter>}<Enter><backspace><++><Esc>8kA,<Esc>i
+augroup END
 
 " Markdown (soon gonna replace this with quicktex shortcuts)
-autocmd FileType markdown inoremap <buffer> <F5> <esc>:!pandoc<space><c-r>%<space>-o<space>%:r.pdf<space>-f<space>markdown<space>--template<space>eisvogel<space>--listings<space>-V<space>colorlinks<space>--number-sections<space>--toc<enter>a
-autocmd FileType markdown nnoremap <buffer> <F5> :!pandoc<space><c-r>%<space>-o<space>%:r.pdf<space>-f<space>markdown<space>--template<space>eisvogel<space>--listings<space>-V<space>colorlinks<space>--number-sections<space>--toc<enter>
-autocmd Filetype markdown map <buffer> <F5> :!pandoc<space><c-r>%<space>-o<space>%:r.pdf<space>-f<space>markdown<space>--template<space>eisvogel<space>--listings<space>-V<space>colorlinks<space>--number-sections<space>--toc<enter><enter>
-autocmd Filetype markdown map <buffer> <F6> :!zathura<space>%:r.pdf<Enter>
-autocmd Filetype markdown nnoremap <buffer> <F6> :!zathura<space>%:r.pdf<Enter>
-autocmd Filetype markdown inoremap <buffer> <F6> <esc>:!zathura<space>%:r.pdf<Enter>
-autocmd Filetype markdown inoremap <buffer> ;n   ---<Enter><Enter>
-autocmd Filetype markdown inoremap <buffer> ;b   ****<Space><++><Esc>F*hi
-autocmd Filetype markdown inoremap <buffer> ;s   ~~~~<Space><++><Esc>F~hi
-autocmd Filetype markdown inoremap <buffer> ;e   **<Space><++><Esc>F*i
-autocmd Filetype markdown inoremap <buffer> ;h   ====<Space><++><Esc>F=hi
-autocmd Filetype markdown inoremap <buffer> ;i   ![](<++>)<Space><++><Esc>F[a
-autocmd Filetype markdown inoremap <buffer> ;a   [](<++>)<Space><++><Esc>F[a
-autocmd Filetype markdown inoremap <buffer> ;1   #<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap <buffer> ;2   ##<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap <buffer> ;3   ###<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap <buffer> ;l   --------<Enter>
-autocmd Filetype markdown inoremap <buffer> ;bib <Esc>Go<Enter><++><Enter><Enter>#<Space>References<Enter><Enter>---<Enter>bibliography:<Space><c-r>=$HOME<Enter>/latex/.bibfiles/<Enter>csl:<Space><c-r>=$HOME<Enter>/.config/csl/ieee.csl<Enter>---<Esc>2kA
-autocmd Filetype markdown inoremap <buffer> ;t   \todo{}<Enter><Enter><++><Esc>2k$i
-autocmd Filetype markdown inoremap <buffer> ;y   ---<Enter>title:<Space>""<Enter>author:<Space>[Christian<Space>Bosdorf]<Enter>date:<Space><C-R>=strftime('%Y-%m-%d')<CR><Enter>...<Esc>3k$i
-autocmd FileType markdown inoremap <buffer> ;;e  \begin{equation}<Enter>\end{equation}<Enter><++><Esc>kko
+augroup markdown_snippets
+    autocmd!
+    autocmd FileType markdown inoremap <buffer> <F5> <esc>:!pandoc<space><c-r>%<space>-o<space>%:r.pdf<space>-f<space>markdown<space>--template<space>eisvogel<space>--listings<space>-V<space>colorlinks<space>--number-sections<space>--toc<enter>a
+    autocmd FileType markdown nnoremap <buffer> <F5> :!pandoc<space><c-r>%<space>-o<space>%:r.pdf<space>-f<space>markdown<space>--template<space>eisvogel<space>--listings<space>-V<space>colorlinks<space>--number-sections<space>--toc<enter>
+    autocmd Filetype markdown map <buffer> <F5> :!pandoc<space><c-r>%<space>-o<space>%:r.pdf<space>-f<space>markdown<space>--template<space>eisvogel<space>--listings<space>-V<space>colorlinks<space>--number-sections<space>--toc<enter><enter>
+    autocmd Filetype markdown map <buffer> <F6> :!zathura<space>%:r.pdf<Enter>
+    autocmd Filetype markdown nnoremap <buffer> <F6> :!zathura<space>%:r.pdf<Enter>
+    autocmd Filetype markdown inoremap <buffer> <F6> <esc>:!zathura<space>%:r.pdf<Enter>
+    autocmd Filetype markdown inoremap <buffer> ;n   ---<Enter><Enter>
+    autocmd Filetype markdown inoremap <buffer> ;b   ****<Space><++><Esc>F*hi
+    autocmd Filetype markdown inoremap <buffer> ;s   ~~~~<Space><++><Esc>F~hi
+    autocmd Filetype markdown inoremap <buffer> ;e   **<Space><++><Esc>F*i
+    autocmd Filetype markdown inoremap <buffer> ;h   ====<Space><++><Esc>F=hi
+    autocmd Filetype markdown inoremap <buffer> ;i   ![](<++>)<Space><++><Esc>F[a
+    autocmd Filetype markdown inoremap <buffer> ;a   [](<++>)<Space><++><Esc>F[a
+    autocmd Filetype markdown inoremap <buffer> ;1   #<Space><Enter><++><Esc>kA
+    autocmd Filetype markdown inoremap <buffer> ;2   ##<Space><Enter><++><Esc>kA
+    autocmd Filetype markdown inoremap <buffer> ;3   ###<Space><Enter><++><Esc>kA
+    autocmd Filetype markdown inoremap <buffer> ;l   --------<Enter>
+    autocmd Filetype markdown inoremap <buffer> ;bib <Esc>Go<Enter><++><Enter><Enter>#<Space>References<Enter><Enter>---<Enter>bibliography:<Space><c-r>=$HOME<Enter>/latex/.bibfiles/<Enter>csl:<Space><c-r>=$HOME<Enter>/.config/csl/ieee.csl<Enter>---<Esc>2kA
+    autocmd Filetype markdown inoremap <buffer> ;t   \todo{}<Enter><Enter><++><Esc>2k$i
+    autocmd Filetype markdown inoremap <buffer> ;y   ---<Enter>title:<Space>""<Enter>author:<Space>[Christian<Space>Bosdorf]<Enter>date:<Space><C-R>=strftime('%Y-%m-%d')<CR><Enter>...<Esc>3k$i
+    autocmd FileType markdown inoremap <buffer> ;;e  \begin{equation}<Enter>\end{equation}<Enter><++><Esc>kko
+augroup END
 
 " Latex
-autocmd FileType tex inoremap <buffer> ;fig   \begin{figure}[ht]<Enter>\centering<Enter>\includegraphics[width=0.8\linewidth]{images/}<Enter>\caption{<++>}\label{fig:<++>}<Enter>\end{figure}<Enter><Enter><++><Esc>4kf}i<C-x><C-f>
-autocmd FileType tex inoremap <buffer> ;tikz  \begin{figure}[ht]<Enter>\centering<Enter>\input{tikz/}<Enter>\caption{<++>}\label{fig:<++>}<Enter>\end{figure}<Enter><Enter><++><Esc>4kf}i<C-x><C-f>
-autocmd FileType tex inoremap <buffer> ;plot  \begin{figure}[ht]<Enter>\centering<Enter>\input{plots/}<Enter>\caption{<++>}\label{fig:<++>}<Enter>\end{figure}<Enter><Enter><++><Esc>4kf}i<C-x><C-f>
-autocmd FileType tex inoremap <buffer> ;gle   \newglossaryentry{}<enter>{%<enter>name={<++>},<enter>description={<++>}<enter>}<enter><enter><++><Esc>6kf}i
-autocmd FileType tex inoremap <buffer> ;sym   \newglossaryentry{sym:}<enter>{%<enter>type=symbols,<enter>name={\ensuremath{<++>}},<enter>description={<++>},<enter>symbol=\si{<++>},<enter>sort={<++>},<enter>}<enter><enter><++><Esc>9kf}i
-autocmd FileType tex inoremap <buffer> ;not   \newglossaryentry{not:}<enter>{%<enter>type=notation,<enter>name={<++>},<enter>description={<++>},<enter>sort={<++>},<enter>}<enter><enter><++><Esc>8kf}i
-autocmd FileType tex inoremap <buffer> ;acr   \newacronym{acr:}{<++>}{<++>}<enter><++><Esc>kf}i
-autocmd FileType tex inoremap <buffer> ;acs   \acrshort{acr:}<space><++><Esc>F}i
-autocmd FileType tex inoremap <buffer> ;gls   \gls{}<space><++><Esc>F}i
-autocmd FileType tex inoremap <buffer> ;Gls   \Gls{}<space><++><Esc>F}i
-autocmd FileType tex inoremap <buffer> ;m     \(\)<++><Esc>F\i
+augroup latex_snippets
+    autocmd!
+    autocmd FileType tex inoremap <buffer> ;fig   \begin{figure}[ht]<Enter>\centering<Enter>\includegraphics[width=0.8\linewidth]{images/}<Enter>\caption{<++>}\label{fig:<++>}<Enter>\end{figure}<Enter><Enter><++><Esc>4kf}i<C-x><C-f>
+    autocmd FileType tex inoremap <buffer> ;tikz  \begin{figure}[ht]<Enter>\centering<Enter>\input{tikz/}<Enter>\caption{<++>}\label{fig:<++>}<Enter>\end{figure}<Enter><Enter><++><Esc>4kf}i<C-x><C-f>
+    autocmd FileType tex inoremap <buffer> ;plot  \begin{figure}[ht]<Enter>\centering<Enter>\input{plots/}<Enter>\caption{<++>}\label{fig:<++>}<Enter>\end{figure}<Enter><Enter><++><Esc>4kf}i<C-x><C-f>
+    autocmd FileType tex inoremap <buffer> ;gle   \newglossaryentry{}<enter>{%<enter>name={<++>},<enter>description={<++>}<enter>}<enter><enter><++><Esc>6kf}i
+    autocmd FileType tex inoremap <buffer> ;sym   \newglossaryentry{sym:}<enter>{%<enter>type=symbols,<enter>name={\ensuremath{<++>}},<enter>description={<++>},<enter>symbol=\si{<++>},<enter>sort={<++>},<enter>}<enter><enter><++><Esc>9kf}i
+    autocmd FileType tex inoremap <buffer> ;not   \newglossaryentry{not:}<enter>{%<enter>type=notation,<enter>name={<++>},<enter>description={<++>},<enter>sort={<++>},<enter>}<enter><enter><++><Esc>8kf}i
+    autocmd FileType tex inoremap <buffer> ;acr   \newacronym{acr:}{<++>}{<++>}<enter><++><Esc>kf}i
+    autocmd FileType tex inoremap <buffer> ;acs   \acrshort{acr:}<space><++><Esc>F}i
+    autocmd FileType tex inoremap <buffer> ;gls   \gls{}<space><++><Esc>F}i
+    autocmd FileType tex inoremap <buffer> ;Gls   \Gls{}<space><++><Esc>F}i
+    autocmd FileType tex inoremap <buffer> ;m     \(\)<++><Esc>F\i
+augroup END
 
 " restructured text
-autocmd Filetype rst inoremap <buffer> ;1   <Esc>YpVr=o
-autocmd Filetype rst inoremap <buffer> ;2   <Esc>YpVr-o
-autocmd Filetype rst inoremap <buffer> ;3   <Esc>YpVr~o
+augroup restructured_text_snippets
+    autocmd!
+    autocmd Filetype rst inoremap <buffer> ;1   <Esc>YpVr=o
+    autocmd Filetype rst inoremap <buffer> ;2   <Esc>YpVr-o
+    autocmd Filetype rst inoremap <buffer> ;3   <Esc>YpVr~o
 
-autocmd Filetype rst inoremap <buffer> ;b   ****<Space><++><Esc>F*hi
-autocmd Filetype rst inoremap <buffer> ;c   ````<Space><++><Esc>F`hi
-autocmd Filetype rst inoremap <buffer> ;e   **<Space><++><Esc>F*i
-autocmd Filetype rst inoremap <buffer> ;i   `<Space><<++>>`__<++><Esc>2F`a
-autocmd Filetype rst inoremap <buffer> ;a   ::`<++><Space><<++>>`__<++><Esc>2F:a
+    autocmd Filetype rst inoremap <buffer> ;b   ****<Space><++><Esc>F*hi
+    autocmd Filetype rst inoremap <buffer> ;c   ````<Space><++><Esc>F`hi
+    autocmd Filetype rst inoremap <buffer> ;e   **<Space><++><Esc>F*i
+    autocmd Filetype rst inoremap <buffer> ;i   `<Space><<++>>`__<++><Esc>2F`a
+    autocmd Filetype rst inoremap <buffer> ;a   ::`<++><Space><<++>>`__<++><Esc>2F:a
 
-autocmd Filetype rst inoremap <buffer> ..c  ..<Space>code::<CR><CR><Tab><++><Esc>2kA<Space>
-autocmd Filetype rst inoremap <buffer> ..i  ..<Space>image::<CR><Tab><++><Esc>kA<Space>
+    autocmd Filetype rst inoremap <buffer> ..c  ..<Space>code::<CR><CR><Tab><++><Esc>2kA<Space>
+    autocmd Filetype rst inoremap <buffer> ..i  ..<Space>image::<CR><Tab><++><Esc>kA<Space>
+augroup END
 
 " tikz
-autocmd FileType tex inoremap <buffer> ;tp    \begin{tikzpicture}[]<enter><++><enter>\end{tikzpicture}<Esc>2kf]i
-autocmd FileType tex inoremap <buffer> ;node  \node[]<space>(<++>)<space>at<space>(<++>)<space>{<++>};<Esc>F]i
-autocmd FileType tex inoremap <buffer> ;draw  \draw[]<space>(<++>)<space><++><space>(<++>);<Esc>F]i
-autocmd FileType tex inoremap <buffer> ;linu  \linunit[]{<++>}{<++>}<Esc>F]i
-autocmd FileType tex inoremap <buffer> ;tanh  \tanhunit[]{<++>}{<++>}<Esc>F]i
-autocmd FileType tex inoremap <buffer> ;sigm  \sigmunit[]{<++>}{<++>}<Esc>F]i
-autocmd FileType tex inoremap <buffer> ;sum   \sumunit[]{<++>}{<++>}<Esc>F]i
-autocmd FileType tex inoremap <buffer> ;isec  \intersec[]{<++>}<Esc>F]i
+augroup tikz_snippets
+    autocmd!
+    autocmd FileType tex inoremap <buffer> ;tp    \begin{tikzpicture}[]<enter><++><enter>\end{tikzpicture}<Esc>2kf]i
+    autocmd FileType tex inoremap <buffer> ;node  \node[]<space>(<++>)<space>at<space>(<++>)<space>{<++>};<Esc>F]i
+    autocmd FileType tex inoremap <buffer> ;draw  \draw[]<space>(<++>)<space><++><space>(<++>);<Esc>F]i
+    autocmd FileType tex inoremap <buffer> ;linu  \linunit[]{<++>}{<++>}<Esc>F]i
+    autocmd FileType tex inoremap <buffer> ;tanh  \tanhunit[]{<++>}{<++>}<Esc>F]i
+    autocmd FileType tex inoremap <buffer> ;sigm  \sigmunit[]{<++>}{<++>}<Esc>F]i
+    autocmd FileType tex inoremap <buffer> ;sum   \sumunit[]{<++>}{<++>}<Esc>F]i
+    autocmd FileType tex inoremap <buffer> ;isec  \intersec[]{<++>}<Esc>F]i
+augroup END
 
-" psql
-au BufRead /tmp/psql.edit.* set syntax=sql
+augroup buffer_settings
+    autocmd!
+    " psql
+    au BufRead /tmp/psql.edit.* set syntax=sql
+    " pass
+    au BufRead */pass.*.txt set noundofile
+    "sphinx
+    autocmd BufRead */services/docs/*.rst set makeprg=make\ -f\ Makefile.docs\ html
+augroup END
 
-" pass
-au BufRead */pass.*.txt set noundofile
-
-" sphinx
-autocmd BufRead */services/docs/*.rst set makeprg=make\ -f\ Makefile.docs\ html
+augroup underline_python_doc_section
+    autocmd!
+    autocmd FileType python inoremap ;- <Esc>Ypviwr-o
+augroup END
 
 " quicktex (or better 'quick_anything')
-autocmd FileType python inoremap ;- <Esc>Ypviwr-o
-
 let g:quicktex_markdown = {
             \' '      : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
             \}
@@ -817,18 +835,18 @@ let g:quicktex_math = {
             \'sinf'   : '\inf ',
             \}
 
-" Mail
-autocmd FileType mail inoremap mfg Mit<space>freundlichen<space>Grüßen<Esc>
-
-" Vimwiki
-" autocmd FileType vimwiki nnoremap <leader>m :s/%20/\\%20/g<enter>/http<enter>yi)u:noh<enter>:!mpv<space>--quiet<space><C-r>*<enter>
-
 " Vim-Anywhere
-autocmd BufRead,BufNewFile /tmp/vim-anywhere* set filetype=txt
+augroup vim_anywhere
+    autocmd!
+    autocmd BufRead,BufNewFile /tmp/vim-anywhere* set filetype=txt
+augroup END
 
 " Make calcurse notes markdown compatible:
-autocmd BufRead,BufNewFile /tmp/calcurse* set filetype=markdown
-autocmd BufRead,BufNewFile ~/.calcurse/notes/* set filetype=markdown
+augroup calcurse
+    autocmd!
+    autocmd BufRead,BufNewFile /tmp/calcurse* set filetype=markdown
+    autocmd BufRead,BufNewFile ~/.calcurse/notes/* set filetype=markdown
+augroup END
 
 " Goyo
 map <F9> :Goyo<CR>
@@ -985,7 +1003,10 @@ endfunction
 let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
 "" nvim completion manager / ncm2
-autocmd BufEnter * call ncm2#enable_for_buffer()
+augroup nvim_completion_manager
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+augroup END
+
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
 " line.
@@ -1151,7 +1172,10 @@ let g:vim_markdown_json_frontmatter = 1
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_folding_disabled = 0
 
-autocmd FileType markdown nnoremap <localleader>lt :Toc<Enter>
+augroup markdown_keys
+    autocmd!
+    autocmd FileType markdown nnoremap <localleader>lt :Toc<Enter>
+augroup END
 
 "" indentline
 let g:indentLine_fileTypeExclude = ['vimwiki', 'markdown']
@@ -1371,8 +1395,12 @@ let g:ale_fixers = {
 "" vim-slime
 let g:slime_target = 'tmux'
 let g:slime_python_ipython = 1
-autocmd FileType python nmap <buffer> <F5> :w<cr>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
-autocmd FileType python imap <buffer> <F5> <C-o>:w<cr><C-o>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
+
+augroup slime_keys
+    autocmd!
+    autocmd FileType python nmap <buffer> <F5> :w<cr>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
+    autocmd FileType python imap <buffer> <F5> <C-o>:w<cr><C-o>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
+augroup END
 
 "" gutentags
 let g:gutentags_exclude_filetypes = ['gitcommit', 'requirements']
