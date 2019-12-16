@@ -493,6 +493,8 @@ let g:quicktex_markdown = {
             \' '      : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
             \}
 
+" vint: -ProhibitUnnecessaryDoubleQuote
+
 let g:quicktex_rst = {
             \' '      : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
         \'Section: cross referencing' : 'COMMENT',
@@ -834,6 +836,8 @@ let g:quicktex_math = {
             \'sup'    : '\sup ',
             \'sinf'   : '\inf ',
             \}
+
+" vint: +ProhibitUnnecessaryDoubleQuote
 
 " Vim-Anywhere
 augroup vim_anywhere
