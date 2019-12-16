@@ -913,7 +913,7 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 "" tagbar
-nnoremap <silent> <F8> :TagbarToggle<CR>
+nnoremap <silent> <leader>ta :TagbarToggle<CR>
 let g:tagbar_sort = 0
 
 "" vim-test
@@ -1125,8 +1125,6 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.root', '.venv']
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-nnoremap <leader>/ :CtrlPLine<space>%<enter>
-nnoremap <leader>ta :CtrlPBufTagAll<enter>
 
 set wildignore+=*.mat,*.pdfpc,*/tmp/*,*.so,*.swp,*.zip,*.aux,*.gz,*.fdb_latexmk,*.fls,
             \*.log,*.pdf,*.glg,*.glo,*.ist,*.bcf,*.bbl,*.blg,*.gls,*.run.xml,*.toc,
