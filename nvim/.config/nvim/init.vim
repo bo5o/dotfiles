@@ -901,7 +901,7 @@ let g:startify_commands = [
             \ ]
 
 "" fugitive
-nnoremap <leader>gst :Gstatus<CR>
+nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit
 nnoremap <leader>gw :Gwrite<CR>
 
@@ -969,11 +969,10 @@ let NERDTreeIgnore=[
 "" grepper
 nnoremap <leader>gg :Grepper -tool git<cr>
 nnoremap <leader>ga :Grepper -tool ag<cr>
-nnoremap <leader>gs :Grepper -tool ag -side<cr>
-nnoremap <leader>*  :Grepper -tool ag -cword -noprompt<cr>
+nnoremap <leader>gr :Grepper -tool rg<cr>
 
 let g:grepper = {}
-let g:grepper.tools = ['git', 'ag', 'grep']
+let g:grepper.tools = ['git', 'ag', 'grep', 'rg']
 let g:grepper.open = 1
 let g:grepper.jump = 1
 let g:grepper.dir = 'repo,file'
