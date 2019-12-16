@@ -84,8 +84,6 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
-
 " Sets how many lines of history VIM has to remember
 set history=500
 
