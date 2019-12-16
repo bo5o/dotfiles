@@ -1,3 +1,6 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 ""Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'            " nerd tree
@@ -238,9 +241,6 @@ augroup END
 set termguicolors
 set background=dark
 colorscheme gruvbox8
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
