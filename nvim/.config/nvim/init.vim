@@ -1236,7 +1236,7 @@ let g:Lf_PopupPalette = {
             \                'gui': 'NONE',
             \                'font': 'NONE',
             \                'guifg': 'NONE',
-            \                'guibg': '#504945',
+            \                'guibg': '#3c3836',
             \                'cterm': 'NONE',
             \                'ctermfg': 'NONE',
             \                'ctermbg': 'NONE'
