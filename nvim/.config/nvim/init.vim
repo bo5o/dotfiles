@@ -972,11 +972,17 @@ nnoremap <leader>ga :Grepper -tool ag<cr>
 nnoremap <leader>gr :Grepper -tool rg<cr>
 
 let g:grepper = {}
-let g:grepper.tools = ['git', 'ag', 'grep', 'rg']
+let g:grepper.tools = ['git', 'ag', 'rg']
 let g:grepper.open = 1
-let g:grepper.jump = 1
+let g:grepper.jump = 0
 let g:grepper.dir = 'repo,file'
 let g:grepper.quickfix = 0
+
+let g:grepper.rg = {
+            \ 'escape': '\^$.*+?()[]{}|',
+            \ 'grepformat': '%f:%l:%c:%m,%f',
+            \ 'grepprg': 'rg -H --no-heading --hidden -g=!.git -M=150 --max-columns-preview -S --vimgrep'
+            \}
 
 command! Todo Grepper -noprompt -tool git -query -E '(TODO|FIXME|XXX):'
 
@@ -1206,10 +1212,12 @@ noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 let g:Lf_RgConfig = [
-        \ '--max-columns=150',
-        \ '--glob=!git/*',
-        \ '--hidden'
-    \ ]
+            \ '--max-columns=150',
+            \ '--max-columns-preview',
+            \ '--ignore-case',
+            \ '--hidden',
+            \ '--glob=!.git'
+            \ ]
 
 noremap <leader>8 :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 noremap <leader>* :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
