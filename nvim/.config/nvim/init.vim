@@ -103,8 +103,8 @@ set updatetime=100
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = ','
+let g:mapleader = ','
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -120,7 +120,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=3
+set scrolloff=3
 
 " Turn on the WiLd menu
 set wildmode=longest,list,full
@@ -139,7 +139,7 @@ set cursorline
 set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
-set hid
+set hidden
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -173,13 +173,13 @@ set foldlevelstart=99
 " Show matching brackets when text indicator is over them
 set showmatch
 " How many tenths of a second to blink when matching brackets
-set mat=2
+set matchtime=2
 
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
+set timeoutlen=500
 
 " More natural split opening
 set splitbelow
@@ -247,7 +247,7 @@ set encoding=utf8
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 set undodir=~/.config/nvim/undodir
@@ -266,9 +266,9 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
+set autoindent
+set smartindent
+set wrap " wrap lines
 
 " Python
 autocmd FileType python setlocal foldmethod=indent
@@ -478,73 +478,73 @@ let g:quicktex_markdown = {
 let g:quicktex_rst = {
             \' '      : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
         \'Section: cross referencing' : 'COMMENT',
-            \':mod'   : ":mod:`<+++>` <++>",
-            \':class' : ":class:`<+++>` <++>",
-            \':meth'   : ":meth:`<+++>` <++>",
-            \':func'   : ":func:`<+++>` <++>",
-            \':math'   : ":math:`<+++>` <++>",
-            \':data'   : ":data:`<+++>` <++>",
-            \':const'   : ":const:`<+++>` <++>",
-            \':attr'   : ":attr:`<+++>` <++>",
-            \':exc'   : ":exc:`<+++>` <++>",
-            \':obj'   : ":obj:`<+++>` <++>",
-            \':program'   : ":program:`<+++>` <++>",
-            \':ref'   : ":ref:`<+++>` <++>",
-            \':doc'   : ":doc:`<+++>` <++>",
-            \':download'   : ":download:`<+++>` <++>",
-            \':file'   : ":file:`<+++>` <++>",
+            \':mod'   : ':mod:`<+++>` <++>',
+            \':class' : ':class:`<+++>` <++>',
+            \':meth'   : ':meth:`<+++>` <++>',
+            \':func'   : ':func:`<+++>` <++>',
+            \':math'   : ':math:`<+++>` <++>',
+            \':data'   : ':data:`<+++>` <++>',
+            \':const'   : ':const:`<+++>` <++>',
+            \':attr'   : ':attr:`<+++>` <++>',
+            \':exc'   : ':exc:`<+++>` <++>',
+            \':obj'   : ':obj:`<+++>` <++>',
+            \':program'   : ':program:`<+++>` <++>',
+            \':ref'   : ':ref:`<+++>` <++>',
+            \':doc'   : ':doc:`<+++>` <++>',
+            \':download'   : ':download:`<+++>` <++>',
+            \':file'   : ':file:`<+++>` <++>',
             \}
 
 "" Python
 let g:quicktex_python = {
             \' '      : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
         \'Section: docstrings' : 'COMMENT',
-            \';doc'   : "\""."\""."\""."<+++>"."\""."\""."\"",
-            \';arg'   : "<+++> : <++>",
-            \';tod'   : "# TODO: <+++>",
-            \';todo'  : "# TODO: <+++>",
-            \';par'   : "Parameters\<CR>----------\<CR>",
-            \';params': "Parameters\<CR>----------\<CR>",
-            \';args'  : "Parameters\<CR>----------\<CR>",
-            \';ret'   : "Returns\<CR>-------\<CR>",
-            \';rai'   : "Raises\<CR>------\<CR>",
-            \';err'   : "Raises\<CR>------\<CR>",
-            \';yie'   : "Yields\<CR>------\<CR>",
-            \';att'   : "Attributes\<CR>----------\<CR>",
-            \';catt'  : "Class Attributes\<CR>----------------\<CR>",
-            \';exa'   : "Examples\<CR>--------\<CR>",
-            \';not'   : "Notes\<CR>-----\<CR>",
-            \';see'   : "See Also\<CR>--------\<CR>",
-            \';key'   : "Keyword\<CR>-------\<CR>",
-            \';Ref'   : "References\<CR>----------\<CR>",
-            \';war'   : "Warning\<CR>-------\<CR>",
-            \';oth'   : "Other\<CR>-----\<CR>",
-            \';met'   : "Methods\<CR>-------\<CR>",
-            \';exp'   : "Examples\<CR>--------\<CR>",
-            \';obj'   : ":obj:`<+++>`<++>",
+            \';doc'   : '\""."\""."\""."<+++>"."\""."\""."\"',
+            \';arg'   : '<+++> : <++>',
+            \';tod'   : '# TODO: <+++>',
+            \';todo'  : '# TODO: <+++>',
+            \';par'   : 'Parameters\<CR>----------\<CR>',
+            \';params': 'Parameters\<CR>----------\<CR>',
+            \';args'  : 'Parameters\<CR>----------\<CR>',
+            \';ret'   : 'Returns\<CR>-------\<CR>',
+            \';rai'   : 'Raises\<CR>------\<CR>',
+            \';err'   : 'Raises\<CR>------\<CR>',
+            \';yie'   : 'Yields\<CR>------\<CR>',
+            \';att'   : 'Attributes\<CR>----------\<CR>',
+            \';catt'  : 'Class Attributes\<CR>----------------\<CR>',
+            \';exa'   : 'Examples\<CR>--------\<CR>',
+            \';not'   : 'Notes\<CR>-----\<CR>',
+            \';see'   : 'See Also\<CR>--------\<CR>',
+            \';key'   : 'Keyword\<CR>-------\<CR>',
+            \';Ref'   : 'References\<CR>----------\<CR>',
+            \';war'   : 'Warning\<CR>-------\<CR>',
+            \';oth'   : 'Other\<CR>-----\<CR>',
+            \';met'   : 'Methods\<CR>-------\<CR>',
+            \';exp'   : 'Examples\<CR>--------\<CR>',
+            \';obj'   : ':obj:`<+++>`<++>',
         \'Section: cross referencing' : 'COMMENT',
-            \';ref'   : ":ref:`<+++>`<++>",
+            \';ref'   : ':ref:`<+++>`<++>',
         \'Section: classes and functions' : 'COMMENT',
-            \';cls'   : "class <+++>(<++>):\<CR><++>",
-            \';class' : "class <+++>(<++>):\<CR><++>",
-            \';defi'  : "def __init__(self, <+++>):\<CR><++>",
-            \';defc'  : "@classmethod\<CR>def <+++>(cls, <++>):\<CR><++>",
-            \';defs'  : "@staticmethod\<CR>def <+++>(<++>):\<CR><++>",
-            \';defm'  : "def <+++>(self, <++>):\<CR><++>",
-            \';defd'  : "def __<+++>__(self, <++>):\<CR><++>",
-            \';def'  : "def <+++>(<++>):\<CR><++>",
-            \';fun'   : "def <+++>(<++>):\<CR><++>",
-            \';get'  : "@property\<CR>def <+++>(self):\<CR><++>",
-            \';prop'  : "@property\<CR>def <+++>(self):\<CR><++>",
-            \';set'  : "@<+++>.setter\<CR>def <++>(self, value):\<CR><++>",
+            \';cls'   : 'class <+++>(<++>):\<CR><++>',
+            \';class' : 'class <+++>(<++>):\<CR><++>',
+            \';defi'  : 'def __init__(self, <+++>):\<CR><++>',
+            \';defc'  : '@classmethod\<CR>def <+++>(cls, <++>):\<CR><++>',
+            \';defs'  : '@staticmethod\<CR>def <+++>(<++>):\<CR><++>',
+            \';defm'  : 'def <+++>(self, <++>):\<CR><++>',
+            \';defd'  : 'def __<+++>__(self, <++>):\<CR><++>',
+            \';def'  : 'def <+++>(<++>):\<CR><++>',
+            \';fun'   : 'def <+++>(<++>):\<CR><++>',
+            \';get'  : '@property\<CR>def <+++>(self):\<CR><++>',
+            \';prop'  : '@property\<CR>def <+++>(self):\<CR><++>',
+            \';set'  : '@<+++>.setter\<CR>def <++>(self, value):\<CR><++>',
         \'Section: keywords' : 'COMMENT',
-            \';im'    : "import <+++>",
-            \';bp'    : "breakpoint()<+++>",
+            \';im'    : 'import <+++>',
+            \';bp'    : 'breakpoint()<+++>',
         \'Section: general' : 'COMMENT',
-            \';pd'    : "import pandas as pd",
-            \';plt'    : "import matplotlib.pyplot as plt",
-            \';np'    : "import numpy as np",
-            \';#'    : " # ",
+            \';pd'    : 'import pandas as pd',
+            \';plt'    : 'import matplotlib.pyplot as plt',
+            \';np'    : 'import numpy as np',
+            \';#'    : ' # ',
             \}
 
 "" LaTeX
@@ -552,32 +552,32 @@ let g:quicktex_tex = {
             \' '   : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
             \'m'   : '\( <+++> \) <++>',
         \'Section: Environments' : 'COMMENT',
-            \'env':  "\<ESC>Bvedi\\begin{\<ESC>pa}\<CR><+++>\<CR>\\end{\<ESC>pa}",
-            \'ol':   "\\begin{enumerate}\<CR>\\item <+++>\<CR>\\end{enumerate}",
-            \'ul':   "\\begin{itemize}\<CR>\\item <+++>\<CR>\\end{itemize}",
-            \'eqn':  "\\begin{equation*}\<CR><+++>\<CR>\\end{equation*}\<CR><++>",
-            \'Eqn':  "\\begin{equation}\\label{<+++>}\<CR><++>\<CR>\\end{equation}\<CR><++>",
-            \'frm':  "\\begin{frame}\<CR>\\frametitle{<+++>}\<CR><++>\<CR>\\end{frame}",
+            \'env':  '\<ESC>Bvedi\\begin{\<ESC>pa}\<CR><+++>\<CR>\\end{\<ESC>pa}',
+            \'ol':   '\\begin{enumerate}\<CR>\\item <+++>\<CR>\\end{enumerate}',
+            \'ul':   '\\begin{itemize}\<CR>\\item <+++>\<CR>\\end{itemize}',
+            \'eqn':  '\\begin{equation*}\<CR><+++>\<CR>\\end{equation*}\<CR><++>',
+            \'Eqn':  '\\begin{equation}\\label{<+++>}\<CR><++>\<CR>\\end{equation}\<CR><++>',
+            \'frm':  '\\begin{frame}\<CR>\\frametitle{<+++>}\<CR><++>\<CR>\\end{frame}',
             \
         \'Section: Other Commands' : 'COMMENT',
             \'itm':     '\item ',
-            \'chap':    "\\chapter{<+++>}\<CR><++>",
-            \'sec':     "\\section{<+++>}\<CR><++>",
-            \'ssec':    "\\subsection{<+++>}\<CR><++>",
-            \'sssec':   "\\subsubsection{<+++>}\<CR><++>",
+            \'chap':    '\\chapter{<+++>}\<CR><++>',
+            \'sec':     '\\section{<+++>}\<CR><++>',
+            \'ssec':    '\\subsection{<+++>}\<CR><++>',
+            \'sssec':   '\\subsubsection{<+++>}\<CR><++>',
             \'para':    '(<+++>) <++>',
-            \'todo':    "\\todo{<+++>}\<CR><++>",
-            \'cmd':    "\<ESC>Bi\\\<ESC>Ea{<+++>}<++>",
+            \'todo':    '\\todo{<+++>}\<CR><++>',
+            \'cmd':    '\<ESC>Bi\\\<ESC>Ea{<+++>}<++>',
             \'texroot': '%! TEX root = .',
             \
         \'Section: Citing and Referencing' : 'COMMENT',
-            \'cref':  "\\cref{<+++>}<++>",
-            \'(cref': "(\\cref{<+++>}<++>",
-            \'Cref':  "\\Cref{<+++>}<++>",
-            \'eqref': "\\eqref{eq:<+++>}<++>",
-            \'ref':   "\\ref{<+++>}<++>",
-            \'cite':  "\<BS>~\\autocite{<+++>}<++>",
-            \'enq':   "\\enquote{<+++>} <++>",
+            \'cref':  '\\cref{<+++>}<++>',
+            \'(cref': '(\\cref{<+++>}<++>',
+            \'Cref':  '\\Cref{<+++>}<++>',
+            \'eqref': '\\eqref{eq:<+++>}<++>',
+            \'ref':   '\\ref{<+++>}<++>',
+            \'cite':  '\<BS>~\\autocite{<+++>}<++>',
+            \'enq':   '\\enquote{<+++>} <++>',
             \
         \'Section: Greek Letters' : 'COMMENT',
             \'alpha'   : '\(\alpha\) ',
@@ -623,11 +623,11 @@ let g:quicktex_tex = {
             \'Psi'     : '\(\Psi\) ',
             \
         \'Section: Text formatting' : 'COMMENT',
-            \'em'     : "\\emph{<+++>} <++>",
-            \'sc'     : "\\textsc{<+++>} <++>",
-            \'tt'     : "\\texttt{<+++>} <++>",
-            \'bf'     : "\\textbf{<+++>} <++>",
-            \';it'     : "\\textit{<+++>} <++>",
+            \'em'     : '\\emph{<+++>} <++>',
+            \'sc'     : '\\textsc{<+++>} <++>',
+            \'tt'     : '\\texttt{<+++>} <++>',
+            \'bf'     : '\\textbf{<+++>} <++>',
+            \';it'     : '\\textit{<+++>} <++>',
             \
             \}
 
@@ -857,7 +857,7 @@ map <leader>st 1z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Local settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call SourceIfExists("~/.config/nvim/local-settings.vim")
+call SourceIfExists('~/.config/nvim/local-settings.vim')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
@@ -894,7 +894,7 @@ nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
 
 function! StartStrategy(cmd)
-    execute "Start -wait=always " . a:cmd
+    execute 'Start -wait=always ' . a:cmd
 endfunction
 
 let g:test#custom_strategies = {'start': function('StartStrategy')}
@@ -982,7 +982,7 @@ function! s:latexSurround()
 endfunction
 
 "" supertab
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
 "" nvim completion manager / ncm2
 autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -1071,14 +1071,14 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 "" UltiSnips
-let g:UltiSnipsExpandTrigger		= "<c-j>"
-let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsExpandTrigger		= '<c-j>'
+let g:UltiSnipsJumpForwardTrigger	= '<c-j>'
+let g:UltiSnipsJumpBackwardTrigger	= '<c-k>'
 let g:UltiSnipsRemoveSelectModeMappings = 0
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit='vertical'
 
 "" switch.vim
-let g:switch_mapping = "-"
+let g:switch_mapping = '-'
 
 "" vimwiki
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
@@ -1166,7 +1166,7 @@ let g:Lf_IgnoreCurrentBufferName = 1
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_RootMarkers = ['.root', '.git', '.hg', '.svn', '.venv']
 
-let g:Lf_ShortcutF = "<leader>ff"
+let g:Lf_ShortcutF = '<leader>ff'
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
@@ -1353,6 +1353,7 @@ let g:ale_linters = {
             \   'yaml': ['yamllint'],
             \   'json': ['jsonlint'],
             \   'sh': ['shellcheck'],
+            \   'vim': ['vint'],
             \}
 
 let g:ale_fixers = {
@@ -1368,7 +1369,7 @@ let g:ale_fixers = {
             \}
 
 "" vim-slime
-let g:slime_target = "tmux"
+let g:slime_target = 'tmux'
 let g:slime_python_ipython = 1
 autocmd FileType python nmap <buffer> <F5> :w<cr>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
 autocmd FileType python imap <buffer> <F5> <C-o>:w<cr><C-o>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
@@ -1391,18 +1392,18 @@ onoremap <silent>ii :<C-u>call IndTxtObj(1)<CR>
 vnoremap <silent>ii <Esc>:call IndTxtObj(1)<CR><Esc>gv
 
 function! IndTxtObj(inner)
-    let curline = line(".")
-    let lastline = line("$")
-    let i = indent(line(".")) - &shiftwidth * (v:count1 - 1)
+    let curline = line('.')
+    let lastline = line('$')
+    let i = indent(line('.')) - &shiftwidth * (v:count1 - 1)
     let i = i < 0 ? 0 : i
-    if getline(".") =~ "^\\s*$"
+    if getline('.') =~ "^\\s*$"
         return
     endif
-    let p = line(".") - 1
+    let p = line('.') - 1
     let nextblank = getline(p) =~ "^\\s*$"
     while p > 0 && (nextblank || indent(p) >= i )
         -
-        let p = line(".") - 1
+        let p = line('.') - 1
         let nextblank = getline(p) =~ "^\\s*$"
     endwhile
     if (!a:inner)
@@ -1410,12 +1411,12 @@ function! IndTxtObj(inner)
     endif
     normal! 0V
     call cursor(curline, 0)
-    let p = line(".") + 1
-    let nextblank = getline(p) =~ "^\\s*$"
+    let p = line('.') + 1
+    let nextblank = getline(p) =~ '^\\s*$'
     while p <= lastline && (nextblank || indent(p) >= i )
         +
-        let p = line(".") + 1
-        let nextblank = getline(p) =~ "^\\s*$"
+        let p = line('.') + 1
+        let nextblank = getline(p) =~ '^\\s*$'
     endwhile
     if (!a:inner)
         +
@@ -1426,8 +1427,8 @@ endfunction
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
+   let l:currentBufNum = bufnr('%')
+   let l:alternateBufNum = bufnr('#')
 
    if buflisted(l:alternateBufNum)
      buffer #
@@ -1435,11 +1436,11 @@ function! <SID>BufcloseCloseIt()
      bnext
    endif
 
-   if bufnr("%") == l:currentBufNum
+   if bufnr('%') == l:currentBufNum
      new
    endif
 
    if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
+     execute('bdelete! '.l:currentBufNum)
    endif
 endfunction
