@@ -1205,6 +1205,15 @@ noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
+let g:Lf_RgConfig = [
+        \ '--max-columns=150',
+        \ '--glob=!git/*',
+        \ '--hidden'
+    \ ]
+
+noremap <leader>8 :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+noremap <leader>* :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
+
 let g:Lf_CommandMap = {
             \ '<C-K>': ['<Up>'],
             \ '<C-J>': ['<Down>'],
