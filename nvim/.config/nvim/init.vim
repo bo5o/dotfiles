@@ -123,7 +123,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
+" Set 3 lines to the cursor - when moving vertically using j/k
 set scrolloff=3
 
 " Turn on the WiLd menu
