@@ -905,6 +905,9 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit
 nnoremap <leader>gw :Gwrite<CR>
 
+"" git messenger
+hi gitmessengerPopupNormal term=None guifg=#ebdbb2 guibg=#32302f ctermfg=None ctermbg=None
+
 "" EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
