@@ -279,7 +279,6 @@ augroup filetype_settings
     autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal tabstop=2
     autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal shiftwidth=2
     autocmd Filetype markdown setlocal tw=80
-    autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
     autocmd FileType requirements setlocal commentstring=#\ %s
     autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
 augroup END
