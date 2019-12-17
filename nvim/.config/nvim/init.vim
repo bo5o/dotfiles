@@ -16,7 +16,7 @@ Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detection in markdown
 Plug 'ncm2/float-preview.nvim'        " nvim 0.4 floating window support
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
 Plug 'yggdroot/indentline'            " indentation guides
-Plug 'yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'yggdroot/LeaderF', { 'do': './install.sh' } " ctrlp alternative
 Plug 'davidhalter/jedi-vim'           " python jedi
 Plug 'vimwiki/vimwiki'                " wiki
 Plug 'dense-analysis/ale'             " asynchronous linting engine
@@ -31,11 +31,14 @@ Plug 'tpope/vim-dispatch'             " asynchronously run jobs
 Plug 'tpope/vim-tbone'                " tmux basics
 Plug 'tpope/vim-projectionist'        " project-specific configurations
 Plug 'tpope/vim-eunuch'               " unix helpers
+Plug 'tpope/vim-unimpaired'           " some useful keybindings
+Plug 'tpope/vim-obsession'            " session management
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'junegunn/goyo.vim'              " distraction free mode
 Plug 'junegunn/vim-easy-align'        " simple text alignment
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } " fuzzy finder
 Plug 'junegunn/fzf.vim'               " fzf integration
+Plug 'rhysd/git-messenger.vim'        " show git commit under cursor
 Plug 'airblade/vim-gitgutter'         " git diff in gutter
 Plug 'lervag/vimtex'                  " LaTeX
 Plug 'ervandew/supertab'              " Use tab for autocompletion
@@ -47,22 +50,19 @@ Plug 'vim-airline/vim-airline'        " nice status line
 Plug 'vim-airline/vim-airline-themes' " airline themes
 Plug 'Vimjas/vim-python-pep8-indent'  " pep8 indenting
 Plug 'thaerkh/vim-workspace'          " workspace management
-Plug 'tpope/vim-unimpaired'           " some useful keybindings
 Plug 'mhinz/vim-startify'             " fancy start screen
 Plug 'Valloric/ListToggle'            " toggle quickfix and location list
 Plug 'brennier/quicktex'              " very quick latex writing
 Plug 'justinmk/vim-sneak'             " sneak motion
-Plug 'tpope/vim-obsession'            " session management
 Plug 'jpalardy/vim-slime'             " tmux repl
 Plug 'MattesGroeger/vim-bookmarks'    " bookmarks
 Plug 'jeetsukumaran/vim-pythonsense'  " python text objects
-Plug 'jiangmiao/auto-pairs'           " auto close delimiters
+Plug 'tmsvg/pear-tree'                " auto-close (, {, [, etc.
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
 Plug 'ekalinin/Dockerfile.vim'        " Dockerfile syntax highlighting
 Plug 'ryanoasis/vim-devicons'         " fancy glyphs
 Plug 'morhetz/gruvbox'                " colorscheme
 Plug 'lifepillar/vim-gruvbox8'        " colorscheme
-Plug '5long/pytest-vim-compiler'      " pytest output compiler
 Plug 'tmux-plugins/vim-tmux'          " syntax hightlighting etc for .tmux.conf
 Plug 'raimon49/requirements.txt.vim'  " requirements.txt syntax highlighting
 Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-line statements
@@ -73,6 +73,7 @@ Plug 'janko/vim-test'                 " convenient test invocation
 Plug 'cbows/pytest-vim-compiler'      " pytest output compiler
 Plug 'machakann/vim-highlightedyank'  " Highlight yanked region
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' } " semantic syntax highlighting for python
+Plug 'wellle/targets.vim'             " enhanced text objects
 
 " Initialize plugin system
 call plug#end()
@@ -991,9 +992,10 @@ command! Todo Grepper -noprompt -tool git -query -E '(TODO|FIXME|XXX):'
 let g:sneak#use_ic_scs = 1
 map <leader><leader> <Plug>Sneak_,
 
-"" autopairs
-let g:AutoPairsMapSpace = 0
-let g:AutoPairsMapCR = 0
+"" pear-tree
+let g:pear_tree_smart_openers = 1
+let g:pear_tree_smart_closers = 1
+let g:pear_tree_smart_backspace = 1
 
 "" vimtex
 let g:vimtex_view_method = 'zathura'
