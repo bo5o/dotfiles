@@ -74,6 +74,7 @@ Plug 'machakann/vim-highlightedyank'  " Highlight yanked region
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' } " semantic syntax highlighting for python
 Plug 'wellle/targets.vim'             " enhanced text objects
 Plug 'tommcdo/vim-lion'               " align text by some character
+Plug 'airblade/vim-rooter'            " automatically change to project root when opening files
 
 " Initialize plugin system
 call plug#end()
@@ -891,8 +892,8 @@ let g:startify_bookmarks = [
             \ { 'g': '~/.gitconfig' },
             \ { 'z': '~/.zshrc' }
             \ ]
-let g:startify_change_to_dir = 1
-let g:startify_change_to_vcs_root = 1
+let g:startify_change_to_dir = 0
+let g:startify_change_to_vcs_root = 0
 let g:startify_fortune_use_unicode = 1
 let g:startify_files_number = 4
 let g:startify_custom_indices = ['1', '2', '3', '4', '7', '8', '9', '0']
