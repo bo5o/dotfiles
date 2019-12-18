@@ -35,7 +35,6 @@ Plug 'tpope/vim-unimpaired'           " some useful keybindings
 Plug 'tpope/vim-obsession'            " session management
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'junegunn/goyo.vim'              " distraction free mode
-Plug 'junegunn/vim-easy-align'        " simple text alignment
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } " fuzzy finder
 Plug 'junegunn/fzf.vim'               " fzf integration
 Plug 'rhysd/git-messenger.vim'        " show git commit under cursor
@@ -74,6 +73,7 @@ Plug 'cbows/pytest-vim-compiler'      " pytest output compiler
 Plug 'machakann/vim-highlightedyank'  " Highlight yanked region
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' } " semantic syntax highlighting for python
 Plug 'wellle/targets.vim'             " enhanced text objects
+Plug 'tommcdo/vim-lion'               " align text by some character
 
 " Initialize plugin system
 call plug#end()
@@ -908,12 +908,10 @@ nnoremap <leader>gw :Gwrite<CR>
 "" git messenger
 hi gitmessengerPopupNormal term=None guifg=#ebdbb2 guibg=#32302f ctermfg=None ctermbg=None
 
-"" EasyAlign
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+"" vim-lion
+let g:lion_squeeze_spaces = 1
+let g:lion_map_right = 'ga'
+let g:lion_map_left = 'gA'
 
 "" tagbar
 nnoremap <silent> <leader>ta :TagbarToggle<CR>
