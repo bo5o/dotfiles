@@ -893,6 +893,7 @@ let g:startify_bookmarks = [
             \ ]
 let g:startify_change_to_dir = 1
 let g:startify_change_to_vcs_root = 1
+let g:startify_fortune_use_unicode = 1
 let g:startify_files_number = 4
 let g:startify_custom_indices = ['1', '2', '3', '4', '7', '8', '9', '0']
 let g:startify_commands = [
