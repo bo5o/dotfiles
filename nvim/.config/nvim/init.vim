@@ -1407,6 +1407,7 @@ let g:ale_linters = {
             \   'yaml': ['yamllint'],
             \   'json': ['jsonlint'],
             \   'sh': ['shellcheck'],
+            \   'zsh': ['shellcheck'],
             \   'vim': ['vint'],
             \}
 
