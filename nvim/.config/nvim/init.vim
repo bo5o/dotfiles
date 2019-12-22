@@ -75,6 +75,7 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' } " semantic syntax highl
 Plug 'wellle/targets.vim'             " enhanced text objects
 Plug 'tommcdo/vim-lion'               " align text by some character
 Plug 'airblade/vim-rooter'            " automatically change to project root when opening files
+Plug 'pangloss/vim-javascript'        " javascript syntax support
 
 " Initialize plugin system
 call plug#end()
@@ -1409,6 +1410,7 @@ let g:ale_linters = {
             \   'sql': ['sqlint'],
             \   'Dockerfile': ['hadolint', 'dockerfile_lint'],
             \   'yaml': ['yamllint'],
+            \   'javascript': ['eslint'],
             \   'json': ['jsonlint'],
             \   'sh': ['shellcheck'],
             \   'zsh': ['shellcheck'],
@@ -1421,7 +1423,7 @@ let g:ale_fixers = {
             \   'yaml': ['prettier'],
             \   'html': ['prettier'],
             \   'css': ['prettier'],
-            \   'javascript': ['prettier'],
+            \   'javascript': ['eslint'],
             \   'json': ['prettier'],
             \   'tex': ['latexindent'],
             \   'sql': ['pgformatter'],
@@ -1436,6 +1438,9 @@ augroup slime_keys
     autocmd FileType python nmap <buffer> <F5> :w<cr>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
     autocmd FileType python imap <buffer> <F5> <C-o>:w<cr><C-o>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
 augroup END
+
+"" vim javascript
+let g:javascript_plugin_jsdoc = 1
 
 "" gutentags
 let g:gutentags_exclude_filetypes = ['gitcommit', 'requirements']
