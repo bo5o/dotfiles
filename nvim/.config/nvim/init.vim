@@ -1399,6 +1399,10 @@ let g:ale_pattern_options = {
 
 nmap <leader>ad <Plug>(ale_detail)
 
+" navigate diagnostics
+nmap <silent> [d <Plug>(ale_previous_wrap)
+nmap <silent> ]d <Plug>(ale_next_wrap)
+
 let g:ale_linters = {
             \   'python': ['flake8', 'pydocstyle', 'mypy'],
             \   'tex': ['chktex'],
