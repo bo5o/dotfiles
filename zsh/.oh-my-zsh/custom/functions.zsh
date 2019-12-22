@@ -65,11 +65,6 @@ pycl() {
     find . -type f -name "*.py[co]" -delete -or -type d -name "__pycache__" -delete
 }
 
-function pretty() {
-    pygmentize -f terminal -g $* | less -R
-}
-
-
 function quickvenv() {
     pyenv local ${1:-"system"} && \
         python3 -m venv .venv && \
