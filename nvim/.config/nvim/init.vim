@@ -566,6 +566,7 @@ let g:quicktex_python = {
         \'Section: keywords' : 'COMMENT',
             \';im'    : "import <+++>",
             \';bp'    : "breakpoint()<+++>",
+            \';debug' : "breakpoint()<+++>",
         \'Section: general' : 'COMMENT',
             \';pd'    : "import pandas as pd",
             \';plt'    : "import matplotlib.pyplot as plt",
