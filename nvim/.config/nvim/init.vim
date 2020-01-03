@@ -16,7 +16,7 @@ Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detection in markdown
 Plug 'ncm2/float-preview.nvim'        " nvim 0.4 floating window support
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
 Plug 'yggdroot/indentline'            " indentation guides
-Plug 'yggdroot/LeaderF', { 'do': './install.sh' } " ctrlp alternative
+Plug 'yggdroot/LeaderF', { 'do': './install.sh' } " fuzzy finder
 Plug 'davidhalter/jedi-vim'           " python jedi
 Plug 'vimwiki/vimwiki'                " wiki
 Plug 'dense-analysis/ale'             " asynchronous linting engine
@@ -43,7 +43,6 @@ Plug 'lervag/vimtex'                  " LaTeX
 Plug 'ervandew/supertab'              " Use tab for autocompletion
 Plug 'SirVer/UltiSnips'               " Snippets
 Plug 'honza/vim-snippets'             " default snippets
-Plug 'ctrlpvim/ctrlp.vim'             " fuzzy finding
 Plug 'ludovicchabant/vim-gutentags'   " automate ctags
 Plug 'vim-airline/vim-airline'        " nice status line
 Plug 'vim-airline/vim-airline-themes' " airline themes
@@ -134,6 +133,11 @@ set wildmenu
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
+
+set wildignore+=*.mat,*.pdfpc,*/tmp/*,*.so,*.swp,*.zip,*.aux,*.gz,*.fdb_latexmk,*.fls,
+            \*.log,*.pdf,*.glg,*.glo,*.ist,*.bcf,*.bbl,*.blg,*.gls,*.run.xml,*.toc,
+            \*.acn,*.acr,*.alg,*.ntn,*.slo,*.not,*.nlg,*.slg,*.sls,*.lof,*.lot,*.lol,
+            \*.xdv,**/.venv/**,**/.tools/**,tags
 
 "Always show current position
 set ruler
@@ -1021,6 +1025,11 @@ function! s:latexSurround()
     let b:surround_{char2nr("c")} = "\\\1command: \1{\r}"
 endfunction
 
+let g:vimtex_quickfix_latexlog = {
+      \ 'overfull' : 0,
+      \ 'underfull' : 0,
+      \}
+
 "" supertab
 let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
@@ -1128,34 +1137,6 @@ let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_table_mappings = 0
 let g:vimwiki_global_ext = 0
 let g:vimwiki_folding = ''
-
-"" ctrlp
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = ['.root', '.venv']
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-set wildignore+=*.mat,*.pdfpc,*/tmp/*,*.so,*.swp,*.zip,*.aux,*.gz,*.fdb_latexmk,*.fls,
-            \*.log,*.pdf,*.glg,*.glo,*.ist,*.bcf,*.bbl,*.blg,*.gls,*.run.xml,*.toc,
-            \*.acn,*.acr,*.alg,*.ntn,*.slo,*.not,*.nlg,*.slg,*.sls,*.lof,*.lot,*.lol,
-            \*.xdv,**/.venv/**,**/.tools/**,tags
-
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_minted)$',
-            \ 'file': '\v\.(mat|pdfpc|latexmain|gitignore|root|exe|so|dll|aux|gz|'.
-                \ 'fdb_latexmk|fls|log|pdf|run|blg|toc|bcf|run\.xml|png|jpeg|bmp|out|bbl|'.
-                \ 'snm|nav|glg|gls|glo|ist|acn|acr|alg|ntn|slo|not|nlg|slg|sls|lof|lot|'.
-                \ 'lol|xdv)$',
-            \ }
-
-let g:vimtex_quickfix_latexlog = {
-      \ 'overfull' : 0,
-      \ 'underfull' : 0,
-      \}
-
-"" vim-workspace
-" nnoremap <leader>s :ToggleWorkspace<CR>
 
 "" vim-bookmarks
 let g:bookmark_disable_ctrlp = 0
