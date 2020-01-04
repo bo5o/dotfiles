@@ -1406,6 +1406,7 @@ let g:ale_fixers = {
             \   'python': ['black', 'isort'],
             \   'yaml': ['prettier'],
             \   'html': ['prettier'],
+            \   'htmldjango': ['html-beautify'],
             \   'css': ['prettier'],
             \   'javascript': ['eslint'],
             \   'json': ['prettier'],
