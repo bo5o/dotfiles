@@ -924,15 +924,15 @@ let g:lion_map_right = 'ga'
 let g:lion_map_left = 'gA'
 
 "" tagbar
-nnoremap <silent> <leader>ta :TagbarToggle<CR>
+nnoremap <silent> <leader>fG :TagbarToggle<CR>
 let g:tagbar_sort = 0
 
 "" vim-test
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-s> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR>
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tg :TestVisit<CR>
 
 function! StartStrategy(cmd)
     execute 'Start -wait=always ' . a:cmd
@@ -959,8 +959,8 @@ nmap <silent> t<C-d> :call execute("Tmux send-keys -t " . g:tmux_session . " C-d
 "" nerd tree
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-nnoremap <leader>T :NERDTreeFind<CR>
-nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>fT :NERDTreeFind<CR>
+nnoremap <leader>ft :NERDTreeToggle<CR>
 
 let g:NERDTreeMapCloseDir = 'h'
 let g:NERDTreeMapActivateNode = 'l'
@@ -1197,7 +1197,7 @@ let g:Lf_RootMarkers = ['.root', '.git', '.hg', '.svn', '.venv']
 let g:Lf_ShortcutF = '<leader>ff'
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fg :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 let g:Lf_RgConfig = [
