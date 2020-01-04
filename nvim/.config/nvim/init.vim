@@ -14,6 +14,7 @@ Plug 'ncm2/ncm2-jedi'                 " python completion source
 Plug 'ncm2/ncm2-ultisnips'            " snippet completion source
 Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detection in markdown
 Plug 'ncm2/float-preview.nvim'        " nvim 0.4 floating window support
+Plug 'ncm2/ncm2-tern',  {'do': 'npm install'} " javascript autocompletion
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
 Plug 'yggdroot/indentline'            " indentation guides
 Plug 'yggdroot/LeaderF', { 'do': './install.sh' } " fuzzy finder
@@ -46,6 +47,7 @@ Plug 'honza/vim-snippets'             " default snippets
 Plug 'ludovicchabant/vim-gutentags'   " automate ctags
 Plug 'vim-airline/vim-airline'        " nice status line
 Plug 'vim-airline/vim-airline-themes' " airline themes
+Plug 'chrisbra/Colorizer'             " highlight hex colors vim
 Plug 'Vimjas/vim-python-pep8-indent'  " pep8 indenting
 Plug 'thaerkh/vim-workspace'          " workspace management
 Plug 'mhinz/vim-startify'             " fancy start screen
