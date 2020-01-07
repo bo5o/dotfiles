@@ -1195,10 +1195,10 @@ let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_RootMarkers = ['.root', '.git', '.hg', '.svn', '.venv']
 
 let g:Lf_ShortcutF = '<leader>ff'
-noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>fg :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+nnoremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+nnoremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+nnoremap <leader>fg :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+nnoremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 let g:Lf_RgConfig = [
             \ '--max-columns=150',
