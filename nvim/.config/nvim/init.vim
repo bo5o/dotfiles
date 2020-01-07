@@ -1190,7 +1190,7 @@ let g:indentLine_char = '┊'
 " popup mode
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
-let g:Lf_IgnoreCurrentBufferName = 1
+let g:Lf_IgnoreCurrentBufferName = 0
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_RootMarkers = ['.root', '.git', '.hg', '.svn', '.venv']
 
