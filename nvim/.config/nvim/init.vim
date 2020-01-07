@@ -924,7 +924,7 @@ let g:lion_map_right = 'ga'
 let g:lion_map_left = 'gA'
 
 "" tagbar
-nnoremap <silent> <leader>fG :TagbarToggle<CR>
+nnoremap <silent> <leader>fa :TagbarToggle<CR>
 let g:tagbar_sort = 0
 
 "" vim-test
@@ -1198,6 +1198,7 @@ let g:Lf_ShortcutF = '<leader>ff'
 nnoremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 nnoremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 nnoremap <leader>fg :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+nnoremap <leader>fG :<C-U><C-R>=printf("Leaderf Tag %s", "")<CR><CR>
 nnoremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 let g:Lf_RgConfig = [
