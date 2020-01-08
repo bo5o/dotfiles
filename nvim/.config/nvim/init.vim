@@ -979,7 +979,6 @@ let NERDTreeIgnore=[
 
 "" grepper
 nnoremap <leader>gg :Grepper -tool git<cr>
-nnoremap <leader>ga :Grepper -tool ag<cr>
 nnoremap <leader>gr :Grepper -tool rg<cr>
 
 let g:grepper = {}
@@ -1005,6 +1004,9 @@ command! BufTodo silent Grepper
       \ -noprompt
       \ -tool rg
       \ -query '\b(todo|fixme)\b'
+
+nnoremap <leader>gt :BufTodo<cr>
+nnoremap <leader>gT :Todo<cr>
 
 "" sneak
 let g:sneak#use_ic_scs = 1
