@@ -994,6 +994,11 @@ let g:grepper.rg = {
             \ 'grepformat': '%f:%l:%c:%m,%f',
             \ 'grepprg': 'rg -H --no-heading --hidden -g=!.git -M=150 --max-columns-preview -S --vimgrep'
             \}
+let g:grepper.git = {
+            \ 'escape': '\^$.*[]',
+            \ 'grepformat': '%f:%l:%c:%m,%f:%l:%m,%f',
+            \ 'grepprg': 'git grep -nGIi'
+            \}
 
 command! Todo silent Grepper
       \ -noprompt
