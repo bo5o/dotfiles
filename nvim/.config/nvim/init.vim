@@ -988,6 +988,7 @@ let g:grepper.open = 1
 let g:grepper.jump = 0
 let g:grepper.dir = 'repo,file'
 let g:grepper.quickfix = 0
+let g:grepper.prompt_text = '$t> '
 
 let g:grepper.rg = {
             \ 'escape': '\^$.*+?()[]{}|',
