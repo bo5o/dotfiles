@@ -983,7 +983,7 @@ nnoremap <leader>ga :Grepper -tool ag<cr>
 nnoremap <leader>gr :Grepper -tool rg<cr>
 
 let g:grepper = {}
-let g:grepper.tools = ['git', 'ag', 'rg']
+let g:grepper.tools = ['git', 'rg']
 let g:grepper.open = 1
 let g:grepper.jump = 0
 let g:grepper.dir = 'repo,file'
