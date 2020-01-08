@@ -995,8 +995,15 @@ let g:grepper.rg = {
             \ 'grepprg': 'rg -H --no-heading --hidden -g=!.git -M=150 --max-columns-preview -S --vimgrep'
             \}
 
-command! Todo Grepper -noprompt -tool git -query -E '(TODO|FIXME|XXX):'
-
+command! Todo silent Grepper
+      \ -noprompt
+      \ -tool rg
+      \ -query '\b(todo|fixme)\b'
+command! BufTodo silent Grepper
+      \ -buffer
+      \ -noprompt
+      \ -tool rg
+      \ -query '\b(todo|fixme)\b'
 
 "" sneak
 let g:sneak#use_ic_scs = 1
