@@ -28,6 +28,7 @@ plugins=(
     z
     fd
     fzf
+    tldr
     zsh-completions
 )
 
