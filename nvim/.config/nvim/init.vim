@@ -924,7 +924,8 @@ let g:lion_map_right = 'ga'
 let g:lion_map_left = 'gA'
 
 "" tagbar
-nnoremap <silent> <leader>fa :TagbarToggle<CR>
+nnoremap <silent> <leader>fa :TagbarOpenAutoClose<CR>
+nnoremap <silent> <leader>fA :TagbarToggle<CR>
 let g:tagbar_sort = 0
 
 "" vim-test
