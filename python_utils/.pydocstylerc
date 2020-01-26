@@ -1,2 +1,3 @@
+# vim: ft=cfg:
 [pydocstyle]
 convention = numpy
