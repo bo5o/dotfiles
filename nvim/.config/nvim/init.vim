@@ -1423,7 +1423,7 @@ nmap <silent> [d <Plug>(ale_previous_wrap)
 nmap <silent> ]d <Plug>(ale_next_wrap)
 
 let g:ale_linters = {
-            \   'python': ['flake8', 'pydocstyle', 'mypy'],
+            \   'python': ['flake8', 'mypy'],
             \   'tex': ['chktex'],
             \   'sql': ['sqlint'],
             \   'Dockerfile': ['hadolint', 'dockerfile_lint'],
