@@ -1,3 +1,6 @@
-; vim:ft=dosini
+# vim: ft=cfg:
 [mypy]
 ignore_missing_imports = True
+strict_optional = True
+warn_redundant_casts = True
+warn_unused_ignores = True
