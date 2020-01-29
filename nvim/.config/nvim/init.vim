@@ -912,7 +912,8 @@ let g:startify_commands = [
 
 "" fugitive
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit
+nnoremap <leader>gcc :Gcommit<CR>
+nnoremap <leader>gca :Gcommit --amend<CR>
 nnoremap <leader>gw :Gwrite<CR>
 
 "" git messenger
