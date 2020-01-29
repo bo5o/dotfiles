@@ -21,5 +21,7 @@
 	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
 [merge]
 	tool = fugitive
+[include]
+    path = ~/.gitconfig_proxy
 [includeIf "gitdir:~/projects/"]
     path = ~/.gitconfig_work
