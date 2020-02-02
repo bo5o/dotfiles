@@ -16,6 +16,7 @@ plugins=(
     pyenv
     docker
     docker-compose
+    django
     jira
     rsync
     pip
