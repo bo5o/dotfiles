@@ -23,7 +23,7 @@ Plug 'vimwiki/vimwiki'                " wiki
 Plug 'dense-analysis/ale'             " asynchronous linting engine
 Plug 'cespare/vim-toml'               " toml
 Plug 'plasticboy/vim-markdown'        " markdown
-Plug 'tpope/vim-surround'             " vim surround
+Plug 'tpope/vim-surround'             " simple quoting/parenthesizing
 Plug 'tpope/vim-repeat'               " repeat almost anything
 Plug 'tpope/vim-fugitive'             " git
 Plug 'tpope/vim-rhubarb'              " fugitive github integration
