@@ -67,7 +67,8 @@ pycl() {
 
 function quickvenv() {
     pyenv local ${1:-"system"} && \
-        python3 -m venv .venv && \
+        python3 -m pip install -U virtualenv && \
+        python3 -m virtualenv .venv && \
         .venv/bin/python -m pip install -U pip setuptools && \
         .venv/bin/python -m pip install -U pip-tools && \
         echo "ipython\nipdb" > requirements.in && \
