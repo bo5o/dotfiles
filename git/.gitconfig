@@ -19,6 +19,8 @@
     username = cbows
 [mergetool "fugitive"]
 	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
+[mergetool]
+	keepBackup = false
 [merge]
 	tool = fugitive
 [include]
