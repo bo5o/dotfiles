@@ -24,7 +24,6 @@ Plug 'dense-analysis/ale'             " asynchronous linting engine
 Plug 'cespare/vim-toml'               " toml
 Plug 'plasticboy/vim-markdown'        " markdown
 Plug 'tpope/vim-surround'             " vim surround
-Plug 'tpope/vim-commentary'           " comment stuff out
 Plug 'tpope/vim-repeat'               " repeat almost anything
 Plug 'tpope/vim-fugitive'             " git
 Plug 'tpope/vim-rhubarb'              " fugitive github integration
@@ -34,6 +33,7 @@ Plug 'tpope/vim-projectionist'        " project-specific configurations
 Plug 'tpope/vim-eunuch'               " unix helpers
 Plug 'tpope/vim-unimpaired'           " some useful keybindings
 Plug 'tpope/vim-obsession'            " session management
+Plug 'tomtom/tcomment_vim'            " comment stuff out
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'junegunn/goyo.vim'              " distraction free mode
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } " fuzzy finder
@@ -67,6 +67,7 @@ Plug 'tmux-plugins/vim-tmux'          " syntax hightlighting etc for .tmux.conf
 Plug 'raimon49/requirements.txt.vim'  " requirements.txt syntax highlighting
 Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-line statements
 Plug 'kovetskiy/sxhkd-vim'            " indent, highlight syntax and detect sxhkd config files
+Plug 'mattn/emmet-vim'                " expanding html abbreviations
 Plug 'mhinz/vim-grepper'              " integration of my favorite grepper
 Plug 'majutsushi/tagbar'              " easy way to browse tags
 Plug 'janko/vim-test'                 " convenient test invocation
@@ -77,6 +78,7 @@ Plug 'wellle/targets.vim'             " enhanced text objects
 Plug 'tommcdo/vim-lion'               " align text by some character
 Plug 'airblade/vim-rooter'            " automatically change to project root when opening files
 Plug 'pangloss/vim-javascript'        " javascript syntax support
+Plug 'posva/vim-vue'                  " vue file support
 
 " Initialize plugin system
 call plug#end()
@@ -283,10 +285,10 @@ set wrap " wrap lines
 augroup filetype_settings
     autocmd!
     autocmd FileType python setlocal foldmethod=indent
-    autocmd FileType python setlocal tw=88
-    autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal tabstop=2
-    autocmd Filetype yaml,html,css,javascript,json,tex,bib setlocal shiftwidth=2
-    autocmd Filetype markdown setlocal tw=80
+    autocmd FileType python setlocal textwidth=88
+    autocmd Filetype yaml,html,css,javascript,json,vue,tex,bib setlocal tabstop=2
+    autocmd Filetype yaml,html,css,javascript,json,vue,tex,bib setlocal shiftwidth=2
+    autocmd Filetype markdown setlocal textwidth=80
     autocmd FileType requirements setlocal commentstring=#\ %s
     autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
 augroup END
@@ -910,6 +912,10 @@ let g:startify_commands = [
             \   { 'ug': [ 'Upgrade plugin manager', ':PlugUpgrade' ] },
             \ ]
 
+"" Emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,htmldjango,css,vue EmmetInstall
+
 "" fugitive
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gcc :Gcommit<CR>
@@ -1430,6 +1436,7 @@ let g:ale_linters = {
             \   'Dockerfile': ['hadolint', 'dockerfile_lint'],
             \   'yaml': ['yamllint'],
             \   'javascript': ['eslint'],
+            \   'vue': ['eslint'],
             \   'json': ['jsonlint'],
             \   'sh': ['shellcheck'],
             \   'zsh': ['shellcheck'],
@@ -1444,6 +1451,7 @@ let g:ale_fixers = {
             \   'htmldjango': ['html-beautify'],
             \   'css': ['prettier'],
             \   'javascript': ['eslint'],
+            \   'vue': ['eslint'],
             \   'json': ['prettier'],
             \   'tex': ['latexindent'],
             \   'sql': ['pgformatter'],
