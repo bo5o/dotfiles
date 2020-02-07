@@ -1,6 +1,7 @@
 # vim: ft=cfg:
 [mypy]
-ignore_missing_imports = True
 strict_optional = True
+no_implicit_optional = True
+check_untyped_defs = True
 warn_redundant_casts = True
 warn_unused_ignores = True
