@@ -9,3 +9,4 @@
 --exclude=*.min.js
 --exclude=*.min.css
 --exclude=.cache
+--exclude=node_modules

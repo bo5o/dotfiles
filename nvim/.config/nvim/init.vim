@@ -5,6 +5,9 @@ scriptencoding utf-8
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'            " nerd tree
 Plug 'Xuyuanp/nerdtree-git-plugin'    " nerd tree git integration
+Plug 'prabirshrestha/async.vim'       " lsp async support
+Plug 'prabirshrestha/vim-lsp'         " lsp client
+Plug 'mattn/vim-lsp-settings'         " lsp settings
 Plug 'ncm2/ncm2'                      " auto completion
 Plug 'roxma/nvim-yarp'                " yet another remote plugin
 Plug 'ncm2/ncm2-bufword'              " complete words from current buffer
@@ -14,10 +17,12 @@ Plug 'ncm2/ncm2-jedi'                 " python completion source
 Plug 'ncm2/ncm2-ultisnips'            " snippet completion source
 Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detection in markdown
 Plug 'ncm2/float-preview.nvim'        " nvim 0.4 floating window support
-Plug 'ncm2/ncm2-tern',  {'do': 'npm install'} " javascript autocompletion
+Plug 'ncm2/ncm2-vim-lsp'              " lsp integration
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
 Plug 'yggdroot/indentline'            " indentation guides
-Plug 'yggdroot/LeaderF', { 'do': './install.sh' } " fuzzy finder
+Plug 'yggdroot/LeaderF', {
+            \ 'do': './install.sh'
+            \ }                       " fuzzy finder
 Plug 'davidhalter/jedi-vim'           " python jedi
 Plug 'vimwiki/vimwiki'                " wiki
 Plug 'dense-analysis/ale'             " asynchronous linting engine
@@ -36,7 +41,10 @@ Plug 'tpope/vim-obsession'            " session management
 Plug 'tomtom/tcomment_vim'            " comment stuff out
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'junegunn/goyo.vim'              " distraction free mode
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } " fuzzy finder
+Plug 'junegunn/fzf', {
+            \ 'dir': '~/.fzf',
+            \ 'do': './install --bin'
+            \ }                       " fuzzy finder
 Plug 'junegunn/fzf.vim'               " fzf integration
 Plug 'rhysd/git-messenger.vim'        " show git commit under cursor
 Plug 'airblade/vim-gitgutter'         " git diff in gutter
@@ -69,11 +77,13 @@ Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-
 Plug 'kovetskiy/sxhkd-vim'            " indent, highlight syntax and detect sxhkd config files
 Plug 'mattn/emmet-vim'                " expanding html abbreviations
 Plug 'mhinz/vim-grepper'              " integration of my favorite grepper
-Plug 'majutsushi/tagbar'              " easy way to browse tags
+Plug 'liuchengxu/vista.vim'           " browse lsp symbols and tags
 Plug 'janko/vim-test'                 " convenient test invocation
 Plug 'cbows/pytest-vim-compiler'      " pytest output compiler
 Plug 'machakann/vim-highlightedyank'  " Highlight yanked region
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' } " semantic syntax highlighting for python
+Plug 'numirias/semshi', {
+            \ 'do': ':UpdateRemotePlugins'
+            \ }                       " semantic syntax highlighting for python
 Plug 'wellle/targets.vim'             " enhanced text objects
 Plug 'tommcdo/vim-lion'               " align text by some character
 Plug 'airblade/vim-rooter'            " automatically change to project root when opening files
@@ -930,10 +940,19 @@ let g:lion_squeeze_spaces = 1
 let g:lion_map_right = 'ga'
 let g:lion_map_left = 'gA'
 
-"" tagbar
-nnoremap <silent> <leader>fa :TagbarOpenAutoClose<CR>
-nnoremap <silent> <leader>fA :TagbarToggle<CR>
-let g:tagbar_sort = 0
+"" vista.vim
+let g:vista_default_executive = 'ctags'
+let g:vista_executive_for = {
+            \ 'vue': 'vim_lsp',
+            \ 'javascript': 'vim_lsp',
+            \ 'typescript': 'vim_lsp',
+            \ }
+
+let g:vista#renderer#enable_icon = 1
+
+nnoremap <silent> <leader>fa :Vista<CR>
+nnoremap <silent> <leader>fA :Vista show<CR>
+nnoremap <silent> <leader>fv :Vista finder<CR>
 
 "" vim-test
 nmap <silent> <leader>tn :TestNearest<CR>
@@ -1146,6 +1165,15 @@ augroup END
 "" jedi
 let g:jedi#completions_enabled = 0
 
+let g:jedi#goto_command = "gd"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_stubs_command = "gt"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "gr"
+let g:jedi#completions_command = ""
+let g:jedi#rename_command = "<leader>rn"
+
 "" fzf.vim
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -1204,7 +1232,7 @@ let g:vim_markdown_folding_disabled = 0
 
 augroup markdown_keys
     autocmd!
-    autocmd FileType markdown nnoremap <localleader>lt :Toc<Enter>
+    autocmd FileType markdown nnoremap <localleader>lt :Vista toc<Enter>
 augroup END
 
 "" indentline
@@ -1456,6 +1484,32 @@ let g:ale_fixers = {
             \   'tex': ['latexindent'],
             \   'sql': ['pgformatter'],
             \}
+
+"" lsp
+function! s:on_lsp_buffer_enabled() abort
+    nmap <buffer> gd <Plug>(lsp-definition)
+    nmap <buffer> gD <Plug>(lsp-peek-definition)
+    nmap <buffer> gy <Plug>(lsp-declaration)
+    nmap <buffer> gY <Plug>(lsp-peek-declaration)
+    nmap <buffer> gr <Plug>(lsp-references)
+    nmap <buffer> gi <Plug>(lsp-implementation)
+    nmap <buffer> gI <Plug>(lsp-peek-implementation)
+    nmap <buffer> gt <Plug>(lsp-type-definition)
+    nmap <buffer> gT <Plug>(lsp-peek-type-definition)
+    nmap <buffer> K <Plug>(lsp-hover)
+    nmap <buffer> <leader>rn <Plug>(lsp-rename)
+    nmap <buffer> <leader>rc <Plug>(lsp-code-action)
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that have a server registered
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+let g:lsp_diagnostics_enabled = 0
+let g:lsp_signature_help_enabled = 1
+let g:lsp_preview_float = 1
 
 "" vim-slime
 let g:slime_target = 'tmux'
