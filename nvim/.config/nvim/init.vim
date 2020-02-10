@@ -926,7 +926,10 @@ let g:startify_commands = [
 
 "" Emmet
 let g:user_emmet_install_global = 0
-autocmd FileType html,htmldjango,css,vue EmmetInstall
+augroup emmet_init
+    autocmd!
+    autocmd FileType html,htmldjango,css,vue EmmetInstall
+augroup END
 
 "" fugitive
 nnoremap <leader>gs :Gstatus<CR>
