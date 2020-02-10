@@ -1223,6 +1223,8 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
+let g:airline#extensions#tabline#enabled = 1
+
 "" vim-markdown
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_math = 1
