@@ -1167,14 +1167,14 @@ augroup END
 "" jedi
 let g:jedi#completions_enabled = 0
 
-let g:jedi#goto_command = "gd"
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_stubs_command = "gt"
-let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "gr"
-let g:jedi#completions_command = ""
-let g:jedi#rename_command = "<leader>rn"
+let g:jedi#goto_command = 'gd'
+let g:jedi#goto_assignments_command = '<leader>g'
+let g:jedi#goto_stubs_command = ''
+let g:jedi#goto_definitions_command = ''
+let g:jedi#documentation_command = 'K'
+let g:jedi#usages_command = 'gr'
+let g:jedi#completions_command = ''
+let g:jedi#rename_command = '<leader>rn'
 
 "" fzf.vim
 imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -1492,8 +1492,6 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gr <Plug>(lsp-references)
     nmap <buffer> gi <Plug>(lsp-implementation)
     nmap <buffer> gI <Plug>(lsp-peek-implementation)
-    nmap <buffer> gt <Plug>(lsp-type-definition)
-    nmap <buffer> gT <Plug>(lsp-peek-type-definition)
     nmap <buffer> K <Plug>(lsp-hover)
     nmap <buffer> <leader>rn <Plug>(lsp-rename)
     nmap <buffer> <leader>rc <Plug>(lsp-code-action)
