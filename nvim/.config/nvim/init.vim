@@ -366,6 +366,10 @@ tnoremap <C-Q> <C-\><C-n><C-W>p
 " ask before jump if ambigous
 nnoremap <C-]> g<C-]>
 
+" navigate quickfix relative to cursor
+nmap <silent> [d :cabove<CR>
+nmap <silent> ]d :cbelow<CR>
+
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
@@ -1450,10 +1454,6 @@ let g:ale_pattern_options = {
             \}
 
 nmap <leader>ad <Plug>(ale_detail)
-
-" navigate diagnostics
-nmap <silent> [d <Plug>(ale_previous_wrap)
-nmap <silent> ]d <Plug>(ale_next_wrap)
 
 let g:ale_linters = {
             \   'python': ['flake8', 'mypy', 'pylint'],
