@@ -1227,6 +1227,9 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffers_label = 'b'
+let g:airline#extensions#tabline#tabs_label = 't'
+let g:airline#extensions#tabline#buffer_min_count = 2
 
 "" vim-markdown
 let g:vim_markdown_toc_autofit = 1
