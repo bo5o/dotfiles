@@ -408,9 +408,6 @@ nnoremap <silent><expr> <Leader>hl (&hls && v:hlsearch ? ':nohls' : ':set hls').
 " Yank from current cursor position to the end of the line
 nnoremap Y y$
 
-" Jump to matching pairs easily in normal mode
-nnoremap <Tab> %
-
 " preview latex equations
 " vnoremap <leader>m y:!python<space>~/bin/preview_math.py<space>'<C-r>"'<enter>
 
