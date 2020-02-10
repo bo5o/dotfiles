@@ -1262,7 +1262,7 @@ let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_RootMarkers = ['.root', '.git', '.hg', '.svn', '.venv']
 
 let g:Lf_ShortcutF = '<leader>ff'
-nnoremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+let g:Lf_ShortcutB = '<leader>fb'
 nnoremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 nnoremap <leader>fg :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 nnoremap <leader>fG :LeaderfTag<CR>
