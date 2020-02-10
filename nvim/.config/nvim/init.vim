@@ -1171,7 +1171,7 @@ augroup END
 let g:jedi#completions_enabled = 0
 
 let g:jedi#goto_command = 'gd'
-let g:jedi#goto_assignments_command = '<leader>g'
+let g:jedi#goto_assignments_command = ''
 let g:jedi#goto_stubs_command = ''
 let g:jedi#goto_definitions_command = ''
 let g:jedi#documentation_command = 'K'
