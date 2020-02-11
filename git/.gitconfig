@@ -1,28 +1,28 @@
 [core]
-	excludesfile = ~/.gitignore_global
+    excludesfile = ~/.gitignore_global
 [user]
-	email = 32486983+cbows@users.noreply.github.com
-	name = cbows
+    email = 32486983+cbows@users.noreply.github.com
+    name = cbows
 [push]
-	followTags = true
+    followTags = true
 [alias]
     unstage = reset HEAD
     uncommit = reset --soft HEAD^
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 [credential]
-	helper = cache --timeout=7200
+    helper = cache --timeout=7200
 [credential "https://github.com"]
     username = cbows
 [mergetool "fugitive"]
-	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
+    cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
 [mergetool]
-	keepBackup = false
+    keepBackup = false
 [merge]
-	tool = fugitive
+    tool = fugitive
 [include]
     path = ~/.gitconfig_proxy
 [includeIf "gitdir:~/projects/"]
