@@ -317,7 +317,7 @@ map <C-l> <C-W>l
 map <leader>ba :bufdo bd<cr>
 
 " Close current buffer
-map <leader>bd :bd<cr>
+map <leader>bd :Bclose<cr>
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
