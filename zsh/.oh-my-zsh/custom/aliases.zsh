@@ -5,7 +5,8 @@ alias -g C='| wc -l'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g G='| grep'
-alias -g F='| fzy'
+alias -g F='| fzf'
+alias -g P='| fpp'
 alias -g A='| xargs'
 
 # personal aliases
