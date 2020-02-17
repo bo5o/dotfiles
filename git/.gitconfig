@@ -24,6 +24,6 @@
 [merge]
     tool = fugitive
 [include]
-    path = ~/.gitconfig_proxy
+    path = ~/.gitconfig_local
 [includeIf "gitdir:~/projects/"]
     path = ~/.gitconfig_work
