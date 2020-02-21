@@ -291,15 +291,17 @@ set autoindent
 set smartindent
 set wrap " wrap lines
 
-" Python
+" filetype settings
 augroup filetype_settings
     autocmd!
     autocmd FileType python setlocal foldmethod=indent
     autocmd FileType python setlocal textwidth=88
-    autocmd Filetype yaml,html,css,javascript,json,vue,tex,bib setlocal tabstop=2
-    autocmd Filetype yaml,html,css,javascript,json,vue,tex,bib setlocal shiftwidth=2
-    autocmd Filetype markdown setlocal textwidth=80
-    autocmd Filetype markdown setlocal conceallevel=2
+    autocmd FileType yaml,html,css,javascript,json,vue,tex,bib setlocal tabstop=2
+    autocmd FileType yaml,html,css,javascript,json,vue,tex,bib setlocal shiftwidth=2
+    autocmd FileType javascript setlocal foldmethod=syntax
+    autocmd FileType vue setlocal foldmethod=indent
+    autocmd FileType markdown setlocal textwidth=80
+    autocmd FileType markdown setlocal conceallevel=2
     autocmd FileType requirements setlocal commentstring=#\ %s
     autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
 augroup END
