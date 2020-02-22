@@ -20,7 +20,6 @@ plugins=(
     jira
     rsync
     pip
-    virtualenvwrapper
     colored-man-pages
     vi-mode
     zsh-syntax-highlighting
