@@ -21,6 +21,7 @@ plugins=(
     rsync
     pip
     colored-man-pages
+    virtualenvwrapper
     vi-mode
     zsh-syntax-highlighting
     extract
