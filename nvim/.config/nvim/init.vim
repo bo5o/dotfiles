@@ -957,10 +957,10 @@ let g:vista_executive_for = {
             \ 'javascript': 'vim_lsp',
             \ 'typescript': 'vim_lsp',
             \ }
-
+let g:vista_echo_cursor_strategy = 'echo'
 let g:vista#renderer#enable_icon = 1
 
-nnoremap <silent> <leader>fa :Vista<CR>
+nnoremap <silent> <leader>fa :Vista!!<CR>
 nnoremap <silent> <leader>fA :Vista show<CR>
 nnoremap <silent> <leader>fv :Vista finder<CR>
 
