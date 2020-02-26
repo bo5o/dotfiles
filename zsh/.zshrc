@@ -19,6 +19,7 @@ plugins=(
     django
     jira
     rsync
+    yarn
     pip
     colored-man-pages
     virtualenvwrapper
