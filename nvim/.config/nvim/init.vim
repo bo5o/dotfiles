@@ -247,7 +247,7 @@ function! MyHighlights() abort
     hi semshiGlobal          ctermfg=167 guifg=#fb4934
     hi semshiImported        ctermfg=214 guifg=#fabd2f cterm=bold gui=bold
     hi semshiParameter       ctermfg=142  guifg=#98971a
-    hi semshiParameterUnused ctermfg=106 guifg=#665c54
+    hi semshiParameterUnused ctermfg=106 guifg=#a89984
     hi semshiBuiltin         ctermfg=208 guifg=#fe8019
     hi semshiAttribute       ctermfg=108  guifg=fg
     hi semshiSelf            ctermfg=109 guifg=#85a598
@@ -957,10 +957,10 @@ let g:vista_executive_for = {
             \ 'javascript': 'vim_lsp',
             \ 'typescript': 'vim_lsp',
             \ }
-
+let g:vista_echo_cursor_strategy = 'echo'
 let g:vista#renderer#enable_icon = 1
 
-nnoremap <silent> <leader>fa :Vista<CR>
+nnoremap <silent> <leader>fa :Vista!!<CR>
 nnoremap <silent> <leader>fA :Vista show<CR>
 nnoremap <silent> <leader>fv :Vista finder<CR>
 
