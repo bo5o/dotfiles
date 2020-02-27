@@ -43,7 +43,13 @@ def exists(module):
 # c.InteractiveShellApp.exec_files = []
 
 ## lines of code to run at IPython startup.
-c.InteractiveShellApp.exec_lines = ["%autoreload 2"]
+exec_lines = ["%autoreload 2"]
+
+if exists("dotenv"):
+    exec_lines.append("print('Load dotenv...')")
+    exec_lines.append("%dotenv")
+
+c.InteractiveShellApp.exec_lines = exec_lines
 
 ## A list of dotted module names of IPython extensions to load.
 extensions = ["autoreload"]
