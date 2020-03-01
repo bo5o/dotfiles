@@ -243,13 +243,17 @@ function! MyHighlights() abort
     highlight DiffText cterm=NONE ctermfg=214 ctermbg=235 gui=NONE guifg=#fabd2f guibg=#483D28
     highlight DiffDelete cterm=bold ctermfg=167 ctermbg=235 gui=NONE guifg=#fb4934 guibg=#372827
 
+    highlight PopupWindow guifg=#ebdbb2 guibg=#3c3836
+    highlight CursorLine guibg=#32302f
+    highlight CursorLineNr ctermfg=11 guifg=#fabd2f guibg=#32302f
+
     " Use Gruvbox colors for python semshi semantic highlighter
     hi semshiGlobal          ctermfg=167 guifg=#fb4934
     hi semshiImported        ctermfg=214 guifg=#fabd2f cterm=bold gui=bold
-    hi semshiParameter       ctermfg=142  guifg=#98971a
+    hi semshiParameter       ctermfg=142 guifg=#98971a
     hi semshiParameterUnused ctermfg=106 guifg=#a89984
     hi semshiBuiltin         ctermfg=208 guifg=#fe8019
-    hi semshiAttribute       ctermfg=108  guifg=fg
+    hi semshiAttribute       ctermfg=108 guifg=fg
     hi semshiSelf            ctermfg=109 guifg=#85a598
     hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
 endfunction
@@ -1525,6 +1529,16 @@ augroup END
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_signature_help_enabled = 1
 let g:lsp_preview_float = 1
+
+augroup lsp_float_colours
+    autocmd!
+    if has('nvim')
+        autocmd User lsp_float_opened
+                    \ call nvim_win_set_option(
+                    \   lsp#ui#vim#output#getpreviewwinid(),
+                    \   'winhighlight', 'Normal:PopupWindow')
+    endif
+augroup end
 
 "" vim-slime
 let g:slime_target = 'tmux'
