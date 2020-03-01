@@ -1506,6 +1506,8 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gD <Plug>(lsp-peek-definition)
     nmap <buffer> gy <Plug>(lsp-declaration)
     nmap <buffer> gY <Plug>(lsp-peek-declaration)
+    nmap <buffer> gp <Plug>(lsp-type-definition)
+    nmap <buffer> gP <Plug>(lsp-peek-type-definition)
     nmap <buffer> gr <Plug>(lsp-references)
     nmap <buffer> gi <Plug>(lsp-implementation)
     nmap <buffer> gI <Plug>(lsp-peek-implementation)
