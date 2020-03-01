@@ -1493,6 +1493,7 @@ let g:ale_fixers = {
             \   'htmldjango': ['html-beautify'],
             \   'css': ['prettier'],
             \   'javascript': ['eslint'],
+            \   'typescript': ['eslint'],
             \   'vue': ['eslint'],
             \   'json': ['prettier'],
             \   'tex': ['latexindent'],
