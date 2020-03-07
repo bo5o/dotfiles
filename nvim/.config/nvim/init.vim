@@ -960,8 +960,11 @@ let g:vista_executive_for = {
             \ 'vue': 'vim_lsp',
             \ 'javascript': 'vim_lsp',
             \ 'typescript': 'vim_lsp',
+            \ 'vimwiki': 'markdown',
+            \ 'markdown': 'toc',
             \ }
 let g:vista_echo_cursor_strategy = 'echo'
+let g:vista_stay_on_open = 0
 let g:vista#renderer#enable_icon = 1
 
 nnoremap <silent> <leader>fa :Vista!!<CR>
@@ -1249,11 +1252,6 @@ let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_json_frontmatter = 1
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_folding_disabled = 0
-
-augroup markdown_keys
-    autocmd!
-    autocmd FileType markdown nnoremap <localleader>lt :Vista toc<Enter>
-augroup END
 
 "" indentline
 let g:indentLine_fileTypeExclude = ['vimwiki', 'markdown']
