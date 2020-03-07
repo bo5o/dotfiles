@@ -1480,6 +1480,7 @@ let g:ale_linters = {
             \   'Dockerfile': ['hadolint', 'dockerfile_lint'],
             \   'yaml': ['yamllint'],
             \   'javascript': ['eslint'],
+            \   'typescript': ['eslint'],
             \   'vue': ['eslint'],
             \   'json': ['jsonlint'],
             \   'sh': ['shellcheck'],
