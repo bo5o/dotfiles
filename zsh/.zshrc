@@ -26,6 +26,7 @@ plugins=(
     vi-mode
     zsh-syntax-highlighting
     extract
+    gitignore
     tmuxinator
     z
     fd
