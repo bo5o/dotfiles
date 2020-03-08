@@ -38,6 +38,7 @@ Plug 'tpope/vim-projectionist'        " project-specific configurations
 Plug 'tpope/vim-eunuch'               " unix helpers
 Plug 'tpope/vim-unimpaired'           " some useful keybindings
 Plug 'tpope/vim-obsession'            " session management
+Plug 'tpope/vim-jdaddy'               " json manipulation
 Plug 'tomtom/tcomment_vim'            " comment stuff out
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'junegunn/goyo.vim'              " distraction free mode
@@ -960,6 +961,7 @@ let g:vista_executive_for = {
             \ 'vue': 'vim_lsp',
             \ 'javascript': 'vim_lsp',
             \ 'typescript': 'vim_lsp',
+            \ 'json': 'vim_lsp',
             \ 'vimwiki': 'markdown',
             \ 'markdown': 'toc',
             \ }
@@ -1264,7 +1266,7 @@ let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_IgnoreCurrentBufferName = 0
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
-let g:Lf_RootMarkers = ['.root', '.git', '.hg', '.svn', '.venv']
+let g:Lf_RootMarkers = ['.root', '.projections.json', '.git', '.hg', '.svn', '.venv']
 let g:Lf_MruFileExclude = ['COMMIT_EDITMSG']
 
 let g:Lf_ShortcutF = '<leader>ff'
