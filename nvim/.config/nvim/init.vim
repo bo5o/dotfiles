@@ -1507,6 +1507,7 @@ let g:ale_fixers = {
 
 "" lsp
 function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
     nmap <buffer> gd <Plug>(lsp-definition)
     nmap <buffer> gD <Plug>(lsp-peek-definition)
     nmap <buffer> gy <Plug>(lsp-declaration)
