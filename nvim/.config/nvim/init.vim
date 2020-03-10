@@ -225,6 +225,9 @@ set signcolumn=yes
 " view options for saving/restoring views
 set viewoptions=folds,cursor
 
+" don't open folds on { / }
+set foldopen-=block
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1258,10 +1261,6 @@ let g:vim_markdown_folding_disabled = 0
 let g:indentLine_fileTypeExclude = ['vimwiki', 'markdown']
 let g:indentLine_setConceal = 0
 let g:indentLine_char = '┊'
-
-"" simplyfold
-let g:SimpylFold_docstring_preview = 1
-
 
 "" leaderF
 " popup mode
