@@ -924,6 +924,7 @@ let g:startify_list_order = ['files', 'dir', 'bookmarks', 'commands']
 let g:startify_bookmarks = [
             \ { 'c': '~/.config/nvim/init.vim' },
             \ { 'g': '~/.gitconfig' },
+            \ { 't': '~/.tmux.conf' },
             \ { 'z': '~/.zshrc' }
             \ ]
 let g:startify_change_to_dir = 0
