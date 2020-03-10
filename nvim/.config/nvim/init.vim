@@ -263,6 +263,11 @@ function! MyHighlights() abort
     hi semshiAttribute       ctermfg=108 guifg=fg
     hi semshiSelf            ctermfg=109 guifg=#85a598
     hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
+
+    hi GitGutterAdd          ctermbg=NONE guibg=NONE
+    hi GitGutterChange       ctermbg=NONE guibg=NONE
+    hi GitGutterDelete       ctermbg=NONE guibg=NONE
+    hi GitGutterChangeDelete ctermbg=NONE guibg=NONE
 endfunction
 
 augroup my_colors
