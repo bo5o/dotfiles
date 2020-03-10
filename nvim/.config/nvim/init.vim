@@ -70,7 +70,6 @@ Plug 'tmsvg/pear-tree'                " auto-close (, {, [, etc.
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
 Plug 'ekalinin/Dockerfile.vim'        " Dockerfile syntax highlighting
 Plug 'ryanoasis/vim-devicons'         " fancy glyphs
-Plug 'morhetz/gruvbox'                " colorscheme
 Plug 'lifepillar/vim-gruvbox8'        " colorscheme
 Plug 'tmux-plugins/vim-tmux'          " syntax hightlighting etc for .tmux.conf
 Plug 'raimon49/requirements.txt.vim'  " requirements.txt syntax highlighting
@@ -1237,7 +1236,7 @@ nmap <Leader>mjj <Plug>BookmarkMoveDown
 nmap <Leader>mg <Plug>BookmarkMoveToLine
 
 "" airline
-let g:airline_theme='gruvbox'
+let g:airline_theme='gruvbox8'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
