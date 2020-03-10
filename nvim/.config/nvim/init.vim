@@ -90,6 +90,9 @@ Plug 'tommcdo/vim-lion'               " align text by some character
 Plug 'airblade/vim-rooter'            " automatically change to project root when opening files
 Plug 'pangloss/vim-javascript'        " javascript syntax support
 Plug 'posva/vim-vue'                  " vue file support
+Plug 'Konfekt/FastFold'               " fast folding
+Plug 'tmhedberg/SimpylFold'           " better python folding
+Plug 'zhimsel/vim-stay'               " restore buffer views automaticaly
 
 " Initialize plugin system
 call plug#end()
@@ -219,6 +222,9 @@ set completeopt=noinsert,menuone,noselect
 
 set signcolumn=yes
 
+" view options for saving/restoring views
+set viewoptions=folds,cursor
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -299,7 +305,6 @@ set wrap " wrap lines
 " filetype settings
 augroup filetype_settings
     autocmd!
-    autocmd FileType python setlocal foldmethod=indent
     autocmd FileType python setlocal textwidth=88
     autocmd FileType yaml,html,css,javascript,json,vue,tex,bib setlocal tabstop=2
     autocmd FileType yaml,html,css,javascript,json,vue,tex,bib setlocal shiftwidth=2
@@ -328,12 +333,6 @@ map <leader>bd :Bclose<cr>
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" Return to last edit position when opening files (You want this!)
-augroup return_to_last_position
-    autocmd!
-    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-augroup END
 
 " go back to normal mode
 inoremap jk <ESC>
@@ -1259,6 +1258,10 @@ let g:vim_markdown_folding_disabled = 0
 let g:indentLine_fileTypeExclude = ['vimwiki', 'markdown']
 let g:indentLine_setConceal = 0
 let g:indentLine_char = '┊'
+
+"" simplyfold
+let g:SimpylFold_docstring_preview = 1
+
 
 "" leaderF
 " popup mode
