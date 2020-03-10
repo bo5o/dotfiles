@@ -239,10 +239,8 @@ set synmaxcol=176
 " colorscheme specific settings
 let g:gruvbox_italics = 1
 let g:gruvbox_italicize_strings = 0
-let g:gruvbox_filetype_hi_groups = 0
-let g:gruvbox_plugin_hi_groups = 0
-let g:gruvbox_invert_signs = 0
-let g:gitgutter_override_sign_column_highlight = 1
+let g:gruvbox_filetype_hi_groups = 1
+let g:gruvbox_plugin_hi_groups = 1
 
 " Custom highlighting
 function! MyHighlights() abort
