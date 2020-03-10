@@ -268,6 +268,10 @@ function! MyHighlights() abort
     hi GitGutterChange       ctermbg=NONE guibg=NONE
     hi GitGutterDelete       ctermbg=NONE guibg=NONE
     hi GitGutterChangeDelete ctermbg=NONE guibg=NONE
+
+    hi ALEErrorSign          ctermbg=NONE guibg=NONE
+    hi ALEWarningSign        ctermbg=NONE guibg=NONE
+    hi ALEInfoSign           ctermbg=NONE guibg=NONE
 endfunction
 
 augroup my_colors
