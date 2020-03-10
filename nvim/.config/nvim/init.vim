@@ -225,7 +225,7 @@ set signcolumn=yes
 " view options for saving/restoring views
 set viewoptions=folds,cursor
 
-" don't open folds on { / }
+" don't open folds when moving through paragraphs
 set foldopen-=block
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -238,7 +238,7 @@ syntax enable
 set synmaxcol=176
 
 " colorscheme specific settings
-let g:gruvbox_italics = 0
+let g:gruvbox_italics = 1
 let g:gruvbox_italicize_strings = 0
 let g:gruvbox_filetype_hi_groups = 0
 let g:gruvbox_plugin_hi_groups = 0
