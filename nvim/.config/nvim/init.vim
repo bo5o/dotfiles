@@ -55,7 +55,6 @@ Plug 'SirVer/UltiSnips'               " Snippets
 Plug 'honza/vim-snippets'             " default snippets
 Plug 'ludovicchabant/vim-gutentags'   " automate ctags
 Plug 'vim-airline/vim-airline'        " nice status line
-Plug 'vim-airline/vim-airline-themes' " airline themes
 Plug 'chrisbra/Colorizer'             " highlight hex colors vim
 Plug 'Vimjas/vim-python-pep8-indent'  " pep8 indenting
 Plug 'thaerkh/vim-workspace'          " workspace management
