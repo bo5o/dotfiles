@@ -1219,6 +1219,8 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 noremap <leader>fr :Rg<CR>
+noremap <leader>fc :BCommits<CR>
+noremap <leader>fC :Commits<CR>
 
 "" UltiSnips
 let g:UltiSnipsExpandTrigger		= '<c-j>'
