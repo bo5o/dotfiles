@@ -1208,6 +1208,8 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
 "" UltiSnips
 let g:UltiSnipsExpandTrigger		= '<c-j>'
 let g:UltiSnipsJumpForwardTrigger	= '<c-j>'
