@@ -1204,11 +1204,21 @@ let g:jedi#completions_command = ''
 let g:jedi#rename_command = '<leader>rn'
 
 "" fzf.vim
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
+command! -bang -nargs=? -complete=dir Files
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=* Rg
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+            \   fzf#vim#with_preview(), <bang>0)
+
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+noremap <leader>fr :Rg<CR>
 
 "" UltiSnips
 let g:UltiSnipsExpandTrigger		= '<c-j>'
@@ -1298,7 +1308,6 @@ let g:Lf_RgConfig = [
 
 noremap <leader>8 :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 noremap <leader>* :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf rg %s", "")<CR><CR>
 
 let g:Lf_CommandMap = {
             \ '<C-K>': ['<Up>'],
