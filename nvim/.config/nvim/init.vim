@@ -142,6 +142,7 @@ let g:python3_host_prog = $PYENV_ROOT . '/versions/py3nvim/bin/python'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 3 lines to the cursor - when moving vertically using j/k
 set scrolloff=3
+set sidescrolloff=1
 
 " Turn on the WiLd menu
 set wildmode=longest,list,full
@@ -308,7 +309,12 @@ set tabstop=4
 
 set autoindent
 set smartindent
-set wrap " wrap lines
+set nowrap " don't wrap lines
+
+" toggle invisible characters
+set list
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
 
 " filetype settings
 augroup filetype_settings
@@ -411,8 +417,6 @@ nnoremap <leader>P "0P
 " moving up and down work as you expected
 nnoremap <silent> j gj
 nnoremap <silent> k gk
-nnoremap <silent> ^ g^
-nnoremap <silent> $ g$
 
 " Navigating with guides
 " inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
