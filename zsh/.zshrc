@@ -21,6 +21,7 @@ plugins=(
     rsync
     yarn
     pip
+    brew
     colored-man-pages
     virtualenvwrapper
     vi-mode
