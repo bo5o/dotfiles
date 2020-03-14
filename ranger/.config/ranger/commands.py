@@ -10,8 +10,9 @@
 from __future__ import absolute_import, division, print_function
 
 import re
+import subprocess
 from os import makedirs
-from os.path import expanduser, join, lexists
+from os.path import abspath, expanduser, isdir, join, lexists
 
 # You always need to import ranger.api.commands here to get the Command class:
 from ranger.api.commands import Command
@@ -49,35 +50,20 @@ class take(Command):
 
 
 class fzf_select(Command):
-    """
-    :fzf_select
+    """:fzf_select
 
-    Find a file using fzf.
-
-    With a prefix argument select only directories.
-
-    See: https://github.com/junegunn/fzf
+    Find a file using [fzf](https://github.com/junegunn/fzf).
     """
 
     def execute(self):
-        import subprocess
-        import os.path
-
-        if self.quantifier:
-            # match only directories
-            command = (
-                'fd --type d --hidden --follow --exclude ".git" . 2> /dev/null | fzf'
-            )
-        else:
-            # match files and directories
-            command = 'fd --hidden --follow --exclude ".git" . 2> /dev/null | fzf'
+        command = 'fd --hidden --follow --exclude ".git" . 2> /dev/null | fzf'
         fzf = self.fm.execute_command(
             command, universal_newlines=True, stdout=subprocess.PIPE
         )
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.rstrip("\n"))
-            if os.path.isdir(fzf_file):
+            fzf_file = abspath(stdout.rstrip("\n"))
+            if isdir(fzf_file):
                 self.fm.cd(fzf_file)
             else:
                 self.fm.select_file(fzf_file)
