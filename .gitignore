@@ -16,3 +16,4 @@ grip/**/cache*
 ipython/.ipython/profile_default/history.sqlite
 ipython/.ipython/profile_default/startup/README
 zsh/.oh-my-zsh/custom/*_.zsh
+ranger/.config/ranger/plugins/*.pyo
