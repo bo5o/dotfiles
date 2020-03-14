@@ -5,8 +5,9 @@ import os
 from pathlib import Path
 
 from IPython.terminal.prompts import Prompts, Token
-from pygments.styles import get_style_by_name
 from prompt_toolkit.enums import EditingMode
+from prompt_toolkit.formatted_text import fragment_list_width
+from pygments.styles import get_style_by_name
 
 
 def exists(module):
@@ -672,7 +673,7 @@ class CustomPrompt(Prompts):
             return f"({prompt}) "
         return ""
 
-    def in_prompt_tokens(self, cli=None):
+    def in_prompt_tokens(self):
         return [
             (Token.Prompt, self.virtual_env()),
             (Token.Prompt, "\N{GREEK SMALL LETTER PI}"),
@@ -680,8 +681,8 @@ class CustomPrompt(Prompts):
             (Token.Prompt, self.vi_mode()),
         ]
 
-    def out_prompt_tokens(self, cli=None):
-        return [(Token.Prompt, "")]
+    def out_prompt_tokens(self):
+        return []
 
     def continuation_prompt_tokens(self, cli=None, width=None):
         if width is None:
