@@ -6,6 +6,7 @@ from pathlib import Path
 
 from IPython.terminal.prompts import Prompts, Token
 from pygments.styles import get_style_by_name
+from prompt_toolkit.enums import EditingMode
 
 
 def exists(module):
@@ -629,29 +630,35 @@ c.AliasManager.user_aliases = [("venv", "echo $VIRTUAL_ENV | awk -F '/' '{print 
 
 # Custom prompt
 class CustomPrompt(Prompts):
+    supsc = dict(zip("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹"))
+
     def __init__(self, shell):
         super(CustomPrompt, self).__init__(shell)
-        self.supsc = dict(zip("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹"))
 
-    def to_superscript(self, num):
+    def _superscript(self, num):
         return "".join(map(self.supsc.get, str(num)))
+
+    def execution_count(self):
+        return self._superscript(self.shell.execution_count)
 
     def vi_mode(self):
         if (
-            getattr(self.shell.pt_app, "editing_mode", None) == "VI"
+            getattr(self.shell.pt_app, "editing_mode", None) == EditingMode.VI
             and self.shell.prompt_includes_vi_mode
         ):
-            if str(self.shell.pt_app.app.vi_state.input_mode)[3:6] == "nav":
-                return " --- "
-        return " >>> "
+            mode = str(self.shell.pt_app.app.vi_state.input_mode)
+            if mode.startswith("InputMode."):
+                mode = mode[10:13].lower()
+            elif mode.startswith("vi-"):
+                mode = mode[3:6]
+            return {"ins": " >>> ", "nav": " --- "}.get(mode, "")
+        return ""
 
     def virtual_env(self):
-        if "VIRTUAL_ENV" in os.environ:
-            venv_path = Path(os.environ["VIRTUAL_ENV"])
-            cfg_file = venv_path / "pyvenv.cfg"
-            prompt = (
-                venv_path.parent.name if venv_path.name[0] == "." else venv_path.name
-            )
+        venv = os.getenv("VIRTUAL_ENV")
+        if venv is not None:
+            venv = Path(venv)
+            cfg_file = venv / "pyvenv.cfg"
             if cfg_file.exists():
                 parser = configparser.ConfigParser()
                 parser.read_string("[root]\n" + cfg_file.read_text())
@@ -659,6 +666,9 @@ class CustomPrompt(Prompts):
                     prompt = parser.get("root", "prompt").strip("'")
                     if prompt.startswith("(") and prompt.endswith(")"):
                         prompt = prompt[1:-1]
+            else:
+                prompt = venv.parent.name if venv.name[0] == "." else venv.name
+
             return f"({prompt}) "
         return ""
 
@@ -666,7 +676,7 @@ class CustomPrompt(Prompts):
         return [
             (Token.Prompt, self.virtual_env()),
             (Token.Prompt, "\N{GREEK SMALL LETTER PI}"),
-            (Token.Prompt, self.to_superscript(self.shell.execution_count)),
+            (Token.Prompt, self.execution_count()),
             (Token.Prompt, self.vi_mode()),
         ]
 
