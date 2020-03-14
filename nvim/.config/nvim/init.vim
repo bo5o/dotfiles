@@ -414,10 +414,6 @@ nnoremap <leader>S :%s//g<Left><Left>
 nnoremap <leader>p "0p
 nnoremap <leader>P "0P
 
-" moving up and down work as you expected
-nnoremap <silent> j gj
-nnoremap <silent> k gk
-
 " Navigating with guides
 " inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 vnoremap <Space><Space> <Esc>:call<space>search('<+.*+>')<CR>"_c/+>/e<CR>
