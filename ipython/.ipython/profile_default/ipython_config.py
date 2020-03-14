@@ -676,7 +676,7 @@ class CustomPrompt(Prompts):
         return [
             (Token.Prompt, self.virtual_env()),
             (Token.Prompt, "\N{GREEK SMALL LETTER PI}"),
-            (Token.Prompt, self.execution_count()),
+            (Token.PromptNum, self.execution_count()),
             (Token.Prompt, self.vi_mode()),
         ]
 
