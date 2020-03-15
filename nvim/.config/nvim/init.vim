@@ -39,6 +39,7 @@ Plug 'tpope/vim-eunuch'               " unix helpers
 Plug 'tpope/vim-unimpaired'           " some useful keybindings
 Plug 'tpope/vim-obsession'            " session management
 Plug 'tpope/vim-jdaddy'               " json manipulation
+Plug 'tpope/vim-endwise'              " wisely add end/endfunction/endif...
 Plug 'tomtom/tcomment_vim'            " comment stuff out
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'junegunn/goyo.vim'              " distraction free mode
@@ -50,7 +51,6 @@ Plug 'junegunn/fzf.vim'               " fzf integration
 Plug 'rhysd/git-messenger.vim'        " show git commit under cursor
 Plug 'airblade/vim-gitgutter'         " git diff in gutter
 Plug 'lervag/vimtex'                  " LaTeX
-Plug 'ervandew/supertab'              " Use tab for autocompletion
 Plug 'SirVer/UltiSnips'               " Snippets
 Plug 'honza/vim-snippets'             " default snippets
 Plug 'ludovicchabant/vim-gutentags'   " automate ctags
@@ -1078,6 +1078,13 @@ let g:sneak#use_ic_scs = 1
 map <leader><leader> <Plug>Sneak_,
 
 "" pear-tree
+" TODO: Find a way to keep dot repeatability without breaking
+" insmode-completion and snippet expansion.
+" If it can't be done with tmsvg/pear-tree, cohama/lexima.vim might be an
+" alternative.
+" To workaround this issue, disable special mappings for now.
+let g:pear_tree_map_special_keys = 0
+
 let g:pear_tree_smart_openers = 1
 let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_backspace = 1
@@ -1108,38 +1115,34 @@ let g:vimtex_quickfix_latexlog = {
       \ 'underfull' : 0,
       \}
 
-"" supertab
-let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
-
 "" mundo
 nnoremap <leader>u :MundoToggle<CR>
+
+"" endwise
+let g:endwise_no_mappings = 1
 
 "" nvim completion manager / ncm2
 augroup nvim_completion_manager
     autocmd BufEnter * call ncm2#enable_for_buffer()
 augroup END
 
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" Press enter to trigger snippet expansion or accept completed item
+imap <expr> <CR> pumvisible()
+                    \ ? ncm2_ultisnips#completed_is_snippet()
+                        \ ? "\<Plug>(ncm2_ultisnips_expand_completed)"
+                        \ : "\<C-y>\<CR>\<Plug>DiscretionaryEnd"
+                    \ : "\<CR>\<Plug>DiscretionaryEnd"
 
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
 inoremap <c-c> <ESC>
 
-" Press enter key to trigger snippet expansion
-" inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 " Use <TAB> to select the popup menu:
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" line completion with C-Space
-inoremap <C-Space> <C-x><C-l>
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " ncm vimtex
-augroup my_cm_setup
+augroup ncm_vimtex_setup
     autocmd!
-    autocmd BufEnter * call ncm2#enable_for_buffer()
     autocmd Filetype tex call ncm2#register_source({
                 \ 'name' : 'vimtex-cmds',
                 \ 'priority': 8,
@@ -1230,6 +1233,7 @@ command! -bang -nargs=* Rg
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+imap <C-Space> <plug>(fzf-complete-line)
 
 noremap <leader>fr :Rg<CR>
 noremap <leader>fl :BLines<CR>
@@ -1593,9 +1597,6 @@ let g:javascript_plugin_jsdoc = 1
 
 "" gutentags
 let g:gutentags_exclude_filetypes = ['gitcommit', 'requirements']
-
-"" echodoc
-let g:echodoc#enable_at_startup = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
