@@ -91,6 +91,7 @@ Plug 'posva/vim-vue'                  " vue file support
 Plug 'Konfekt/FastFold'               " fast folding
 Plug 'tmhedberg/SimpylFold'           " better python folding
 Plug 'zhimsel/vim-stay'               " restore buffer views automaticaly
+Plug 'simnalamburt/vim-mundo'         " undo tree visualizer
 
 " Initialize plugin system
 call plug#end()
@@ -291,8 +292,8 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-set undodir=~/.config/nvim/undodir
 set undofile
+set undodir=~/.config/nvim/undodir
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -1109,6 +1110,9 @@ let g:vimtex_quickfix_latexlog = {
 
 "" supertab
 let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+
+"" mundo
+nnoremap <leader>u :MundoToggle<CR>
 
 "" nvim completion manager / ncm2
 augroup nvim_completion_manager
