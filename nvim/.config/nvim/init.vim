@@ -1051,7 +1051,7 @@ let g:grepper.prompt_text = 'grepper $t> '
 let g:grepper.rg = {
             \ 'escape': '\^$.*+?()[]{}|',
             \ 'grepformat': '%f:%l:%c:%m,%f',
-            \ 'grepprg': 'rg -H --no-heading --hidden -g=!.git -M=150 --max-columns-preview -S --vimgrep'
+            \ 'grepprg': 'rg -H --no-heading --hidden --glob=!.git -M=150 --max-columns-preview -S --vimgrep'
             \}
 let g:grepper.git = {
             \ 'escape': '\^$.*[]',
@@ -1211,7 +1211,16 @@ command! -bang -nargs=? -complete=dir Files
 
 command! -bang -nargs=* Rg
             \ call fzf#vim#grep(
-            \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+            \   'rg
+                \ --column
+                \ --line-number
+                \ --no-heading
+                \ --color=always
+                \ --max-columns=150
+                \ --max-columns-preview
+                \ --smart-case
+                \ --hidden
+                \ --glob=!.git '.shellescape(<q-args>), 1,
             \   fzf#vim#with_preview(), <bang>0)
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -1219,6 +1228,9 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 noremap <leader>fr :Rg<CR>
+noremap <leader>fl :BLines<CR>
+noremap <leader>fg :BTags<CR>
+noremap <leader>fG :Tags<CR>
 noremap <leader>fc :BCommits<CR>
 noremap <leader>fC :Commits<CR>
 
@@ -1296,9 +1308,6 @@ let g:Lf_MruFileExclude = ['COMMIT_EDITMSG']
 let g:Lf_ShortcutF = '<leader>ff'
 let g:Lf_ShortcutB = '<leader>fb'
 nnoremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-nnoremap <leader>fg :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-nnoremap <leader>fG :LeaderfTag<CR>
-nnoremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 let g:Lf_RgConfig = [
             \ '--max-columns=150',
