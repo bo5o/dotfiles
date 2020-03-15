@@ -1522,7 +1522,7 @@ let g:ale_linters = {
             \   'Dockerfile': ['hadolint', 'dockerfile_lint'],
             \   'yaml': ['yamllint'],
             \   'javascript': ['eslint'],
-            \   'typescript': ['eslint'],
+            \   'typescript': ['eslint', 'tsserver'],
             \   'vue': ['eslint'],
             \   'json': ['jsonlint'],
             \   'sh': ['shellcheck'],
