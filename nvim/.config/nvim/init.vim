@@ -1315,7 +1315,7 @@ let g:airline#extensions#tabline#buffer_min_count = 2
 
 "" hexokinase
 let g:Hexokinase_highlighters = ['backgroundfull']
-let g:Hexokinase_refreshEvents = ['InsertLeave', 'BufEnter']
+let g:Hexokinase_refreshEvents = ['InsertLeave', 'BufEnter', 'BufWrite']
 let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'typescript', 'vim']
 
 "" vim-markdown
