@@ -92,6 +92,7 @@ Plug 'wellle/targets.vim'             " enhanced text objects
 Plug 'tommcdo/vim-lion'               " align text by some character
 Plug 'airblade/vim-rooter'            " automatically change to project root when opening files
 Plug 'pangloss/vim-javascript'        " javascript syntax support
+Plug 'HerringtonDarkholme/yats.vim'   " typescript syntax support
 Plug 'posva/vim-vue'                  " vue file support
 Plug 'Konfekt/FastFold'               " fast folding
 Plug 'tmhedberg/SimpylFold'           " better python folding
