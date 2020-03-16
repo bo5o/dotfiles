@@ -268,8 +268,8 @@ function! MyHighlights() abort
     hi semshiParameterUnused ctermfg=106 guifg=#a89984
     hi semshiBuiltin         ctermfg=208 guifg=#fe8019
     hi semshiAttribute       ctermfg=108 guifg=fg
-    hi semshiSelf            ctermfg=109 guifg=#85a598
-    hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
+    hi semshiSelf            ctermfg=109 guifg=#83a598
+    hi semshiSelected        ctermfg=231 guifg=#fbf1c7 ctermbg=161 guibg=#cc241d
 
     hi GitGutterAdd          ctermbg=NONE guibg=NONE
     hi GitGutterChange       ctermbg=NONE guibg=NONE
