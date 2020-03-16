@@ -295,6 +295,8 @@ function! MyHighlights() abort
     hi link LspInformationLine      ALEInfoLine
     hi link LspHintLine             ALEInfoLine
 
+    hi lspReference guibg=#3c3836
+
 endfunction
 
 augroup my_colors
@@ -1608,7 +1610,7 @@ let g:lsp_diagnostics_enabled = 1
 let g:lsp_signature_help_enabled = 1
 let g:lsp_preview_float = 1
 
-let g:lsp_highlight_references_enabled = 0
+let g:lsp_highlight_references_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_virtual_text_enabled = 0
 
