@@ -30,7 +30,6 @@ Plug 'davidhalter/jedi-vim'           " python jedi
 Plug 'vimwiki/vimwiki'                " wiki
 Plug 'dense-analysis/ale'             " asynchronous linting engine
 Plug 'cespare/vim-toml'               " toml
-Plug 'plasticboy/vim-markdown'        " markdown
 Plug 'tpope/vim-surround'             " simple quoting/parenthesizing
 Plug 'tpope/vim-repeat'               " repeat almost anything
 Plug 'tpope/vim-fugitive'             " git
@@ -1321,13 +1320,21 @@ let g:Hexokinase_refreshEvents = ['InsertLeave', 'BufEnter', 'BufWrite']
 let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'typescript', 'vim']
 
 "" vim-markdown
-let g:vim_markdown_toc_autofit = 1
-let g:vim_markdown_math = 1
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_toml_frontmatter = 1
-let g:vim_markdown_json_frontmatter = 1
-let g:vim_markdown_new_list_item_indent = 0
-let g:vim_markdown_folding_disabled = 0
+let g:markdown_syntax_conceal = 1
+let g:markdown_minlines = 80
+let g:markdown_fenced_languages = [
+            \ 'js=javascript',
+            \ 'typescript=javascript',
+            \ 'ts=javascript',
+            \ 'python',
+            \ 'html',
+            \ 'c++=cpp',
+            \ 'viml=vim',
+            \ 'bash=sh',
+            \ 'ini=dosini',
+            \ 'json',
+            \ 'yaml',
+            \ ]
 
 "" indentline
 let g:indentLine_fileTypeExclude = ['vimwiki', 'markdown']
