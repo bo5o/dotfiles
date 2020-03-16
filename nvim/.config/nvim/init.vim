@@ -277,6 +277,22 @@ function! MyHighlights() abort
     hi ALEErrorSign          ctermbg=NONE guibg=NONE
     hi ALEWarningSign        ctermbg=NONE guibg=NONE
     hi ALEInfoSign           ctermbg=NONE guibg=NONE
+
+    hi link LspErrorText            ALEErrorSign
+    hi link LspWarningText          ALEWarningSign
+    hi link LspInformationText      ALEInfoSign
+    hi link LspHintText             ALEInfoSign
+
+    hi link LspErrorHighlight       ALEError
+    hi link LspWarningHighlight     ALEWarning
+    hi link LspInformationHighlight ALEInfo
+    hi link LspHintHighlight        ALEInfo
+
+    hi link LspErrorLine            ALEErrorLine
+    hi link LspWarningLine          ALEWarningLine
+    hi link LspInformationLine      ALEInfoLine
+    hi link LspHintLine             ALEInfoLine
+
 endfunction
 
 augroup my_colors
@@ -1526,6 +1542,7 @@ let g:ale_pattern_options = {
             \}
 
 nmap <leader>ad <Plug>(ale_detail)
+nmap <leader>aa <Plug>(ale_toggle)
 
 let g:ale_linters = {
             \   'python': ['flake8', 'mypy', 'pylint'],
@@ -1557,7 +1574,7 @@ let g:ale_fixers = {
             \   'sql': ['pgformatter'],
             \}
 
-"" lsp
+"" vim-lsp
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     nmap <buffer> gd <Plug>(lsp-definition)
@@ -1571,7 +1588,11 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gI <Plug>(lsp-peek-implementation)
     nmap <buffer> K <Plug>(lsp-hover)
     nmap <buffer> <leader>rn <Plug>(lsp-rename)
-    nmap <buffer> <leader>rc <Plug>(lsp-code-action)
+    nmap <buffer> <leader>ra <Plug>(lsp-code-action)
+
+    nmap <buffer> [g <Plug>(lsp-next-diagnostic)
+    nmap <buffer> ]g <Plug>(lsp-previous-diagnostic)
+    nmap <buffer> <leader>L <plug>(lsp-document-diagnostics)
 endfunction
 
 augroup lsp_install
@@ -1580,9 +1601,18 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
-let g:lsp_diagnostics_enabled = 0
+let g:lsp_diagnostics_enabled = 1
 let g:lsp_signature_help_enabled = 1
 let g:lsp_preview_float = 1
+
+let g:lsp_highlight_references_enabled = 0
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_virtual_text_enabled = 0
+
+let g:lsp_signs_enabled = 1
+let g:lsp_signs_error = {'text': g:ale_sign_error}
+let g:lsp_signs_warning = {'text': g:ale_sign_warning}
+let g:lsp_signs_hint = {'text': ''}
 
 augroup lsp_float_colours
     autocmd!
