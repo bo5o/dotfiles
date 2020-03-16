@@ -8,6 +8,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'    " nerd tree git integration
 Plug 'prabirshrestha/async.vim'       " lsp async support
 Plug 'prabirshrestha/vim-lsp'         " lsp client
 Plug 'mattn/vim-lsp-settings'         " lsp settings
+Plug 'thomasfaingnaert/' .
+            \ 'vim-lsp-snippets'      " lsp snippet support
 Plug 'ncm2/ncm2'                      " auto completion
 Plug 'roxma/nvim-yarp'                " yet another remote plugin
 Plug 'ncm2/ncm2-bufword'              " complete words from current buffer
