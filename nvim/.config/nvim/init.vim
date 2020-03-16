@@ -984,7 +984,7 @@ let g:vista#renderer#enable_icon = 1
 
 nnoremap <silent> <leader>fa :Vista!!<CR>
 nnoremap <silent> <leader>fA :Vista show<CR>
-nnoremap <silent> <leader>fv :Vista finder<CR>
+nnoremap <silent> <leader>fs :Vista finder<CR>
 
 "" vim-test
 nmap <silent> <leader>tn :TestNearest<CR>
