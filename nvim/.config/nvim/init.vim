@@ -1535,6 +1535,7 @@ let g:ale_set_quickfix = 1
 let g:ale_echo_msg_format = '[%linter%] %code%: %s'
 let g:ale_sign_error = ""
 let g:ale_sign_warning = ""
+let g:ale_sign_info = ""
 
 let g:ale_pattern_options = {
             \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
@@ -1614,7 +1615,7 @@ let g:lsp_virtual_text_enabled = 0
 let g:lsp_signs_enabled = 1
 let g:lsp_signs_error = {'text': g:ale_sign_error}
 let g:lsp_signs_warning = {'text': g:ale_sign_warning}
-let g:lsp_signs_hint = {'text': ''}
+let g:lsp_signs_hint = {'text': ale_sign_info}
 
 augroup lsp_float_colours
     autocmd!
