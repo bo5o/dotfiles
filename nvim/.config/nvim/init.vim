@@ -55,7 +55,9 @@ Plug 'SirVer/UltiSnips'               " Snippets
 Plug 'honza/vim-snippets'             " default snippets
 Plug 'ludovicchabant/vim-gutentags'   " automate ctags
 Plug 'vim-airline/vim-airline'        " nice status line
-Plug 'chrisbra/Colorizer'             " highlight hex colors vim
+Plug 'RRethy/vim-hexokinase', {
+            \ 'do': 'make hexokinase'
+            \ }                       " highlight color literals
 Plug 'Vimjas/vim-python-pep8-indent'  " pep8 indenting
 Plug 'thaerkh/vim-workspace'          " workspace management
 Plug 'mhinz/vim-startify'             " fancy start screen
@@ -1289,6 +1291,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffers_label = 'b'
 let g:airline#extensions#tabline#tabs_label = 't'
 let g:airline#extensions#tabline#buffer_min_count = 2
+
+"" hexokinase
+let g:Hexokinase_highlighters = ['backgroundfull']
+let g:Hexokinase_refreshEvents = ['InsertLeave', 'BufEnter']
+let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'typescript', 'vim']
 
 "" vim-markdown
 let g:vim_markdown_toc_autofit = 1
