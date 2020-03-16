@@ -1328,6 +1328,7 @@ let g:markdown_fenced_languages = [
             \ 'ts=javascript',
             \ 'python',
             \ 'html',
+            \ 'help',
             \ 'c++=cpp',
             \ 'viml=vim',
             \ 'bash=sh',
