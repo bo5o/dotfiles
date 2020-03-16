@@ -1593,8 +1593,8 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> <leader>rn <Plug>(lsp-rename)
     nmap <buffer> <leader>ra <Plug>(lsp-code-action)
 
-    nmap <buffer> [g <Plug>(lsp-next-diagnostic)
-    nmap <buffer> ]g <Plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
+    nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
     nmap <buffer> <leader>L <plug>(lsp-document-diagnostics)
 endfunction
 
