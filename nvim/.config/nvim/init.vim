@@ -369,9 +369,14 @@ map <leader>ba :bufdo bd<cr>
 " Close all buffers (except current)
 map <leader>bo :BufOnly<cr>
 
-" Close current buffer
-map <leader>bd :Bclose<cr>
+" Close current buffer and ignore unsaved changes
+map <leader>bd :Bclose!<cr>
+
+" Close current buffer if there are no unsaved changes
 map <leader>x :Bclose<cr>
+
+" Re-open last closed buffer
+map <leader>X :e#<cr>
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -1706,22 +1711,26 @@ function! IndTxtObj(inner)
 endfunction
 
 " Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr('%')
-   let l:alternateBufNum = bufnr('#')
+command! -bang Bclose call <SID>BufcloseCloseIt(<bang>0)
+function! <SID>BufcloseCloseIt(bang)
+    let l:currentBufNum = bufnr('%')
+    let l:alternateBufNum = bufnr('#')
 
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
+    if buflisted(l:alternateBufNum)
+        buffer #
+    else
+        bnext
+    endif
 
-   if bufnr('%') == l:currentBufNum
-     new
-   endif
+    if (bufnr('%') == l:currentBufNum && !&mod) || a:bang
+        new
+    endif
 
-   if buflisted(l:currentBufNum)
-     execute('bdelete! '.l:currentBufNum)
-   endif
+    if buflisted(l:currentBufNum)
+        if a:bang
+            execute('bdelete! '.l:currentBufNum)
+        else
+            execute('bdelete '.l:currentBufNum)
+        endif
+    endif
 endfunction
