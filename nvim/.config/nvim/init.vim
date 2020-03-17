@@ -1723,7 +1723,7 @@ function! <SID>BufcloseCloseIt(bang)
         bnext
     endif
 
-    if (bufnr('%') == l:currentBufNum && !&mod) || a:bang
+    if bufnr('%') == l:currentBufNum && !&mod
         new
     endif
 
