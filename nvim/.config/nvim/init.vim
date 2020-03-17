@@ -371,6 +371,7 @@ map <leader>bo :BufOnly<cr>
 
 " Close current buffer
 map <leader>bd :Bclose<cr>
+map <leader>x :Bclose<cr>
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
