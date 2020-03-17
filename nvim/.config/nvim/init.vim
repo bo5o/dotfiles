@@ -1326,6 +1326,7 @@ let g:markdown_fenced_languages = [
             \ 'js=javascript',
             \ 'typescript=javascript',
             \ 'ts=javascript',
+            \ 'vue',
             \ 'python',
             \ 'html',
             \ 'help',
@@ -1658,6 +1659,9 @@ let g:gutentags_exclude_filetypes = ['gitcommit', 'requirements']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " turn formatted text into a python string
 xnoremap <leader>x <esc>:'<,'>!sed -e '0,/^.*"\{3\}\\\?/s///' -e 's/"\{3\}$//' -e 's/\s\{4\}/\\t/g' -e 's/^/"/' -e 's/$/",/' -e '1i "\\n".join((' -e '$a ))'<cr>
+
+" Close all buffer except the current one
+command! BufOnly silent! execute "%bd|e#|bd#"
 
 " Press: vai, vii to select outer/inner python blocks by indetation.
 " Press: vii, yii, dii, cii to select/yank/delete/change an indented block.
