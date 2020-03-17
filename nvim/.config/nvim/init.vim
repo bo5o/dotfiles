@@ -363,8 +363,11 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Close all the buffers
+" Close all buffers
 map <leader>ba :bufdo bd<cr>
+
+" Close all buffers (except current)
+map <leader>bo :BufOnly<cr>
 
 " Close current buffer
 map <leader>bd :Bclose<cr>
