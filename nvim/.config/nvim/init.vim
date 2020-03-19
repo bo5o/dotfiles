@@ -1717,10 +1717,12 @@ function! <SID>BufcloseCloseIt(bang)
     let l:currentBufNum = bufnr('%')
     let l:alternateBufNum = bufnr('#')
 
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
+    if !&mod || a:bang
+        if buflisted(l:alternateBufNum)
+            buffer #
+        else
+            bnext
+        endif
     endif
 
     if bufnr('%') == l:currentBufNum && !&mod
