@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # Like normal z when used with arguments but displays an fzf prompt when
 # used without.
 j() {

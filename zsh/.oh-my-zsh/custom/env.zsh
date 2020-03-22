@@ -1,10 +1,12 @@
+#!/usr/bin/env zsh
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 export TERMINAL="/usr/local/bin/st"
 export MANPATH="/usr/local/texlive/2017/texmf-dist/doc/man:$MANPATH"
 export INFOPATH="/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
-export PATH="/usr/local/texlive/2017/bin/x86_64-linux:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.4.0/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export EDITOR="/usr/bin/nvim"

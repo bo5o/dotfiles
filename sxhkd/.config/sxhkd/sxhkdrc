@@ -1,9 +1,9 @@
 # Basic binds
 super + Return
-	$TERMINAL
+	st
 
 super + w
-	$BROWSER
+	firefox
 
 super + z
 	zathura

@@ -4,5 +4,5 @@
 #   copy its content after closing the editor.
 
 tfile=$(mktemp /tmp/vim-anywhere.XXXXXXXXX)
-$TERMINAL -e $EDITOR $tfile
+st -e nvim $tfile
 cat $tfile | xclip -selection clipboard
