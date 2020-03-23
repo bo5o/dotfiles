@@ -658,19 +658,21 @@ class CustomPrompt(Prompts):
     def virtual_env(self):
         venv = os.getenv("VIRTUAL_ENV")
         if venv is not None:
-            venv = Path(venv)
-            cfg_file = venv / "pyvenv.cfg"
+            venv_path = Path(venv)
+            cfg_file = venv_path / "pyvenv.cfg"
             if cfg_file.exists():
                 parser = configparser.ConfigParser()
                 parser.read_string("[root]\n" + cfg_file.read_text())
                 if parser.has_option("root", "prompt"):
                     prompt = parser.get("root", "prompt").strip("'")
                     if prompt.startswith("(") and prompt.endswith(")"):
-                        prompt = prompt[1:-1]
-            else:
-                prompt = venv.parent.name if venv.name[0] == "." else venv.name
-
+                        return f"{prompt} "
+                    return f"({prompt}) "
+            prompt = (
+                venv_path.parent.name if venv_path.name[0] == "." else venv_path.name
+            )
             return f"({prompt}) "
+
         return ""
 
     def in_prompt_tokens(self):
