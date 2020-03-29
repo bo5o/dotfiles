@@ -97,6 +97,7 @@ Plug 'Konfekt/FastFold'               " fast folding
 Plug 'tmhedberg/SimpylFold'           " better python folding
 Plug 'zhimsel/vim-stay'               " restore buffer views automaticaly
 Plug 'simnalamburt/vim-mundo'         " undo tree visualizer
+Plug 'unblevable/quick-scope'         " fast left-right movement (using f, F, t, T)
 
 " Initialize plugin system
 call plug#end()
@@ -295,6 +296,9 @@ function! MyHighlights() abort
     hi link LspHintLine             ALEInfoLine
 
     hi lspReference guibg=#3c3836
+
+    hi QuickScopePrimary guifg=#fe8019 gui=bold ctermfg=155 cterm=underline
+    hi QuickScopeSecondary guifg=#d65d0e gui=bold ctermfg=81 cterm=underline
 
 endfunction
 
@@ -1151,6 +1155,11 @@ let g:vimtex_quickfix_latexlog = {
 
 "" mundo
 nnoremap <leader>u :MundoToggle<CR>
+
+"" quick-scope
+let g:qs_max_chars=176
+let g:qs_buftype_blacklist = ['terminal', 'nofile', 'startify']
+let g:qs_lazy_highlight = 1
 
 "" endwise
 let g:endwise_no_mappings = 1
