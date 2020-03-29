@@ -299,6 +299,9 @@ function! MyHighlights() abort
     hi QuickScopePrimary guifg=#fe8019 gui=bold ctermfg=155 cterm=underline
     hi QuickScopeSecondary guifg=#d65d0e gui=bold ctermfg=81 cterm=underline
 
+    hi Sneak guifg=#ebdbb2 guibg=#b16286 ctermfg=15 ctermbg=201
+    hi SneakScope guifg=#3c3836 guibg=#fbf1c7 ctermfg=0 ctermbg=255
+
 endfunction
 
 augroup my_colors
@@ -1110,6 +1113,7 @@ nnoremap <leader>gt :BufTodo<cr>
 nnoremap <leader>gT :Todo<cr>
 
 "" sneak
+let g:sneak#label = 1
 let g:sneak#use_ic_scs = 1
 map <leader><leader> <Plug>Sneak_,
 
