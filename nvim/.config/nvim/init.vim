@@ -96,7 +96,6 @@ Plug 'posva/vim-vue'                  " vue file support
 Plug 'Konfekt/FastFold'               " fast folding
 Plug 'tmhedberg/SimpylFold'           " better python folding
 Plug 'zhimsel/vim-stay'               " restore buffer views automaticaly
-Plug 'simnalamburt/vim-mundo'         " undo tree visualizer
 Plug 'unblevable/quick-scope'         " fast left-right movement (using f, F, t, T)
 
 " Initialize plugin system
