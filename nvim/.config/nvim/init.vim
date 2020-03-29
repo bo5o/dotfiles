@@ -294,7 +294,7 @@ function! MyHighlights() abort
     hi link LspInformationLine      ALEInfoLine
     hi link LspHintLine             ALEInfoLine
 
-    hi lspReference guibg=#3c3836
+    hi lspReference guibg=#3c3836 gui=bold
 
     hi QuickScopePrimary guifg=#fe8019 gui=bold ctermfg=155 cterm=underline
     hi QuickScopeSecondary guifg=#d65d0e gui=bold ctermfg=81 cterm=underline
