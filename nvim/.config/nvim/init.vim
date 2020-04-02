@@ -601,6 +601,7 @@ let g:quicktex_python = {
             \';arg'   : "<+++> : <++>",
             \';tod'   : "# TODO: <+++>",
             \';todo'  : "# TODO: <+++>",
+            \';noqa'  : "# noqa: <+++>",
             \';par'   : "Parameters\<CR>----------\<CR>",
             \';params': "Parameters\<CR>----------\<CR>",
             \';args'  : "Parameters\<CR>----------\<CR>",
