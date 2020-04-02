@@ -1156,9 +1156,6 @@ let g:vimtex_quickfix_latexlog = {
       \ 'underfull' : 0,
       \}
 
-"" mundo
-nnoremap <leader>u :MundoToggle<CR>
-
 "" quick-scope
 let g:qs_max_chars=176
 let g:qs_buftype_blacklist = ['terminal', 'nofile', 'startify', 'qf']
