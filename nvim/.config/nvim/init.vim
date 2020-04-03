@@ -1005,6 +1005,10 @@ let g:lion_squeeze_spaces = 1
 let g:lion_map_right = 'ga'
 let g:lion_map_left = 'gA'
 
+"" vim-rooter
+let g:rooter_patterns = ['.projections.json', '.git', '.git/']
+let g:rooter_silent_chdir = 1
+
 "" vista.vim
 let g:vista_default_executive = 'ctags'
 let g:vista_executive_for = {
