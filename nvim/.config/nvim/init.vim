@@ -97,6 +97,7 @@ Plug 'Konfekt/FastFold'               " fast folding
 Plug 'tmhedberg/SimpylFold'           " better python folding
 Plug 'zhimsel/vim-stay'               " restore buffer views automaticaly
 Plug 'unblevable/quick-scope'         " fast left-right movement (using f, F, t, T)
+Plug 'heavenshell/vim-pydocstring'    " python docstring generator
 
 " Initialize plugin system
 call plug#end()
@@ -1161,6 +1162,10 @@ let g:vimtex_quickfix_latexlog = {
 let g:qs_max_chars=176
 let g:qs_buftype_blacklist = ['terminal', 'nofile', 'startify', 'qf']
 let g:qs_lazy_highlight = 1
+
+"" vim-pydocstring
+let g:pydocstring_formatter = 'numpy'
+let g:pydocstring_doq_path = $PYENV_ROOT . '/versions/py3doq/bin/doq'
 
 "" endwise
 let g:endwise_no_mappings = 1
