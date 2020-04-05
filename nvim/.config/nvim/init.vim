@@ -1602,7 +1602,7 @@ let g:ale_linters = {
             \   'tex': ['chktex'],
             \   'typescript': ['eslint', 'tsserver'],
             \   'vim': ['vint'],
-            \   'vue': ['eslint'],
+            \   'vue': ['eslint', 'vls'],
             \   'yaml': ['yamllint'],
             \   'zsh': ['shellcheck'],
             \}
