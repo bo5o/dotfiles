@@ -361,7 +361,8 @@ augroup filetype_settings
     autocmd FileType markdown setlocal textwidth=80
     autocmd FileType markdown setlocal conceallevel=2
     autocmd FileType requirements setlocal commentstring=#\ %s
-    autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
+    autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal textwidth=80
+    autocmd FileType gitcommit setlocal textwidth=80
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1583,7 +1584,7 @@ let g:ale_sign_info = ""
 let g:ale_pattern_options = {
             \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
             \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-            \ '\.git\/.*$': {'ale_linters': [], 'ale_fixers': []},
+            \ '\.git\/(?!COMMIT_EDITMSG)$': {'ale_linters': [], 'ale_fixers': []},
             \ 'crontab$': {'ale_linters': [], 'ale_fixers': ['trim_whitespace']},
             \}
 
@@ -1591,33 +1592,34 @@ nmap <leader>ad <Plug>(ale_detail)
 nmap <leader>aa <Plug>(ale_toggle)
 
 let g:ale_linters = {
-            \   'python': ['flake8', 'mypy', 'pylint'],
-            \   'tex': ['chktex'],
-            \   'sql': ['sqlint'],
             \   'Dockerfile': ['hadolint', 'dockerfile_lint'],
-            \   'yaml': ['yamllint'],
+            \   'gitcommit': ['gitlint'],
             \   'javascript': ['eslint'],
-            \   'typescript': ['eslint', 'tsserver'],
-            \   'vue': ['eslint'],
             \   'json': ['jsonlint'],
+            \   'python': ['flake8', 'mypy', 'pylint'],
             \   'sh': ['shellcheck'],
-            \   'zsh': ['shellcheck'],
+            \   'sql': ['sqlint'],
+            \   'tex': ['chktex'],
+            \   'typescript': ['eslint', 'tsserver'],
             \   'vim': ['vint'],
+            \   'vue': ['eslint'],
+            \   'yaml': ['yamllint'],
+            \   'zsh': ['shellcheck'],
             \}
 
 let g:ale_fixers = {
             \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \   'python': ['black', 'isort'],
-            \   'yaml': ['prettier'],
+            \   'css': ['prettier'],
             \   'html': ['prettier'],
             \   'htmldjango': ['html-beautify'],
-            \   'css': ['prettier'],
             \   'javascript': ['eslint'],
+            \   'json': ['prettier'],
+            \   'python': ['black', 'isort'],
+            \   'sql': ['pgformatter'],
+            \   'tex': ['latexindent'],
             \   'typescript': ['eslint'],
             \   'vue': ['eslint'],
-            \   'json': ['prettier'],
-            \   'tex': ['latexindent'],
-            \   'sql': ['pgformatter'],
+            \   'yaml': ['prettier'],
             \}
 
 "" vim-lsp
