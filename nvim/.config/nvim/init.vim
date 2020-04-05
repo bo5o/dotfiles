@@ -1079,7 +1079,7 @@ let NERDTreeIgnore=[
             \ '\.toc$', '\.out$', '\.bbl$', '\.bcf$', '\.blg$', '\.snm$', '\.nav$',
             \ '\.fdb_latexmk$', '\.fls$', '\.xdv$', '\.py[co]$', '^tags$[[file]]',
             \ '_minted[[dir]]', '.mypy_cache[[dir]]', '__pycache__[[dir]]',
-            \ '\.synctex\(busy\)$', '^py.typed$[[file]]'
+            \ '\.synctex\(busy\)$', '^py.typed$[[file]]', 'node_modules[[dir]]'
             \]
 
 "" grepper
