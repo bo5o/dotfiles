@@ -1585,6 +1585,8 @@ let g:ale_pattern_options = {
             \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
             \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
             \ '\.git\/(?!COMMIT_EDITMSG)$': {'ale_linters': [], 'ale_fixers': []},
+            \ 'site-packages\/.*$': {'ale_linters': [], 'ale_fixers': []},
+            \ 'node_modules\/.*$': {'ale_linters': [], 'ale_fixers': []},
             \ 'crontab$': {'ale_linters': [], 'ale_fixers': ['trim_whitespace']},
             \}
 
