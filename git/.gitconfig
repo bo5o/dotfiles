@@ -9,6 +9,8 @@
 [alias]
     unstage = reset HEAD
     uncommit = reset --soft HEAD^
+    last = log -1 HEAD
+    recommit = !git commit --edit --file $(git rev-parse --git-path COMMIT_EDITMSG)
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
