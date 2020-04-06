@@ -97,6 +97,8 @@ Plug 'Konfekt/FastFold'               " fast folding
 Plug 'tmhedberg/SimpylFold'           " better python folding
 Plug 'zhimsel/vim-stay'               " restore buffer views automaticaly
 Plug 'unblevable/quick-scope'         " fast left-right movement (using f, F, t, T)
+Plug 'heavenshell/vim-pydocstring'    " python docstring generator
+Plug 'heavenshell/vim-jsdoc'          " javascript/typescript docstring generator
 
 " Initialize plugin system
 call plug#end()
@@ -354,10 +356,13 @@ augroup filetype_settings
     autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib setlocal shiftwidth=2
     autocmd FileType javascript setlocal foldmethod=syntax
     autocmd FileType vue setlocal foldmethod=indent
+    autocmd FileType javascript,typescript,vue nmap <buffer><silent> <leader>rd <Plug>(jsdoc)
+    autocmd FileType python nmap <buffer><silent> <leader>rd <Plug>(pydocstring)
     autocmd FileType markdown setlocal textwidth=80
     autocmd FileType markdown setlocal conceallevel=2
     autocmd FileType requirements setlocal commentstring=#\ %s
-    autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal tw=72
+    autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal textwidth=80
+    autocmd FileType gitcommit setlocal textwidth=80
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1078,7 +1083,7 @@ let NERDTreeIgnore=[
             \ '\.toc$', '\.out$', '\.bbl$', '\.bcf$', '\.blg$', '\.snm$', '\.nav$',
             \ '\.fdb_latexmk$', '\.fls$', '\.xdv$', '\.py[co]$', '^tags$[[file]]',
             \ '_minted[[dir]]', '.mypy_cache[[dir]]', '__pycache__[[dir]]',
-            \ '\.synctex\(busy\)$', '^py.typed$[[file]]'
+            \ '\.synctex\(busy\)$', '^py.typed$[[file]]', 'node_modules[[dir]]'
             \]
 
 "" grepper
@@ -1165,6 +1170,14 @@ let g:vimtex_quickfix_latexlog = {
 let g:qs_max_chars=176
 let g:qs_buftype_blacklist = ['terminal', 'nofile', 'startify', 'qf']
 let g:qs_lazy_highlight = 1
+
+"" vim-pydocstring
+let g:pydocstring_formatter = 'numpy'
+let g:pydocstring_doq_path = $PYENV_ROOT . '/versions/py3doq/bin/doq'
+
+"" vim-jsdoc
+let g:jsdoc_underscore_private = 1
+let g:jsdoc_enable_es6 = 1
 
 "" endwise
 let g:endwise_no_mappings = 1
@@ -1575,7 +1588,9 @@ let g:ale_sign_info = ""
 let g:ale_pattern_options = {
             \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
             \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-            \ '\.git\/.*$': {'ale_linters': [], 'ale_fixers': []},
+            \ '\.git\/(?!COMMIT_EDITMSG)$': {'ale_linters': [], 'ale_fixers': []},
+            \ 'site-packages\/.*$': {'ale_linters': [], 'ale_fixers': []},
+            \ 'node_modules\/.*$': {'ale_linters': [], 'ale_fixers': []},
             \ 'crontab$': {'ale_linters': [], 'ale_fixers': ['trim_whitespace']},
             \}
 
@@ -1583,33 +1598,34 @@ nmap <leader>ad <Plug>(ale_detail)
 nmap <leader>aa <Plug>(ale_toggle)
 
 let g:ale_linters = {
-            \   'python': ['flake8', 'mypy', 'pylint'],
-            \   'tex': ['chktex'],
-            \   'sql': ['sqlint'],
             \   'Dockerfile': ['hadolint', 'dockerfile_lint'],
-            \   'yaml': ['yamllint'],
+            \   'gitcommit': ['gitlint'],
             \   'javascript': ['eslint'],
-            \   'typescript': ['eslint', 'tsserver'],
-            \   'vue': ['eslint'],
             \   'json': ['jsonlint'],
+            \   'python': ['flake8', 'mypy', 'pylint'],
             \   'sh': ['shellcheck'],
-            \   'zsh': ['shellcheck'],
+            \   'sql': ['sqlint'],
+            \   'tex': ['chktex'],
+            \   'typescript': ['eslint', 'tsserver'],
             \   'vim': ['vint'],
+            \   'vue': ['eslint', 'vls'],
+            \   'yaml': ['yamllint'],
+            \   'zsh': ['shellcheck'],
             \}
 
 let g:ale_fixers = {
             \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \   'python': ['black', 'isort'],
-            \   'yaml': ['prettier'],
+            \   'css': ['prettier'],
             \   'html': ['prettier'],
             \   'htmldjango': ['html-beautify'],
-            \   'css': ['prettier'],
             \   'javascript': ['eslint'],
+            \   'json': ['prettier'],
+            \   'python': ['black', 'isort'],
+            \   'sql': ['pgformatter'],
+            \   'tex': ['latexindent'],
             \   'typescript': ['eslint'],
             \   'vue': ['eslint'],
-            \   'json': ['prettier'],
-            \   'tex': ['latexindent'],
-            \   'sql': ['pgformatter'],
+            \   'yaml': ['prettier'],
             \}
 
 "" vim-lsp
