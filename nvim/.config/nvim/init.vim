@@ -1678,6 +1678,9 @@ augroup lsp_float_colours
     endif
 augroup end
 
+"" vim-lsp-settings
+let g:lsp_settings_root_markers = ['.projections.json', '.git', '.git/']
+
 "" vim-slime
 let g:slime_target = 'tmux'
 let g:slime_python_ipython = 1
