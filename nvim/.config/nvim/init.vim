@@ -1175,7 +1175,7 @@ let g:qs_lazy_highlight = 1
 
 "" vim-pydocstring
 let g:pydocstring_formatter = 'numpy'
-let g:pydocstring_doq_path = $PYENV_ROOT . '/versions/py3doq/bin/doq'
+let g:pydocstring_doq_path = $HOME . '/.virtualenvs/py3doq/bin/doq'
 let g:pydocstring_enable_mapping = 0
 
 "" vim-jsdoc
