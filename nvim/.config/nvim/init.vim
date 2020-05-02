@@ -99,6 +99,7 @@ Plug 'zhimsel/vim-stay'               " restore buffer views automaticaly
 Plug 'unblevable/quick-scope'         " fast left-right movement (using f, F, t, T)
 Plug 'heavenshell/vim-pydocstring'    " python docstring generator
 Plug 'heavenshell/vim-jsdoc'          " javascript/typescript docstring generator
+Plug 'direnv/direnv.vim'              " direnv support
 
 " Initialize plugin system
 call plug#end()
