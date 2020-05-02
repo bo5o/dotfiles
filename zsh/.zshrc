@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # Theme
-ZSH_THEME="zeta"
+ZSH_THEME="spaceship"
 
 # Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -35,6 +35,9 @@ plugins=(
     tldr
     zsh-completions
 )
+
+# disable default vi-mode prompt
+export RPS1="%{$reset_color%}"
 
 source $ZSH/oh-my-zsh.sh
 
