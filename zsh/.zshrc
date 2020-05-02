@@ -13,7 +13,8 @@ COMPLETION_WAITING_DOTS="true"
 # Plugins (can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
     git
-    pyenv
+    asdf
+    direnv
     docker
     docker-compose
     django
@@ -22,9 +23,7 @@ plugins=(
     yarn
     pip
     brew
-    direnv
     colored-man-pages
-    virtualenvwrapper
     vi-mode
     zsh-syntax-highlighting
     extract
