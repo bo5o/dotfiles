@@ -163,7 +163,7 @@ set wildignore=*.o,*~,*.pyc
 set wildignore+=*.mat,*.pdfpc,*/tmp/*,*.so,*.swp,*.zip,*.aux,*.gz,*.fdb_latexmk,*.fls,
             \*.log,*.pdf,*.glg,*.glo,*.ist,*.bcf,*.bbl,*.blg,*.gls,*.run.xml,*.toc,
             \*.acn,*.acr,*.alg,*.ntn,*.slo,*.not,*.nlg,*.slg,*.sls,*.lof,*.lot,*.lol,
-            \*.xdv,**/.venv/**,**/.tools/**,tags
+            \*.xdv,**/.venv/**,**/.direnv/**,**/.tools/**,tags
 
 "Always show current position
 set ruler
@@ -1013,7 +1013,7 @@ let g:lion_map_right = 'ga'
 let g:lion_map_left = 'gA'
 
 "" vim-rooter
-let g:rooter_patterns = ['.projections.json', '.git', '.git/']
+let g:rooter_patterns = ['.project-root', '.envrc', '.projections.json', '.git', '.git/']
 let g:rooter_silent_chdir = 1
 
 "" vista.vim
@@ -1389,7 +1389,7 @@ let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_IgnoreCurrentBufferName = 0
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
-let g:Lf_RootMarkers = ['.root', '.projections.json', '.git', '.hg', '.svn', '.venv', 'node_modules']
+let g:Lf_RootMarkers = ['.project-root', '.git', '.git/', '.direnv/', '.venv/', 'node_modules/']
 let g:Lf_MruFileExclude = ['COMMIT_EDITMSG']
 
 let g:Lf_ShortcutF = '<leader>ff'
@@ -1682,7 +1682,7 @@ augroup lsp_float_colours
 augroup end
 
 "" vim-lsp-settings
-let g:lsp_settings_root_markers = ['.projections.json', '.git', '.git/']
+let g:lsp_settings_root_markers = ['.projections.json', '.envrc', '.git', '.git/']
 
 "" vim-slime
 let g:slime_target = 'tmux'
