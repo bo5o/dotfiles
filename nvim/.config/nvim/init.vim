@@ -272,6 +272,7 @@ function! MyHighlights() abort
     hi semshiSelf            ctermfg=109 guifg=#83a598
     hi semshiSelected        ctermfg=231 guifg=#fbf1c7 ctermbg=161 guibg=#cc241d
 
+    highlight! link SignColumn LineNr
     hi GitGutterAdd          ctermbg=NONE guibg=NONE
     hi GitGutterChange       ctermbg=NONE guibg=NONE
     hi GitGutterDelete       ctermbg=NONE guibg=NONE
