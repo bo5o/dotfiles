@@ -22,6 +22,7 @@ plugins=(
     yarn
     pip
     brew
+    direnv
     colored-man-pages
     virtualenvwrapper
     vi-mode
