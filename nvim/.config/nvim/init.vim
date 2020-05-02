@@ -1387,7 +1387,7 @@ let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_IgnoreCurrentBufferName = 0
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
-let g:Lf_RootMarkers = ['.root', '.projections.json', '.git', '.hg', '.svn', '.venv']
+let g:Lf_RootMarkers = ['.root', '.projections.json', '.git', '.hg', '.svn', '.venv', 'node_modules']
 let g:Lf_MruFileExclude = ['COMMIT_EDITMSG']
 
 let g:Lf_ShortcutF = '<leader>ff'
