@@ -26,8 +26,8 @@ bind gD composite tabduplicate; tabdetach
 " sane tab movement
 bind d scrollline 20
 bind u scrollline -20
-bind J tabprev
-bind K tabnext
+bind K tabprev
+bind J tabnext
 bind X undo
 bind x tabclose
 
