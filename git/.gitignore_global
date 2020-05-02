@@ -1,6 +1,25 @@
+# vim: ft=conf
+
+# tags
 tags
+tags.*
+
+# os specific
+.DS_Store
+Icon?
+Thumbs.db
+
+# direnv stuff
+.direnv
+.envrc
+
+# vim stuff
+*~
+*.swp
+*.swo
 .vim-bookmarks
 .undodir
 Session.vim
-tags.*
+
+# custom
 .root
