@@ -2,6 +2,10 @@ SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_CHAR_SYMBOL="ζ "
 SPACESHIP_VENV_PREFIX="in "
 SPACESHIP_VENV_COLOR=blue
+SPACESHIP_VI_MODE_INSERT=
+SPACESHIP_VI_MODE_NORMAL=
+SPACESHIP_VI_MODE_PREFIX=
+SPACESHIP_VI_MODE_SUFFIX=
 
 SPACESHIP_PROMPT_ORDER=(
   # time          # Time stamps section
@@ -35,7 +39,7 @@ SPACESHIP_PROMPT_ORDER=(
   exec_time     # Execution time
   line_sep      # Line break
   # battery       # Battery level and status
-  # vi_mode       # Vi-mode indicator
+  vi_mode       # Vi-mode indicator
   jobs          # Background jobs indicator
   exit_code     # Exit code section
   char          # Prompt character
@@ -45,15 +49,13 @@ SPACESHIP_PROMPT_ORDER=(
 # ------------------------------------------------------------------------------
 
 # Python version via asdf
-SPACESHIP_ASDF_PYTHON_SHOW=true
-
 spaceship_asdf_python() {
   [[ $SPACESHIP_ASDF_PYTHON_SHOW == false ]] && return
 
-  # Show pyenv python version only for Python-specific folders
+  # Show python version only for Python-specific folders
   [[ -f .python-version || -f requirements.txt || -f pyproject.toml || -n *.py(#qN^/) ]] || return
 
-  spaceship::exists asdf || return # Do nothing if pyenv is not installed
+  spaceship::exists asdf || return # Do nothing if asdf is not installed
 
   local python_version=${$(asdf current python)[1]}
 
@@ -68,8 +70,6 @@ spaceship_asdf_python() {
 }
 
 # Current active virtual environment, always showing parent directory
-SPACESHIP_CUSTOM_VENV_SHOW=true
-
 spaceship_custom_venv() {
   [[ $SPACESHIP_CUSTOM_VENV_SHOW == false ]] && return
 

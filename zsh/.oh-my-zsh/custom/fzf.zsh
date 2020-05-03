@@ -1,5 +1,5 @@
 # fzf related settings
-bindkey '^r' fzf-history-widget
+bindkey '^R' fzf-history-widget
 export FZF_COMPLETION_TRIGGER=''
 bindkey '^T' fzf-completion
 bindkey '^I' $fzf_default_completion

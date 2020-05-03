@@ -1,8 +1,6 @@
-bindkey -v
-
 bindkey '^P' up-line-or-beginning-search
 bindkey '^N' down-line-or-beginning-search
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
+bindkey -M vicmd 'v' visual-mode
+bindkey -M vicmd '^E' edit-command-line
 
 export KEYTIMEOUT=1

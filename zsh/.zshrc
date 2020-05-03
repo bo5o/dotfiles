@@ -7,12 +7,10 @@ ZSH_THEME="spaceship"
 # Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# Path to custom folder.
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Plugins (can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
     git
+    vi-mode
     asdf
     direnv
     docker
@@ -34,6 +32,9 @@ plugins=(
     tldr
     zsh-completions
 )
+
+# https://denysdovhan.com/spaceship-prompt/docs/Options.html#vi-mode-vimode
+export RPS1="%{$reset_color%}"
 
 source $ZSH/oh-my-zsh.sh
 
