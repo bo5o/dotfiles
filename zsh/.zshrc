@@ -29,16 +29,16 @@ plugins=(
     pip
     brew
     colored-man-pages
-    zsh-syntax-highlighting
+    zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting.git
     extract
     gitignore
-    timewarrior
+    timewarrior # https://github.com/svenXY/timewarrior
     tmuxinator
     z
     fd
     fzf
-    tldr
-    zsh-completions
+    tldr # https://github.com/tldr-pages/tldr-node-client#zsh
+    zsh-completions # https://github.com/zsh-users/zsh-completions.git
 )
 
 source $ZSH/oh-my-zsh.sh
