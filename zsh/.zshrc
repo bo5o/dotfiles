@@ -32,6 +32,7 @@ plugins=(
     zsh-syntax-highlighting
     extract
     gitignore
+    timewarrior
     tmuxinator
     z
     fd
