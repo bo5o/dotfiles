@@ -1,8 +1,7 @@
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_CHAR_SYMBOL="ζ "
 SPACESHIP_VENV_PREFIX="in "
-SPACESHIP_VI_MODE_INSERT=" "
-SPACESHIP_VI_MODE_NORMAL=""
+SPACESHIP_VENV_COLOR=blue
 
 SPACESHIP_PROMPT_ORDER=(
   # time          # Time stamps section
@@ -36,7 +35,7 @@ SPACESHIP_PROMPT_ORDER=(
   exec_time     # Execution time
   line_sep      # Line break
   # battery       # Battery level and status
-  vi_mode       # Vi-mode indicator
+  # vi_mode       # Vi-mode indicator
   jobs          # Background jobs indicator
   exit_code     # Exit code section
   char          # Prompt character

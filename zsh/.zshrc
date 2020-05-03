@@ -24,7 +24,6 @@ plugins=(
     pip
     brew
     colored-man-pages
-    vi-mode
     zsh-syntax-highlighting
     extract
     gitignore
@@ -35,9 +34,6 @@ plugins=(
     tldr
     zsh-completions
 )
-
-# disable default vi-mode prompt
-export RPS1="%{$reset_color%}"
 
 source $ZSH/oh-my-zsh.sh
 
