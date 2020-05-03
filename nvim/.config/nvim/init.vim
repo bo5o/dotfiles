@@ -978,6 +978,7 @@ let g:startify_list_order = ['files', 'dir', 'bookmarks', 'commands']
 let g:startify_bookmarks = [
             \ { 'c': '~/.config/nvim/init.vim' },
             \ { 'g': '~/.gitconfig' },
+            \ { 'p': '~/.oh-my-zsh/custom/p10k.zsh' },
             \ { 't': '~/.tmux.conf' },
             \ { 'z': '~/.zshrc' }
             \ ]
