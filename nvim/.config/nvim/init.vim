@@ -364,6 +364,7 @@ augroup filetype_settings
     autocmd FileType markdown setlocal conceallevel=2
     autocmd FileType requirements setlocal commentstring=#\ %s
     autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal textwidth=80
+    autocmd BufRead,BufNewFile .env.* setlocal filetype=sh
     autocmd FileType gitcommit setlocal textwidth=80
 augroup END
 
