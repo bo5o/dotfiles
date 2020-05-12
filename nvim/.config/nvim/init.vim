@@ -1014,7 +1014,15 @@ let g:lion_map_right = 'ga'
 let g:lion_map_left = 'gA'
 
 "" vim-rooter
-let g:rooter_patterns = ['.project-root', '.envrc', '.projections.json', '.git', '.git/']
+let g:rooter_patterns = [
+    \ '.project-root',
+    \ 'package.json',
+    \ 'requirements.txt',
+    \ 'pyproject.toml',
+    \ '.git',
+    \ '.git/'
+    \]
+
 let g:rooter_silent_chdir = 1
 
 "" vista.vim
@@ -1390,7 +1398,7 @@ let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_IgnoreCurrentBufferName = 0
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
-let g:Lf_RootMarkers = ['.project-root', '.git', '.git/', '.direnv/', '.venv/', 'node_modules/']
+let g:Lf_RootMarkers = ['.project-root', '.git', '.git/']
 let g:Lf_MruFileExclude = ['COMMIT_EDITMSG']
 
 let g:Lf_ShortcutF = '<leader>ff'
@@ -1683,7 +1691,13 @@ augroup lsp_float_colours
 augroup end
 
 "" vim-lsp-settings
-let g:lsp_settings_root_markers = ['.projections.json', '.envrc', '.git', '.git/']
+let g:lsp_settings_root_markers = [
+    \ 'package.json',
+    \ 'requirements.txt',
+    \ 'pyproject.toml',
+    \ '.git',
+    \ '.git/'
+    \]
 
 "" vim-slime
 let g:slime_target = 'tmux'
