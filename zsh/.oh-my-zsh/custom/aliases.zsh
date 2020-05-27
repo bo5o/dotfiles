@@ -7,9 +7,13 @@ alias -g C='| wc -l'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g G='| grep'
-alias -g F='| fzf'
-alias -g P='| fpp'
-alias -g A='| xargs'
+alias -g F='| fzf -m'
+alias -g Y='| yank'
+alias -g X='| xargs'
+alias -g NF='./*(oc[1])'
+
+# suffix aliases
+alias -s git="git clone --recurse-submodules"
 
 # personal aliases
 alias octave="octave-cli -q"
@@ -112,3 +116,4 @@ alias .a='source .venv/bin/activate'
 alias .d='deactivate'
 alias mux='tmuxinator'
 alias arst='asdf'
+alias lA='ls -A'
