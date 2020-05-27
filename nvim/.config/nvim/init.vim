@@ -100,6 +100,7 @@ Plug 'unblevable/quick-scope'         " fast left-right movement (using f, F, t,
 Plug 'heavenshell/vim-pydocstring'    " python docstring generator
 Plug 'heavenshell/vim-jsdoc'          " javascript/typescript docstring generator
 Plug 'direnv/direnv.vim'              " direnv support
+Plug 'chr4/nginx.vim'                 " improved nginx support
 
 " Initialize plugin system
 call plug#end()
