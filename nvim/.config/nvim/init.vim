@@ -1010,6 +1010,9 @@ nnoremap <leader>gw :Gwrite<CR>
 "" git messenger
 hi gitmessengerPopupNormal term=None guifg=#ebdbb2 guibg=#32302f ctermfg=None ctermbg=None
 
+"" gitgutter
+let g:gitgutter_preview_win_floating = 0
+
 "" vim-lion
 let g:lion_squeeze_spaces = 1
 let g:lion_map_right = 'ga'
