@@ -78,34 +78,10 @@ pycl() {
 
 function mkvenv() {
     # shellcheck disable=SC1091
-    pyenv local "${1:-"system"}" && \
+    asdf local python "${1:-3.7.7}" && \
         python3 -m pip install -U virtualenv && \
         python3 -m virtualenv --prompt="(${PWD##*/}) " .venv && \
-        .venv/bin/python -m pip install -U pip setuptools && \
-        .venv/bin/python -m pip install -U pip-tools && \
-        source .venv/bin/activate
-}
-
-function qkvenv() {
-    # shellcheck disable=SC1091
-    pyenv local "${1:-"system"}" && \
-        python3 -m pip install -U virtualenv && \
-        python3 -m virtualenv --prompt="(${PWD##*/}) " .venv && \
-        .venv/bin/python -m pip install -U pip setuptools && \
-        .venv/bin/python -m pip install -U pip-tools && \
-        printf "ipython\nipdb\n" > requirements.in && \
-        .venv/bin/pip-compile && \
-        .venv/bin/pip-sync && \
-        source .venv/bin/activate
-}
-
-function revenv() {
-    # shellcheck disable=SC1091
-    pyenv local > /dev/null 2>&1 && [ -z "$VIRTUAL_ENV" ] && \
-        python3 -m pip install -U virtualenv && \
-        python -m virtualenv --prompt="(${PWD##*/}) " .venv && \
-        .venv/bin/python -m pip install -U pip setuptools && \
-        .venv/bin/python -m pip install -r requirements.txt && \
+        .venv/bin/python -m pip install -U pip setuptools pip-tools && \
         source .venv/bin/activate
 }
 
