@@ -1002,7 +1002,7 @@ augroup emmet_init
 augroup END
 
 "" fugitive
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gcc :Gcommit<CR>
 nnoremap <leader>gca :Gcommit --amend<CR>
 nnoremap <leader>gw :Gwrite<CR>
