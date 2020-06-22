@@ -5,7 +5,6 @@ scriptencoding utf-8
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'            " nerd tree
 Plug 'Xuyuanp/nerdtree-git-plugin'    " nerd tree git integration
-Plug 'prabirshrestha/async.vim'       " lsp async support
 Plug 'prabirshrestha/vim-lsp'         " lsp client
 Plug 'mattn/vim-lsp-settings'         " lsp settings
 Plug 'thomasfaingnaert/' .
