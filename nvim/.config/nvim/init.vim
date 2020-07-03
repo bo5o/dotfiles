@@ -267,14 +267,16 @@ function! MyHighlights() abort
     highlight CursorLineNr ctermfg=11 guifg=#fabd2f guibg=#32302f
 
     " Use Gruvbox colors for python semshi semantic highlighter
-    hi semshiGlobal          ctermfg=167 guifg=#fb4934
+    hi semshiGlobal          ctermfg=167 guifg=#fe8019
     hi semshiImported        ctermfg=214 guifg=#fabd2f cterm=bold gui=bold
     hi semshiParameter       ctermfg=142 guifg=#98971a
     hi semshiParameterUnused ctermfg=106 guifg=#a89984
-    hi semshiBuiltin         ctermfg=208 guifg=#fe8019
+    hi semshiBuiltin         ctermfg=208 guifg=#d3889b
+    hi semshiFree            ctermfg=218 guifg=#b16286
     hi semshiAttribute       ctermfg=108 guifg=#83a598
     hi semshiSelf            ctermfg=109 guifg=#458588
-    hi semshiSelected        ctermfg=231 guifg=#fbf1c7 ctermbg=161 guibg=#cc241d
+    hi semshiSelected        ctermfg=231 guifg=#fbf1c7 ctermbg=161 guibg=#fb4934
+    hi semshiUnresolved      ctermfg=226 guifg=#d79921 cterm=underline gui=underline
 
     highlight! link SignColumn LineNr
     hi GitGutterAdd          ctermbg=NONE guibg=NONE
