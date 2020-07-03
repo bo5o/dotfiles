@@ -28,7 +28,6 @@ Plug 'yggdroot/LeaderF', {
 Plug 'davidhalter/jedi-vim'           " python jedi
 Plug 'vimwiki/vimwiki'                " wiki
 Plug 'dense-analysis/ale'             " asynchronous linting engine
-Plug 'cespare/vim-toml'               " toml
 Plug 'tpope/vim-surround'             " simple quoting/parenthesizing
 Plug 'tpope/vim-repeat'               " repeat almost anything
 Plug 'tpope/vim-fugitive'             " git
@@ -59,7 +58,6 @@ Plug 'vim-airline/vim-airline'        " nice status line
 Plug 'RRethy/vim-hexokinase', {
             \ 'do': 'make hexokinase'
             \ }                       " highlight color literals
-Plug 'Vimjas/vim-python-pep8-indent'  " pep8 indenting
 Plug 'thaerkh/vim-workspace'          " workspace management
 Plug 'mhinz/vim-startify'             " fancy start screen
 Plug 'Valloric/ListToggle'            " toggle quickfix and location list
@@ -70,27 +68,18 @@ Plug 'MattesGroeger/vim-bookmarks'    " bookmarks
 Plug 'jeetsukumaran/vim-pythonsense'  " python text objects
 Plug 'tmsvg/pear-tree'                " auto-close (, {, [, etc.
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
-Plug 'ekalinin/Dockerfile.vim'        " Dockerfile syntax highlighting
 Plug 'ryanoasis/vim-devicons'         " fancy glyphs
 Plug 'lifepillar/vim-gruvbox8'        " colorscheme
-Plug 'tmux-plugins/vim-tmux'          " syntax hightlighting etc for .tmux.conf
-Plug 'raimon49/requirements.txt.vim'  " requirements.txt syntax highlighting
 Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-line statements
-Plug 'kovetskiy/sxhkd-vim'            " indent, highlight syntax and detect sxhkd config files
 Plug 'mattn/emmet-vim'                " expanding html abbreviations
-Plug 'mhinz/vim-grepper'              " integration of my favorite grepper
+Plug 'mhinz/vim-grepper'              " integration of my favorite grep program
 Plug 'liuchengxu/vista.vim'           " browse lsp symbols and tags
 Plug 'janko/vim-test'                 " convenient test invocation
 Plug 'cbows/pytest-vim-compiler'      " pytest output compiler
 Plug 'machakann/vim-highlightedyank'  " Highlight yanked region
-Plug 'numirias/semshi', {
-            \ 'do': ':UpdateRemotePlugins'
-            \ }                       " semantic syntax highlighting for python
 Plug 'wellle/targets.vim'             " enhanced text objects
 Plug 'tommcdo/vim-lion'               " align text by some character
 Plug 'airblade/vim-rooter'            " automatically change to project root when opening files
-Plug 'pangloss/vim-javascript'        " javascript syntax support
-Plug 'HerringtonDarkholme/yats.vim'   " typescript syntax support
 Plug 'posva/vim-vue'                  " vue file support
 Plug 'Konfekt/FastFold'               " fast folding
 Plug 'tmhedberg/SimpylFold'           " better python folding
@@ -99,7 +88,21 @@ Plug 'unblevable/quick-scope'         " fast left-right movement (using f, F, t,
 Plug 'heavenshell/vim-pydocstring'    " python docstring generator
 Plug 'heavenshell/vim-jsdoc'          " javascript/typescript docstring generator
 Plug 'direnv/direnv.vim'              " direnv support
-Plug 'chr4/nginx.vim'                 " improved nginx support
+
+" Language support (syntax highlighting, indent etc.)
+Plug 'numirias/semshi', {
+            \ 'do': ':UpdateRemotePlugins'
+            \ }                       " python (semantic syntax highlighting)
+Plug 'Vimjas/vim-python-pep8-indent'  " python (indenting)
+Plug 'pangloss/vim-javascript'        " javascript
+Plug 'HerringtonDarkholme/yats.vim'   " typescript
+Plug 'kovetskiy/sxhkd-vim'            " sxhkdrc
+Plug 'ericpruitt/tmux.vim'            " .tmux.conf
+Plug 'ekalinin/Dockerfile.vim'        " Dockerfile
+Plug 'raimon49/requirements.txt.vim'  " requirements.txt
+Plug 'cespare/vim-toml'               " toml
+Plug 'chr4/nginx.vim'                 " nginx
+
 
 " Initialize plugin system
 call plug#end()
@@ -269,8 +272,8 @@ function! MyHighlights() abort
     hi semshiParameter       ctermfg=142 guifg=#98971a
     hi semshiParameterUnused ctermfg=106 guifg=#a89984
     hi semshiBuiltin         ctermfg=208 guifg=#fe8019
-    hi semshiAttribute       ctermfg=108 guifg=fg
-    hi semshiSelf            ctermfg=109 guifg=#83a598
+    hi semshiAttribute       ctermfg=108 guifg=#83a598
+    hi semshiSelf            ctermfg=109 guifg=#458588
     hi semshiSelected        ctermfg=231 guifg=#fbf1c7 ctermbg=161 guibg=#cc241d
 
     highlight! link SignColumn LineNr
