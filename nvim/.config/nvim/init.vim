@@ -1536,7 +1536,7 @@ augroup END
 
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_signature_help_enabled = 1
-let g:lsp_preview_float = 1
+let g:lsp_preview_float = 0
 
 let g:lsp_highlight_references_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
