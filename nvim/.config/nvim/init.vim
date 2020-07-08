@@ -13,7 +13,7 @@ Plug 'ncm2/ncm2'                      " auto completion
 Plug 'roxma/nvim-yarp'                " yet another remote plugin
 Plug 'ncm2/ncm2-bufword'              " complete words from current buffer
 Plug 'fgrsnau/ncm2-otherbuf'          " complete words from other buffers
-Plug 'ncm2/ncm2-tmux'                 " complete words from tmux panes
+Plug 'wellle/tmux-complete.vim'       " complete words from tmux panes
 Plug 'ncm2/ncm2-path'                 " complete file paths
 Plug 'ncm2/ncm2-jedi'                 " python completion source
 Plug 'ncm2/ncm2-ultisnips'            " snippet completion source
@@ -1221,6 +1221,9 @@ inoremap <c-c> <ESC>
 " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Disable extra tmux complete trigger
+let g:tmuxcomplete#trigger = ''
 
 " ncm vimtex
 augroup ncm_vimtex_setup
