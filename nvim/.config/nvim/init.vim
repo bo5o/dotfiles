@@ -272,7 +272,7 @@ function! MyHighlights() abort
     hi semshiParameter       ctermfg=142 guifg=#98971a
     hi semshiParameterUnused ctermfg=106 guifg=#a89984
     hi semshiBuiltin         ctermfg=208 guifg=#d3889b
-    hi semshiFree            ctermfg=218 guifg=#b16286
+    hi semshiFree            ctermfg=218 guifg=#98971a
     hi semshiAttribute       ctermfg=108 guifg=#83a598
     hi semshiSelf            ctermfg=109 guifg=#458588
     hi semshiSelected        ctermfg=231 guifg=#fbf1c7 ctermbg=161 guibg=#fb4934
