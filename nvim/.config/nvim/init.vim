@@ -359,8 +359,8 @@ set showbreak=↪
 augroup filetype_settings
     autocmd!
     autocmd FileType python setlocal textwidth=88
-    autocmd FileType yaml,html,css,javascript,typescript,son,vue,tex,bib setlocal tabstop=2
-    autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib setlocal shiftwidth=2
+    autocmd FileType yaml,html,css,javascript,typescript,son,vue,tex,bib,xml setlocal tabstop=2
+    autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml setlocal shiftwidth=2
     autocmd FileType javascript setlocal foldmethod=syntax
     autocmd FileType vue setlocal foldmethod=indent
     autocmd FileType javascript,typescript,vue nmap <buffer><silent> <leader>rd <Plug>(jsdoc)
@@ -1024,7 +1024,7 @@ let g:lion_map_left = 'gA'
 
 "" vim-rooter
 let g:rooter_patterns = [
-    \ '.project-root',
+    \ '.root-marker',
     \ 'package.json',
     \ 'requirements.txt',
     \ 'pyproject.toml',
@@ -1494,6 +1494,7 @@ let g:ale_linters = {
             \   'typescript': ['eslint', 'tsserver'],
             \   'vim': ['vint'],
             \   'vue': ['eslint', 'vls'],
+            \   'xml': ['xmllint'],
             \   'yaml': ['yamllint'],
             \   'zsh': ['shellcheck'],
             \}
