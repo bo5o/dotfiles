@@ -1023,16 +1023,16 @@ let g:lion_map_right = 'ga'
 let g:lion_map_left = 'gA'
 
 "" vim-rooter
+let g:rooter_silent_chdir = 1
+let g:rooter_cd_cmd = 'lcd'
+
 let g:rooter_patterns = [
     \ '.root-marker',
     \ 'package.json',
     \ 'requirements.txt',
     \ 'pyproject.toml',
-    \ '.git',
-    \ '.git/'
+    \ '.git'
     \]
-
-let g:rooter_silent_chdir = 1
 
 "" vista.vim
 let g:vista_default_executive = 'ctags'
