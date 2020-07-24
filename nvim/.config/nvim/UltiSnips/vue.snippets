@@ -1,0 +1,36 @@
+snippet vbase
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script lang="ts">
+	import { Component, Vue } from "vue-property-decorator";
+
+	@Component
+	export default class `!p snip.rv = snip.basename` extends Vue {
+		${1}
+	}
+</script>
+
+<style scoped>
+
+</style>
+endsnippet
+
+snippet vprop
+@Prop({ type: $1 }) $2!: `!p snip.rv = t[1].lower()`;
+endsnippet
+
+snippet vprop:d
+@Prop({ default: $1, type: $2 }) $3!: `!p snip.rv = t[2].lower()`;
+endsnippet
+
+snippet vprops
+@PropSync("$1" { type: $2 }) synced`!p snip.rv = t[1].capitalize()`!: `!p snip.rv = t[2].lower()`;
+endsnippet
+
+snippet vprops:d
+@PropSync("$1" { default: $2, type: $3 }) synced`!p snip.rv = t[1].capitalize()`!: `!p snip.rv = t[3].lower()`;
+endsnippet
