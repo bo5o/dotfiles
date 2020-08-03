@@ -1,0 +1,8 @@
+direnv 2.21.2
+python 3.7.8
+nodejs 14.2.0
+hadolint v1.17.6
+neovim nightly
+bat 0.15.4
+shfmt 3.1.2
+shellcheck 0.7.1
