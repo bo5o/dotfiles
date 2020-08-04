@@ -1083,6 +1083,32 @@ let g:test#python#pytest#options = {
 " send all command to this tmux session
 let g:tmux_session = 'aux'
 
+"" vim-projectionist
+let g:projectionist_heuristics = {
+            \ 'setup.py|requirements.txt|pyproject.toml': {
+            \   'scripts/*.py': {
+            \       'type': 'script',
+            \       'start': '-wait=always python -m debugpy --listen 55678 --wait-for-client {file} --'
+            \   },
+            \   'src/*.py': {
+            \       'type': 'source',
+            \       'alternate': 'tests/{dirname|basename}/test_{basename}.py',
+            \       'start': '-wait=always python -m debugpy --listen 55678 --wait-for-client -m {dot} --'
+            \   },
+            \   'tests/**/test_*.py': {
+            \       'type': 'test',
+            \       'start': '{project}',
+            \       'alternate': 'src/{project|basename}/{dirname}/{basename}.py'
+            \   },
+            \   'README.md': {
+            \       'type': 'readme'
+            \   },
+            \   '.env': {
+            \       'type': 'env'
+            \   },
+            \ }
+            \ }
+
 " Send certain key combinations to g:tmux_session
 nmap <silent> t<CR> :call execute("Tmux send-keys -t " . g:tmux_session . " Enter")<CR>
 nmap <silent> t<C-c> :call execute("Tmux send-keys -t " . g:tmux_session . " C-c")<CR>
