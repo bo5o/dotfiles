@@ -88,6 +88,9 @@ Plug 'unblevable/quick-scope'         " fast left-right movement (using f, F, t,
 Plug 'heavenshell/vim-pydocstring'    " python docstring generator
 Plug 'heavenshell/vim-jsdoc'          " javascript/typescript docstring generator
 Plug 'direnv/direnv.vim'              " direnv support
+Plug 'puremourning/vimspector', {
+            \ 'do': './install_gadget.py --basedir ~/.config/nvim/vimspector --enable-python'
+            \ }                       " debug protocol support
 
 " Language support (syntax highlighting, indent etc.)
 Plug 'numirias/semshi', {
@@ -1199,6 +1202,31 @@ let g:pydocstring_enable_mapping = 0
 "" vim-jsdoc
 let g:jsdoc_underscore_private = 1
 let g:jsdoc_enable_es6 = 1
+
+"" vimspector
+let g:vimspector_base_dir = expand( '$HOME/.config/nvim/vimspector' )
+let g:vimspector_code_minwidth = 88
+let g:vimspector_bottombar_height = 17
+
+nmap <leader>dc <Plug>VimspectorContinue
+nmap <leader>dx <Plug>VimspectorStop
+nmap <leader>dr <Plug>VimspectorRestart
+nmap <leader>dp <Plug>VimspectorPause
+nmap <leader>dbb <Plug>VimspectorToggleBreakpoint
+nmap <leader>dbc <Plug>VimspectorToggleConditionalBreakpoint
+nmap <leader>dbf <Plug>VimspectorAddFunctionBreakpoint
+nmap <leader>dn <Plug>VimspectorStepOver
+nmap <leader>di <Plug>VimspectorStepInto
+nmap <leader>do <Plug>VimspectorStepOut
+
+nmap <leader>dq :VimspectorReset<CR>
+nmap <leader>dw :VimspectorWatch<space>
+nmap <leader>de :VimspectorEval<space>
+nmap <leader>dh :VimspectorShowOutput<space>
+
+sign define vimspectorBP text= texthl=SpellBad
+sign define vimspectorBPDisabled text= texthl=SpellBad
+sign define vimspectorPC text= texthl=SpellBad
 
 "" endwise
 let g:endwise_no_mappings = 1

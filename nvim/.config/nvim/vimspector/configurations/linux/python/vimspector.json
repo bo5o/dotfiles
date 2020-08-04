@@ -1,0 +1,21 @@
+{
+  "configurations": {
+    "Python: Attach To Vim": {
+      "variables": {
+        "host": "localhost",
+        "port": "55678"
+      },
+      "adapter": "multi-session",
+      "configuration": {
+        "name": "Attach",
+        "request": "attach"
+      },
+      "breakpoints": {
+        "exception": {
+          "raised": "N",
+          "uncaught": "Y"
+        }
+      }
+    }
+  }
+}
