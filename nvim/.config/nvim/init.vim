@@ -90,7 +90,7 @@ Plug 'heavenshell/vim-jsdoc'          " javascript/typescript docstring generato
 Plug 'direnv/direnv.vim'              " direnv support
 Plug 'puremourning/vimspector', {
             \ 'do': './install_gadget.py --basedir ~/.config/nvim/vimspector --enable-python'
-            \ }                       " debug protocol support
+            \ }                       " debug adapter protocol client
 
 " Language support (syntax highlighting, indent etc.)
 Plug 'numirias/semshi', {
@@ -1238,11 +1238,11 @@ nmap <leader>dc <Plug>VimspectorContinue
 nmap <leader>dx <Plug>VimspectorStop
 nmap <leader>dr <Plug>VimspectorRestart
 nmap <leader>dp <Plug>VimspectorPause
-nmap <leader>dbb <Plug>VimspectorToggleBreakpoint
+nmap <F9> <Plug>VimspectorToggleBreakpoint
 nmap <leader>dbc <Plug>VimspectorToggleConditionalBreakpoint
 nmap <leader>dbf <Plug>VimspectorAddFunctionBreakpoint
-nmap <leader>dn <Plug>VimspectorStepOver
-nmap <leader>di <Plug>VimspectorStepInto
+nmap <F8> <Plug>VimspectorStepOver
+nmap <F7> <Plug>VimspectorStepInto
 nmap <leader>do <Plug>VimspectorStepOut
 
 nmap <leader>dq :VimspectorReset<CR>
@@ -1250,9 +1250,9 @@ nmap <leader>dw :VimspectorWatch<space>
 nmap <leader>de :VimspectorEval<space>
 nmap <leader>dh :VimspectorShowOutput<space>
 
-sign define vimspectorBP text= texthl=SpellBad
-sign define vimspectorBPDisabled text= texthl=SpellBad
-sign define vimspectorPC text= texthl=SpellBad
+sign define vimspectorBP text= texthl=WarningMsg
+sign define vimspectorBPDisabled text= texthl=WarningMsg
+sign define vimspectorPC text= texthl=WarningMsg
 
 "" endwise
 let g:endwise_no_mappings = 1
