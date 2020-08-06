@@ -951,8 +951,8 @@ augroup calcurse
 augroup END
 
 " Goyo
-map <F9> :Goyo<CR>
-inoremap <F9> <esc>:Goyo<CR>a
+map <F1> :Goyo<CR>
+inoremap <F1> <esc>:Goyo<CR>a
 
 " Insert date
 inoremap ;dt <C-R>=strftime('%Y-%m-%d')<CR>
@@ -1234,16 +1234,16 @@ let g:vimspector_base_dir = expand( '$HOME/.config/nvim/vimspector' )
 let g:vimspector_code_minwidth = 88
 let g:vimspector_bottombar_height = 17
 
-nmap <leader>dc <Plug>VimspectorContinue
-nmap <leader>ds <Plug>VimspectorStop
-nmap <leader>dr <Plug>VimspectorRestart
-nmap <leader>dp <Plug>VimspectorPause
+nmap <F3> <Plug>VimspectorPause
+nmap <F4> <Plug>VimspectorRestart
+nmap <F5> <Plug>VimspectorContinue
+nmap <leader><F5> <Plug>VimspectorStop
+nmap <F8> <Plug>VimspectorAddFunctionBreakpoint
 nmap <F9> <Plug>VimspectorToggleBreakpoint
 nmap <leader><F9> <Plug>VimspectorToggleConditionalBreakpoint
-nmap <leader>dbf <Plug>VimspectorAddFunctionBreakpoint
-nmap <F8> <Plug>VimspectorStepOver
-nmap <F7> <Plug>VimspectorStepInto
-nmap <leader><F7> <Plug>VimspectorStepOut
+nmap <F10> <Plug>VimspectorStepOver
+nmap <F11> <Plug>VimspectorStepInto
+nmap <F12> <Plug>VimspectorStepOut
 
 nmap <leader>dq :VimspectorReset<CR>
 nmap <leader>dw :VimspectorWatch<space>
@@ -1255,6 +1255,7 @@ nmap <leader>dW :call win_gotoid( g:vimspector_session_windows.watches )<CR>
 nmap <leader>dE :call win_gotoid( g:vimspector_session_windows.output )<CR>
 nmap <leader>dV :call win_gotoid( g:vimspector_session_windows.variables )<CR>
 nmap <leader>dM :call win_gotoid( g:vimspector_session_windows.code )<CR>
+nmap <leader>dT :call win_gotoid( g:vimspector_session_windows.stack_trace )<CR>
 
 sign define vimspectorBP text= texthl=WarningMsg
 sign define vimspectorBPDisabled text= texthl=WarningMsg
@@ -1638,12 +1639,6 @@ let g:lsp_settings_root_markers = [
 "" vim-slime
 let g:slime_target = 'tmux'
 let g:slime_python_ipython = 1
-
-augroup slime_keys
-    autocmd!
-    autocmd FileType python nmap <buffer> <F5> :w<cr>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
-    autocmd FileType python imap <buffer> <F5> <C-o>:w<cr><C-o>:exec "SlimeSend1 " . "run -m " . substitute(expand("%:r"), "\/", "\.", "g")<cr>
-augroup END
 
 "" vim javascript
 let g:javascript_plugin_jsdoc = 1
