@@ -1235,20 +1235,26 @@ let g:vimspector_code_minwidth = 88
 let g:vimspector_bottombar_height = 17
 
 nmap <leader>dc <Plug>VimspectorContinue
-nmap <leader>dx <Plug>VimspectorStop
+nmap <leader>ds <Plug>VimspectorStop
 nmap <leader>dr <Plug>VimspectorRestart
 nmap <leader>dp <Plug>VimspectorPause
 nmap <F9> <Plug>VimspectorToggleBreakpoint
-nmap <leader>dbc <Plug>VimspectorToggleConditionalBreakpoint
+nmap <leader><F9> <Plug>VimspectorToggleConditionalBreakpoint
 nmap <leader>dbf <Plug>VimspectorAddFunctionBreakpoint
 nmap <F8> <Plug>VimspectorStepOver
 nmap <F7> <Plug>VimspectorStepInto
-nmap <leader>do <Plug>VimspectorStepOut
+nmap <leader><F7> <Plug>VimspectorStepOut
 
 nmap <leader>dq :VimspectorReset<CR>
 nmap <leader>dw :VimspectorWatch<space>
 nmap <leader>de :VimspectorEval<space>
 nmap <leader>dh :VimspectorShowOutput<space>
+
+" Quickly jump to different debugger sections
+nmap <leader>dW :call win_gotoid( g:vimspector_session_windows.watches )<CR>
+nmap <leader>dE :call win_gotoid( g:vimspector_session_windows.output )<CR>
+nmap <leader>dV :call win_gotoid( g:vimspector_session_windows.variables )<CR>
+nmap <leader>dM :call win_gotoid( g:vimspector_session_windows.code )<CR>
 
 sign define vimspectorBP text= texthl=WarningMsg
 sign define vimspectorBPDisabled text= texthl=WarningMsg
