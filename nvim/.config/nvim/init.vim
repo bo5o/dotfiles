@@ -1242,7 +1242,7 @@ nmap <F8> <Plug>VimspectorAddFunctionBreakpoint
 nmap <F9> <Plug>VimspectorToggleBreakpoint
 nmap <leader><F9> <Plug>VimspectorToggleConditionalBreakpoint
 nmap <F10> <Plug>VimspectorStepOver
-nmap <F11> <Plug>VimspectorStepInto
+nmap <F7> <Plug>VimspectorStepInto
 nmap <F12> <Plug>VimspectorStepOut
 
 nmap <leader>dq :VimspectorReset<CR>
