@@ -1033,6 +1033,7 @@ let g:rooter_patterns = [
     \ '.root-marker',
     \ 'package.json',
     \ 'requirements.txt',
+    \ 'manage.py',
     \ 'pyproject.toml',
     \ '.git'
     \]
@@ -1631,6 +1632,7 @@ augroup end
 let g:lsp_settings_root_markers = [
     \ 'package.json',
     \ 'requirements.txt',
+    \ 'manage.py',
     \ 'pyproject.toml',
     \ '.git',
     \ '.git/'
