@@ -1,0 +1,10 @@
+# vim: ft=yaml:
+---
+extends: default
+
+rules:
+  line-length:
+    max: 88
+    level: warning
+  comments:
+    min-spaces-from-content: 1
