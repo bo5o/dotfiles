@@ -65,7 +65,6 @@ Plug 'brennier/quicktex'              " very quick latex writing
 Plug 'justinmk/vim-sneak'             " sneak motion
 Plug 'jpalardy/vim-slime'             " tmux repl
 Plug 'MattesGroeger/vim-bookmarks'    " bookmarks
-Plug 'jeetsukumaran/vim-pythonsense'  " python text objects
 Plug 'tmsvg/pear-tree'                " auto-close (, {, [, etc.
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
 Plug 'ryanoasis/vim-devicons'         " fancy glyphs
@@ -97,6 +96,7 @@ Plug 'numirias/semshi', {
             \ 'do': ':UpdateRemotePlugins'
             \ }                       " python (semantic syntax highlighting)
 Plug 'Vimjas/vim-python-pep8-indent'  " python (indenting)
+Plug 'jeetsukumaran/vim-pythonsense'  " python (text objects)
 Plug 'pangloss/vim-javascript'        " javascript
 Plug 'HerringtonDarkholme/yats.vim'   " typescript
 Plug 'kovetskiy/sxhkd-vim'            " sxhkdrc
