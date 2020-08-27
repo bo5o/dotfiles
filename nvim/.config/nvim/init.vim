@@ -1089,12 +1089,12 @@ let g:projectionist_heuristics = {
             \ 'setup.py|requirements.txt|pyproject.toml': {
             \   'scripts/*.py': {
             \       'type': 'script',
-            \       'start': '-wait=always python -m debugpy --listen 55678 --wait-for-client {file} --'
+            \       'start': '-wait=always ipython --pdb {file}'
             \   },
             \   'src/*.py': {
             \       'type': 'source',
             \       'alternate': 'tests/{dirname|basename}/test_{basename}.py',
-            \       'start': '-wait=always python -m debugpy --listen 55678 --wait-for-client -m {dot} --'
+            \       'start': '-wait=always ipython --pdb -m {dot}'
             \   },
             \   'tests/**/test_*.py': {
             \       'type': 'test',
@@ -1235,10 +1235,11 @@ let g:vimspector_base_dir = expand( '$HOME/.config/nvim/vimspector' )
 let g:vimspector_code_minwidth = 88
 let g:vimspector_bottombar_height = 17
 
+nmap <F2> <Plug>VimspectorStop
 nmap <F3> <Plug>VimspectorPause
 nmap <F4> <Plug>VimspectorRestart
 nmap <F5> <Plug>VimspectorContinue
-nmap <leader><F5> <Plug>VimspectorStop
+nmap <leader><F5> :Start -wait=always python -m debugpy --listen 55678 --wait-for-client % --<CR>
 nmap <F8> <Plug>VimspectorAddFunctionBreakpoint
 nmap <F9> <Plug>VimspectorToggleBreakpoint
 nmap <leader><F9> <Plug>VimspectorToggleConditionalBreakpoint
