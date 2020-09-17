@@ -1077,7 +1077,7 @@ let test#filename_modifier = ':p'
 let g:test#python#pytest#file_pattern = '\.py'
 let g:test#python#runner = 'pytest'
 let g:test#python#pytest#options = {
-            \ 'nearest':   '--pdb',
+            \ 'nearest':   '--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb',
             \}
 
 "" dispatch
