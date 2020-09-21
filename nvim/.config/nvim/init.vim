@@ -397,6 +397,9 @@ map <leader>bd :Bclose!<cr>
 " Close current buffer if there are no unsaved changes
 map <leader>x :Bclose<cr>
 
+" Close preview window
+nnoremap <leader>pc :pclose<cr>
+
 " Re-open last closed buffer
 map <leader>X :e#<cr>
 
@@ -1010,9 +1013,18 @@ augroup END
 
 "" fugitive
 nnoremap <leader>gs :Git<CR>
-nnoremap <leader>gcc :Gcommit<CR>
+nnoremap <leader>gcc :Gcommit -v -q<CR>
 nnoremap <leader>gca :Gcommit --amend<CR>
+nnoremap <leader>gct :Gcommit -v -q %:p<CR>
 nnoremap <leader>gw :Gwrite<CR>
+nnoremap <leader>gl :Gllog<CR>
+nnoremap <leader>gL :0Gllog<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gd :Gdiffsplit<CR>
+nnoremap <leader>gD :Gdiffsplit<space>
+nnoremap <leader>gps :Dispatch! git push<CR>
+nnoremap <leader>gpl :Dispatch! git pull<CR>
 
 "" git messenger
 hi gitmessengerPopupNormal term=None guifg=#ebdbb2 guibg=#32302f ctermfg=None ctermbg=None
