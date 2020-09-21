@@ -30,3 +30,5 @@
     path = ~/.gitconfig_local
 [includeIf "gitdir:~/projects/"]
     path = ~/.gitconfig_work
+[pull]
+	rebase = false
