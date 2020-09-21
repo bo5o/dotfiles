@@ -1,0 +1,19 @@
+---
+startuppopupversion: 1
+
+gui:
+  theme:
+    selectedLineBgColor:
+      - reverse
+    selectedRangeBgColor:
+      - reverse
+
+git:
+  paging:
+    colorArg: always
+    useConfig: false
+  pull:
+    mode: "merge" # one of 'merge' | 'rebase' | 'ff-only'
+update:
+  method: never # can be: prompt | background | never
+reporting: "off"
