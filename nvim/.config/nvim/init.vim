@@ -1016,6 +1016,7 @@ augroup END
 "" fugitive
 nnoremap <leader>g<space> :Git<space>
 nnoremap <leader>gs :Git<CR>
+nnoremap <leader>gco :Git checkout<space>
 nnoremap <leader>gcc :Gcommit -v -q<CR>
 nnoremap <leader>gca :Gcommit --amend<CR>
 nnoremap <leader>gct :Gcommit -v -q %:p<CR>
