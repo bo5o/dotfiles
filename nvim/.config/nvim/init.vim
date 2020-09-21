@@ -398,7 +398,9 @@ map <leader>bd :Bclose!<cr>
 map <leader>x :Bclose<cr>
 
 " Close preview window
-nnoremap <leader>pc :pclose<cr>
+nnoremap <c-w>pc :pclose<cr>
+nnoremap <c-w>C :tabclose<cr>
+nnoremap <c-w>O :tabonly<cr>
 
 " Re-open last closed buffer
 map <leader>X :e#<cr>
@@ -1012,19 +1014,20 @@ augroup emmet_init
 augroup END
 
 "" fugitive
+nnoremap <leader>g<space> :Git<space>
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gcc :Gcommit -v -q<CR>
 nnoremap <leader>gca :Gcommit --amend<CR>
 nnoremap <leader>gct :Gcommit -v -q %:p<CR>
 nnoremap <leader>gw :Gwrite<CR>
-nnoremap <leader>gl :Gllog<CR>
+nnoremap <leader>gl :GV<CR>
 nnoremap <leader>gL :0Gllog<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>ge :Gedit<CR>
 nnoremap <leader>gd :Gdiffsplit<CR>
 nnoremap <leader>gD :Gdiffsplit<space>
-nnoremap <leader>gps :Dispatch! git push<CR>
-nnoremap <leader>gpl :Dispatch! git pull<CR>
+nnoremap <leader>gp :Git pull<CR>
+nnoremap <leader>gP :Git push<CR>
 
 "" git messenger
 hi gitmessengerPopupNormal term=None guifg=#ebdbb2 guibg=#32302f ctermfg=None ctermbg=None
@@ -1448,7 +1451,7 @@ let g:airline_right_alt_sep = ''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffers_label = 'b'
 let g:airline#extensions#tabline#tabs_label = 't'
-let g:airline#extensions#tabline#buffer_min_count = 2
+let g:airline#extensions#tabline#buffer_min_count = 1
 
 "" hexokinase
 let g:Hexokinase_highlighters = ['backgroundfull']
