@@ -663,6 +663,7 @@ let g:quicktex_python = {
             \';im'    : "import <+++>",
             \';bp'    : "breakpoint()<+++>",
             \';debug' : "breakpoint()<+++>",
+            \';rt' : "reveal_type(<+++>)",
         \'Section: general' : 'COMMENT',
             \';pd'    : "import pandas as pd",
             \';plt'    : "import matplotlib.pyplot as plt",
@@ -1074,9 +1075,11 @@ nnoremap <silent> <leader>fs :Vista finder<CR>
 
 "" vim-test
 nmap <silent> <leader>tn :TestNearest<CR>
+nmap <leader>tN :TestNearest<space>
 nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>ts :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
+nmap <leader>tL :TestLast<space>
 nmap <silent> <leader>tt :TestLast<CR>
 nmap <silent> <leader>tg :TestVisit<CR>
 
