@@ -44,8 +44,7 @@ Plug 'tomtom/tcomment_vim'            " comment stuff out
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'junegunn/goyo.vim'              " distraction free mode
 Plug 'junegunn/fzf', {
-            \ 'dir': '~/.fzf',
-            \ 'do': './install --bin'
+            \ 'do': { -> fzf#install() }
             \ }                       " fuzzy finder
 Plug 'junegunn/fzf.vim'               " fzf integration
 Plug 'rhysd/git-messenger.vim'        " show git commit under cursor
