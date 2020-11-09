@@ -89,6 +89,8 @@ Plug 'direnv/direnv.vim'              " direnv support
 Plug 'puremourning/vimspector', {
             \ 'do': './install_gadget.py --basedir ~/.config/nvim/vimspector --enable-python'
             \ }                       " debug adapter protocol client
+" Plug 'kyazdani42/nvim-web-devicons'
+" Plug 'romgrk/barbar.nvim'
 
 " Language support (syntax highlighting, indent etc.)
 Plug 'numirias/semshi', {
@@ -170,8 +172,11 @@ set wildignore+=*.mat,*.pdfpc,*/tmp/*,*.so,*.swp,*.zip,*.aux,*.gz,*.fdb_latexmk,
             \*.acn,*.acr,*.alg,*.ntn,*.slo,*.not,*.nlg,*.slg,*.sls,*.lof,*.lot,*.lol,
             \*.xdv,**/.venv/**,**/.direnv/**,**/.tools/**,tags
 
-"Always show current position
+" Always show current position
 set ruler
+
+" Enable mouse in normal mode
+set mouse=n
 
 " Highlight current line
 set cursorline
@@ -1457,6 +1462,55 @@ let g:airline#extensions#tabline#buffers_label = 'b'
 let g:airline#extensions#tabline#tabs_label = 't'
 let g:airline#extensions#tabline#buffer_min_count = 1
 
+" "" barbar.nvim
+" " NOTE: This variable doesn't exist before barbar runs. Create it before
+" "       setting any option.
+" let bufferline = {}
+" let bufferline.animation = v:false
+" let bufferline.icons = v:true
+" let bufferline.closable = v:true
+" let bufferline.clickable = v:true
+" let bufferline.maximum_padding = 2
+"
+" " If set, the letters for each buffer in buffer-pick mode will be
+" " assigned based on their name. Otherwise or in case all letters are
+" " already assigned, the behavior is to assign letters in order of
+" " usability (see order below)
+" let bufferline.semantic_letters = v:true
+" let bufferline.letters =
+"   \ 'arstdhneioqwfpgjluy;zxcvbkmARSTDHNEIOQWFPGJLUY;ZXCVBKM'
+"
+" nnoremap <silent> <leader>x :BufferClose<CR>
+" nnoremap <silent> <C-s> :BufferPick<CR>
+"
+" nnoremap <silent> <leader>1 :BufferGoto 1<CR>
+" nnoremap <silent> <leader>2 :BufferGoto 2<CR>
+" nnoremap <silent> <leader>3 :BufferGoto 3<CR>
+" nnoremap <silent> <leader>4 :BufferGoto 4<CR>
+" nnoremap <silent> <leader>5 :BufferGoto 5<CR>
+"
+" "  Current: current buffer
+" "  Visible: visible but not current buffer
+" " Inactive: invisible but not current buffer
+" "     -Mod: when modified
+" "    -Sign: the separator between buffers
+" "  -Target: letter in buffer-picking mode
+" "
+" "           BufferCurrent
+" "           BufferCurrentMod
+" "           BufferCurrentSign
+" "           BufferCurrentTarget
+" "           BufferVisible
+" "           BufferVisibleMod
+" "           BufferVisibleSign
+" "           BufferVisibleTarget
+" "           BufferInactive
+" "           BufferInactiveMod
+" "           BufferInactiveSign
+" "           BufferInactiveTarget
+" hi TabLineFill guibg=#1d2021
+" hi BufferVisible guifg=#7c6f64 guibg=#282828
+
 "" hexokinase
 let g:Hexokinase_highlighters = ['backgroundfull']
 let g:Hexokinase_refreshEvents = ['InsertLeave', 'BufEnter', 'BufWrite']
@@ -1496,7 +1550,7 @@ let g:Lf_RootMarkers = ['.project-root', '.git', '.git/']
 let g:Lf_MruFileExclude = ['COMMIT_EDITMSG']
 
 let g:Lf_ShortcutF = '<leader>ff'
-let g:Lf_ShortcutB = '<leader>fb'
+let g:Lf_ShortcutB = '<C-s>'
 nnoremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 
 let g:Lf_RgConfig = [
