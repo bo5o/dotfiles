@@ -27,6 +27,7 @@ plugins=(
     rsync
     yarn
     pip
+    pass
     brew
     colored-man-pages
     zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting.git
