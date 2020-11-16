@@ -90,6 +90,9 @@ Plug 'puremourning/vimspector', {
             \ 'do': './install_gadget.py --basedir ~/.config/nvim/vimspector --enable-python'
             \ }                       " debug adapter protocol client
 Plug 'jupyter-vim/jupyter-vim'        " jupyter notebook integration
+Plug 'hanschen/vim-ipython-cell', {
+            \ 'for': 'python'
+            \ }                       " execute cells in ipython just like jupyter
 " Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'romgrk/barbar.nvim'
 
@@ -1717,8 +1720,29 @@ let g:lsp_settings_root_markers = [
 "" vim-slime
 let g:slime_target = 'tmux'
 let g:slime_python_ipython = 1
-let g:slime_default_config = {'socket_name': 'default', 'target_pane': '{bottom-left}'}
-nmap <leader>R :%SlimeSend<cr>
+
+" always send text to the top-right pane in the current tmux tab without asking
+let g:slime_default_config = {
+            \ 'socket_name': get(split($TMUX, ','), 0),
+            \ 'target_pane': '{bottom-left}'
+            \ }
+
+"" vim-ipython-cell
+let g:ipython_cell_delimit_cells_by='tags'
+" remaining config in `nvim/.config/nvim/after/ftplugin/python.vim`
+
+"" jupyter-vim
+let g:jupyter_mapkeys = 0
+
+" Run current file
+nnoremap <buffer> <silent> <localleader>R :JupyterRunFile<CR>
+nnoremap <buffer> <silent> <localleader>I :PythonImportThisFile<CR>
+
+" Send a selection of lines
+nnoremap <buffer> <silent> <localleader>x :JupyterSendCell<CR>
+nnoremap <buffer> <silent> <localleader>E :JupyterSendRange<CR>
+nmap     <buffer> <silent> <localleader>e <Plug>JupyterRunTextObj
+vmap     <buffer> <silent> <localleader>e <Plug>JupyterRunVisual
 
 "" vim javascript
 let g:javascript_plugin_jsdoc = 1
