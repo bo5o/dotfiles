@@ -89,6 +89,7 @@ Plug 'direnv/direnv.vim'              " direnv support
 Plug 'puremourning/vimspector', {
             \ 'do': './install_gadget.py --basedir ~/.config/nvim/vimspector --enable-python'
             \ }                       " debug adapter protocol client
+Plug 'jupyter-vim/jupyter-vim'        " jupyter notebook integration
 " Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'romgrk/barbar.nvim'
 
