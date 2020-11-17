@@ -1733,14 +1733,14 @@ let g:ipython_cell_delimit_cells_by='tags'
 " remaining config in `nvim/.config/nvim/after/ftplugin/python.vim`
 
 "" jupyter-vim
-let g:jupyter_mapkeys = 0
+let g:jupyter_mapkeys = 1
 
 " Run current file
 nnoremap <buffer> <silent> <localleader>R :JupyterRunFile<CR>
 nnoremap <buffer> <silent> <localleader>I :PythonImportThisFile<CR>
 
 " Send a selection of lines
-nnoremap <buffer> <silent> <localleader>x :JupyterSendCell<CR>
+nnoremap <buffer> <silent> <localleader>X :JupyterSendCell<CR>
 nnoremap <buffer> <silent> <localleader>E :JupyterSendRange<CR>
 nmap     <buffer> <silent> <localleader>e <Plug>JupyterRunTextObj
 vmap     <buffer> <silent> <localleader>e <Plug>JupyterRunVisual
