@@ -1065,6 +1065,10 @@ let g:rooter_patterns = [
     \ '.git'
     \]
 
+"" SimpylFold
+let g:SimpylFold_docstring_preview = 1
+let g:SimpylFold_fold_docstring = 1
+
 "" vista.vim
 let g:vista_default_executive = 'ctags'
 let g:vista_executive_for = {
