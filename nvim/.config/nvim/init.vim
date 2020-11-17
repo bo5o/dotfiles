@@ -677,6 +677,7 @@ let g:quicktex_python = {
             \';plt'    : "import matplotlib.pyplot as plt",
             \';np'    : "import numpy as np",
             \';#'    : " # ",
+            \';c'    : "# %%",
             \}
 
 "" LaTeX
