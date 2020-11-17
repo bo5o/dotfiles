@@ -78,7 +78,6 @@ Plug 'machakann/vim-highlightedyank'  " Highlight yanked region
 Plug 'wellle/targets.vim'             " enhanced text objects
 Plug 'tommcdo/vim-lion'               " align text by some character
 Plug 'airblade/vim-rooter'            " automatically change to project root when opening files
-Plug 'posva/vim-vue'                  " vue file support
 Plug 'Konfekt/FastFold'               " fast folding
 Plug 'tmhedberg/SimpylFold'           " better python folding
 Plug 'zhimsel/vim-stay'               " restore buffer views automaticaly
@@ -110,6 +109,7 @@ Plug 'ekalinin/Dockerfile.vim'        " Dockerfile
 Plug 'raimon49/requirements.txt.vim'  " requirements.txt
 Plug 'cespare/vim-toml'               " toml
 Plug 'chr4/nginx.vim'                 " nginx
+Plug 'posva/vim-vue'                  " vue file support
 
 
 " Initialize plugin system
