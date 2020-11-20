@@ -12,6 +12,7 @@ Thumbs.db
 # direnv stuff
 .direnv
 .envrc
+.vimrc.local
 
 # vim stuff
 *~
