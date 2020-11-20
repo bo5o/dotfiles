@@ -32,6 +32,7 @@ Plug 'tpope/vim-surround'             " simple quoting/parenthesizing
 Plug 'tpope/vim-repeat'               " repeat almost anything
 Plug 'tpope/vim-fugitive'             " git
 Plug 'tpope/vim-rhubarb'              " fugitive github integration
+Plug 'tommcdo/vim-fubitive'           " fugitive bitbucket integration
 Plug 'tpope/vim-dispatch'             " asynchronously run jobs
 Plug 'tpope/vim-tbone'                " tmux basics
 Plug 'tpope/vim-projectionist'        " project-specific configurations
