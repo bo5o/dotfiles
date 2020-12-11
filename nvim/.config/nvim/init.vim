@@ -93,6 +93,7 @@ Plug 'jupyter-vim/jupyter-vim'        " jupyter notebook integration
 Plug 'hanschen/vim-ipython-cell', {
             \ 'for': 'python'
             \ }                       " execute cells in ipython just like jupyter
+Plug 'dhruvasagar/vim-table-mode'     " simplify writing/editing tables (e.g. in markdown)
 " Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'romgrk/barbar.nvim'
 
@@ -1739,6 +1740,9 @@ let g:ipython_cell_delimit_cells_by='tags'
 
 "" jupyter-vim
 let g:jupyter_mapkeys = 1
+
+"" vim-table-mode
+let g:table_mode_map_prefix = '<localleader>t'
 
 " Run current file
 nnoremap <buffer> <silent> <localleader>R :JupyterRunFile<CR>
