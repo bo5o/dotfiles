@@ -28,6 +28,7 @@ plugins=(
     yarn
     pip
     pass
+    genpass
     brew
     colored-man-pages
     zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting.git
