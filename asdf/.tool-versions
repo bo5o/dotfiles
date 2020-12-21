@@ -1,10 +1,10 @@
-direnv 2.24.0
+direnv 2.25.2
 python 3.7.9
 nodejs 14.10.1
 hadolint v1.18.0
 neovim nightly
-bat 0.15.4
-shfmt 3.1.2
+bat 0.17.1
+shfmt 3.2.1
 shellcheck 0.7.1
 golang 1.15.2
 ripgrep 12.1.1
