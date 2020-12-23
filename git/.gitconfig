@@ -32,3 +32,4 @@
     path = ~/.gitconfig_work
 [pull]
 	rebase = false
+	ff = only
