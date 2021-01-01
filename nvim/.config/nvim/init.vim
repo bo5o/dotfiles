@@ -1605,6 +1605,7 @@ let g:semshi#error_sign=v:false
 
 "" ale
 let g:airline#extensions#ale#enabled = 1
+let g:ale_virtual_text_cursor = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 1
@@ -1692,26 +1693,16 @@ augroup END
 
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_signature_help_enabled = 1
-let g:lsp_preview_float = 0
+let g:lsp_preview_float = 1
 
-let g:lsp_highlight_references_enabled = 1
+let g:lsp_document_highlight_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_virtual_text_enabled = 0
+let g:lsp_diagnostics_virtual_text_enabled = 1
 
-let g:lsp_signs_enabled = 1
-let g:lsp_signs_error = {'text': g:ale_sign_error}
-let g:lsp_signs_warning = {'text': g:ale_sign_warning}
-let g:lsp_signs_hint = {'text': ale_sign_info}
-
-augroup lsp_float_colours
-    autocmd!
-    if has('nvim')
-        autocmd User lsp_float_opened
-                    \ call nvim_win_set_option(
-                    \   lsp#ui#vim#output#getpreviewwinid(),
-                    \   'winhighlight', 'Normal:PopupWindow')
-    endif
-augroup end
+let g:lsp_diagnostics_signs_enabled = 1
+let g:lsp_diagnostics_signs_error = {'text': g:ale_sign_error}
+let g:lsp_diagnostigs_signs_warning = {'text': g:ale_sign_warning}
+let g:lsp_diagnostics_signs_hint = {'text': ale_sign_info}
 
 "" vim-lsp-settings
 let g:lsp_settings_root_markers = [
