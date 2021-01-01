@@ -1,7 +1,7 @@
 direnv 2.25.2
 python 3.7.9
 nodejs 14.10.1
-hadolint v1.18.0
+hadolint v1.19.0
 neovim nightly
 bat 0.17.1
 shfmt 3.2.1
