@@ -1701,7 +1701,7 @@ let g:lsp_diagnostics_virtual_text_enabled = 1
 
 let g:lsp_diagnostics_signs_enabled = 1
 let g:lsp_diagnostics_signs_error = {'text': g:ale_sign_error}
-let g:lsp_diagnostigs_signs_warning = {'text': g:ale_sign_warning}
+let g:lsp_diagnostics_signs_warning = {'text': g:ale_sign_warning}
 let g:lsp_diagnostics_signs_hint = {'text': ale_sign_info}
 
 "" vim-lsp-settings
