@@ -163,7 +163,7 @@ let g:python3_host_prog = $HOME . '/.virtualenvs/py3nvim/bin/python'
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 3 lines to the cursor - when moving vertically using j/k
-set scrolloff=3
+set scrolloff=8
 set sidescrolloff=1
 
 " Turn on the WiLd menu
