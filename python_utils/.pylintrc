@@ -20,7 +20,7 @@ ignore-patterns=
 
 # Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
 # number of processors available to use.
-jobs=1
+jobs=2
 
 # Control the amount of potential inferred values when inferring a single
 # object. This can help the performance when dealing with large functions or
@@ -124,41 +124,41 @@ enable=
     # assert-on-tuple,                       # W0199
 
     ### CLASSES ###
-    # bad-classmethod-argument,              # C0202
-    # bad-mcs-method-argument,               # C0203
-    # bad-mcs-classmethod-argument,          # C0204
-    # single-string-used-for-slots,          # C0205
-    # method-hidden,                         # E0202
-    # access-member-before-definition,       # E0203
-    # no-method-argument,                    # E0211
-    # no-self-argument,                      # E0213
-    # invalid-slots-object,                  # E0236
-    # assigning-non-slot,                    # E0237
-    # invalid-slots,                         # E0238
-    # inherit-non-class,                     # E0239
-    # inconsistent-mro,                      # E0240
-    # duplicate-bases,                       # E0241
-    # class-variable-slots-conflict,         # E0242
-    # non-iterator-returned,                 # E0301
-    # unexpected-special-method-signature,   # E0302
-    # invalid-length-returned,               # E0303
-    # method-check-failed,                   # F0202
+    bad-classmethod-argument,              # C0202
+    bad-mcs-method-argument,               # C0203
+    bad-mcs-classmethod-argument,          # C0204
+    single-string-used-for-slots,          # C0205
+    method-hidden,                         # E0202
+    access-member-before-definition,       # E0203
+    no-method-argument,                    # E0211
+    no-self-argument,                      # E0213
+    invalid-slots-object,                  # E0236
+    assigning-non-slot,                    # E0237
+    invalid-slots,                         # E0238
+    inherit-non-class,                     # E0239
+    inconsistent-mro,                      # E0240
+    duplicate-bases,                       # E0241
+    class-variable-slots-conflict,         # E0242
+    non-iterator-returned,                 # E0301
+    unexpected-special-method-signature,   # E0302
+    invalid-length-returned,               # E0303
+    method-check-failed,                   # F0202
     # no-self-use,                           # R0201
-    # no-classmethod-decorator,              # R0202
-    # no-staticmethod-decorator,             # R0203
-    # useless-object-inheritance,            # R0205
-    # property-with-parameters,              # R0206
-    # attribute-defined-outside-init,        # W0201
-    # bad-staticmethod-argument,             # W0211
-    # protected-access,                      # W0212
-    # arguments-differ,                      # W0221
-    # signature-differs,                     # W0222
-    # abstract-method,                       # W0223
+    no-classmethod-decorator,              # R0202
+    no-staticmethod-decorator,             # R0203
+    useless-object-inheritance,            # R0205
+    property-with-parameters,              # R0206
+    attribute-defined-outside-init,        # W0201
+    bad-staticmethod-argument,             # W0211
+    protected-access,                      # W0212
+    arguments-differ,                      # W0221
+    signature-differs,                     # W0222
+    abstract-method,                       # W0223
     # super-init-not-called,                 # W0231
-    # no-init,                               # W0232
-    # non-parent-init-called,                # W0233
-    # useless-super-delegation,              # W0235
-    # invalid-overridden-method,             # W0236
+    no-init,                               # W0232
+    non-parent-init-called,                # W0233
+    useless-super-delegation,              # W0235
+    invalid-overridden-method,             # W0236
 
     ### DESIGN ###
     # too-many-ancestors                     # R0901
@@ -173,20 +173,61 @@ enable=
     # too-many-boolean-expressions           # R0916
 
     ### EXCEPTIONS ###
-    # bad-except-order,                      # E0701
-    # raising-bad-type,                      # E0702
-    # bad-exception-context,                 # E0703
-    # misplaced-bare-raise,                  # E0704
-    # raising-non-exception,                 # E0710
-    # notimplemented-raised,                 # E0711
-    # catching-non-exception,                # E0712
-    # bare-except,                           # W0702
-    # broad-except,                          # W0703
-    # duplicate-except,                      # W0705
-    # try-except-raise,                      # W0706
-    # binary-op-exception,                   # W0711
-    # raising-format-tuple,                  # W0715
-    # wrong-exception-operation,             # W0716
+    bad-except-order,                      # E0701
+    raising-bad-type,                      # E0702
+    bad-exception-context,                 # E0703
+    misplaced-bare-raise,                  # E0704
+    raising-non-exception,                 # E0710
+    notimplemented-raised,                 # E0711
+    catching-non-exception,                # E0712
+    bare-except,                           # W0702
+    broad-except,                          # W0703
+    duplicate-except,                      # W0705
+    try-except-raise,                      # W0706
+    binary-op-exception,                   # W0711
+    raising-format-tuple,                  # W0715
+    wrong-exception-operation,             # W0716
+
+    ### FORMAT ###
+    # line-too-long,                         # C0301
+    # too-many-lines,                        # C0302
+    # trailing-whitespace,                   # C0303
+    # missing-final-newline,                 # C0304
+    # trailing-newlines,                     # C0305
+    # multiple-statements,                   # C0321
+    # superfluous-parens,                    # C0325
+    # bad-whitespace,                        # C0326
+    # mixed-line-endings,                    # C0327
+    # unexpected-line-ending-format,         # C0328
+    # bad-continuation,                      # C0330
+    # unnecessary-semicolon,                 # W0301
+    # bad-indentation,                       # W0311
+    # mixed-indentation,                     # W0312
+
+    ### IMPORTS ###
+    # multiple-imports,                      # C0410
+    # wrong-import-order,                    # C0411
+    # ungrouped-imports,                     # C0412
+    # wrong-import-position,                 # C0413
+    # useless-import-alias,                  # C0414
+    # import-outside-toplevel,               # C0415
+    # import-error,                          # E0401
+    # relative-beyond-top-level,             # E0402
+    # cyclic-import,                         # R0401
+    # wildcard-import,                       # W0401
+    # deprecated-module,                     # W0402
+    # reimported,                            # W0404
+    # import-self,                           # W0406
+    # preferred-module,                      # W0407
+    # misplaced-future,                      # W0410
+
+    ### LOGGING ###
+    logging-unsupported-format,            # E1200
+    logging-format-truncated,              # E1201
+    logging-too-many-args,                 # E1205
+    logging-too-few-args,                  # E1206
+    logging-not-lazy,                      # W1201
+    logging-format-interpolation,          # W1202
 
     ### METRICS ###
     # metrics,
@@ -196,7 +237,7 @@ enable=
     # fixme                                  # W0511
 
     ### NEWSTYLE ###
-    # bad-super-call,                        # E1003
+    bad-super-call,                        # E1003
 
     ### PYTHON3 ###
     # print-statement,                       # E1601
@@ -270,7 +311,7 @@ enable=
     # deprecated-sys-function,               # W1660
     # exception-escape,                      # W1661
     # comprehension-escape,                  # W1662
-
+    #
     ### REFACTORING ###
     # unneeded-not,                          # C0113
     # consider-using-enumerate,              # C0200
@@ -302,7 +343,7 @@ enable=
     # no-else-continue,                      # R1724
 
     ### SIMILARITIES ###
-    # duplicate-code,                        # R0801
+    duplicate-code,                        # R0801
 
     ### SPELLING ###
     # wrong-spelling-in-comment,             # C0401
@@ -344,6 +385,35 @@ enable=
     # anomalous-unicode-escape-in-string,    # W1402
     # implicit-str-concat-in-sequence,       # W1403
 
+    ### TYPECHECK ###
+    # no-member,                             # E1101
+    # not-callable,                          # E1102
+    # assignment-from-no-return,             # E1111
+    # no-value-for-parameter,                # E1120
+    # too-many-function-args,                # E1121
+    # unexpected-keyword-arg,                # E1123
+    # redundant-keyword-arg,                 # E1124
+    # missing-kwoa,                          # E1125
+    # invalid-sequence-index,                # E1126
+    # invalid-slice-index,                   # E1127
+    # assignment-from-none,                  # E1128
+    # not-context-manager,                   # E1129
+    # invalid-unary-operand-type,            # E1130
+    # unsupported-binary-operation,          # E1131
+    # repeated-keyword,                      # E1132
+    # not-an-iterable,                       # E1133
+    # not-a-mapping,                         # E1134
+    # unsupported-membership-test,           # E1135
+    # unsubscriptable-object,                # E1136
+    # unsupported-assignment-operation,      # E1137
+    # unsupported-delete-operation,          # E1138
+    # invalid-metaclass,                     # E1139
+    # unhashable-dict-key,                   # E1140
+    # dict-iter-missing-items,               # E1141
+    # c-extension-no-member,                 # I1101
+    # keyword-arg-before-vararg,             # W1113
+    # arguments-out-of-order,                # W1114
+
     ### VARIABLES ###
     # used-before-assignment,                # E0601
     # undefined-variable,                    # E0602
@@ -357,7 +427,7 @@ enable=
     # global-at-module-level,                # W0604
     # unused-import,                         # W0611
     # unused-variable,                       # W0612
-    # unused-argument,                       # W0613
+    unused-argument,                       # W0613
     # unused-wildcard-import,                # W0614
     # redefined-outer-name,                  # W0621
     # redefined-builtin,                     # W0622
@@ -391,7 +461,7 @@ output-format=text
 reports=no
 
 # Activate the evaluation score.
-score=yes
+score=no
 
 
 [REFACTORING]
@@ -668,7 +738,7 @@ logging-format-style=old
 
 # Logging modules to check that the string format arguments are in logging
 # function parameter format.
-logging-modules=logging
+logging-modules=logging,loguru
 
 
 [SPELLING]
