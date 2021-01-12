@@ -15,3 +15,4 @@ export SDCV_PAGER="less"
 export BROWSER="firefox"
 export PROJECT_HOME="$HOME/projects"
 export PYTHONBREAKPOINT="ipdb.set_trace"
+export VI_MODE_SET_CURSOR=true
