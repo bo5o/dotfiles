@@ -1419,6 +1419,7 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <C-Space> <plug>(fzf-complete-line)
 
 noremap <leader>fr :Rg<CR>
+noremap <leader>/ :Rg<CR>
 noremap <leader>fl :BLines<CR>
 noremap <leader>fg :BTags<CR>
 noremap <leader>fG :Tags<CR>
