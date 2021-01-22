@@ -1389,9 +1389,11 @@ let g:jedi#goto_assignments_command = ''
 let g:jedi#goto_stubs_command = ''
 let g:jedi#goto_definitions_command = ''
 let g:jedi#documentation_command = 'K'
-let g:jedi#usages_command = 'gr'
+let g:jedi#usages_command = '<leader>ru'
 let g:jedi#completions_command = ''
 let g:jedi#rename_command = '<leader>rn'
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#use_tag_stack = 1
 
 "" fzf.vim
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
