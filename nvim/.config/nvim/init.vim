@@ -663,7 +663,7 @@ let g:quicktex_python = {
             \';def@'  : "@<+++>\<CR>def <++>(<++>):\<CR><++>",
             \';defm'  : "def <+++>(self, <++>):\<CR><++>",
             \';defm@'  : "@<+++>\<CR>def <++>(self, <++>):\<CR><++>",
-            \';defp'  : "@property\<CR>def <+++>(self, <++>):\<CR><++>",
+            \';defp'  : "@property\<CR>def <+++>(self):\<CR><++>",
             \';defd'  : "def __<+++>__(self, <++>):\<CR><++>",
             \';def'  : "def <+++>(<++>):\<CR><++>",
             \';fun'   : "def <+++>(<++>):\<CR><++>",
