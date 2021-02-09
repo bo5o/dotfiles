@@ -1442,10 +1442,16 @@ let g:ultisnips_python_style='numpy'
 let g:switch_mapping = '-'
 
 "" vimwiki
-let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{
+            \ 'path': '~/vimwiki/',
+            \ 'syntax': 'markdown',
+            \ 'ext': '.md',
+            \ 'index': 'README'
+            \ }]
 let g:vimwiki_table_mappings = 0
 let g:vimwiki_global_ext = 0
 let g:vimwiki_folding = ''
+let g:vimwiki_markdown_link_ext = 1
 
 "" vim-bookmarks
 let g:bookmark_disable_ctrlp = 0
@@ -1657,6 +1663,7 @@ let g:ale_fixers = {
             \   'css': ['prettier'],
             \   'html': ['prettier'],
             \   'markdown': ['prettier'],
+            \   'vimwiki': ['prettier'],
             \   'htmldjango': ['html-beautify'],
             \   'javascript': ['eslint'],
             \   'json': ['prettier'],
