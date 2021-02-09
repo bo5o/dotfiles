@@ -27,6 +27,7 @@ Plug 'yggdroot/LeaderF', {
             \ }                       " fuzzy finder
 Plug 'davidhalter/jedi-vim'           " python jedi
 Plug 'vimwiki/vimwiki'                " wiki
+Plug 'jamessan/vim-gnupg'             " transparent editing of gpg encrypted files
 Plug 'dense-analysis/ale'             " asynchronous linting engine
 Plug 'tpope/vim-surround'             " simple quoting/parenthesizing
 Plug 'tpope/vim-repeat'               " repeat almost anything
