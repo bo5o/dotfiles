@@ -95,6 +95,8 @@ Plug 'hanschen/vim-ipython-cell', {
             \ 'for': 'python'
             \ }                       " execute cells in ipython just like jupyter
 Plug 'dhruvasagar/vim-table-mode'     " simplify writing/editing tables (e.g. in markdown)
+Plug 'voldikss/vim-floaterm'          " floating terminal
+Plug 'liuchengxu/vim-which-key'       " display available keymaps in popup
 " Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'romgrk/barbar.nvim'
 
@@ -425,9 +427,6 @@ inoremap jk <ESC>
 " options for vim diff
 set diffopt=vertical
 
-" Esc switches to terminal normal mode
-tnoremap <Esc> <C-\><C-n>
-
 " alt+hjkl for moving in insert mode
 inoremap <M-h> <Left>
 inoremap <M-j> <Down>
@@ -454,8 +453,6 @@ function! s:ZoomToggle() abort
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 tnoremap <C-F> <C-\><C-n>:ZoomToggle<CR>i
-" switch to previous window
-tnoremap <C-Q> <C-\><C-n><C-W>p
 
 " ask before jump if ambigous
 nnoremap <C-]> g<C-]>
@@ -970,8 +967,7 @@ augroup calcurse
 augroup END
 
 " Goyo
-map <F1> :Goyo<CR>
-inoremap <F1> <esc>:Goyo<CR>a
+nnoremap <silent> <leader>Z :Goyo<CR>
 
 " Insert date
 inoremap ;dt <C-R>=strftime('%Y-%m-%d')<CR>
@@ -1019,6 +1015,8 @@ let g:startify_commands = [
             \   { 'up': [ 'Update plugins', ':PlugUpdate' ] },
             \   { 'ug': [ 'Upgrade plugin manager', ':PlugUpgrade' ] },
             \ ]
+
+nnoremap <silent> <leader>S :Startify<CR>
 
 "" Emmet
 let g:user_emmet_install_global = 0
@@ -1744,9 +1742,6 @@ let g:ipython_cell_delimit_cells_by='tags'
 "" jupyter-vim
 let g:jupyter_mapkeys = 1
 
-"" vim-table-mode
-let g:table_mode_map_prefix = '<localleader>t'
-
 " Run current file
 nnoremap <buffer> <silent> <localleader>R :JupyterRunFile<CR>
 nnoremap <buffer> <silent> <localleader>I :PythonImportThisFile<CR>
@@ -1756,6 +1751,63 @@ nnoremap <buffer> <silent> <localleader>X :JupyterSendCell<CR>
 nnoremap <buffer> <silent> <localleader>E :JupyterSendRange<CR>
 nmap     <buffer> <silent> <localleader>e <Plug>JupyterRunTextObj
 vmap     <buffer> <silent> <localleader>e <Plug>JupyterRunVisual
+
+"" vim-table-mode
+let g:table_mode_map_prefix = '<localleader>t'
+
+"" vim-which-key
+call which_key#register('<Space>', 'g:which_key_map')
+nnoremap <silent> <leader> :silent WhichKey ','<CR>
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual ','<CR>
+nnoremap <silent> <localleader> :silent WhichKey '\'<CR>
+vnoremap <silent> <localleader> :silent <c-u> :silent WhichKeyVisual '\'<CR>
+
+let g:which_key_use_floating_win = 0
+
+" hide statusline in which-key popup
+augroup which_key
+    autocmd! FileType which_key
+    autocmd  FileType which_key set laststatus=0 noshowmode noruler
+                \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+augroup END
+
+hi WhichKeyFloating ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=#32302f
+
+let g:which_key_map =  {}
+
+let g:which_key_map['S'] = [ ':Startify'            , 'start screen' ]
+let g:which_key_map['Z'] = [ ':Goyo'                , 'zen' ]
+let g:which_key_map['/'] = [ ':Rg'                  , 'search text' ]
+let g:which_key_map['G'] = [ ':FloatermNew lazygit' , 'lazygit' ]
+let g:which_key_map['F'] = [ ':FloatermNew ranger'  , 'ranger' ]
+
+"" vim-floaterm
+let g:floaterm_keymap_toggle = '<F1>'
+let g:floaterm_keymap_next   = '<F2>'
+let g:floaterm_keymap_prev   = '<F3>'
+let g:floaterm_keymap_new    = '<F5>'
+
+let g:floaterm_width=0.8
+let g:floaterm_height=0.8
+let g:floaterm_wintitle=0
+let g:floaterm_autoclose=1
+
+nnoremap <silent> <leader>G :FloatermNew lazygit<CR>
+nnoremap <silent> <leader>F :FloatermNew ranger<CR>
+nnoremap <silent> <leader>cf :FloatermNew fzf<CR>
+nnoremap <silent> <leader>cD :FloatermNew lazydocker<CR>
+nnoremap <silent> <leader>cb :FloatermNew btm -m<CR>
+nnoremap <silent> <leader>cs :FloatermNew ncdu<CR>
+
+let g:which_key_map.c = {
+            \ 'name' : '+terminal' ,
+            \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
+            \ 'D' : [':FloatermNew lazydocker'                        , 'docker'],
+            \ 'b' : [':FloatermNew btm -m'                            , 'btm'],
+            \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
+            \ }
+
+hi FloatermBorder ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=None
 
 "" vim javascript
 let g:javascript_plugin_jsdoc = 1
