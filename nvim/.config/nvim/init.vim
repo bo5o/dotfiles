@@ -1754,7 +1754,7 @@ vmap     <buffer> <silent> <localleader>e <Plug>JupyterRunVisual
 let g:table_mode_map_prefix = '<localleader>t'
 
 "" vim-which-key
-call which_key#register('<Space>', 'g:which_key_map')
+call which_key#register('<leader>', 'g:which_key_map')
 nnoremap <silent> <leader> :silent WhichKey ','<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual ','<CR>
 nnoremap <silent> <localleader> :silent WhichKey '\'<CR>
@@ -1781,8 +1781,8 @@ let g:which_key_map['F'] = [ ':FloatermNew ranger'  , 'ranger' ]
 
 "" vim-floaterm
 let g:floaterm_keymap_toggle = '<F1>'
-let g:floaterm_keymap_next   = '<F2>'
-let g:floaterm_keymap_prev   = '<F3>'
+let g:floaterm_keymap_prev   = '<F2>'
+let g:floaterm_keymap_next   = '<F3>'
 let g:floaterm_keymap_new    = '<F5>'
 
 let g:floaterm_width=0.8
