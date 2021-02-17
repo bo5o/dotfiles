@@ -1027,9 +1027,9 @@ augroup END
 nnoremap <leader>g<space> :Git<space>
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gco :Git checkout<space>
-nnoremap <leader>gcc :Gcommit -v -q<CR>
-nnoremap <leader>gca :Gcommit --amend<CR>
-nnoremap <leader>gct :Gcommit -v -q %:p<CR>
+nnoremap <leader>gcc :Git commit -v -q<CR>
+nnoremap <leader>gca :Git commit --amend<CR>
+nnoremap <leader>gct :Git commit -v -q %:p<CR>
 nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gl :GV<CR>
 nnoremap <leader>gL :0Gllog<CR>
