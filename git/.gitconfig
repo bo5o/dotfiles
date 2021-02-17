@@ -33,3 +33,5 @@
 [pull]
 	rebase = false
 	ff = only
+[rebase]
+	autosquash = true
