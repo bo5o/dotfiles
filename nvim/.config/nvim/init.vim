@@ -96,7 +96,6 @@ Plug 'hanschen/vim-ipython-cell', {
             \ }                       " execute cells in ipython just like jupyter
 Plug 'dhruvasagar/vim-table-mode'     " simplify writing/editing tables (e.g. in markdown)
 Plug 'voldikss/vim-floaterm'          " floating terminal
-Plug 'liuchengxu/vim-which-key'       " display available keymaps in popup
 Plug 'brooth/far.vim'                 " find and replace
 " Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'romgrk/barbar.nvim'
@@ -1425,6 +1424,7 @@ noremap <leader>fg :BTags<CR>
 noremap <leader>fG :Tags<CR>
 noremap <leader>fc :BCommits<CR>
 noremap <leader>fC :Commits<CR>
+noremap <leader>fM :Maps<CR>
 
 "" UltiSnips
 let g:UltiSnipsExpandTrigger		= '<c-j>'
@@ -1753,32 +1753,6 @@ vmap     <buffer> <silent> <localleader>e <Plug>JupyterRunVisual
 "" vim-table-mode
 let g:table_mode_map_prefix = '<localleader>t'
 
-"" vim-which-key
-call which_key#register('<leader>', 'g:which_key_map')
-nnoremap <silent> <leader> :silent WhichKey ','<CR>
-vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual ','<CR>
-nnoremap <silent> <localleader> :silent WhichKey '\'<CR>
-vnoremap <silent> <localleader> :silent <c-u> :silent WhichKeyVisual '\'<CR>
-
-let g:which_key_use_floating_win = 0
-
-" hide statusline in which-key popup
-augroup which_key
-    autocmd! FileType which_key
-    autocmd  FileType which_key set laststatus=0 noshowmode noruler
-                \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-augroup END
-
-hi WhichKeyFloating ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=#32302f
-
-let g:which_key_map =  {}
-
-let g:which_key_map['S'] = [ ':Startify'            , 'start screen' ]
-let g:which_key_map['Z'] = [ ':Goyo'                , 'zen' ]
-let g:which_key_map['/'] = [ ':Rg'                  , 'search text' ]
-let g:which_key_map['G'] = [ ':FloatermNew lazygit' , 'lazygit' ]
-let g:which_key_map['F'] = [ ':FloatermNew ranger'  , 'ranger' ]
-
 "" vim-floaterm
 let g:floaterm_keymap_toggle = '<F1>'
 let g:floaterm_keymap_prev   = '<F2>'
@@ -1796,14 +1770,6 @@ nnoremap <silent> <leader>cf :FloatermNew fzf<CR>
 nnoremap <silent> <leader>cD :FloatermNew lazydocker<CR>
 nnoremap <silent> <leader>cb :FloatermNew btm -m<CR>
 nnoremap <silent> <leader>cs :FloatermNew ncdu<CR>
-
-let g:which_key_map.c = {
-            \ 'name' : '+terminal' ,
-            \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
-            \ 'D' : [':FloatermNew lazydocker'                        , 'docker'],
-            \ 'b' : [':FloatermNew btm -m'                            , 'btm'],
-            \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
-            \ }
 
 hi FloatermBorder ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=None
 
