@@ -27,6 +27,7 @@ plugins=(
     rsync
     yarn
     pip
+    poetry
     pass
     genpass
     brew
