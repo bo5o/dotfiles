@@ -1448,6 +1448,7 @@ let g:vimwiki_table_mappings = 0
 let g:vimwiki_global_ext = 0
 let g:vimwiki_folding = ''
 let g:vimwiki_markdown_link_ext = 1
+let g:vimwiki_listsyms = ' .oOx'
 
 "" vim-bookmarks
 let g:bookmark_disable_ctrlp = 0
