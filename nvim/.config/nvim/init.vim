@@ -96,7 +96,6 @@ Plug 'hanschen/vim-ipython-cell', {
             \ }                       " execute cells in ipython just like jupyter
 Plug 'dhruvasagar/vim-table-mode'     " simplify writing/editing tables (e.g. in markdown)
 Plug 'voldikss/vim-floaterm'          " floating terminal
-Plug 'brooth/far.vim'                 " find and replace
 " Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'romgrk/barbar.nvim'
 
@@ -1774,14 +1773,6 @@ nnoremap <silent> <leader>cb :FloatermNew btm -m<CR>
 nnoremap <silent> <leader>cs :FloatermNew ncdu<CR>
 
 hi FloatermBorder ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=None
-
-"" far.vim
-let g:far#source = 'rg'
-nnoremap <leader>rr :Farr<CR>
-let g:far#mapping = {
-            \ 'stoggle_exclude' : ['-'],
-            \ 'stoggle_exclude_all' : ['_'],
-            \ }
 
 "" vim javascript
 let g:javascript_plugin_jsdoc = 1
