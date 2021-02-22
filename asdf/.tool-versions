@@ -11,3 +11,4 @@ ripgrep 12.1.1
 github-cli 1.2.1
 maven 3.6.3
 dotenv-linter 3.0.0
+poetry 1.1.4
