@@ -102,6 +102,11 @@ Plug 'romgrk/nvim-treesitter-context' " always show current context
 " disabled because of https://github.com/p00f/nvim-ts-rainbow/issues/5
 " Plug 'p00f/nvim-ts-rainbow'           " colorize nested parentheses
 
+" let's wait for https://github.com/nvim-treesitter/nvim-treesitter/issues/81
+Plug 'numirias/semshi', {
+            \ 'do': ':UpdateRemotePlugins'
+            \ }                       " python semantic highlighting
+
 Plug 'norcalli/nvim-colorizer.lua'    " highlight colors (#42AFFE)
 Plug 'kovetskiy/sxhkd-vim'            " sxhkdrc
 Plug 'ericpruitt/tmux.vim'            " .tmux.conf
@@ -1749,6 +1754,9 @@ require'nvim-treesitter.configs'.setup {
   },
   highlight = {
     enable = true,
+    disable = {
+      "python",
+    },
   },
   indent = {
     enable = true,
