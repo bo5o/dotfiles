@@ -1801,8 +1801,8 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-"" vim javascript
-let g:javascript_plugin_jsdoc = 1
+"" semshi
+let g:semshi#error_sign = v:false
 
 "" gutentags
 let g:gutentags_exclude_filetypes = ['gitcommit', 'requirements']
