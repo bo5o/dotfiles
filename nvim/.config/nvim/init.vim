@@ -99,6 +99,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {
             \ }                       " treesitter (multi-language)
 Plug 'nvim-treesitter/nvim-treesitter-textobjects' " language-specific textobjects
 Plug 'romgrk/nvim-treesitter-context' " always show current context
+Plug 'nvim-treesitter/playground'     " discover treesitter nodes
 " disabled because of https://github.com/p00f/nvim-ts-rainbow/issues/5
 " Plug 'p00f/nvim-ts-rainbow'           " colorize nested parentheses
 
@@ -1751,6 +1752,7 @@ require'nvim-treesitter.configs'.setup {
     "rst",
     "toml",
     "vue",
+    "query", -- for treesitter playground
   },
   highlight = {
     enable = true,
@@ -1793,7 +1795,13 @@ require'nvim-treesitter.configs'.setup {
     },
   },
   rainbow = {
+    enable = false,
+  },
+  playground = {
     enable = true,
+    disable = {},
+    updatetime = 25,
+    persist_queries = false,
   },
 }
 EOF
