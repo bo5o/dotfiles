@@ -1804,6 +1804,9 @@ EOF
 "" semshi
 let g:semshi#error_sign = v:false
 
+nmap <silent> <localleader>up :Semshi goto parameterUnused prev<CR>
+nmap <silent> <localleader>un :Semshi goto parameterUnused next<CR>
+
 "" gutentags
 let g:gutentags_exclude_filetypes = ['gitcommit', 'requirements']
 
