@@ -41,9 +41,9 @@ plugins=(
     fd
     fzf
     tldr # https://github.com/tldr-pages/tldr-node-client#zsh
-    zsh-completions # https://github.com/zsh-users/zsh-completions.git
 )
 
-source $ZSH/oh-my-zsh.sh
+# https://github.com/zsh-users/zsh-completions/issues/603
+fpath=($ZSH/custom/plugins/zsh-completions/src $fpath)
 
-autoload -Uz compinit && compinit -i
+source $ZSH/oh-my-zsh.sh
