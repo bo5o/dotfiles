@@ -47,3 +47,6 @@ plugins=(
 fpath=($ZSH/custom/plugins/zsh-completions/src $fpath)
 
 source $ZSH/oh-my-zsh.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.oh-my-zsh/custom/p10k.zsh.
+[[ ! -f ~/.oh-my-zsh/custom/p10k.zsh ]] || source ~/.oh-my-zsh/custom/p10k.zsh
