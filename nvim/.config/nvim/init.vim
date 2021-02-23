@@ -56,10 +56,6 @@ Plug 'SirVer/UltiSnips'               " Snippets
 Plug 'honza/vim-snippets'             " default snippets
 Plug 'ludovicchabant/vim-gutentags'   " automate ctags
 Plug 'vim-airline/vim-airline'        " nice status line
-Plug 'RRethy/vim-hexokinase', {
-            \ 'do': 'make hexokinase'
-            \ }                       " highlight color literals
-Plug 'thaerkh/vim-workspace'          " workspace management
 Plug 'mhinz/vim-startify'             " fancy start screen
 Plug 'Valloric/ListToggle'            " toggle quickfix and location list
 Plug 'brennier/quicktex'              " very quick latex writing
@@ -69,7 +65,7 @@ Plug 'MattesGroeger/vim-bookmarks'    " bookmarks
 Plug 'tmsvg/pear-tree'                " auto-close (, {, [, etc.
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
 Plug 'ryanoasis/vim-devicons'         " fancy glyphs
-Plug 'lifepillar/vim-gruvbox8'        " colorscheme
+Plug 'sainnhe/gruvbox-material'       " colorscheme
 Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-line statements
 Plug 'mattn/emmet-vim'                " expanding html abbreviations
 Plug 'mhinz/vim-grepper'              " integration of my favorite grep program
@@ -80,8 +76,6 @@ Plug 'machakann/vim-highlightedyank'  " Highlight yanked region
 Plug 'wellle/targets.vim'             " enhanced text objects
 Plug 'tommcdo/vim-lion'               " align text by some character
 Plug 'airblade/vim-rooter'            " automatically change to project root when opening files
-Plug 'Konfekt/FastFold'               " fast folding
-Plug 'tmhedberg/SimpylFold'           " better python folding
 Plug 'zhimsel/vim-stay'               " restore buffer views automaticaly
 Plug 'unblevable/quick-scope'         " fast left-right movement (using f, F, t, T)
 Plug 'heavenshell/vim-pydocstring'    " python docstring generator
@@ -100,20 +94,19 @@ Plug 'voldikss/vim-floaterm'          " floating terminal
 " Plug 'romgrk/barbar.nvim'
 
 " Language support (syntax highlighting, indent etc.)
-Plug 'numirias/semshi', {
-            \ 'do': ':UpdateRemotePlugins'
-            \ }                       " python (semantic syntax highlighting)
-Plug 'Vimjas/vim-python-pep8-indent'  " python (indenting)
-Plug 'jeetsukumaran/vim-pythonsense'  " python (text objects)
-Plug 'pangloss/vim-javascript'        " javascript
-Plug 'HerringtonDarkholme/yats.vim'   " typescript
+Plug 'nvim-treesitter/nvim-treesitter', {
+            \ 'do': ':TSUpdate'
+            \ }                       " treesitter (multi-language)
+Plug 'nvim-treesitter/nvim-treesitter-textobjects' " language-specific textobjects
+Plug 'romgrk/nvim-treesitter-context' " always show current context
+Plug 'p00f/nvim-ts-rainbow'           " colorize nested parentheses
+
+Plug 'norcalli/nvim-colorizer.lua'    " highlight colors (#AFFE42)
 Plug 'kovetskiy/sxhkd-vim'            " sxhkdrc
 Plug 'ericpruitt/tmux.vim'            " .tmux.conf
 Plug 'ekalinin/Dockerfile.vim'        " Dockerfile
 Plug 'raimon49/requirements.txt.vim'  " requirements.txt
-Plug 'cespare/vim-toml'               " toml
 Plug 'chr4/nginx.vim'                 " nginx
-Plug 'posva/vim-vue'                  " vue file support
 
 
 " Initialize plugin system
@@ -220,7 +213,11 @@ set lazyredraw
 " For regular expressions turn magic on
 set magic
 
-" Disable automatic folding
+
+" Folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 set nofoldenable
 set foldlevelstart=99
 
@@ -249,7 +246,7 @@ set completeopt=noinsert,menuone,noselect
 set signcolumn=yes
 
 " view options for saving/restoring views
-set viewoptions=folds,cursor
+set viewoptions=cursor,folds
 
 " don't open folds when moving through paragraphs
 set foldopen-=block
@@ -263,60 +260,21 @@ syntax enable
 " Syntax highlighting is very slow for long lines
 set synmaxcol=176
 
-" colorscheme specific settings
-let g:gruvbox_italics = 1
-let g:gruvbox_italicize_strings = 0
-let g:gruvbox_filetype_hi_groups = 1
-let g:gruvbox_plugin_hi_groups = 1
+" " colorscheme specific settings
+let g:gruvbox_material_palette = 'material'
+let g:gruvbox_material_statusline_style = 'default'
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_enable_italic = 0
+let g:gruvbox_material_disable_italic_comment = 0
+let g:gruvbox_material_sign_column_background = 'none'
+let g:gruvbox_material_better_performance = 1
+let g:gruvbox_material_diagnostic_line_highlight = 0
+let g:gruvbox_material_diagnostic_text_highlight = 1
 
 " Custom highlighting
 function! MyHighlights() abort
-    " Try to use more subdued colors in vimdiff mode
-    highlight DiffAdd cterm=bold ctermfg=142 ctermbg=235 gui=NONE guifg=#b8bb26 guibg=#3c3c25
-    highlight DiffChange cterm=bold ctermfg=108 ctermbg=235 gui=NONE guifg=#8ec07c guibg=#383228
-    highlight DiffText cterm=NONE ctermfg=214 ctermbg=235 gui=NONE guifg=#fabd2f guibg=#483D28
-    highlight DiffDelete cterm=bold ctermfg=167 ctermbg=235 gui=NONE guifg=#fb4934 guibg=#372827
-
-    highlight PopupWindow guifg=#ebdbb2 guibg=#3c3836
-    highlight CursorLine guibg=#32302f
-    highlight CursorLineNr ctermfg=11 guifg=#fabd2f guibg=#32302f
-
-    " Use Gruvbox colors for python semshi semantic highlighter
-    hi semshiGlobal          ctermfg=167 guifg=#fe8019
-    hi semshiImported        ctermfg=214 guifg=#fabd2f cterm=bold gui=bold
-    hi semshiParameter       ctermfg=142 guifg=#98971a
-    hi semshiParameterUnused ctermfg=106 guifg=#a89984
-    hi semshiBuiltin         ctermfg=208 guifg=#d3889b
-    hi semshiFree            ctermfg=218 guifg=#98971a
-    hi semshiAttribute       ctermfg=108 guifg=#83a598
-    hi semshiSelf            ctermfg=109 guifg=#458588
-    hi semshiSelected        ctermfg=231 guifg=#fbf1c7 ctermbg=161 guibg=#fb4934
-    hi semshiUnresolved      ctermfg=226 guifg=#d79921 cterm=underline gui=underline
-
-    highlight! link SignColumn LineNr
-    hi GitGutterAdd          ctermbg=NONE guibg=NONE
-    hi GitGutterChange       ctermbg=NONE guibg=NONE
-    hi GitGutterDelete       ctermbg=NONE guibg=NONE
-    hi GitGutterChangeDelete ctermbg=NONE guibg=NONE
-
-    hi ALEErrorSign          ctermbg=NONE guibg=NONE
-    hi ALEWarningSign        ctermbg=NONE guibg=NONE
-    hi ALEInfoSign           ctermbg=NONE guibg=NONE
-
-    hi link LspErrorText            ALEErrorSign
-    hi link LspWarningText          ALEWarningSign
-    hi link LspInformationText      ALEInfoSign
-    hi link LspHintText             ALEInfoSign
-
-    hi link LspErrorHighlight       ALEError
-    hi link LspWarningHighlight     ALEWarning
-    hi link LspInformationHighlight ALEInfo
-    hi link LspHintHighlight        ALEInfo
-
-    hi link LspErrorLine            ALEErrorLine
-    hi link LspWarningLine          ALEWarningLine
-    hi link LspInformationLine      ALEInfoLine
-    hi link LspHintLine             ALEInfoLine
+    hi PopupWindow guifg=#ebdbb2 guibg=#3c3836
 
     hi lspReference guibg=#3c3836 gui=bold
 
@@ -325,7 +283,6 @@ function! MyHighlights() abort
 
     hi Sneak guifg=#ebdbb2 guibg=#b16286 ctermfg=15 ctermbg=201
     hi SneakScope guifg=#3c3836 guibg=#fbf1c7 ctermfg=0 ctermbg=255
-
 endfunction
 
 augroup my_colors
@@ -335,7 +292,7 @@ augroup END
 
 set termguicolors
 set background=dark
-colorscheme gruvbox8
+colorscheme gruvbox-material
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -1063,10 +1020,6 @@ let g:rooter_patterns = [
     \ '.git'
     \]
 
-"" SimpylFold
-let g:SimpylFold_docstring_preview = 1
-let g:SimpylFold_fold_docstring = 1
-
 "" vista.vim
 let g:vista_default_executive = 'ctags'
 let g:vista_executive_for = {
@@ -1468,7 +1421,7 @@ nmap <Leader>mjj <Plug>BookmarkMoveDown
 nmap <Leader>mg <Plug>BookmarkMoveToLine
 
 "" airline
-let g:airline_theme='gruvbox8'
+let g:airline_theme='gruvbox_material'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -1529,10 +1482,19 @@ let g:airline#extensions#tabline#buffer_min_count = 1
 " hi TabLineFill guibg=#1d2021
 " hi BufferVisible guifg=#7c6f64 guibg=#282828
 
-"" hexokinase
-let g:Hexokinase_highlighters = ['backgroundfull']
-let g:Hexokinase_refreshEvents = ['InsertLeave', 'BufEnter', 'BufWrite']
-let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'typescript', 'vim']
+"" nvim-colorizer
+lua <<EOF
+require 'colorizer'.setup {
+  "vim";
+  "css";
+  "html";
+  "javascript";
+  "typescript";
+  html = {
+    mode = "background";
+  }
+}
+EOF
 
 "" vim-markdown
 let g:markdown_syntax_conceal = 1
@@ -1605,10 +1567,6 @@ let g:Lf_PopupColorscheme = 'gruvbox_default'
 
 "" highglightyank
 let g:highlightedyank_highlight_duration = 300
-
-"" semshi
-let g:semshi#mark_selected_nodes=0
-let g:semshi#error_sign=v:false
 
 "" ale
 let g:airline#extensions#ale#enabled = 1
@@ -1773,6 +1731,65 @@ nnoremap <silent> <leader>cb :FloatermNew btm -m<CR>
 nnoremap <silent> <leader>cs :FloatermNew ncdu<CR>
 
 hi FloatermBorder ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=None
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+    "python",
+    "typescript",
+    "javascript",
+    "jsdoc",
+    "html",
+    "css",
+    "json",
+    "lua",
+    "bash",
+    "rst",
+    "toml",
+    "vue",
+  },
+  highlight = {
+    enable = true,
+  },
+  indent = {
+    enable = true,
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+  textobjects = {
+    select = {
+      enable = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+      },
+    },
+    move = {
+      enable = true,
+      goto_next_start = {
+        ["]m"] = "@function.outer",
+        ["]]"] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[m"] = "@function.outer",
+        ["[["] = "@class.outer",
+      },
+    },
+  },
+  rainbow = {
+    enable = true,
+  },
+}
+EOF
 
 "" vim javascript
 let g:javascript_plugin_jsdoc = 1
