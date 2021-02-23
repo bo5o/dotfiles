@@ -99,9 +99,10 @@ Plug 'nvim-treesitter/nvim-treesitter', {
             \ }                       " treesitter (multi-language)
 Plug 'nvim-treesitter/nvim-treesitter-textobjects' " language-specific textobjects
 Plug 'romgrk/nvim-treesitter-context' " always show current context
-Plug 'p00f/nvim-ts-rainbow'           " colorize nested parentheses
+" disabled because of https://github.com/p00f/nvim-ts-rainbow/issues/5
+" Plug 'p00f/nvim-ts-rainbow'           " colorize nested parentheses
 
-Plug 'norcalli/nvim-colorizer.lua'    " highlight colors (#AFFE42)
+Plug 'norcalli/nvim-colorizer.lua'    " highlight colors (#42AFFE)
 Plug 'kovetskiy/sxhkd-vim'            " sxhkdrc
 Plug 'ericpruitt/tmux.vim'            " .tmux.conf
 Plug 'ekalinin/Dockerfile.vim'        " Dockerfile
