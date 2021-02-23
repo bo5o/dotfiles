@@ -100,8 +100,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {
 Plug 'nvim-treesitter/nvim-treesitter-textobjects' " language-specific textobjects
 Plug 'romgrk/nvim-treesitter-context' " always show current context
 Plug 'nvim-treesitter/playground'     " discover treesitter nodes
-" disabled because of https://github.com/p00f/nvim-ts-rainbow/issues/5
-" Plug 'p00f/nvim-ts-rainbow'           " colorize nested parentheses
+Plug 'p00f/nvim-ts-rainbow'           " colorize nested parentheses
 
 " let's wait for https://github.com/nvim-treesitter/nvim-treesitter/issues/81
 Plug 'numirias/semshi', {
@@ -1790,7 +1789,7 @@ require'nvim-treesitter.configs'.setup {
     },
   },
   rainbow = {
-    enable = false,
+    enable = false, -- https://github.com/p00f/nvim-ts-rainbow/issues/5
   },
   playground = {
     enable = true,
