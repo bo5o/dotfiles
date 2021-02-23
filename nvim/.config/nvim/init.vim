@@ -331,10 +331,8 @@ set showbreak=↪
 augroup filetype_settings
     autocmd!
     autocmd FileType python setlocal textwidth=88
-    autocmd FileType yaml,html,css,javascript,typescript,son,vue,tex,bib,xml setlocal tabstop=2
+    autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml setlocal tabstop=2
     autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml setlocal shiftwidth=2
-    autocmd FileType javascript setlocal foldmethod=syntax
-    autocmd FileType vue setlocal foldmethod=indent
     autocmd FileType javascript,typescript,vue nmap <buffer><silent> <leader>rd <Plug>(jsdoc)
     autocmd FileType python nmap <buffer><silent> <leader>rd <Plug>(pydocstring)
     autocmd FileType markdown setlocal textwidth=80
