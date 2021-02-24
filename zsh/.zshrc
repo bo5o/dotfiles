@@ -18,8 +18,6 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
     git
     vi-mode
-    asdf
-    direnv
     docker
     docker-compose
     django
@@ -43,6 +41,25 @@ plugins=(
     tldr # https://github.com/tldr-pages/tldr-node-client#zsh
 )
 
+# asdf
+export ASDF_DIR="${ASDF_DIR:-$HOME/.asdf}"
+export PATH="$PATH:$ASDF_DIR/bin"
+source "$ASDF_DIR/lib/asdf.sh"
+fpath=($ASDF_DIR/completions $fpath)
+
+
+# direnv
+export DIRENV_LOG_FORMAT=""
+eval "$(asdf exec direnv hook zsh)"
+
+# global tool versions
+direnv() { asdf exec direnv "$@"; }
+nvim() { asdf exec nvim "$@"; }
+rg() { asdf exec rg "$@"; }
+bat() { asdf exec bat "$@"; }
+tldr() { asdf exec tldr "$@"; }
+
+# zsh-completions
 # https://github.com/zsh-users/zsh-completions/issues/603
 fpath=($ZSH/custom/plugins/zsh-completions/src $fpath)
 
