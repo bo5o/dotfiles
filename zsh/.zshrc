@@ -54,9 +54,9 @@ eval "$(asdf exec direnv hook zsh)"
 
 # global tool versions
 export PATH="$(asdf where neovim)/bin:$PATH"
+export PATH="$(asdf where ripgrep)/bin:$PATH"
+export PATH="$(asdf where bat)/bin:$PATH"
 direnv() { asdf exec direnv "$@"; }
-rg() { asdf exec rg "$@"; }
-bat() { asdf exec bat "$@"; }
 tldr() { asdf exec tldr "$@"; }
 
 # zsh-completions
