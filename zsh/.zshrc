@@ -53,8 +53,8 @@ export DIRENV_LOG_FORMAT=""
 eval "$(asdf exec direnv hook zsh)"
 
 # global tool versions
+export PATH="$(asdf where neovim)/bin:$PATH"
 direnv() { asdf exec direnv "$@"; }
-nvim() { asdf exec nvim "$@"; }
 rg() { asdf exec rg "$@"; }
 bat() { asdf exec bat "$@"; }
 tldr() { asdf exec tldr "$@"; }
