@@ -2,7 +2,6 @@
 
 # global aliases
 alias -g L='| less'
-alias -g Lc='--color=always | less -r'
 alias -g C='| wc -l'
 alias -g H='| head'
 alias -g T='| tail'
@@ -29,28 +28,7 @@ alias pape="papis edit"
 alias sdn="sudo shutdown -h now"
 alias def="sdcv"
 alias yt="mpsyt"
-alias config="/usr/bin/git --git-dir=$HOME/dotfiles/.git --work-tree=$HOME/dotfiles"
-alias co="/usr/bin/git --git-dir=$HOME/dotfiles/.git --work-tree=$HOME/dotfiles"
-alias coa="config add"
-alias coc="config commit -v"
-alias coca="config commit -v -a"
-alias cod="config diff"
-alias cost="config status"
-alias cop="config push"
-alias clog="config log --oneline --decorate --graph"
-alias clg="config log --stat"
-alias Config="/usr/bin/git --git-dir=$HOME/private/.git --work-tree=$HOME/private"
-alias Co="/usr/bin/git --git-dir=$HOME/private/.git --work-tree=$HOME/private"
-alias Coa="Config add"
-alias Coc="Config commit -v"
-alias Coca="Config commit -v -a"
-alias Cod="Config diff"
-alias Cost="Config status"
-alias Cop="Config push"
-alias Clog="Config log --oneline --decorate --graph"
-alias Clg="Config log --stat"
-alias rk="run_keybase"
-alias Vim="nvim --cmd 'profile start profile.log' --cmd 'profile func *'"
+alias vimprofile="nvim --cmd 'profile start profile.log' --cmd 'profile func *'"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
@@ -81,29 +59,26 @@ cpbak() { cp $1{,.bak} ;} # create backup copy
 open() { xdg-open "$@" > /dev/null 2>&1 ;} # open with default GUI program
 alias radioeins='mpv https://www.radioeins.de/live.m3u'
 alias news='newsboat'
-alias sv='sudo nvim'
 alias ka='killall'
 alias crep="grep --color=always" # Color grep
 alias help="tldr"
 alias h="tldr"
 alias wo="workon"
-alias pf="pip freeze | sort"
+alias pipf="pip freeze | sort"
+alias pipls="pip list"
+alias piplso="pip list --outdated"
 alias pipi="pip install"
 alias pipu="pip install -U"
-alias pcs="pip-compile && pip-sync"
+alias pup="pip-compile && pip-sync"
 alias pyinit="touch __init__.py"
 alias za="zathura"
 alias ncdu="ncdu -rr -x"
-compdef so=source
-alias so="source"
 alias week="date +%V"
 alias year="date +%Y"
 alias ternimal-anaconda="ternimal length=100 thickness=1,4,1,0,0 radius=6,12 gradient=0:#666600,0.5:#00ff00,1:#003300"
 alias ternimal-swarm="ternimal length=200 thickness=0,4,19,0,0"
 alias ternimal-rainbow="ternimal length=20 thickness=70,15,0,1,0 padding=10 radius=5 gradient=0.03:#ffff00,0.15:#0000ff,0.3:#ff0000,0.5:#00ff00"
-compdef _docker-compose docker-compose
-compdef dco=docker-compose
-alias pudb=pudb3
+alias pudb="pudb3"
 alias ffbare='firefox --new-instance -P bare'
 alias zshrc='${=EDITOR} ~/.zshrc'
 alias vimrc='${=EDITOR} ~/.config/nvim/init.vim'
