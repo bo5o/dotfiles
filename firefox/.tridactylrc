@@ -13,21 +13,9 @@ bind ;c hint -c [class*="expand"],[class="togg"]
 " Git{Hub,Lab} git clone via SSH yank
 bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
 
-" Allow Ctrl-a to select all in the commandline
-unbind --mode=ex <C-a>
-
-" Let Ctrl-c to copy in the commandline
-unbind --mode=ex <C-c>
-
-" Handy multiwindow/multitasking binds
-bind gd tabdetach
-bind gD composite tabduplicate; tabdetach
-
 " sane tab movement
 bind d scrollline 20
 bind u scrollline -20
-bind K tabprev
-bind J tabnext
 bind X undo
 bind x tabclose
 
@@ -43,10 +31,7 @@ set allowautofocus false
 
 " Sane hinting mode
 set hintfiltermode vimperator-reflow
-set hintchars hneiarstduyowfpgkmzxcvb
-
-" set editor
-set editorcmd gnome-terminal --window-with-profile=tree -- ~/nvim.appimage
+set hintchars 12347890
 
 "
 " Search urls and engine
@@ -54,7 +39,6 @@ set editorcmd gnome-terminal --window-with-profile=tree -- ~/nvim.appimage
 
 set searchurls.ddg https://duckduckgo.com/lite/?q=%s
 set searchurls.d https://duckduckgo.com/lite/?q=%s
-set searchurls.s https://startpage.com/do/search?query=%s
 set searchurls.yt https://www.youtube.com/results?search_query=%s
 set searchurls.osm https://www.openstreetmap.org/search?query=%s
 
