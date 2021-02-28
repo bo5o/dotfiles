@@ -1562,7 +1562,7 @@ let g:Lf_PreviewResult = {
             \ 'Gtags': 0
             \}
 
-let g:Lf_PopupColorscheme = 'gruvbox_default'
+let g:Lf_PopupColorscheme = 'gruvbox_material'
 
 "" highglightyank
 let g:highlightedyank_highlight_duration = 300
