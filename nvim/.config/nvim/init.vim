@@ -26,7 +26,10 @@ Plug 'yggdroot/LeaderF', {
             \ 'do': './install.sh'
             \ }                       " fuzzy finder
 Plug 'davidhalter/jedi-vim'           " python jedi
-Plug 'vimwiki/vimwiki'                " wiki
+Plug 'vimwiki/vimwiki', {
+            \ 'branch': 'dev'
+            \ }                       " wiki
+Plug 'tools-life/taskwiki'            " vimwiki taskwarrior integration
 Plug 'jamessan/vim-gnupg'             " transparent editing of gpg encrypted files
 Plug 'dense-analysis/ale'             " asynchronous linting engine
 Plug 'tpope/vim-surround'             " simple quoting/parenthesizing
@@ -332,8 +335,8 @@ set showbreak=↪
 augroup filetype_settings
     autocmd!
     autocmd FileType python setlocal textwidth=88
-    autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml setlocal tabstop=2
-    autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml setlocal shiftwidth=2
+    autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml,vimwiki setlocal tabstop=2
+    autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml,vimwiki setlocal shiftwidth=2
     autocmd FileType javascript,typescript,vue nmap <buffer><silent> <leader>rd <Plug>(jsdoc)
     autocmd FileType python nmap <buffer><silent> <leader>rd <Plug>(pydocstring)
     autocmd FileType markdown setlocal textwidth=80
@@ -1400,6 +1403,9 @@ let g:vimwiki_global_ext = 0
 let g:vimwiki_folding = ''
 let g:vimwiki_markdown_link_ext = 1
 let g:vimwiki_listsyms = ' .oOx'
+
+"" taskwiki
+let g:taskwiki_disable_concealcursor = 'yes'
 
 "" vim-bookmarks
 let g:bookmark_disable_ctrlp = 0
