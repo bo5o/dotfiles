@@ -339,7 +339,7 @@ augroup filetype_settings
     autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml,vimwiki setlocal shiftwidth=2
     autocmd FileType javascript,typescript,vue nmap <buffer><silent> <leader>rd <Plug>(jsdoc)
     autocmd FileType python nmap <buffer><silent> <leader>rd <Plug>(pydocstring)
-    autocmd FileType markdown setlocal textwidth=80
+    autocmd FileType markdown setlocal textwidth=88
     autocmd FileType markdown setlocal conceallevel=2
     autocmd FileType requirements setlocal commentstring=#\ %s
     autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal textwidth=80
@@ -1014,6 +1014,7 @@ let g:rooter_cd_cmd = 'lcd'
 
 let g:rooter_patterns = [
     \ '.root-marker',
+    \ '.project-root',
     \ 'package.json',
     \ 'requirements.txt',
     \ 'setup.py',
@@ -1402,7 +1403,6 @@ let g:vimwiki_table_mappings = 0
 let g:vimwiki_global_ext = 0
 let g:vimwiki_folding = ''
 let g:vimwiki_markdown_link_ext = 1
-let g:vimwiki_listsyms = ' .oOx'
 
 "" taskwiki
 let g:taskwiki_disable_concealcursor = 'yes'
@@ -1609,6 +1609,7 @@ let g:ale_linters = {
             \   'sql': ['sqlint'],
             \   'tex': ['chktex'],
             \   'markdown': ['markdownlint'],
+            \   'vimwiki': ['markdownlint'],
             \   'typescript': ['eslint', 'tsserver'],
             \   'vim': ['vint'],
             \   'vue': ['eslint', 'vls'],
@@ -1622,7 +1623,6 @@ let g:ale_fixers = {
             \   'css': ['prettier'],
             \   'html': ['prettier'],
             \   'markdown': ['prettier'],
-            \   'vimwiki': ['prettier'],
             \   'htmldjango': ['html-beautify'],
             \   'javascript': ['eslint'],
             \   'json': ['prettier'],
