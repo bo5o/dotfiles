@@ -337,6 +337,8 @@ augroup filetype_settings
     autocmd FileType python setlocal textwidth=88
     autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml,vimwiki setlocal tabstop=2
     autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml,vimwiki setlocal shiftwidth=2
+    autocmd FileType vimwiki setlocal tabstop=4
+    autocmd FileType vimwiki setlocal shiftwidth=4
     autocmd FileType javascript,typescript,vue nmap <buffer><silent> <leader>rd <Plug>(jsdoc)
     autocmd FileType python nmap <buffer><silent> <leader>rd <Plug>(pydocstring)
     autocmd FileType markdown setlocal textwidth=88
