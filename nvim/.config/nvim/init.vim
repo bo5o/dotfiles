@@ -1550,10 +1550,8 @@ noremap <leader>8 :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expa
 noremap <leader>* :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
 
 let g:Lf_CommandMap = {
-            \ '<C-K>': ['<Up>'],
-            \ '<C-J>': ['<Down>'],
-            \ '<C-]>': ['<C-\>']
-            \}
+            \ '<C-]>': ['<C-V>']
+            \ }
 
 let g:Lf_PreviewResult = {
             \ 'File': 0,
