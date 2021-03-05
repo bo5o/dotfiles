@@ -3,6 +3,10 @@ scriptencoding utf-8
 
 ""Plugins
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'vimwiki/vimwiki', {
+            \ 'branch': 'dev'
+            \ }                       " wiki
+Plug 'tools-life/taskwiki'            " vimwiki taskwarrior integration
 Plug 'scrooloose/nerdtree'            " nerd tree
 Plug 'Xuyuanp/nerdtree-git-plugin'    " nerd tree git integration
 Plug 'prabirshrestha/vim-lsp'         " lsp client
@@ -26,10 +30,6 @@ Plug 'yggdroot/LeaderF', {
             \ 'do': './install.sh'
             \ }                       " fuzzy finder
 Plug 'davidhalter/jedi-vim'           " python jedi
-Plug 'vimwiki/vimwiki', {
-            \ 'branch': 'dev'
-            \ }                       " wiki
-Plug 'tools-life/taskwiki'            " vimwiki taskwarrior integration
 Plug 'jamessan/vim-gnupg'             " transparent editing of gpg encrypted files
 Plug 'dense-analysis/ale'             " asynchronous linting engine
 Plug 'tpope/vim-surround'             " simple quoting/parenthesizing
@@ -340,6 +340,7 @@ augroup filetype_settings
     autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml,vimwiki setlocal shiftwidth=2
     autocmd FileType vimwiki setlocal tabstop=4
     autocmd FileType vimwiki setlocal shiftwidth=4
+    autocmd FileType vimwiki setlocal textwidth=88
     autocmd FileType javascript,typescript,vue nmap <buffer><silent> <leader>rd <Plug>(jsdoc)
     autocmd FileType python nmap <buffer><silent> <leader>rd <Plug>(pydocstring)
     autocmd FileType markdown setlocal textwidth=88
@@ -1402,7 +1403,18 @@ let g:vimwiki_list = [{
             \ 'ext': '.md',
             \ 'index': 'README'
             \ }]
-let g:vimwiki_table_mappings = 0
+let g:vimwiki_key_mappings = {
+            \ 'all_maps': 1,
+            \ 'global': 1,
+            \ 'headers': 1,
+            \ 'text_objs': 1,
+            \ 'table_format': 1,
+            \ 'table_mappings': 0,
+            \ 'lists': 1,
+            \ 'links': 1,
+            \ 'html': 1,
+            \ 'mouse': 0,
+            \ }
 let g:vimwiki_global_ext = 0
 let g:vimwiki_folding = ''
 let g:vimwiki_markdown_link_ext = 1
