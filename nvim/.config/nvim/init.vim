@@ -109,6 +109,7 @@ Plug 'p00f/nvim-ts-rainbow'           " colorize nested parentheses
 Plug 'numirias/semshi', {
             \ 'do': ':UpdateRemotePlugins'
             \ }                       " python semantic highlighting
+Plug 'Vimjas/vim-python-pep8-indent'  " better python indenting
 
 Plug 'norcalli/nvim-colorizer.lua'    " highlight colors (#42AFFE)
 Plug 'kovetskiy/sxhkd-vim'            " sxhkdrc
@@ -1764,6 +1765,9 @@ require'nvim-treesitter.configs'.setup {
   },
   indent = {
     enable = true,
+    disable = {
+      "python",
+    },
   },
   incremental_selection = {
     enable = true,
