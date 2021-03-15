@@ -81,7 +81,9 @@ Plug 'tommcdo/vim-lion'               " align text by some character
 Plug 'airblade/vim-rooter'            " automatically change to project root when opening files
 Plug 'zhimsel/vim-stay'               " restore buffer views automaticaly
 Plug 'unblevable/quick-scope'         " fast left-right movement (using f, F, t, T)
-Plug 'heavenshell/vim-pydocstring'    " python docstring generator
+Plug 'kkoomen/vim-doge', {
+            \ 'do': { -> doge#install() }
+            \ }                       " docstring generator
 Plug 'heavenshell/vim-jsdoc'          " javascript/typescript docstring generator
 Plug 'direnv/direnv.vim'              " direnv support
 Plug 'puremourning/vimspector', {
@@ -342,7 +344,6 @@ augroup filetype_settings
     autocmd FileType vimwiki setlocal shiftwidth=4
     autocmd FileType vimwiki setlocal textwidth=88
     autocmd FileType javascript,typescript,vue nmap <buffer><silent> <leader>rd <Plug>(jsdoc)
-    autocmd FileType python nmap <buffer><silent> <leader>rd <Plug>(pydocstring)
     autocmd FileType markdown setlocal textwidth=88
     autocmd FileType markdown setlocal conceallevel=2
     autocmd FileType requirements setlocal commentstring=#\ %s
@@ -1212,10 +1213,20 @@ let g:qs_max_chars=176
 let g:qs_buftype_blacklist = ['terminal', 'nofile', 'startify', 'qf']
 let g:qs_lazy_highlight = 1
 
-"" vim-pydocstring
-let g:pydocstring_formatter = 'numpy'
-let g:pydocstring_doq_path = $HOME . '/.virtualenvs/py3doq/bin/doq'
-let g:pydocstring_enable_mapping = 0
+"" vim-doge
+let g:doge_enable_mappings = 1
+let g:doge_mapping = '<Leader>rd'
+let g:doge_buffer_mappings = 1
+let g:doge_comment_interactive = 1
+let g:doge_filetype_aliases = {
+            \ 'typescript': ['vue']
+            \ }
+let g:doge_comment_jump_modes = ['n', 's']
+
+let g:doge_doc_standard_python = 'numpy'
+let g:doge_python_settings = {
+            \ 'single_quotes': 0
+            \ }
 
 "" vim-jsdoc
 let g:jsdoc_underscore_private = 1
