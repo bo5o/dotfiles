@@ -1116,6 +1116,7 @@ nmap <silent> t<C-d> :call execute("Tmux send-keys -t " . g:tmux_session . " C-d
 "" nerd tree
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeStatusline = 'NERDTree'
 nnoremap <leader>fT :NERDTreeFind<CR>
 nnoremap <leader>ft :NERDTreeToggle<CR>
 
@@ -1555,7 +1556,7 @@ let g:markdown_fenced_languages = [
 "" indent-blankline
 let g:indent_blankline_char = '┊'
 let g:indent_blankline_show_trailing_blankline_indent = v:true
-let g:indent_blankline_filetype_exclude = ['help', 'vimwiki', 'markdown', 'startify']
+let g:indent_blankline_filetype_exclude = ['help', 'vimwiki', 'markdown', 'startify', 'nerdtree']
 let g:indent_blankline_buftype_exclude = ['terminal']
 
 "" leaderF
