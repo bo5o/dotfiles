@@ -25,7 +25,9 @@ Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detection in markdown
 Plug 'ncm2/float-preview.nvim'        " nvim 0.4 floating window support
 Plug 'ncm2/ncm2-vim-lsp'              " lsp integration
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
-Plug 'yggdroot/indentline'            " indentation guides
+Plug 'lukas-reineke/indent-blankline.nvim', {
+            \ 'branch': 'lua'
+            \ }                       " indentation guides
 Plug 'yggdroot/LeaderF', {
             \ 'do': './install.sh'
             \ }                       " fuzzy finder
@@ -193,6 +195,9 @@ set mouse=n
 
 " Highlight current line
 set cursorline
+
+" Highlight column at 88 chars
+set colorcolumn=88
 
 " Height of the command bar
 set cmdheight=1
@@ -1547,10 +1552,11 @@ let g:markdown_fenced_languages = [
             \ 'yaml',
             \ ]
 
-"" indentline
-let g:indentLine_fileTypeExclude = ['vimwiki', 'markdown']
-let g:indentLine_setConceal = 0
-let g:indentLine_char = '┊'
+"" indent-blankline
+let g:indent_blankline_char = '┊'
+let g:indent_blankline_show_trailing_blankline_indent = v:true
+let g:indent_blankline_filetype_exclude = ['help', 'vimwiki', 'markdown', 'startify']
+let g:indent_blankline_buftype_exclude = ['terminal']
 
 "" leaderF
 " popup mode
