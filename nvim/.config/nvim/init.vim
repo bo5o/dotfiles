@@ -1079,8 +1079,8 @@ let g:test#python#pytest#options = {
             \ }
 
 "" dispatch
-" send all command to this tmux session
-let g:tmux_session = 'debug'
+" send dispatch commands to popup session
+let g:tmux_session = 'popup'
 
 "" vim-projectionist
 let g:projectionist_heuristics = {
