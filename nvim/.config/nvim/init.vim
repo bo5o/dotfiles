@@ -1091,10 +1091,10 @@ let g:projectionist_heuristics = {
             \   },
             \   'src/*.py': {
             \       'type': 'source',
-            \       'alternate': 'tests/{dirname|basename}/test_{basename}.py',
+            \       'alternate': 'tests/unit/{dirname|basename}/test_{basename}.py',
             \       'start': '-wait=always ipython --pdb -m {dot}'
             \   },
-            \   'tests/**/test_*.py': {
+            \   'tests/unit/**/test_*.py': {
             \       'type': 'test',
             \       'start': '{project}',
             \       'alternate': 'src/{project|basename}/{dirname}/{basename}.py'
@@ -1773,7 +1773,6 @@ hi FloatermBorder ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=None
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
-    "python",
     "typescript",
     "javascript",
     "go",
