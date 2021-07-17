@@ -7,27 +7,13 @@ Plug 'vimwiki/vimwiki', {
             \ 'branch': 'dev'
             \ }                       " wiki
 Plug 'tools-life/taskwiki'            " vimwiki taskwarrior integration
-Plug 'scrooloose/nerdtree'            " nerd tree
-Plug 'Xuyuanp/nerdtree-git-plugin'    " nerd tree git integration
-Plug 'prabirshrestha/vim-lsp'         " lsp client
-Plug 'mattn/vim-lsp-settings'         " lsp settings
-Plug 'thomasfaingnaert/' .
-            \ 'vim-lsp-snippets'      " lsp snippet support
-Plug 'ncm2/ncm2'                      " auto completion
-Plug 'roxma/nvim-yarp'                " yet another remote plugin
-Plug 'ncm2/ncm2-bufword'              " complete words from current buffer
-Plug 'fgrsnau/ncm2-otherbuf'          " complete words from other buffers
-Plug 'wellle/tmux-complete.vim'       " complete words from tmux panes
-Plug 'ncm2/ncm2-path'                 " complete file paths
-Plug 'ncm2/ncm2-jedi'                 " python completion source
-Plug 'ncm2/ncm2-ultisnips'            " snippet completion source
-Plug 'ncm2/ncm2-markdown-subscope'    " fenced code block detection in markdown
-Plug 'ncm2/float-preview.nvim'        " nvim 0.4 floating window support
-Plug 'ncm2/ncm2-vim-lsp'              " lsp integration
+Plug 'neovim/nvim-lspconfig'
+Plug 'kabouzeid/nvim-lspinstall'
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'hrsh7th/nvim-compe'
+Plug 'andersevenrud/compe-tmux'
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
-Plug 'lukas-reineke/indent-blankline.nvim', {
-            \ 'branch': 'lua'
-            \ }                       " indentation guides
+Plug 'lukas-reineke/indent-blankline.nvim' " indentation guides
 Plug 'yggdroot/LeaderF', {
             \ 'do': './install.sh'
             \ }                       " fuzzy finder
@@ -61,13 +47,14 @@ Plug 'SirVer/UltiSnips'               " Snippets
 Plug 'honza/vim-snippets'             " default snippets
 Plug 'ludovicchabant/vim-gutentags'   " automate ctags
 Plug 'vim-airline/vim-airline'        " nice status line
+Plug 'akinsho/nvim-bufferline.lua'    " bufferline
 Plug 'mhinz/vim-startify'             " fancy start screen
 Plug 'Valloric/ListToggle'            " toggle quickfix and location list
 Plug 'brennier/quicktex'              " very quick latex writing
 Plug 'justinmk/vim-sneak'             " sneak motion
 Plug 'jpalardy/vim-slime'             " tmux repl
 Plug 'MattesGroeger/vim-bookmarks'    " bookmarks
-Plug 'tmsvg/pear-tree'                " auto-close (, {, [, etc.
+Plug 'windwp/nvim-autopairs'
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
 Plug 'ryanoasis/vim-devicons'         " fancy glyphs
 Plug 'sainnhe/gruvbox-material'       " colorscheme
@@ -97,8 +84,8 @@ Plug 'hanschen/vim-ipython-cell', {
             \ }                       " execute cells in ipython just like jupyter
 Plug 'dhruvasagar/vim-table-mode'     " simplify writing/editing tables (e.g. in markdown)
 Plug 'voldikss/vim-floaterm'          " floating terminal
-" Plug 'kyazdani42/nvim-web-devicons'
-" Plug 'romgrk/barbar.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'       " file explorer
 
 " Language support (syntax highlighting, indent etc.)
 Plug 'nvim-treesitter/nvim-treesitter', {
@@ -257,7 +244,6 @@ set splitright
 " '-- XXX completion (YYY)', 'match 1 of 2', 'The only match',
 set shortmess+=c
 
-" :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
 
 set signcolumn=yes
@@ -407,20 +393,9 @@ nnoremap <C-W><C-F> <C-W>vgf
 au TermOpen * setlocal nonumber norelativenumber
 
 " terminal keybindings
-" Zoom / Restore terminal window.
-function! s:ZoomToggle() abort
-    if exists('t:zoomed') && t:zoomed
-        set showtabline=1
-        tabc
-        let t:zoomed = 0
-    else
-        tab split
-        set showtabline=0
-        let t:zoomed = 1
-    endif
-endfunction
-command! ZoomToggle call s:ZoomToggle()
-tnoremap <C-F> <C-\><C-n>:ZoomToggle<CR>i
+if has('nvim')
+  tmap <C-o> <C-\><C-n>
+endif
 
 " ask before jump if ambigous
 nnoremap <C-]> g<C-]>
@@ -1036,10 +1011,10 @@ let g:rooter_patterns = [
 "" vista.vim
 let g:vista_default_executive = 'ctags'
 let g:vista_executive_for = {
-            \ 'vue': 'vim_lsp',
-            \ 'javascript': 'vim_lsp',
-            \ 'typescript': 'vim_lsp',
-            \ 'json': 'vim_lsp',
+            \ 'vue': 'nvim_lsp',
+            \ 'javascript': 'nvim_lsp',
+            \ 'typescript': 'nvim_lsp',
+            \ 'json': 'nvim_lsp',
             \ 'vimwiki': 'markdown',
             \ 'markdown': 'toc',
             \ }
@@ -1077,6 +1052,7 @@ let g:test#python#pytest#options = {
             \ 'nearest':   '--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --no-cov',
             \ 'file':   '--no-cov',
             \ }
+let g:test#javascript#runner = 'jest'
 
 "" dispatch
 " send dispatch commands to popup session
@@ -1113,27 +1089,16 @@ nmap <silent> t<CR> :call execute("Tmux send-keys -t " . g:tmux_session . " Ente
 nmap <silent> t<C-c> :call execute("Tmux send-keys -t " . g:tmux_session . " C-c")<CR>
 nmap <silent> t<C-d> :call execute("Tmux send-keys -t " . g:tmux_session . " C-d")<CR>
 
-"" nerd tree
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let g:NERDTreeStatusline = 'NERDTree'
-nnoremap <leader>fT :NERDTreeFind<CR>
-nnoremap <leader>ft :NERDTreeToggle<CR>
+"" nvim-tree
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', '__pycache__']
+let g:nvim_tree_auto_ignore_ft = [ 'startify', 'dashboard' ]
+let g:nvim_tree_indent_markers = 1
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_quit_on_open = 1
+let g:nvim_tree_add_trailing = 1
 
-let g:NERDTreeMapCloseDir = 'h'
-let g:NERDTreeMapActivateNode = 'l'
-let g:NERDTreeMapUpdir = 'H'
-let g:NERDTreeMapChangeRoot = 'L'
-let g:NERDTreeMapToggleHidden = 'zh'
-let g:NERDTreeQuitOnOpen = 1
-let NERDTreeIgnore=[
-            \ '\.aux$', '\.lo[lft]$', '\.sl[gso]$', '\.not$', '\.ntn$', '\.ac[nrg]$',
-            \ '\.gl[gso]$', '\.ist$', '\.nlg$', '\.log$', '\.gz$', '\.run.xml$',
-            \ '\.toc$', '\.out$', '\.bbl$', '\.bcf$', '\.blg$', '\.snm$', '\.nav$',
-            \ '\.fdb_latexmk$', '\.fls$', '\.xdv$', '\.py[co]$', '^tags$[[file]]',
-            \ '_minted[[dir]]', '.mypy_cache[[dir]]', '__pycache__[[dir]]',
-            \ '\.synctex\(busy\)$', '^py.typed$[[file]]', 'node_modules[[dir]]'
-            \]
+nnoremap <leader>ft :NvimTreeToggle<CR>
+nnoremap <leader>fT :NvimTreeFindFile<CR>
 
 "" grepper
 nnoremap <leader>gg :Grepper -tool git<cr>
@@ -1176,18 +1141,15 @@ let g:sneak#label = 1
 let g:sneak#use_ic_scs = 1
 map <leader><leader> <Plug>Sneak_,
 
-"" pear-tree
-" TODO: Find a way to keep dot repeatability without breaking
-" insmode-completion and snippet expansion.
-" If it can't be done with tmsvg/pear-tree, cohama/lexima.vim might be an
-" alternative.
-" To workaround this issue, disable special mappings for now.
-let g:pear_tree_map_special_keys = 0
-imap <BS> <Plug>(PearTreeBackspace)
-
-let g:pear_tree_smart_openers = 1
-let g:pear_tree_smart_closers = 1
-let g:pear_tree_smart_backspace = 1
+"" nvim-autopairs
+lua <<EOF
+require('nvim-autopairs').setup({
+    check_ts = true,
+    enable_afterquote = true,
+    enable_moveright = true,
+    enable_check_bracket_line = true,
+})
+EOF
 
 "" vimtex
 let g:vimtex_view_method = 'zathura'
@@ -1275,85 +1237,93 @@ sign define vimspectorPC text= texthl=WarningMsg
 "" endwise
 let g:endwise_no_mappings = 1
 
-"" nvim completion manager / ncm2
-augroup nvim_completion_manager
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-augroup END
+lua <<EOF
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  resolve_timeout = 800;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  -- documentation = {
+  --   border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
+  --   winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+  --   max_width = 120,
+  --   min_width = 60,
+  --   max_height = math.floor(vim.o.lines * 0.3),
+  --   min_height = 1,
+  -- };
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = false;
+    ultisnips = true;
+    luasnip = false;
+    tmux = {
+        disabled = false,
+        all_panes = true,
+        kind = 'Text',
+    };
+  };
+}
 
-" Press enter to trigger snippet expansion or accept completed item
-imap <expr> <CR> pumvisible()
-                    \ ? ncm2_ultisnips#completed_is_snippet()
-                        \ ? "\<Plug>(ncm2_ultisnips_expand_completed)"
-                        \ : "\<C-y>\<CR>\<Plug>DiscretionaryEnd"
-                    \ : "\<CR>\<Plug>DiscretionaryEnd"
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-inoremap <c-c> <ESC>
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
 
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif vim.fn['UltiSnips#CanJumpForwards']() == 1 then
+    return t [[<C-R>=UltiSnips#JumpForwards()<CR>]]
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  elseif vim.fn['UltiSnips#CanJumpBackwards']() == 1 then
+    return t [[<C-R>=UltiSnips#JumpBackwards()<CR>]]
+  else
+    -- If <S-Tab> is not working in your terminal, change it to <C-h>
+    return t "<S-Tab>"
+  end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+EOF
+
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " Disable extra tmux complete trigger
 let g:tmuxcomplete#trigger = ''
-
-" ncm vimtex
-augroup ncm_vimtex_setup
-    autocmd!
-    autocmd Filetype tex call ncm2#register_source({
-                \ 'name' : 'vimtex-cmds',
-                \ 'priority': 8,
-                \ 'complete_length': -1,
-                \ 'scope': ['tex'],
-                \ 'matcher': {'name': 'prefix', 'key': 'word'},
-                \ 'word_pattern': '\w+',
-                \ 'complete_pattern': g:vimtex#re#ncm2#cmds,
-                \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-                \ })
-    autocmd Filetype tex call ncm2#register_source({
-                \ 'name' : 'vimtex-labels',
-                \ 'priority': 8,
-                \ 'complete_length': -1,
-                \ 'scope': ['tex'],
-                \ 'matcher': {'name': 'combine',
-                \             'matchers': [
-                \               {'name': 'substr', 'key': 'word'},
-                \               {'name': 'substr', 'key': 'menu'},
-                \             ]},
-                \ 'word_pattern': '\w+',
-                \ 'complete_pattern': g:vimtex#re#ncm2#labels,
-                \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-                \ })
-    autocmd Filetype tex call ncm2#register_source({
-                \ 'name' : 'vimtex-files',
-                \ 'priority': 8,
-                \ 'complete_length': -1,
-                \ 'scope': ['tex'],
-                \ 'matcher': {'name': 'combine',
-                \             'matchers': [
-                \               {'name': 'abbrfuzzy', 'key': 'word'},
-                \               {'name': 'abbrfuzzy', 'key': 'abbr'},
-                \             ]},
-                \ 'word_pattern': '\w+',
-                \ 'complete_pattern': g:vimtex#re#ncm2#files,
-                \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-                \ })
-    autocmd Filetype tex call ncm2#register_source({
-                \ 'name' : 'bibtex',
-                \ 'priority': 8,
-                \ 'complete_length': -1,
-                \ 'scope': ['tex'],
-                \ 'matcher': {'name': 'combine',
-                \             'matchers': [
-                \               {'name': 'prefix', 'key': 'word'},
-                \               {'name': 'abbrfuzzy', 'key': 'abbr'},
-                \               {'name': 'abbrfuzzy', 'key': 'menu'},
-                \             ]},
-                \ 'word_pattern': '\w+',
-                \ 'complete_pattern': g:vimtex#re#ncm2#bibtex,
-                \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-                \ })
-augroup END
 
 "" jedi
 let g:jedi#completions_enabled = 0
@@ -1458,6 +1428,59 @@ nmap <Leader>mkk <Plug>BookmarkMoveUp
 nmap <Leader>mjj <Plug>BookmarkMoveDown
 nmap <Leader>mg <Plug>BookmarkMoveToLine
 
+"" nvim-bufferline
+lua <<EOF
+require("bufferline").setup{
+    options = {
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = "File Explorer",
+                text_align = "center",
+            },
+            {
+                filetype = "vista_kind",
+                text = "Symbols",
+                text_align = "center",
+            }
+        },
+        custom_areas = {
+          right = function()
+            local result = {}
+            local error = vim.lsp.diagnostic.get_count(0, [[Error]])
+            local warning = vim.lsp.diagnostic.get_count(0, [[Warning]])
+            local info = vim.lsp.diagnostic.get_count(0, [[Information]])
+            local hint = vim.lsp.diagnostic.get_count(0, [[Hint]])
+
+            if error ~= 0 then
+              table.insert(result, {text = "  " .. error, guifg = "#EC5241"})
+            end
+
+            if warning ~= 0 then
+              table.insert(result, {text = "  " .. warning, guifg = "#EFB839"})
+            end
+
+            if hint ~= 0 then
+              table.insert(result, {text = "  " .. hint, guifg = "#A3BA5E"})
+            end
+
+            if info ~= 0 then
+              table.insert(result, {text = "  " .. info, guifg = "#7EA9A7"})
+            end
+            return result
+          end,
+        }
+    },
+    highlights = {
+        fill = {
+            guibg = '#32302f',
+        },
+    };
+}
+EOF
+
+nnoremap <silent> gb :BufferLinePick<CR>
+
 "" airline
 let g:airline_theme='gruvbox_material'
 let g:airline_powerline_fonts = 1
@@ -1465,60 +1488,6 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffers_label = 'b'
-let g:airline#extensions#tabline#tabs_label = 't'
-let g:airline#extensions#tabline#buffer_min_count = 1
-
-" "" barbar.nvim
-" " NOTE: This variable doesn't exist before barbar runs. Create it before
-" "       setting any option.
-" let bufferline = {}
-" let bufferline.animation = v:false
-" let bufferline.icons = v:true
-" let bufferline.closable = v:true
-" let bufferline.clickable = v:true
-" let bufferline.maximum_padding = 2
-"
-" " If set, the letters for each buffer in buffer-pick mode will be
-" " assigned based on their name. Otherwise or in case all letters are
-" " already assigned, the behavior is to assign letters in order of
-" " usability (see order below)
-" let bufferline.semantic_letters = v:true
-" let bufferline.letters =
-"   \ 'arstdhneioqwfpgjluy;zxcvbkmARSTDHNEIOQWFPGJLUY;ZXCVBKM'
-"
-" nnoremap <silent> <leader>x :BufferClose<CR>
-" nnoremap <silent> <C-s> :BufferPick<CR>
-"
-" nnoremap <silent> <leader>1 :BufferGoto 1<CR>
-" nnoremap <silent> <leader>2 :BufferGoto 2<CR>
-" nnoremap <silent> <leader>3 :BufferGoto 3<CR>
-" nnoremap <silent> <leader>4 :BufferGoto 4<CR>
-" nnoremap <silent> <leader>5 :BufferGoto 5<CR>
-"
-" "  Current: current buffer
-" "  Visible: visible but not current buffer
-" " Inactive: invisible but not current buffer
-" "     -Mod: when modified
-" "    -Sign: the separator between buffers
-" "  -Target: letter in buffer-picking mode
-" "
-" "           BufferCurrent
-" "           BufferCurrentMod
-" "           BufferCurrentSign
-" "           BufferCurrentTarget
-" "           BufferVisible
-" "           BufferVisibleMod
-" "           BufferVisibleSign
-" "           BufferVisibleTarget
-" "           BufferInactive
-" "           BufferInactiveMod
-" "           BufferInactiveSign
-" "           BufferInactiveTarget
-" hi TabLineFill guibg=#1d2021
-" hi BufferVisible guifg=#7c6f64 guibg=#282828
 
 "" nvim-colorizer
 lua <<EOF
@@ -1556,7 +1525,7 @@ let g:markdown_fenced_languages = [
 "" indent-blankline
 let g:indent_blankline_char = '┊'
 let g:indent_blankline_show_trailing_blankline_indent = v:true
-let g:indent_blankline_filetype_exclude = ['help', 'vimwiki', 'markdown', 'startify', 'nerdtree']
+let g:indent_blankline_filetype_exclude = ['help', 'vimwiki', 'markdown', 'startify', 'NvimTree']
 let g:indent_blankline_buftype_exclude = ['terminal']
 
 "" leaderF
@@ -1719,6 +1688,126 @@ let g:lsp_settings_root_markers = [
     \ '.git/'
     \]
 
+"" nvim-lsp
+lua << EOF
+local nvim_lsp = require 'lspconfig'
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', 'gp', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<leader>Ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<leader>L', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+
+  -- Set some keybinds conditional on server capabilities
+  if client.resolved_capabilities.document_formatting then
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  elseif client.resolved_capabilities.document_range_formatting then
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  end
+
+  -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+    augroup lsp_document_highlight
+    autocmd! * <buffer>
+    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
+    ]], false)
+  end
+
+  -- Configure signature help for completion
+  require "lsp_signature".on_attach({
+    bind = true,
+    hint_enable = false,
+  })
+end
+
+-- Configure lua language server for neovim development
+local lua_settings = {
+  Lua = {
+    runtime = {
+      -- LuaJIT in the case of Neovim
+      version = 'LuaJIT',
+      path = vim.split(package.path, ';'),
+    },
+    diagnostics = {
+      -- Get the language server to recognize the `vim` global
+      globals = {'vim'},
+    },
+    workspace = {
+      -- Make the server aware of Neovim runtime files
+      library = {
+        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+      },
+    },
+  }
+}
+
+-- config that activates keymaps and enables snippet support
+local function make_config()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  return {
+    -- enable snippet support
+    capabilities = capabilities,
+    -- map buffer local keybindings when the language server attaches
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
+end
+
+-- lsp-install
+local function setup_servers()
+  require'lspinstall'.setup()
+
+  -- get all installed servers
+  local servers = require'lspinstall'.installed_servers()
+
+  for _, server in pairs(servers) do
+    local config = make_config()
+
+    -- language specific config
+    if server == "lua" then
+      config.settings = lua_settings
+    end
+
+    require'lspconfig'[server].setup(config)
+  end
+end
+
+setup_servers()
+
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require'lspinstall'.post_install_hook = function ()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
+
+local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+
+for type, icon in pairs(signs) do
+  local hl = "LspDiagnosticsSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
+EOF
+
 "" vim-slime
 let g:slime_target = 'tmux'
 let g:slime_python_ipython = 1
@@ -1798,6 +1887,9 @@ require'nvim-treesitter.configs'.setup {
     disable = {
       "python",
     },
+  },
+  autopairs = {
+    enable = true,
   },
   incremental_selection = {
     enable = true,
