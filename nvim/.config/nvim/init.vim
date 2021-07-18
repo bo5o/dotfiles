@@ -1246,7 +1246,7 @@ require'compe'.setup {
   enabled = true;
   autocomplete = true;
   debug = false;
-  min_length = 3;
+  min_length = 1;
   preselect = 'enable';
   throttle_time = 80;
   source_timeout = 200;
@@ -1466,7 +1466,7 @@ lua << EOF
     indent_lines = true, -- add an indent guide below the fold icons
     auto_open = false, -- automatically open the list when you have diagnostics
     auto_close = false, -- automatically close the list when you have no diagnostics
-    auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+    auto_preview = false, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
     auto_fold = false, -- automatically fold a file trouble list at creation
     signs = {
         -- icons / text used for a diagnostic
@@ -1486,6 +1486,7 @@ nnoremap <leader>qd <cmd>TroubleToggle lsp_document_diagnostics<cr>
 nnoremap <leader>qt <cmd>TodoTrouble<cr>
 nnoremap <leader>ql <cmd>TroubleToggle loclist<cr>
 nnoremap <leader>qq <cmd>TroubleToggle quickfix<cr>
+nnoremap gr <cmd>TroubleToggle lsp_references<cr>
 
 "" todo-comments
 lua << EOF
@@ -1728,7 +1729,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<leader>K', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<leader>cld', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>cll', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '<leader>clL', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
