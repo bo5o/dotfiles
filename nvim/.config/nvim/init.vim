@@ -33,10 +33,9 @@ Plug 'tpope/vim-endwise'              " wisely add end/endfunction/endif...
 Plug 'tomtom/tcomment_vim'            " comment stuff out
 Plug 'wfxr/minimap.vim'               " code minimap
 Plug 'junegunn/gv.vim'                " git commit browser
-Plug 'pocco81/truezen.nvim'
+Plug 'nvim-telescope/telescope.nvim'  " fuzzy finder
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'rhysd/git-messenger.vim'        " show git commit under cursor
 Plug 'airblade/vim-gitgutter'         " git diff in gutter
@@ -911,9 +910,6 @@ let g:minimap_auto_start_win_enter = 1
 let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'NvimTree']
 let g:minimap_close_filetypes = ['startify', 'netrw', 'vim-plug']
 let g:minimap_git_colors = 1
-
-" Goyo
-nnoremap <silent> <leader>Z :Goyo<CR>
 
 " Insert date
 inoremap ;dt <C-R>=strftime('%Y-%m-%d')<CR>
