@@ -38,6 +38,8 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'fhill2/telescope-ultisnips.nvim'
+Plug 'folke/trouble.nvim'
+Plug 'folke/todo-comments.nvim'
 Plug 'rhysd/git-messenger.vim'        " show git commit under cursor
 Plug 'airblade/vim-gitgutter'         " git diff in gutter
 Plug 'lervag/vimtex'                  " LaTeX
@@ -47,7 +49,6 @@ Plug 'ludovicchabant/vim-gutentags'   " automate ctags
 Plug 'vim-airline/vim-airline'        " nice status line
 Plug 'akinsho/nvim-bufferline.lua'    " bufferline
 Plug 'mhinz/vim-startify'             " fancy start screen
-Plug 'Valloric/ListToggle'            " toggle quickfix and location list
 Plug 'brennier/quicktex'              " very quick latex writing
 Plug 'justinmk/vim-sneak'             " sneak motion
 Plug 'jpalardy/vim-slime'             " tmux repl
@@ -84,6 +85,7 @@ Plug 'dhruvasagar/vim-table-mode'     " simplify writing/editing tables (e.g. in
 Plug 'voldikss/vim-floaterm'          " floating terminal
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'       " file explorer
+Plug 'windwp/nvim-spectre'
 
 " Language support (syntax highlighting, indent etc.)
 Plug 'nvim-treesitter/nvim-treesitter', {
@@ -908,7 +910,7 @@ augroup END
 let g:minimap_width = 10
 let g:minimap_auto_start = 1
 let g:minimap_auto_start_win_enter = 1
-let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'NvimTree', 'help', 'gitmessengerpopup']
+let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'NvimTree', 'help', 'gitmessengerpopup', 'spectre_panel', 'Trouble']
 let g:minimap_close_filetypes = ['startify', 'netrw', 'vim-plug', 'gitmessengerpopup']
 let g:minimap_git_colors = 1
 
@@ -919,18 +921,6 @@ inoremap ;dt <C-R>=strftime('%Y-%m-%d')<CR>
 " indent/dedent in visual mode
 vnoremap L >gv
 vnoremap H <gv
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell! spelllang=en_us<cr>
-map <leader>sd :set spelllang=de_de<cr>
-
-" Shortcuts using <leader>
-map <leader>sa zg
-map <leader>s? z=
-map <leader>st 1z=
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Local settings
@@ -959,7 +949,14 @@ let g:startify_commands = [
             \   { 'ug': [ 'Upgrade plugin manager', ':PlugUpgrade' ] },
             \ ]
 
-nnoremap <silent> <leader>S :Startify<CR>
+"" Spectre
+nnoremap <leader>S :lua require('spectre').open()<CR>
+" search in current file
+nnoremap <leader>ss viw:lua require('spectre').open_file_search()<cr>
+
+"search current word
+nnoremap <leader>sw viw:lua require('spectre').open_visual()<CR>
+vnoremap <leader>s :lua require('spectre').open_visual()<CR>
 
 "" Emmet
 let g:user_emmet_install_global = 0
@@ -1142,19 +1139,6 @@ let g:grepper.git = {
             \ 'grepformat': '%f:%l:%c:%m,%f:%l:%m,%f',
             \ 'grepprg': 'git grep -nGIi'
             \}
-
-command! Todo silent Grepper
-      \ -noprompt
-      \ -tool rg
-      \ -query '\b(todo|fixme)\b'
-command! BufTodo silent Grepper
-      \ -buffer
-      \ -noprompt
-      \ -tool rg
-      \ -query '\b(todo|fixme)\b'
-
-nnoremap <leader>gt :BufTodo<cr>
-nnoremap <leader>gT :Todo<cr>
 
 "" sneak
 let g:sneak#label = 1
@@ -1443,8 +1427,68 @@ nnoremap <leader>ft <cmd>Telescope tags<cr>
 nnoremap <leader>fC <cmd>Telescope git_bcommits<cr>
 nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 nnoremap <leader>fu <cmd>Telescope ultisnips<cr>
+nnoremap <leader>fT <cmd>TodoTelescope<cr>
 
+"" Trouble
+lua << EOF
+  require("trouble").setup {
+    position = "bottom", -- position of the list can be: bottom, top, left, right
+    height = 10, -- height of the trouble list when position is top or bottom
+    width = 50, -- width of the list when position is left or right
+    icons = true, -- use devicons for filenames
+    mode = "quickfix", -- "lsp_workspace_diagnostics", "lsp_document_diagnostics", "quickfix", "lsp_references", "loclist"
+    fold_open = "", -- icon used for open folds
+    fold_closed = "", -- icon used for closed folds
+    action_keys = { -- key mappings for actions in the trouble list
+        -- map to {} to remove a mapping, for example:
+        -- close = {},
+        close = "q", -- close the list
+        cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
+        refresh = "r", -- manually refresh
+        jump = {"<cr>", "<tab>"}, -- jump to the diagnostic or open / close folds
+        open_split = { "<c-x>" }, -- open buffer in new split
+        open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
+        open_tab = { "<c-t>" }, -- open buffer in new tab
+        jump_close = {"o"}, -- jump to the diagnostic and close the list
+        toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
+        toggle_preview = "P", -- toggle auto_preview
+        hover = "K", -- opens a small popup with the full multiline message
+        preview = "p", -- preview the diagnostic location
+        close_folds = {"zM", "zm"}, -- close all folds
+        open_folds = {"zR", "zr"}, -- open all folds
+        toggle_fold = {"zA", "za"}, -- toggle fold of current file
+        previous = "k", -- preview item
+        next = "j" -- next item
+    },
+    indent_lines = true, -- add an indent guide below the fold icons
+    auto_open = false, -- automatically open the list when you have diagnostics
+    auto_close = false, -- automatically close the list when you have no diagnostics
+    auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+    auto_fold = false, -- automatically fold a file trouble list at creation
+    signs = {
+        -- icons / text used for a diagnostic
+        error = "",
+        warning = "",
+        hint = "",
+        information = "",
+        other = "﫠"
+    },
+    use_lsp_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
+  }
+EOF
 
+nnoremap <leader>Q <cmd>TroubleToggle<cr>
+nnoremap <leader>qw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
+nnoremap <leader>qd <cmd>TroubleToggle lsp_document_diagnostics<cr>
+nnoremap <leader>qt <cmd>TodoTrouble<cr>
+nnoremap <leader>ql <cmd>TroubleToggle loclist<cr>
+nnoremap <leader>qq <cmd>TroubleToggle quickfix<cr>
+
+"" todo-comments
+lua << EOF
+  require("todo-comments").setup {
+  }
+EOF
 
 "" UltiSnips
 let g:UltiSnipsExpandTrigger		= '<c-j>'
