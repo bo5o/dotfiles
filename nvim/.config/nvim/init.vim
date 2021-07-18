@@ -1424,7 +1424,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fm <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fM <cmd>Telescope keymaps<cr>
 nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
-nnoremap <leader>fS <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
+nnoremap <leader>fS <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap <leader>fg <cmd>Telescope treesitter<cr>
 nnoremap <leader>ft <cmd>Telescope tags<cr>
 nnoremap <leader>fC <cmd>Telescope git_bcommits<cr>
@@ -1799,6 +1799,18 @@ local function setup_servers()
     require'lspconfig'[server].setup(config)
   end
 end
+
+-- jedi language server
+local jedi_config = require"lspinstall/util".extract_config("jedi_language_server")
+jedi_config.default_config.cmd[1] = "./venv/bin/jedi-language-server"
+
+require'lspinstall/servers'.jedi = vim.tbl_extend('error', jedi_config, {
+  install_script = [[
+  python3 -m venv ./venv
+  ./venv/bin/pip3 install --upgrade pip
+  ./venv/bin/pip3 install --upgrade jedi-language-server
+  ]]
+})
 
 setup_servers()
 
