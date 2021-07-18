@@ -907,7 +907,7 @@ augroup END
 let g:minimap_width = 10
 let g:minimap_auto_start = 1
 let g:minimap_auto_start_win_enter = 1
-let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'NvimTree']
+let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'NvimTree', 'help']
 let g:minimap_close_filetypes = ['startify', 'netrw', 'vim-plug']
 let g:minimap_git_colors = 1
 
@@ -1103,6 +1103,18 @@ let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_git_hl = 1
 let g:nvim_tree_quit_on_open = 1
 let g:nvim_tree_add_trailing = 1
+
+lua <<EOF
+    local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+    vim.g.nvim_tree_bindings = {
+      { key = {"<CR>", "o", "<2-LeftMouse>", "l"}, cb = tree_cb("edit") },
+      { key = {"<BS>", "h"},                       cb = tree_cb("close_node") },
+      { key = "zh",                                cb = tree_cb("toggle_dotfiles") },
+      { key = "zi",                                cb = tree_cb("toggle_ignored") },
+      { key = {"-", "H"},                          cb = tree_cb("dir_up") },
+      { key = {"<2-RightMouse>", "<C-]>", "L"},    cb = tree_cb("cd") },
+    }
+EOF
 
 nnoremap <leader>of :NvimTreeToggle<CR>
 nnoremap <leader>oF :NvimTreeFindFile<CR>
@@ -1422,6 +1434,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fm <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fM <cmd>Telescope keymaps<cr>
 nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
+nnoremap <leader>fS <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 nnoremap <leader>fg <cmd>Telescope treesitter<cr>
 nnoremap <leader>ft <cmd>Telescope tags<cr>
 nnoremap <leader>fC <cmd>Telescope git_bcommits<cr>
@@ -1671,16 +1684,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-
-  -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-    augroup lsp_document_highlight
-    autocmd! * <buffer>
-    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-    augroup END
-    ]], false)
-  end
 
   -- Configure signature help for completion
   require "lsp_signature".on_attach({
