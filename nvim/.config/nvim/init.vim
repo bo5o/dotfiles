@@ -7,11 +7,12 @@ Plug 'vimwiki/vimwiki', {
             \ 'branch': 'dev'
             \ }                       " wiki
 Plug 'tools-life/taskwiki'            " vimwiki taskwarrior integration
-Plug 'neovim/nvim-lspconfig'
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'hrsh7th/nvim-compe'
-Plug 'andersevenrud/compe-tmux'
+Plug 'neovim/nvim-lspconfig'          " lsp configurations
+Plug 'kabouzeid/nvim-lspinstall'      " automatically install lsp servers
+Plug 'ray-x/lsp_signature.nvim'       " show signature help while typing
+Plug 'kosayoda/nvim-lightbulb'        " indicator for lsp code actions
+Plug 'hrsh7th/nvim-compe'             " autocompletion
+Plug 'andersevenrud/compe-tmux'       " autocompletion source for tmux panes
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
 Plug 'lukas-reineke/indent-blankline.nvim' " indentation guides
 Plug 'yggdroot/LeaderF', {
@@ -34,6 +35,7 @@ Plug 'tpope/vim-obsession'            " session management
 Plug 'tpope/vim-jdaddy'               " json manipulation
 Plug 'tpope/vim-endwise'              " wisely add end/endfunction/endif...
 Plug 'tomtom/tcomment_vim'            " comment stuff out
+Plug 'wfxr/minimap.vim'               " code minimap
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'junegunn/goyo.vim'              " distraction free mode
 Plug 'junegunn/fzf', {
@@ -54,14 +56,14 @@ Plug 'brennier/quicktex'              " very quick latex writing
 Plug 'justinmk/vim-sneak'             " sneak motion
 Plug 'jpalardy/vim-slime'             " tmux repl
 Plug 'MattesGroeger/vim-bookmarks'    " bookmarks
-Plug 'windwp/nvim-autopairs'
+Plug 'windwp/nvim-autopairs'          " automatically close brackets, quotes etc.
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
 Plug 'ryanoasis/vim-devicons'         " fancy glyphs
 Plug 'sainnhe/gruvbox-material'       " colorscheme
 Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-line statements
 Plug 'mattn/emmet-vim'                " expanding html abbreviations
 Plug 'mhinz/vim-grepper'              " integration of my favorite grep program
-Plug 'liuchengxu/vista.vim'           " browse lsp symbols and tags
+Plug 'simrat39/symbols-outline.nvim'  " LSP symbols in sidebar
 Plug 'janko/vim-test'                 " convenient test invocation
 Plug 'cbows/pytest-vim-compiler'      " pytest output compiler
 Plug 'machakann/vim-highlightedyank'  " Highlight yanked region
@@ -108,7 +110,6 @@ Plug 'ericpruitt/tmux.vim'            " .tmux.conf
 Plug 'ekalinin/Dockerfile.vim'        " Dockerfile
 Plug 'raimon49/requirements.txt.vim'  " requirements.txt
 Plug 'chr4/nginx.vim'                 " nginx
-
 
 " Initialize plugin system
 call plug#end()
@@ -906,6 +907,14 @@ augroup calcurse
     autocmd BufRead,BufNewFile ~/.calcurse/notes/* set filetype=markdown
 augroup END
 
+" minimap
+let g:minimap_width = 10
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
+let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'NvimTree']
+let g:minimap_close_filetypes = ['startify', 'netrw', 'vim-plug']
+let g:minimap_git_colors = 1
+
 " Goyo
 nnoremap <silent> <leader>Z :Goyo<CR>
 
@@ -1008,23 +1017,28 @@ let g:rooter_patterns = [
     \ '.git'
     \]
 
-"" vista.vim
-let g:vista_default_executive = 'ctags'
-let g:vista_executive_for = {
-            \ 'vue': 'nvim_lsp',
-            \ 'javascript': 'nvim_lsp',
-            \ 'typescript': 'nvim_lsp',
-            \ 'json': 'nvim_lsp',
-            \ 'vimwiki': 'markdown',
-            \ 'markdown': 'toc',
-            \ }
-let g:vista_echo_cursor_strategy = 'echo'
-let g:vista_stay_on_open = 0
-let g:vista#renderer#enable_icon = 1
+"" symbols outline
+lua <<EOF
+vim.g.symbols_outline = {
+    highlight_hovered_item = true,
+    show_guides = true,
+    auto_preview = true,
+    position = 'right',
+    show_numbers = false,
+    show_relative_numbers = false,
+    show_symbol_details = true,
+    keymaps = {
+        close = "q",
+        goto_location = "<CR>",
+        focus_location = "o",
+        hover_symbol = "<C-space>",
+        rename_symbol = "r",
+        code_actions = "a",
+    },
+}
+EOF
 
-nnoremap <silent> <leader>fa :Vista!!<CR>
-nnoremap <silent> <leader>fA :Vista show<CR>
-nnoremap <silent> <leader>fs :Vista finder<CR>
+nnoremap <silent> <leader>fa :SymbolsOutline<CR>
 
 "" vim-test
 nmap <silent> <leader>tn :TestNearest<CR>
@@ -1439,7 +1453,7 @@ require("bufferline").setup{
                 text_align = "center",
             },
             {
-                filetype = "vista_kind",
+                filetype = "Outline",
                 text = "Symbols",
                 text_align = "center",
             }
@@ -1637,57 +1651,6 @@ let g:ale_fixers = {
             \   'yaml': ['prettier'],
             \}
 
-"" vim-lsp
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    nmap <buffer> gd <Plug>(lsp-definition)
-    nmap <buffer> gD <Plug>(lsp-peek-definition)
-    nmap <buffer> gy <Plug>(lsp-declaration)
-    nmap <buffer> gY <Plug>(lsp-peek-declaration)
-    nmap <buffer> gp <Plug>(lsp-type-definition)
-    nmap <buffer> gP <Plug>(lsp-peek-type-definition)
-    nmap <buffer> gr <Plug>(lsp-references)
-    nmap <buffer> gi <Plug>(lsp-implementation)
-    nmap <buffer> gI <Plug>(lsp-peek-implementation)
-    nmap <buffer> K <Plug>(lsp-hover)
-    nmap <buffer> <leader>rn <Plug>(lsp-rename)
-    nmap <buffer> <leader>ra <Plug>(lsp-code-action)
-
-    nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
-    nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
-    nmap <buffer> <leader>L <plug>(lsp-document-diagnostics)
-endfunction
-
-augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that have a server registered
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
-
-let g:lsp_diagnostics_enabled = 1
-let g:lsp_signature_help_enabled = 1
-let g:lsp_preview_float = 1
-
-let g:lsp_document_highlight_enabled = 1
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_diagnostics_virtual_text_enabled = 1
-
-let g:lsp_diagnostics_signs_enabled = 1
-let g:lsp_diagnostics_signs_error = {'text': g:ale_sign_error}
-let g:lsp_diagnostics_signs_warning = {'text': g:ale_sign_warning}
-let g:lsp_diagnostics_signs_hint = {'text': ale_sign_info}
-
-"" vim-lsp-settings
-let g:lsp_settings_root_markers = [
-    \ 'package.json',
-    \ 'requirements.txt',
-    \ 'setup.py',
-    \ 'manage.py',
-    \ 'pyproject.toml',
-    \ '.git',
-    \ '.git/'
-    \]
-
 "" nvim-lsp
 lua << EOF
 local nvim_lsp = require 'lspconfig'
@@ -1701,16 +1664,17 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', '<leader>La', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<leader>K', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', 'gp', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<leader>Ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<leader>L', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<leader>Ll', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
@@ -1733,6 +1697,7 @@ local on_attach = function(client, bufnr)
   require "lsp_signature".on_attach({
     bind = true,
     hint_enable = false,
+    hi_parameter = "Search",
   })
 end
 
@@ -1806,6 +1771,50 @@ for type, icon in pairs(signs) do
   local hl = "LspDiagnosticsSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
+EOF
+
+"" nvim-lightbulb
+lua <<EOF
+require'nvim-lightbulb'.update_lightbulb {
+    sign = {
+        enabled = false,
+        -- Priority of the gutter sign
+        priority = 10,
+    },
+    float = {
+        enabled = false,
+        -- Text to show in the popup float
+        text = "💡",
+        -- Available keys for window options:
+        -- - height     of floating window
+        -- - width      of floating window
+        -- - wrap_at    character to wrap at for computing height
+        -- - max_width  maximal width of floating window
+        -- - max_height maximal height of floating window
+        -- - pad_left   number of columns to pad contents at left
+        -- - pad_right  number of columns to pad contents at right
+        -- - pad_top    number of lines to pad contents at top
+        -- - pad_bottom number of lines to pad contents at bottom
+        -- - offset_x   x-axis offset of the floating window
+        -- - offset_y   y-axis offset of the floating window
+        -- - anchor     corner of float to place at the cursor (NW, NE, SW, SE)
+        -- - winblend   transparency of the window (0-100)
+        win_opts = {},
+    },
+    virtual_text = {
+        enabled = true,
+        -- Text to show at virtual text
+        text = "💡",
+    },
+    status_text = {
+        enabled = false,
+        -- Text to provide when code actions are available
+        text = "💡",
+        -- Text to provide when no actions are available
+        text_unavailable = ""
+    }
+}
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 EOF
 
 "" vim-slime
