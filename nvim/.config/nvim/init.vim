@@ -11,7 +11,7 @@ Plug 'neovim/nvim-lspconfig'          " lsp configurations
 Plug 'kabouzeid/nvim-lspinstall'      " automatically install lsp servers
 Plug 'ray-x/lsp_signature.nvim'       " show signature help while typing
 Plug 'hrsh7th/nvim-compe'             " autocompletion
-Plug 'andersevenrud/compe-tmux'       " autocompletion source for tmux panes
+Plug 'wellle/tmux-complete.vim'       " autocompletion source for tmux panes
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
 Plug 'lukas-reineke/indent-blankline.nvim' " indentation guides
 Plug 'davidhalter/jedi-vim'           " python jedi
@@ -33,7 +33,7 @@ Plug 'tpope/vim-endwise'              " wisely add end/endfunction/endif...
 Plug 'tomtom/tcomment_vim'            " comment stuff out
 Plug 'wfxr/minimap.vim'               " code minimap
 Plug 'junegunn/gv.vim'                " git commit browser
-Plug 'junegunn/goyo.vim'              " distraction free mode
+Plug 'pocco81/truezen.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -278,6 +278,7 @@ function! MyHighlights() abort
 
     hi QuickScopePrimary guifg=#fe8019 gui=bold ctermfg=155 cterm=underline
     hi QuickScopeSecondary guifg=#d65d0e gui=bold ctermfg=81 cterm=underline
+    hi NormalFloat guibg=#282828
 endfunction
 
 augroup my_colors
@@ -1252,7 +1253,7 @@ require'compe'.setup {
   enabled = true;
   autocomplete = true;
   debug = false;
-  min_length = 1;
+  min_length = 3;
   preselect = 'enable';
   throttle_time = 80;
   source_timeout = 200;
@@ -1261,28 +1262,26 @@ require'compe'.setup {
   max_abbr_width = 100;
   max_kind_width = 100;
   max_menu_width = 100;
-  -- documentation = {
-  --   border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
-  --   winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-  --   max_width = 120,
-  --   min_width = 60,
-  --   max_height = math.floor(vim.o.lines * 0.3),
-  --   min_height = 1,
-  -- };
+  documentation = {
+    border = "rounded", -- the border option is the same as `|help nvim_open_win|`
+    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+    max_width = 120,
+    min_width = 60,
+    max_height = math.floor(vim.o.lines * 0.3),
+    min_height = 1,
+  };
   source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = false;
-    ultisnips = true;
-    luasnip = false;
-    tmux = {
-        disabled = false,
-        all_panes = true,
-        kind = 'Text',
-    };
+    omni = { filetypes = {'tex'} },
+    path = true,
+    buffer = true,
+    calc = false,
+    spell = false,
+    nvim_lsp = true,
+    nvim_lua = true,
+    vsnip = false,
+    ultisnips = true,
+    luasnip = false,
+    tmux = true,
   };
 }
 
@@ -1348,40 +1347,6 @@ let g:jedi#completions_command = ''
 let g:jedi#rename_command = '<leader>rn'
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#use_tag_stack = 1
-
-" "" fzf.vim
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-"
-" command! -bang -nargs=? -complete=dir Files
-"             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-"
-" command! -bang -nargs=* Rg
-"             \ call fzf#vim#grep(
-"             \   'rg
-"                 \ --column
-"                 \ --line-number
-"                 \ --no-heading
-"                 \ --color=always
-"                 \ --max-columns=150
-"                 \ --max-columns-preview
-"                 \ --smart-case
-"                 \ --hidden
-"                 \ --glob=!.git '.shellescape(<q-args>), 1,
-"             \   fzf#vim#with_preview(), <bang>0)
-"
-" imap <c-x><c-k> <plug>(fzf-complete-word)
-" imap <c-x><c-f> <plug>(fzf-complete-path)
-" imap <c-x><c-l> <plug>(fzf-complete-line)
-" imap <C-Space> <plug>(fzf-complete-line)
-"
-" noremap <leader>fr :Rg<CR>
-" noremap <leader>/ :Rg<CR>
-" noremap <leader>fl :BLines<CR>
-" noremap <leader>fg :BTags<CR>
-" noremap <leader>fG :Tags<CR>
-" noremap <leader>fc :BCommits<CR>
-" noremap <leader>fC :Commits<CR>
-" noremap <leader>fM :Maps<CR>
 
 "" telescope.nvim
 lua <<EOF
@@ -1636,9 +1601,9 @@ let g:ale_fix_on_save = 1
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_echo_msg_format = '[%linter%] %code%: %s'
-let g:ale_sign_error = ''
-let g:ale_sign_warning = ''
-let g:ale_sign_info = ''
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''
+let g:ale_sign_info = ''
 
 let g:ale_pattern_options = {
             \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
@@ -1694,9 +1659,6 @@ lua << EOF
 local nvim_lsp = require 'lspconfig'
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
@@ -1712,13 +1674,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-
-  -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  end
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
@@ -1808,6 +1763,35 @@ for type, icon in pairs(signs) do
   local hl = "LspDiagnosticsSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
+
+-- symbols for autocomplete
+vim.lsp.protocol.CompletionItemKind = {
+    '   (Text) ',
+    '   (Method)',
+    '   (Function)',
+    '   (Constructor)',
+    ' ﴲ  (Field)',
+    '[] (Variable)',
+    '   (Class)',
+    ' ﰮ  (Interface)',
+    '   (Module)',
+    ' 襁 (Property)',
+    '   (Unit)',
+    '   (Value)',
+    ' 練 (Enum)',
+    '   (Keyword)',
+    '   (Snippet)',
+    '   (Color)',
+    '   (File)',
+    '   (Reference)',
+    '   (Folder)',
+    '   (EnumMember)',
+    ' ﲀ  (Constant)',
+    ' ﳤ  (Struct)',
+    '   (Event)',
+    '   (Operator)',
+    '   (TypeParameter)',
+}
 EOF
 
 nnoremap <leader>cli <cmd>LspInfo<cr>
