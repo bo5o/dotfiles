@@ -37,6 +37,7 @@ Plug 'nvim-telescope/telescope.nvim'  " fuzzy finder
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'fhill2/telescope-ultisnips.nvim'
 Plug 'rhysd/git-messenger.vim'        " show git commit under cursor
 Plug 'airblade/vim-gitgutter'         " git diff in gutter
 Plug 'lervag/vimtex'                  " LaTeX
@@ -907,8 +908,8 @@ augroup END
 let g:minimap_width = 10
 let g:minimap_auto_start = 1
 let g:minimap_auto_start_win_enter = 1
-let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'NvimTree', 'help']
-let g:minimap_close_filetypes = ['startify', 'netrw', 'vim-plug']
+let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'NvimTree', 'help', 'gitmessengerpopup']
+let g:minimap_close_filetypes = ['startify', 'netrw', 'vim-plug', 'gitmessengerpopup']
 let g:minimap_git_colors = 1
 
 " Insert date
@@ -1293,39 +1294,40 @@ require'compe'.setup {
   };
 }
 
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-local check_back_space = function()
+local is_prior_char_whitespace = function()
     local col = vim.fn.col('.') - 1
     return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
 
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+-- Use (Shift-)Tab to:
+-- * move to prev/next item in completion menu
+-- * jump to the prev/next snippet placeholder
 _G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  elseif vim.fn['UltiSnips#CanJumpForwards']() == 1 then
-    return t [[<C-R>=UltiSnips#JumpForwards()<CR>]]
-  elseif check_back_space() then
-    return t "<Tab>"
+  if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+    return t [[<C-j>]]
+  elseif is_prior_char_whitespace() then
+    return t [[<Tab>]]
+  elseif vim.fn.pumvisible() == 1 then
+    return t [[<C-n>]]
   else
-    return vim.fn['compe#complete']()
+    return vim.fn["compe#complete"]()
   end
 end
+
 _G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  elseif vim.fn['UltiSnips#CanJumpBackwards']() == 1 then
-    return t [[<C-R>=UltiSnips#JumpBackwards()<CR>]]
+  if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+    return t [[<C-k>]]
+  elseif vim.fn.pumvisible() == 1 then
+    return t [[<C-p>]]
   else
-    -- If <S-Tab> is not working in your terminal, change it to <C-h>
-    return t "<S-Tab>"
+    return t [[<S-Tab>]]
   end
 end
+
 
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
@@ -1422,6 +1424,7 @@ local telescope = require('telescope')
 		},
 	})
     require('telescope').load_extension('fzy_native')
+    require('telescope').load_extension('ultisnips')
 EOF
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -1439,6 +1442,7 @@ nnoremap <leader>fg <cmd>Telescope treesitter<cr>
 nnoremap <leader>ft <cmd>Telescope tags<cr>
 nnoremap <leader>fC <cmd>Telescope git_bcommits<cr>
 nnoremap <leader>fc <cmd>Telescope git_commits<cr>
+nnoremap <leader>fu <cmd>Telescope ultisnips<cr>
 
 
 
