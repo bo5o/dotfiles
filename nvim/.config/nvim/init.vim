@@ -10,14 +10,10 @@ Plug 'tools-life/taskwiki'            " vimwiki taskwarrior integration
 Plug 'neovim/nvim-lspconfig'          " lsp configurations
 Plug 'kabouzeid/nvim-lspinstall'      " automatically install lsp servers
 Plug 'ray-x/lsp_signature.nvim'       " show signature help while typing
-Plug 'kosayoda/nvim-lightbulb'        " indicator for lsp code actions
 Plug 'hrsh7th/nvim-compe'             " autocompletion
 Plug 'andersevenrud/compe-tmux'       " autocompletion source for tmux panes
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
 Plug 'lukas-reineke/indent-blankline.nvim' " indentation guides
-Plug 'yggdroot/LeaderF', {
-            \ 'do': './install.sh'
-            \ }                       " fuzzy finder
 Plug 'davidhalter/jedi-vim'           " python jedi
 Plug 'jamessan/vim-gnupg'             " transparent editing of gpg encrypted files
 Plug 'dense-analysis/ale'             " asynchronous linting engine
@@ -38,10 +34,10 @@ Plug 'tomtom/tcomment_vim'            " comment stuff out
 Plug 'wfxr/minimap.vim'               " code minimap
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'junegunn/goyo.vim'              " distraction free mode
-Plug 'junegunn/fzf', {
-            \ 'do': { -> fzf#install() }
-            \ }                       " fuzzy finder
-Plug 'junegunn/fzf.vim'               " fzf integration
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'rhysd/git-messenger.vim'        " show git commit under cursor
 Plug 'airblade/vim-gitgutter'         " git diff in gutter
 Plug 'lervag/vimtex'                  " LaTeX
@@ -1038,7 +1034,7 @@ vim.g.symbols_outline = {
 }
 EOF
 
-nnoremap <silent> <leader>fa :SymbolsOutline<CR>
+nnoremap <silent> <leader>os :SymbolsOutline<CR>
 
 "" vim-test
 nmap <silent> <leader>tn :TestNearest<CR>
@@ -1111,8 +1107,8 @@ let g:nvim_tree_git_hl = 1
 let g:nvim_tree_quit_on_open = 1
 let g:nvim_tree_add_trailing = 1
 
-nnoremap <leader>ft :NvimTreeToggle<CR>
-nnoremap <leader>fT :NvimTreeFindFile<CR>
+nnoremap <leader>of :NvimTreeToggle<CR>
+nnoremap <leader>oF :NvimTreeFindFile<CR>
 
 "" grepper
 nnoremap <leader>gg :Grepper -tool git<cr>
@@ -1353,39 +1349,124 @@ let g:jedi#rename_command = '<leader>rn'
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#use_tag_stack = 1
 
-"" fzf.vim
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+" "" fzf.vim
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+"
+" command! -bang -nargs=? -complete=dir Files
+"             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+"
+" command! -bang -nargs=* Rg
+"             \ call fzf#vim#grep(
+"             \   'rg
+"                 \ --column
+"                 \ --line-number
+"                 \ --no-heading
+"                 \ --color=always
+"                 \ --max-columns=150
+"                 \ --max-columns-preview
+"                 \ --smart-case
+"                 \ --hidden
+"                 \ --glob=!.git '.shellescape(<q-args>), 1,
+"             \   fzf#vim#with_preview(), <bang>0)
+"
+" imap <c-x><c-k> <plug>(fzf-complete-word)
+" imap <c-x><c-f> <plug>(fzf-complete-path)
+" imap <c-x><c-l> <plug>(fzf-complete-line)
+" imap <C-Space> <plug>(fzf-complete-line)
+"
+" noremap <leader>fr :Rg<CR>
+" noremap <leader>/ :Rg<CR>
+" noremap <leader>fl :BLines<CR>
+" noremap <leader>fg :BTags<CR>
+" noremap <leader>fG :Tags<CR>
+" noremap <leader>fc :BCommits<CR>
+" noremap <leader>fC :Commits<CR>
+" noremap <leader>fM :Maps<CR>
 
-command! -bang -nargs=? -complete=dir Files
-            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+"" telescope.nvim
+lua <<EOF
+local telescope = require('telescope')
+	-- Required to close with ESC in insert mode
+	local actions = require('telescope.actions')
 
-command! -bang -nargs=* Rg
-            \ call fzf#vim#grep(
-            \   'rg
-                \ --column
-                \ --line-number
-                \ --no-heading
-                \ --color=always
-                \ --max-columns=150
-                \ --max-columns-preview
-                \ --smart-case
-                \ --hidden
-                \ --glob=!.git '.shellescape(<q-args>), 1,
-            \   fzf#vim#with_preview(), <bang>0)
+	telescope.setup({
+        extensions = {
+            fzy_native = {
+                override_generic_sorter = true,
+                override_file_sorter = true,
+            }
+        },
+		defaults = {
+			find_command = {
+				'rg',
+				'--no-heading',
+				'--with-filename',
+				'--line-number',
+				'--column',
+				'--smart-case',
+			},
+			initial_mode = 'insert',
+			selection_strategy = 'reset',
+			sorting_strategy = 'descending',
+			layout_strategy = 'horizontal',
+			prompt_prefix = '> ',
+			layout_config = {
+				prompt_position = 'bottom',
+				horizontal = {
+					mirror = false,
+					preview_width = 0.6,
+				},
+			},
+			file_ignore_patterns = {},
+			winblend = 0,
+			scroll_strategy = 'cycle',
+			border = {},
+			borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+			color_devicons = true,
+			use_less = true,
+			set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+			file_previewer = require('telescope.previewers').vim_buffer_cat.new,
+			grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
+			qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
 
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-imap <C-Space> <plug>(fzf-complete-line)
+			-- Developer configurations: Not meant for general override
+			buffer_previewer_maker = require('telescope.previewers').buffer_previewer_maker,
+			mappings = {
+				i = {
+					['<C-j>'] = actions.move_selection_next,
+					['<C-k>'] = actions.move_selection_previous,
+					['<C-q>'] = actions.smart_send_to_qflist
+						+ actions.open_qflist,
+					['<CR>'] = actions.select_default + actions.center,
+				},
+				n = {
+					['<C-j>'] = actions.move_selection_next,
+					['<C-k>'] = actions.move_selection_previous,
+					['<C-q>'] = actions.smart_send_to_qflist
+						+ actions.open_qflist,
+				},
+			},
+		},
+	})
+    require('telescope').load_extension('fzy_native')
+EOF
 
-noremap <leader>fr :Rg<CR>
-noremap <leader>/ :Rg<CR>
-noremap <leader>fl :BLines<CR>
-noremap <leader>fg :BTags<CR>
-noremap <leader>fG :Tags<CR>
-noremap <leader>fc :BCommits<CR>
-noremap <leader>fC :Commits<CR>
-noremap <leader>fM :Maps<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fr <cmd>Telescope live_grep<cr>
+nnoremap <leader>* <cmd>Telescope grep_string<cr>
+nnoremap <leader>/ <cmd>Telescope current_buffer_fuzzy_find<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fd <cmd>Telescope file_browser<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fm <cmd>Telescope oldfiles<cr>
+nnoremap <leader>fM <cmd>Telescope keymaps<cr>
+nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
+nnoremap <leader>fg <cmd>Telescope treesitter<cr>
+nnoremap <leader>ft <cmd>Telescope tags<cr>
+nnoremap <leader>fC <cmd>Telescope git_bcommits<cr>
+nnoremap <leader>fc <cmd>Telescope git_commits<cr>
+
+
 
 "" UltiSnips
 let g:UltiSnipsExpandTrigger		= '<c-j>'
@@ -1542,49 +1623,6 @@ let g:indent_blankline_show_trailing_blankline_indent = v:true
 let g:indent_blankline_filetype_exclude = ['help', 'vimwiki', 'markdown', 'startify', 'NvimTree']
 let g:indent_blankline_buftype_exclude = ['terminal']
 
-"" leaderF
-" popup mode
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_IgnoreCurrentBufferName = 0
-let g:Lf_StlSeparator = { 'left': '', 'right': '' }
-let g:Lf_RootMarkers = ['.project-root', '.git', '.git/']
-let g:Lf_MruFileExclude = ['COMMIT_EDITMSG']
-
-let g:Lf_ShortcutF = '<leader>ff'
-let g:Lf_ShortcutB = '<C-s>'
-nnoremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-
-let g:Lf_RgConfig = [
-            \ '--max-columns=150',
-            \ '--max-columns-preview',
-            \ '--ignore-case',
-            \ '--hidden',
-            \ '--glob=!.git'
-            \ ]
-
-noremap <leader>8 :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
-noremap <leader>* :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
-
-let g:Lf_CommandMap = {
-            \ '<C-]>': ['<C-V>']
-            \ }
-
-let g:Lf_PreviewResult = {
-            \ 'File': 0,
-            \ 'Buffer': 0,
-            \ 'Mru': 0,
-            \ 'Tag': 0,
-            \ 'BufTag': 1,
-            \ 'Function': 1,
-            \ 'Line': 0,
-            \ 'Colorscheme': 0,
-            \ 'Rg': 0,
-            \ 'Gtags': 0
-            \}
-
-let g:Lf_PopupColorscheme = 'gruvbox_material'
-
 "" highglightyank
 let g:highlightedyank_highlight_duration = 300
 
@@ -1664,17 +1702,16 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', '<leader>La', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<leader>K', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', 'gp', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<leader>Ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<leader>cld', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>cll', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<leader>clL', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<leader>Ll', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
@@ -1773,49 +1810,9 @@ for type, icon in pairs(signs) do
 end
 EOF
 
-"" nvim-lightbulb
-lua <<EOF
-require'nvim-lightbulb'.update_lightbulb {
-    sign = {
-        enabled = false,
-        -- Priority of the gutter sign
-        priority = 10,
-    },
-    float = {
-        enabled = false,
-        -- Text to show in the popup float
-        text = "💡",
-        -- Available keys for window options:
-        -- - height     of floating window
-        -- - width      of floating window
-        -- - wrap_at    character to wrap at for computing height
-        -- - max_width  maximal width of floating window
-        -- - max_height maximal height of floating window
-        -- - pad_left   number of columns to pad contents at left
-        -- - pad_right  number of columns to pad contents at right
-        -- - pad_top    number of lines to pad contents at top
-        -- - pad_bottom number of lines to pad contents at bottom
-        -- - offset_x   x-axis offset of the floating window
-        -- - offset_y   y-axis offset of the floating window
-        -- - anchor     corner of float to place at the cursor (NW, NE, SW, SE)
-        -- - winblend   transparency of the window (0-100)
-        win_opts = {},
-    },
-    virtual_text = {
-        enabled = true,
-        -- Text to show at virtual text
-        text = "💡",
-    },
-    status_text = {
-        enabled = false,
-        -- Text to provide when code actions are available
-        text = "💡",
-        -- Text to provide when no actions are available
-        text_unavailable = ""
-    }
-}
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
-EOF
+nnoremap <leader>cli <cmd>LspInfo<cr>
+nnoremap <leader>clI :LspInstall<space>
+nnoremap <leader>cla <cmd>Telescope lsp_code_actions<cr>
 
 "" vim-slime
 let g:slime_target = 'tmux'
@@ -1848,10 +1845,10 @@ vmap     <buffer> <silent> <localleader>e <Plug>JupyterRunVisual
 let g:table_mode_map_prefix = '<localleader>t'
 
 "" vim-floaterm
-let g:floaterm_keymap_toggle = '<F1>'
+let g:floaterm_keymap_toggle = '<leader>ot'
 let g:floaterm_keymap_prev   = '<F2>'
 let g:floaterm_keymap_next   = '<F3>'
-let g:floaterm_keymap_new    = '<F5>'
+let g:floaterm_keymap_new    = '<leader>oT'
 
 let g:floaterm_width=0.8
 let g:floaterm_height=0.8
@@ -1859,12 +1856,11 @@ let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1
 let g:floaterm_opener='edit'
 
-nnoremap <silent> <leader>G :FloatermNew lazygit<CR>
-nnoremap <silent> <leader>F :FloatermNew ranger<CR>
-nnoremap <silent> <leader>cf :FloatermNew fzf<CR>
-nnoremap <silent> <leader>cD :FloatermNew lazydocker<CR>
-nnoremap <silent> <leader>cb :FloatermNew btm -m<CR>
-nnoremap <silent> <leader>cs :FloatermNew ncdu<CR>
+nnoremap <silent> <leader>og :FloatermNew lazygit<CR>
+nnoremap <silent> <leader>or :FloatermNew ranger<CR>
+nnoremap <silent> <leader>od :FloatermNew lazydocker<CR>
+nnoremap <silent> <leader>om :FloatermNew btm -m<CR>
+nnoremap <silent> <leader>ou :FloatermNew ncdu<CR>
 
 hi FloatermBorder ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=None
 
