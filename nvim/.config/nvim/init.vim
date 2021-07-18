@@ -1347,6 +1347,7 @@ lua <<EOF
 local telescope = require('telescope')
 	-- Required to close with ESC in insert mode
 	local actions = require('telescope.actions')
+    local trouble = require("trouble.providers.telescope")
 
 	telescope.setup({
         extensions = {
@@ -1397,12 +1398,14 @@ local telescope = require('telescope')
 					['<C-q>'] = actions.smart_send_to_qflist
 						+ actions.open_qflist,
 					['<CR>'] = actions.select_default + actions.center,
+                    ['<c-t>'] = trouble.open_with_trouble,
 				},
 				n = {
 					['<C-j>'] = actions.move_selection_next,
 					['<C-k>'] = actions.move_selection_previous,
 					['<C-q>'] = actions.smart_send_to_qflist
 						+ actions.open_qflist,
+                    ['<c-t>'] = trouble.open_with_trouble,
 				},
 			},
 		},
