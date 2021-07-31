@@ -36,7 +36,7 @@ Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'nvim-telescope/telescope.nvim'  " fuzzy finder
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'fhill2/telescope-ultisnips.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'folke/todo-comments.nvim'
@@ -1351,12 +1351,14 @@ local telescope = require('telescope')
 
 	telescope.setup({
         extensions = {
-            fzy_native = {
+            fzf = {
+                fuzzy = true,
                 override_generic_sorter = true,
                 override_file_sorter = true,
+                case_mode = "smart_case",
             }
         },
-		defaults = {
+        defaults = {
 			find_command = {
 				'rg',
 				'--no-heading',
@@ -1410,7 +1412,7 @@ local telescope = require('telescope')
 			},
 		},
 	})
-    require('telescope').load_extension('fzy_native')
+    require('telescope').load_extension('fzf')
     require('telescope').load_extension('ultisnips')
 EOF
 
