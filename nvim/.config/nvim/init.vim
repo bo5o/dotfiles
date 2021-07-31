@@ -910,8 +910,8 @@ augroup END
 let g:minimap_width = 10
 let g:minimap_auto_start = 1
 let g:minimap_auto_start_win_enter = 1
-let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'NvimTree', 'help', 'gitmessengerpopup', 'spectre_panel', 'Trouble']
-let g:minimap_close_filetypes = ['startify', 'netrw', 'vim-plug', 'gitmessengerpopup']
+let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'NvimTree', 'help', 'gitmessengerpopup', 'spectre_panel', 'Trouble', 'gitcommit']
+let g:minimap_close_filetypes = ['startify', 'netrw', 'vim-plug', 'gitmessengerpopup', 'gitcommit']
 let g:minimap_git_colors = 1
 
 " Insert date
