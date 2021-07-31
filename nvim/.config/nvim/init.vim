@@ -280,7 +280,7 @@ function! MyHighlights() abort
 
     hi QuickScopePrimary guifg=#fe8019 gui=bold ctermfg=155 cterm=underline
     hi QuickScopeSecondary guifg=#d65d0e gui=bold ctermfg=81 cterm=underline
-    hi NormalFloat guibg=#282828
+    hi NormalFloat guibg=#32302f
 endfunction
 
 augroup my_colors
