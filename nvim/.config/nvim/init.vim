@@ -1684,11 +1684,15 @@ let g:markdown_fenced_languages = [
             \ ]
 
 "" indent-blankline
-let g:indent_blankline_char = '┊'
-let g:indent_blankline_use_treesitter = v:true
-let g:indent_blankline_show_trailing_blankline_indent = v:true
-let g:indent_blankline_filetype_exclude = ['help', 'vimwiki', 'markdown', 'startify', 'NvimTree']
-let g:indent_blankline_buftype_exclude = ['terminal']
+lua <<EOF
+require("indent_blankline").setup {
+    char = "┊",
+    use_treesitter = true,
+    show_trailing_blankline_indent = true,
+    filetype_exclude = { "help", "vimwiki", "markdown", "startify", "NvimTree" },
+    buftype_exclude = { "terminal" }
+}
+EOF
 
 "" highlight yank
 augroup highlight_yank
