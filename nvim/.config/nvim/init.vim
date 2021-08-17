@@ -641,6 +641,24 @@ let g:quicktex_python = {
             \';c'    : "# %%",
             \}
 
+"" Javascript
+let g:quicktex_javascript = {
+            \' '    : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
+        \'Section: docstrings' : 'COMMENT',
+            \';tod' : "// TODO: <+++>",
+        \'Section: functions' : 'COMMENT',
+            \';af'  : "(<+++>) => {<++>}",
+        \'Section: keywords' : 'COMMENT',
+            \';im'  : 'import {<++>} from "<+++>"',
+            \}
+
+"" Typescript
+let g:quicktex_typescript = extend(g:quicktex_javascript, {
+            \' '    : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
+        \'Section: functions' : 'COMMENT',
+            \';taf'  : "\<<++>\>(<+++>): \<<++>\> => {<++>}",
+            \})
+
 "" LaTeX
 let g:quicktex_tex = {
             \' '   : "\<ESC>:call search('<+.*+>')\<CR>\"_c/+>/e\<CR>",
