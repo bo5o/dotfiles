@@ -63,7 +63,6 @@ Plug 'mhinz/vim-grepper'              " integration of my favorite grep program
 Plug 'simrat39/symbols-outline.nvim'  " LSP symbols in sidebar
 Plug 'janko/vim-test'                 " convenient test invocation
 Plug 'cbows/pytest-vim-compiler'      " pytest output compiler
-Plug 'machakann/vim-highlightedyank'  " Highlight yanked region
 Plug 'wellle/targets.vim'             " enhanced text objects
 Plug 'tommcdo/vim-lion'               " align text by some character
 Plug 'airblade/vim-rooter'            " automatically change to project root when opening files
@@ -1652,8 +1651,11 @@ let g:indent_blankline_show_trailing_blankline_indent = v:true
 let g:indent_blankline_filetype_exclude = ['help', 'vimwiki', 'markdown', 'startify', 'NvimTree']
 let g:indent_blankline_buftype_exclude = ['terminal']
 
-"" highglightyank
-let g:highlightedyank_highlight_duration = 300
+"" highlight yank
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=300}
+augroup END
 
 "" ale
 let g:airline#extensions#ale#enabled = 1
