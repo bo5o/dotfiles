@@ -374,6 +374,27 @@ map <leader>X :e#<cr>
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
+" keep things centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" undo break points
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
+" moving text
+vnoremap J :m '>+1<cr>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
+" inoremap <C-j> <esc>:m .+1<cr>==gi
+" inoremap <C-k> <esc>:m .-2<cr>==gi
+
+" quick replace
+nnoremap cn *``cgn
+nnoremap cN *``cgN
+
 " go back to normal mode
 inoremap jk <ESC>
 
