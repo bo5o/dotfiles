@@ -71,7 +71,6 @@ Plug 'unblevable/quick-scope'         " fast left-right movement (using f, F, t,
 Plug 'kkoomen/vim-doge', {
             \ 'do': { -> doge#install() }
             \ }                       " docstring generator
-Plug 'heavenshell/vim-jsdoc'          " javascript/typescript docstring generator
 Plug 'direnv/direnv.vim'              " direnv support
 Plug 'puremourning/vimspector', {
             \ 'do': './install_gadget.py --basedir ~/.config/nvim/vimspector --enable-python'
@@ -333,7 +332,6 @@ augroup filetype_settings
     autocmd FileType vimwiki setlocal tabstop=4
     autocmd FileType vimwiki setlocal shiftwidth=4
     autocmd FileType vimwiki setlocal textwidth=88
-    autocmd FileType javascript,typescript,vue nmap <buffer><silent> <leader>rd <Plug>(jsdoc)
     autocmd FileType markdown setlocal textwidth=88
     autocmd FileType markdown setlocal conceallevel=2
     autocmd FileType requirements setlocal commentstring=#\ %s
@@ -1238,10 +1236,6 @@ let g:doge_doc_standard_python = 'numpy'
 let g:doge_python_settings = {
             \ 'single_quotes': 0
             \ }
-
-"" vim-jsdoc
-let g:jsdoc_underscore_private = 1
-let g:jsdoc_enable_es6 = 1
 
 "" vimspector
 let g:vimspector_base_dir = expand( '$HOME/.config/nvim/vimspector' )
