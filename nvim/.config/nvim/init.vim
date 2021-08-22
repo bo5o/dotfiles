@@ -1227,9 +1227,11 @@ let g:doge_enable_mappings = 1
 let g:doge_mapping = '<Leader>rd'
 let g:doge_buffer_mappings = 1
 let g:doge_comment_interactive = 1
-let g:doge_filetype_aliases = {
-            \ 'typescript': ['vue']
-            \ }
+" if below alias is set, lsp will attach to tsserver in vue files, which
+" produces undesired lsp behavior
+" let g:doge_filetype_aliases = {
+"             \ 'typescript': ['vue']
+"             \ }
 let g:doge_comment_jump_modes = ['n', 's']
 
 let g:doge_doc_standard_python = 'numpy'
