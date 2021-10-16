@@ -20,7 +20,6 @@ plugins=(
     vi-mode
     docker
     docker-compose
-    django
     jira
     rsync
     yarn
