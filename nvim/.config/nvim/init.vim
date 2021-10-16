@@ -31,7 +31,6 @@ Plug 'tpope/vim-obsession'            " session management
 Plug 'tpope/vim-jdaddy'               " json manipulation
 Plug 'tpope/vim-endwise'              " wisely add end/endfunction/endif...
 Plug 'tomtom/tcomment_vim'            " comment stuff out
-Plug 'wfxr/minimap.vim'               " code minimap
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'nvim-telescope/telescope.nvim'  " fuzzy finder
 Plug 'nvim-lua/popup.nvim'
@@ -941,14 +940,6 @@ augroup calcurse
     autocmd BufRead,BufNewFile /tmp/calcurse* set filetype=markdown
     autocmd BufRead,BufNewFile ~/.calcurse/notes/* set filetype=markdown
 augroup END
-
-" minimap
-let g:minimap_width = 10
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
-let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'NvimTree', 'help', 'gitmessengerpopup', 'spectre_panel', 'Trouble', 'gitcommit']
-let g:minimap_close_filetypes = ['startify', 'netrw', 'vim-plug', 'gitmessengerpopup', 'gitcommit']
-let g:minimap_git_colors = 1
 
 " Insert date
 inoremap ;dt <C-R>=strftime('%Y-%m-%d')<CR>
