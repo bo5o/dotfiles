@@ -10,8 +10,16 @@ Plug 'tools-life/taskwiki'            " vimwiki taskwarrior integration
 Plug 'neovim/nvim-lspconfig'          " lsp configurations
 Plug 'kabouzeid/nvim-lspinstall'      " automatically install lsp servers
 Plug 'ray-x/lsp_signature.nvim'       " show signature help while typing
-Plug 'hrsh7th/nvim-compe'             " autocompletion
-Plug 'wellle/tmux-complete.vim'       " autocompletion source for tmux panes
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-emoji'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'quangnguyen30192/cmp-nvim-tags'
+Plug 'andersevenrud/compe-tmux', { 'branch': 'cmp' }
+Plug 'onsails/lspkind-nvim'
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
 Plug 'lukas-reineke/indent-blankline.nvim' " indentation guides
 Plug 'davidhalter/jedi-vim'           " python jedi
@@ -105,6 +113,7 @@ Plug 'ericpruitt/tmux.vim'            " .tmux.conf
 Plug 'ekalinin/Dockerfile.vim'        " Dockerfile
 Plug 'raimon49/requirements.txt.vim'  " requirements.txt
 Plug 'chr4/nginx.vim'                 " nginx
+Plug 'Glench/Vim-Jinja2-Syntax'       " jinja2
 
 " Initialize plugin system
 call plug#end()
