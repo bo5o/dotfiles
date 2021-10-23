@@ -1282,88 +1282,117 @@ sign define vimspectorPC text= texthl=WarningMsg
 let g:endwise_no_mappings = 1
 
 lua <<EOF
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  resolve_timeout = 800;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = {
-    border = "rounded", -- the border option is the same as `|help nvim_open_win|`
-    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-    max_width = 120,
-    min_width = 60,
-    max_height = math.floor(vim.o.lines * 0.3),
-    min_height = 1,
-  };
-  source = {
-    omni = { filetypes = {'tex'} },
-    path = true,
-    buffer = true,
-    calc = false,
-    spell = false,
-    nvim_lsp = true,
-    nvim_lua = true,
-    vsnip = false,
-    ultisnips = true,
-    luasnip = false,
-    tmux = true,
-  };
-}
+local lspkind = require "lspkind"
+lspkind.init()
 
-local is_prior_char_whitespace = function()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
-end
+local cmp = require "cmp"
 
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
--- Use (Shift-)Tab to:
--- * move to prev/next item in completion menu
--- * jump to the prev/next snippet placeholder
-_G.tab_complete = function()
-  if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-    return t [[<C-j>]]
-  elseif is_prior_char_whitespace() then
-    return t [[<Tab>]]
-  elseif vim.fn.pumvisible() == 1 then
-    return t [[<C-n>]]
-  else
-    return vim.fn["compe#complete"]()
+local has_any_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+      return false
   end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-_G.s_tab_complete = function()
-  if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-    return t [[<C-k>]]
-  elseif vim.fn.pumvisible() == 1 then
-    return t [[<C-p>]]
-  else
-    return t [[<S-Tab>]]
-  end
+local press = function(key)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), "n", true)
 end
 
+cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["UltiSnips#Anon"](args.body)
+      end,
+    },
 
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+    mapping = {
+      ['<C-d>'] = cmp.mapping.scroll_docs(4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-e>'] = cmp.mapping.close(),
+
+      ["<C-Space>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
+              return press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
+            end
+
+            cmp.select_next_item()
+          elseif has_any_words_before() then
+            press("<Space>")
+          else
+            fallback()
+          end
+      end, { "i", "s", }),
+
+      ["<Tab>"] = cmp.mapping(function(fallback)
+          if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+            press("<ESC>:call UltiSnips#JumpForwards()<CR>")
+          elseif cmp.visible() then
+            cmp.select_next_item()
+          elseif has_any_words_before() then
+            press("<Tab>")
+          else
+            fallback()
+          end
+        end, { "i", "s", }),
+
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+          press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
+        elseif cmp.visible() then
+          cmp.select_prev_item()
+        else
+          fallback()
+        end
+      end, { "i", "s", }),
+    },
+
+
+    sources = {
+      { name = "nvim_lua" },
+      { name = "nvim_lsp" },
+      { name = "path" },
+      { name = "ultisnips" },
+      { name = "buffer", keyword_length = 5 },
+      { name = "tmux", keyword_length = 5 , opts = { all_panes = true } },
+      { name = "tags", keyword_length = 3, max_item_count = 7 },
+      { name = "emoji", max_item_count = 15 },
+    },
+
+    formatting = {
+      format = lspkind.cmp_format {
+        with_text = true,
+        menu = {
+          nvim_lua = "[api]",
+          nvim_lsp = "[lsp]",
+          tags = "[tag]",
+          path = "[path]",
+          ultisnips = "[snip]",
+          emoji = "[emoji]",
+          buffer = "[buf]",
+          tmux = "[tmux]",
+        },
+      },
+    },
+
+    experimental = {
+        native_menu = false,
+        ghost_text = true,
+    },
+})
+
+require("nvim-autopairs.completion.cmp").setup({
+  map_cr = true, --  map <CR> on insert mode
+  map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
+  auto_select = true, -- automatically select the first item
+  insert = false, -- use insert confirm behavior instead of replace
+  map_char = { -- modifies the function or method delimiter by filetypes
+    all = '(',
+    tex = '{'
+  }
+})
 EOF
-
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " Disable extra tmux complete trigger
 let g:tmuxcomplete#trigger = ''
@@ -1875,35 +1904,6 @@ for type, icon in pairs(signs) do
   local hl = "LspDiagnosticsSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
-
--- symbols for autocomplete
-vim.lsp.protocol.CompletionItemKind = {
-    '   (Text) ',
-    '   (Method)',
-    '   (Function)',
-    '   (Constructor)',
-    ' ﴲ  (Field)',
-    '[] (Variable)',
-    '   (Class)',
-    ' ﰮ  (Interface)',
-    '   (Module)',
-    ' 襁 (Property)',
-    '   (Unit)',
-    '   (Value)',
-    ' 練 (Enum)',
-    '   (Keyword)',
-    '   (Snippet)',
-    '   (Color)',
-    '   (File)',
-    '   (Reference)',
-    '   (Folder)',
-    '   (EnumMember)',
-    ' ﲀ  (Constant)',
-    ' ﳤ  (Struct)',
-    '   (Event)',
-    '   (Operator)',
-    '   (TypeParameter)',
-}
 EOF
 
 nnoremap <leader>cli <cmd>LspInfo<cr>
