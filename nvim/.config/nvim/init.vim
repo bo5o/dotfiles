@@ -19,6 +19,7 @@ Plug 'hrsh7th/cmp-emoji'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'quangnguyen30192/cmp-nvim-tags'
 Plug 'andersevenrud/compe-tmux', { 'branch': 'cmp' }
+Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'onsails/lspkind-nvim'
 Plug 'machakann/vim-swap'             " swap items in comma separated lists
 Plug 'lukas-reineke/indent-blankline.nvim' " indentation guides
@@ -40,6 +41,8 @@ Plug 'tpope/vim-jdaddy'               " json manipulation
 Plug 'tpope/vim-endwise'              " wisely add end/endfunction/endif...
 Plug 'tomtom/tcomment_vim'            " comment stuff out
 Plug 'junegunn/gv.vim'                " git commit browser
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'nvim-telescope/telescope.nvim'  " fuzzy finder
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -1392,6 +1395,15 @@ require("nvim-autopairs.completion.cmp").setup({
     tex = '{'
   }
 })
+
+-- Add vim-dadbod-completion in sql files
+vim.cmd [[
+  augroup DadbodSql
+    au!
+    autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer { sources = { { name = 'vim-dadbod-completion' } } }
+  augroup END
+]]
+
 EOF
 
 " Disable extra tmux complete trigger
