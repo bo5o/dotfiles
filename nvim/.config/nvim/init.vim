@@ -64,6 +64,7 @@ Plug 'justinmk/vim-sneak'             " sneak motion
 Plug 'jpalardy/vim-slime'             " tmux repl
 Plug 'MattesGroeger/vim-bookmarks'    " bookmarks
 Plug 'windwp/nvim-autopairs'          " automatically close brackets, quotes etc.
+Plug 'windwp/nvim-ts-autotag'         " automatically close/rename html tags
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
 Plug 'ryanoasis/vim-devicons'         " fancy glyphs
 Plug 'sainnhe/gruvbox-material'       " colorscheme
@@ -2052,6 +2053,9 @@ require'nvim-treesitter.configs'.setup {
     disable = {},
     updatetime = 25,
     persist_queries = false,
+  },
+  autotag = {
+    enable = true,
   },
 }
 EOF
