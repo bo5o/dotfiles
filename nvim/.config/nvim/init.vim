@@ -39,7 +39,8 @@ Plug 'tpope/vim-unimpaired'           " some useful keybindings
 Plug 'tpope/vim-obsession'            " session management
 Plug 'tpope/vim-jdaddy'               " json manipulation
 Plug 'tpope/vim-endwise'              " wisely add end/endfunction/endif...
-Plug 'tomtom/tcomment_vim'            " comment stuff out
+Plug 'b3nj5m1n/kommentary'            " comment stuff out
+Plug 'JoosepAlviste/nvim-ts-context-commentstring' " set commentstring for vue/html etc
 Plug 'junegunn/gv.vim'                " git commit browser
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
@@ -1288,6 +1289,7 @@ sign define vimspectorPC text= texthl=WarningMsg
 "" endwise
 let g:endwise_no_mappings = 1
 
+"" cmp
 lua <<EOF
 local lspkind = require "lspkind"
 lspkind.init()
@@ -2058,6 +2060,9 @@ require'nvim-treesitter.configs'.setup {
     persist_queries = false,
   },
   autotag = {
+    enable = true,
+  },
+  context_commentstring = {
     enable = true,
   },
 }
