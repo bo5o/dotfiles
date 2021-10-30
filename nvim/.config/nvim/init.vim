@@ -1134,7 +1134,6 @@ nmap <silent> t<C-c> :call execute("Tmux send-keys -t " . g:tmux_session . " C-c
 nmap <silent> t<C-d> :call execute("Tmux send-keys -t " . g:tmux_session . " C-d")<CR>
 
 "" nvim-tree
-let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', '__pycache__']
 let g:nvim_tree_auto_ignore_ft = [ 'startify', 'dashboard' ]
 let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_git_hl = 1
@@ -1153,10 +1152,14 @@ require'nvim-tree'.setup {
                 { key = "zi",                                cb = tree_cb("toggle_ignored") },
                 { key = {"-", "H"},                          cb = tree_cb("dir_up") },
                 { key = {"<2-RightMouse>", "<C-]>", "L"},    cb = tree_cb("cd") },
-                }
             }
         }
-    }
+    },
+    filters = {
+        dotfiles = true,
+        custom = { ".git", "node_modules", ".cache", "__pycache__" },
+    },
+}
 EOF
 
 nnoremap <leader>of :NvimTreeToggle<CR>
