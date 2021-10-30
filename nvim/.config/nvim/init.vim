@@ -106,6 +106,7 @@ Plug 'RRethy/nvim-treesitter-textsubjects' " context aware text objects
 Plug 'romgrk/nvim-treesitter-context' " always show current context
 Plug 'nvim-treesitter/playground'     " discover treesitter nodes
 Plug 'p00f/nvim-ts-rainbow'           " colorize nested parentheses
+Plug 'andymass/vim-matchup'           " extended % matching
 
 " let's wait for https://github.com/nvim-treesitter/nvim-treesitter/issues/81
 Plug 'numirias/semshi', {
@@ -2065,8 +2066,15 @@ require'nvim-treesitter.configs'.setup {
   context_commentstring = {
     enable = true,
   },
+  matchup = {
+    enable = true,
+  },
 }
 EOF
+
+"" vim-matchup
+let g:matchup_transmute_enabled = 0 " covered by nvim-ts-autotag
+let g:matchup_matchparen_offscreen = { 'method': 'popup' }
 
 "" semshi
 let g:semshi#error_sign = v:false
