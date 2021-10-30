@@ -17,7 +17,6 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-emoji'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-Plug 'quangnguyen30192/cmp-nvim-tags'
 Plug 'andersevenrud/compe-tmux', { 'branch': 'cmp' }
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'onsails/lspkind-nvim'
@@ -1371,15 +1370,8 @@ cmp.setup({
       { name = "path" },
       { name = "ultisnips" },
       { name = "buffer", keyword_length = 5 },
-      { name = "tmux",
-        keyword_length = 5,
-        opts = {
-          all_panes = true,
-          trigger_characters = {},
-        },
-      },
-      { name = "tags", keyword_length = 3, max_item_count = 7 },
-      { name = "emoji", max_item_count = 15 },
+      { name = "tmux", keyword_length = 5, opts = { all_panes = true, trigger_characters = {} } },
+      { name = "emoji", max_item_count = 10 },
     },
 
     formatting = {
@@ -1388,7 +1380,6 @@ cmp.setup({
         menu = {
           nvim_lua = "[api]",
           nvim_lsp = "[lsp]",
-          tags = "[tag]",
           path = "[path]",
           ultisnips = "[snip]",
           emoji = "[emoji]",
