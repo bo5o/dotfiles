@@ -102,6 +102,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {
             \ 'do': ':TSUpdate'
             \ }                       " treesitter (multi-language)
 Plug 'nvim-treesitter/nvim-treesitter-textobjects' " language-specific textobjects
+Plug 'RRethy/nvim-treesitter-textsubjects' " context aware text objects
 Plug 'romgrk/nvim-treesitter-context' " always show current context
 Plug 'nvim-treesitter/playground'     " discover treesitter nodes
 Plug 'p00f/nvim-ts-rainbow'           " colorize nested parentheses
@@ -2048,6 +2049,13 @@ require'nvim-treesitter.configs'.setup {
         ["[m"] = "@function.outer",
         ["[["] = "@class.outer",
       },
+    },
+  },
+  textsubjects = {
+    enable = true,
+    keymaps = {
+      ["."] = "textsubjects-smart",
+      [";"] = "textsubjects-container-outer",
     },
   },
   rainbow = {
