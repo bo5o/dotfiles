@@ -1981,6 +1981,8 @@ nnoremap <silent> <leader>od :FloatermNew lazydocker<CR>
 nnoremap <silent> <leader>om :FloatermNew btm -m<CR>
 nnoremap <silent> <leader>ou :FloatermNew ncdu<CR>
 
+nnoremap <silent> <leader>oD :DBUI<CR>
+
 hi FloatermBorder ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=None
 
 lua <<EOF
