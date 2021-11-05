@@ -93,7 +93,8 @@ Plug 'dhruvasagar/vim-table-mode'     " simplify writing/editing tables (e.g. in
 Plug 'voldikss/vim-floaterm'          " floating terminal
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'       " file explorer
-Plug 'windwp/nvim-spectre'
+Plug 'windwp/nvim-spectre'            " search & replace
+Plug 'ThePrimeagen/harpoon'           " quick file jumping
 
 " Language support (syntax highlighting, indent etc.)
 Plug 'nvim-treesitter/nvim-treesitter', {
@@ -998,6 +999,15 @@ nnoremap <leader>ss viw:lua require('spectre').open_file_search()<cr>
 "search current word
 nnoremap <leader>sw viw:lua require('spectre').open_visual()<CR>
 vnoremap <leader>s :lua require('spectre').open_visual()<CR>
+
+"" harpoon
+nnoremap <BS><BS> :lua require("harpoon.mark").add_file()<CR>
+nnoremap <BS>l :lua require("harpoon.ui").toggle_quick_menu()<CR>
+
+nnoremap <BS>n :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <BS>e :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <BS>i :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <BS>o :lua require("harpoon.ui").nav_file(4)<CR>
 
 "" Emmet
 let g:user_emmet_install_global = 0
