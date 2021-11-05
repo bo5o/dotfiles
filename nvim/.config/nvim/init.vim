@@ -62,7 +62,6 @@ Plug 'mhinz/vim-startify'             " fancy start screen
 Plug 'brennier/quicktex'              " very quick latex writing
 Plug 'justinmk/vim-sneak'             " sneak motion
 Plug 'jpalardy/vim-slime'             " tmux repl
-Plug 'MattesGroeger/vim-bookmarks'    " bookmarks
 Plug 'windwp/nvim-autopairs'          " automatically close brackets, quotes etc.
 Plug 'windwp/nvim-ts-autotag'         " automatically close/rename html tags
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
@@ -1623,24 +1622,6 @@ let g:vimwiki_markdown_link_ext = 1
 
 "" taskwiki
 let g:taskwiki_disable_concealcursor = 'yes'
-
-"" vim-bookmarks
-let g:bookmark_disable_ctrlp = 0
-let g:bookmark_auto_save = 1
-let g:bookmark_auto_close = 1
-let g:bookmark_save_per_working_dir = 1
-let g:bookmark_no_default_key_mappings = 1
-
-nmap <Leader>mm <Plug>BookmarkToggle
-nmap <Leader>mi <Plug>BookmarkAnnotate
-nmap <Leader>ma <Plug>BookmarkShowAll
-nmap <Leader>mn <Plug>BookmarkNext
-nmap <Leader>mp <Plug>BookmarkPrev
-nmap <Leader>mc <Plug>BookmarkClear
-nmap <Leader>mx <Plug>BookmarkClearAll
-nmap <Leader>mkk <Plug>BookmarkMoveUp
-nmap <Leader>mjj <Plug>BookmarkMoveDown
-nmap <Leader>mg <Plug>BookmarkMoveToLine
 
 "" nvim-bufferline
 lua <<EOF
