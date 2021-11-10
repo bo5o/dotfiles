@@ -998,8 +998,8 @@ nnoremap <leader>sw viw:lua require('spectre').open_visual()<CR>
 vnoremap <leader>s :lua require('spectre').open_visual()<CR>
 
 "" harpoon
-nnoremap <BS><BS> :lua require("harpoon.mark").add_file()<CR>
-nnoremap <BS>l :lua require("harpoon.ui").toggle_quick_menu()<CR>
+nnoremap <BS>m :lua require("harpoon.mark").add_file()<CR>
+nnoremap <BS><BS> :lua require("harpoon.ui").toggle_quick_menu()<CR>
 
 nnoremap <BS>n :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap <BS>e :lua require("harpoon.ui").nav_file(2)<CR>
