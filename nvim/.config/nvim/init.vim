@@ -38,18 +38,18 @@ Plug 'tpope/vim-unimpaired'           " some useful keybindings
 Plug 'tpope/vim-obsession'            " session management
 Plug 'tpope/vim-jdaddy'               " json manipulation
 Plug 'tpope/vim-endwise'              " wisely add end/endfunction/endif...
+Plug 'tpope/vim-dadbod'               " database interactions
+Plug 'kristijanhusak/vim-dadbod-ui'   " UI for vim-dadbod
 Plug 'b3nj5m1n/kommentary'            " comment stuff out
 Plug 'JoosepAlviste/nvim-ts-context-commentstring' " set commentstring for vue/html etc
 Plug 'junegunn/gv.vim'                " git commit browser
-Plug 'tpope/vim-dadbod'
-Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'nvim-telescope/telescope.nvim'  " fuzzy finder
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'fhill2/telescope-ultisnips.nvim'
-Plug 'folke/trouble.nvim'
-Plug 'folke/todo-comments.nvim'
+Plug 'folke/trouble.nvim'             " show lsp errors and diagnostics in quickfix
+Plug 'folke/todo-comments.nvim'       " highlight and find todo comments
 Plug 'rhysd/git-messenger.vim'        " show git commit under cursor
 Plug 'airblade/vim-gitgutter'         " git diff in gutter
 Plug 'lervag/vimtex'                  " LaTeX
@@ -57,22 +57,19 @@ Plug 'SirVer/UltiSnips'               " Snippets
 Plug 'honza/vim-snippets'             " default snippets
 Plug 'ludovicchabant/vim-gutentags'   " automate ctags
 Plug 'vim-airline/vim-airline'        " nice status line
-Plug 'akinsho/nvim-bufferline.lua'    " bufferline
-Plug 'mhinz/vim-startify'             " fancy start screen
+Plug 'akinsho/bufferline.nvim'        " bufferline
 Plug 'brennier/quicktex'              " very quick latex writing
 Plug 'justinmk/vim-sneak'             " sneak motion
 Plug 'jpalardy/vim-slime'             " tmux repl
-Plug 'windwp/nvim-autopairs'          " automatically close brackets, quotes etc.
-Plug 'windwp/nvim-ts-autotag'         " automatically close/rename html tags
 Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
 Plug 'ryanoasis/vim-devicons'         " fancy glyphs
 Plug 'sainnhe/gruvbox-material'       " colorscheme
 Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-line statements
 Plug 'mattn/emmet-vim'                " expanding html abbreviations
 Plug 'mhinz/vim-grepper'              " integration of my favorite grep program
+Plug 'mhinz/vim-startify'             " fancy start screen
 Plug 'simrat39/symbols-outline.nvim'  " LSP symbols in sidebar
 Plug 'janko/vim-test'                 " convenient test invocation
-Plug 'cbows/pytest-vim-compiler'      " pytest output compiler
 Plug 'wellle/targets.vim'             " enhanced text objects
 Plug 'tommcdo/vim-lion'               " align text by some character
 Plug 'airblade/vim-rooter'            " automatically change to project root when opening files
@@ -82,9 +79,6 @@ Plug 'kkoomen/vim-doge', {
             \ 'do': { -> doge#install() }
             \ }                       " docstring generator
 Plug 'direnv/direnv.vim'              " direnv support
-Plug 'puremourning/vimspector', {
-            \ 'do': './install_gadget.py --basedir ~/.config/nvim/vimspector --enable-python'
-            \ }                       " debug adapter protocol client
 Plug 'jupyter-vim/jupyter-vim'        " jupyter notebook integration
 Plug 'hanschen/vim-ipython-cell', {
             \ 'for': 'python'
@@ -94,7 +88,10 @@ Plug 'voldikss/vim-floaterm'          " floating terminal
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'       " file explorer
 Plug 'windwp/nvim-spectre'            " search & replace
+Plug 'windwp/nvim-autopairs'          " automatically close brackets, quotes etc.
+Plug 'windwp/nvim-ts-autotag'         " automatically close/rename html tags
 Plug 'ThePrimeagen/harpoon'           " quick file jumping
+Plug 'dstein64/vim-startuptime'       " profile startup time
 
 " Language support (syntax highlighting, indent etc.)
 Plug 'nvim-treesitter/nvim-treesitter', {
