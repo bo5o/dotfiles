@@ -1057,25 +1057,7 @@ let g:rooter_patterns = [
     \]
 
 "" symbols outline
-lua <<EOF
-vim.g.symbols_outline = {
-    highlight_hovered_item = true,
-    show_guides = true,
-    auto_preview = true,
-    position = 'right',
-    show_numbers = false,
-    show_relative_numbers = false,
-    show_symbol_details = true,
-    keymaps = {
-        close = "q",
-        goto_location = "<CR>",
-        focus_location = "o",
-        hover_symbol = "<C-space>",
-        rename_symbol = "r",
-        code_actions = "a",
-    },
-}
-EOF
+lua require("plugins.symbols_outline")
 
 nnoremap <silent> <leader>os :SymbolsOutline<CR>
 
@@ -1149,27 +1131,7 @@ let g:nvim_tree_git_hl = 1
 let g:nvim_tree_quit_on_open = 1
 let g:nvim_tree_add_trailing = 1
 
-lua <<EOF
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
-require'nvim-tree'.setup {
-    view = {
-        mappings = {
-            list = {
-                { key = {"<CR>", "o", "<2-LeftMouse>", "l"}, cb = tree_cb("edit") },
-                { key = {"<BS>", "h"},                       cb = tree_cb("close_node") },
-                { key = "zh",                                cb = tree_cb("toggle_dotfiles") },
-                { key = "zi",                                cb = tree_cb("toggle_ignored") },
-                { key = {"-", "H"},                          cb = tree_cb("dir_up") },
-                { key = {"<2-RightMouse>", "<C-]>", "L"},    cb = tree_cb("cd") },
-            }
-        }
-    },
-    filters = {
-        dotfiles = true,
-        custom = { ".git", "node_modules", ".cache", "__pycache__" },
-    },
-}
-EOF
+lua require("plugins.nvim_tree")
 
 nnoremap <leader>of :NvimTreeToggle<CR>
 nnoremap <leader>oF :NvimTreeFindFile<CR>
@@ -1297,130 +1259,7 @@ sign define vimspectorPC text= texthl=WarningMsg
 let g:endwise_no_mappings = 1
 
 "" cmp
-lua <<EOF
-local lspkind = require "lspkind"
-lspkind.init()
-
-local cmp = require "cmp"
-
-local has_any_words_before = function()
-  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
-      return false
-  end
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-local press = function(key)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), "n", true)
-end
-
-cmp.setup({
-    snippet = {
-      expand = function(args)
-        vim.fn["UltiSnips#Anon"](args.body)
-      end,
-    },
-
-    mapping = {
-      ['<C-d>'] = cmp.mapping.scroll_docs(4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-e>'] = cmp.mapping.close(),
-
-      ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = false,
-      }),
-
-      ["<C-Space>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
-              return press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
-            end
-
-            cmp.select_next_item()
-          elseif has_any_words_before() then
-            press("<Space>")
-          else
-            fallback()
-          end
-      end, { "i", "s", }),
-
-      ["<Tab>"] = cmp.mapping(function(fallback)
-          if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-            press("<ESC>:call UltiSnips#JumpForwards()<CR>")
-          elseif cmp.visible() then
-            cmp.select_next_item()
-          elseif has_any_words_before() then
-            press("<Tab>")
-          else
-            fallback()
-          end
-        end, { "i", "s", }),
-
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-          press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
-        elseif cmp.visible() then
-          cmp.select_prev_item()
-        else
-          fallback()
-        end
-      end, { "i", "s", }),
-    },
-
-
-    sources = {
-      { name = "nvim_lua" },
-      { name = "nvim_lsp" },
-      { name = "path" },
-      { name = "ultisnips" },
-      { name = "buffer", keyword_length = 5 },
-      { name = "tmux", keyword_length = 5, opts = { all_panes = true, trigger_characters = {} } },
-      { name = "emoji", max_item_count = 10 },
-    },
-
-    formatting = {
-      format = lspkind.cmp_format {
-        with_text = true,
-        menu = {
-          nvim_lua = "[api]",
-          nvim_lsp = "[lsp]",
-          path = "[path]",
-          ultisnips = "[snip]",
-          emoji = "[emoji]",
-          buffer = "[buf]",
-          tmux = "[tmux]",
-        },
-      },
-    },
-
-    experimental = {
-        native_menu = false,
-        ghost_text = true,
-    },
-})
-
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-local cmp = require('cmp')
-cmp.event:on(
-    'confirm_done',
-    cmp_autopairs.on_confirm_done({
-        map_char = {
-            all = '(',
-            tex = '{',
-        }
-    })
-)
-
--- Add vim-dadbod-completion in sql files
-vim.cmd [[
-  augroup DadbodSql
-    au!
-    autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer { sources = { { name = 'vim-dadbod-completion' } } }
-  augroup END
-]]
-EOF
+lua require("plugins.nvim_cmp")
 
 " Disable extra tmux complete trigger
 let g:tmuxcomplete#trigger = ''
@@ -1440,78 +1279,7 @@ let g:jedi#smart_auto_mappings = 0
 let g:jedi#use_tag_stack = 1
 
 "" telescope.nvim
-lua <<EOF
-local telescope = require('telescope')
-	-- Required to close with ESC in insert mode
-	local actions = require('telescope.actions')
-    local trouble = require("trouble.providers.telescope")
-
-	telescope.setup({
-        extensions = {
-            fzf = {
-                fuzzy = true,
-                override_generic_sorter = true,
-                override_file_sorter = true,
-                case_mode = "smart_case",
-            }
-        },
-        defaults = {
-			find_command = {
-				'rg',
-				'--no-heading',
-				'--with-filename',
-				'--line-number',
-				'--column',
-				'--smart-case',
-			},
-			initial_mode = 'insert',
-			selection_strategy = 'reset',
-			sorting_strategy = 'descending',
-			layout_strategy = 'horizontal',
-			prompt_prefix = '> ',
-			layout_config = {
-				prompt_position = 'bottom',
-				horizontal = {
-					mirror = false,
-					preview_width = 0.6,
-				},
-			},
-			file_ignore_patterns = {},
-			winblend = 0,
-			scroll_strategy = 'cycle',
-			border = {},
-			borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-			color_devicons = true,
-			use_less = true,
-			set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
-			file_previewer = require('telescope.previewers').vim_buffer_cat.new,
-			grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
-			qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
-
-			-- Developer configurations: Not meant for general override
-			buffer_previewer_maker = require('telescope.previewers').buffer_previewer_maker,
-			mappings = {
-				i = {
-					['<C-j>'] = actions.move_selection_next,
-					['<C-k>'] = actions.move_selection_previous,
-					['<C-q>'] = actions.smart_send_to_qflist
-						+ actions.open_qflist,
-					['<CR>'] = actions.select_default + actions.center,
-                    ['<c-t>'] = trouble.open_with_trouble,
-				},
-				n = {
-					['<C-j>'] = actions.move_selection_next,
-					['<C-k>'] = actions.move_selection_previous,
-					['<C-q>'] = actions.smart_send_to_qflist
-						+ actions.open_qflist,
-                    ['<c-t>'] = trouble.open_with_trouble,
-				},
-			},
-		},
-	})
-    require('telescope').load_extension('fzf')
-    require('telescope').load_extension('ultisnips')
-EOF
+lua require("plugins.telescope")
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fr <cmd>Telescope live_grep<cr>
@@ -1532,52 +1300,7 @@ nnoremap <leader>fu <cmd>Telescope ultisnips<cr>
 nnoremap <leader>fT <cmd>TodoTelescope<cr>
 
 "" Trouble
-lua << EOF
-  require("trouble").setup {
-    position = "bottom", -- position of the list can be: bottom, top, left, right
-    height = 10, -- height of the trouble list when position is top or bottom
-    width = 50, -- width of the list when position is left or right
-    icons = true, -- use devicons for filenames
-    mode = "quickfix", -- "lsp_workspace_diagnostics", "lsp_document_diagnostics", "quickfix", "lsp_references", "loclist"
-    fold_open = "", -- icon used for open folds
-    fold_closed = "", -- icon used for closed folds
-    action_keys = { -- key mappings for actions in the trouble list
-        -- map to {} to remove a mapping, for example:
-        -- close = {},
-        close = "q", -- close the list
-        cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
-        refresh = "r", -- manually refresh
-        jump = {"<cr>", "<tab>"}, -- jump to the diagnostic or open / close folds
-        open_split = { "<c-x>" }, -- open buffer in new split
-        open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
-        open_tab = { "<c-t>" }, -- open buffer in new tab
-        jump_close = {"o"}, -- jump to the diagnostic and close the list
-        toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
-        toggle_preview = "P", -- toggle auto_preview
-        hover = "K", -- opens a small popup with the full multiline message
-        preview = "p", -- preview the diagnostic location
-        close_folds = {"zM", "zm"}, -- close all folds
-        open_folds = {"zR", "zr"}, -- open all folds
-        toggle_fold = {"zA", "za"}, -- toggle fold of current file
-        previous = "k", -- preview item
-        next = "j" -- next item
-    },
-    indent_lines = true, -- add an indent guide below the fold icons
-    auto_open = false, -- automatically open the list when you have diagnostics
-    auto_close = false, -- automatically close the list when you have no diagnostics
-    auto_preview = false, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
-    auto_fold = false, -- automatically fold a file trouble list at creation
-    signs = {
-        -- icons / text used for a diagnostic
-        error = "",
-        warning = "",
-        hint = "",
-        information = "",
-        other = "﫠"
-    },
-    use_lsp_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
-  }
-EOF
+lua require("plugins.trouble")
 
 nnoremap <leader>Q <cmd>TroubleToggle<cr>
 nnoremap <leader>qw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
@@ -1588,10 +1311,7 @@ nnoremap <leader>qq <cmd>TroubleToggle quickfix<cr>
 nnoremap gr <cmd>TroubleToggle lsp_references<cr>
 
 "" todo-comments
-lua << EOF
-  require("todo-comments").setup {
-  }
-EOF
+lua require("plugins.todo_comments")
 
 "" UltiSnips
 let g:UltiSnipsExpandTrigger		= '<c-j>'
@@ -1630,56 +1350,8 @@ let g:vimwiki_markdown_link_ext = 1
 "" taskwiki
 let g:taskwiki_disable_concealcursor = 'yes'
 
-"" nvim-bufferline
-lua <<EOF
-require("bufferline").setup{
-    options = {
-        offsets = {
-            {
-                filetype = "NvimTree",
-                text = "File Explorer",
-                text_align = "center",
-            },
-            {
-                filetype = "Outline",
-                text = "Symbols",
-                text_align = "center",
-            }
-        },
-        custom_areas = {
-          right = function()
-            local result = {}
-            local error = vim.lsp.diagnostic.get_count(0, [[Error]])
-            local warning = vim.lsp.diagnostic.get_count(0, [[Warning]])
-            local info = vim.lsp.diagnostic.get_count(0, [[Information]])
-            local hint = vim.lsp.diagnostic.get_count(0, [[Hint]])
-
-            if error ~= 0 then
-              table.insert(result, {text = "  " .. error, guifg = "#EC5241"})
-            end
-
-            if warning ~= 0 then
-              table.insert(result, {text = "  " .. warning, guifg = "#EFB839"})
-            end
-
-            if hint ~= 0 then
-              table.insert(result, {text = "  " .. hint, guifg = "#A3BA5E"})
-            end
-
-            if info ~= 0 then
-              table.insert(result, {text = "  " .. info, guifg = "#7EA9A7"})
-            end
-            return result
-          end,
-        }
-    },
-    highlights = {
-        fill = {
-            guibg = '#32302f',
-        },
-    };
-}
-EOF
+"" bufferline.nvim
+lua require("plugins.bufferline")
 
 nnoremap <silent> gb :BufferLinePick<CR>
 
@@ -1692,18 +1364,7 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
 "" nvim-colorizer
-lua <<EOF
-require 'colorizer'.setup {
-  "vim";
-  "css";
-  "html";
-  "javascript";
-  "typescript";
-  html = {
-    mode = "background";
-  }
-}
-EOF
+lua require("plugins.colorizer")
 
 "" vim-markdown
 let g:markdown_syntax_conceal = 1
@@ -1725,15 +1386,7 @@ let g:markdown_fenced_languages = [
             \ ]
 
 "" indent-blankline
-lua <<EOF
-require("indent_blankline").setup {
-    char = "┊",
-    use_treesitter = true,
-    show_trailing_blankline_indent = true,
-    filetype_exclude = { "help", "vimwiki", "markdown", "startify", "NvimTree" },
-    buftype_exclude = { "terminal" }
-}
-EOF
+lua require("plugins.indent_blankline")
 
 "" highlight yank
 augroup highlight_yank
@@ -1805,117 +1458,7 @@ let g:ale_fixers = {
             \}
 
 "" nvim-lsp
-lua << EOF
-local nvim_lsp = require 'lspconfig'
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', '<leader>K', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<leader>cld', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>cll', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '<leader>clL', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<leader>ru', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-
-  -- Configure signature help for completion
-  require "lsp_signature".on_attach({
-    bind = true,
-    hint_enable = false,
-    hi_parameter = "Search",
-  })
-end
-
--- Configure lua language server for neovim development
-local lua_settings = {
-  Lua = {
-    runtime = {
-      -- LuaJIT in the case of Neovim
-      version = 'LuaJIT',
-      path = vim.split(package.path, ';'),
-    },
-    diagnostics = {
-      -- Get the language server to recognize the `vim` global
-      globals = {'vim'},
-    },
-    workspace = {
-      -- Make the server aware of Neovim runtime files
-      library = {
-        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-      },
-    },
-  }
-}
-
--- config that activates keymaps and enables snippet support
-local function make_config()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  return {
-    -- enable snippet support
-    capabilities = capabilities,
-    -- map buffer local keybindings when the language server attaches
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }
-end
-
--- lsp-install
-local function setup_servers()
-  require'lspinstall'.setup()
-
-  -- get all installed servers
-  local servers = require'lspinstall'.installed_servers()
-
-  for _, server in pairs(servers) do
-    local config = make_config()
-
-    -- language specific config
-    if server == "lua" then
-      config.settings = lua_settings
-    end
-
-    require'lspconfig'[server].setup(config)
-  end
-end
-
--- jedi language server
-local jedi_config = require"lspinstall/util".extract_config("jedi_language_server")
-jedi_config.default_config.cmd[1] = "./venv/bin/jedi-language-server"
-
-require'lspinstall/servers'.jedi = vim.tbl_extend('error', jedi_config, {
-  install_script = [[
-  python3 -m venv ./venv
-  ./venv/bin/pip3 install --upgrade pip
-  ./venv/bin/pip3 install --upgrade jedi-language-server
-  ]]
-})
-
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
-
-local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
-
-for type, icon in pairs(signs) do
-  local hl = "LspDiagnosticsSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
-EOF
+lua require('plugins.lsp_config')
 
 nnoremap <leader>cli <cmd>LspInfo<cr>
 nnoremap <leader>clI :LspInstall<space>
@@ -1974,88 +1517,8 @@ nnoremap <silent> <leader>oD :DBUI<CR>
 
 hi FloatermBorder ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=None
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {
-    "typescript",
-    "javascript",
-    "python",
-    "go",
-    "jsdoc",
-    "html",
-    "css",
-    "json",
-    "lua",
-    "bash",
-    "rst",
-    "toml",
-    "vue",
-    "query", -- for treesitter playground
-  },
-  highlight = {
-    enable = true,
-    disable = {
-      "python",
-    },
-  },
-  indent = {
-    enable = true,
-    disable = {
-      "python",
-    },
-  },
-  autopairs = {
-    enable = true,
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-      },
-    },
-    move = {
-      enable = true,
-      goto_next_start = {
-        ["]m"] = "@function.outer",
-        ["]]"] = "@class.outer",
-      },
-      goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[["] = "@class.outer",
-      },
-    },
-  },
-  textsubjects = {
-    enable = true,
-    keymaps = {
-      ["."] = "textsubjects-smart",
-      [";"] = "textsubjects-container-outer",
-    },
-  },
-  rainbow = {
-    enable = false, -- https://github.com/p00f/nvim-ts-rainbow/issues/5
-  },
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25,
-    persist_queries = false,
-  },
-  autotag = {
-    enable = true,
-  },
-  context_commentstring = {
-    enable = true,
-  },
-  matchup = {
-    enable = true,
-  },
-}
-EOF
+"" treesitter
+lua require("plugins.treesitter")
 
 "" vim-matchup
 let g:matchup_transmute_enabled = 0 " covered by nvim-ts-autotag
