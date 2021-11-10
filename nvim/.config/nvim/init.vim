@@ -1215,39 +1215,6 @@ let g:doge_python_settings = {
             \ 'single_quotes': 0
             \ }
 
-"" vimspector
-let g:vimspector_base_dir = expand( '$HOME/.config/nvim/vimspector' )
-let g:vimspector_code_minwidth = 88
-let g:vimspector_bottombar_height = 17
-
-nmap <F2> <Plug>VimspectorStop
-nmap <F3> <Plug>VimspectorPause
-nmap <F4> <Plug>VimspectorRestart
-nmap <F5> <Plug>VimspectorContinue
-nmap <leader><F5> :Start -wait=always python -m debugpy --listen 55678 --wait-for-client % --<CR>
-nmap <F8> <Plug>VimspectorAddFunctionBreakpoint
-nmap <F9> <Plug>VimspectorToggleBreakpoint
-nmap <leader><F9> <Plug>VimspectorToggleConditionalBreakpoint
-nmap <F10> <Plug>VimspectorStepOver
-nmap <F7> <Plug>VimspectorStepInto
-nmap <F12> <Plug>VimspectorStepOut
-
-nmap <leader>dq :VimspectorReset<CR>
-nmap <leader>dw :VimspectorWatch<space>
-nmap <leader>de :VimspectorEval<space>
-nmap <leader>dh :VimspectorShowOutput<space>
-
-" Quickly jump to different debugger sections
-nmap <leader>dW :call win_gotoid( g:vimspector_session_windows.watches )<CR>
-nmap <leader>dE :call win_gotoid( g:vimspector_session_windows.output )<CR>
-nmap <leader>dV :call win_gotoid( g:vimspector_session_windows.variables )<CR>
-nmap <leader>dM :call win_gotoid( g:vimspector_session_windows.code )<CR>
-nmap <leader>dT :call win_gotoid( g:vimspector_session_windows.stack_trace )<CR>
-
-sign define vimspectorBP text= texthl=WarningMsg
-sign define vimspectorBPDisabled text= texthl=WarningMsg
-sign define vimspectorPC text= texthl=WarningMsg
-
 "" endwise
 let g:endwise_no_mappings = 1
 
