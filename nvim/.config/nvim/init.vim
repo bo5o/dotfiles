@@ -1165,14 +1165,7 @@ let g:sneak#use_ic_scs = 1
 map <leader><leader> <Plug>Sneak_,
 
 "" nvim-autopairs
-lua <<EOF
-require('nvim-autopairs').setup({
-    check_ts = true,
-    enable_afterquote = true,
-    enable_moveright = true,
-    enable_check_bracket_line = true,
-})
-EOF
+lua require("plugins.autopairs")
 
 "" vimtex
 let g:vimtex_view_method = 'zathura'
@@ -1449,6 +1442,7 @@ let g:ale_fixers = {
             \   'json': ['prettier'],
             \   'python': ['black', 'isort'],
             \   'go': ['gofmt'],
+            \   'lua': ['stylua'],
             \   'sh': ['shfmt'],
             \   'sql': ['pgformatter'],
             \   'tex': ['latexindent'],
@@ -1458,7 +1452,7 @@ let g:ale_fixers = {
             \}
 
 "" nvim-lsp
-lua require('plugins.lsp_config')
+lua require("plugins.lsp_config")
 
 nnoremap <leader>cli <cmd>LspInfo<cr>
 nnoremap <leader>clI :LspInstall<space>
