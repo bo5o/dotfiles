@@ -34,7 +34,6 @@ return require("packer").startup(function(use)
 			require("plugins.bufferline")
 		end,
 	})
-	use({ "nvim-lua/popup.nvim", requires = "nvim-lua/plenary.nvim" }) -- nice popups
 	use("airblade/vim-gitgutter") -- git diff in gutter
 	use("mhinz/vim-startify") -- fancy start screen
 
@@ -55,15 +54,15 @@ return require("packer").startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim", -- fuzzy finder
 		requires = {
+			"nvim-lua/popup.nvim",
 			"nvim-lua/plenary.nvim",
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 			"fhill2/telescope-ultisnips.nvim",
 		},
-		keys = { "<leader>f" },
 		config = function()
 			require("plugins.telescope")
 		end,
 	})
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" }) -- quick nav
 	use({ "andymass/vim-matchup", event = "VimEnter" }) -- extended % matching
 	use("justinmk/vim-sneak") -- sneak motion
