@@ -11,6 +11,10 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	})
 end
 
+require("packer").init({
+	max_jobs = 50, -- https://github.com/wbthomason/packer.nvim/issues/202
+})
+
 return require("packer").startup(function(use)
 	-- Package management
 	use("wbthomason/packer.nvim")
@@ -136,7 +140,7 @@ return require("packer").startup(function(use)
 	use({ -- let's wait for https://github.com/nvim-treesitter/nvim-treesitter/issues/81
 		"numirias/semshi", -- semantic highlighting for python
 		ft = "python",
-		config = "vim.cmd[[UpdateRemotePlugins]]",
+		config = "vim.cmd [[UpdateRemotePlugins]]",
 	})
 	use("Vimjas/vim-python-pep8-indent")
 	use("kovetskiy/sxhkd-vim") -- sxhkdrc
@@ -215,7 +219,7 @@ return require("packer").startup(function(use)
 	use("tools-life/taskwiki") -- vimwiki taskwarrior integration
 
 	-- Miscellaneous
-	use({ "tpope/vim-unimpaired", keys = { "[", "]" } }) -- some useful keybindings
+	use("tpope/vim-unimpaired") -- some useful keybindings
 	use("tpope/vim-obsession") -- session management
 	use("zhimsel/vim-stay") -- restore buffer views automaticaly
 	use("dstein64/vim-startuptime") -- profile vim startup time
