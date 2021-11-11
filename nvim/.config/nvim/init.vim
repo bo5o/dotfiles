@@ -2,124 +2,7 @@ set encoding=utf-8
 scriptencoding utf-8
 
 ""Plugins
-call plug#begin('~/.local/share/nvim/plugged')
-Plug 'vimwiki/vimwiki', {
-            \ 'branch': 'dev'
-            \ }                       " wiki
-Plug 'tools-life/taskwiki'            " vimwiki taskwarrior integration
-Plug 'neovim/nvim-lspconfig'          " lsp configurations
-Plug 'kabouzeid/nvim-lspinstall'      " automatically install lsp servers
-Plug 'ray-x/lsp_signature.nvim'       " show signature help while typing
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-nvim-lua'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-emoji'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-Plug 'andersevenrud/compe-tmux', { 'branch': 'cmp' }
-Plug 'kristijanhusak/vim-dadbod-completion'
-Plug 'onsails/lspkind-nvim'
-Plug 'machakann/vim-swap'             " swap items in comma separated lists
-Plug 'lukas-reineke/indent-blankline.nvim' " indentation guides
-Plug 'davidhalter/jedi-vim'           " python jedi
-Plug 'jamessan/vim-gnupg'             " transparent editing of gpg encrypted files
-Plug 'dense-analysis/ale'             " asynchronous linting engine
-Plug 'tpope/vim-surround'             " simple quoting/parenthesizing
-Plug 'tpope/vim-repeat'               " repeat almost anything
-Plug 'tpope/vim-fugitive'             " git
-Plug 'tpope/vim-rhubarb'              " fugitive github integration
-Plug 'tommcdo/vim-fubitive'           " fugitive bitbucket integration
-Plug 'tpope/vim-dispatch'             " asynchronously run jobs
-Plug 'tpope/vim-tbone'                " tmux basics
-Plug 'tpope/vim-projectionist'        " project-specific configurations
-Plug 'tpope/vim-eunuch'               " unix helpers
-Plug 'tpope/vim-unimpaired'           " some useful keybindings
-Plug 'tpope/vim-obsession'            " session management
-Plug 'tpope/vim-jdaddy'               " json manipulation
-Plug 'tpope/vim-endwise'              " wisely add end/endfunction/endif...
-Plug 'tpope/vim-dadbod'               " database interactions
-Plug 'kristijanhusak/vim-dadbod-ui'   " UI for vim-dadbod
-Plug 'b3nj5m1n/kommentary'            " comment stuff out
-Plug 'JoosepAlviste/nvim-ts-context-commentstring' " set commentstring for vue/html etc
-Plug 'junegunn/gv.vim'                " git commit browser
-Plug 'nvim-telescope/telescope.nvim'  " fuzzy finder
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'fhill2/telescope-ultisnips.nvim'
-Plug 'folke/trouble.nvim'             " show lsp errors and diagnostics in quickfix
-Plug 'folke/todo-comments.nvim'       " highlight and find todo comments
-Plug 'rhysd/git-messenger.vim'        " show git commit under cursor
-Plug 'airblade/vim-gitgutter'         " git diff in gutter
-Plug 'lervag/vimtex'                  " LaTeX
-Plug 'SirVer/UltiSnips'               " Snippets
-Plug 'honza/vim-snippets'             " default snippets
-Plug 'ludovicchabant/vim-gutentags'   " automate ctags
-Plug 'vim-airline/vim-airline'        " nice status line
-Plug 'akinsho/bufferline.nvim'        " bufferline
-Plug 'brennier/quicktex'              " very quick latex writing
-Plug 'justinmk/vim-sneak'             " sneak motion
-Plug 'jpalardy/vim-slime'             " tmux repl
-Plug 'AndrewRadev/switch.vim'         " toggle special words (true/false etc.)
-Plug 'ryanoasis/vim-devicons'         " fancy glyphs
-Plug 'sainnhe/gruvbox-material'       " colorscheme
-Plug 'AndrewRadev/splitjoin.vim'      " easily switch between single- and multi-line statements
-Plug 'mattn/emmet-vim'                " expanding html abbreviations
-Plug 'mhinz/vim-grepper'              " integration of my favorite grep program
-Plug 'mhinz/vim-startify'             " fancy start screen
-Plug 'simrat39/symbols-outline.nvim'  " LSP symbols in sidebar
-Plug 'janko/vim-test'                 " convenient test invocation
-Plug 'wellle/targets.vim'             " enhanced text objects
-Plug 'tommcdo/vim-lion'               " align text by some character
-Plug 'airblade/vim-rooter'            " automatically change to project root when opening files
-Plug 'zhimsel/vim-stay'               " restore buffer views automaticaly
-Plug 'unblevable/quick-scope'         " fast left-right movement (using f, F, t, T)
-Plug 'kkoomen/vim-doge', {
-            \ 'do': { -> doge#install() }
-            \ }                       " docstring generator
-Plug 'direnv/direnv.vim'              " direnv support
-Plug 'jupyter-vim/jupyter-vim'        " jupyter notebook integration
-Plug 'hanschen/vim-ipython-cell', {
-            \ 'for': 'python'
-            \ }                       " execute cells in ipython just like jupyter
-Plug 'dhruvasagar/vim-table-mode'     " simplify writing/editing tables (e.g. in markdown)
-Plug 'voldikss/vim-floaterm'          " floating terminal
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'       " file explorer
-Plug 'windwp/nvim-spectre'            " search & replace
-Plug 'windwp/nvim-autopairs'          " automatically close brackets, quotes etc.
-Plug 'windwp/nvim-ts-autotag'         " automatically close/rename html tags
-Plug 'ThePrimeagen/harpoon'           " quick file jumping
-Plug 'dstein64/vim-startuptime'       " profile startup time
-
-" Language support (syntax highlighting, indent etc.)
-Plug 'nvim-treesitter/nvim-treesitter', {
-            \ 'do': ':TSUpdate'
-            \ }                       " treesitter (multi-language)
-Plug 'nvim-treesitter/nvim-treesitter-textobjects' " language-specific textobjects
-Plug 'RRethy/nvim-treesitter-textsubjects' " context aware text objects
-Plug 'romgrk/nvim-treesitter-context' " always show current context
-Plug 'nvim-treesitter/playground'     " discover treesitter nodes
-Plug 'p00f/nvim-ts-rainbow'           " colorize nested parentheses
-Plug 'andymass/vim-matchup'           " extended % matching
-
-" let's wait for https://github.com/nvim-treesitter/nvim-treesitter/issues/81
-Plug 'numirias/semshi', {
-            \ 'do': ':UpdateRemotePlugins'
-            \ }                       " python semantic highlighting
-Plug 'Vimjas/vim-python-pep8-indent'  " better python indenting
-
-Plug 'norcalli/nvim-colorizer.lua'    " highlight colors (#42AFFE)
-Plug 'kovetskiy/sxhkd-vim'            " sxhkdrc
-Plug 'ericpruitt/tmux.vim'            " .tmux.conf
-Plug 'ekalinin/Dockerfile.vim'        " Dockerfile
-Plug 'raimon49/requirements.txt.vim'  " requirements.txt
-Plug 'chr4/nginx.vim'                 " nginx
-Plug 'Glench/Vim-Jinja2-Syntax'       " jinja2
-
-" Initialize plugin system
-call plug#end()
+lua require("plugins")
 
 " Function to source only if file exists
 function! SourceIfExists(file)
@@ -984,8 +867,7 @@ let g:startify_fortune_use_unicode = 1
 let g:startify_files_number = 4
 let g:startify_custom_indices = ['1', '2', '3', '4', '7', '8', '9', '0']
 let g:startify_commands = [
-            \   { 'up': [ 'Update plugins', ':PlugUpdate' ] },
-            \   { 'ug': [ 'Upgrade plugin manager', ':PlugUpgrade' ] },
+            \   { 'up': [ 'Update plugins', ':PackerSync' ] },
             \ ]
 
 "" Spectre
@@ -1055,9 +937,6 @@ let g:rooter_patterns = [
     \ 'pyproject.toml',
     \ '.git'
     \]
-
-"" symbols outline
-lua require("plugins.symbols_outline")
 
 nnoremap <silent> <leader>os :SymbolsOutline<CR>
 
@@ -1131,41 +1010,13 @@ let g:nvim_tree_git_hl = 1
 let g:nvim_tree_quit_on_open = 1
 let g:nvim_tree_add_trailing = 1
 
-lua require("plugins.nvim_tree")
-
 nnoremap <leader>of :NvimTreeToggle<CR>
 nnoremap <leader>oF :NvimTreeFindFile<CR>
-
-"" grepper
-nnoremap <leader>gg :Grepper -tool git<cr>
-nnoremap <leader>gr :Grepper -tool rg<cr>
-
-let g:grepper = {}
-let g:grepper.tools = ['git', 'rg']
-let g:grepper.open = 1
-let g:grepper.jump = 0
-let g:grepper.dir = 'repo,file'
-let g:grepper.quickfix = 0
-let g:grepper.prompt_text = 'grepper $t> '
-
-let g:grepper.rg = {
-            \ 'escape': '\^$.*+?()[]{}|',
-            \ 'grepformat': '%f:%l:%c:%m,%f',
-            \ 'grepprg': 'rg -H --no-heading --hidden --glob=!.git -M=150 --max-columns-preview -S --vimgrep'
-            \}
-let g:grepper.git = {
-            \ 'escape': '\^$.*[]',
-            \ 'grepformat': '%f:%l:%c:%m,%f:%l:%m,%f',
-            \ 'grepprg': 'git grep -nGIi'
-            \}
 
 "" sneak
 let g:sneak#label = 1
 let g:sneak#use_ic_scs = 1
 map <leader><leader> <Plug>Sneak_,
-
-"" nvim-autopairs
-lua require("plugins.autopairs")
 
 "" vimtex
 let g:vimtex_view_method = 'zathura'
@@ -1198,28 +1049,8 @@ let g:qs_max_chars=176
 let g:qs_buftype_blacklist = ['terminal', 'nofile', 'startify', 'qf']
 let g:qs_lazy_highlight = 1
 
-"" vim-doge
-let g:doge_enable_mappings = 1
-let g:doge_mapping = '<Leader>rd'
-let g:doge_buffer_mappings = 1
-let g:doge_comment_interactive = 1
-" if below alias is set, lsp will attach to tsserver in vue files, which
-" produces undesired lsp behavior
-" let g:doge_filetype_aliases = {
-"             \ 'typescript': ['vue']
-"             \ }
-let g:doge_comment_jump_modes = ['n', 's']
-
-let g:doge_doc_standard_python = 'numpy'
-let g:doge_python_settings = {
-            \ 'single_quotes': 0
-            \ }
-
 "" endwise
 let g:endwise_no_mappings = 1
-
-"" cmp
-lua require("plugins.nvim_cmp")
 
 " Disable extra tmux complete trigger
 let g:tmuxcomplete#trigger = ''
@@ -1237,9 +1068,6 @@ let g:jedi#completions_command = ''
 let g:jedi#rename_command = '<leader>rn'
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#use_tag_stack = 1
-
-"" telescope.nvim
-lua require("plugins.telescope")
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fr <cmd>Telescope live_grep<cr>
@@ -1259,9 +1087,6 @@ nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 nnoremap <leader>fu <cmd>Telescope ultisnips<cr>
 nnoremap <leader>fT <cmd>TodoTelescope<cr>
 
-"" Trouble
-lua require("plugins.trouble")
-
 nnoremap <leader>Q <cmd>TroubleToggle<cr>
 nnoremap <leader>qw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
 nnoremap <leader>qd <cmd>TroubleToggle lsp_document_diagnostics<cr>
@@ -1269,9 +1094,6 @@ nnoremap <leader>qt <cmd>TodoTrouble<cr>
 nnoremap <leader>ql <cmd>TroubleToggle loclist<cr>
 nnoremap <leader>qq <cmd>TroubleToggle quickfix<cr>
 nnoremap gr <cmd>TroubleToggle lsp_references<cr>
-
-"" todo-comments
-lua require("plugins.todo_comments")
 
 "" UltiSnips
 let g:UltiSnipsExpandTrigger		= '<c-j>'
@@ -1310,9 +1132,6 @@ let g:vimwiki_markdown_link_ext = 1
 "" taskwiki
 let g:taskwiki_disable_concealcursor = 'yes'
 
-"" bufferline.nvim
-lua require("plugins.bufferline")
-
 nnoremap <silent> gb :BufferLinePick<CR>
 
 "" airline
@@ -1322,9 +1141,6 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-
-"" nvim-colorizer
-lua require("plugins.colorizer")
 
 "" vim-markdown
 let g:markdown_syntax_conceal = 1
@@ -1345,81 +1161,11 @@ let g:markdown_fenced_languages = [
             \ 'yaml',
             \ ]
 
-"" indent-blankline
-lua require("plugins.indent_blankline")
-
 "" highlight yank
 augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=300}
 augroup END
-
-"" ale
-let g:airline#extensions#ale#enabled = 1
-let g:ale_virtual_text_cursor = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_enter = 1
-let g:ale_fix_on_save = 1
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_echo_msg_format = '[%linter%] %code%: %s'
-let g:ale_sign_error = ''
-let g:ale_sign_warning = ''
-let g:ale_sign_info = ''
-
-let g:ale_pattern_options = {
-            \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
-            \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-            \ '\.git\/(?!COMMIT_EDITMSG)$': {'ale_linters': [], 'ale_fixers': []},
-            \ 'site-packages\/.*$': {'ale_linters': [], 'ale_fixers': []},
-            \ 'node_modules\/.*$': {'ale_linters': [], 'ale_fixers': []},
-            \ 'crontab$': {'ale_linters': [], 'ale_fixers': ['trim_whitespace']},
-            \}
-
-nmap <leader>ad <Plug>(ale_detail)
-nmap <leader>aa <Plug>(ale_toggle)
-
-let g:ale_linters = {
-            \   'Dockerfile': ['hadolint'],
-            \   'gitcommit': ['gitlint'],
-            \   'javascript': ['eslint'],
-            \   'json': ['jsonlint'],
-            \   'python': ['flake8', 'mypy', 'pylint'],
-            \   'sh': ['shellcheck', 'bashate'],
-            \   'sql': ['sqlint'],
-            \   'tex': ['chktex'],
-            \   'markdown': ['markdownlint'],
-            \   'vimwiki': ['markdownlint'],
-            \   'typescript': ['eslint'],
-            \   'vim': ['vint'],
-            \   'vue': ['eslint'],
-            \   'xml': ['xmllint'],
-            \   'yaml': ['yamllint'],
-            \   'zsh': ['shellcheck'],
-            \}
-
-let g:ale_fixers = {
-            \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \   'css': ['prettier'],
-            \   'html': ['prettier'],
-            \   'markdown': ['prettier'],
-            \   'htmldjango': ['html-beautify'],
-            \   'javascript': ['eslint'],
-            \   'json': ['prettier'],
-            \   'python': ['black', 'isort'],
-            \   'go': ['gofmt'],
-            \   'lua': ['stylua'],
-            \   'sh': ['shfmt'],
-            \   'sql': ['pgformatter'],
-            \   'tex': ['latexindent'],
-            \   'typescript': ['eslint'],
-            \   'vue': ['eslint'],
-            \   'yaml': ['prettier'],
-            \}
-
-"" nvim-lsp
-lua require("plugins.lsp_config")
 
 nnoremap <leader>cli <cmd>LspInfo<cr>
 nnoremap <leader>clI :LspInstall<space>
@@ -1477,9 +1223,6 @@ nnoremap <silent> <leader>ou :FloatermNew ncdu<CR>
 nnoremap <silent> <leader>oD :DBUI<CR>
 
 hi FloatermBorder ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=None
-
-"" treesitter
-lua require("plugins.treesitter")
 
 "" vim-matchup
 let g:matchup_transmute_enabled = 0 " covered by nvim-ts-autotag

@@ -10,32 +10,3 @@ nnoremap <c-c><c-l> :IPythonCellClear<CR>
 
 nnoremap [C :IPythonCellPrevCell<CR>
 nnoremap ]C :IPythonCellNextCell<CR>
-
-" vim-doge custom numpy style
-" (mainly just putting summary on first line)
-let b:doge_patterns['numpy'] = [
-            \   {
-            \     'template': [
-            \       '"""!summary',
-            \       '',
-            \       '!description',
-            \       '%(parameters|)%',
-            \       '%(parameters|Parameters)%',
-            \       '%(parameters|----------)%',
-            \       '%(parameters|{parameters})%',
-            \       '%(returnType|)%',
-            \       '%(returnType|Returns)%',
-            \       '%(returnType|-------)%',
-            \       '%(returnType|{returnType}:)%',
-            \       '%(returnType|\t!description)%',
-            \       '%(exceptions|)%',
-            \       '%(exceptions|Raises)%',
-            \       '%(exceptions|------)%',
-            \       '%(exceptions|{exceptions})%',
-            \       '"""'
-            \   ],
-            \     'nodeTypes': [ 'function_definition' ],
-            \     'parameters': { 'format': [ '{name} : {type|!type}', '\t!description' ] },
-            \     'exceptions': { 'format': [ '{name|!name}:', '\t!description' ] }
-            \   }
-            \ ]
