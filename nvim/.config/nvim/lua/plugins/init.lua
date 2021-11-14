@@ -93,7 +93,6 @@ return require("packer").startup(function(use)
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-emoji",
 			"quangnguyen30192/cmp-nvim-ultisnips",
 			{ "kristijanhusak/vim-dadbod-completion", requires = "tpope/vim-dadbod" },
 			{ "andersevenrud/compe-tmux", branch = "cmp" },
