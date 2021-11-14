@@ -13,6 +13,14 @@ end
 
 require("packer").init({
 	max_jobs = 50, -- https://github.com/wbthomason/packer.nvim/issues/202
+	display = {
+		keybindings = { -- Keybindings for the display window
+			quit = "q",
+			toggle_info = "-",
+			diff = "<CR>",
+			prompt_revert = "r",
+		},
+	},
 })
 
 -- reload plugin configuration automatically
