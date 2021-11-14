@@ -111,7 +111,12 @@ return require("packer").startup(function(use)
 	use("tpope/vim-endwise") -- wisely add end/endfunction/endif...
 	use("SirVer/UltiSnips") -- snippet engine
 	use("honza/vim-snippets") -- snippet collection
-	use("brennier/quicktex") -- lightweight snippets (most useful for latex math)
+	use({
+		"brennier/quicktex", -- lightweight snippets (most useful for latex math)
+		config = function()
+			require("plugins.quicktex")
+		end,
+	})
 	use("mattn/emmet-vim") -- expand html abbreviations
 
 	-- Language integration
