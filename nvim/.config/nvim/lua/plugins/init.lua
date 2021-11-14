@@ -24,12 +24,13 @@ require("packer").init({
 })
 
 -- reload plugin configuration automatically
-vim.cmd([[
+local packer_user_config_cmd = [[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost */plugins/*.lua source <afile> | PackerCompile
+    autocmd BufWritePost %s/lua/plugins/*.lua source <afile> | PackerCompile
   augroup end
-]])
+]]
+vim.cmd(string.format(packer_user_config_cmd, fn.stdpath("config")))
 
 return require("packer").startup(function(use)
 	-- Package management
