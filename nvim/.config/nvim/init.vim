@@ -713,13 +713,12 @@ nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 nnoremap <leader>fu <cmd>Telescope ultisnips<cr>
 nnoremap <leader>fT <cmd>TodoTelescope<cr>
 
-nnoremap <leader>Q <cmd>TroubleToggle<cr>
-nnoremap <leader>qw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
-nnoremap <leader>qd <cmd>TroubleToggle lsp_document_diagnostics<cr>
-nnoremap <leader>qt <cmd>TodoTrouble<cr>
+nnoremap <leader>qq <cmd>TroubleToggle<cr>
+nnoremap <leader>qf <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>ql <cmd>TroubleToggle loclist<cr>
-nnoremap <leader>qq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>qt <cmd>TodoTrouble<cr>
 nnoremap gr <cmd>TroubleToggle lsp_references<cr>
+nnoremap <leader>qd <cmd>TroubleToggle lsp_definitions<cr>
 
 "" UltiSnips
 let g:UltiSnipsExpandTrigger		= '<c-j>'
