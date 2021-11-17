@@ -142,7 +142,7 @@ return require("packer").startup(function(use)
 		requires = {
 			"williamboman/nvim-lsp-installer", -- LSP server installation helpers
 			"ray-x/lsp_signature.nvim", -- show signature help while typing
-            "b0o/schemastore.nvim", -- jsonls schema support
+			"b0o/schemastore.nvim", -- jsonls schema support
 		},
 		config = function()
 			require("plugins.lsp_config")
@@ -176,7 +176,7 @@ return require("packer").startup(function(use)
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-        after = "nvim-lspconfig",
+		after = "nvim-lspconfig",
 		config = function()
 			require("plugins.null-ls")
 		end,
@@ -253,6 +253,7 @@ return require("packer").startup(function(use)
 	use("tpope/vim-obsession") -- session management
 	use("zhimsel/vim-stay") -- restore buffer views automaticaly
 	use("dstein64/vim-startuptime") -- profile vim startup time
+	use("ojroques/vim-oscyank") -- osc yank for clipboard interoperability
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if Packer_bootstrap then
