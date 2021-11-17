@@ -173,6 +173,14 @@ return require("packer").startup(function(use)
 
 	-- Developer tools
 	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        after = "nvim-lspconfig",
+		config = function()
+			require("plugins.null-ls")
+		end,
+	})
+	use({
 		"dense-analysis/ale", -- linting and fixing
 		config = function()
 			require("plugins.ale")

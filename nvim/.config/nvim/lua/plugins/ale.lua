@@ -51,7 +51,6 @@ g.ale_fixers = {
 	json = { "prettier" },
 	python = { "black", "isort" },
 	go = { "gofmt" },
-	lua = { "stylua" },
 	sh = { "shfmt" },
 	sql = { "pgformatter" },
 	tex = { "latexindent" },
