@@ -57,7 +57,12 @@ export PATH="$(asdf where direnv)/bin:$PATH"
 export PATH="$(asdf where neovim)/bin:$PATH"
 export PATH="$(asdf where ripgrep)/bin:$PATH"
 export PATH="$(asdf where bat)/bin:$PATH"
+export PATH="$(asdf where dotenv-linter)/bin:$PATH"
+export PATH="$(asdf where hadolint)/bin:$PATH"
+export PATH="$(asdf where shellcheck)/bin:$PATH"
+export PATH="$(asdf where shfmt)/bin:$PATH"
 tldr() { asdf exec tldr "$@"; }
+lazygit() { asdf exec lazygit "$@"; }
 
 # zsh-completions
 # https://github.com/zsh-users/zsh-completions/issues/603
