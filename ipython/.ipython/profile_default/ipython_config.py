@@ -4,9 +4,13 @@ import importlib
 import os
 from pathlib import Path
 
+import IPython
+import prompt_toolkit
 from IPython.terminal.prompts import Prompts, Token
 from prompt_toolkit.enums import EditingMode
 from prompt_toolkit.formatted_text import fragment_list_width
+from prompt_toolkit.styles.pygments import pygments_token_to_classname
+from prompt_toolkit.styles.style import Style
 from pygments.styles import get_style_by_name
 
 
@@ -323,7 +327,7 @@ c.TerminalInteractiveShell.editing_mode = "vi"
 #         highlighting:
 #  default, emacs, friendly, colorful, autumn, murphy, manni, monokai, perldoc, pastie, borland, trac, native, fruity, bw, vim, vs, tango, rrt, xcode, igor, paraiso-light, paraiso-dark, lovelace, algol, algol_nu, arduino, rainbow_dash, abap
 # c.TerminalInteractiveShell.highlighting_style = traitlets.Undefined
-# c.TerminalInteractiveShell.highlighting_style = get_style_by_name("monokai")
+# c.TerminalInteractiveShell.highlighting_style = get_style_by_name("default")
 
 ## Override highlighting format for specific tokens
 # c.TerminalInteractiveShell.highlighting_style_overrides = {}
@@ -359,6 +363,36 @@ c.TerminalInteractiveShell.editing_mode = "vi"
 #  terminal supports true color, the following command should print 'TRUECOLOR'
 #  in orange: printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
 c.TerminalInteractiveShell.true_color = True
+
+
+# Fix completion highlighting as per https://github.com/ipython/ipython/issues/11526
+def style_from_pygments_dict(pygments_dict):
+    """Monkey patch prompt toolkit style function to fix completion colors."""
+    pygments_style = []
+    for token, style in pygments_dict.items():
+        if isinstance(token, str):
+            pygments_style.append((token, style))
+        else:
+            pygments_style.append((pygments_token_to_classname(token), style))
+    return Style(pygments_style)
+
+
+prompt_toolkit.styles.pygments.style_from_pygments_dict = style_from_pygments_dict
+IPython.terminal.interactiveshell.style_from_pygments_dict = style_from_pygments_dict
+
+white = "#ebdbb2"
+pmenu = "#3c3836"
+gray = "#a89984"
+black = "#282828"
+
+c.TerminalInteractiveShell.highlighting_style_overrides = {
+    "completion-menu": f"bg:{pmenu} {white}",
+    "completion-menu.completion.current": f"bg:{gray} {black}",
+    "completion-menu.completion": f"bg:{pmenu} {white}",
+    "completion-menu.meta.completion.current": f"bg:{gray} {black}",
+    "completion-menu.meta.completion": f"bg:{pmenu} {white}",
+    "completion-menu.multi-column-meta": f"bg:{pmenu} {white}",
+}
 
 # ------------------------------------------------------------------------------
 # HistoryAccessor(HistoryAccessorBase) configuration
