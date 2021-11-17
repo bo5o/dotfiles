@@ -9,7 +9,11 @@ null_ls.config({
 		builtins.formatting.stylua,
 		-- Python
 		builtins.diagnostics.flake8,
-		builtins.diagnostics.pylint,
+		builtins.diagnostics.pylint.with({
+			condition = function(utils)
+				return utils.root_has_file(".pylintrc")
+			end,
+		}),
 		builtins.diagnostics.mypy,
 		builtins.formatting.black,
 		builtins.formatting.isort,
