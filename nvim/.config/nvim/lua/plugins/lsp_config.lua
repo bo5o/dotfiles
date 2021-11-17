@@ -1,4 +1,5 @@
 local nvim_lsp = require("lspconfig")
+
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -49,59 +50,29 @@ local lua_settings = {
 	},
 }
 
--- config that activates keymaps and enables snippet support
-local function make_config()
+local json_settings = {
+	json = {
+		schemas = require("schemastore").json.schemas(),
+	},
+}
+
+local lsp_installer = require("nvim-lsp-installer")
+
+-- Register a handler that will be called for all installed servers.
+lsp_installer.on_server_ready(function(server)
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities.textDocument.completion.completionItem.snippetSupport = true
-	return {
-		-- enable snippet support
-		capabilities = capabilities,
-		-- map buffer local keybindings when the language server attaches
-		on_attach = on_attach,
-		flags = {
-			debounce_text_changes = 150,
-		},
-	}
-end
+	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
--- lsp-install
-local function setup_servers()
-	require("lspinstall").setup()
+	local opts = { on_attach = on_attach, capabilities = capabilities }
 
-	-- get all installed servers
-	local servers = require("lspinstall").installed_servers()
-
-	for _, server in pairs(servers) do
-		local config = make_config()
-
-		-- language specific config
-		if server == "lua" then
-			config.settings = lua_settings
-		end
-
-		require("lspconfig")[server].setup(config)
+	if server.name == "sumneko_lua" then
+		opts.settings = lua_settings
+	elseif server.name == "jsonls" then
+		opts.settings = json_settings
 	end
-end
 
--- jedi language server
-local jedi_config = require("lspinstall/util").extract_config("jedi_language_server")
-jedi_config.default_config.cmd[1] = "./venv/bin/jedi-language-server"
-
-require("lspinstall/servers").jedi = vim.tbl_extend("error", jedi_config, {
-	install_script = [[
-  python3 -m venv ./venv
-  ./venv/bin/pip3 install --upgrade pip
-  ./venv/bin/pip3 install --upgrade jedi-language-server
-  ]],
-})
-
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require("lspinstall").post_install_hook = function()
-	setup_servers() -- reload installed servers
-	vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
+	server:setup(opts)
+end)
 
 local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
 

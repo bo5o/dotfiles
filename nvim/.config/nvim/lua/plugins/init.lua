@@ -139,8 +139,9 @@ return require("packer").startup(function(use)
 	use({
 		"neovim/nvim-lspconfig", -- LSP configurations
 		requires = {
-			"kabouzeid/nvim-lspinstall", -- LSP server installation helpers
+			"williamboman/nvim-lsp-installer", -- LSP server installation helpers
 			"ray-x/lsp_signature.nvim", -- show signature help while typing
+            "b0o/schemastore.nvim", -- jsonls schema support
 		},
 		config = function()
 			require("plugins.lsp_config")
