@@ -694,17 +694,19 @@ let g:jedi#smart_auto_mappings = 0
 let g:jedi#use_tag_stack = 1
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fF <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
 nnoremap <leader>fr <cmd>Telescope live_grep<cr>
 nnoremap <leader>* <cmd>Telescope grep_string<cr>
 nnoremap <leader>/ <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fd <cmd>Telescope file_browser<cr>
+nnoremap <leader>fD <cmd>Telescope file_browser hidden=true<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fm <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fM <cmd>Telescope keymaps<cr>
 nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <leader>fS <cmd>Telescope lsp_workspace_symbols<cr>
-nnoremap <leader>fg <cmd>Telescope treesitter<cr>
+nnoremap <leader>fg <cmd>Telescope git_files<cr>
 nnoremap <leader>ft <cmd>Telescope tags<cr>
 nnoremap <leader>fC <cmd>Telescope git_bcommits<cr>
 nnoremap <leader>fc <cmd>Telescope git_commits<cr>
