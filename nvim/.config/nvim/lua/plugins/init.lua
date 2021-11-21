@@ -212,7 +212,14 @@ return require("packer").startup(function(use)
 	use("rhysd/git-messenger.vim") -- show git commit under cursor
 	use("tpope/vim-projectionist") -- project-specific configurations
 	use("airblade/vim-rooter") -- autochdir to project root when opening files
-	use("b3nj5m1n/kommentary") -- comment stuff out
+	use({
+		"b3nj5m1n/kommentary", -- comment stuff out
+		config = function()
+			require("kommentary.config").configure_language("default", {
+				prefer_single_line_comments = true,
+			})
+		end,
+	})
 	use({ "kristijanhusak/vim-dadbod-ui", requires = "tpope/vim-dadbod" }) -- DB UI
 	use("jpalardy/vim-slime") -- tmux repl
 	use({ "jupyter-vim/jupyter-vim", ft = "python" }) -- jupyter notebook integration
