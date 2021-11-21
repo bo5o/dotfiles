@@ -8,13 +8,13 @@ null_ls.config({
 		-- Lua
 		builtins.formatting.stylua,
 		-- Python
-		builtins.diagnostics.flake8,
-		builtins.diagnostics.pylint.with({
-			condition = function(utils)
-				return utils.root_has_file(".pylintrc")
-			end,
-		}),
-		builtins.diagnostics.mypy,
+		-- builtins.diagnostics.flake8,
+		-- builtins.diagnostics.pylint.with({
+		-- 	condition = function(utils)
+		-- 		return utils.root_has_file(".pylintrc")
+		-- 	end,
+		-- }),
+		-- builtins.diagnostics.mypy,
 		builtins.formatting.black,
 		builtins.formatting.isort,
 		-- Javascript/Typescript/Vue
