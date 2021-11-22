@@ -214,7 +214,7 @@ return require("packer").startup(function(use)
 	use({
 		"airblade/vim-rooter", -- autochdir to project root when opening files
 		config = function()
-			vim.g.rooter_silent_chdir = 0
+			vim.g.rooter_silent_chdir = 1
 			vim.g.rooter_cd_cmd = "lcd"
 			vim.g.rooter_patterns = {
 				"!^.direnv",
