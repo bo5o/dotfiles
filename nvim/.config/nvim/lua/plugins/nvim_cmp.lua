@@ -83,9 +83,23 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "ultisnips" },
-		{ name = "buffer", keyword_length = 5 },
-		{ name = "tmux", keyword_length = 5, opts = { all_panes = true, trigger_characters = {} } },
-		{ name = "emoji", max_item_count = 10 },
+		{
+			name = "buffer",
+			keyword_length = 4,
+			opts = {
+				get_bufnrs = function()
+					return vim.api.nvim_list_bufs()
+				end,
+			},
+		},
+		{
+			name = "tmux",
+			keyword_length = 5,
+			opts = {
+				all_panes = true,
+				trigger_characters = {},
+			},
+		},
 	},
 
 	formatting = {
@@ -96,7 +110,6 @@ cmp.setup({
 				nvim_lsp = "[lsp]",
 				path = "[path]",
 				ultisnips = "[snip]",
-				emoji = "[emoji]",
 				buffer = "[buf]",
 				tmux = "[tmux]",
 			},
