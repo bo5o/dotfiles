@@ -211,7 +211,25 @@ return require("packer").startup(function(use)
 	use("tpope/vim-eunuch") -- unix helpers
 	use("rhysd/git-messenger.vim") -- show git commit under cursor
 	use("tpope/vim-projectionist") -- project-specific configurations
-	use("airblade/vim-rooter") -- autochdir to project root when opening files
+	use({
+		"airblade/vim-rooter", -- autochdir to project root when opening files
+		config = function()
+			vim.g.rooter_silent_chdir = 0
+			vim.g.rooter_cd_cmd = "lcd"
+			vim.g.rooter_patterns = {
+				"!^.direnv",
+				"!^site-packages",
+				"!^node_modules",
+				".project-root",
+				"package.json",
+				"requirements.txt",
+				"setup.py",
+				"manage.py",
+				"pyproject.toml",
+				".git",
+			}
+		end,
+	})
 	use({
 		"b3nj5m1n/kommentary", -- comment stuff out
 		config = function()

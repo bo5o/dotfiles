@@ -547,21 +547,6 @@ let g:lion_squeeze_spaces = 1
 let g:lion_map_right = 'ga'
 let g:lion_map_left = 'gA'
 
-"" vim-rooter
-let g:rooter_silent_chdir = 1
-let g:rooter_cd_cmd = 'lcd'
-
-let g:rooter_patterns = [
-    \ '.root-marker',
-    \ '.project-root',
-    \ 'package.json',
-    \ 'requirements.txt',
-    \ 'setup.py',
-    \ 'manage.py',
-    \ 'pyproject.toml',
-    \ '.git'
-    \]
-
 nnoremap <silent> <leader>os :SymbolsOutline<CR>
 
 "" vim-test
