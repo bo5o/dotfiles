@@ -264,6 +264,7 @@ return require("packer").startup(function(use)
 	use("tpope/vim-surround") -- simple quoting/parenthesizing
 	use("tpope/vim-jdaddy") -- json manipulation
 	use("AndrewRadev/splitjoin.vim") -- easily switch between single- and multi-line statements
+	use("AndrewRadev/switch.vim") -- toggle special words (true/false etc.)
 	use("tommcdo/vim-lion") -- align text by some character
 	use("dhruvasagar/vim-table-mode") -- simple table editing (e.g. in markdown)
 	use("machakann/vim-swap") -- swap items in comma separated lists
