@@ -86,7 +86,7 @@ cmp.setup({
 		{
 			name = "buffer",
 			keyword_length = 4,
-			opts = {
+			option = {
 				get_bufnrs = function()
 					return vim.api.nvim_list_bufs()
 				end,
@@ -95,7 +95,7 @@ cmp.setup({
 		{
 			name = "tmux",
 			keyword_length = 5,
-			opts = {
+			option = {
 				all_panes = true,
 				trigger_characters = {},
 			},
