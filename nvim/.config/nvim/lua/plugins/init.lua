@@ -144,8 +144,6 @@ return require("packer").startup(function(use)
 			"ray-x/lsp_signature.nvim", -- show signature help while typing
 			"b0o/schemastore.nvim", -- jsonls schema support
 		},
-        -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/378
-        commit = "10ad0cca1b83713ed98ed4cb7ea60f2ea8e55c49",
 		config = function()
 			require("plugins.lsp_config")
 		end,
