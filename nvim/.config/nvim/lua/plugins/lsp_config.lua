@@ -71,15 +71,6 @@ lsp_installer.on_server_ready(function(server)
 	elseif server.name == "jsonls" then
 		opts.settings = json_settings
 	elseif server.name == "volar" then
-		-- take over mode
-		opts.filetypes = {
-			"typescript",
-			"javascript",
-			"javascriptreact",
-			"typescriptreact",
-			"vue",
-			"json",
-		}
 		opts.on_attach = function(client, bufnr)
 			on_attach(client, bufnr)
 			client.resolved_capabilities.document_formatting = false
