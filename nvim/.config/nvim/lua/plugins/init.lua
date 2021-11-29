@@ -143,6 +143,7 @@ return require("packer").startup(function(use)
 			"williamboman/nvim-lsp-installer", -- LSP server installation helpers
 			"ray-x/lsp_signature.nvim", -- show signature help while typing
 			"b0o/schemastore.nvim", -- jsonls schema support
+			"jose-elias-alvarez/nvim-lsp-ts-utils",-- better typescript lsp support
 		},
 		config = function()
 			require("plugins.lsp_config")
@@ -161,8 +162,7 @@ return require("packer").startup(function(use)
 	})
 	use({ -- let's wait for https://github.com/nvim-treesitter/nvim-treesitter/issues/81
 		"numirias/semshi", -- semantic highlighting for python
-		ft = "python",
-		config = "vim.cmd [[UpdateRemotePlugins]]",
+		config = "vim.cmd [[silent UpdateRemotePlugins]]",
 	})
 	use("Vimjas/vim-python-pep8-indent")
 	use("kovetskiy/sxhkd-vim") -- sxhkdrc

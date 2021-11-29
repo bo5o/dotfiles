@@ -20,16 +20,18 @@ null_ls.config({
 		-- Javascript/Typescript/Vue
 		builtins.diagnostics.eslint_d.with({
 			filetypes = { "javascript", "typescript", "vue" },
+			prefer_local = "node_modules/.bin",
 		}),
 		builtins.formatting.eslint_d.with({
 			filetypes = { "javascript", "typescript", "vue" },
+			prefer_local = "node_modules/.bin",
 		}),
 		-- CSS/HTML/JSON/YAML/Markdown
 		builtins.diagnostics.yamllint,
 		builtins.diagnostics.markdownlint.with({
 			filetypes = { "markdown", "vimwiki" },
 		}),
-		builtins.formatting.prettierd.with({
+		builtins.formatting.prettier.with({
 			filetypes = { "css", "html", "json", "yaml", "markdown" },
 		}),
 		-- Dockerfile

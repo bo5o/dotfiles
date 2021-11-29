@@ -778,7 +778,6 @@ augroup highlight_yank
 augroup END
 
 nnoremap <leader>cli <cmd>LspInfo<cr>
-nnoremap <leader>clI :LspInstall<space>
 nnoremap <leader>clr <cmd>LspRestart<cr>
 nnoremap <leader>cla <cmd>Telescope lsp_code_actions<cr>
 
