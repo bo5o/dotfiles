@@ -2,7 +2,7 @@ direnv 2.28.0
 python 3.7.12
 nodejs 16.13.0
 hadolint v2.8.0
-neovim 0.5.1
+neovim 0.6.0
 bat 0.18.3
 shfmt 3.4.0
 shellcheck 0.8.0
