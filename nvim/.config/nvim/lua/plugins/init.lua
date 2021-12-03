@@ -96,7 +96,7 @@ return require("packer").startup(function(use)
 			"hrsh7th/cmp-path",
 			"quangnguyen30192/cmp-nvim-ultisnips",
 			{ "kristijanhusak/vim-dadbod-completion", requires = "tpope/vim-dadbod" },
-			{ "andersevenrud/compe-tmux", branch = "cmp" },
+			"andersevenrud/cmp-tmux",
 			"onsails/lspkind-nvim", -- nice symbols for completion menu
 		},
 		config = function()
@@ -143,7 +143,7 @@ return require("packer").startup(function(use)
 			"williamboman/nvim-lsp-installer", -- LSP server installation helpers
 			"ray-x/lsp_signature.nvim", -- show signature help while typing
 			"b0o/schemastore.nvim", -- jsonls schema support
-			"jose-elias-alvarez/nvim-lsp-ts-utils",-- better typescript lsp support
+			"jose-elias-alvarez/nvim-lsp-ts-utils", -- better typescript lsp support
 		},
 		config = function()
 			require("plugins.lsp_config")
