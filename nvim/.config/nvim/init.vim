@@ -346,9 +346,6 @@ inoremap <silent> <c-u> <Esc>viwUea
 " Toggle search highlight, see https://goo.gl/3H85hh
 nnoremap <silent><expr> <Leader>hl (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
 
-" Yank from current cursor position to the end of the line
-nnoremap Y y$
-
 " preview latex equations
 " vnoremap <leader>m y:!python<space>~/bin/preview_math.py<space>'<C-r>"'<enter>
 
