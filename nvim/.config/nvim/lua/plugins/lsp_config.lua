@@ -64,7 +64,11 @@ lsp_installer.on_server_ready(function(server)
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-	local opts = { on_attach = on_attach, capabilities = capabilities }
+	local opts = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+		flags = { debounce_text_changes = 300 },
+	}
 
 	if server.name == "sumneko_lua" then
 		opts.settings = lua_settings
