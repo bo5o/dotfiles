@@ -95,6 +95,7 @@ return require("packer").startup(function(use)
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"quangnguyen30192/cmp-nvim-ultisnips",
+			"hrsh7th/cmp-cmdline",
 			{ "kristijanhusak/vim-dadbod-completion", requires = "tpope/vim-dadbod" },
 			"andersevenrud/cmp-tmux",
 			"onsails/lspkind-nvim", -- nice symbols for completion menu
