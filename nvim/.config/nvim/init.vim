@@ -710,8 +710,6 @@ let g:UltiSnipsRemoveSelectModeMappings = 0
 let g:UltiSnipsEditSplit='vertical'
 let g:ultisnips_python_style='numpy'
 
-"" switch.vim
-let g:switch_mapping = '-'
 
 "" vimwiki
 let g:vimwiki_list = [{
