@@ -702,15 +702,6 @@ nnoremap <leader>qt <cmd>TodoTrouble<cr>
 nnoremap gr <cmd>TroubleToggle lsp_references<cr>
 nnoremap <leader>qd <cmd>TroubleToggle lsp_definitions<cr>
 
-"" UltiSnips
-let g:UltiSnipsExpandTrigger		= '<c-j>'
-let g:UltiSnipsJumpForwardTrigger	= '<c-j>'
-let g:UltiSnipsJumpBackwardTrigger	= '<c-k>'
-let g:UltiSnipsRemoveSelectModeMappings = 0
-let g:UltiSnipsEditSplit='vertical'
-let g:ultisnips_python_style='numpy'
-
-
 "" vimwiki
 let g:vimwiki_list = [{
             \ 'path': '~/vimwiki/',

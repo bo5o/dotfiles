@@ -110,8 +110,18 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use("tpope/vim-endwise") -- wisely add end/endfunction/endif...
-	use("SirVer/UltiSnips") -- snippet engine
-	use("honza/vim-snippets") -- snippet collection
+	use({
+		"SirVer/ultisnips",
+		requires = { { "honza/vim-snippets", rtp = "." } },
+		config = function()
+			vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+			vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
+			vim.g.UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_backward)"
+			vim.g.UltiSnipsListSnippets = "<c-x><c-s>"
+			vim.g.UltiSnipsRemoveSelectModeMappings = 0
+			vim.g.ultisnips_python_style = "numpy"
+		end,
+	})
 	use({
 		"brennier/quicktex", -- lightweight snippets (most useful for latex math)
 		config = function()
