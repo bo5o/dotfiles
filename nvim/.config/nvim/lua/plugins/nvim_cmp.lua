@@ -163,6 +163,7 @@ cmp.setup({
 
 -- Use buffer source for `/`
 cmp.setup.cmdline("/", {
+	completion = { autocomplete = false },
 	sources = {
 		{ name = "buffer" },
 	},
@@ -170,10 +171,11 @@ cmp.setup.cmdline("/", {
 
 -- Use cmdline & path source for ':'
 cmp.setup.cmdline(":", {
+	completion = { autocomplete = false },
 	sources = cmp.config.sources({
-		{ name = "path", keyword_length = 3 },
+		{ name = "path" },
 	}, {
-		{ name = "cmdline", keyword_length = 3 },
+		{ name = "cmdline" },
 	}),
 })
 
