@@ -687,7 +687,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fm <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fM <cmd>Telescope keymaps<cr>
 nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
-nnoremap <leader>fS <cmd>Telescope lsp_workspace_symbols<cr>
+nnoremap <leader>fS <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 nnoremap <leader>fg <cmd>Telescope git_files<cr>
 nnoremap <leader>ft <cmd>Telescope tags<cr>
 nnoremap <leader>fC <cmd>Telescope git_bcommits<cr>
