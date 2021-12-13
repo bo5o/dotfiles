@@ -40,13 +40,19 @@ return require("packer").startup(function(use)
 	use("sainnhe/gruvbox-material") -- colorscheme
 	use({
 		"lukas-reineke/indent-blankline.nvim", -- indentation guides
+		event = "BufRead",
 		config = function()
 			require("plugins.indent_blankline")
 		end,
 	})
-	use("vim-airline/vim-airline") -- status line
+	use({
+		"vim-airline/vim-airline", -- status line
+		after = "gruvbox-material",
+		event = "BufEnter",
+	})
 	use({
 		"akinsho/bufferline.nvim", -- buffer line
+		event = "BufEnter",
 		config = function()
 			require("plugins.bufferline")
 		end,
@@ -57,6 +63,7 @@ return require("packer").startup(function(use)
 	-- Navigation
 	use({
 		"kyazdani42/nvim-tree.lua", -- file tree
+		event = "CursorHold",
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("plugins.nvim_tree")
@@ -69,17 +76,33 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({
-		"nvim-telescope/telescope.nvim", -- fuzzy finder
-		requires = {
-			"nvim-lua/popup.nvim",
-			"nvim-lua/plenary.nvim",
-			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-			"fhill2/telescope-ultisnips.nvim",
-			"kyazdani42/nvim-web-devicons",
+		{
+			"nvim-telescope/telescope.nvim", -- fuzzy finder
+			event = "CursorHold",
+			requires = {
+				"nvim-lua/popup.nvim",
+				"nvim-lua/plenary.nvim",
+				"kyazdani42/nvim-web-devicons",
+			},
+			config = function()
+				require("plugins.telescope")
+			end,
 		},
-		config = function()
-			require("plugins.telescope")
-		end,
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			after = "telescope.nvim",
+			run = "make",
+			config = function()
+				require("telescope").load_extension("fzf")
+			end,
+		},
+		{
+			"fhill2/telescope-ultisnips.nvim",
+			after = "telescope.nvim",
+			config = function()
+				require("telescope").load_extension("ultisnips")
+			end,
+		},
 	})
 	use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" }) -- quick nav
 	use({ "andymass/vim-matchup", event = "VimEnter" }) -- extended % matching
@@ -88,24 +111,26 @@ return require("packer").startup(function(use)
 
 	-- Auto-completion and snippets
 	use({
-		"hrsh7th/nvim-cmp",
-		requires = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-nvim-lua",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"quangnguyen30192/cmp-nvim-ultisnips",
-			"hrsh7th/cmp-cmdline",
-			{ "kristijanhusak/vim-dadbod-completion", requires = "tpope/vim-dadbod" },
-			"andersevenrud/cmp-tmux",
-			"onsails/lspkind-nvim", -- nice symbols for completion menu
+		{
+			"hrsh7th/nvim-cmp", -- autocompletion
+			event = "InsertEnter",
+			requires = "onsails/lspkind-nvim", -- nice symbols for completion menu ,
+			config = function()
+				require("plugins.nvim_cmp")
+			end,
 		},
-		config = function()
-			require("plugins.nvim_cmp")
-		end,
+		{ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
+		{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
+		{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+		{ "hrsh7th/cmp-path", after = "nvim-cmp" },
+		{ "quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp" },
+		{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
+		{ "kristijanhusak/vim-dadbod-completion", requires = "tpope/vim-dadbod", after = "nvim-cmp" },
+		{ "andersevenrud/cmp-tmux", after = "nvim-cmp" },
 	})
 	use({
 		"windwp/nvim-autopairs", -- autoclose brackets etc
+		event = "InsertCharPre",
 		config = function()
 			require("plugins.autopairs")
 		end,
@@ -113,7 +138,11 @@ return require("packer").startup(function(use)
 	use("tpope/vim-endwise") -- wisely add end/endfunction/endif...
 	use({
 		"SirVer/ultisnips",
-		requires = { { "honza/vim-snippets", rtp = "." } },
+		requires = { {
+			"honza/vim-snippets",
+			rtp = ".",
+			event = "InsertCharPre",
+		} },
 		config = function()
 			vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
 			vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
@@ -133,23 +162,26 @@ return require("packer").startup(function(use)
 
 	-- Language integration
 	use({
-		"nvim-treesitter/nvim-treesitter", -- treesitter core
-		run = ":TSUpdate",
-		requires = {
-			"nvim-treesitter/nvim-treesitter-textobjects", -- advanced text objects
-			"RRethy/nvim-treesitter-textsubjects", -- context aware text objects
-			"romgrk/nvim-treesitter-context", -- always show treesitter context
-			"p00f/nvim-ts-rainbow", -- colorize nested parentheses
-			"windwp/nvim-ts-autotag", -- autoclose and -rename html tags
-			"JoosepAlviste/nvim-ts-context-commentstring", -- autoset commentstring
-			{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+		{
+			"nvim-treesitter/nvim-treesitter", -- treesitter core
+			event = "CursorHold",
+			run = ":TSUpdate",
+			config = function()
+				require("plugins.treesitter")
+			end,
 		},
-		config = function()
-			require("plugins.treesitter")
-		end,
+		{ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" }, -- advanced text objects
+		{ "RRethy/nvim-treesitter-textsubjects", after = "nvim-treesitter" }, -- context aware text objects
+		{ "romgrk/nvim-treesitter-context", after = "nvim-treesitter" }, -- always show treesitter context
+		{ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }, -- colorize nested parentheses
+		{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }, -- autoclose and -rename html tags
+		{ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" }, -- autoset commentstring
+		{ "nvim-treesitter/playground", after = "nvim-treesitter" }, -- explore treesitter
 	})
 	use({
 		"neovim/nvim-lspconfig", -- LSP configurations
+		event = "BufRead",
+		after = "nvim-cmp",
 		requires = {
 			"williamboman/nvim-lsp-installer", -- LSP server installation helpers
 			"ray-x/lsp_signature.nvim", -- show signature help while typing
@@ -161,12 +193,12 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({ "lervag/vimtex", ft = "tex" }) -- LaTeX
-	use({ "davidhalter/jedi-vim", ft = "python" }) -- python
 	use("jamessan/vim-gnupg") -- transparent editing of gpg encrypted files
 
 	-- Syntax highlighting
 	use({
 		"norcalli/nvim-colorizer.lua", -- highlight color strings (eg. #42AFFE)
+		event = "CursorHold",
 		config = function()
 			require("plugins.colorizer")
 		end,
@@ -186,8 +218,11 @@ return require("packer").startup(function(use)
 	-- Developer tools
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
-		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		after = "nvim-lspconfig",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"neovim/nvim-lspconfig",
+		},
 		config = function()
 			require("plugins.null-ls")
 		end,
@@ -220,7 +255,7 @@ return require("packer").startup(function(use)
 	use("tpope/vim-dispatch") -- asynchronously run jobs
 	use("tpope/vim-tbone") -- tmux interaction
 	use("tpope/vim-eunuch") -- unix helpers
-	use("rhysd/git-messenger.vim") -- show git commit under cursor
+	use({ "rhysd/git-messenger.vim", event = "BufRead" }) -- show git commit under cursor
 	use("tpope/vim-projectionist") -- project-specific configurations
 	use({
 		"airblade/vim-rooter", -- autochdir to project root when opening files
@@ -243,6 +278,7 @@ return require("packer").startup(function(use)
 	})
 	use({
 		"b3nj5m1n/kommentary", -- comment stuff out
+		event = "BufRead",
 		config = function()
 			require("kommentary.config").configure_language("default", {
 				prefer_single_line_comments = true,
@@ -253,7 +289,7 @@ return require("packer").startup(function(use)
 	use("jpalardy/vim-slime") -- tmux repl
 	use({ "jupyter-vim/jupyter-vim", ft = "python" }) -- jupyter notebook integration
 	use({ "hanschen/vim-ipython-cell", ft = "python" }) -- execute ipython cells
-	use("voldikss/vim-floaterm") -- floating terminal
+	use({ "voldikss/vim-floaterm", event = "CursorHold" }) -- floating terminal
 	use("windwp/nvim-spectre") -- search and replace
 	use({
 		"folke/trouble.nvim",
@@ -272,9 +308,9 @@ return require("packer").startup(function(use)
 
 	-- Text manipulation
 	use("tpope/vim-repeat") -- repeat almost anything
-	use("tpope/vim-surround") -- simple quoting/parenthesizing
-	use("tpope/vim-jdaddy") -- json manipulation
-	use("AndrewRadev/splitjoin.vim") -- easily switch between single- and multi-line statements
+	use({ "tpope/vim-surround", event = "BufRead" }) -- simple quoting/parenthesizing
+	use({ "tpope/vim-jdaddy", ft = { "json" } }) -- json manipulation
+	use({ "AndrewRadev/splitjoin.vim", event = "CursorHold" }) -- easily switch between single- and multi-line statements
 	use({
 		"AndrewRadev/switch.vim", -- toggle special words (true/false etc.)
 		config = function()
@@ -284,7 +320,7 @@ return require("packer").startup(function(use)
 	use("tommcdo/vim-lion") -- align text by some character
 	use("dhruvasagar/vim-table-mode") -- simple table editing (e.g. in markdown)
 	use("machakann/vim-swap") -- swap items in comma separated lists
-	use("wellle/targets.vim") -- enhanced text objects
+	use({ "wellle/targets.vim", event = "BufRead" }) -- enhanced text objects
 
 	-- Organization
 	use({ "vimwiki/vimwiki", branch = "dev" }) -- personal wiki

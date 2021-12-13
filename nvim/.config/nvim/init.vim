@@ -661,20 +661,7 @@ let g:endwise_no_mappings = 1
 " Disable extra tmux complete trigger
 let g:tmuxcomplete#trigger = ''
 
-"" jedi
-let g:jedi#completions_enabled = 0
-
-let g:jedi#goto_command = 'gd'
-let g:jedi#goto_assignments_command = ''
-let g:jedi#goto_stubs_command = ''
-let g:jedi#goto_definitions_command = ''
-let g:jedi#documentation_command = 'K'
-let g:jedi#usages_command = '<leader>ru'
-let g:jedi#completions_command = ''
-let g:jedi#rename_command = '<leader>rn'
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#use_tag_stack = 1
-
+"" telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fF <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
 nnoremap <leader>fr <cmd>Telescope live_grep<cr>
