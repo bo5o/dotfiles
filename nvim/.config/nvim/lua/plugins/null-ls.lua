@@ -1,10 +1,21 @@
 local null_ls = require("null-ls")
 local builtins = null_ls.builtins
 
-null_ls.config({
+local function on_attach(client, bufnr)
+	if client.resolved_capabilities.document_formatting then
+		vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+	end
+end
+
+null_ls.setup({
 	debounce = 250,
 	diagnostics_format = "[#{s}] #{c}: #{m}",
+	on_attach = on_attach,
 	sources = {
+		builtins.formatting.trim_whitespace,
+		builtins.formatting.trim_newlines.with({
+			disabled_filetypes = { "crontab" },
+		}),
 		-- Lua
 		builtins.formatting.stylua,
 		-- Python
@@ -48,19 +59,4 @@ null_ls.config({
 		-- Vim
 		builtins.diagnostics.vint,
 	},
-})
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-
-local function on_attach(client, bufnr)
-	if client.resolved_capabilities.document_formatting then
-		vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-	end
-end
-
-require("lspconfig")["null-ls"].setup({
-	autostart = true,
-	on_attach = on_attach,
-	capabilities = capabilities,
 })

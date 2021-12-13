@@ -19,7 +19,6 @@ g.ale_pattern_options = {
 	[".git/(?!COMMIT_EDITMSG)$"] = { ale_linters = {}, ale_fixers = {} },
 	["site-packages/.*$"] = { ale_linters = {}, ale_fixers = {} },
 	["node_modules/.*$"] = { ale_linters = {}, ale_fixers = {} },
-	["crontab$"] = { ale_linters = {}, ale_fixers = { "trim_whitespace" } },
 }
 g.ale_pattern_options_enabled = 1
 
@@ -43,7 +42,6 @@ g.ale_linters = {
 }
 
 g.ale_fixers = {
-	["*"] = { "remove_trailing_lines", "trim_whitespace" },
 	css = {},
 	html = {},
 	markdown = {},
