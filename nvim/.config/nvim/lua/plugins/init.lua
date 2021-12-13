@@ -113,7 +113,6 @@ return require("packer").startup(function(use)
 	use({
 		{
 			"hrsh7th/nvim-cmp", -- autocompletion
-			event = "InsertEnter",
 			requires = "onsails/lspkind-nvim", -- nice symbols for completion menu ,
 			config = function()
 				require("plugins.nvim_cmp")
@@ -130,7 +129,7 @@ return require("packer").startup(function(use)
 	})
 	use({
 		"windwp/nvim-autopairs", -- autoclose brackets etc
-		event = "InsertCharPre",
+		after = "nvim-cmp",
 		config = function()
 			require("plugins.autopairs")
 		end,
@@ -180,7 +179,6 @@ return require("packer").startup(function(use)
 	})
 	use({
 		"neovim/nvim-lspconfig", -- LSP configurations
-		event = "BufRead",
 		after = "nvim-cmp",
 		requires = {
 			"williamboman/nvim-lsp-installer", -- LSP server installation helpers

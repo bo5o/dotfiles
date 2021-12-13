@@ -179,17 +179,6 @@ cmp.setup.cmdline(":", {
 	}),
 })
 
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on(
-	"confirm_done",
-	cmp_autopairs.on_confirm_done({
-		map_char = {
-			all = "(",
-			tex = "{",
-		},
-	})
-)
-
 -- Add vim-dadbod-completion in sql files
 vim.cmd([[
   augroup DadbodSql
