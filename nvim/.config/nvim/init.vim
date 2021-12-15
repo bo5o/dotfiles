@@ -1,6 +1,9 @@
 set encoding=utf-8
 scriptencoding utf-8
 
+" must be loaded before any plugin
+lua require("impatient")
+
 ""Plugins
 lua require("plugins")
 

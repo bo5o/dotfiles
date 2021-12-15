@@ -21,6 +21,8 @@ require("packer").init({
 			prompt_revert = "r",
 		},
 	},
+	-- Move to lua dir so impatient.nvim can cache it
+	compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
 })
 
 -- reload plugin configuration automatically
@@ -33,11 +35,18 @@ local packer_user_config_cmd = [[
 vim.cmd(string.format(packer_user_config_cmd, fn.stdpath("config")))
 
 return require("packer").startup(function(use)
-	---------------------
-	-- Package management
-	---------------------
+	--------------------
+	-- Plugin management
+	--------------------
 
+	-- Package manager
 	use("wbthomason/packer.nvim")
+
+	-- Faster startup
+	use({
+		"lewis6991/impatient.nvim",
+		"nathom/filetype.nvim",
+	})
 
 	---------------
 	-- UI and style
