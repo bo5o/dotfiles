@@ -71,7 +71,7 @@ return require("packer").startup(function(use)
 
 	-- Status line
 	use({
-		"vim-airline/vim-airline", -- status line
+		"vim-airline/vim-airline",
 		after = "gruvbox-material",
 		config = function()
 			vim.g.airline_theme = "gruvbox_material"
@@ -298,23 +298,35 @@ return require("packer").startup(function(use)
 				require("plugins.treesitter")
 			end,
 		},
-		{ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" }, -- advanced text objects
-		{ "RRethy/nvim-treesitter-textsubjects", after = "nvim-treesitter" }, -- context aware text objects
-		{ "romgrk/nvim-treesitter-context", after = "nvim-treesitter" }, -- always show treesitter context
-		{ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }, -- colorize nested parentheses
-		{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }, -- autoclose and -rename html tags
-		{ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" }, -- autoset commentstring
-		{ "nvim-treesitter/playground", after = "nvim-treesitter" }, -- explore treesitter
+		-- Advanced text objects
+		{ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
+		-- Context-aware text objects
+		{ "RRethy/nvim-treesitter-textsubjects", after = "nvim-treesitter" },
+		-- Always show treesitter context
+		{ "romgrk/nvim-treesitter-context", after = "nvim-treesitter" },
+		-- Colorize nested parentheses
+		{ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
+		-- Auto-close and -rename html tags
+		{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
+		-- Auto-set 'commentstring'
+		{ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
+		-- Explore treesitter
+		{ "nvim-treesitter/playground", after = "nvim-treesitter" },
 	})
 
 	-- LSP
 	use({
-		"williamboman/nvim-lsp-installer", -- LSP server installation helpers
-		"ray-x/lsp_signature.nvim", -- show signature help while typing
-		"b0o/schemastore.nvim", -- jsonls schema support
-		"jose-elias-alvarez/nvim-lsp-ts-utils", -- better typescript lsp support
+		-- Language server installation
+		"williamboman/nvim-lsp-installer",
+		-- Show signature help while typing
+		"ray-x/lsp_signature.nvim",
+		-- JSON schema support
+		"b0o/schemastore.nvim",
+		-- Better typescript lsp support
+		"jose-elias-alvarez/nvim-lsp-ts-utils",
 		{
-			"neovim/nvim-lspconfig", -- LSP configurations
+			-- Language server configuration
+			"neovim/nvim-lspconfig",
 			after = {
 				"nvim-cmp",
 				"nvim-lsp-installer",
@@ -348,11 +360,9 @@ return require("packer").startup(function(use)
 	})
 
 	-- Semantic syntax highlighting for Python
-	use({
-		-- let's wait for https://github.com/nvim-treesitter/nvim-treesitter/issues/81
-		"numirias/semshi",
-		config = "vim.cmd [[silent UpdateRemotePlugins]]",
-	})
+	-- Let's wait for https://github.com/nvim-treesitter/nvim-treesitter/issues/81
+	-- and then switch to Treesitter for semantic syntax highlighting
+	use({ "numirias/semshi", config = "vim.cmd [[silent UpdateRemotePlugins]]" })
 
 	-- Better Python indenting
 	use("Vimjas/vim-python-pep8-indent")
@@ -360,7 +370,7 @@ return require("packer").startup(function(use)
 	-- requirements.txt (Python)
 	use("raimon49/requirements.txt.vim")
 
-	-- Jinja2 (Python)
+	-- jinja2 (Python)
 	use("Glench/Vim-Jinja2-Syntax")
 
 	-- .sxhkdrc
@@ -414,19 +424,20 @@ return require("packer").startup(function(use)
 
 	-- Git
 	use({
-		{
-			"tpope/vim-fugitive",
-			cmd = { "Git", "Gwrite", "Gllog", "Gblame", "Gedit", "Gdiffsplit" },
-		},
-		{ "tpope/vim-rhubarb", after = "vim-fugitive" }, -- github integration
-		{ "tommcdo/vim-fubitive", after = "vim-fugitive" }, -- bitbucket integration
-		{ "junegunn/gv.vim", cmd = "GV" }, -- git commit browser
-		{ "rhysd/git-messenger.vim", cmd = "GitMessenger", keys = "<leader>gm" }, -- show git commit under cursor
+		{ "tpope/vim-fugitive", cmd = { "Git", "Gwrite", "Gllog", "Gblame", "Gedit", "Gdiffsplit" } },
+		-- Github integration
+		{ "tpope/vim-rhubarb", after = "vim-fugitive" },
+		-- Bitbucket integration
+		{ "tommcdo/vim-fubitive", after = "vim-fugitive" },
+		-- Git commit browser
+		{ "junegunn/gv.vim", cmd = "GV" },
+		-- Show git commit under cursor
+		{ "rhysd/git-messenger.vim", cmd = "GitMessenger", keys = "<leader>gm" },
 	})
 
 	-- Convenient test invocation
 	use({
-		"janko/vim-test", -- convenient test invocation
+		"janko/vim-test",
 		cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
 	})
 
@@ -469,30 +480,7 @@ return require("packer").startup(function(use)
 	use({
 		"tpope/vim-projectionist",
 		config = function()
-			vim.g.projectionist_heuristics = {
-				["setup.py|requirements.txt|pyproject.toml"] = {
-					["scripts/*.py"] = {
-						type = "script",
-						start = "-wait=always ipython --pdb {file}",
-					},
-					["src/*.py"] = {
-						type = "source",
-						alternate = "tests/unit/{dirname|basename}/test_{basename}.py",
-						start = "-wait=always ipython --pdb -m {dot}",
-					},
-					["tests/unit/**/test_*.py"] = {
-						type = "test",
-						start = "{project}",
-						alternate = "src/{project|basename}/{dirname}/{basename}.py",
-					},
-					["README.md"] = {
-						type = "readme",
-					},
-					[".env"] = {
-						type = "env",
-					},
-				},
-			}
+			require("plugins.projectionist")
 		end,
 	})
 
