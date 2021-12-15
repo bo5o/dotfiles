@@ -468,7 +468,6 @@ return require("packer").startup(function(use)
 	-- Project helpers
 	use({
 		"tpope/vim-projectionist",
-		event = "ProjectionistActivate",
 		config = function()
 			vim.g.projectionist_heuristics = {
 				["setup.py|requirements.txt|pyproject.toml"] = {
