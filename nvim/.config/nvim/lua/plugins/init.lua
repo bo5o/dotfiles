@@ -21,8 +21,6 @@ require("packer").init({
 			prompt_revert = "r",
 		},
 	},
-	-- Move to lua dir so impatient.nvim can cache it
-	compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
 })
 
 -- reload plugin configuration automatically

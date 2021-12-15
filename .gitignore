@@ -5,7 +5,7 @@ newsboat/*/history.cmdline
 newsboat/*/history.search
 newsboat/*/urls
 nvim/**/undodir
-nvim/.config/nvim/lua/packer_compiled.lua
+nvim/.config/nvim/plugin/packer_compiled.lua
 w3m/**/*.html
 ranger/**/history
 ranger/**/bookmarks
