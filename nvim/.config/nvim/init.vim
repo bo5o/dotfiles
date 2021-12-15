@@ -152,19 +152,7 @@ set foldopen-=block
 syntax enable
 
 " Syntax highlighting is very slow for long lines
-set synmaxcol=176
-
-" " colorscheme specific settings
-let g:gruvbox_material_palette = 'material'
-let g:gruvbox_material_statusline_style = 'default'
-let g:gruvbox_material_background = 'medium'
-let g:gruvbox_material_enable_bold = 0
-let g:gruvbox_material_enable_italic = 0
-let g:gruvbox_material_disable_italic_comment = 0
-let g:gruvbox_material_sign_column_background = 'none'
-let g:gruvbox_material_better_performance = 1
-let g:gruvbox_material_diagnostic_line_highlight = 0
-let g:gruvbox_material_diagnostic_text_highlight = 1
+set synmaxcol=256
 
 " Custom highlighting
 function! MyHighlights() abort
@@ -473,24 +461,6 @@ call SourceIfExists('~/.config/nvim/local-settings.vim')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""Startify
-let g:startify_list_order = ['files', 'dir', 'bookmarks', 'commands']
-let g:startify_bookmarks = [
-            \ { 'c': '~/.config/nvim/init.vim' },
-            \ { 'g': '~/.gitconfig' },
-            \ { 'p': '~/.oh-my-zsh/custom/p10k.zsh' },
-            \ { 't': '~/.tmux.conf' },
-            \ { 'z': '~/.zshrc' }
-            \ ]
-let g:startify_change_to_dir = 0
-let g:startify_change_to_vcs_root = 0
-let g:startify_fortune_use_unicode = 1
-let g:startify_files_number = 4
-let g:startify_custom_indices = ['1', '2', '3', '4', '7', '8', '9', '0']
-let g:startify_commands = [
-            \   { 'up': [ 'Update plugins', ':PackerSync' ] },
-            \ ]
-
 "" Spectre
 nnoremap <leader>S :lua require('spectre').open()<CR>
 " search in current file
@@ -536,14 +506,7 @@ nnoremap <leader>gP :Git push<CR>
 "" git messenger
 hi gitmessengerPopupNormal term=None guifg=#ebdbb2 guibg=#32302f ctermfg=None ctermbg=None
 
-"" gitgutter
-let g:gitgutter_preview_win_floating = 0
-
 "" vim-lion
-let g:lion_squeeze_spaces = 1
-let g:lion_map_right = 'ga'
-let g:lion_map_left = 'gA'
-
 nnoremap <silent> <leader>os :SymbolsOutline<CR>
 
 "" vim-test
@@ -574,28 +537,16 @@ let g:test#python#pytest#options = {
             \ }
 let g:test#javascript#runner = 'jest'
 
-"" dispatch
-" send dispatch commands to popup session
-let g:tmux_session = 'popup'
-
 " Send certain key combinations to g:tmux_session
 nmap <silent> t<CR> :call execute("Tmux send-keys -t " . g:tmux_session . " Enter")<CR>
 nmap <silent> t<C-c> :call execute("Tmux send-keys -t " . g:tmux_session . " C-c")<CR>
 nmap <silent> t<C-d> :call execute("Tmux send-keys -t " . g:tmux_session . " C-d")<CR>
 
 "" nvim-tree
-let g:nvim_tree_auto_ignore_ft = [ 'startify', 'dashboard' ]
-let g:nvim_tree_indent_markers = 1
-let g:nvim_tree_git_hl = 1
-let g:nvim_tree_quit_on_open = 1
-let g:nvim_tree_add_trailing = 1
-
 nnoremap <leader>of :NvimTreeToggle<CR>
 nnoremap <leader>oF :NvimTreeFindFile<CR>
 
 "" sneak
-let g:sneak#label = 1
-let g:sneak#use_ic_scs = 1
 map <leader><leader> <Plug>Sneak_,
 
 "" vimtex
@@ -623,14 +574,6 @@ let g:vimtex_quickfix_latexlog = {
       \ 'overfull' : 0,
       \ 'underfull' : 0,
       \}
-
-"" quick-scope
-let g:qs_max_chars=176
-let g:qs_buftype_blacklist = ['terminal', 'nofile', 'startify', 'qf']
-let g:qs_lazy_highlight = 1
-
-"" endwise
-let g:endwise_no_mappings = 1
 
 " Disable extra tmux complete trigger
 let g:tmuxcomplete#trigger = ''
@@ -663,60 +606,8 @@ nnoremap <leader>qt <cmd>TodoTrouble<cr>
 nnoremap gr <cmd>TroubleToggle lsp_references<cr>
 nnoremap <leader>qd <cmd>TroubleToggle lsp_definitions<cr>
 
-"" vimwiki
-let g:vimwiki_list = [{
-            \ 'path': '~/vimwiki/',
-            \ 'syntax': 'markdown',
-            \ 'ext': '.md',
-            \ 'index': 'README'
-            \ }]
-let g:vimwiki_key_mappings = {
-            \ 'all_maps': 1,
-            \ 'global': 1,
-            \ 'headers': 1,
-            \ 'text_objs': 1,
-            \ 'table_format': 1,
-            \ 'table_mappings': 0,
-            \ 'lists': 1,
-            \ 'links': 1,
-            \ 'html': 1,
-            \ 'mouse': 0,
-            \ }
-let g:vimwiki_global_ext = 0
-let g:vimwiki_folding = ''
-let g:vimwiki_markdown_link_ext = 1
-
-"" taskwiki
-let g:taskwiki_disable_concealcursor = 'yes'
-
+"" bufferline
 nnoremap <silent> gb :BufferLinePick<CR>
-
-"" airline
-let g:airline_theme='gruvbox_material'
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-
-"" vim-markdown
-let g:markdown_syntax_conceal = 1
-let g:markdown_minlines = 80
-let g:markdown_fenced_languages = [
-            \ 'js=javascript',
-            \ 'typescript=javascript',
-            \ 'ts=javascript',
-            \ 'vue',
-            \ 'python',
-            \ 'html',
-            \ 'help',
-            \ 'c++=cpp',
-            \ 'viml=vim',
-            \ 'bash=sh',
-            \ 'ini=dosini',
-            \ 'json',
-            \ 'yaml',
-            \ ]
 
 "" highlight yank
 augroup highlight_yank
@@ -728,22 +619,8 @@ nnoremap <leader>cli <cmd>LspInfo<cr>
 nnoremap <leader>clr <cmd>LspRestart<cr>
 nnoremap <leader>cla <cmd>Telescope lsp_code_actions<cr>
 
-"" vim-slime
-let g:slime_target = 'tmux'
-let g:slime_python_ipython = 1
-
-" always send text to the top-right pane in the current tmux tab without asking
-let g:slime_default_config = {
-            \ 'socket_name': get(split($TMUX, ','), 0),
-            \ 'target_pane': '{bottom-left}'
-            \ }
-
 "" vim-ipython-cell
-let g:ipython_cell_delimit_cells_by='tags'
 " remaining config in `nvim/.config/nvim/after/ftplugin/python.vim`
-
-"" jupyter-vim
-let g:jupyter_mapkeys = 1
 
 " Run current file
 nnoremap <buffer> <silent> <localleader>R :JupyterRunFile<CR>
@@ -755,21 +632,7 @@ nnoremap <buffer> <silent> <localleader>E :JupyterSendRange<CR>
 nmap     <buffer> <silent> <localleader>e <Plug>JupyterRunTextObj
 vmap     <buffer> <silent> <localleader>e <Plug>JupyterRunVisual
 
-"" vim-table-mode
-let g:table_mode_map_prefix = '<localleader>t'
-
 "" vim-floaterm
-let g:floaterm_keymap_toggle = '<leader>ot'
-let g:floaterm_keymap_prev   = '<F2>'
-let g:floaterm_keymap_next   = '<F3>'
-let g:floaterm_keymap_new    = '<leader>oT'
-
-let g:floaterm_width=0.8
-let g:floaterm_height=0.8
-let g:floaterm_wintitle=0
-let g:floaterm_autoclose=1
-let g:floaterm_opener='edit'
-
 nnoremap <silent> <leader>og :FloatermNew lazygit<CR>
 nnoremap <silent> <leader>or :FloatermNew ranger<CR>
 nnoremap <silent> <leader>od :FloatermNew lazydocker<CR>
@@ -781,10 +644,6 @@ nnoremap <silent> <leader>ol :LspInstallInfo<CR>
 nnoremap <silent> <leader>oD :DBUI<CR>
 
 hi FloatermBorder ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=None
-
-"" vim-matchup
-let g:matchup_transmute_enabled = 0 " covered by nvim-ts-autotag
-let g:matchup_matchparen_offscreen = { 'method': 'popup' }
 
 "" semshi
 let g:semshi#error_sign = v:false

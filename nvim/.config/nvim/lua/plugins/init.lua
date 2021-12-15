@@ -44,7 +44,21 @@ return require("packer").startup(function(use)
 	---------------
 
 	-- Colorscheme
-	use("sainnhe/gruvbox-material")
+	use({
+		"sainnhe/gruvbox-material",
+		config = function()
+			vim.g.gruvbox_material_palette = "material"
+			vim.g.gruvbox_material_statusline_style = "default"
+			vim.g.gruvbox_material_background = "medium"
+			vim.g.gruvbox_material_enable_bold = 0
+			vim.g.gruvbox_material_enable_italic = 0
+			vim.g.gruvbox_material_disable_italic_comment = 0
+			vim.g.gruvbox_material_sign_column_background = "none"
+			vim.g.gruvbox_material_better_performance = 1
+			vim.g.gruvbox_material_diagnostic_line_highlight = 0
+			vim.g.gruvbox_material_diagnostic_text_highlight = 1
+		end,
+	})
 
 	-- Indentation guides
 	use({
@@ -59,6 +73,14 @@ return require("packer").startup(function(use)
 	use({
 		"vim-airline/vim-airline", -- status line
 		after = "gruvbox-material",
+		config = function()
+			vim.g.airline_theme = "gruvbox_material"
+			vim.g.airline_powerline_fonts = 1
+			vim.g.airline_left_sep = ""
+			vim.g.airline_left_alt_sep = ""
+			vim.g.airline_right_sep = ""
+			vim.g.airline_right_alt_sep = ""
+		end,
 	})
 
 	-- Buffer line
@@ -71,10 +93,36 @@ return require("packer").startup(function(use)
 	})
 
 	-- Git signs
-	use({ "airblade/vim-gitgutter", event = "BufRead" })
+	use({
+		"airblade/vim-gitgutter",
+		event = "BufRead",
+		config = function()
+			vim.g.gitgutter_preview_win_floating = 0
+		end,
+	})
 
 	-- Start screen
-	use("mhinz/vim-startify")
+	use({
+		"mhinz/vim-startify",
+		config = function()
+			vim.g.startify_list_order = { "files", "dir", "bookmarks", "commands" }
+			vim.g.startify_bookmarks = {
+				{ c = "~/.config/nvim/init.vim" },
+				{ g = "~/.gitconfig" },
+				{ p = "~/.oh-my-zsh/custom/p10k.zsh" },
+				{ t = "~/.tmux.conf" },
+				{ z = "~/.zshrc" },
+			}
+			vim.g.startify_change_to_dir = 0
+			vim.g.startify_change_to_vcs_root = 0
+			vim.g.startify_fortune_use_unicode = 1
+			vim.g.startify_files_number = 4
+			vim.g.startify_custom_indices = { "1", "2", "3", "4", "7", "8", "9", "0" }
+			vim.g.startify_commands = {
+				{ up = { "Update plugins", ":PackerSync" } },
+			}
+		end,
+	})
 
 	-------------
 	-- Navigation
@@ -141,13 +189,32 @@ return require("packer").startup(function(use)
 	use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
 
 	-- Jump between match pairs
-	use("andymass/vim-matchup")
+	use({
+		"andymass/vim-matchup",
+		config = function()
+			vim.g.matchup_transmute_enabled = 0 -- covered by nvim-ts-autotag
+			vim.g.matchup_matchparen_offscreen = { method = "popup" }
+		end,
+	})
 
 	-- Sneaky motion
-	use("justinmk/vim-sneak")
+	use({
+		"justinmk/vim-sneak",
+		config = function()
+			vim.g["sneak#label"] = 1
+			vim.g["sneak#use_ic_scs"] = 1
+		end,
+	})
 
 	-- Always highlight the quickest movement to any word on the current line
-	use("unblevable/quick-scope")
+	use({
+		"unblevable/quick-scope",
+		config = function()
+			vim.g.qs_max_chars = 256
+			vim.g.qs_buftype_blacklist = { "terminal", "nofile", "startify", "qf" }
+			vim.g.qs_lazy_highlight = 1
+		end,
+	})
 
 	-------------------------------
 	-- Auto-completion and snippets
@@ -182,7 +249,12 @@ return require("packer").startup(function(use)
 	})
 
 	-- Auto-close more things like end/endfunction/endif etc.
-	use("tpope/vim-endwise")
+	use({
+		"tpope/vim-endwise",
+		config = function()
+			vim.g.endwise_no_mappings = 1
+		end,
+	})
 
 	-- Snippets
 	use({
@@ -359,7 +431,14 @@ return require("packer").startup(function(use)
 	})
 
 	-- Run jobs in background (builds, tests, runs etc.)
-	use({ "tpope/vim-dispatch", cmd = { "Dispatch", "Make", "Focus", "Start" } })
+	use({
+		"tpope/vim-dispatch",
+		cmd = { "Dispatch", "Make", "Focus", "Start" },
+		config = function()
+			-- send dispatch commands to tmux popup session
+			vim.g.tmux_session = "popup"
+		end,
+	})
 
 	-- Tmux interaction
 	use({ "tpope/vim-tbone", cmd = "Tmux" })
@@ -485,11 +564,22 @@ return require("packer").startup(function(use)
 			{ "v", "<c-c><c-c>" },
 			{ "n", "<c-c>v" },
 		},
+		config = function()
+			vim.g.slime_target = "tmux"
+			vim.g.slime_python_ipython = 1
+
+			-- always send text to the top-right pane in the current tmux tab
+			-- without asking
+			vim.g.slime_default_config = {
+				socket_name = vim.split(os.getenv("TMUX"), ",")[1],
+				target_pane = "{bottom-left}",
+			}
+		end,
 	})
 
 	-- Run IPython cells
 	use({
-		"hanschen/vim-ipython-cell", -- execute ipython cells
+		"hanschen/vim-ipython-cell",
 		requires = "jpalardy/vim-slime",
 		after = "vim-slime",
 		ft = "python",
@@ -502,6 +592,9 @@ return require("packer").startup(function(use)
 			"IPythonCellPrevCell",
 			"IPythonCellNextCell",
 		},
+		config = function()
+			vim.g.ipython_cell_delimit_cells_by = "tags"
+		end,
 	})
 
 	-- Interact with jupyter kernels
@@ -518,6 +611,9 @@ return require("packer").startup(function(use)
 			{ "n", "<localleader>e" },
 			{ "v", "<localleader>e" },
 		},
+		config = function()
+			vim.g.jupyter_mapkeys = 1
+		end,
 	})
 
 	-- Floating terminal
@@ -528,6 +624,17 @@ return require("packer").startup(function(use)
 			"FloatermNew",
 			"FloatermSend",
 		},
+		config = function()
+			vim.g.floaterm_keymap_toggle = "<leader>ot"
+			vim.g.floaterm_keymap_prev = "<F2>"
+			vim.g.floaterm_keymap_next = "<F3>"
+			vim.g.floaterm_keymap_new = "<leader>oT"
+			vim.g.floaterm_width = 0.8
+			vim.g.floaterm_height = 0.8
+			vim.g.floaterm_wintitle = 0
+			vim.g.floaterm_autoclose = 1
+			vim.g.floaterm_opener = "edit"
+		end,
 	})
 
 	-- Search and replace
@@ -595,10 +702,22 @@ return require("packer").startup(function(use)
 	})
 
 	-- Align text by some character
-	use("tommcdo/vim-lion")
+	use({
+		"tommcdo/vim-lion",
+		config = function()
+			vim.g.lion_squeeze_spaces = 1
+			vim.g.lion_map_right = "ga"
+			vim.g.lion_map_left = "gA"
+		end,
+	})
 
 	-- Simple table manipulation (e.g. in Markdown)
-	use("dhruvasagar/vim-table-mode")
+	use({
+		"dhruvasagar/vim-table-mode",
+		config = function()
+			vim.g.table_mode_map_prefix = "<localleader>t"
+		end,
+	})
 
 	-- Swap items in comma-separated lists
 	use("machakann/vim-swap")
@@ -631,8 +750,39 @@ return require("packer").startup(function(use)
 				{ "n", "<leader>w<leader>y" },
 				{ "n", "<leader>w<leader>m" },
 			},
+			config = function()
+				vim.g.vimwiki_list = {
+					{
+						path = "~/vimwiki/",
+						syntax = "markdown",
+						ext = ".md",
+						index = "README",
+					},
+				}
+				vim.g.vimwiki_key_mappings = {
+					all_maps = 1,
+					global = 1,
+					headers = 1,
+					text_objs = 1,
+					table_format = 1,
+					table_mappings = 0,
+					lists = 1,
+					links = 1,
+					html = 1,
+					mouse = 0,
+				}
+				vim.g.vimwiki_global_ext = 0
+				vim.g.vimwiki_folding = ""
+				vim.g.vimwiki_markdown_link_ext = 1
+			end,
 		},
-		{ "tools-life/taskwiki", after = "vimwiki" }, -- taskwarrior integration
+		{
+			"tools-life/taskwiki", -- taskwarrior integration
+			after = "vimwiki",
+			config = function()
+				vim.g.taskwiki_disable_concealcursor = "yes"
+			end,
+		},
 	})
 
 	----------------
