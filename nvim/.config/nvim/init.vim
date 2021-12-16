@@ -1,229 +1,21 @@
-set encoding=utf-8
-scriptencoding utf-8
-
-" must be loaded before any plugin
+" Must be loaded before any plugin
 lua require("impatient")
 
-""Plugins
+"" Plugins
 lua require("plugins")
 
-" Function to source only if file exists
-function! SourceIfExists(file)
-  if filereadable(expand(a:file))
-    exe 'source' a:file
-  endif
-endfunction
+"" Settings
+lua require("settings")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history VIM has to remember
-set history=500
-
 " C-p and C-n behave like up and down in command line
 cmap <C-P> <Up>
 cmap <C-N> <Down>
 
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
-
-" Set to auto read when a file is changed from the outside
-set autoread
-
-" Set vim's update time (for gitgutter)
-set updatetime=100
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ','
-let g:mapleader = ','
-
 " Fast saving
 nmap <leader>w :w!<cr>
-
-set relativenumber
-set number
-set clipboard=unnamedplus
-
-let g:python_host_prog = $HOME . '/.virtualenvs/py2nvim/bin/python'
-let g:python3_host_prog = $HOME . '/.virtualenvs/py3nvim/bin/python'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 3 lines to the cursor - when moving vertically using j/k
-set scrolloff=8
-set sidescrolloff=1
-
-" Turn on the WiLd menu
-set wildmode=longest,list,full
-set wildmenu
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-
-set wildignore+=*.mat,*.pdfpc,*/tmp/*,*.so,*.swp,*.zip,*.aux,*.gz,*.fdb_latexmk,*.fls,
-            \*.log,*.pdf,*.glg,*.glo,*.ist,*.bcf,*.bbl,*.blg,*.gls,*.run.xml,*.toc,
-            \*.acn,*.acr,*.alg,*.ntn,*.slo,*.not,*.nlg,*.slg,*.sls,*.lof,*.lot,*.lol,
-            \*.xdv,**/.venv/**,**/.direnv/**,**/.tools/**,tags
-
-" Always show current position
-set ruler
-
-" Enable mouse in normal mode
-set mouse=n
-
-" Highlight current line
-set cursorline
-
-" Highlight column at 88 chars
-set colorcolumn=88
-
-" Height of the command bar
-set cmdheight=1
-
-" A buffer becomes hidden when it is abandoned
-set hidden
-
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Show unfinished command in status line
-set showcmd
-
-" Makes search act like search in modern browsers
-set incsearch
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
-
-" For regular expressions turn magic on
-set magic
-
-
-" Folding
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-
-set nofoldenable
-set foldlevelstart=99
-
-" Show matching brackets when text indicator is over them
-set showmatch
-" How many tenths of a second to blink when matching brackets
-set matchtime=2
-
-" No annoying sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-set timeoutlen=500
-
-" More natural split opening
-set splitbelow
-set splitright
-
-" don't give |ins-completion-menu| messages.  For example,
-" '-- XXX completion (YYY)', 'match 1 of 2', 'The only match',
-set shortmess+=c
-
-set completeopt=noinsert,menuone,noselect
-
-set signcolumn=yes
-
-" view options for saving/restoring views
-set viewoptions=cursor,folds
-
-" don't open folds when moving through paragraphs
-set foldopen-=block
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax enable
-
-" Syntax highlighting is very slow for long lines
-set synmaxcol=256
-
-" Custom highlighting
-function! MyHighlights() abort
-    hi PopupWindow guifg=#ebdbb2 guibg=#3c3836
-
-    hi QuickScopePrimary guifg=#fe8019 gui=bold ctermfg=155 cterm=underline
-    hi QuickScopeSecondary guifg=#d65d0e gui=bold ctermfg=81 cterm=underline
-    hi NormalFloat guibg=#32302f
-endfunction
-
-augroup my_colors
-    autocmd!
-    autocmd ColorScheme * call MyHighlights()
-augroup END
-
-set termguicolors
-set background=dark
-colorscheme gruvbox-material
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowritebackup
-set noswapfile
-
-set undofile
-set undodir=~/.config/nvim/undodir
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use spaces instead of tabs
-set expandtab
-
-" Be smart when using tabs ;)
-set smarttab
-
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
-
-set autoindent
-set smartindent
-set nowrap " don't wrap lines
-
-" toggle invisible characters
-set list
-set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-set showbreak=↪
-
-" filetype settings
-augroup filetype_settings
-    autocmd!
-    autocmd FileType python setlocal textwidth=88
-    autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml,vimwiki setlocal tabstop=2
-    autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml,vimwiki setlocal shiftwidth=2
-    autocmd FileType vimwiki setlocal tabstop=4
-    autocmd FileType vimwiki setlocal shiftwidth=4
-    autocmd FileType vimwiki setlocal textwidth=88
-    autocmd FileType markdown setlocal textwidth=88
-    autocmd FileType markdown setlocal conceallevel=2
-    autocmd FileType requirements setlocal commentstring=#\ %s
-    autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal textwidth=80
-    autocmd BufRead,BufNewFile .env.* setlocal filetype=sh
-    autocmd FileType gitcommit setlocal textwidth=80
-augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -457,11 +249,6 @@ vnoremap L >gv
 vnoremap H <gv
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Local settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call SourceIfExists('~/.config/nvim/local-settings.vim')
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Spectre
@@ -502,7 +289,7 @@ nnoremap <leader>gP :Git push<CR>
 "" git messenger
 hi gitmessengerPopupNormal term=None guifg=#ebdbb2 guibg=#32302f ctermfg=None ctermbg=None
 
-"" vim-lion
+"" symbols-outline
 nnoremap <silent> <leader>os :SymbolsOutline<CR>
 
 "" vim-test

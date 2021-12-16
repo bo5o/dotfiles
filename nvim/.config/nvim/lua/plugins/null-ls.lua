@@ -56,7 +56,5 @@ null_ls.setup({
 		builtins.formatting.gofmt,
 		-- Tex
 		builtins.diagnostics.chktex,
-		-- Vim
-		builtins.diagnostics.vint,
 	},
 })
