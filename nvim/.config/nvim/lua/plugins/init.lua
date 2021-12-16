@@ -53,6 +53,7 @@ return require("packer").startup(function(use)
 	-- Colorscheme
 	use({
 		"sainnhe/gruvbox-material",
+		setup = "vim.cmd[[source ~/.config/nvim/theme.vim]]",
 		config = function()
 			vim.g.gruvbox_material_palette = "material"
 			vim.g.gruvbox_material_statusline_style = "default"

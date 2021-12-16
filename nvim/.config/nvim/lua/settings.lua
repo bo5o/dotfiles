@@ -145,8 +145,6 @@ vim.cmd("syntax enable")
 -- Syntax highlighting is very slow for long lines
 vim.opt.synmaxcol = 256
 
-vim.cmd("source ~/.config/nvim/theme.vim")
-
 ----------------------------------
 -- => Text, tab and indent related
 ----------------------------------
