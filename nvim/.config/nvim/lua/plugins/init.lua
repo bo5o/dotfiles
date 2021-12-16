@@ -290,7 +290,14 @@ return require("packer").startup(function(use)
 	})
 
 	-- Expand HTML/CSS abbreviations
-	use({ "mattn/emmet-vim", ft = { "html", "vue", "css" } })
+	use({
+		"mattn/emmet-vim",
+		ft = { "html", "htmldjango", "vue", "css" },
+		setup = function()
+			vim.g.user_emmet_install_global = 0
+		end,
+		config = "vim.cmd[[EmmetInstall]]",
+	})
 
 	-----------------------
 	-- Language integration

@@ -482,13 +482,6 @@ nnoremap <BS>e :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <BS>i :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <BS>o :lua require("harpoon.ui").nav_file(4)<CR>
 
-"" Emmet
-let g:user_emmet_install_global = 0
-augroup emmet_init
-    autocmd!
-    autocmd FileType html,htmldjango,css,vue EmmetInstall
-augroup END
-
 "" fugitive
 nnoremap <leader>g<space> :Git<space>
 nnoremap <leader>gs :Git<CR>
