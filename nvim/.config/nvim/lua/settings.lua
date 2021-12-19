@@ -194,3 +194,6 @@ augroup FileTypeSettings
     autocmd FileType gitcommit setlocal textwidth=80
 augroup END
 ]])
+
+-- tmux session for dispatch
+vim.g.tmux_session = "popup"

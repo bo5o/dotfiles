@@ -464,10 +464,6 @@ return require("packer").startup(function(use)
 	use({
 		"tpope/vim-dispatch",
 		cmd = { "Dispatch", "Make", "Focus", "Start" },
-		config = function()
-			-- send dispatch commands to tmux popup session
-			vim.g.tmux_session = "popup"
-		end,
 	})
 
 	-- Tmux interaction

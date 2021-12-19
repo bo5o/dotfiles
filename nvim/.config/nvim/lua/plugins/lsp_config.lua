@@ -20,6 +20,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<leader>ru", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	buf_set_keymap("n", "[g", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	buf_set_keymap("n", "]g", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+	buf_set_keymap("n", "gr", "<cmd>TroubleToggle lsp_references<CR>", opts)
 
 	-- Configure signature help for completion
 	require("lsp_signature").on_attach({

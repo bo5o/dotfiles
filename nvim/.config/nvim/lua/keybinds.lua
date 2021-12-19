@@ -1,3 +1,4 @@
+local map = vim.api.nvim_set_keymap
 local whichkey = require("which-key")
 
 whichkey.register({
@@ -29,10 +30,9 @@ whichkey.register({
 		cd = { "<cmd>cd %:p:h<CR>:pwd<CR>", "Change directory to location of current file" },
 	},
 
-	-- keep screen centered when moving through search results or joining lines
+	-- keep screen centered when moving through search results
 	n = { "nzzzv", "See :h n" },
 	N = { "Nzzzv", "See :h N" },
-	J = { "mzJ`z", "See :h J" },
 
 	-- undo break points
 	[","] = { ",<C-g>u", "See :h ,", mode = "i" },
@@ -79,13 +79,18 @@ whichkey.register({
 	L = { ">gv", "Indent visual selection", mode = "v" },
 	H = { "<gv", "Dedent visual selection", mode = "v" },
 
-	gr = { "<cmd>TroubleToggle lsp_references<cr>", "List references" },
 	gb = { "<cmd>BufferLinePick<cr>", "Pick buffer" },
 })
 
--- navigate with custom guides
 -- TODO: https://github.com/folke/which-key.nvim/issues/174
---       put into section "Moving around" when above feature was added
+--       put into section above when feature was added
+
+-- keep screen centered when joining lines
+whichkey.register({
+	J = { "mzJ`z", "See :h J" },
+})
+
+-- navigate with custom guides
 whichkey.register({
 	["<Space><Space>"] = {
 		"<Esc><cmd>call<space>search('<+.*+>')<CR>\"_c/+>/e<CR>",
@@ -102,17 +107,12 @@ whichkey.register({
 -- })
 
 -- remap 0 to go to first non-blank character (like ^)
--- TODO: https://github.com/folke/which-key.nvim/issues/174
---       put into section "Moving around" when above feature was added
 whichkey.register({
 	["0"] = { "^", "See :h ^", mode = "v" },
 })
 whichkey.register({
 	["0"] = { "^", "See :h ^", mode = "o" },
 })
-
--- Editing
-whichkey.register({})
 
 whichkey.register({
 	[","] = { "<Plug>Sneak_,", "Sneak repeat" },
@@ -250,25 +250,6 @@ whichkey.register({
 })
 
 -- Send certain key combinations to g:tmux_session
-whichkey.register({
-	["<CR>"] = {
-		function()
-			local cmd = "Tmux send-keys -t " .. vim.g.tmux_session .. " Enter"
-			vim.api.nvim_command(cmd)
-		end,
-	},
-	["C-c"] = {
-		function()
-			local cmd = "Tmux send-keys -t " .. vim.g.tmux_session .. " C-c"
-			vim.api.nvim_command(cmd)
-		end,
-	},
-	["C-d"] = {
-		function()
-			local cmd = "Tmux send-keys -t " .. vim.g.tmux_session .. " C-d"
-			vim.api.nvim_command(cmd)
-		end,
-	},
-}, {
-	prefix = "t",
-})
+map("n", "t<cr>", "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " Enter<cr>", { noremap = true })
+map("n", "t<C-c>", "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " C-c<cr>", { noremap = true })
+map("n", "t<C-d>", "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " C-d<cr>", { noremap = true })
