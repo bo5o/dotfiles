@@ -54,6 +54,14 @@ vim.g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/py3nvim/bin/python
 -- => VIM user interface
 ------------------------
 
+-- Always show status line
+vim.opt.laststatus = 2
+
+vim.opt.showmode = false
+
+-- Diff options
+vim.opt.diffopt = { "vertical" }
+
 -- Space to keep above, below and to the side of the cursor
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 1

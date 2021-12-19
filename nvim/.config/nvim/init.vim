@@ -7,131 +7,17 @@ lua require("plugins")
 "" Settings
 lua require("settings")
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" C-p and C-n behave like up and down in command line
-cmap <C-P> <Up>
-cmap <C-N> <Down>
-
-" Fast saving
-nmap <leader>w :w!<cr>
+"" Keybinds
+lua require("keybinds")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-" Close all buffers
-map <leader>ba :bufdo bd<cr>
-
-" Close all buffers (except current)
-map <leader>bo :BufOnly<cr>
-
-" Close current buffer and ignore unsaved changes
-map <leader>bd :Bclose!<cr>
-
-" Close current buffer if there are no unsaved changes
-map <leader>x :Bclose<cr>
-
-" Close preview window
-nnoremap <c-w>pc :pclose<cr>
-nnoremap <c-w>C :tabclose<cr>
-nnoremap <c-w>O :tabonly<cr>
-
-" Re-open last closed buffer
-map <leader>X :e#<cr>
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" keep things centered
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap J mzJ`z
-
-" undo break points
-inoremap , ,<c-g>u
-inoremap . .<c-g>u
-inoremap ! !<c-g>u
-inoremap ? ?<c-g>u
-
-" moving text
-vnoremap J :m '>+1<cr>gv=gv
-vnoremap K :m '<-2<cr>gv=gv
-" inoremap <C-j> <esc>:m .+1<cr>==gi
-" inoremap <C-k> <esc>:m .-2<cr>==gi
-
-" quick replace
-nnoremap cn *``cgn
-nnoremap cN *``cgN
-
-" go back to normal mode
-inoremap jk <ESC>
-
-" options for vim diff
-set diffopt=vertical
-
-" alt+hjkl for moving in insert mode
-inoremap <M-h> <Left>
-inoremap <M-j> <Down>
-inoremap <M-k> <Up>
-inoremap <M-l> <Right>
-
-" open file under cursor in vertical split
-nnoremap <C-W><C-F> <C-W>vgf
-
 au TermOpen * setlocal nonumber norelativenumber
-
-" terminal keybindings
-if has('nvim')
-  tmap <C-o> <C-\><C-n>
-endif
-
-" ask before jump if ambigous
-nnoremap <C-]> g<C-]>
-
-" navigate quickfix relative to cursor
-nmap <silent> [d :cabove<CR>
-nmap <silent> ]d :cbelow<CR>
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-set noshowmode
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
-" paste from 0 register
-nnoremap <leader>p "0p
-nnoremap <leader>P "0P
-
-" Navigating with guides
-" inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
-vnoremap <Space><Space> <Esc>:call<space>search('<+.*+>')<CR>"_c/+>/e<CR>
-nnoremap <Space><Space> :call<space>search('<+.*+>')<CR>"_c/+>/e<CR>
-inoremap ;gui <++>
-
-" Turn the word under cursor to upper case
-inoremap <silent> <c-u> <Esc>viwUea
-
-" Toggle search highlight, see https://goo.gl/3H85hh
-nnoremap <silent><expr> <Leader>hl (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
-
-" preview latex equations
-" vnoremap <leader>m y:!python<space>~/bin/preview_math.py<space>'<C-r>"'<enter>
-
 " bibtex
 augroup bibtex_snippets
     autocmd!
@@ -240,68 +126,13 @@ augroup calcurse
     autocmd BufRead,BufNewFile ~/.calcurse/notes/* set filetype=markdown
 augroup END
 
-" Insert date
-inoremap ;dt <C-R>=strftime('%Y-%m-%d')<CR>
-" nnoremap ;dt a<C-R>=strftime('%Y-%m-%d')<CR><Esc>
-
-" indent/dedent in visual mode
-vnoremap L >gv
-vnoremap H <gv
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Spectre
-nnoremap <leader>S :lua require('spectre').open()<CR>
-" search in current file
-nnoremap <leader>ss viw:lua require('spectre').open_file_search()<cr>
-
-"search current word
-nnoremap <leader>sw viw:lua require('spectre').open_visual()<CR>
-vnoremap <leader>s :lua require('spectre').open_visual()<CR>
-
-"" harpoon
-nnoremap <BS>m :lua require("harpoon.mark").add_file()<CR>
-nnoremap <BS><BS> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-
-nnoremap <BS>n :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <BS>e :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <BS>i :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <BS>o :lua require("harpoon.ui").nav_file(4)<CR>
-
-"" fugitive
-nnoremap <leader>g<space> :Git<space>
-nnoremap <leader>gs :Git<CR>
-nnoremap <leader>gco :Git checkout<space>
-nnoremap <leader>gcc :Git commit -v -q<CR>
-nnoremap <leader>gca :Git commit --amend<CR>
-nnoremap <leader>gct :Git commit -v -q %:p<CR>
-nnoremap <leader>gw :Gwrite<CR>
-nnoremap <leader>gl :GV<CR>
-nnoremap <leader>gL :0Gllog<CR>
-nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>ge :Gedit<CR>
-nnoremap <leader>gd :Gdiffsplit<CR>
-nnoremap <leader>gD :Gdiffsplit<space>
-nnoremap <leader>gp :Git pull<CR>
-nnoremap <leader>gP :Git push<CR>
-
 "" git messenger
 hi gitmessengerPopupNormal term=None guifg=#ebdbb2 guibg=#32302f ctermfg=None ctermbg=None
 
-"" symbols-outline
-nnoremap <silent> <leader>os :SymbolsOutline<CR>
-
 "" vim-test
-nmap <silent> <leader>tn :TestNearest<CR>
-nmap <leader>tN :TestNearest<space>
-nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>ts :TestSuite<CR>
-nmap <silent> <leader>tl :TestLast<CR>
-nmap <leader>tL :TestLast<space>
-nmap <silent> <leader>tt :TestLast<CR>
-nmap <silent> <leader>tg :TestVisit<CR>
-
 function! StartStrategy(cmd)
     execute 'Start -wait=always ' . a:cmd
 endfunction
@@ -319,18 +150,6 @@ let g:test#python#pytest#options = {
             \ 'file':   '--no-cov',
             \ }
 let g:test#javascript#runner = 'jest'
-
-" Send certain key combinations to g:tmux_session
-nmap <silent> t<CR> :call execute("Tmux send-keys -t " . g:tmux_session . " Enter")<CR>
-nmap <silent> t<C-c> :call execute("Tmux send-keys -t " . g:tmux_session . " C-c")<CR>
-nmap <silent> t<C-d> :call execute("Tmux send-keys -t " . g:tmux_session . " C-d")<CR>
-
-"" nvim-tree
-nnoremap <leader>of :NvimTreeToggle<CR>
-nnoremap <leader>oF :NvimTreeFindFile<CR>
-
-"" sneak
-map <leader><leader> <Plug>Sneak_,
 
 "" vimtex
 let g:vimtex_view_method = 'zathura'
@@ -361,46 +180,11 @@ let g:vimtex_quickfix_latexlog = {
 " Disable extra tmux complete trigger
 let g:tmuxcomplete#trigger = ''
 
-"" telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fF <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
-nnoremap <leader>fr <cmd>Telescope live_grep<cr>
-nnoremap <leader>* <cmd>Telescope grep_string<cr>
-nnoremap <leader>/ <cmd>Telescope current_buffer_fuzzy_find<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fd <cmd>Telescope file_browser<cr>
-nnoremap <leader>fD <cmd>Telescope file_browser hidden=true<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>fm <cmd>Telescope oldfiles<cr>
-nnoremap <leader>fM <cmd>Telescope keymaps<cr>
-nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
-nnoremap <leader>fS <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
-nnoremap <leader>fg <cmd>Telescope git_files<cr>
-nnoremap <leader>ft <cmd>Telescope tags<cr>
-nnoremap <leader>fC <cmd>Telescope git_bcommits<cr>
-nnoremap <leader>fc <cmd>Telescope git_commits<cr>
-nnoremap <leader>fu <cmd>Telescope ultisnips<cr>
-nnoremap <leader>fT <cmd>TodoTelescope<cr>
-
-nnoremap <leader>qq <cmd>TroubleToggle<cr>
-nnoremap <leader>qf <cmd>TroubleToggle quickfix<cr>
-nnoremap <leader>ql <cmd>TroubleToggle loclist<cr>
-nnoremap <leader>qt <cmd>TodoTrouble<cr>
-nnoremap gr <cmd>TroubleToggle lsp_references<cr>
-nnoremap <leader>qd <cmd>TroubleToggle lsp_definitions<cr>
-
-"" bufferline
-nnoremap <silent> gb :BufferLinePick<CR>
-
 "" highlight yank
 augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=300}
 augroup END
-
-nnoremap <leader>cli <cmd>LspInfo<cr>
-nnoremap <leader>clr <cmd>LspRestart<cr>
-nnoremap <leader>cla <cmd>Telescope lsp_code_actions<cr>
 
 "" vim-ipython-cell
 " remaining config in `nvim/.config/nvim/after/ftplugin/python.vim`
@@ -415,34 +199,15 @@ nnoremap <buffer> <silent> <localleader>E :JupyterSendRange<CR>
 nmap     <buffer> <silent> <localleader>e <Plug>JupyterRunTextObj
 vmap     <buffer> <silent> <localleader>e <Plug>JupyterRunVisual
 
-"" vim-floaterm
-nnoremap <silent> <leader>og :FloatermNew lazygit<CR>
-nnoremap <silent> <leader>or :FloatermNew ranger<CR>
-nnoremap <silent> <leader>od :FloatermNew lazydocker<CR>
-nnoremap <silent> <leader>om :FloatermNew btm -m<CR>
-nnoremap <silent> <leader>ou :FloatermNew ncdu<CR>
-
-nnoremap <silent> <leader>ol :LspInstallInfo<CR>
-
-nnoremap <silent> <leader>oD :DBUI<CR>
 
 hi FloatermBorder ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=None
 
 "" semshi
 let g:semshi#error_sign = v:false
 
-nmap <silent> <localleader>up :Semshi goto parameterUnused prev<CR>
-nmap <silent> <localleader>un :Semshi goto parameterUnused next<CR>
-
-"" gutentags
-let g:gutentags_exclude_filetypes = ['gitcommit', 'requirements']
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" turn formatted text into a python string
-xnoremap <leader>x <esc>:'<,'>!sed -e '0,/^.*"\{3\}\\\?/s///' -e 's/"\{3\}$//' -e 's/\s\{4\}/\\t/g' -e 's/^/"/' -e 's/$/",/' -e '1i "\\n".join((' -e '$a ))'<cr>
-
 " Close all buffer except the current one
 command! BufOnly silent! execute "%bd|e#|bd#"
 

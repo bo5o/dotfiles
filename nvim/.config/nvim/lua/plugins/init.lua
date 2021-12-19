@@ -645,13 +645,8 @@ return require("packer").startup(function(use)
 
 	-- Search and replace
 	use({
-		"windwp/nvim-spectre",
-		keys = {
-			{ "n", "<leader>S" },
-			{ "n", "<leader>ss" },
-			{ "n", "<leader>sw" },
-			{ "v", "<leader>s" },
-		},
+		"nvim-pack/nvim-spectre",
+		requires = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons" },
 	})
 
 	-- Nice list for showing diagnostics, lsp references etc.
@@ -795,11 +790,17 @@ return require("packer").startup(function(use)
 	-- Miscellaneous
 	----------------
 
+	-- Neovim keymaps
+	use("tjdevries/astronauta.nvim")
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup({})
+		end,
+	})
+
 	-- Useful keybindings
 	use("tpope/vim-unimpaired")
-
-	-- Show contents of registers at the right time
-	use("tversteeg/registers.nvim")
 
 	-- Restore buffer views automatically
 	use("zhimsel/vim-stay")
