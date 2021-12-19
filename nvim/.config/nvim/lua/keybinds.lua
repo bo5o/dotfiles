@@ -167,8 +167,8 @@ whichkey.register({
 	o = {
 		name = "open",
 		s = { "<cmd>SymbolsOutline<cr>", "Toggle symbol tree" },
-		f = { "<cmd>NvimTreeToggle", "Toggle file tree" },
-		F = { "<cmd>NvimTreeFindFile", "Find current file in file tree" },
+		f = { "<cmd>NvimTreeToggle<cr>", "Toggle file tree" },
+		F = { "<cmd>NvimTreeFindFile<cr>", "Find current file in file tree" },
 		g = { "<cmd>FloatermNew lazygit<cr>", "Open lazygit" },
 		r = { "<cmd>FloatermNew ranger<cr>", "Open file browser" },
 		d = { "<cmd>FloatermNew lazydocker<cr>", "Open lazydocker" },

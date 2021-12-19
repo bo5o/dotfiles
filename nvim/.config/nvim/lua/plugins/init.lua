@@ -457,6 +457,9 @@ return require("packer").startup(function(use)
 	use({
 		"janko/vim-test",
 		cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
+		config = function()
+			require("plugins.vim-test")
+		end,
 	})
 
 	-- Run jobs in background (builds, tests, runs etc.)

@@ -132,25 +132,6 @@ augroup END
 "" git messenger
 hi gitmessengerPopupNormal term=None guifg=#ebdbb2 guibg=#32302f ctermfg=None ctermbg=None
 
-"" vim-test
-function! StartStrategy(cmd)
-    execute 'Start -wait=always ' . a:cmd
-endfunction
-
-let g:test#custom_strategies = {'start': function('StartStrategy')}
-
-let test#strategy = 'start'
-
-let test#filename_modifier = ':p'
-
-let g:test#python#pytest#file_pattern = '\.py'
-let g:test#python#runner = 'pytest'
-let g:test#python#pytest#options = {
-            \ 'nearest':   '--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --no-cov',
-            \ 'file':   '--no-cov',
-            \ }
-let g:test#javascript#runner = 'jest'
-
 "" vimtex
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
