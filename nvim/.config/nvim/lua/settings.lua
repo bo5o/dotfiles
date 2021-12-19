@@ -5,14 +5,6 @@
 -- Set <leader> key
 vim.g.mapleader = ","
 
-vim.api.nvim_command("filetype plugin indent on")
-
--- Sets how many lines of history VIM has to remember
-vim.opt.history = 500
-
--- Set to auto read when a file is changed from the outside
-vim.opt.autoread = true
-
 -- Decrease update time
 vim.opt.updatetime = 100
 vim.opt.timeoutlen = 500
@@ -23,9 +15,6 @@ vim.opt.number = true
 
 -- Set clipboard register
 vim.opt.clipboard = "unnamedplus"
-
--- Always show current position
-vim.opt.ruler = true
 
 -- Enable mouse in normal mode
 vim.opt.mouse = "n"
@@ -39,11 +28,6 @@ vim.opt.colorcolumn = "88"
 -- Height of the command bar
 vim.opt.cmdheight = 1
 
--- A buffer becomes hidden when it is abandoned
-vim.opt.hidden = true
-
--- Configure backspace so it acts as it should act
-vim.opt.backspace = { "eol", "start", "indent" }
 vim.opt.whichwrap:append({ ["<"] = true, [">"] = true, h = true, l = true })
 
 -- Python host programs
@@ -53,9 +37,6 @@ vim.g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/py3nvim/bin/python
 ------------------------
 -- => VIM user interface
 ------------------------
-
--- Always show status line
-vim.opt.laststatus = 2
 
 vim.opt.showmode = false
 
@@ -71,15 +52,6 @@ vim.opt.ignorecase = true
 
 -- When searching try to be smart about cases
 vim.opt.smartcase = true
-
--- Highlight search results
-vim.opt.hlsearch = true
-
--- Show unfinished command in status line
-vim.opt.showcmd = true
-
--- Makes search act like search in modern browsers
-vim.opt.incsearch = true
 
 -- Don't redraw while executing macros (good performance config)
 vim.opt.lazyredraw = true
@@ -123,7 +95,6 @@ vim.opt.foldopen:remove("block")
 
 -- Enable the wild menu
 vim.opt.wildmode = { "longest", "list", "full" }
-vim.opt.wildmenu = true
 vim.opt.wildignore = { "*.o", "*~", "*.pyc", "*.mat", "*.pdfpc", "*.sls", "*.so" }
 vim.opt.wildignore:append({ "*.swp", "*.aux", "*.gz", "*.fdb_latexmk", "*.fls", "*.bbl" })
 vim.opt.wildignore:append({ "*.log", "*.pdf", "*.glg", "*.glo", "*.ist", "*.bcf" })
@@ -148,8 +119,6 @@ vim.opt.undodir = "~/.config/nvim/undodir"
 -- => Colors and Fonts
 ----------------------
 
-vim.cmd("syntax enable")
-
 -- Syntax highlighting is very slow for long lines
 vim.opt.synmaxcol = 256
 
@@ -160,14 +129,10 @@ vim.opt.synmaxcol = 256
 -- Use spaces instead of tabs
 vim.opt.expandtab = true
 
--- Be smart when using tabs ;)
-vim.opt.smarttab = true
-
 -- 1 tab == 4 spaces
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
-vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.wrap = false -- don't wrap lines
 

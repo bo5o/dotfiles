@@ -67,7 +67,6 @@ return require("packer").startup(function(use)
 			vim.g.gruvbox_material_diagnostic_text_highlight = 1
 
 			vim.opt.termguicolors = true
-			vim.opt.background = "dark"
 			vim.cmd("colorscheme gruvbox-material")
 		end,
 	})
