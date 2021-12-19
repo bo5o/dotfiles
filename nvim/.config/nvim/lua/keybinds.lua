@@ -146,7 +146,7 @@ whichkey.register({
 
 	g = {
 		name = "git",
-		["<space>"] = { "<cmd>Git<space>", "Enter git command", silent = false },
+		["<space>"] = { ":Git<space>", "Enter git command", silent = false },
 		s = { "<cmd>Git<cr>", "Status" },
 		co = { "<cmd>Git checkout<cr>", "Checkout" },
 		cc = { "<cmd>Git commit -v -q<cr>", "Commit" },
@@ -159,7 +159,7 @@ whichkey.register({
 		b = { "<cmd>Gblame<cr>", "Blame" },
 		e = { "<cmd>Gedit<cr>", "Edit" },
 		d = { "<cmd>Gdiffsplit<cr>", "Diff" },
-		D = { "<cmd>Gdiffsplit<space>", "Enter diff command", silent = false },
+		D = { ":Gdiffsplit<space>", "Enter diff command", silent = false },
 		p = { "<cmd>Git pull<cr>", "Pull" },
 		P = { "<cmd>Git push<cr>", "Push" },
 	},
@@ -207,47 +207,13 @@ whichkey.register({
 	prefix = "<leader>",
 })
 
--- harpoon
-whichkey.register({
-	["<BS>"] = {
-		function()
-			require("harpoon.ui").toggle_quick_menu()
-		end,
-		"Open harpoon quick menu",
-	},
-	m = {
-		function()
-			require("harpoon.mark").add_file()
-		end,
-		"Add file to harpoon",
-	},
-	n = {
-		function()
-			require("harpoon.ui").nav_file(1)
-		end,
-		"Navigate to file 1",
-	},
-	e = {
-		function()
-			require("harpoon.ui").nav_file(2)
-		end,
-		"Navigate to file 2",
-	},
-	i = {
-		function()
-			require("harpoon.ui").nav_file(3)
-		end,
-		"Navigate to file 3",
-	},
-	o = {
-		function()
-			require("harpoon.ui").nav_file(4)
-		end,
-		"Navigate to file 4",
-	},
-}, {
-	prefix = "<BS>",
-})
+-- ThePrimeagen/harpoon
+map("n", "<BS><BS>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", { noremap = true })
+map("n", "<BS>m", "<cmd>lua require('harpoon.mark').add_file()<cr>", { noremap = true })
+map("n", "<BS>n", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", { noremap = true })
+map("n", "<BS>e", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { noremap = true })
+map("n", "<BS>i", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { noremap = true })
+map("n", "<BS>o", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", { noremap = true })
 
 -- Send certain key combinations to g:tmux_session
 map("n", "t<cr>", "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " Enter<cr>", { noremap = true })
