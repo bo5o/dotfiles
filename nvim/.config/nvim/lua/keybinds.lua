@@ -177,6 +177,13 @@ whichkey.register({
 		D = { "<cmd>DBUI<cr>", "Open DBUI" },
 	},
 
+	p = {
+		name = "packer",
+		u = { "<cmd>PackerSync<cr>", "Packer sync" },
+		c = { "<cmd>PackerCompile<cr>", "Packer compile" },
+		s = { "<cmd>PackerStatus<cr>", "Packer status" },
+	},
+
 	q = {
 		name = "diagnostics",
 		q = { "<cmd>TroubleToggle<cr>", "List diagnostics" },
