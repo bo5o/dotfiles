@@ -442,15 +442,22 @@ return require("packer").startup(function(use)
 
 	-- Git
 	use({
-		{ "tpope/vim-fugitive", cmd = { "Git", "Gwrite", "Gllog", "Gblame", "Gedit", "Gdiffsplit" } },
+		{ "tpope/vim-fugitive", cmd = { "Git", "Gwrite", "Gblame", "Gedit", "Gdiffsplit" } },
 		-- Github integration
 		{ "tpope/vim-rhubarb", after = "vim-fugitive" },
 		-- Bitbucket integration
 		{ "tommcdo/vim-fubitive", after = "vim-fugitive" },
-		-- Git commit browser
-		{ "junegunn/gv.vim", cmd = "GV" },
 		-- Show git commit under cursor
 		{ "rhysd/git-messenger.vim", cmd = "GitMessenger", keys = "<leader>gm" },
+		-- Diff view for changes of any git rev
+		use({
+			"sindrets/diffview.nvim",
+			requires = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons" },
+			cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+			config = function()
+				require("plugins.diffview")
+			end,
+		}),
 	})
 
 	-- Convenient test invocation
