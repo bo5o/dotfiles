@@ -82,15 +82,11 @@ return require("packer").startup(function(use)
 
 	-- Status line
 	use({
-		"vim-airline/vim-airline",
+		"nvim-lualine/lualine.nvim",
 		after = "gruvbox-material",
+		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
-			vim.g.airline_theme = "gruvbox_material"
-			vim.g.airline_powerline_fonts = 1
-			vim.g.airline_left_sep = ""
-			vim.g.airline_left_alt_sep = ""
-			vim.g.airline_right_sep = ""
-			vim.g.airline_right_alt_sep = ""
+			require("plugins.statusline")
 		end,
 	})
 
