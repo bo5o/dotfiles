@@ -4,6 +4,7 @@ newsboat/*/cache.db
 newsboat/*/history.cmdline
 newsboat/*/history.search
 newsboat/*/urls
+lazygit/**/state.yml
 nvim/**/undodir
 nvim/.config/nvim/plugin/packer_compiled.lua
 w3m/**/*.html
