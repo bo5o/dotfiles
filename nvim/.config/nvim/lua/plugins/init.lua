@@ -12,7 +12,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require("packer").init({
-	max_jobs = 50, -- https://github.com/wbthomason/packer.nvim/issues/202
 	display = {
 		keybindings = { -- Keybindings for the display window
 			quit = "q",
