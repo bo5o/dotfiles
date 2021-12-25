@@ -675,9 +675,6 @@ return require("packer").startup(function(use)
 	-- Direnv integration
 	use("direnv/direnv.vim")
 
-	-- Automatically generate tags
-	use("ludovicchabant/vim-gutentags")
-
 	--------------------
 	-- Text manipulation
 	--------------------
