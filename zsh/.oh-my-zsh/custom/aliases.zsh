@@ -2,6 +2,7 @@
 
 # global aliases
 alias -g L='| less'
+alias -g B='| bat'
 alias -g C='| wc -l'
 alias -g H='| head'
 alias -g T='| tail'
