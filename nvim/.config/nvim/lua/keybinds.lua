@@ -205,11 +205,11 @@ whichkey.register({
 	t = {
 		name = "test",
 		n = { "<cmd>TestNearest<cr>", "Run nearest test" },
-		N = { "<cmd>TestNearest<space>", "Run nearest test (add flags)", silent = false },
+		N = { ":TestNearest<space>", "Run nearest test (add flags)", silent = false },
 		f = { "<cmd>TestFile<cr>", "Run test file" },
 		s = { "<cmd>TestSuite<cr>", "Run test suite" },
 		l = { "<cmd>TestLast<cr>", "Run last test" },
-		L = { "<cmd>TestLast<space>", "Run last test (add flags)", silent = false },
+		L = { ":TestLast<space>", "Run last test (add flags)", silent = false },
 		t = { "<cmd>TestLast<cr>", "Run last test" },
 		g = { "<cmd>TestVisit<cr>", "Open last run test in current buffer" },
 	},
