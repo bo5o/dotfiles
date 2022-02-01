@@ -54,6 +54,10 @@ whichkey.register({
 	["[d"] = { "<cmd>cabove<CR>", ":cabove" },
 	["]d"] = { "<cmd>cbelow<CR>", ":cbelow" },
 
+	-- go to prev/next diagnostic
+	["[g"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Go to previous diagnostic" },
+	["]g"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Go to next diagnostic" },
+
 	-- remap 0 to go to first non-blank character (like ^)
 	["0"] = { "^", "See :h ^", mode = "n" }, -- should be mode "nvo", see comments below
 
