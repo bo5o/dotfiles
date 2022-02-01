@@ -4,6 +4,7 @@ vim.g.symbols_outline = {
 	auto_preview = true,
 	position = "right",
 	width = 40,
+	relative_width = false,
 	show_numbers = false,
 	show_relative_numbers = false,
 	show_symbol_details = true,
