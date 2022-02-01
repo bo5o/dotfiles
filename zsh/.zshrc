@@ -65,6 +65,7 @@ export PATH="$(asdf where fd)/bin:$PATH"
 export PATH="$(asdf where lazygit)/bin:$PATH"
 export PATH="$(asdf where nodejs)/bin:$PATH"
 tldr() { asdf exec tldr "$@"; }
+tmuxinator() { asdf exec tmuxinator "$@"; }
 
 # zsh-completions
 # https://github.com/zsh-users/zsh-completions/issues/603
