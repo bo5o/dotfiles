@@ -198,8 +198,8 @@ whichkey.register({
 
 	s = {
 		name = "replace",
-		r = { "<cmd>lua require('spectre').open()<cr>", "Search and replace" },
-		R = { "<cmd>lua require('spectre').open_file_search()<cr>", "Search and replace in current file" },
+		r = { "<cmd>lua require('spectre').open_file_search()<cr>", "Search and replace in current file" },
+		R = { "<cmd>lua require('spectre').open()<cr>", "Search and replace" },
 	},
 
 	t = {
