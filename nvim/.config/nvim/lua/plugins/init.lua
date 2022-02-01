@@ -537,7 +537,7 @@ return require("packer").startup(function(use)
 
 	-- Interact with databases
 	use({
-		{ "tpope/vim-dadbod", cmd = { "DB" } },
+		{ "tpope/vim-dadbod", after = "vim-dadbod-ui" },
 		{
 			"kristijanhusak/vim-dadbod-ui",
 			requires = "tpope/vim-dadbod",
