@@ -73,6 +73,16 @@ lsp_installer.on_server_ready(function(server)
 		opts.settings = lua_settings
 	elseif server.name == "jsonls" then
 		opts.settings = json_settings
+	elseif server.name == "lemminx" then
+		opts.init_options = {
+			settings = {
+				xml = {
+					format = {
+						splitAttributes = true,
+					},
+				},
+			},
+		}
 	elseif server.name == "volar" then
 		opts.on_attach = function(client, bufnr)
 			on_attach(client, bufnr)

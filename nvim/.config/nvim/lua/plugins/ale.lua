@@ -36,7 +36,7 @@ g.ale_linters = {
 	typescript = {},
 	vim = {},
 	vue = {},
-	xml = { "xmllint" },
+	xml = {},
 	yaml = {},
 	zsh = {},
 }
