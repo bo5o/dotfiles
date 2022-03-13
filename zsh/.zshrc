@@ -63,6 +63,7 @@ export PATH="$(asdf where shellcheck)/bin:$PATH"
 export PATH="$(asdf where shfmt)/bin:$PATH"
 export PATH="$(asdf where fd)/bin:$PATH"
 export PATH="$(asdf where lazygit)/bin:$PATH"
+export PATH="$(asdf where yq)/bin:$PATH"
 export PATH="$(asdf where nodejs)/bin:$PATH"
 tldr() { asdf exec tldr "$@"; }
 tmuxinator() { asdf exec tmuxinator "$@"; }
