@@ -35,6 +35,7 @@ plugins=(
     timewarrior # https://github.com/svenXY/timewarrior
     tmuxinator
     z
+    ripgrep
     fd
     fzf
     tldr # https://github.com/tldr-pages/tldr-node-client#zsh
