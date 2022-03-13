@@ -64,6 +64,7 @@ vim.g.quicktex_python = {
 	[";defp"] = [[@propertydef <+++>(self):<++>]],
 	[";defd"] = [[def __<+++>__(self, <++>):<++>]],
 	[";def"] = [[def <+++>(<++>):<++>]],
+	[";deft"] = [[def test_<+++>(<++>):<++>]],
 	[";fun"] = [[def <+++>(<++>):<++>]],
 	[";get"] = [[@propertydef <+++>(self):<++>]],
 	[";prop"] = [[@propertydef <+++>(self):<++>]],
