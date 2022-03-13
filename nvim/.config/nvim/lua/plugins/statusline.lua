@@ -12,7 +12,11 @@ require("lualine").setup({
 		lualine_b = {
 			"branch",
 			{ "diff", colored = false },
-			{ "diagnostics", colored = false },
+			{
+				"diagnostics",
+				sources = { "nvim_diagnostic", "ale" },
+				colored = false,
+			},
 		},
 		lualine_c = { "filename" },
 		lualine_x = { "encoding", "fileformat", "filetype" },
