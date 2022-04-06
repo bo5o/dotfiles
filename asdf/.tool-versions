@@ -1,6 +1,6 @@
-direnv 2.30.3
+direnv 2.31.0
 python 3.9.10
-nodejs 16.13.1
+nodejs 17.7.2
 hadolint v2.8.0
 neovim 0.6.1
 bat 0.20.0
@@ -14,6 +14,6 @@ dotenv-linter 3.2.0
 poetry 1.1.12
 ruby 3.1.0
 rust 1.58.1
-lazygit 0.33
+lazygit 0.34
 fd 8.3.2
 yq 4.22.1
