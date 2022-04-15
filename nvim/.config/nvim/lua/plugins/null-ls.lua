@@ -37,6 +37,10 @@ null_ls.setup({
 			filetypes = { "javascript", "typescript", "vue" },
 			prefer_local = "node_modules/.bin",
 		}),
+		builtins.code_actions.eslint_d.with({
+			filetypes = { "javascript", "typescript", "vue" },
+			prefer_local = "node_modules/.bin",
+		}),
 		-- CSS/HTML/JSON/YAML/Markdown
 		builtins.diagnostics.yamllint,
 		builtins.diagnostics.markdownlint.with({
