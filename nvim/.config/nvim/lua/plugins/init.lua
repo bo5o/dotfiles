@@ -92,7 +92,9 @@ return require("packer").startup(function(use)
 	-- Buffer line
 	use({
 		"akinsho/bufferline.nvim",
+		tag = "*",
 		event = "BufWinEnter",
+		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("plugins.bufferline")
 		end,
