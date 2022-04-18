@@ -761,7 +761,6 @@ return require("packer").startup(function(use)
 	----------------
 
 	-- Neovim keymaps
-	use("tjdevries/astronauta.nvim")
 	use({
 		"folke/which-key.nvim",
 		config = function()
