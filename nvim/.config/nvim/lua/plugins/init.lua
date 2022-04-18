@@ -281,11 +281,13 @@ return require("packer").startup(function(use)
 	-- Snippets
 	use({
 		"SirVer/ultisnips",
-		requires = { {
-			"honza/vim-snippets",
-			rtp = ".",
-			event = "InsertCharPre",
-		} },
+		requires = {
+			{
+				"honza/vim-snippets",
+				rtp = ".",
+				event = "InsertCharPre",
+			},
+		},
 		config = function()
 			vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
 			vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
