@@ -42,7 +42,6 @@ return require("packer").startup(function(use)
 	-- Faster startup
 	use({
 		"lewis6991/impatient.nvim",
-		"nathom/filetype.nvim",
 	})
 
 	---------------

@@ -141,6 +141,9 @@ vim.opt.listchars = { tab = "→ ", eol = "¬", trail = "⋅", extends = "❯", 
 vim.opt.showbreak = "↪"
 
 -- filetype settings
+vim.g.do_filetype_lua = 1
+vim.g.did_load_filetypes = 0
+
 vim.cmd([[
 augroup FileTypeSettings
     autocmd!
