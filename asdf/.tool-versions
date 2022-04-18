@@ -1,8 +1,8 @@
 direnv 2.31.0
 python 3.9.10
 nodejs 17.7.2
-hadolint v2.8.0
-neovim 0.6.1
+hadolint v2.10.0
+neovim 0.7.0
 bat 0.20.0
 shfmt 3.4.3
 shellcheck 0.8.0
@@ -16,4 +16,4 @@ ruby 3.1.0
 rust 1.58.1
 lazygit 0.34
 fd 8.3.2
-yq 4.22.1
+yq 4.24.5
