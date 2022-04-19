@@ -797,7 +797,7 @@ return require("packer").startup(function(use)
 	use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
 
 	-- Clipboard interoperability
-	use({ "ojroques/vim-oscyank", cmd = "OSCYank" })
+	use({ "ojroques/vim-oscyank", branch = "main", cmd = "OSCYank" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if Packer_bootstrap then
