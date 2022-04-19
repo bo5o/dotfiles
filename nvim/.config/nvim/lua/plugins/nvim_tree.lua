@@ -1,7 +1,5 @@
 vim.g.nvim_tree_auto_ignore_ft = { "startify", "dashboard" }
-vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_add_trailing = 1
 
 local tree_cb = require("nvim-tree.config").nvim_tree_callback
@@ -22,5 +20,15 @@ require("nvim-tree").setup({
 	filters = {
 		dotfiles = true,
 		custom = { ".git", "node_modules", ".cache", "__pycache__" },
+	},
+	renderer = {
+		indent_markers = {
+			enable = true,
+		},
+	},
+	actions = {
+		open_file = {
+			quit_on_open = true,
+		},
 	},
 })
