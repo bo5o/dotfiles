@@ -3,12 +3,12 @@ python 3.9.10
 nodejs 17.7.2
 hadolint v2.10.0
 neovim 0.7.0
-bat 0.20.0
-shfmt 3.4.3
+bat 0.21.0
+shfmt 3.5.0
 shellcheck 0.8.0
 golang 1.17.3
 ripgrep 13.0.0
-github-cli 2.5.2
+github-cli 2.10.1
 maven 3.8.4
 dotenv-linter 3.2.0
 poetry 1.1.12
@@ -16,4 +16,4 @@ ruby 3.1.0
 rust 1.58.1
 lazygit 0.34
 fd 8.3.2
-yq 4.24.5
+yq 4.25.1
