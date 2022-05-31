@@ -53,9 +53,9 @@ return require("packer").startup(function(use)
 		"sainnhe/gruvbox-material",
 		setup = "vim.cmd[[source ~/.config/nvim/theme.vim]]",
 		config = function()
-			vim.g.gruvbox_material_palette = "material"
-			vim.g.gruvbox_material_statusline_style = "default"
+			vim.g.gruvbox_material_foreground = "material"
 			vim.g.gruvbox_material_background = "medium"
+			vim.g.gruvbox_material_statusline_style = "default"
 			vim.g.gruvbox_material_enable_bold = 0
 			vim.g.gruvbox_material_enable_italic = 0
 			vim.g.gruvbox_material_disable_italic_comment = 0
