@@ -1,6 +1,4 @@
 vim.g.nvim_tree_auto_ignore_ft = { "startify", "dashboard" }
-vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_add_trailing = 1
 
 local tree_cb = require("nvim-tree.config").nvim_tree_callback
 
@@ -22,6 +20,8 @@ require("nvim-tree").setup({
 		custom = { ".git", "node_modules", ".cache", "__pycache__" },
 	},
 	renderer = {
+		highlight_git = true,
+		add_trailing = true,
 		indent_markers = {
 			enable = true,
 		},
