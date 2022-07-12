@@ -157,7 +157,7 @@ whichkey.register({
 		-- ct = { "<cmd>Git commit -v -q %:p<cr>", "Commit" },
 		ca = { "<cmd>Git commit --amend<cr>", "Amend" },
 		w = { "<cmd>Gwrite<cr>", "Stage" },
-		l = { "<cmd>DiffviewFileHistory<cr>", "File history" },
+		l = { "<cmd>DiffviewFileHistory %<cr>", "File history" },
 		m = "Line history",
 		b = { "<cmd>Gblame<cr>", "Blame" },
 		e = { "<cmd>Gedit<cr>", "Edit" },
