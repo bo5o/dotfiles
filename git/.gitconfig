@@ -26,6 +26,7 @@
     keepBackup = false
 [merge]
     tool = fugitive
+    conflictStyle = zdiff3
 [include]
     path = ~/.gitconfig_local
 [includeIf "gitdir:~/projects/"]
