@@ -70,6 +70,7 @@ export PATH="$(asdf where lazydocker)/bin:$PATH"
 tldr() { asdf exec tldr "$@"; }
 tmuxinator() { asdf exec tmuxinator "$@"; }
 markdownlint() { asdf exec markdownlint "$@"; }
+yamllint() { asdf exec yamllint "$@"; }
 
 # zsh-completions
 # https://github.com/zsh-users/zsh-completions/issues/603
