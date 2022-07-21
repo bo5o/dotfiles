@@ -69,6 +69,7 @@ export PATH="$(asdf where nodejs)/bin:$PATH"
 export PATH="$(asdf where lazydocker)/bin:$PATH"
 tldr() { asdf exec tldr "$@"; }
 tmuxinator() { asdf exec tmuxinator "$@"; }
+markdownlint() { asdf exec markdownlint "$@"; }
 
 # zsh-completions
 # https://github.com/zsh-users/zsh-completions/issues/603
