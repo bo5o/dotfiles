@@ -16,5 +16,5 @@ ruby 3.1.2
 rust 1.58.1
 lazygit 0.35
 fd 8.4.0
-yq 4.25.3
+yq 4.26.1
 lazydocker 0.18.1
