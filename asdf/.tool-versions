@@ -3,7 +3,7 @@ python 3.9.13
 nodejs 17.9.1
 hadolint 2.10.0
 neovim 0.7.2
-bat 0.21.0
+bat 0.18.3
 shfmt 3.5.1
 shellcheck 0.8.0
 golang 1.17.3
