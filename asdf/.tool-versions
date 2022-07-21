@@ -1,7 +1,7 @@
 direnv 2.32.1
 python 3.9.13
-nodejs 18.4.0
 hadolint v2.10.0
+nodejs 17.9.1
 neovim 0.7.2
 bat 0.21.0
 shfmt 3.5.1
