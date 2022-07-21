@@ -159,6 +159,8 @@ augroup FileTypeSettings
     autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal textwidth=80
     autocmd BufRead,BufNewFile .env.* setlocal filetype=sh
     autocmd FileType gitcommit setlocal textwidth=80
+    autocmd BufRead,BufNewFile **/models/**/*.sql setlocal filetype=jinja
+    autocmd BufRead,BufNewFile **/macros/**/*.sql setlocal filetype=jinja
 augroup END
 ]])
 
