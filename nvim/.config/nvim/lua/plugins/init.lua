@@ -423,10 +423,8 @@ return require("packer").startup(function(use)
 	-- Linting (for everything language servers can't do yet)
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
-		after = "nvim-lspconfig",
 		requires = {
 			"nvim-lua/plenary.nvim",
-			"neovim/nvim-lspconfig",
 		},
 		config = function()
 			require("plugins.null-ls")
