@@ -55,6 +55,7 @@ vim.g.quicktex_python = {
 	-- classes and functons
 	[";cls"] = [[class <+++>(<++>):<++>]],
 	[";class"] = [[class <+++>(<++>):<++>]],
+	[";dclass"] = [[@dataclasses.dataclassclass <+++>:<++>]],
 	[";defi"] = [[def __init__(self, <+++>):<++>]],
 	[";defc"] = [[@classmethoddef <+++>(cls, <++>):<++>]],
 	[";defs"] = [[@staticmethoddef <+++>(<++>):<++>]],
