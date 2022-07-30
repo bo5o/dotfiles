@@ -1,146 +1,183 @@
-local nvim_lsp = require("lspconfig")
+local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
+local lspconfig = require("lspconfig")
+local cmp_lsp = require("cmp_nvim_lsp")
+local lsp_signature = require("lsp_signature")
+
+local function create_capabilities()
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities = cmp_lsp.update_capabilities(capabilities)
+	return cmp_lsp.update_capabilities(capabilities)
+end
+
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, opts)
+vim.keymap.set("n", "]g", vim.diagnostic.goto_next, opts)
+vim.keymap.set("n", "lq", vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-	end
-
-	-- Mappings.
-	local opts = { noremap = true, silent = true }
-	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "<leader>ld", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "<leader>K", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	buf_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-	buf_set_keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-	buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-	buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	buf_set_keymap("n", "<leader>ru", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	buf_set_keymap("n", "gr", "<cmd>TroubleToggle lsp_references<CR>", opts)
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set("n", "<leader>K", vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("n", "<leader>lwa", vim.lsp.buf.add_workspace_folder, bufopts)
+	vim.keymap.set("n", "<leader>lwr", vim.lsp.buf.remove_workspace_folder, bufopts)
+	vim.keymap.set("n", "<leader>lwl", function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	end, bufopts)
+	vim.keymap.set("n", "<leader>ld", vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set("n", "<leader>ru", vim.lsp.buf.references, bufopts)
+	vim.keymap.set("n", "<leader>lf", vim.lsp.buf.formatting, bufopts)
+	vim.keymap.set("n", "gr", "<cmd>TroubleToggle lsp_references<CR>", bufopts)
 
 	-- Configure signature help for completion
-	require("lsp_signature").on_attach({
+	lsp_signature.on_attach({
 		bind = true,
 		hint_enable = false,
 		hi_parameter = "Search",
 	})
 end
 
--- Configure lua language server for neovim development
-local lua_settings = {
-	Lua = {
-		runtime = {
-			-- LuaJIT in the case of Neovim
-			version = "LuaJIT",
-			path = vim.split(package.path, ";"),
-		},
-		diagnostics = {
-			-- Get the language server to recognize the `vim` global
-			globals = { "vim" },
-		},
-		workspace = {
-			-- Make the server aware of Neovim runtime files
-			library = {
-				[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-				[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-			},
-		},
+lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
+	on_attach = on_attach,
+	capabilities = create_capabilities(),
+	flags = {
+		debounce_text_changes = 300,
 	},
-}
+})
 
-local json_settings = {
-	json = {
-		schemas = require("schemastore").json.schemas(),
-	},
-}
-
-local lsp_installer = require("nvim-lsp-installer")
-
--- Register a handler that will be called for all installed servers.
-lsp_installer.on_server_ready(function(server)
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-
-	local opts = {
-		on_attach = on_attach,
-		capabilities = capabilities,
-		flags = { debounce_text_changes = 300 },
-	}
-
-	if server.name == "sumneko_lua" then
-		opts.settings = lua_settings
-	elseif server.name == "jsonls" then
-		opts.settings = json_settings
-	elseif server.name == "lemminx" then
-		opts.init_options = {
+mason.setup()
+mason_lspconfig.setup()
+mason_lspconfig.setup_handlers({
+	function(server_name) -- default handler
+		lspconfig[server_name].setup({})
+	end,
+	["sumneko_lua"] = function()
+		lspconfig.sumneko_lua.setup({
 			settings = {
-				xml = {
-					format = {
-						splitAttributes = true,
+				Lua = {
+					runtime = {
+						-- LuaJIT in the case of Neovim
+						version = "LuaJIT",
+						path = vim.split(package.path, ";"),
+					},
+					diagnostics = {
+						-- Get the language server to recognize the `vim` global
+						globals = { "vim" },
+					},
+					workspace = {
+						-- Make the server aware of Neovim runtime files
+						library = {
+							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+						},
 					},
 				},
 			},
-		}
-	elseif server.name == "volar" then
-		opts.on_attach = function(client, bufnr)
-			on_attach(client, bufnr)
-			client.resolved_capabilities.document_formatting = false
-			client.resolved_capabilities.document_range_formatting = false
-		end
-	elseif server.name == "jedi_language_server" then
-		opts.init_options = {
-			diagnostics = { enable = false },
-		}
-	elseif server.name == "tsserver" then
-		opts.init_options = require("nvim-lsp-ts-utils").init_options
-		opts.on_attach = function(client, bufnr)
-			on_attach(client, bufnr)
-			-- let eslint/prettier handle formatting
-			client.resolved_capabilities.document_formatting = false
-			client.resolved_capabilities.document_range_formatting = false
-
-			local ts_utils = require("nvim-lsp-ts-utils")
-			ts_utils.setup({
-				debug = false,
-				disable_commands = false,
-				enable_import_on_completion = false,
-
-				import_all_timeout = 5000, -- ms
-				import_all_priorities = {
-					same_file = 1, -- add to existing import statement
-					local_files = 2, -- git files or files with relative path markers
-					buffer_content = 3, -- loaded buffer content
-					buffers = 4, -- loaded buffer names
+		})
+	end,
+	["jsonls"] = function()
+		lspconfig.jsonls.setup({
+			settings = {
+				json = {
+					schemas = require("schemastore").json.schemas(),
 				},
-				import_all_scan_buffers = 100,
-				import_all_select_source = false,
+			},
+		})
+	end,
+	["yamlls"] = function()
+		lspconfig.yamlls.setup({
+			settings = {
+				yaml = {
+					hover = true,
+					completion = true,
+					validate = true,
+					schemas = require("schemastore").json.schemas(),
+				},
+			},
+		})
+	end,
+	["lemminx"] = function()
+		lspconfig.lemminx.setup({
+			init_options = {
+				settings = {
+					xml = {
+						format = {
+							splitAttributes = true,
+						},
+					},
+				},
+			},
+		})
+	end,
+	["volar"] = function()
+		lspconfig.volar.setup({
+			on_attach = function(client, bufnr)
+				on_attach(client, bufnr)
+				client.resolved_capabilities.document_formatting = false
+				client.resolved_capabilities.document_range_formatting = false
+			end,
+		})
+	end,
+	["jedi_language_server"] = function()
+		lspconfig.jedi_language_server.setup({
+			init_options = {
+				diagnostics = { enable = false },
+			},
+		})
+	end,
+	["tsserver"] = function()
+		local nvim_ts_utils = require("nvim-lsp-ts-utils")
+		lspconfig.tsserver.setup({
+			init_options = nvim_ts_utils.init_options,
+			on_attach = function(client, bufnr)
+				on_attach(client, bufnr)
+				-- let eslint/prettier handle formatting
+				client.resolved_capabilities.document_formatting = false
+				client.resolved_capabilities.document_range_formatting = false
 
-				filter_out_diagnostics_by_severity = {},
-				filter_out_diagnostics_by_code = {},
+				nvim_ts_utils.setup({
+					debug = false,
+					disable_commands = false,
+					enable_import_on_completion = false,
 
-				auto_inlay_hints = true,
-				inlay_hints_highlight = "Comment",
+					import_all_timeout = 5000, -- ms
+					import_all_priorities = {
+						same_file = 1, -- add to existing import statement
+						local_files = 2, -- git files or files with relative path markers
+						buffer_content = 3, -- loaded buffer content
+						buffers = 4, -- loaded buffer names
+					},
+					import_all_scan_buffers = 100,
+					import_all_select_source = false,
 
-				update_imports_on_move = false,
-				require_confirmation_on_move = false,
-				watch_dir = nil,
-			})
+					filter_out_diagnostics_by_severity = {},
+					filter_out_diagnostics_by_code = {},
 
-			-- required to fix code action ranges and filter diagnostics
-			ts_utils.setup_client(client)
+					auto_inlay_hints = true,
+					inlay_hints_highlight = "Comment",
 
-			local map_opts = { silent = true }
-			vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lm", ":TSLspRenameFile<CR>", map_opts)
-			vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lI", ":TSLspImportAll<CR>", map_opts)
-			vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lo", ":TSLspOrganize<CR>", map_opts)
-		end
-	end
+					update_imports_on_move = false,
+					require_confirmation_on_move = false,
+					watch_dir = nil,
+				})
 
-	server:setup(opts)
-end)
+				-- required to fix code action ranges and filter diagnostics
+				nvim_ts_utils.setup_client(client)
+
+				local bufopts = { noremap = true, silent = true, buffer = bufnr }
+				vim.keymap.set("n", "<leader>lm", "<cmd>TSLspRenameFile<cr>", bufopts)
+				vim.keymap.set("n", "<leader>lI", "<cmd>TSLspImportAll<cr>", bufopts)
+				vim.keymap.set("n", "<leader>lo", "<cmd>TSLspOrganize<cr>", bufopts)
+			end,
+		})
+	end,
+})
 
 local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
 

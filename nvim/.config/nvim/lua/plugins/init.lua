@@ -361,7 +361,8 @@ return require("packer").startup(function(use)
 	-- LSP
 	use({
 		-- Language server installation
-		"williamboman/nvim-lsp-installer",
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
 		-- Show signature help while typing
 		"ray-x/lsp_signature.nvim",
 		-- JSON schema support
@@ -372,8 +373,8 @@ return require("packer").startup(function(use)
 			-- Language server configuration
 			"neovim/nvim-lspconfig",
 			after = {
-				"nvim-cmp",
-				"nvim-lsp-installer",
+				"mason.nvim",
+				"mason-lspconfig.nvim",
 				"lsp_signature.nvim",
 				"schemastore.nvim",
 				"nvim-lsp-ts-utils",

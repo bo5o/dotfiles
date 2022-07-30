@@ -54,10 +54,6 @@ whichkey.register({
 	["[d"] = { "<cmd>cabove<CR>", ":cabove" },
 	["]d"] = { "<cmd>cbelow<CR>", ":cbelow" },
 
-	-- go to prev/next diagnostic
-	["[g"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Go to previous diagnostic" },
-	["]g"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Go to next diagnostic" },
-
 	-- remap 0 to go to first non-blank character (like ^)
 	["0"] = { "^", "See :h ^", mode = "n" }, -- should be mode "nvo", see comments below
 
@@ -175,7 +171,7 @@ whichkey.register({
 		d = { "<cmd>FloatermNew lazydocker<cr>", "Open lazydocker" },
 		m = { "<cmd>FloatermNew btm -m<cr>", "Open system monitor" },
 		u = { "<cmd>FloatermNew ncdu<cr>", "Show disk usage" },
-		l = { "<cmd>LspInstallInfo<cr>", "Open LSP installer" },
+		l = { "<cmd>Mason<cr>", "Open Mason installer" },
 		D = { "<cmd>DBUI<cr>", "Open DBUI" },
 	},
 
