@@ -119,8 +119,6 @@ whichkey.register({
 })
 
 whichkey.register({
-	[","] = { "<Plug>Sneak_,", "Sneak repeat opposite direction" },
-
 	l = {
 		name = "lsp",
 		i = { "<cmd>LspInfo<cr>", "Lsp info" },

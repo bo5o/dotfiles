@@ -219,12 +219,25 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- Sneaky motion
 	use({
-		"justinmk/vim-sneak",
+		"phaazon/hop.nvim",
+		branch = "v2",
 		config = function()
-			vim.g["sneak#label"] = 1
-			vim.g["sneak#use_ic_scs"] = 1
+			require("hop").setup({
+				keys = "arsdheiqwfpgjluy;zxcvbkmtn",
+			})
+
+			vim.keymap.set("n", "<leader><leader>", function()
+				require("hop").hint_words()
+			end, { desc = "hop word" })
+
+			vim.keymap.set("n", "S", function()
+				require("hop").hint_char2()
+			end, { desc = "hop sneak" })
+
+			vim.keymap.set("n", "s", function()
+				require("hop").hint_char2()
+			end, { desc = "hop sneak" })
 		end,
 	})
 
