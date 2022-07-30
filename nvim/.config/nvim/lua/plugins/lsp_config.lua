@@ -14,7 +14,7 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]g", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "lq", vim.diagnostic.setloclist, opts)
+vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
