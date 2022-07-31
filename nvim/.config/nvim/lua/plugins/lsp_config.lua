@@ -3,6 +3,7 @@ local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 local cmp_lsp = require("cmp_nvim_lsp")
 local lsp_signature = require("lsp_signature")
+local fidget = require("fidget")
 
 local function create_capabilities()
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -185,3 +186,5 @@ for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
+
+fidget.setup({})

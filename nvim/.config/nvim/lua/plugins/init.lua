@@ -369,6 +369,8 @@ return require("packer").startup(function(use)
 		"b0o/schemastore.nvim",
 		-- Better typescript lsp support
 		"jose-elias-alvarez/nvim-lsp-ts-utils",
+		-- Progress display
+		"j-hui/fidget.nvim",
 		{
 			-- Language server configuration
 			"neovim/nvim-lspconfig",
@@ -378,6 +380,7 @@ return require("packer").startup(function(use)
 				"lsp_signature.nvim",
 				"schemastore.nvim",
 				"nvim-lsp-ts-utils",
+				"fidget.nvim",
 			},
 			config = function()
 				require("plugins.lsp_config")
