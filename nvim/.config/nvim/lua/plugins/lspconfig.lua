@@ -11,30 +11,38 @@ local function create_capabilities()
 	return cmp_lsp.update_capabilities(capabilities)
 end
 
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]g", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, opts)
+local function make_keymap_func(default_opts)
+	return function(mode, lhs, rhs, opts)
+		local opts = vim.tbl_extend("force", default_opts, opts)
+		vim.keymap.set(mode, lhs, rhs, opts)
+	end
+end
+
+local set_keymap = make_keymap_func({ noremap = true, silent = true })
+set_keymap("n", "[g", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+set_keymap("n", "]g", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+set_keymap("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "Add diagnostics to location list" })
+set_keymap("n", "<leader>lg", vim.diagnostic.open_float, { desc = "Show diagnostics" })
 
 local on_attach = function(client, bufnr)
+	local buf_set_keymap = make_keymap_func({ noremap = true, silent = true, buffer = bufnr })
+
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set("n", "<leader>K", vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set("n", "<leader>lwa", vim.lsp.buf.add_workspace_folder, bufopts)
-	vim.keymap.set("n", "<leader>lwr", vim.lsp.buf.remove_workspace_folder, bufopts)
-	vim.keymap.set("n", "<leader>lwl", function()
+	buf_set_keymap("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+	buf_set_keymap("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+	buf_set_keymap("n", "K", vim.lsp.buf.hover, { desc = "Display hover information" })
+	buf_set_keymap("n", "gi", vim.lsp.buf.implementation, { desc = "List implementations" })
+	buf_set_keymap("n", "gr", "<cmd>TroubleToggle lsp_references<CR>", { desc = "List all references" })
+	buf_set_keymap("n", "<leader>K", vim.lsp.buf.signature_help, { desc = "Display signature help" })
+	buf_set_keymap("n", "<leader>ld", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+	buf_set_keymap("n", "<leader>lf", vim.lsp.buf.formatting, { desc = "Format current buffer" })
+	buf_set_keymap("n", "<leader>ln", vim.lsp.buf.rename, { desc = "Rename all references" })
+	buf_set_keymap("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "Select available code actions" })
+	buf_set_keymap("n", "<leader>lwa", vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder" })
+	buf_set_keymap("n", "<leader>lwr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove workspace folder" })
+	buf_set_keymap("n", "<leader>lwl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, bufopts)
-	vim.keymap.set("n", "<leader>ld", vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "<leader>ru", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("n", "<leader>lf", vim.lsp.buf.formatting, bufopts)
-	vim.keymap.set("n", "gr", "<cmd>TroubleToggle lsp_references<CR>", bufopts)
+	end, { desc = "List workspace folders" })
 
 	-- Configure signature help for completion
 	lsp_signature.on_attach({
@@ -171,10 +179,15 @@ mason_lspconfig.setup_handlers({
 				-- required to fix code action ranges and filter diagnostics
 				nvim_ts_utils.setup_client(client)
 
-				local bufopts = { noremap = true, silent = true, buffer = bufnr }
-				vim.keymap.set("n", "<leader>lm", "<cmd>TSLspRenameFile<cr>", bufopts)
-				vim.keymap.set("n", "<leader>lI", "<cmd>TSLspImportAll<cr>", bufopts)
-				vim.keymap.set("n", "<leader>lo", "<cmd>TSLspOrganize<cr>", bufopts)
+				local buf_set_keymap = make_keymap_func({ noremap = true, silent = true, buffer = bufnr })
+				buf_set_keymap(
+					"n",
+					"<leader>lm",
+					"<cmd>TSLspRenameFile<cr>",
+					{ desc = "Rename file and update imports" }
+				)
+				buf_set_keymap("n", "<leader>lI", "<cmd>TSLspImportAll<cr>", { desc = "Import all missing imports" })
+				buf_set_keymap("n", "<leader>lo", "<cmd>TSLspOrganize<cr>", { desc = "Organize imports" })
 			end,
 		})
 	end,

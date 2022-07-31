@@ -741,7 +741,7 @@ return require("packer").startup(function(use)
 			local lsp_lines = require("lsp_lines")
 			lsp_lines.setup()
 
-			vim.keymap.set("n", "<leader>ll", lsp_lines.toggle, { desc = "Toggle lsp_lines" })
+			vim.keymap.set("n", "<leader>ll", lsp_lines.toggle, { desc = "Show/hide lsp diagnostics" })
 		end,
 	})
 
