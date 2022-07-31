@@ -383,7 +383,7 @@ return require("packer").startup(function(use)
 				"fidget.nvim",
 			},
 			config = function()
-				require("plugins.lsp_config")
+				require("plugins.lspconfig")
 			end,
 		},
 	})
