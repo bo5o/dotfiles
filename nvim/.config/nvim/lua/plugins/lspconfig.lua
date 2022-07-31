@@ -27,7 +27,6 @@ set_keymap("n", "<leader>lg", vim.diagnostic.open_float, { desc = "Show diagnost
 local on_attach = function(client, bufnr)
 	local buf_set_keymap = make_keymap_func({ noremap = true, silent = true, buffer = bufnr })
 
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	buf_set_keymap("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 	buf_set_keymap("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 	buf_set_keymap("n", "K", vim.lsp.buf.hover, { desc = "Display hover information" })
@@ -37,7 +36,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<leader>ld", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
 	buf_set_keymap("n", "<leader>lf", vim.lsp.buf.formatting, { desc = "Format current buffer" })
 	buf_set_keymap("n", "<leader>ln", vim.lsp.buf.rename, { desc = "Rename all references" })
-	buf_set_keymap("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "Select available code actions" })
+	buf_set_keymap("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "Select code action" })
 	buf_set_keymap("n", "<leader>lwa", vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder" })
 	buf_set_keymap("n", "<leader>lwr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove workspace folder" })
 	buf_set_keymap("n", "<leader>lwl", function()
@@ -141,54 +140,31 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 	["tsserver"] = function()
-		local nvim_ts_utils = require("nvim-lsp-ts-utils")
-		lspconfig.tsserver.setup({
-			init_options = nvim_ts_utils.init_options,
-			on_attach = function(client, bufnr)
-				on_attach(client, bufnr)
-				-- let eslint/prettier handle formatting
-				client.resolved_capabilities.document_formatting = false
-				client.resolved_capabilities.document_range_formatting = false
+		local typescript = require("typescript")
+		typescript.setup({
+			disable_commands = false, -- prevent the plugin from creating Vim commands
+			debug = false, -- enable debug logging for commands
+			server = { -- pass options to lspconfig's setup method
+				on_attach = function(client, bufnr)
+					client.resolved_capabilities.document_formatting = false
+					client.resolved_capabilities.document_range_formatting = false
 
-				nvim_ts_utils.setup({
-					debug = false,
-					disable_commands = false,
-					enable_import_on_completion = false,
-
-					import_all_timeout = 5000, -- ms
-					import_all_priorities = {
-						same_file = 1, -- add to existing import statement
-						local_files = 2, -- git files or files with relative path markers
-						buffer_content = 3, -- loaded buffer content
-						buffers = 4, -- loaded buffer names
-					},
-					import_all_scan_buffers = 100,
-					import_all_select_source = false,
-
-					filter_out_diagnostics_by_severity = {},
-					filter_out_diagnostics_by_code = {},
-
-					auto_inlay_hints = true,
-					inlay_hints_highlight = "Comment",
-
-					update_imports_on_move = false,
-					require_confirmation_on_move = false,
-					watch_dir = nil,
-				})
-
-				-- required to fix code action ranges and filter diagnostics
-				nvim_ts_utils.setup_client(client)
-
-				local buf_set_keymap = make_keymap_func({ noremap = true, silent = true, buffer = bufnr })
-				buf_set_keymap(
-					"n",
-					"<leader>lm",
-					"<cmd>TSLspRenameFile<cr>",
-					{ desc = "Rename file and update imports" }
-				)
-				buf_set_keymap("n", "<leader>lI", "<cmd>TSLspImportAll<cr>", { desc = "Import all missing imports" })
-				buf_set_keymap("n", "<leader>lo", "<cmd>TSLspOrganize<cr>", { desc = "Organize imports" })
-			end,
+					local buf_set_keymap = make_keymap_func({ noremap = true, silent = true, buffer = bufnr })
+					buf_set_keymap(
+						"n",
+						"<leader>lm",
+						"<cmd>TypescriptRenameFile<cr>",
+						{ desc = "Rename file and update imports" }
+					)
+					buf_set_keymap(
+						"n",
+						"<leader>lI",
+						typescript.actions.addMissingImports,
+						{ desc = "Import all missing imports" }
+					)
+					buf_set_keymap("n", "<leader>lo", typescript.actions.organizeImports, { desc = "Organize imports" })
+				end,
+			},
 		})
 	end,
 })

@@ -368,7 +368,7 @@ return require("packer").startup(function(use)
 		-- JSON schema support
 		"b0o/schemastore.nvim",
 		-- Better typescript lsp support
-		"jose-elias-alvarez/nvim-lsp-ts-utils",
+		"jose-elias-alvarez/typescript.nvim",
 		-- Progress display
 		"j-hui/fidget.nvim",
 		{
@@ -379,7 +379,7 @@ return require("packer").startup(function(use)
 				"mason-lspconfig.nvim",
 				"lsp_signature.nvim",
 				"schemastore.nvim",
-				"nvim-lsp-ts-utils",
+				"typescript.nvim",
 				"fidget.nvim",
 			},
 			config = function()
