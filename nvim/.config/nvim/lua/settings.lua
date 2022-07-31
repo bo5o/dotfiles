@@ -97,12 +97,12 @@ vim.opt.foldopen:remove("block")
 vim.opt.wildmode = { "longest", "list", "full" }
 vim.opt.wildignore = { "*.o", "*~", "*.pyc", "*.mat", "*.pdfpc", "*.sls", "*.so" }
 vim.opt.wildignore:append({
-	"*.swp",
-	"*.aux",
-	"*.gz",
-	"*.fdb_latexmk",
-	"*.fls",
-	"*.bbl",
+  "*.swp",
+  "*.aux",
+  "*.gz",
+  "*.fdb_latexmk",
+  "*.fls",
+  "*.bbl",
 })
 vim.opt.wildignore:append({ "*.log", "*.pdf", "*.glg", "*.glo", "*.ist", "*.bcf" })
 vim.opt.wildignore:append({ "*.blg", "*.gls", "*.run.xml", "*.toc", "*.acn", "*.acr" })
@@ -144,7 +144,8 @@ vim.opt.wrap = false -- don't wrap lines
 
 -- toggle invisible characters
 vim.opt.list = true
-vim.opt.listchars = { tab = "→ ", eol = "¬", trail = "⋅", extends = "❯", precedes = "❮" }
+vim.opt.listchars =
+  { tab = "→ ", eol = "¬", trail = "⋅", extends = "❯", precedes = "❮" }
 vim.opt.showbreak = "↪"
 
 -- filetype settings
