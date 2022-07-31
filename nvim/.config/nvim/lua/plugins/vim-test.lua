@@ -14,8 +14,8 @@ vim.g["test#python#pytest#file_pattern"] = "\\.py"
 vim.g["test#python#runner"] = "pytest"
 
 vim.g["test#python#pytest#options"] = {
-    nearest = "--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --no-cov",
-    file = "--no-cov",
+	nearest = "--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --no-cov",
+	file = "--no-cov",
 }
 
 -- JavaScript
