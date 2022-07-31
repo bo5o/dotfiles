@@ -1,5 +1,6 @@
 local telescope = require("telescope")
 local actions = require("telescope.actions")
+local builtin = require("telescope.builtin")
 
 telescope.setup({
   extensions = {
@@ -51,7 +52,6 @@ telescope.setup({
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-q>"] = actions.smart_send_to_loclist + actions.open_loclist,
         ["<CR>"] = actions.select_default + actions.center,
-        ["<C-h>"] = "which_key",
       },
       n = {
         ["<C-j>"] = actions.move_selection_next,
@@ -61,3 +61,21 @@ telescope.setup({
     },
   },
 })
+
+vim.keymap.set("n", "<leader>fr", function()
+  builtin.live_grep({
+    additional_args = function(opts)
+      return { "--hidden", "--ignore", "--glob=!.git/" }
+    end,
+  })
+end, { silent = true, desc = "Live grep (incl. hidden)" })
+
+local function find_files(opts)
+  opts = opts or {}
+  local ok = pcall(builtin.git_files, opts)
+  if not ok then
+    builtin.find_files(opts)
+  end
+end
+
+vim.keymap.set("n", "<leader>ff", find_files, { silent = true, desc = "Find files" })

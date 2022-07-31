@@ -130,12 +130,6 @@ whichkey.register({
 
   f = {
     name = "find",
-    f = { "<cmd>Telescope find_files<cr>", "Find files" },
-    F = {
-      "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>",
-      "Find files (incl. hidden)",
-    },
-    r = { "<cmd>Telescope live_grep<cr>", "Live grep" },
     b = { "<cmd>Telescope buffers<cr>", "Find buffers" },
     m = { "<cmd>Telescope oldfiles<cr>", "Find most recently used files" },
     k = { "<cmd>Telescope keymaps<cr>", "Find keymaps" },
@@ -144,7 +138,6 @@ whichkey.register({
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
       "Find workspace symbols",
     },
-    g = { "<cmd>Telescope git_files<cr>", "Find git files" },
     c = { "<cmd>Telescope git_bcommits<cr>", "Find git commits (file)" },
     C = { "<cmd>Telescope git_commits<cr>", "Find git commits (repo)" },
     u = { "<cmd>Telescope ultisnips<cr>", "Find snippets" },
