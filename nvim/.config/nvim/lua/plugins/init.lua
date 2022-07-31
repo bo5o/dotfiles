@@ -729,6 +729,21 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use({
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		config = function()
+			vim.diagnostic.config({
+				virtual_text = false,
+				virtual_lines = false,
+			})
+
+			local lsp_lines = require("lsp_lines")
+			lsp_lines.setup()
+
+			vim.keymap.set("n", "<leader>ll", lsp_lines.toggle, { desc = "Toggle lsp_lines" })
+		end,
+	})
+
 	-- Highlight and find TODO comments
 	use({
 		"folke/todo-comments.nvim",
