@@ -260,7 +260,10 @@ return require("packer").startup(function(use)
         {
             "hrsh7th/nvim-cmp",
             event = "InsertEnter",
-            requires = "onsails/lspkind-nvim", -- nice symbols for completion menu
+            requires = {
+                "onsails/lspkind-nvim", -- nice symbols for completion menu
+                "lukas-reineke/cmp-under-comparator", -- better sorting of dunder methods
+            },
             config = function()
                 require("plugins.nvim_cmp")
             end,

@@ -1,4 +1,5 @@
 local cmp = require("cmp")
+local cmp_under_comparator = require("cmp-under-comparator")
 local lspkind = require("lspkind")
 
 local t = function(str)
@@ -158,6 +159,21 @@ cmp.setup({
                 all_panes = true,
                 trigger_characters = {},
             },
+        },
+    },
+
+    sorting = {
+        comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            cmp_under_comparator.under,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.locality,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
         },
     },
 
