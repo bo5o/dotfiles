@@ -117,7 +117,20 @@ mason_lspconfig.setup_handlers({
     lspconfig[server_name].setup({})
   end,
   ["sumneko_lua"] = function()
-    local luadev = require("lua-dev").setup({})
+    local luadev = require("lua-dev").setup({
+      library = {
+        vimruntime = true,
+        types = true,
+        plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+      },
+      lspconfig = {
+        settings = {
+          Lua = {
+            format = { enable = false },
+          },
+        },
+      },
+    })
     lspconfig.sumneko_lua.setup(luadev)
   end,
   ["jsonls"] = function()
