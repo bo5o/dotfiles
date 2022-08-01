@@ -23,10 +23,10 @@ require("packer").init({
 
 local augroup = vim.api.nvim_create_augroup("packer_user_config", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = { vim.fn.stdpath("config") .. "/lua/plugins/*.lua" },
+  pattern = { "**/nvim/lua/plugins/*.lua" },
   command = "source <afile> | PackerCompile",
   group = augroup,
-  desc = "Re-compile packer plugin configuration",
+  desc = "Re-compile packer plugins",
 })
 
 return require("packer").startup(function(use)
