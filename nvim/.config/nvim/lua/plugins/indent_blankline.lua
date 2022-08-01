@@ -4,4 +4,5 @@ require("indent_blankline").setup({
   show_trailing_blankline_indent = true,
   filetype_exclude = { "help", "vimwiki", "markdown", "startify", "NvimTree" },
   buftype_exclude = { "terminal" },
+  show_current_context = false,
 })

@@ -68,7 +68,6 @@ return require("packer").startup(function(use)
   -- Indentation guides
   use({
     "lukas-reineke/indent-blankline.nvim",
-    event = "ColorScheme",
     config = function()
       require("plugins.indent_blankline")
     end,
@@ -877,6 +876,29 @@ return require("packer").startup(function(use)
     "folke/which-key.nvim",
     config = function()
       require("which-key").setup({})
+    end,
+  })
+
+  -- Various extensions
+  use({
+    "echasnovski/mini.nvim",
+    branch = "stable",
+    config = function()
+      vim.g.miniindentscope_disable = true
+      require("mini.indentscope").setup({
+        mappings = {
+          -- Textobjects
+          object_scope = "ii",
+          object_scope_with_border = "ai",
+
+          -- Motions (jump to respective border line; if not present - body line)
+          goto_top = "",
+          goto_bottom = "",
+        },
+        options = {
+          border = "none",
+        },
+      })
     end,
   })
 
