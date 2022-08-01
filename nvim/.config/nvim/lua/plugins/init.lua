@@ -40,9 +40,7 @@ return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
   -- Faster startup
-  use({
-    "lewis6991/impatient.nvim",
-  })
+  use("lewis6991/impatient.nvim")
 
   ---------------
   -- UI and style
@@ -269,7 +267,6 @@ return require("packer").startup(function(use)
       end,
     },
     { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }, -- lsp
-    { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }, -- neovim lua
     { "hrsh7th/cmp-buffer", after = "nvim-cmp" }, -- buffer contents
     { "hrsh7th/cmp-path", after = "nvim-cmp" }, -- path
     { "quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp" }, -- snippets
@@ -374,6 +371,8 @@ return require("packer").startup(function(use)
     "jose-elias-alvarez/typescript.nvim",
     -- Progress display
     "j-hui/fidget.nvim",
+    -- Lua development
+    "folke/lua-dev.nvim",
     {
       -- Language server configuration
       "neovim/nvim-lspconfig",
@@ -384,6 +383,7 @@ return require("packer").startup(function(use)
         "schemastore.nvim",
         "typescript.nvim",
         "fidget.nvim",
+        "lua-dev.nvim",
       },
       config = function()
         require("plugins.lspconfig")

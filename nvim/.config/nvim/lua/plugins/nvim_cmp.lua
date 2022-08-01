@@ -123,7 +123,6 @@ cmp.setup({
   },
 
   sources = {
-    { name = "nvim_lua" },
     { name = "nvim_lsp" },
     { name = "path" },
     { name = "ultisnips" },
@@ -165,7 +164,6 @@ cmp.setup({
     format = lspkind.cmp_format({
       with_text = true,
       menu = {
-        nvim_lua = "[api]",
         nvim_lsp = "[lsp]",
         path = "[path]",
         ultisnips = "[snip]",
@@ -199,7 +197,7 @@ cmp.setup.cmdline(":", {
   }),
 })
 
-local augroup = vim.api.nvim_create_augroup("DadbodSql")
+local augroup = vim.api.nvim_create_augroup("DadbodSql", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "sql", " mysql", "plsql" },
   callback = function()
