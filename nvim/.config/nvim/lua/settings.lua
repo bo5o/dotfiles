@@ -152,6 +152,16 @@ vim.opt.showbreak = "↪"
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
 
+local highlight_yank = vim.api.nvim_create_augroup("highlight_yank", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  pattern = { "*" },
+  callback = function()
+    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 300 })
+  end,
+  group = highlight_yank,
+  desc = "Highlight yanked region",
+})
+
 local file_type_settings =
   vim.api.nvim_create_augroup("FileTypeSettings", { clear = true })
 

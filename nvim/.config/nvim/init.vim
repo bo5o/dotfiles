@@ -127,37 +127,6 @@ augroup calcurse
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Disable extra tmux complete trigger
-let g:tmuxcomplete#trigger = ''
-
-"" highlight yank
-augroup highlight_yank
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=300}
-augroup END
-
-"" vim-ipython-cell
-" remaining config in `nvim/.config/nvim/after/ftplugin/python.vim`
-
-" Run current file
-nnoremap <buffer> <silent> <localleader>R :JupyterRunFile<CR>
-nnoremap <buffer> <silent> <localleader>I :PythonImportThisFile<CR>
-
-" Send a selection of lines
-nnoremap <buffer> <silent> <localleader>X :JupyterSendCell<CR>
-nnoremap <buffer> <silent> <localleader>E :JupyterSendRange<CR>
-nmap     <buffer> <silent> <localleader>e <Plug>JupyterRunTextObj
-vmap     <buffer> <silent> <localleader>e <Plug>JupyterRunVisual
-
-
-hi FloatermBorder ctermfg=0 ctermbg=13 guifg=#ebdbb2 guibg=None
-
-"" semshi
-let g:semshi#error_sign = v:false
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Close all buffer except the current one

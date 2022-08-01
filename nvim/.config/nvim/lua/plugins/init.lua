@@ -417,7 +417,13 @@ return require("packer").startup(function(use)
   -- Semantic syntax highlighting for Python
   -- Let's wait for https://github.com/nvim-treesitter/nvim-treesitter/issues/81
   -- and then switch to Treesitter for semantic syntax highlighting
-  use({ "numirias/semshi", config = "vim.cmd [[silent UpdateRemotePlugins]]" })
+  use({
+    "numirias/semshi",
+    config = function()
+      vim.cmd([[silent UpdateRemotePlugins]])
+      vim.g["semshi#error_sign"] = false
+    end,
+  })
 
   -- Better Python indenting
   use("Vimjas/vim-python-pep8-indent")
@@ -687,6 +693,24 @@ return require("packer").startup(function(use)
     },
     config = function()
       vim.g.ipython_cell_delimit_cells_by = "tags"
+      local bufopts = { silent = true, buffer = true }
+      vim.keymap.set("n", "<c-c><c-f>", "<cmd>IPythonCellRun<cr>", bufopts)
+      vim.keymap.set("n", "<c-c><c-t>", "<cmd>IPythonCellRunTime<cr>", bufopts)
+      vim.keymap.set(
+        "n",
+        "<c-c><c-x>",
+        "<cmd>IPythonCellExecuteCellVerbose<cr>",
+        bufopts
+      )
+      vim.keymap.set(
+        "n",
+        "<c-c><c-j>",
+        "<cmd>IPythonCellExecuteCellVerboseJump<cr>",
+        bufopts
+      )
+      vim.keymap.set("n", "<c-c><c-l>", "<cmd>IPythonCellClear<cr>", bufopts)
+      vim.keymap.set("n", "[C", "<cmd>IPythonCellPrevCell<cr>", bufopts)
+      vim.keymap.set("n", "]C", "<cmd>IPythonCellNextCell<cr>", bufopts)
     end,
   })
 
@@ -706,6 +730,14 @@ return require("packer").startup(function(use)
     },
     config = function()
       vim.g.jupyter_mapkeys = 1
+
+      local bufopts = { silent = true, buffer = true }
+      vim.keymap.set("n", "<localleader>R", "<cmd>JupyterRunFile<cr>", bufopts)
+      vim.keymap.set("n", "<localleader>I", "<cmd>PythonImportThisFile<cr>", bufopts)
+      vim.keymap.set("n", "<localleader>X", "<cmd>JupyterSendCell<cr>", bufopts)
+      vim.keymap.set("n", "<localleader>E", "<cmd>JupyterSendRange<cr>", bufopts)
+      vim.keymap.set("n", "<localleader>e", "<Plug>JupyterRunTextObj", bufopts)
+      vim.keymap.set("v", "<localleader>e", "<Plug>JupyterRunVisual", bufopts)
     end,
   })
 
@@ -727,6 +759,12 @@ return require("packer").startup(function(use)
       vim.g.floaterm_wintitle = 0
       vim.g.floaterm_autoclose = 1
       vim.g.floaterm_opener = "edit"
+
+      vim.api.nvim_set_hl(
+        0,
+        "FloatermBorder",
+        { fg = "#ebdbb2", bg = nil, ctermfg = 0, ctermbg = 13 }
+      )
     end,
   })
 
