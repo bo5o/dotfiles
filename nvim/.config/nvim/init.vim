@@ -129,32 +129,6 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" vimtex
-let g:vimtex_view_method = 'zathura'
-let g:tex_flavor = 'latex'
-
-augroup vimtex_event_1
-    au!
-    au User VimtexEventQuit     call vimtex#compiler#clean(0)
-augroup END
-
-" ysc mapping
-augroup latexSurround
-    autocmd!
-    autocmd FileType tex call s:latexSurround()
-augroup END
-
-function! s:latexSurround()
-    let b:surround_{char2nr("e")}
-                \ = "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}"
-    let b:surround_{char2nr("c")} = "\\\1command: \1{\r}"
-endfunction
-
-let g:vimtex_quickfix_latexlog = {
-      \ 'overfull' : 0,
-      \ 'underfull' : 0,
-      \}
-
 " Disable extra tmux complete trigger
 let g:tmuxcomplete#trigger = ''
 

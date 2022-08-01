@@ -390,7 +390,13 @@ return require("packer").startup(function(use)
   })
 
   -- LaTeX
-  use({ "lervag/vimtex", ft = "tex" })
+  use({
+    "lervag/vimtex",
+    ft = "tex",
+    config = function()
+      require("plugins.vimtex")
+    end,
+  })
 
   -- Transparent editing of GPG encrypted files
   use("jamessan/vim-gnupg")
