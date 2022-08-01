@@ -312,3 +312,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 -- tmux session for dispatch
 vim.g.tmux_session = "popup"
+
+-- Close all buffer except the current one
+vim.api.nvim_create_user_command("BufOnly", [[silent! execute "%bd|e#|bd#"]], {})

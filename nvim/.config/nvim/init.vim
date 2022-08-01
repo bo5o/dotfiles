@@ -12,9 +12,3 @@ lua require("keybinds")
 
 "" Snippets
 lua require("snippets")
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Close all buffer except the current one
-command! BufOnly silent! execute "%bd|e#|bd#"
