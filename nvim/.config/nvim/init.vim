@@ -129,9 +129,6 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" git messenger
-hi gitmessengerPopupNormal term=None guifg=#ebdbb2 guibg=#32302f ctermfg=None ctermbg=None
-
 "" vimtex
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'

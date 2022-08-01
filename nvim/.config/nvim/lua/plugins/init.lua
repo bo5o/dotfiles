@@ -480,7 +480,18 @@ return require("packer").startup(function(use)
     -- Bitbucket integration
     { "tommcdo/vim-fubitive", after = "vim-fugitive" },
     -- Show git commit under cursor
-    { "rhysd/git-messenger.vim", cmd = "GitMessenger", keys = "<leader>gm" },
+    {
+      "rhysd/git-messenger.vim",
+      cmd = "GitMessenger",
+      keys = "<leader>gm",
+      config = function()
+        vim.api.nvim_set_hl(
+          0,
+          "gitmessengerPopupNormal",
+          { term = nil, fg = "#ebdbb2", bg = "#32302f", ctermfg = nil, ctermbg = nil }
+        )
+      end,
+    },
     -- Diff view for changes of any git rev
     use({
       "sindrets/diffview.nvim",
