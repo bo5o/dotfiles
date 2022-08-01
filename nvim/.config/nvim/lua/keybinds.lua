@@ -24,11 +24,11 @@ whichkey.register({
       a = { "<cmd>bufdo bd<CR>", "Close all buffers" },
       o = { "<cmd>BufOnly<CR>", "Close all buffers (except active buffer)" },
       d = {
-        "<cmd>BClose!<CR>",
+        "<cmd>lua MiniBufremove.delete(0, true)<CR>",
         "Close current buffer (ignore unsaved changes)",
       },
     },
-    x = { "<cmd>Bclose<CR>", "Close current buffer" },
+    x = { "<cmd>lua MiniBufremove.delete()<CR>", "Close current buffer" },
     X = { "<cmd>edit#<CR>", "Re-open last closed buffer" },
     cd = {
       "<cmd>cd %:p:h<CR>:pwd<CR>",

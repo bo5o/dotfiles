@@ -899,6 +899,10 @@ return require("packer").startup(function(use)
           border = "none",
         },
       })
+
+      require("mini.bufremove").setup({
+        set_vim_settings = false,
+      })
     end,
   })
 
