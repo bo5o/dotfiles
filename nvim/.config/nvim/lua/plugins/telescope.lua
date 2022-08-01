@@ -71,7 +71,7 @@ vim.keymap.set("n", "<leader>fr", function()
 end, { silent = true, desc = "Live grep (incl. hidden)" })
 
 local function find_files()
-  local ok = pcall(builtin.git_files, { use_git_root = false })
+  local ok = pcall(builtin.git_files, { use_git_root = false, show_untracked = true })
   if not ok then
     builtin.find_files()
   end
