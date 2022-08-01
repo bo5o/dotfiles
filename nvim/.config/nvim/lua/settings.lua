@@ -152,25 +152,95 @@ vim.opt.showbreak = "↪"
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
 
-vim.cmd([[
-augroup FileTypeSettings
-    autocmd!
-    autocmd FileType python setlocal textwidth=88
-    autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml,vimwiki setlocal tabstop=2
-    autocmd FileType yaml,html,css,javascript,typescript,json,vue,tex,bib,xml,vimwiki setlocal shiftwidth=2
-    autocmd FileType vimwiki setlocal tabstop=4
-    autocmd FileType vimwiki setlocal shiftwidth=4
-    autocmd FileType vimwiki setlocal textwidth=88
-    autocmd FileType markdown setlocal textwidth=88
-    autocmd FileType markdown setlocal conceallevel=2
-    autocmd FileType requirements setlocal commentstring=#\ %s
-    autocmd BufRead,BufNewFile *COMMIT_EDITMSG setlocal textwidth=80
-    autocmd BufRead,BufNewFile .env.* setlocal filetype=sh
-    autocmd FileType gitcommit setlocal textwidth=80
-    autocmd BufRead,BufNewFile **/models/**/*.sql setlocal filetype=jinja
-    autocmd BufRead,BufNewFile **/macros/**/*.sql setlocal filetype=jinja
-augroup END
-]])
+local file_type_settings =
+  vim.api.nvim_create_augroup("FileTypeSettings", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "python" },
+  group = file_type_settings,
+  callback = function()
+    vim.opt_local.textwidth = 88
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "yaml",
+    "html",
+    "css",
+    "javascript",
+    "typescript",
+    "json",
+    "vue",
+    "tex",
+    "bib",
+    "xml",
+  },
+  group = file_type_settings,
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "vimwiki" },
+  group = file_type_settings,
+  callback = function()
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.textwidth = 88
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown" },
+  group = file_type_settings,
+  callback = function()
+    vim.opt_local.textwidth = 88
+    vim.opt_local.conceallevel = 2
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "requirements" },
+  group = file_type_settings,
+  callback = function()
+    vim.opt_local.commentstring = [[#\ %s]]
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "gitcommit" },
+  group = file_type_settings,
+  callback = function()
+    vim.opt_local.textwidth = 80
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*COMMIT_EDITMSG" },
+  group = file_type_settings,
+  callback = function()
+    vim.opt_local.textwidth = 80
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "**/models/**/*.sql", "**/macros/**/*.sql" },
+  group = file_type_settings,
+  callback = function()
+    vim.opt_local.filetype = "jinja"
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { ".env.*" },
+  group = file_type_settings,
+  callback = function()
+    vim.opt_local.filetype = "sh"
+  end,
+})
 
 -- tmux session for dispatch
 vim.g.tmux_session = "popup"

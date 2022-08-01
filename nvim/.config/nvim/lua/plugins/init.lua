@@ -1,7 +1,6 @@
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  Packer_bootstrap = fn.system({
+local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  Packer_bootstrap = vim.fn.system({
     "git",
     "clone",
     "--depth",
@@ -22,14 +21,13 @@ require("packer").init({
   },
 })
 
--- reload plugin configuration automatically
-local packer_user_config_cmd = [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost %s/lua/plugins/*.lua source <afile> | PackerCompile
-  augroup end
-]]
-vim.cmd(string.format(packer_user_config_cmd, fn.stdpath("config")))
+local augroup = vim.api.nvim_create_augroup("packer_user_config", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { vim.fn.stdpath("config") .. "/lua/plugins/*.lua" },
+  command = "source <afile> | PackerCompile",
+  group = augroup,
+  desc = "Re-compile packer plugin configuration",
+})
 
 return require("packer").startup(function(use)
   --------------------
