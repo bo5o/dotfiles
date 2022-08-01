@@ -11,11 +11,6 @@ lua require("settings")
 lua require("keybinds")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au TermOpen * setlocal nonumber norelativenumber
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " bibtex
@@ -98,32 +93,9 @@ augroup tikz_snippets
     autocmd FileType tex inoremap <buffer> ;isec  \intersec[]{<++>}<Esc>F]i
 augroup END
 
-augroup buffer_settings
-    autocmd!
-    " psql
-    au BufRead /tmp/psql.edit.* set syntax=sql
-    " pass
-    au BufRead */pass.*.txt set noundofile
-    "sphinx
-    autocmd BufRead */services/docs/*.rst set makeprg=make\ -f\ Makefile.docs\ html
-augroup END
-
 augroup underline_python_doc_section
     autocmd!
     autocmd FileType python inoremap ;- <Esc>Ypviwr-o
-augroup END
-
-" Vim-Anywhere
-augroup vim_anywhere
-    autocmd!
-    autocmd BufRead,BufNewFile /tmp/vim-anywhere* set filetype=txt
-augroup END
-
-" Make calcurse notes markdown compatible:
-augroup calcurse
-    autocmd!
-    autocmd BufRead,BufNewFile /tmp/calcurse* set filetype=markdown
-    autocmd BufRead,BufNewFile ~/.calcurse/notes/* set filetype=markdown
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

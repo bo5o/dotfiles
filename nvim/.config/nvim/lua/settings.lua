@@ -162,6 +162,19 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight yanked region",
 })
 
+local terminal_settings =
+  vim.api.nvim_create_augroup("terminal_settings", { clear = true })
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = { "*" },
+  group = terminal_settings,
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+  end,
+  desc = "Disable line numbers in terminal buffers",
+})
+
 local file_type_settings =
   vim.api.nvim_create_augroup("FileTypeSettings", { clear = true })
 
@@ -250,6 +263,51 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   callback = function()
     vim.opt_local.filetype = "sh"
   end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead" }, {
+  pattern = { "/tmp/psql.edit.*" },
+  group = file_type_settings,
+  callback = function()
+    vim.opt.syntax = "sql"
+  end,
+  desc = "Set syntax to sql for psql edit files",
+})
+
+vim.api.nvim_create_autocmd({ "BufRead" }, {
+  pattern = { "**/pass.*.txt" },
+  group = file_type_settings,
+  callback = function()
+    vim.opt.undofile = false
+  end,
+  desc = "Disable undofile for pass secret files",
+})
+
+vim.api.nvim_create_autocmd({ "BufRead" }, {
+  pattern = { "**/services/docs/*.rst" },
+  group = file_type_settings,
+  callback = function()
+    vim.opt.makeprg = "make -f Makefile.docs html"
+  end,
+  desc = "Set makeprg for Sphinx docs",
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "/tmp/vim-anywhere*" },
+  group = file_type_settings,
+  callback = function()
+    vim.opt.filetype = "txt"
+  end,
+  desc = "Set filetype for vim-anywhere",
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "/tmp/calcurse*", "**/.calcurse/notes/*" },
+  group = file_type_settings,
+  callback = function()
+    vim.opt.filetype = "markdown"
+  end,
+  desc = "Set filetype for calcurse notes",
 })
 
 -- tmux session for dispatch
