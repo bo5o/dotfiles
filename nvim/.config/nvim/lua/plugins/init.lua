@@ -511,8 +511,8 @@ return require("packer").startup(function(use)
   -- Project helpers
   use({
     "tpope/vim-projectionist",
-    config = function()
-      require("plugins.projectionist")
+    setup = function()
+      require("plugins.projectionist").setup()
     end,
   })
 
