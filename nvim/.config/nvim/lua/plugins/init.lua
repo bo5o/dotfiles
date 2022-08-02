@@ -652,7 +652,7 @@ return require("packer").startup(function(use)
       "TodoTrouble",
     },
     config = function()
-      require("plugins.trouble")
+      require("plugins.trouble").config()
     end,
   })
 
