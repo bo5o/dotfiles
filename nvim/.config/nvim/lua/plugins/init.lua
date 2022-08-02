@@ -519,21 +519,8 @@ return require("packer").startup(function(use)
   -- automatically change to project directory when opening files
   use({
     "airblade/vim-rooter",
-    config = function()
-      vim.g.rooter_silent_chdir = 1
-      vim.g.rooter_cd_cmd = "lcd"
-      vim.g.rooter_patterns = {
-        "!^.direnv",
-        "!^site-packages",
-        "!^node_modules",
-        ".project-root",
-        "package.json",
-        "requirements.txt",
-        "setup.py",
-        "manage.py",
-        "pyproject.toml",
-        ".git",
-      }
+    setup = function()
+     require('plugins.vim_rooter').setup() 
     end,
   })
 
