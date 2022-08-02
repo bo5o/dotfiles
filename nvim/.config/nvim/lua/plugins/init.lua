@@ -588,26 +588,11 @@ return require("packer").startup(function(use)
       "IPythonCellPrevCell",
       "IPythonCellNextCell",
     },
+    setup = function ()
+      require('plugins.vim_ipython_cell').config()
+    end,
     config = function()
-      vim.g.ipython_cell_delimit_cells_by = "tags"
-      local bufopts = { silent = true, buffer = true }
-      vim.keymap.set("n", "<c-c><c-f>", "<cmd>IPythonCellRun<cr>", bufopts)
-      vim.keymap.set("n", "<c-c><c-t>", "<cmd>IPythonCellRunTime<cr>", bufopts)
-      vim.keymap.set(
-        "n",
-        "<c-c><c-x>",
-        "<cmd>IPythonCellExecuteCellVerbose<cr>",
-        bufopts
-      )
-      vim.keymap.set(
-        "n",
-        "<c-c><c-j>",
-        "<cmd>IPythonCellExecuteCellVerboseJump<cr>",
-        bufopts
-      )
-      vim.keymap.set("n", "<c-c><c-l>", "<cmd>IPythonCellClear<cr>", bufopts)
-      vim.keymap.set("n", "[C", "<cmd>IPythonCellPrevCell<cr>", bufopts)
-      vim.keymap.set("n", "]C", "<cmd>IPythonCellNextCell<cr>", bufopts)
+      require('plugins.vim_ipython_cell').config()
     end,
   })
 
