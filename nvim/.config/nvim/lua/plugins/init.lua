@@ -448,11 +448,7 @@ return require("packer").startup(function(use)
       cmd = "GitMessenger",
       keys = "<leader>gm",
       config = function()
-        vim.api.nvim_set_hl(
-          0,
-          "gitmessengerPopupNormal",
-          { term = nil, fg = "#ebdbb2", bg = "#32302f", ctermfg = nil, ctermbg = nil }
-        )
+        require("plugins.git_messenger").config()
       end,
     },
     -- Diff view for changes of any git rev
