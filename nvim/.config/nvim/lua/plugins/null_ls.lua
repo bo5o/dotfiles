@@ -6,9 +6,15 @@ function M.config()
 
   local function on_attach(client, bufnr)
     if client.resolved_capabilities.document_formatting then
-      vim.cmd(
-        'autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, nil, { "null-ls" })'
-      )
+      local group = vim.api.nvim_create_augroup("null_ls_formatting", { clear = true })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = group,
+        callback = function()
+          vim.lsp.buf.formatting_seq_sync(nil, nil, { "null-ls" })
+        end,
+        buffer = bufnr,
+        desc = "Format buffer with null-ls",
+      })
     end
   end
 
