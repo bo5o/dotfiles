@@ -415,8 +415,8 @@ return require("packer").startup(function(use)
   -- Linting and fixing (for everything that null-ls can't do yet)
   use({
     "dense-analysis/ale", -- linting and fixing
-    config = function()
-      require("plugins.ale")
+    setup = function()
+      require("plugins.ale").setup()
     end,
   })
 
