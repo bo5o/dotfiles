@@ -340,8 +340,11 @@ return require("packer").startup(function(use)
   use({
     "lervag/vimtex",
     ft = "tex",
+    setup = function()
+      require("plugins.vimtex").setup()
+    end,
     config = function()
-      require("plugins.vimtex")
+      require("plugins.vimtex").config()
     end,
   })
 
