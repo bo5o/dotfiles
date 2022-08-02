@@ -331,7 +331,7 @@ return require("packer").startup(function(use)
         "lua-dev.nvim",
       },
       config = function()
-        require("plugins.lspconfig")
+        require("plugins.lspconfig").config()
       end,
     },
   })
