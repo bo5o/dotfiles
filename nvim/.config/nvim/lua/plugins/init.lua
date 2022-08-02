@@ -47,7 +47,29 @@ return require("packer").startup(function(use)
   -- Colorscheme
   use({
     "sainnhe/gruvbox-material",
-    setup = "vim.cmd[[source ~/.config/nvim/theme.vim]]",
+    setup = function()
+      local group = vim.api.nvim_create_augroup("MyColors", { clear = true })
+      local highlight = function(name, val)
+        vim.api.nvim_set_hl(0, name, val)
+      end
+
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "*",
+        group = group,
+        callback = function()
+          highlight("PopupWindow", { fg = "#ebdbb2", bg = "#3c3836" })
+          highlight("NormalFloat", { bg = "#32302f" })
+          highlight(
+            "QuickScopePrimary",
+            { fg = "#fe8019", bold = true, ctermfg = 155, cterm = { underline = true } }
+          )
+          highlight(
+            "QuickScopeSecondary",
+            { fg = "#d65d0e", bold = true, ctermfg = 81, cterm = { underline = true } }
+          )
+        end,
+      })
+    end,
     config = function()
       vim.g.gruvbox_material_foreground = "material"
       vim.g.gruvbox_material_background = "medium"
@@ -527,6 +549,15 @@ return require("packer").startup(function(use)
   use({
     "tpope/vim-dispatch",
     cmd = { "Dispatch", "Make", "Focus", "Start" },
+    setup = function()
+      vim.g.tmux_session = "popup"
+    end,
+    config = function()
+      local map = vim.keymap.set
+      map("n", "t<cr>", "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " Enter<cr>")
+      map("n", "t<C-c>", "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " C-c<cr>")
+      map("n", "t<C-d>", "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " C-d<cr>")
+    end,
   })
 
   -- Tmux interaction

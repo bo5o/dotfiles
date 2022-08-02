@@ -228,23 +228,3 @@ map("n", "<BS>n", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", { noremap = 
 map("n", "<BS>e", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { noremap = true })
 map("n", "<BS>i", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { noremap = true })
 map("n", "<BS>o", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", { noremap = true })
-
--- Send certain key combinations to g:tmux_session
-map(
-  "n",
-  "t<cr>",
-  "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " Enter<cr>",
-  { noremap = true }
-)
-map(
-  "n",
-  "t<C-c>",
-  "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " C-c<cr>",
-  { noremap = true }
-)
-map(
-  "n",
-  "t<C-d>",
-  "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " C-d<cr>",
-  { noremap = true }
-)
