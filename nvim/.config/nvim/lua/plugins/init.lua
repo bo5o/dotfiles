@@ -240,7 +240,12 @@ return require("packer").startup(function(use)
   })
 
   -- automatically set indent related config
-  use({ "tpope/vim-sleuth" })
+  use({
+    "NMAC427/guess-indent.nvim",
+    config = function()
+      require("plugins.guess_indent").config()
+    end,
+  })
 
   -- Snippets
   use({
