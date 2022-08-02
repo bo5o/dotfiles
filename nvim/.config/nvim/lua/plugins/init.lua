@@ -257,8 +257,8 @@ return require("packer").startup(function(use)
   -- Lightweight snippet alternative (mostly used for LaTeX)
   use({
     "brennier/quicktex",
-    config = function()
-      require("plugins.quicktex")
+    setup = function()
+      require("plugins.quicktex").setup()
     end,
   })
 
