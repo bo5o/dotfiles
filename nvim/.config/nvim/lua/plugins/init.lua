@@ -176,9 +176,8 @@ return require("packer").startup(function(use)
   -- Jump between match pairs
   use({
     "andymass/vim-matchup",
-    config = function()
-      vim.g.matchup_transmute_enabled = 0 -- covered by nvim-ts-autotag
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    setup = function()
+      require("plugins.matchup").setup()
     end,
   })
 
