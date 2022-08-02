@@ -58,7 +58,7 @@ return require("packer").startup(function(use)
   -- Indentation guides
   use({
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
+    event = "BufWinEnter",
     config = function()
       require("plugins.indent_blankline").config()
     end,
@@ -97,6 +97,7 @@ return require("packer").startup(function(use)
   -- Start screen
   use({
     "mhinz/vim-startify",
+    event = "VimEnter",
     config = function()
       require("plugins.startify").config()
     end,
