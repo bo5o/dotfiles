@@ -69,7 +69,7 @@ return require("packer").startup(function(use)
     after = "gruvbox-material",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require("plugins.statusline")
+      require("plugins.statusline").config()
     end,
   })
 
