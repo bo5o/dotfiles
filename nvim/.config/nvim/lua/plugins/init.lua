@@ -118,7 +118,7 @@ return require("packer").startup(function(use)
       "NvimTreeToggle",
     },
     config = function()
-      require("plugins.nvim_tree")
+      require("plugins.nvim_tree").config()
     end,
   })
 
