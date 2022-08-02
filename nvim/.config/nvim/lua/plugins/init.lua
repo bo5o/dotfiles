@@ -702,10 +702,8 @@ return require("packer").startup(function(use)
   -- Align text by some character
   use({
     "tommcdo/vim-lion",
-    config = function()
-      vim.g.lion_squeeze_spaces = 1
-      vim.g.lion_map_right = "ga"
-      vim.g.lion_map_left = "gA"
+    setup = function()
+      require("plugins.lion").setup()
     end,
   })
 
