@@ -58,6 +58,7 @@ return require("packer").startup(function(use)
   -- Indentation guides
   use({
     "lukas-reineke/indent-blankline.nvim",
+    event = "BufRead",
     config = function()
       require("plugins.indent_blankline").config()
     end,
@@ -242,6 +243,7 @@ return require("packer").startup(function(use)
   -- automatically set indent related config
   use({
     "NMAC427/guess-indent.nvim",
+    event = "BufRead",
     config = function()
       require("plugins.guess_indent").config()
     end,
