@@ -694,8 +694,8 @@ return require("packer").startup(function(use)
   -- Toggle special words (true/false, on/off etc.)
   use({
     "AndrewRadev/switch.vim",
-    config = function()
-      vim.g.switch_mapping = "-"
+    setup = function()
+      require("plugins.switch").setup()
     end,
   })
 
