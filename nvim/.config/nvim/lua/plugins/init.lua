@@ -89,7 +89,7 @@ return require("packer").startup(function(use)
     "airblade/vim-gitgutter",
     event = "BufRead",
     config = function()
-      vim.g.gitgutter_preview_win_floating = 0
+      require("plugins.gitgutter").config()
     end,
   })
 
