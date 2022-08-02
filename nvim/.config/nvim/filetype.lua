@@ -1,10 +1,4 @@
 vim.filetype.add({
-  extension = {
-    foo = "fooscript",
-  },
-  filename = {
-    [".foorc"] = "foorc",
-  },
   pattern = {
     [".*/models/.*%.sql"] = "jinja",
     [".*/macros/.*%.sql"] = "jinja",
