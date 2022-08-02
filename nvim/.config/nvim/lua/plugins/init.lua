@@ -588,11 +588,11 @@ return require("packer").startup(function(use)
       "IPythonCellPrevCell",
       "IPythonCellNextCell",
     },
-    setup = function ()
-      require('plugins.vim_ipython_cell').config()
+    setup = function()
+      require("plugins.vim_ipython_cell").config()
     end,
     config = function()
-      require('plugins.vim_ipython_cell').config()
+      require("plugins.vim_ipython_cell").config()
     end,
   })
 
@@ -610,16 +610,11 @@ return require("packer").startup(function(use)
       { "n", "<localleader>e" },
       { "v", "<localleader>e" },
     },
+    setup = function()
+      require("plugins.jupyter").config()
+    end,
     config = function()
-      vim.g.jupyter_mapkeys = 1
-
-      local bufopts = { silent = true, buffer = true }
-      vim.keymap.set("n", "<localleader>R", "<cmd>JupyterRunFile<cr>", bufopts)
-      vim.keymap.set("n", "<localleader>I", "<cmd>PythonImportThisFile<cr>", bufopts)
-      vim.keymap.set("n", "<localleader>X", "<cmd>JupyterSendCell<cr>", bufopts)
-      vim.keymap.set("n", "<localleader>E", "<cmd>JupyterSendRange<cr>", bufopts)
-      vim.keymap.set("n", "<localleader>e", "<Plug>JupyterRunTextObj", bufopts)
-      vim.keymap.set("v", "<localleader>e", "<Plug>JupyterRunVisual", bufopts)
+      require("plugins.jupyter").config()
     end,
   })
 
