@@ -150,7 +150,7 @@ return require("packer").startup(function(use)
         "kyazdani42/nvim-web-devicons",
       },
       config = function()
-        require("plugins.telescope")
+        require("plugins.telescope").config()
       end,
     },
     {
