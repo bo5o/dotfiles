@@ -427,8 +427,8 @@ return require("packer").startup(function(use)
       vim.fn["doge#install"]()
     end,
     cmd = "DogeGenerate",
-    config = function()
-      require("plugins.doge")
+    setup = function()
+      require("plugins.doge").setup()
     end,
   })
 
