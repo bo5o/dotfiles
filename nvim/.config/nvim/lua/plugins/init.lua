@@ -710,8 +710,8 @@ return require("packer").startup(function(use)
   -- Simple table manipulation (e.g. in Markdown)
   use({
     "dhruvasagar/vim-table-mode",
-    config = function()
-      vim.g.table_mode_map_prefix = "<localleader>t"
+    setup = function()
+      require("plugins.table_mode").setup()
     end,
   })
 
