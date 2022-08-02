@@ -368,9 +368,11 @@ return require("packer").startup(function(use)
   -- and then switch to Treesitter for semantic syntax highlighting
   use({
     "numirias/semshi",
+    setup = function()
+      require("plugins.semshi").setup()
+    end,
     config = function()
-      vim.cmd([[silent UpdateRemotePlugins]])
-      vim.g["semshi#error_sign"] = false
+      require("plugins.semshi").config()
     end,
   })
 
