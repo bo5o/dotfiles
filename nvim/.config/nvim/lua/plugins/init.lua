@@ -267,9 +267,11 @@ return require("packer").startup(function(use)
     "mattn/emmet-vim",
     ft = { "html", "htmldjango", "vue", "css" },
     setup = function()
-      vim.g.user_emmet_install_global = 0
+      require("plugins.emmet").setup()
     end,
-    config = "vim.cmd[[EmmetInstall]]",
+    config = function()
+      require("plugins.emmet").config()
+    end,
   })
 
   -----------------------
