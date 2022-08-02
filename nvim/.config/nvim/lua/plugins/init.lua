@@ -358,9 +358,8 @@ return require("packer").startup(function(use)
   -- Highlight color codes (eg. #42AFFE)
   use({
     "norcalli/nvim-colorizer.lua",
-    event = "ColorScheme",
     config = function()
-      require("plugins.colorizer")
+      require("plugins.colorizer").config()
     end,
   })
 
