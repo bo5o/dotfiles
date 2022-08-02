@@ -192,10 +192,8 @@ return require("packer").startup(function(use)
   -- Always highlight the quickest movement to any word on the current line
   use({
     "unblevable/quick-scope",
-    config = function()
-      vim.g.qs_max_chars = 256
-      vim.g.qs_buftype_blacklist = { "terminal", "nofile", "startify", "qf" }
-      vim.g.qs_lazy_highlight = 1
+    setup = function()
+      require("plugins.quickscope").setup()
     end,
   })
 
