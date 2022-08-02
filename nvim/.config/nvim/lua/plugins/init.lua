@@ -234,8 +234,8 @@ return require("packer").startup(function(use)
   -- Auto-close more things like end/endfunction/endif etc.
   use({
     "tpope/vim-endwise",
-    config = function()
-      vim.g.endwise_no_mappings = 1
+    setup = function()
+      require("plugins.endwise").setup()
     end,
   })
 
