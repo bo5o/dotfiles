@@ -148,6 +148,7 @@ vim.opt.listchars =
   { tab = "→ ", eol = "¬", trail = "⋅", extends = "❯", precedes = "❮" }
 vim.opt.showbreak = "↪"
 
+-- automatically highlight yanked region
 local highlight_yank = vim.api.nvim_create_augroup("highlight_yank", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = { "*" },
@@ -198,5 +199,5 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Close all buffer except the current one
+-- Command to close all buffer except the current one
 vim.api.nvim_create_user_command("BufOnly", [[silent! execute "%bd|e#|bd#"]], {})
