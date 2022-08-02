@@ -249,31 +249,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "**/models/**/*.sql", "**/macros/**/*.sql" },
-  group = file_type_settings,
-  callback = function()
-    vim.opt_local.filetype = "jinja"
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { ".env.*" },
-  group = file_type_settings,
-  callback = function()
-    vim.opt_local.filetype = "sh"
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "BufRead" }, {
-  pattern = { "/tmp/psql.edit.*" },
-  group = file_type_settings,
-  callback = function()
-    vim.opt.syntax = "sql"
-  end,
-  desc = "Set syntax to sql for psql edit files",
-})
-
 vim.api.nvim_create_autocmd({ "BufRead" }, {
   pattern = { "**/pass.*.txt" },
   group = file_type_settings,
@@ -290,24 +265,6 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
     vim.opt.makeprg = "make -f Makefile.docs html"
   end,
   desc = "Set makeprg for Sphinx docs",
-})
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "/tmp/vim-anywhere*" },
-  group = file_type_settings,
-  callback = function()
-    vim.opt.filetype = "txt"
-  end,
-  desc = "Set filetype for vim-anywhere",
-})
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "/tmp/calcurse*", "**/.calcurse/notes/*" },
-  group = file_type_settings,
-  callback = function()
-    vim.opt.filetype = "markdown"
-  end,
-  desc = "Set filetype for calcurse notes",
 })
 
 -- tmux session for dispatch
