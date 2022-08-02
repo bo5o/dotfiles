@@ -108,6 +108,7 @@ return require("packer").startup(function(use)
   -- File tree
   use({
     "kyazdani42/nvim-tree.lua",
+    tag = "nightly",
     requires = "kyazdani42/nvim-web-devicons",
     cmd = {
       "NvimTreeClipboard",

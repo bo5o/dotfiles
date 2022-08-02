@@ -7,12 +7,14 @@ function M.config()
 
   require("nvim-tree").setup({
     view = {
+      adaptive_size = true,
       mappings = {
         list = {
           { key = { "<CR>", "o", "<2-LeftMouse>", "l" }, cb = tree_cb("edit") },
           { key = { "<BS>", "h" }, cb = tree_cb("close_node") },
           { key = "zh", cb = tree_cb("toggle_dotfiles") },
-          { key = "zi", cb = tree_cb("toggle_ignored") },
+          { key = "zi", cb = tree_cb("toggle_custom") },
+          { key = "zg", cb = tree_cb("toggle_git_ignored") },
           { key = { "-", "H" }, cb = tree_cb("dir_up") },
           { key = { "<2-RightMouse>", "<C-]>", "L" }, cb = tree_cb("cd") },
         },
@@ -20,7 +22,7 @@ function M.config()
     },
     filters = {
       dotfiles = true,
-      custom = { ".git", "node_modules", ".cache", "__pycache__" },
+      custom = { "^\\.git", "^node_modules", "^\\.cache", "__pycache__" },
     },
     renderer = {
       highlight_git = true,
