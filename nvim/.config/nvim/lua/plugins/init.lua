@@ -737,26 +737,11 @@ return require("packer").startup(function(use)
   use({
     "echasnovski/mini.nvim",
     branch = "stable",
+    setup = function()
+      require("plugins.mini_nvim").setup()
+    end,
     config = function()
-      vim.g.miniindentscope_disable = true
-      require("mini.indentscope").setup({
-        mappings = {
-          -- Textobjects
-          object_scope = "ii",
-          object_scope_with_border = "ai",
-
-          -- Motions (jump to respective border line; if not present - body line)
-          goto_top = "",
-          goto_bottom = "",
-        },
-        options = {
-          border = "none",
-        },
-      })
-
-      require("mini.bufremove").setup({
-        set_vim_settings = false,
-      })
+      require("plugins.mini_nvim").config()
     end,
   })
 
