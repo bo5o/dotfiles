@@ -15,5 +15,6 @@ vim.filetype.add({
     ["/tmp/vim-anywhere.*"] = "text",
     ["/tmp/calcurse.*"] = "markdown",
     [".*/%.calcurse/notes/.*"] = "markdown",
+    [".*pass.*%.txt"] = "secret",
   },
 })

@@ -148,10 +148,6 @@ vim.opt.listchars =
   { tab = "→ ", eol = "¬", trail = "⋅", extends = "❯", precedes = "❮" }
 vim.opt.showbreak = "↪"
 
--- filetype settings
-vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 0
-
 local highlight_yank = vim.api.nvim_create_augroup("highlight_yank", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = { "*" },
@@ -161,6 +157,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   group = highlight_yank,
   desc = "Highlight yanked region",
 })
+
+-- filetype/buffer settings
+vim.g.do_filetype_lua = 1
+vim.g.did_load_filetypes = 0
 
 local terminal_settings =
   vim.api.nvim_create_augroup("terminal_settings", { clear = true })
@@ -177,14 +177,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
 
 local file_type_settings =
   vim.api.nvim_create_augroup("FileTypeSettings", { clear = true })
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "python" },
-  group = file_type_settings,
-  callback = function()
-    vim.opt_local.textwidth = 88
-  end,
-})
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
@@ -205,70 +197,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.shiftwidth = 2
   end,
 })
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "vimwiki" },
-  group = file_type_settings,
-  callback = function()
-    vim.opt_local.tabstop = 4
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.textwidth = 88
-  end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown" },
-  group = file_type_settings,
-  callback = function()
-    vim.opt_local.textwidth = 88
-    vim.opt_local.conceallevel = 2
-  end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "requirements" },
-  group = file_type_settings,
-  callback = function()
-    vim.opt_local.commentstring = [[#\ %s]]
-  end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "gitcommit" },
-  group = file_type_settings,
-  callback = function()
-    vim.opt_local.textwidth = 80
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "*COMMIT_EDITMSG" },
-  group = file_type_settings,
-  callback = function()
-    vim.opt_local.textwidth = 80
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "BufRead" }, {
-  pattern = { "**/pass.*.txt" },
-  group = file_type_settings,
-  callback = function()
-    vim.opt.undofile = false
-  end,
-  desc = "Disable undofile for pass secret files",
-})
-
-vim.api.nvim_create_autocmd({ "BufRead" }, {
-  pattern = { "**/services/docs/*.rst" },
-  group = file_type_settings,
-  callback = function()
-    vim.opt.makeprg = "make -f Makefile.docs html"
-  end,
-  desc = "Set makeprg for Sphinx docs",
-})
-
--- tmux session for dispatch
-vim.g.tmux_session = "popup"
 
 -- Close all buffer except the current one
 vim.api.nvim_create_user_command("BufOnly", [[silent! execute "%bd|e#|bd#"]], {})
