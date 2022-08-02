@@ -4,6 +4,6 @@ require("plugins")
 
 require("settings")
 
-require("keybinds")
+require("mappings")
 
 require("snippets")
