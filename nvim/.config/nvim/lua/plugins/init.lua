@@ -659,20 +659,7 @@ return require("packer").startup(function(use)
   use({
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function()
-      vim.diagnostic.config({
-        virtual_text = false,
-        virtual_lines = false,
-      })
-
-      local lsp_lines = require("lsp_lines")
-      lsp_lines.setup()
-
-      vim.keymap.set(
-        "n",
-        "<leader>ll",
-        lsp_lines.toggle,
-        { desc = "Show/hide lsp diagnostics" }
-      )
+      require("plugins.lsp_lines").config()
     end,
   })
 
