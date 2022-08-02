@@ -227,7 +227,7 @@ return require("packer").startup(function(use)
     "windwp/nvim-autopairs",
     after = "nvim-cmp",
     config = function()
-      require("plugins.autopairs")
+      require("plugins.autopairs").config()
     end,
   })
 
