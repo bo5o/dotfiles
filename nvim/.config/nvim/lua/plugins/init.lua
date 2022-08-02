@@ -80,7 +80,7 @@ return require("packer").startup(function(use)
     event = "BufWinEnter",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require("plugins.bufferline")
+      require("plugins.bufferline").config()
     end,
   })
 
