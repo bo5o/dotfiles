@@ -4,16 +4,19 @@ function M.config()
   local null_ls = require("null-ls")
   local builtins = null_ls.builtins
 
+  local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+
   local function on_attach(client, bufnr)
     if client.resolved_capabilities.document_formatting then
-      local group = vim.api.nvim_create_augroup("null_ls_formatting", { clear = true })
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
       vim.api.nvim_create_autocmd("BufWritePre", {
-        group = group,
+        group = augroup,
+        buffer = bufnr,
         callback = function()
+          -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
           vim.lsp.buf.formatting_seq_sync(nil, nil, { "null-ls" })
         end,
-        buffer = bufnr,
-        desc = "Format buffer with null-ls",
+        desc = "Format buffer on save, using null-ls last",
       })
     end
   end
