@@ -919,7 +919,15 @@ return require("packer").startup(function(use)
   use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
 
   -- Clipboard interoperability
-  use({ "ojroques/vim-oscyank", branch = "main", cmd = "OSCYank" })
+  use({
+    "ojroques/nvim-osc52",
+    keys = "<leader>C",
+    config = function()
+      vim.keymap.set("n", "<leader>C", require("osc52").copy_operator, { expr = true })
+      vim.keymap.set("n", "<leader>CC", "<leader>C_", { remap = true })
+      vim.keymap.set("x", "<leader>C", require("osc52").copy_visual)
+    end,
+  })
 
   -- Automatically set up your configuration after cloning packer.nvim
   if Packer_bootstrap then
