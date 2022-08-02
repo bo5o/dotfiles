@@ -211,7 +211,7 @@ return require("packer").startup(function(use)
         "lukas-reineke/cmp-under-comparator", -- better sorting of dunder methods
       },
       config = function()
-        require("plugins.nvim_cmp")
+        require("plugins.nvim_cmp").config()
       end,
     },
     { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }, -- lsp
