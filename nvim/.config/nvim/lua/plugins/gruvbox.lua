@@ -22,9 +22,7 @@ function M.setup()
       )
     end,
   })
-end
 
-function M.config()
   vim.g.gruvbox_material_foreground = "material"
   vim.g.gruvbox_material_background = "medium"
   vim.g.gruvbox_material_statusline_style = "default"
@@ -35,7 +33,9 @@ function M.config()
   vim.g.gruvbox_material_better_performance = 1
   vim.g.gruvbox_material_diagnostic_line_highlight = 0
   vim.g.gruvbox_material_diagnostic_text_highlight = 1
+end
 
+function M.config()
   vim.cmd("colorscheme gruvbox-material")
 end
 
