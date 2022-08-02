@@ -762,9 +762,7 @@ return require("packer").startup(function(use)
     "ojroques/nvim-osc52",
     keys = "<leader>C",
     config = function()
-      vim.keymap.set("n", "<leader>C", require("osc52").copy_operator, { expr = true })
-      vim.keymap.set("n", "<leader>CC", "<leader>C_", { remap = true })
-      vim.keymap.set("x", "<leader>C", require("osc52").copy_visual)
+      require("plugins.oscyank").config()
     end,
   })
 
