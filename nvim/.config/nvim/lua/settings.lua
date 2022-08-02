@@ -1,7 +1,3 @@
--------------
--- => General
--------------
-
 -- Set <leader> key
 vim.g.mapleader = ","
 
@@ -36,10 +32,6 @@ vim.opt.whichwrap:append({ ["<"] = true, [">"] = true, h = true, l = true })
 -- Python host programs
 vim.g.python_host_prog = os.getenv("HOME") .. "/.virtualenvs/py2nvim/bin/python"
 vim.g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/py3nvim/bin/python"
-
-------------------------
--- => VIM user interface
-------------------------
 
 vim.opt.showmode = false
 
@@ -113,10 +105,6 @@ vim.opt.wildignore:append({ "*.alg", "*.ntn", "*.slo", "*.not", "*.nlg", "*.slg"
 vim.opt.wildignore:append({ "*.lof", "*.lot", "*.lol", "*.xdv", "tags", "*.zip" })
 vim.opt.wildignore:append({ "**/.direnv/**", "**/.venv/**", "**/.tools/**", "*/tmp/*" })
 
------------------------------
--- => Files, backups and undo
------------------------------
-
 -- Turn backup off, since most stuff is in SVN, git et.c anyway...
 vim.opt.backup = false
 vim.opt.writebackup = false
@@ -124,16 +112,8 @@ vim.opt.swapfile = false
 
 vim.opt.undofile = true
 
-----------------------
--- => Colors and Fonts
-----------------------
-
 -- Syntax highlighting is very slow for long lines
 vim.opt.synmaxcol = 256
-
-----------------------------------
--- => Text, tab and indent related
-----------------------------------
 
 -- Use spaces instead of tabs
 vim.opt.expandtab = true
