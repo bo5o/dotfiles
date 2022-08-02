@@ -408,7 +408,7 @@ return require("packer").startup(function(use)
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      require("plugins.null-ls")
+      require("plugins.null_ls").config()
     end,
   })
 
