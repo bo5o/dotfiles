@@ -5,6 +5,9 @@
 -- Set <leader> key
 vim.g.mapleader = ","
 
+-- Rich colors
+vim.opt.termguicolors = true
+
 -- Decrease update time
 vim.opt.updatetime = 100
 vim.opt.timeoutlen = 500

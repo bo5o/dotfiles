@@ -36,7 +36,6 @@ function M.config()
   vim.g.gruvbox_material_diagnostic_line_highlight = 0
   vim.g.gruvbox_material_diagnostic_text_highlight = 1
 
-  vim.opt.termguicolors = true
   vim.cmd("colorscheme gruvbox-material")
 end
 
