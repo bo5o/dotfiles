@@ -457,7 +457,7 @@ return require("packer").startup(function(use)
       requires = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons" },
       cmd = { "DiffviewOpen", "DiffviewFileHistory" },
       config = function()
-        require("plugins.diffview")
+        require("plugins.diffview").config()
       end,
     }),
   })
