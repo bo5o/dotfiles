@@ -13,7 +13,7 @@ function M.config()
       "NvimTree",
       "mason.nvim",
     },
-    buftype_exclude = { "terminal" },
+    buftype_exclude = { "terminal", "nofile" },
     show_current_context = false,
   })
 end
