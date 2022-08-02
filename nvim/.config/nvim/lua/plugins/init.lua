@@ -239,6 +239,9 @@ return require("packer").startup(function(use)
     end,
   })
 
+  -- automatically set indent related config
+  use({ "tpope/vim-sleuth" })
+
   -- Snippets
   use({
     "SirVer/ultisnips",
