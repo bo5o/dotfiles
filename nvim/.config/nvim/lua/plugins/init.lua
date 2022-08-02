@@ -667,6 +667,9 @@ return require("packer").startup(function(use)
   use({
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("plugins.todo_comments").config()
+    end,
   })
 
   -- Direnv integration
