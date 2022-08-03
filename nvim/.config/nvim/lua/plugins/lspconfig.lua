@@ -163,16 +163,12 @@ function M.config()
               "<cmd>TypescriptRenameFile<cr>",
               "Rename file and update imports"
             )
-            buf_map(
-              "<leader>lI",
-              typescript.actions.addMissingImports,
-              "Import missing imports"
-            )
-            buf_map(
-              "<leader>lo",
-              typescript.actions.organizeImports,
-              "Organize imports"
-            )
+            buf_map("<leader>lI", function()
+              typescript.actions.addMissingImports({ sync = true })
+            end, "Import missing imports")
+            buf_map("<leader>lo", function()
+              typescript.actions.organizeImports({ sync = true })
+            end, "Organize imports")
           end,
         },
       })
