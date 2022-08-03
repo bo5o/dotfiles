@@ -14,98 +14,39 @@ function M.config()
     return cmp_lsp.update_capabilities(capabilities)
   end
 
-  local function make_keymap_func(default_opts)
-    return function(mode, lhs, rhs, opts)
-      local opts = vim.tbl_extend("force", default_opts, opts)
-      vim.keymap.set(mode, lhs, rhs, opts)
+  local function bind_map(default_opts)
+    return function(lhs, rhs, desc)
+      local opts = vim.tbl_extend("force", default_opts, { desc = desc })
+      vim.keymap.set("n", lhs, rhs, opts)
     end
   end
 
-  local set_keymap = make_keymap_func({ noremap = true, silent = true })
-  set_keymap(
-    "n",
-    "[g",
-    vim.diagnostic.goto_prev,
-    { desc = "Go to previous diagnostic" }
-  )
-  set_keymap("n", "]g", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
-  set_keymap(
-    "n",
-    "<leader>lq",
-    vim.diagnostic.setloclist,
-    { desc = "Add diagnostics to location list" }
-  )
-  set_keymap(
-    "n",
-    "<leader>lg",
-    vim.diagnostic.open_float,
-    { desc = "Show diagnostics" }
-  )
+  local map = bind_map({ silent = true })
+  local diagnostic = vim.diagnostic
+  map("[g", diagnostic.goto_prev, "Go to previous diagnostic")
+  map("]g", diagnostic.goto_next, "Go to next diagnostic")
+  map("<leader>lq", diagnostic.setloclist, "Add diagnostics to location list")
+  map("<leader>lg", diagnostic.open_float, "Show diagnostics")
 
   local on_attach = function(client, bufnr)
-    local buf_set_keymap =
-      make_keymap_func({ noremap = true, silent = true, buffer = bufnr })
+    local buf_map = bind_map({ silent = true, buffer = bufnr })
+    local lsp = vim.lsp.buf
 
-    buf_set_keymap("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-    buf_set_keymap("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-    buf_set_keymap("n", "K", vim.lsp.buf.hover, { desc = "Display hover information" })
-    buf_set_keymap(
-      "n",
-      "gi",
-      vim.lsp.buf.implementation,
-      { desc = "List implementations" }
-    )
-    buf_set_keymap(
-      "n",
-      "gr",
-      "<cmd>TroubleToggle lsp_references<CR>",
-      { desc = "List all references" }
-    )
-    buf_set_keymap(
-      "n",
-      "<leader>K",
-      vim.lsp.buf.signature_help,
-      { desc = "Display signature help" }
-    )
-    buf_set_keymap(
-      "n",
-      "<leader>ld",
-      vim.lsp.buf.type_definition,
-      { desc = "Go to type definition" }
-    )
-    buf_set_keymap(
-      "n",
-      "<leader>lf",
-      vim.lsp.buf.formatting,
-      { desc = "Format current buffer" }
-    )
-    buf_set_keymap(
-      "n",
-      "<leader>ln",
-      vim.lsp.buf.rename,
-      { desc = "Rename all references" }
-    )
-    buf_set_keymap(
-      "n",
-      "<leader>lc",
-      vim.lsp.buf.code_action,
-      { desc = "Select code action" }
-    )
-    buf_set_keymap(
-      "n",
-      "<leader>lwa",
-      vim.lsp.buf.add_workspace_folder,
-      { desc = "Add workspace folder" }
-    )
-    buf_set_keymap(
-      "n",
-      "<leader>lwr",
-      vim.lsp.buf.remove_workspace_folder,
-      { desc = "Remove workspace folder" }
-    )
-    buf_set_keymap("n", "<leader>lwl", function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, { desc = "List workspace folders" })
+    buf_map("gd", lsp.definition, "Go to definition")
+    buf_map("gD", lsp.declaration, "Go to declaration")
+    buf_map("K", lsp.hover, "Display hover information")
+    buf_map("gi", lsp.implementation, "List implementations")
+    buf_map("gr", "<cmd>TroubleToggle lsp_references<CR>", "List all references")
+    buf_map("<leader>K", lsp.signature_help, "Display signature help")
+    buf_map("<leader>ld", lsp.type_definition, "Go to type definition")
+    buf_map("<leader>lf", lsp.formatting, "Format current buffer")
+    buf_map("<leader>ln", lsp.rename, "Rename all references")
+    buf_map("<leader>lc", lsp.code_action, "Select code action")
+    buf_map("<leader>lwa", lsp.add_workspace_folder, "Add workspace folder")
+    buf_map("<leader>lwr", lsp.remove_workspace_folder, "Remove workspace folder")
+    buf_map("<leader>lwl", function()
+      print(vim.inspect(lsp.list_workspace_folders()))
+    end, "List workspace folders")
 
     -- Configure signature help for completion
     lsp_signature.on_attach({
@@ -215,28 +156,21 @@ function M.config()
             client.resolved_capabilities.document_formatting = false
             client.resolved_capabilities.document_range_formatting = false
 
-            local buf_set_keymap = make_keymap_func({
-              noremap = true,
-              silent = true,
-              buffer = bufnr,
-            })
-            buf_set_keymap(
-              "n",
+            local buf_map = bind_map({ silent = true, buffer = bufnr })
+            buf_map(
               "<leader>lm",
               "<cmd>TypescriptRenameFile<cr>",
-              { desc = "Rename file and update imports" }
+              "Rename file and update imports"
             )
-            buf_set_keymap(
-              "n",
+            buf_map(
               "<leader>lI",
               typescript.actions.addMissingImports,
-              { desc = "Import all missing imports" }
+              "Import missing imports"
             )
-            buf_set_keymap(
-              "n",
+            buf_map(
               "<leader>lo",
               typescript.actions.organizeImports,
-              { desc = "Organize imports" }
+              "Organize imports"
             )
           end,
         },
