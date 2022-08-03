@@ -186,7 +186,7 @@ return require("packer").startup(function(use)
   use({
     "phaazon/hop.nvim",
     branch = "v2",
-    keys = {"<leader><leader>", "S", "s"},
+    keys = { "<leader><leader>", "S", "s" },
     config = function()
       require("plugins.hop").config()
     end,
@@ -195,7 +195,7 @@ return require("packer").startup(function(use)
   -- Always highlight the quickest movement to any word on the current line
   use({
     "unblevable/quick-scope",
-    event="BufWinEnter",
+    event = "BufWinEnter",
     setup = function()
       require("plugins.quickscope").setup()
     end,
@@ -238,7 +238,7 @@ return require("packer").startup(function(use)
   -- Auto-close more things like end/endfunction/endif etc.
   use({
     "tpope/vim-endwise",
-    event="BufWinEnter",
+    event = "BufWinEnter",
     setup = function()
       require("plugins.endwise").setup()
     end,
@@ -271,7 +271,7 @@ return require("packer").startup(function(use)
   -- Lightweight snippet alternative (mostly used for LaTeX)
   use({
     "brennier/quicktex",
-    event="InsertCharPre",
+    event = "InsertCharPre",
     setup = function()
       require("plugins.quicktex").setup()
     end,
@@ -682,9 +682,9 @@ return require("packer").startup(function(use)
   use({
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("plugins.todo_comments").config()
-    end,
+    -- config = function()
+    --   require("plugins.todo_comments").config()
+    -- end,
   })
 
   -- Direnv integration
@@ -779,6 +779,21 @@ return require("packer").startup(function(use)
     config = function()
       require("plugins.oscyank").config()
     end,
+  })
+
+  -- lua scratchpad
+  use({
+    "antoinemadec/FixCursorHold.nvim",
+    {
+      "rafcamlet/nvim-luapad",
+      after = "FixCursorHold.nvim",
+      cmd = "Luapad",
+      config = function()
+        require("luapad").setup({
+          count_limit = 200000,
+        })
+      end,
+    },
   })
 
   -- Automatically set up your configuration after cloning packer.nvim
