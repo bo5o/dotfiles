@@ -153,6 +153,7 @@ function M.config()
         debug = false, -- enable debug logging for commands
         server = { -- pass options to lspconfig's setup method
           on_attach = function(client, bufnr)
+            on_attach(client, bufnr)
             client.resolved_capabilities.document_formatting = false
             client.resolved_capabilities.document_range_formatting = false
 
