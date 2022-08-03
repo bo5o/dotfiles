@@ -7,7 +7,7 @@ function M.config()
   local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
 
   local function on_attach(client, bufnr)
-    if client.resolved_capabilities.document_formatting then
+    if client.supports_method("textDocument/formatting") then
       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = augroup,
@@ -25,6 +25,11 @@ function M.config()
     debounce = 250,
     diagnostics_format = "[#{s}] #{c}: #{m}",
     on_attach = on_attach,
+    -- should_attach = function(bufnr)
+    --   local bufname = vim.api.nvim_buf_get_name(bufnr)
+    --   local is_yaml = bufname:match("%.ya?ml$")
+    --   return not is_yaml
+    -- end,
     sources = {
       builtins.formatting.trim_whitespace,
       builtins.formatting.trim_newlines.with({
@@ -60,7 +65,7 @@ function M.config()
       builtins.diagnostics.markdownlint.with({
         filetypes = { "markdown", "vimwiki" },
       }),
-      builtins.formatting.prettier.with({
+      builtins.formatting.prettierd.with({
         filetypes = { "css", "html", "json", "yaml", "markdown" },
       }),
       -- Dockerfile
