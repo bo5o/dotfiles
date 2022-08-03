@@ -71,8 +71,8 @@ git:
     "git log --graph --color=always --abbrev-commit --decorate --date=relative
     --pretty=medium {{branchName}} --"
   allBranchesLogCmd:
-    "git log --graph --all --color=always --abbrev-commit --decorate
-    --date=relative  --pretty=medium"
+    "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold
+    blue)<%an>%Creset' --all --color=always"
   overrideGpg: false # prevents lazygit from spawning a separate process when using GPG
   disableForcePushing: false
   parseEmoji: false
