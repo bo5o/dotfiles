@@ -35,7 +35,9 @@ gui:
   showFileTree: true # for rendering changes files in a tree format
   showListFooter: true # for seeing the '5 of 20' message in list panels
   showRandomTip: true
-  showBottomLine: true # for hiding the bottom information line (unless it has important information to tell you)
+  # for hiding the bottom information line (unless it has important information to
+  # tell you)
+  showBottomLine: true
   showCommandLog: true
   showIcons: false
   commandLogSize: 8
@@ -59,13 +61,18 @@ git:
     # one of always, never, when-maximised
     # this determines whether the git graph is rendered in the commits panel
     showGraph: "when-maximised"
-    # displays the whole git graph by default in the commits panel (equivalent to passing the `--all` argument to `git log`)
+    # displays the whole git graph by default in the commits panel (equivalent to
+    # passing the `--all` argument to `git log`)
     showWholeGraph: false
   skipHookPrefix: WIP
   autoFetch: true
   autoRefresh: true
-  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
-  allBranchesLogCmd: "git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium"
+  branchLogCmd:
+    "git log --graph --color=always --abbrev-commit --decorate --date=relative
+    --pretty=medium {{branchName}} --"
+  allBranchesLogCmd:
+    "git log --graph --all --color=always --abbrev-commit --decorate
+    --date=relative  --pretty=medium"
   overrideGpg: false # prevents lazygit from spawning a separate process when using GPG
   disableForcePushing: false
   parseEmoji: false
@@ -75,14 +82,18 @@ os:
   editCommandTemplate: ""
   openCommand: ""
 refresher:
-  refreshInterval: 10 # File/submodule refresh interval in seconds. Auto-refresh can be disabled via option 'git.autoRefresh'.
-  fetchInterval: 60 # Re-fetch interval in seconds. Auto-fetch can be disabled via option 'git.autoFetch'.
+  # File/submodule refresh interval in seconds. Auto-refresh can be disabled via option
+  # 'git.autoRefresh'.
+  refreshInterval: 10
+  # Re-fetch interval in seconds. Auto-fetch can be disabled via option 'git.autoFetch'.
+  fetchInterval: 60
 update:
   method: never # can be: prompt | background | never
   days: 14 # how often an update is checked for
 reporting: "off" # one of: 'on' | 'off' | 'undetermined'
 confirmOnQuit: false
-# determines whether hitting 'esc' will quit the application when there is nothing to cancel/close
+# determines whether hitting 'esc' will quit the application when there is nothing to
+# cancel/close
 quitOnTopLevelReturn: false
 disableStartupPopups: false
 notARepository: "prompt" # one of: 'prompt' | 'create' | 'skip'
