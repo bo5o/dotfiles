@@ -28,6 +28,7 @@ function M.config()
   map("<leader>lq", diagnostic.setloclist, "Add diagnostics to location list")
   map("<leader>lg", diagnostic.open_float, "Show diagnostics")
 
+  ---@diagnostic disable-next-line: unused-local
   local on_attach = function(client, bufnr)
     local buf_map = bind_map({ silent = true, buffer = bufnr })
     local lsp = vim.lsp.buf
@@ -170,6 +171,16 @@ function M.config()
               typescript.actions.organizeImports({ sync = true })
             end, "Organize imports")
           end,
+          capabilities = create_capabilities(),
+          settings = {
+            typescript = {
+              format = {
+                tabSize = 2,
+                indentSize = 2,
+                convertTabsToSpaces = true,
+              },
+            },
+          },
         },
       })
     end,
