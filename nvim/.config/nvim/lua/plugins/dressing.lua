@@ -7,7 +7,7 @@ function M.config()
     },
     select = {
       enabled = true,
-      backend = { "telescope", "builtin" },
+      backend = { "builtin" },
     },
   })
 end
