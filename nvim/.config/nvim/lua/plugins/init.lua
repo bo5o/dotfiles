@@ -125,15 +125,6 @@ return require("packer").startup(function(use)
     end,
   })
 
-  -- LSP symbol tree
-  use({
-    "simrat39/symbols-outline.nvim",
-    cmd = { "SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose" },
-    config = function()
-      require("plugins.symbols_outline").config()
-    end,
-  })
-
   use({
     "stevearc/dressing.nvim",
     config = function()
@@ -325,6 +316,13 @@ return require("packer").startup(function(use)
     "williamboman/mason-lspconfig.nvim",
     -- Show signature help while typing
     "ray-x/lsp_signature.nvim",
+    -- LSP symbol tree
+    {
+      "stevearc/aerial.nvim",
+      config = function()
+        require("plugins.aerial_nvim").config()
+      end,
+    },
     -- JSON schema support
     "b0o/schemastore.nvim",
     -- Better typescript lsp support
@@ -340,6 +338,7 @@ return require("packer").startup(function(use)
         "mason.nvim",
         "mason-lspconfig.nvim",
         "lsp_signature.nvim",
+        "aerial.nvim",
         "schemastore.nvim",
         "typescript.nvim",
         "fidget.nvim",
@@ -707,7 +706,6 @@ return require("packer").startup(function(use)
       end,
     },
   })
-
 
   --------------------
   -- Text manipulation

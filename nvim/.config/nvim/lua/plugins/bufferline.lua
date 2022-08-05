@@ -10,7 +10,7 @@ function M.config()
           text_align = "center",
         },
         {
-          filetype = "Outline",
+          filetype = "aerial",
           text = "Symbols",
           text_align = "center",
         },
