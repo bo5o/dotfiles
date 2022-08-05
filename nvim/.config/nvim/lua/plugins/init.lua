@@ -690,6 +690,22 @@ return require("packer").startup(function(use)
   -- Direnv integration
   use("direnv/direnv.vim")
 
+  -- lua scratchpad
+  use({
+    "antoinemadec/FixCursorHold.nvim",
+    {
+      "rafcamlet/nvim-luapad",
+      after = "FixCursorHold.nvim",
+      cmd = "Luapad",
+      config = function()
+        require("luapad").setup({
+          count_limit = 200000,
+        })
+      end,
+    },
+  })
+
+
   --------------------
   -- Text manipulation
   --------------------
@@ -779,21 +795,6 @@ return require("packer").startup(function(use)
     config = function()
       require("plugins.oscyank").config()
     end,
-  })
-
-  -- lua scratchpad
-  use({
-    "antoinemadec/FixCursorHold.nvim",
-    {
-      "rafcamlet/nvim-luapad",
-      after = "FixCursorHold.nvim",
-      cmd = "Luapad",
-      config = function()
-        require("luapad").setup({
-          count_limit = 200000,
-        })
-      end,
-    },
   })
 
   -- Automatically set up your configuration after cloning packer.nvim
