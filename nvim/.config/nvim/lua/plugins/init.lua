@@ -392,25 +392,28 @@ return require("packer").startup(function(use)
   })
 
   -- Better Python indenting
-  use("Vimjas/vim-python-pep8-indent")
+  use({ "Vimjas/vim-python-pep8-indent", ft = "python" })
 
   -- requirements.txt (Python)
-  use("raimon49/requirements.txt.vim")
+  use({ "raimon49/requirements.txt.vim", ft = "requirements" })
+
+  -- .tridactylrc
+  use({ "tridactyl/vim-tridactyl", ft = "tridactyl" })
 
   -- jinja2 (Python)
-  use("Glench/Vim-Jinja2-Syntax")
+  use({ "Glench/Vim-Jinja2-Syntax", ft = { "jinja", "jinja.html", "jinja.sql" } })
 
   -- .sxhkdrc
-  use("kovetskiy/sxhkd-vim")
+  use({ "kovetskiy/sxhkd-vim", ft = "sxhkd" })
 
   -- .tmux.conf
-  use("ericpruitt/tmux.vim")
+  use({ "ericpruitt/tmux.vim", ft = "tmux" })
 
   -- Dockerfile
-  use("ekalinin/Dockerfile.vim")
+  use({ "ekalinin/Dockerfile.vim", ft = "Dockerfile" })
 
   -- nginx.conf
-  use("chr4/nginx.vim")
+  use({ "chr4/nginx.vim", ft = "nginx" })
 
   ------------------
   -- Developer tools
