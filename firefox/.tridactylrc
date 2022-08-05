@@ -49,8 +49,9 @@ bind ;p hint -y
 " colorscheme
 colors dark
 
-" don't focus input field automatically
+" don't focus input field automatically, except on some sites
 set allowautofocus false
+seturl regex101.com allowautofocus true
 
 " vimperator-like hint mode
 set hintfiltermode vimperator-reflow
