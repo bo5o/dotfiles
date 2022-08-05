@@ -1,11 +1,10 @@
-" NB: If you want "vim-like" behaviour where removing a line from
-" here makes the setting disappear, uncomment the line below.
+" This wipes all existing settings. This means that if a setting in this file
+" is removed, then it will return to default. In other words, this file serves
+" as an enforced single point of truth for Tridactyl's configuration.
+sanitize tridactyllocal tridactylsync
 
-" sanitise tridactyllocal tridactylsync
-
-"
-" Binds
-"
+" use a blank page for new tab
+set newtab about:blank
 
 " Comment toggler for Reddit and Hacker News
 bind ;c hint -c [class*="expand"],[class="togg"]
@@ -13,15 +12,39 @@ bind ;c hint -c [class*="expand"],[class="togg"]
 " Git{Hub,Lab} git clone via SSH yank
 bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
 
-" sane tab movement
+" move to prev/next tab
+bind K tabprev
+bind J tabnext
+
+" close tab with x, undo with X (instead of d and u)
+bind x tabclose
+bind X undo
+
+" use d and u for scrolling
 bind d scrollline 20
 bind u scrollline -20
-bind X undo
-bind x tabclose
 
-"
-" Misc settings
-"
+" ctrl-f should use the browser's native 'find' functionality
+unbind <C-f>
+
+" support tridactyl search too.
+bind / fillcmdline find
+bind ? fillcmdline find -?
+
+" go to prev/next search result like in vim
+bind n findnext 1
+bind N findnext -1
+
+" remove search highlighting.
+bind ,hl nohlsearch
+
+" reduce default j/k scrollline (default: 10)
+bind j scrollline 5
+bind k scrollline -5
+
+" copy elements
+bind ;y hint -p
+bind ;p hint -y
 
 " colorscheme
 colors dark
@@ -29,30 +52,30 @@ colors dark
 " don't focus input field automatically
 set allowautofocus false
 
-" Sane hinting mode
+" vimperator-like hint mode
 set hintfiltermode vimperator-reflow
-set hintchars 12347890
+set hintnames short
+set hintchars hneiarstdjluyqwfpgkmzxcvb
 
-"
-" Search urls and engine
-"
-
-set searchurls.ddg https://duckduckgo.com/lite/?q=%s
-set searchurls.d https://duckduckgo.com/lite/?q=%s
+" search urls
+set searchurls.dg https://duckduckgo.com/?q=%s
+set searchurls.d https://www.dict.cc/?s=%s
+set searchurls.mypy https://mypy.readthedocs.io/en/stable/search.html?q=%s
+set searchurls.dj https://docs.djangoproject.com/en/stable/search/?q=%s
+set searchurls.drf https://www.django-rest-framework.org/?q=%s
+set searchurls.wps https://wemake-python-styleguide.readthedocs.io/en/latest/search.html?q=%s
+set searchurls.r https://old.reddit.com/r/%s
+set searchurls.gh https://github.com/search?q=
+set searchurls.py https://docs.python.org/3/search.html?q=%s
 set searchurls.yt https://www.youtube.com/results?search_query=%s
 set searchurls.osm https://www.openstreetmap.org/search?query=%s
 
-set homepages ["https://duckduckgo.com/lite/"]
-set searchengine ddg
+set searchengine dg
 
-"
-" URL redirects
-"
+" homepage
+set homepages ["https://duckduckgo.com/"]
 
 " New reddit is bad
 autocmd DocStart www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
 " Mosquito nets won't make themselves
 autocmd DocStart www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
-
-" This will have to do until someone writes us a nice syntax file :)
-" vim: set filetype=vim:
