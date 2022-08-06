@@ -316,6 +316,13 @@ return require("packer").startup(function(use)
     "williamboman/mason-lspconfig.nvim",
     -- Show signature help while typing
     "ray-x/lsp_signature.nvim",
+    -- better virtual text for diagnostics
+    {
+      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+      config = function()
+        require("plugins.lsp_lines").config()
+      end,
+    },
     -- LSP symbol tree
     {
       "stevearc/aerial.nvim",
@@ -338,6 +345,7 @@ return require("packer").startup(function(use)
         "mason.nvim",
         "mason-lspconfig.nvim",
         "lsp_signature.nvim",
+        "lsp_lines.nvim",
         "aerial.nvim",
         "schemastore.nvim",
         "typescript.nvim",
@@ -670,13 +678,6 @@ return require("packer").startup(function(use)
     },
     config = function()
       require("plugins.trouble").config()
-    end,
-  })
-
-  use({
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    config = function()
-      require("plugins.lsp_lines").config()
     end,
   })
 

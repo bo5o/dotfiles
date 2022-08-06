@@ -8,6 +8,7 @@ function M.config()
   local lsp_signature = require("lsp_signature")
   local fidget = require("fidget")
   local aerial = require("aerial")
+  local lsp_lines = require("lsp_lines")
 
   local function create_capabilities()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -59,6 +60,10 @@ function M.config()
 
     -- for lsp symbol tree
     aerial.on_attach(client, bufnr)
+
+    -- for lsp lines
+    vim.diagnostic.config({ virtual_text = false, virtual_lines = false })
+    buf_map("<leader>ll", lsp_lines.toggle, "Show/hide lsp diagnostics")
   end
 
   lspconfig.util.default_config =
