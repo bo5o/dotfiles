@@ -46,6 +46,19 @@ return require("packer").startup(function(use)
 
   -- Colorscheme
   use({
+    "catppuccin/nvim",
+    disable = true,
+    as = "catppuccin",
+    run = ":CatppuccinCompile",
+    setup = function()
+      require("plugins.catppuccin_nvim").setup()
+    end,
+    config = function()
+      require("plugins.catppuccin_nvim").config()
+    end,
+  })
+
+  use({
     "sainnhe/gruvbox-material",
     setup = function()
       require("plugins.gruvbox").setup()
