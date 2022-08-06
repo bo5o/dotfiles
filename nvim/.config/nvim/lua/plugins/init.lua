@@ -210,11 +210,11 @@ return require("packer").startup(function(use)
       end,
     },
     { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }, -- lsp
-    { "hrsh7th/cmp-buffer", after = "nvim-cmp" }, -- buffer contents
-    { "hrsh7th/cmp-path", after = "nvim-cmp" }, -- path
-    { "quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp" }, -- snippets
-    { "hrsh7th/cmp-cmdline", after = "nvim-cmp" }, -- cmdline
-    { "andersevenrud/cmp-tmux", after = "nvim-cmp" }, -- tmux pane contents
+    { "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" }, -- buffer contents
+    { "hrsh7th/cmp-path", after = "cmp-buffer" }, -- path
+    { "quangnguyen30192/cmp-nvim-ultisnips", after = "cmp-path" }, -- snippets
+    { "hrsh7th/cmp-cmdline", after = "cmp-nvim-ultisnips" }, -- cmdline
+    { "andersevenrud/cmp-tmux", after = "cmp-cmdline" }, -- tmux pane contents
   })
 
   -- Auto-close brackets, parentheses etc.
@@ -296,62 +296,46 @@ return require("packer").startup(function(use)
     -- Advanced text objects
     { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
     -- Context-aware text objects
-    { "RRethy/nvim-treesitter-textsubjects", after = "nvim-treesitter" },
+    { "RRethy/nvim-treesitter-textsubjects", after = "nvim-treesitter-textobjects" },
     -- Always show treesitter context
-    { "lewis6991/nvim-treesitter-context", after = "nvim-treesitter" },
+    { "lewis6991/nvim-treesitter-context", after = "nvim-treesitter-textsubjects" },
     -- Colorize nested parentheses
-    { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
+    { "p00f/nvim-ts-rainbow", after = "nvim-treesitter-context" },
     -- Auto-close and -rename html tags
-    { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
+    { "windwp/nvim-ts-autotag", after = "nvim-ts-rainbow" },
     -- Auto-set 'commentstring'
-    { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
+    { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-ts-autotag" },
     -- Explore treesitter
-    { "nvim-treesitter/playground", after = "nvim-treesitter" },
+    { "nvim-treesitter/playground", after = "nvim-ts-context-commentstring" },
   })
 
   -- LSP
   use({
-    -- Language server installation
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    -- Show signature help while typing
-    "ray-x/lsp_signature.nvim",
-    -- better virtual text for diagnostics
+    { "williamboman/mason.nvim" }, -- install lsp servers, linters, formatters etc.
+    { "williamboman/mason-lspconfig.nvim", after = "mason.nvim" }, -- mason lsp intergration
+    { "ray-x/lsp_signature.nvim", after = "mason-lspconfig.nvim" }, -- lsp signature help
+    { "j-hui/fidget.nvim", after = "lsp_signature.nvim" }, -- lsp progress hints
     {
-      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-      config = function()
-        require("plugins.lsp_lines").config()
-      end,
-    },
-    -- LSP symbol tree
-    {
-      "stevearc/aerial.nvim",
+      "stevearc/aerial.nvim", -- lsp symbol tree sidebar
+      after = "fidget.nvim",
       config = function()
         require("plugins.aerial_nvim").config()
       end,
     },
-    -- JSON schema support
-    "b0o/schemastore.nvim",
-    -- Better typescript lsp support
-    "jose-elias-alvarez/typescript.nvim",
-    -- Progress display
-    "j-hui/fidget.nvim",
-    -- Lua development
-    "folke/lua-dev.nvim",
+    {
+      "https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- better virtual text for diagnostics
+      after = "aerial.nvim",
+      config = function()
+        require("plugins.lsp_lines_nvim").config()
+      end,
+    },
+    { "b0o/schemastore.nvim", after = "lsp_lines.nvim" }, -- JSON schema support
+    { "jose-elias-alvarez/typescript.nvim", after = "schemastore.nvim" }, -- better typescript support
+    { "folke/lua-dev.nvim", after = "typescript.nvim" }, -- better lua support
     {
       -- Language server configuration
       "neovim/nvim-lspconfig",
-      after = {
-        "mason.nvim",
-        "mason-lspconfig.nvim",
-        "lsp_signature.nvim",
-        "lsp_lines.nvim",
-        "aerial.nvim",
-        "schemastore.nvim",
-        "typescript.nvim",
-        "fidget.nvim",
-        "lua-dev.nvim",
-      },
+      after = "lua-dev.nvim",
       config = function()
         require("plugins.lspconfig").config()
       end,
