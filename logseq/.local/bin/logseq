@@ -1,0 +1,7 @@
+#! /bin/bash
+
+set -x
+
+appimage="$(find ~/Applications/ -type f -executable | grep -i logseq | sort -h | tail -n1)"
+
+exec "$appimage" "$@"
