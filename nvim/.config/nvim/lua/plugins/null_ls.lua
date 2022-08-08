@@ -80,6 +80,7 @@ function M.config()
         prefer_local = "node_modules/.bin",
       }),
       -- SQL
+      builtins.diagnostics.sqlfluff,
       builtins.formatting.sql_formatter.with({
         extra_args = function(params)
           local config = search_upwards(".sql-formatter.json", {
