@@ -67,7 +67,9 @@ function M.config()
       },
     },
     rainbow = {
-      enable = false, -- https://github.com/p00f/nvim-ts-rainbow/issues/5
+      enable = true,
+      extended_mode = false,
+      max_file_lines = 800,
     },
     playground = {
       enable = true,
