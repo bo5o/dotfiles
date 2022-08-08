@@ -30,6 +30,10 @@ function M.config()
   map("<leader>lq", diagnostic.setloclist, "Add diagnostics to location list")
   map("<leader>lg", diagnostic.open_float, "Show diagnostics")
 
+  -- lsp lines
+  vim.diagnostic.config({ virtual_text = false, virtual_lines = false })
+  map("<leader>ll", lsp_lines.toggle, "Show/hide in-line diagnostics")
+
   ---@diagnostic disable-next-line: unused-local
   local on_attach = function(client, bufnr)
     local buf_map = bind_map({ silent = true, buffer = bufnr })
@@ -60,10 +64,6 @@ function M.config()
 
     -- for lsp symbol tree
     aerial.on_attach(client, bufnr)
-
-    -- for lsp lines
-    vim.diagnostic.config({ virtual_text = false, virtual_lines = false })
-    buf_map("<leader>ll", lsp_lines.toggle, "Show/hide lsp diagnostics")
   end
 
   lspconfig.util.default_config =
@@ -93,7 +93,7 @@ function M.config()
             Lua = {
               format = { enable = false },
               workspace = {
-                ignoreDir = {"undodir/**/*.lua"}
+                ignoreDir = { "undodir/**/*.lua" },
               },
             },
           },
