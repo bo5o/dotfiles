@@ -92,6 +92,9 @@ function M.config()
           settings = {
             Lua = {
               format = { enable = false },
+              workspace = {
+                ignoreDir = {"undodir/**/*.lua"}
+              },
             },
           },
         },
