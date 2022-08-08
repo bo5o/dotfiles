@@ -53,7 +53,7 @@ function M.setup()
     json = {},
     go = {},
     sh = {},
-    sql = { "pgformatter" },
+    sql = {},
     tex = { "latexindent" },
     typescript = {},
     vue = {},

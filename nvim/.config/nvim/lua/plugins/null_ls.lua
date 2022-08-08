@@ -1,5 +1,24 @@
 local M = {}
 
+local Path = require("plenary.path")
+
+local function search_upwards(file, opts)
+  start = Path:new(opts.start_from or vim.fn.expand("%"))
+  stop = Path:new(opts.stop_at or vim.fn.expand("~"))
+
+  for _, dir in pairs(start:parents()) do
+    local config_file = Path:new(dir) / file
+
+    if config_file:is_file() then
+      return tostring(config_file)
+    end
+
+    if dir == tostring(stop) then
+      return nil
+    end
+  end
+end
+
 function M.config()
   local null_ls = require("null-ls")
   local builtins = null_ls.builtins
@@ -58,6 +77,17 @@ function M.config()
       }),
       builtins.code_actions.eslint_d.with({
         filetypes = { "javascript", "typescript", "vue" },
+        prefer_local = "node_modules/.bin",
+      }),
+      -- SQL
+      builtins.formatting.sql_formatter.with({
+        extra_args = function(params)
+          local config = search_upwards(".sql-formatter.json", {
+            start_from = params.bufname,
+            stop_at = params.root,
+          })
+          return config and { "--config", config } or {}
+        end,
         prefer_local = "node_modules/.bin",
       }),
       -- CSS/HTML/JSON/YAML/Markdown
