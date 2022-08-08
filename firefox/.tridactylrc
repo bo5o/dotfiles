@@ -75,6 +75,8 @@ set searchurls.gh https://github.com/search?q=
 set searchurls.py https://docs.python.org/3/search.html?q=%s
 set searchurls.yt https://www.youtube.com/results?search_query=%s
 set searchurls.osm https://www.openstreetmap.org/search?query=%s
+set searchurls.sns https://seaborn.pydata.org/search.html?q=%s
+set searchurls.trino https://trino.io/docs/current/search.html?q=%s
 
 set searchengine dg
 
