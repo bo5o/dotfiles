@@ -97,3 +97,4 @@ seturl notebooks.*?\.(ipynb|py)$ superignore true
 set auconcreatecontainer true
 set autocontainmode relaxed
 autocontain -s github\.(com|dev) github
+autocontain -s gitlab\.com gitlab
