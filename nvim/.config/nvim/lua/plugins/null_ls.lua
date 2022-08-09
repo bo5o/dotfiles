@@ -19,6 +19,15 @@ local function search_upwards(file, opts)
   end
 end
 
+local function from_virtual_env(params)
+  local venv = vim.env.VIRTUAL_ENV
+  local command = nil
+  if venv then
+    command = tostring(Path:new(venv) / "bin" / params.command)
+  end
+  return command
+end
+
 function M.config()
   local null_ls = require("null-ls")
   local builtins = null_ls.builtins
@@ -41,6 +50,7 @@ function M.config()
   end
 
   null_ls.setup({
+    debug = false,
     debounce = 250,
     diagnostics_format = "[#{s}] #{c}: #{m}",
     on_attach = on_attach,
@@ -80,7 +90,27 @@ function M.config()
         prefer_local = "node_modules/.bin",
       }),
       -- SQL
-      builtins.diagnostics.sqlfluff,
+      builtins.diagnostics.sqlfluff.with({
+        method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+        extra_filetypes = { "jinja" },
+        condition = function(utils)
+          return utils.root_has_file({ ".sqlfluff" })
+        end,
+        to_stdin = false,
+        timeout = 10000,
+        dynamic_command = function(params)
+          return from_virtual_env(params)
+            or vim.fn.executable(params.command) == 1 and params.command
+        end,
+        args = {
+          "lint",
+          "-f",
+          "github-annotation",
+          "-n",
+          "--disable_progress_bar",
+          "$FILENAME",
+        },
+      }),
       builtins.formatting.sql_formatter.with({
         extra_args = function(params)
           local config = search_upwards(".sql-formatter.json", {
