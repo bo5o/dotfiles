@@ -11,7 +11,7 @@ function M.config()
       "markdown",
       "startify",
       "NvimTree",
-      "mason.nvim",
+      "mason",
     },
     buftype_exclude = { "terminal", "nofile", "prompt" },
     show_current_context = false,
