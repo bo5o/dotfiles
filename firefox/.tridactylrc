@@ -89,9 +89,9 @@ autocmd DocStart www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
 
 " disable on some sites
 blacklistadd outlook.office.com
-blacklistadd monkeytype.com
 
 seturl notebooks.*?\.(ipynb|py)$ superignore true
+seturl monkeytype.com superignore true
 
 " container settings
 set auconcreatecontainer true
