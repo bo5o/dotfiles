@@ -56,7 +56,6 @@ colors dark
 " don't focus input field automatically, except on some sites
 set allowautofocus false
 seturl regex101.com allowautofocus true
-seturl monkeytype.com allowautofocus true
 
 " vimperator-like hint mode
 set hintfiltermode vimperator-reflow
@@ -90,6 +89,7 @@ autocmd DocStart www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
 
 " disable on some sites
 blacklistadd outlook.office.com
+blacklistadd monkeytype.com
 
 seturl notebooks.*?\.(ipynb|py)$ superignore true
 
