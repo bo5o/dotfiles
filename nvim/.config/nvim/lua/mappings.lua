@@ -56,10 +56,6 @@ whichkey.register({
   -- ask before jumping tag stack if ambigous
   ["<C-]>"] = { "g<C-]>", "See :h CTRL-]" },
 
-  -- navigate quickfix relative to current cursor position
-  ["[d"] = { "<cmd>cabove<CR>", ":cabove" },
-  ["]d"] = { "<cmd>cbelow<CR>", ":cbelow" },
-
   -- remap 0 to go to first non-blank character (like ^)
   ["0"] = { "^", "See :h ^", mode = "n" }, -- should be mode "nvo", see comments below
 

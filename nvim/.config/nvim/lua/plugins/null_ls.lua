@@ -54,11 +54,14 @@ function M.config()
     debounce = 250,
     diagnostics_format = "[#{s}] #{c}: #{m}",
     on_attach = on_attach,
-    -- should_attach = function(bufnr)
-    --   local bufname = vim.api.nvim_buf_get_name(bufnr)
-    --   local is_yaml = bufname:match("%.ya?ml$")
-    --   return not is_yaml
-    -- end,
+    should_attach = function(bufnr)
+      local bufname = vim.api.nvim_buf_get_name(bufnr)
+      return not bufname:match("%.min%.css$")
+        and not bufname:match("%.min%.js$")
+        and not (bufname:match("%.git/.+$") and not bufname:match("COMMIT_EDITMSG$"))
+        and not bufname:match("site%-packages/.+$")
+        and not bufname:match("node_modules/.+$")
+    end,
     sources = {
       builtins.formatting.trim_whitespace,
       builtins.formatting.trim_newlines.with({
@@ -66,14 +69,33 @@ function M.config()
       }),
       -- Lua
       builtins.formatting.stylua,
+      -- Gitcommit
+      builtins.diagnostics.gitlint,
       -- Python
-      -- builtins.diagnostics.flake8,
-      -- builtins.diagnostics.pylint.with({
-      -- 	condition = function(utils)
-      -- 		return utils.root_has_file(".pylintrc")
-      -- 	end,
-      -- }),
-      -- builtins.diagnostics.mypy,
+      builtins.diagnostics.pylint.with({
+        method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+        condition = function(utils)
+          return utils.root_has_file(".pylintrc")
+        end,
+        dynamic_command = function(params)
+          return from_virtual_env(params)
+            or vim.fn.executable(params.command) == 1 and params.command
+        end,
+      }),
+      builtins.diagnostics.flake8.with({
+        method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+        dynamic_command = function(params)
+          return from_virtual_env(params)
+            or vim.fn.executable(params.command) == 1 and params.command
+        end,
+      }),
+      builtins.diagnostics.mypy.with({
+        method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+        dynamic_command = function(params)
+          return from_virtual_env(params)
+            or vim.fn.executable(params.command) == 1 and params.command
+        end,
+      }),
       builtins.formatting.black,
       builtins.formatting.isort,
       -- Javascript/Typescript/Vue
@@ -140,6 +162,7 @@ function M.config()
       builtins.formatting.gofmt,
       -- Tex
       builtins.diagnostics.chktex,
+      builtins.formatting.latexindent,
     },
   })
 end

@@ -18,7 +18,7 @@ function M.config()
         { "diff", colored = false },
         {
           "diagnostics",
-          sources = { "nvim_diagnostic", "ale" },
+          sources = { "nvim_diagnostic" },
           colored = false,
         },
       },

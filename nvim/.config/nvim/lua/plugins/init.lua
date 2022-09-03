@@ -434,14 +434,6 @@ return require("packer").startup(function(use)
     end,
   })
 
-  -- Linting and fixing (for everything that null-ls can't do yet)
-  use({
-    "dense-analysis/ale", -- linting and fixing
-    setup = function()
-      require("plugins.ale").setup()
-    end,
-  })
-
   -- Docstring generator
   use({
     "kkoomen/vim-doge",

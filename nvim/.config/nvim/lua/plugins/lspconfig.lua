@@ -25,8 +25,8 @@ function M.config()
 
   local map = bind_map({ silent = true })
   local diagnostic = vim.diagnostic
-  map("[g", diagnostic.goto_prev, "Go to previous diagnostic")
-  map("]g", diagnostic.goto_next, "Go to next diagnostic")
+  map("[d", diagnostic.goto_prev, "Go to previous diagnostic")
+  map("]d", diagnostic.goto_next, "Go to next diagnostic")
   map("<leader>lq", diagnostic.setloclist, "Add diagnostics to location list")
   map("<leader>lg", diagnostic.open_float, "Show diagnostics")
 
