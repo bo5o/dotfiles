@@ -2,6 +2,7 @@ vim.filetype.add({
   filename = {
     ["sxhkdrc"] = "sxhkd",
     [".sqlfluff"] = "cfg",
+    [".flake8"] = "cfg",
   },
   pattern = {
     [".*/models/.*%.sql"] = "jinja",
