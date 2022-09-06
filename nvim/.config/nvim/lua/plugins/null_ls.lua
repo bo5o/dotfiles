@@ -91,6 +91,7 @@ function M.config()
       }),
       builtins.diagnostics.mypy.with({
         method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+        timeout = 10000,
         dynamic_command = function(params)
           return from_virtual_env(params)
             or vim.fn.executable(params.command) == 1 and params.command
