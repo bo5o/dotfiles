@@ -7,6 +7,7 @@ function M.setup()
     "!^.direnv",
     "!^site-packages",
     "!^node_modules",
+    "!../.project-root",
     ".project-root",
     "package.json",
     "requirements.txt",
