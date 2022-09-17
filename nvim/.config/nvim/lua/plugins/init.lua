@@ -528,6 +528,9 @@ return require("packer").startup(function(use)
     setup = function()
       require("plugins.projectionist").setup()
     end,
+    config = function()
+      require("plugins.projectionist").config()
+    end,
   })
 
   -- automatically change to project directory when opening files
