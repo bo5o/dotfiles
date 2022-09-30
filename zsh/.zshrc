@@ -38,6 +38,7 @@ plugins=(
     ripgrep
     fd
     fzf
+    rust
     tldr # https://github.com/tldr-pages/tldr-node-client#zsh
     taskwarrior
 )
