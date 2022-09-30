@@ -18,6 +18,7 @@ function M.config()
       "toml",
       "vue",
       "sql",
+      "rust",
       "query", -- for treesitter playground
     },
     highlight = {
