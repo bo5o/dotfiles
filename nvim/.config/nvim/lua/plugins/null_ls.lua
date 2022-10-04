@@ -67,6 +67,8 @@ function M.config()
       builtins.formatting.trim_newlines.with({
         disabled_filetypes = { "crontab" },
       }),
+      -- Rust
+      builtins.formatting.rustfmt,
       -- Lua
       builtins.formatting.stylua,
       -- Gitcommit
