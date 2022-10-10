@@ -69,6 +69,7 @@ export PATH="$(asdf where yq)/bin:$PATH"
 export PATH="$(asdf where nodejs)/bin:$PATH"
 export PATH="$(asdf where lazydocker)/bin:$PATH"
 export PATH="$(asdf where python)/bin:$PATH"
+export PATH="$(asdf where azure-cli)/bin:$PATH"
 tldr() { asdf exec tldr "$@"; }
 tmuxinator() { asdf exec tmuxinator "$@"; }
 
