@@ -19,3 +19,4 @@ fd 8.4.0
 yq 4.27.5
 lazydocker 0.18.1
 php 8.1.10
+azure-cli 2.40.0
