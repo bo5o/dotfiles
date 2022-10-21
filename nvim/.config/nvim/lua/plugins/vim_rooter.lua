@@ -14,6 +14,7 @@ function M.setup()
     "setup.py",
     "manage.py",
     "pyproject.toml",
+    "Cargo.toml",
     ".git",
   }
 end
