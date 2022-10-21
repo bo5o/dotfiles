@@ -72,6 +72,7 @@ export PATH="$(asdf where python)/bin:$PATH"
 export PATH="$(asdf where azure-cli)/bin:$PATH"
 tldr() { asdf exec tldr "$@"; }
 tmuxinator() { asdf exec tmuxinator "$@"; }
+neovide() { asdf exec neovide "$@"; }
 
 # zsh-completions
 # https://github.com/zsh-users/zsh-completions/issues/603
