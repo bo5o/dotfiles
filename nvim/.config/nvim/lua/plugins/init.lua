@@ -344,11 +344,11 @@ return require("packer").startup(function(use)
     },
     { "b0o/schemastore.nvim", after = "lsp_lines.nvim" }, -- JSON schema support
     { "jose-elias-alvarez/typescript.nvim", after = "schemastore.nvim" }, -- better typescript support
-    { "folke/lua-dev.nvim", after = "typescript.nvim" }, -- better lua support
+    { "folke/neodev.nvim", after = "typescript.nvim" }, -- better lua support
     {
       -- Language server configuration
       "neovim/nvim-lspconfig",
-      after = "lua-dev.nvim",
+      after = "neodev.nvim",
       config = function()
         require("plugins.lspconfig").config()
       end,

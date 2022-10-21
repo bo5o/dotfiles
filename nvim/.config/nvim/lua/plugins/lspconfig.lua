@@ -82,24 +82,23 @@ function M.config()
       lspconfig[server_name].setup({})
     end,
     ["sumneko_lua"] = function()
-      local luadev = require("lua-dev").setup({
+      local neodev = require("neodev").setup({
         library = {
-          vimruntime = true,
+          runtime = true,
           types = true,
           plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
         },
-        lspconfig = {
-          settings = {
-            Lua = {
-              format = { enable = false },
-              workspace = {
-                ignoreDir = { "undodir/**/*.lua" },
-              },
+      })
+      lspconfig.sumneko_lua.setup({
+        settings = {
+          Lua = {
+            format = { enable = false },
+            workspace = {
+              ignoreDir = { "undodir/**/*.lua" },
             },
           },
         },
       })
-      lspconfig.sumneko_lua.setup(luadev)
     end,
     ["jsonls"] = function()
       lspconfig.jsonls.setup({
