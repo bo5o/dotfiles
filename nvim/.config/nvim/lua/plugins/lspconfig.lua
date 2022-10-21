@@ -4,16 +4,18 @@ function M.config()
   local mason = require("mason")
   local mason_lspconfig = require("mason-lspconfig")
   local lspconfig = require("lspconfig")
-  local cmp_lsp = require("cmp_nvim_lsp")
+  local cmp_nvim_lsp = require("cmp_nvim_lsp")
   local lsp_signature = require("lsp_signature")
   local fidget = require("fidget")
   local aerial = require("aerial")
   local lsp_lines = require("lsp_lines")
 
   local function create_capabilities()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = cmp_lsp.update_capabilities(capabilities)
-    return cmp_lsp.update_capabilities(capabilities)
+    return vim.tbl_deep_extend(
+      "force",
+      vim.lsp.protocol.make_client_capabilities(),
+      cmp_nvim_lsp.default_capabilities()
+    )
   end
 
   local function bind_map(default_opts)
