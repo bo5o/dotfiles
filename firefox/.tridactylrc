@@ -92,6 +92,7 @@ blacklistadd outlook.office.com
 
 seturl notebooks.*?\.(ipynb|py)$ superignore true
 seturl monkeytype.com superignore true
+seturl localhost superignore true
 
 " container settings
 set auconcreatecontainer true
