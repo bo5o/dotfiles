@@ -41,8 +41,7 @@ function M.config()
         group = augroup,
         buffer = bufnr,
         callback = function()
-          -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-          vim.lsp.buf.formatting_seq_sync(nil, nil, { "null-ls" })
+          vim.lsp.buf.format({ bufnr = bufnr })
         end,
         desc = "Format buffer on save, using null-ls last",
       })

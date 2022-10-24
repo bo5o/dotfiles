@@ -10,19 +10,42 @@ function M.config()
   local aerial = require("aerial")
   local lsp_lines = require("lsp_lines")
 
+  local function bind_map(default_opts)
+    return function(lhs, rhs, desc)
+      local opts = vim.tbl_extend("force", default_opts, { desc = desc })
+      vim.keymap.set("n", lhs, rhs, opts)
+    end
+  end
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local buf_map = bind_map({ buffer = args.buf, silent = true })
+      local lsp = vim.lsp.buf
+
+      buf_map("gd", lsp.definition, "Go to definition")
+      buf_map("gD", lsp.declaration, "Go to declaration")
+      buf_map("K", lsp.hover, "Display hover information")
+      buf_map("gi", lsp.implementation, "List implementations")
+      buf_map("gr", "<cmd>TroubleToggle lsp_references<CR>", "List all references")
+      buf_map("<leader>K", lsp.signature_help, "Display signature help")
+      buf_map("<leader>ld", lsp.type_definition, "Go to type definition")
+      buf_map("<leader>lf", lsp.formatting, "Format current buffer")
+      buf_map("<leader>ln", lsp.rename, "Rename all references")
+      buf_map("<leader>lc", lsp.code_action, "Select code action")
+      buf_map("<leader>lwa", lsp.add_workspace_folder, "Add workspace folder")
+      buf_map("<leader>lwr", lsp.remove_workspace_folder, "Remove workspace folder")
+      buf_map("<leader>lwl", function()
+        print(vim.inspect(lsp.list_workspace_folders()))
+      end, "List workspace folders")
+    end,
+  })
+
   local function create_capabilities()
     return vim.tbl_deep_extend(
       "force",
       vim.lsp.protocol.make_client_capabilities(),
       cmp_nvim_lsp.default_capabilities()
     )
-  end
-
-  local function bind_map(default_opts)
-    return function(lhs, rhs, desc)
-      local opts = vim.tbl_extend("force", default_opts, { desc = desc })
-      vim.keymap.set("n", lhs, rhs, opts)
-    end
   end
 
   local map = bind_map({ silent = true })
@@ -38,25 +61,6 @@ function M.config()
 
   ---@diagnostic disable-next-line: unused-local
   local on_attach = function(client, bufnr)
-    local buf_map = bind_map({ silent = true, buffer = bufnr })
-    local lsp = vim.lsp.buf
-
-    buf_map("gd", lsp.definition, "Go to definition")
-    buf_map("gD", lsp.declaration, "Go to declaration")
-    buf_map("K", lsp.hover, "Display hover information")
-    buf_map("gi", lsp.implementation, "List implementations")
-    buf_map("gr", "<cmd>TroubleToggle lsp_references<CR>", "List all references")
-    buf_map("<leader>K", lsp.signature_help, "Display signature help")
-    buf_map("<leader>ld", lsp.type_definition, "Go to type definition")
-    buf_map("<leader>lf", lsp.formatting, "Format current buffer")
-    buf_map("<leader>ln", lsp.rename, "Rename all references")
-    buf_map("<leader>lc", lsp.code_action, "Select code action")
-    buf_map("<leader>lwa", lsp.add_workspace_folder, "Add workspace folder")
-    buf_map("<leader>lwr", lsp.remove_workspace_folder, "Remove workspace folder")
-    buf_map("<leader>lwl", function()
-      print(vim.inspect(lsp.list_workspace_folders()))
-    end, "List workspace folders")
-
     -- Configure signature help for completion
     lsp_signature.on_attach({
       bind = true,
@@ -148,8 +152,7 @@ function M.config()
       lspconfig.volar.setup({
         on_attach = function(client, bufnr)
           on_attach(client, bufnr)
-          client.resolved_capabilities.document_formatting = false
-          client.resolved_capabilities.document_range_formatting = false
+          client.server_capabilities.documentFormattingProvider = false
         end,
       })
     end,
@@ -168,8 +171,7 @@ function M.config()
         server = { -- pass options to lspconfig's setup method
           on_attach = function(client, bufnr)
             on_attach(client, bufnr)
-            client.resolved_capabilities.document_formatting = false
-            client.resolved_capabilities.document_range_formatting = false
+            client.server_capabilities.documentFormattingProvider = false
 
             local buf_map = bind_map({ silent = true, buffer = bufnr })
             buf_map(

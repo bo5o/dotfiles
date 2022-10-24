@@ -132,7 +132,3 @@ vim.opt.list = true
 vim.opt.listchars =
   { tab = "→ ", eol = "¬", trail = "⋅", extends = "❯", precedes = "❮" }
 vim.opt.showbreak = "↪"
-
--- filetype/buffer settings
-vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 0
