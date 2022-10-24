@@ -7,6 +7,7 @@ vim.filetype.add({
   pattern = {
     [".*/models/.*%.sql"] = "jinja",
     [".*/macros/.*%.sql"] = "jinja",
+    [".*/tests/.*%.sql"] = "jinja",
     ["%.env%.(%a+)"] = function()
       vim.fn["dist#ft#SetFileTypeSH"](vim.fn.getline(1))
     end,
