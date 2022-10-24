@@ -14,6 +14,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
+# asdf + direnv settings
+export ASDF_DIR="$HOME/.asdf"
+export DIRENV_LOG_FORMAT=""
+
 # Plugins (can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
     git
@@ -41,18 +45,8 @@ plugins=(
     rust
     tldr # https://github.com/tldr-pages/tldr-node-client#zsh
     taskwarrior
+    zsh-asdf-direnv # Fork at https://github.com/cbows/zsh-asdf-direnv
 )
-
-# asdf
-export ASDF_DIR="${ASDF_DIR:-$HOME/.asdf}"
-export PATH="$PATH:$ASDF_DIR/bin"
-source "$ASDF_DIR/lib/asdf.sh"
-fpath=($ASDF_DIR/completions $fpath)
-
-
-# direnv
-export DIRENV_LOG_FORMAT=""
-eval "$(asdf exec direnv hook zsh)"
 
 # global tool versions
 export PATH="$(asdf where direnv)/bin:$PATH"
@@ -73,9 +67,10 @@ tldr() { asdf exec tldr "$@"; }
 tmuxinator() { asdf exec tmuxinator "$@"; }
 neovide() { asdf exec neovide "$@"; }
 
-# zsh-completions
+# completions
 # https://github.com/zsh-users/zsh-completions/issues/603
 fpath=($ZSH/custom/plugins/zsh-completions/src $fpath)
+fpath=(${ASDF_DIR}/completions $fpath)
 
 source $ZSH/oh-my-zsh.sh
 
