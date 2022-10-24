@@ -28,6 +28,27 @@ function M.setup()
     [" "] = jump,
   }
 
+  vim.g.quicktex_jinja = {
+    [" "] = jump,
+    [";;"] = "{{ <+++> }}",
+    [";p"] = "{%- <+++> -%}",
+    [";b"] = "{%- <+++> -%}<++>{%- end<++> -%}",
+    [";set"] = "{%- set <+++> = <++> -%}",
+    [";ref"] = "{{ ref('<+++>') }}",
+    [";src"] = "{{ source('<+++>') }}",
+    [";conf"] = "{{ config(<+++>) }}",
+    [";for"] = "{%- for <+++> in <++> -%}<++>{%- endfor -%}",
+    [";if"] = "{%- if <+++> -%}<++>{%- endif -%}",
+    [";logg"] = "{%- do log(<+++>) -%}",
+    [";util"] = "{{ dbt_utils.<+++> }}",
+    [";logi"] = "{{ dbt_utils.log_info(<+++>) }}",
+    [";logp"] = "{{ dbt_utils.pretty_log_format(<+++>) }}",
+    [";get"] = "{%- set <+++> = config.get('<++>') -%}",
+    [";require"] = "{%- set <+++> = config.require('<++>') -%}",
+    [";run"] = "{% set <+++> = run_query(<++>) %}",
+    [";dict"] = "{{ dbt_utils.get_query_results_as_dict(<+++>) }}",
+  }
+
   vim.g.quicktex_python = {
     [" "] = jump,
     -- docstrings
