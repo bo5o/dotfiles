@@ -399,7 +399,7 @@ return require("packer").startup(function(use)
   use({ "Vimjas/vim-python-pep8-indent", ft = "python" })
 
   -- requirements.txt (Python)
-  use({ "raimon49/requirements.txt.vim", ft = "requirements" })
+  use({ "raimon49/requirements.txt.vim" })
 
   -- .tridactylrc
   use({ "tridactyl/vim-tridactyl", ft = "tridactyl" })
