@@ -67,9 +67,6 @@ function M.config()
       hint_enable = false,
       hi_parameter = "Search",
     })
-
-    -- for lsp symbol tree
-    aerial.on_attach(client, bufnr)
   end
 
   lspconfig.util.default_config =
