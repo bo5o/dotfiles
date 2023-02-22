@@ -386,7 +386,7 @@ return require("packer").startup(function(use)
   -- Let's wait for https://github.com/nvim-treesitter/nvim-treesitter/issues/81
   -- and then switch to Treesitter for semantic syntax highlighting
   use({
-    "numirias/semshi",
+    "wookayin/semshi",
     setup = function()
       require("plugins.semshi").setup()
     end,
