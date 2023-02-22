@@ -3,7 +3,7 @@ local M = {}
 function M.config()
   vim.g.startify_list_order = { "files", "dir", "bookmarks", "commands" }
   vim.g.startify_bookmarks = {
-    { c = "~/.config/nvim/init.vim" },
+    { c = "~/.config/nvim/init.lua" },
     { g = "~/.gitconfig" },
     { p = "~/.oh-my-zsh/custom/p10k.zsh" },
     { t = "~/.tmux.conf" },
