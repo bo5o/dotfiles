@@ -84,7 +84,7 @@ function M.config()
     function(server_name) -- default handler
       lspconfig[server_name].setup({})
     end,
-    ["sumneko_lua"] = function()
+    ["lua_ls"] = function()
       local neodev = require("neodev").setup({
         library = {
           runtime = true,
@@ -92,7 +92,7 @@ function M.config()
           plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
         },
       })
-      lspconfig.sumneko_lua.setup({
+      lspconfig.lua_ls.setup({
         settings = {
           Lua = {
             format = { enable = false },
