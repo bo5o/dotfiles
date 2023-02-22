@@ -17,6 +17,11 @@ nvim/.config/nvim/local-settings.vim
 grip/**/cache*
 ipython/.ipython/profile_default/history.sqlite
 ipython/.ipython/profile_default/startup/README
+ipython/.jupyter/jupyter_nbconvert_config.json
+ipython/.jupyter/jupyter_notebook_config.json
+ipython/.jupyter/lab/
+ipython/.jupyter/nbconfig/
+ipython/.ipython/profile_default/db/
 zsh/.oh-my-zsh/custom/*_.zsh
 zsh/.oh-my-zsh/custom/*_Z.zsh
 ranger/.config/ranger/plugins/*.pyo
