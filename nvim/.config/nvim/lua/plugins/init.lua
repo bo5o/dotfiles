@@ -437,9 +437,7 @@ return require("packer").startup(function(use)
   -- Docstring generator
   use({
     "kkoomen/vim-doge",
-    run = function()
-      vim.fn["doge#install"]()
-    end,
+    run = ":call doge#install()",
     cmd = "DogeGenerate",
     setup = function()
       require("plugins.doge").setup()
