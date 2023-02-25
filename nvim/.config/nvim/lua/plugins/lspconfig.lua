@@ -7,7 +7,7 @@ function M.config()
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
   local lsp_signature = require("lsp_signature")
   local fidget = require("fidget")
-  local aerial = require("aerial")
+  require("aerial")
 
   local function bind_map(default_opts)
     return function(lhs, rhs, desc)
@@ -122,7 +122,7 @@ function M.config()
       lspconfig[server_name].setup({})
     end,
     ["lua_ls"] = function()
-      local neodev = require("neodev").setup({
+      require("neodev").setup({
         library = {
           runtime = true,
           types = true,

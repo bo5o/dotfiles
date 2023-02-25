@@ -3,8 +3,8 @@ local M = {}
 local Path = require("plenary.path")
 
 local function search_upwards(file, opts)
-  start = Path:new(opts.start_from or vim.fn.expand("%"))
-  stop = Path:new(opts.stop_at or vim.fn.expand("~"))
+  local start = Path:new(opts.start_from or vim.fn.expand("%"))
+  local stop = Path:new(opts.stop_at or vim.fn.expand("~"))
 
   for _, dir in pairs(start:parents()) do
     local config_file = Path:new(dir) / file
