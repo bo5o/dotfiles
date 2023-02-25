@@ -113,6 +113,7 @@ function M.config()
         filetypes = { "javascript", "typescript", "vue" },
         prefer_local = "node_modules/.bin",
       }),
+      require("typescript.extensions.null-ls.code-actions"),
       -- SQL
       builtins.diagnostics.sqlfluff.with({
         method = null_ls.methods.DIAGNOSTICS_ON_SAVE,

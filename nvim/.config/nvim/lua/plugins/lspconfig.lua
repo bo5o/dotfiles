@@ -206,19 +206,6 @@ function M.config()
           on_attach = function(client, bufnr)
             on_attach(client, bufnr)
             client.server_capabilities.documentFormattingProvider = false
-
-            local buf_map = bind_map({ silent = true, buffer = bufnr })
-            buf_map(
-              "<leader>lm",
-              "<cmd>TypescriptRenameFile<cr>",
-              "Rename file and update imports"
-            )
-            buf_map("<leader>lI", function()
-              typescript.actions.addMissingImports({ sync = true })
-            end, "Import missing imports")
-            buf_map("<leader>lo", function()
-              typescript.actions.organizeImports({ sync = true })
-            end, "Organize imports")
           end,
           capabilities = create_capabilities(),
           settings = {
