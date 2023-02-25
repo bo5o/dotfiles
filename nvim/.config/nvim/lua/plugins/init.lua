@@ -668,7 +668,6 @@ return require("packer").startup(function(use)
       "TroubleToggle",
       "TroubleRefresh",
       "TroubleClose",
-      "TodoTrouble",
     },
     config = function()
       require("plugins.trouble").config()
@@ -679,9 +678,9 @@ return require("packer").startup(function(use)
   use({
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
-    -- config = function()
-    --   require("plugins.todo_comments").config()
-    -- end,
+    config = function()
+      require("plugins.todo_comments_nvim").config()
+    end,
   })
 
   -- Direnv integration
