@@ -23,6 +23,12 @@ function M.config()
   require("mini.bufremove").setup({
     set_vim_settings = false,
   })
+
+  -- https://github.com/echasnovski/mini.nvim/issues/235
+  -- require("mini.bracketed").setup({
+  --   diagnostic = { options = { wrap = false } },
+  --   comment = { suffix = "" },
+  -- })
 end
 
 return M
