@@ -116,6 +116,14 @@ return require("packer").startup(function(use)
     end,
   })
 
+  use({
+    "anuvyklack/windows.nvim",
+    requires = "anuvyklack/middleclass",
+    config = function()
+      require("plugins.windows_nvim").config()
+    end,
+  })
+
   -------------
   -- Navigation
   -------------
