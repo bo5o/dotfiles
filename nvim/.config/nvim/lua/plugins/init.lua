@@ -421,6 +421,9 @@ return require("packer").startup(function(use)
   -- .tmux.conf
   use({ "ericpruitt/tmux.vim", ft = "tmux" })
 
+  -- kitty.conf
+  use("fladson/vim-kitty")
+
   -- Dockerfile
   use({ "ekalinin/Dockerfile.vim", ft = "Dockerfile" })
 
