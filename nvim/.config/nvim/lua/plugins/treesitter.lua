@@ -45,10 +45,17 @@ function M.config()
           ["if"] = "@function.inner",
           ["ac"] = "@class.outer",
           ["ic"] = "@class.inner",
+          ["as"] = {
+            query = "@scope",
+            query_group = "locals",
+            desc = "Select language scope",
+          },
         },
+        include_surrounding_whitespace = false,
       },
       move = {
         enable = true,
+        set_jumps = true,
         goto_next_start = {
           ["]m"] = "@function.outer",
           ["]]"] = "@class.outer",
