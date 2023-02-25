@@ -121,7 +121,6 @@ whichkey.register({
     name = "lsp",
     i = { "<cmd>LspInfo<cr>", "Lsp info" },
     r = { "<cmd>LspRestart<cr>", "Restart LSP servers" },
-    a = { "<cmd>Telescope lsp_code_actions<cr>", "Show code actions" },
   },
 
   f = {
@@ -137,7 +136,12 @@ whichkey.register({
     c = { "<cmd>Telescope git_bcommits<cr>", "Find git commits (file)" },
     C = { "<cmd>Telescope git_commits<cr>", "Find git commits (repo)" },
     u = { "<cmd>Telescope ultisnips<cr>", "Find snippets" },
+    q = { "<cmd>Telescope quickfix<cr>", "List items in the quickfix list" },
     t = { "<cmd>TodoTelescope<cr>", "Find todos" },
+    ["/"] = {
+      "<cmd>Telescope current_buffer_fuzzy_find<cr>",
+      "Live fuzzy search inside of the currently open buffer",
+    },
   },
 
   g = {
@@ -168,6 +172,7 @@ whichkey.register({
     r = { "<cmd>FloatermNew ranger<cr>", "Open file browser" },
     d = { "<cmd>FloatermNew lazydocker<cr>", "Open lazydocker" },
     m = { "<cmd>FloatermNew btm -m<cr>", "Open system monitor" },
+    p = { "<cmd>TSPlaygroundToggle<cr>", "Toggle treesitter playground" },
     u = { "<cmd>FloatermNew ncdu<cr>", "Show disk usage" },
     l = { "<cmd>Mason<cr>", "Open Mason installer" },
     D = { "<cmd>DBUI<cr>", "Open DBUI" },
@@ -185,6 +190,8 @@ whichkey.register({
     q = { "<cmd>TroubleToggle<cr>", "List diagnostics" },
     f = { "<cmd>TroubleToggle quickfix<cr>", "Toggle quickfix" },
     l = { "<cmd>TroubleToggle loclist<cr>", "Toggle loclist" },
+    w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Toggle loclist" },
+    d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Toggle loclist" },
     t = { "<cmd>TodoTrouble<cr>", "List todos" },
   },
 
