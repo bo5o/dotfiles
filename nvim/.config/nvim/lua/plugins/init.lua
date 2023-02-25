@@ -343,14 +343,7 @@ return require("packer").startup(function(use)
         require("plugins.aerial_nvim").config()
       end,
     },
-    {
-      "https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- better virtual text for diagnostics
-      after = "aerial.nvim",
-      config = function()
-        require("plugins.lsp_lines_nvim").config()
-      end,
-    },
-    { "b0o/schemastore.nvim", after = "lsp_lines.nvim" }, -- JSON schema support
+    { "b0o/schemastore.nvim", after = "aerial.nvim" }, -- JSON schema support
     { "jose-elias-alvarez/typescript.nvim", after = "schemastore.nvim" }, -- better typescript support
     { "folke/neodev.nvim", after = "typescript.nvim" }, -- better lua support
     {

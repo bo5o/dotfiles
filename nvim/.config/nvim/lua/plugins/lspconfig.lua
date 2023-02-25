@@ -8,7 +8,6 @@ function M.config()
   local lsp_signature = require("lsp_signature")
   local fidget = require("fidget")
   local aerial = require("aerial")
-  local lsp_lines = require("lsp_lines")
 
   local function bind_map(default_opts)
     return function(lhs, rhs, desc)
@@ -48,19 +47,57 @@ function M.config()
     )
   end
 
-  local map = bind_map({ silent = true })
   local diagnostic = vim.diagnostic
+
+  diagnostic.config({
+    virtual_text = {
+      source = "always",
+    },
+    virtual_lines = false,
+    float = {
+      border = "rounded",
+      source = "always",
+    },
+  })
+
+  local map = bind_map({ silent = true })
   map("[d", diagnostic.goto_prev, "Go to previous diagnostic")
   map("]d", diagnostic.goto_next, "Go to next diagnostic")
   map("<leader>lq", diagnostic.setloclist, "Add diagnostics to location list")
   map("<leader>lg", diagnostic.open_float, "Show diagnostics")
 
-  -- lsp lines
-  vim.diagnostic.config({ virtual_text = false, virtual_lines = false })
-  map("<leader>ll", lsp_lines.toggle, "Show/hide in-line diagnostics")
-
   ---@diagnostic disable-next-line: unused-local
   local on_attach = function(client, bufnr)
+    -- highlight symbol under cursor
+    -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
+    if client.server_capabilities.documentHighlightProvider then
+      local highlight = function(name, val)
+        vim.api.nvim_set_hl(0, name, val)
+      end
+
+      highlight("LspReferenceRead", { bg = "#3c3836", cterm = { bold = true } })
+      highlight("LspReferenceText", { bg = "#3c3836", cterm = { bold = true } })
+      highlight("LspReferenceWrite", { bg = "#3c3836", cterm = { bold = true } })
+
+      vim.api.nvim_create_augroup("lsp_document_highlight", {
+        clear = false,
+      })
+      vim.api.nvim_clear_autocmds({
+        buffer = bufnr,
+        group = "lsp_document_highlight",
+      })
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        group = "lsp_document_highlight",
+        buffer = bufnr,
+        callback = vim.lsp.buf.document_highlight,
+      })
+      vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+        group = "lsp_document_highlight",
+        buffer = bufnr,
+        callback = vim.lsp.buf.clear_references,
+      })
+    end
+
     -- Configure signature help for completion
     lsp_signature.on_attach({
       bind = true,
@@ -197,6 +234,15 @@ function M.config()
       })
     end,
   })
+
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  })
+
+  vim.lsp.handlers["textDocument/signatureHelp"] =
+    vim.lsp.with(vim.lsp.handlers.signature_help, {
+      border = "rounded",
+    })
 
   local signs =
     { Error = " ", Warning = " ", Hint = " ", Information = " " }
