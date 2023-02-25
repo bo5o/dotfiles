@@ -71,13 +71,13 @@ function M.config()
     -- highlight symbol under cursor
     -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
     if client.server_capabilities.documentHighlightProvider then
-      local highlight = function(name, val)
-        vim.api.nvim_set_hl(0, name, val)
+      for _, name in ipairs({ "Read", "Text", "Write" }) do
+        vim.api.nvim_set_hl(
+          0,
+          "LspReference" .. name,
+          { bg = "#3c3836", bold = true, cterm = { bold = true } }
+        )
       end
-
-      highlight("LspReferenceRead", { bg = "#3c3836", cterm = { bold = true } })
-      highlight("LspReferenceText", { bg = "#3c3836", cterm = { bold = true } })
-      highlight("LspReferenceWrite", { bg = "#3c3836", cterm = { bold = true } })
 
       vim.api.nvim_create_augroup("lsp_document_highlight", {
         clear = false,
