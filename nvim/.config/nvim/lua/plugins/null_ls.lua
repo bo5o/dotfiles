@@ -51,7 +51,7 @@ function M.config()
   null_ls.setup({
     debug = false,
     debounce = 250,
-    diagnostics_format = "[#{s}] #{c}: #{m}",
+    -- diagnostics_format = "[#{s}] #{c}: #{m}",
     on_attach = on_attach,
     should_attach = function(bufnr)
       local bufname = vim.api.nvim_buf_get_name(bufnr)
