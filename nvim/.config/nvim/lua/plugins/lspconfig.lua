@@ -128,8 +128,10 @@ function M.config()
           types = true,
           plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
         },
+        lspconfig = false,
       })
       lspconfig.lua_ls.setup({
+        before_init = require("neodev.lsp").before_init,
         settings = {
           Lua = {
             format = { enable = false },
