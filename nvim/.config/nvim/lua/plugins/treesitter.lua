@@ -77,7 +77,7 @@ function M.config()
     rainbow = {
       enable = true,
       extended_mode = false,
-      max_file_lines = 800,
+      max_file_lines = 1000,
     },
     playground = {
       enable = true,

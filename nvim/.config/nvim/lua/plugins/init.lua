@@ -321,7 +321,7 @@ return require("packer").startup(function(use)
     -- Always show treesitter context
     { "lewis6991/nvim-treesitter-context", after = "nvim-treesitter-textsubjects" },
     -- Colorize nested parentheses
-    { "p00f/nvim-ts-rainbow", after = "nvim-treesitter-context" },
+    { "mrjones2014/nvim-ts-rainbow", after = "nvim-treesitter-context" },
     -- Auto-close and -rename html tags
     { "windwp/nvim-ts-autotag", after = "nvim-ts-rainbow" },
     -- Auto-set 'commentstring'
