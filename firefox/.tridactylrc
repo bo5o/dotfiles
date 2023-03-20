@@ -92,6 +92,7 @@ blacklistadd outlook.office.com
 
 seturl notebooks.*?\.(ipynb|py)$ superignore true
 seturl monkeytype.com superignore true
+seturl exercism.org superignore true
 seturl localhost superignore true
 seturl wolframalpha.com superignore true
 seturl app.hex.tech superignore true
@@ -102,3 +103,4 @@ set auconcreatecontainer true
 set autocontainmode relaxed
 autocontain -s github\.(com|dev) github
 autocontain -s gitlab\.com gitlab
+autocontain -s exercism\.org exercism
