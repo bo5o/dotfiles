@@ -29,3 +29,4 @@ __pycache__
 nvim/.config/nvim/vimspector/gadgets/**
 !nvim/.config/nvim/vimspector/gadgets/linux/.gadgets.d/**
 ipython/.jupyter/migrated
+.luarc.json
