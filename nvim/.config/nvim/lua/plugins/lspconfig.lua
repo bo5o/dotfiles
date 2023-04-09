@@ -17,9 +17,11 @@ function M.config()
   end
 
   vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(args)
       local buf_map = bind_map({ buffer = args.buf, silent = true })
       local lsp = vim.lsp.buf
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
 
       buf_map("gd", lsp.definition, "Go to definition")
       buf_map("gD", lsp.declaration, "Go to declaration")
@@ -28,7 +30,7 @@ function M.config()
       buf_map("gr", "<cmd>TroubleToggle lsp_references<CR>", "List all references")
       buf_map("<leader>K", lsp.signature_help, "Display signature help")
       buf_map("<leader>ld", lsp.type_definition, "Go to type definition")
-      buf_map("<leader>lf", lsp.formatting, "Format current buffer")
+      buf_map("<leader>lf", lsp.format, "Format current buffer")
       buf_map("<leader>ln", lsp.rename, "Rename all references")
       buf_map("<leader>lc", lsp.code_action, "Select code action")
       buf_map("<leader>lwa", lsp.add_workspace_folder, "Add workspace folder")
