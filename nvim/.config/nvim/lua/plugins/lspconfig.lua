@@ -16,10 +16,15 @@ function M.config()
     end
   end
 
+  local function with_desc(opts, desc)
+    return vim.tbl_extend("force", opts, { desc = desc })
+  end
+
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(args)
-      local buf_map = bind_map({ buffer = args.buf, silent = true })
+      local opts = { buffer = args.buf, silent = true }
+      local buf_map = bind_map(opts)
       local lsp = vim.lsp.buf
       local client = vim.lsp.get_client_by_id(args.data.client_id)
 
@@ -32,7 +37,14 @@ function M.config()
       buf_map("<leader>ld", lsp.type_definition, "Go to type definition")
       buf_map("<leader>lf", lsp.format, "Format current buffer")
       buf_map("<leader>ln", lsp.rename, "Rename all references")
-      buf_map("<leader>lc", lsp.code_action, "Select code action")
+
+      vim.keymap.set(
+        { "n", "v" },
+        "<leader>lc",
+        vim.lsp.buf.code_action,
+        with_desc(opts, "Select code action")
+      )
+
       buf_map("<leader>lwa", lsp.add_workspace_folder, "Add workspace folder")
       buf_map("<leader>lwr", lsp.remove_workspace_folder, "Remove workspace folder")
       buf_map("<leader>lwl", function()
