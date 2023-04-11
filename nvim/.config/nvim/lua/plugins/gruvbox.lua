@@ -21,6 +21,7 @@ function M.setup()
         { fg = "#d65d0e", bold = true, ctermfg = 81, cterm = { underline = true } }
       )
       highlight("FloatBorder", { ctermfg = nil, ctermbg = nil, cterm = nil })
+      highlight("DiagnosticUnnecessary", { link = "Comment" })
     end,
   })
 
