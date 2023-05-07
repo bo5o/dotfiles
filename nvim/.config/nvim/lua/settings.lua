@@ -1,6 +1,3 @@
--- Set <leader> key
-vim.g.mapleader = ","
-
 -- Rich colors
 vim.opt.termguicolors = true
 

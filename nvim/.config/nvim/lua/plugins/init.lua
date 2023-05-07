@@ -1,138 +1,449 @@
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  Packer_bootstrap = vim.fn.system({
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  })
-end
+return {
+  { "folke/lazy.nvim", version = "*" },
 
-require("packer").init({
-  display = {
-    keybindings = { -- Keybindings for the display window
-      quit = "q",
-      toggle_info = "-",
-      diff = "<CR>",
-      prompt_revert = "r",
+  {
+    "folke/which-key.nvim",
+    lazy = true,
+    config = function()
+      require("which-key").setup({})
+    end,
+  },
+
+  {
+    "nvim-pack/nvim-spectre",
+    keys = {
+      {
+        "<leader>sr",
+        function()
+          require("spectre").open_file_search()
+        end,
+        desc = "Search and replace in current file",
+      },
+      {
+        "<leader>sR",
+        function()
+          require("spectre").open()
+        end,
+        desc = "Search and replace",
+      },
     },
   },
-})
 
-local augroup = vim.api.nvim_create_augroup("packer_user_config", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = { "**/nvim/lua/plugins/*.lua" },
-  command = "source <afile> | PackerCompile",
-  group = augroup,
-  desc = "Re-compile packer plugins",
-})
+  {
+    "folke/trouble.nvim", -- lsp errors and diagnostics in quickfix
+    cmd = {
+      "Trouble",
+      "TroubleToggle",
+      "TroubleRefresh",
+      "TroubleClose",
+    },
+    keys = {
+      { "<leader>qq", "<cmd>TroubleToggle<cr>", desc = "List diagnostics" },
+      { "<leader>qf", "<cmd>TroubleToggle quickfix<cr>", desc = "Toggle quickfix" },
+      { "<leader>ql", "<cmd>TroubleToggle loclist<cr>", desc = "Toggle loclist" },
+      {
+        "<leader>qw",
+        "<cmd>TroubleToggle workspace_diagnostics<cr>",
+        desc = "Toggle loclist",
+      },
+      {
+        "<leader>qd",
+        "<cmd>TroubleToggle document_diagnostics<cr>",
+        desc = "Toggle loclist",
+      },
+    },
+    config = function()
+      require("trouble").setup({
+        position = "bottom", -- position of the list can be: bottom, top, left, right
+        height = 10, -- height of the trouble list when position is top or bottom
+        width = 50, -- width of the list when position is left or right
+        icons = true, -- use devicons for filenames
+        mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+        fold_open = "", -- icon used for open folds
+        fold_closed = "", -- icon used for closed folds
+        group = true, -- group results by file
+        padding = true, -- add an extra new line on top of the list
+        action_keys = { -- key mappings for actions in the trouble list
+          -- map to {} to remove a mapping, for example:
+          -- close = {},
+          close = "q", -- close the list
+          cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
+          refresh = "r", -- manually refresh
+          jump = { "<cr>", "<tab>" }, -- jump to the diagnostic or open / close folds
+          open_split = { "<c-x>" }, -- open buffer in new split
+          open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
+          open_tab = { "<c-t>" }, -- open buffer in new tab
+          jump_close = { "o" }, -- jump to the diagnostic and close the list
+          toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
+          toggle_preview = "P", -- toggle auto_preview
+          hover = "K", -- opens a small popup with the full multiline message
+          preview = "p", -- preview the diagnostic location
+          close_folds = { "zM", "zm" }, -- close all folds
+          open_folds = { "zR", "zr" }, -- open all folds
+          toggle_fold = { "zA", "za" }, -- toggle fold of current file
+          previous = "k", -- preview item
+          next = "j", -- next item
+        },
+        indent_lines = true, -- add an indent guide below the fold icons
+        auto_open = false, -- automatically open the list when you have diagnostics
+        auto_close = false, -- automatically close the list when you have no diagnostics
+        auto_preview = false, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+        auto_fold = false, -- automatically fold a file trouble list at creation
+        auto_jump = { "lsp_definitions" }, -- for the given modes, automatically jump if there is only a single result
+        signs = {
+          -- icons / text used for a diagnostic
+          error = "",
+          warning = "",
+          hint = "",
+          information = "",
+          other = "﫠",
+        },
+        use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
+      })
+    end,
+  },
 
-return require("packer").startup(function(use)
-  --------------------
-  -- Plugin management
-  --------------------
+  {
+    "folke/todo-comments.nvim",
+    keys = {
+      { "<leader>qt", "<cmd>TodoTrouble<cr>", desc = "List todos" },
+    },
+    config = function()
+      require("todo-comments").setup({
+        colors = {
+          error = { "DiagnosticError", "ErrorMsg", "#ea6962" },
+          warning = { "DiagnosticWarn", "WarningMsg", "#d8a657" },
+          info = { "DiagnosticInfo", "#7daea3" },
+          hint = { "DiagnosticHint", "#a9b665" },
+          default = { "Identifier", "#7daea3" },
+          test = { "Identifier", "#7daea3" },
+        },
+      })
+    end,
+  },
 
-  -- Package manager
-  use("wbthomason/packer.nvim")
+  { "direnv/direnv.vim" },
 
-  -- Faster startup
-  use("lewis6991/impatient.nvim")
+  {
+    "rafcamlet/nvim-luapad",
+    cmd = "Luapad",
+    config = function()
+      require("luapad").setup({
+        count_limit = 200000,
+      })
+    end,
+  },
 
-  ---------------
-  -- UI and style
-  ---------------
+  { "tpope/vim-repeat" },
 
-  -- Colorscheme
-  use({
-    "catppuccin/nvim",
-    disable = true,
-    as = "catppuccin",
-    run = ":CatppuccinCompile",
-    setup = function()
-      require("plugins.catppuccin_nvim").setup()
+  { "tpope/vim-surround", event = "BufRead" },
+
+  { "tpope/vim-jdaddy", ft = "json" },
+
+  { "AndrewRadev/splitjoin.vim", event = "CursorHold" },
+
+  {
+    "AndrewRadev/switch.vim",
+    init = function()
+      vim.g.switch_mapping = "-"
+    end,
+  },
+
+  {
+    "tommcdo/vim-lion",
+    init = function()
+      vim.g.lion_squeeze_spaces = 1
+      vim.g.lion_map_right = "ga"
+      vim.g.lion_map_left = "gA"
+    end,
+  },
+
+  {
+    "dhruvasagar/vim-table-mode",
+    init = function()
+      vim.g.table_mode_map_prefix = "<localleader>t"
+    end,
+  },
+
+  { "machakann/vim-swap" },
+
+  { "wellle/targets.vim", event = "BufRead" },
+
+  {
+    "echasnovski/mini.bufremove",
+    version = "*",
+    keys = {
+      {
+        "<leader>bd",
+        function()
+          require("mini.bufremove").delete(0, true)
+        end,
+        desc = "Close current buffer (ignore unsaved changes)",
+      },
+      {
+        "<leader>x",
+        function()
+          require("mini.bufremove").delete()
+        end,
+        desc = "Close current buffer (ignore unsaved changes)",
+      },
+    },
+    config = function()
+      require("mini.bufremove").setup({
+        set_vim_settings = false,
+      })
+    end,
+  },
+
+  {
+    "echasnovski/mini.indentscope",
+    version = "*",
+    event = { "BufReadPre", "BufNewFile" },
+    init = function()
+      vim.g.miniindentscope_disable = true
     end,
     config = function()
-      require("plugins.catppuccin_nvim").config()
-    end,
-  })
+      require("mini.indentscope").setup({
+        mappings = {
+          -- Textobjects
+          object_scope = "ii",
+          object_scope_with_border = "ai",
 
-  use({
-    "sainnhe/gruvbox-material",
-    setup = function()
-      require("plugins.gruvbox").setup()
+          -- Motions (jump to respective border line; if not present - body line)
+          goto_top = "",
+          goto_bottom = "",
+        },
+        options = {
+          border = "none",
+        },
+      })
     end,
-    config = function()
-      require("plugins.gruvbox").config()
-    end,
-  })
+  },
 
-  -- Indentation guides
-  use({
+  { "tpope/vim-unimpaired" },
+
+  { "zhimsel/vim-stay" },
+
+  { "tpope/vim-obsession", cmd = "Obsession" },
+
+  {
+    "ojroques/nvim-osc52",
+    cond = function()
+      -- Check if connection is ssh
+      return os.getenv("SSH_CLIENT") ~= nil
+    end,
+    keys = {
+      {
+        "<leader>C",
+        function()
+          require("osc52").copy_operator()
+        end,
+        expr = true,
+        desc = "OSC52 copy",
+      },
+      { "<leader>CC", "<leader>C_", "n", remap = true },
+      {
+        "<leader>C",
+        function()
+          require("osc52").copy_visual()
+        end,
+        mode = "x",
+        desc = "OSC52 copy",
+      },
+    },
+  },
+
+  {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufWinEnter",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
-      require("plugins.indent_blankline").config()
+      require("indent_blankline").setup({
+        char = "┊",
+        use_treesitter = true,
+        show_trailing_blankline_indent = true,
+        filetype_exclude = {
+          "help",
+          "vimwiki",
+          "markdown",
+          "startify",
+          "NvimTree",
+          "mason",
+        },
+        buftype_exclude = { "terminal", "nofile", "prompt" },
+        show_current_context = false,
+      })
     end,
-  })
+  },
 
-  -- Status line
-  use({
-    "nvim-lualine/lualine.nvim",
-    after = "gruvbox-material",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("plugins.statusline").config()
-    end,
-  })
-
-  -- Buffer line
-  use({
-    "akinsho/bufferline.nvim",
-    tag = "v2.*",
-    event = "BufWinEnter",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("plugins.bufferline").config()
-    end,
-  })
-
-  -- Git signs
-  use({
-    "airblade/vim-gitgutter",
-    event = "BufRead",
-    config = function()
-      require("plugins.gitgutter").config()
-    end,
-  })
-
-  -- Start screen
-  use({
+  {
     "mhinz/vim-startify",
     event = "VimEnter",
     config = function()
-      require("plugins.startify").config()
+      vim.g.startify_list_order = { "files", "dir", "bookmarks", "commands" }
+      vim.g.startify_bookmarks = {
+        { c = "~/.config/nvim/init.lua" },
+        { g = "~/.gitconfig" },
+        { p = "~/.oh-my-zsh/custom/p10k.zsh" },
+        { t = "~/.tmux.conf" },
+        { z = "~/.zshrc" },
+      }
+      vim.g.startify_change_to_dir = 0
+      vim.g.startify_change_to_vcs_root = 0
+      vim.g.startify_fortune_use_unicode = 1
+      vim.g.startify_files_number = 4
+      vim.g.startify_custom_indices = { "1", "2", "3", "4", "7", "8", "9", "0" }
+      vim.g.startify_commands = {
+        { up = { "Update plugins", ":Lazy sync" } },
+      }
     end,
-  })
+  },
 
-  use({
+  {
     "anuvyklack/windows.nvim",
-    requires = "anuvyklack/middleclass",
+    dependencies = "anuvyklack/middleclass",
     config = function()
-      require("plugins.windows_nvim").config()
+      require("windows").setup()
+      vim.keymap.set("n", "<C-w>z", "<cmd>WindowsMaximize<cr>")
+      vim.keymap.set("n", "<C-w>_", "<cmd>WindowsMaximizeVertically<cr>")
+      vim.keymap.set("n", "<C-w>|", "<cmd>WindowsMaximizeHorizontally<cr>")
+      vim.keymap.set("n", "<C-w>=", "<cmd>WindowsEqualize<cr>")
     end,
-  })
+  },
 
-  -------------
-  -- Navigation
-  -------------
+  {
+    "windwp/nvim-autopairs",
+    dependencies = "nvim-cmp",
+    config = function()
+      require("nvim-autopairs").setup({
+        check_ts = true,
+        enable_afterquote = true,
+        enable_moveright = true,
+        enable_check_bracket_line = true,
+      })
 
-  -- File tree
-  use({
+      local cmp = require("cmp")
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+      cmp.event:on(
+        "confirm_done",
+        cmp_autopairs.on_confirm_done({
+          map_char = {
+            all = "(",
+            tex = "{",
+          },
+        })
+      )
+    end,
+  },
+
+  {
+    "tpope/vim-endwise",
+    event = "BufWinEnter",
+    init = function()
+      vim.g.endwise_no_mappings = 1
+    end,
+  },
+
+  {
+    "NMAC427/guess-indent.nvim",
+    event = "BufRead",
+    config = function()
+      require("guess-indent").setup()
+    end,
+  },
+
+  {
+    "unblevable/quick-scope",
+    event = "BufWinEnter",
+    init = function()
+      vim.g.qs_max_chars = 256
+      vim.g.qs_buftype_blacklist = { "terminal", "nofile", "startify", "qf", "mason" }
+      vim.g.qs_lazy_highlight = 1
+    end,
+  },
+
+  {
+    "mattn/emmet-vim",
+    ft = { "html", "htmldjango", "vue", "css" },
+    init = function()
+      vim.g.user_emmet_install_global = 0
+    end,
+    config = function()
+      vim.api.nvim_command("EmmetInstall")
+    end,
+  },
+
+  {
+    "phaazon/hop.nvim",
+    branch = "v2",
+    keys = { "<leader><leader>", "S", "s" },
+    config = function()
+      local hop = require("hop")
+      hop.setup({
+        keys = "arsdheiqwfpgjluy;zxcvbkmtn",
+      })
+
+      vim.keymap.set("n", "<leader><leader>", function()
+        hop.hint_words()
+      end, { desc = "hop word" })
+
+      vim.keymap.set("n", "S", function()
+        hop.hint_char2()
+      end, { desc = "hop sneak" })
+
+      vim.keymap.set("n", "s", function()
+        hop.hint_char2()
+      end, { desc = "hop sneak" })
+    end,
+  },
+
+  {
+    "andymass/vim-matchup",
+    init = function()
+      vim.g.matchup_transmute_enabled = 0 -- covered by nvim-ts-autotag
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end,
+  },
+
+  {
+    "ThePrimeagen/harpoon",
+    keys = {
+      {
+        "<BS><BS>",
+        "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
+        desc = "Toggle harpoon menu",
+      },
+      {
+        "<BS>m",
+        "<cmd>lua require('harpoon.mark').add_file()<cr>",
+        desc = "Mark file for harpoon",
+      },
+      {
+        "<BS>n",
+        "<cmd>lua require('harpoon.ui').nav_file(1)<cr>",
+        desc = "Navigate to first harpoon ",
+      },
+      {
+        "<BS>e",
+        "<cmd>lua require('harpoon.ui').nav_file(2)<cr>",
+        desc = "Navigate to second harpoon",
+      },
+      {
+        "<BS>i",
+        "<cmd>lua require('harpoon.ui').nav_file(3)<cr>",
+        desc = "Navigate to third harpoon",
+      },
+      {
+        "<BS>o",
+        "<cmd>lua require('harpoon.ui').nav_file(4)<cr>",
+        desc = "Navigate to fourth harpoon",
+      },
+    },
+  },
+
+  {
     "kyazdani42/nvim-tree.lua",
-    tag = "nightly",
-    requires = "kyazdani42/nvim-web-devicons",
+    version = "nightly",
     cmd = {
       "NvimTreeClipboard",
       "NvimTreeClose",
@@ -141,372 +452,208 @@ return require("packer").startup(function(use)
       "NvimTreeRefresh",
       "NvimTreeToggle",
     },
-    config = function()
-      require("plugins.nvim_tree").config()
-    end,
-  })
-
-  use({
-    "stevearc/dressing.nvim",
-    config = function()
-      require("plugins.dressing").config()
-    end,
-  })
-
-  -- Fuzzy finder
-  use({
-    {
-      "nvim-telescope/telescope.nvim",
-      keys = "<leader>f",
-      requires = {
-        "nvim-lua/popup.nvim",
-        "nvim-lua/plenary.nvim",
-        "kyazdani42/nvim-web-devicons",
-      },
-      config = function()
-        require("plugins.telescope").config()
-      end,
-    },
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      after = "telescope.nvim",
-      run = "make",
-      config = function()
-        require("telescope").load_extension("fzf")
-      end,
-    },
-    {
-      "fhill2/telescope-ultisnips.nvim",
-      after = "telescope.nvim",
-      config = function()
-        require("telescope").load_extension("ultisnips")
-      end,
-    },
-  })
-
-  -- Quick jump bookmarks
-  use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
-
-  -- Jump between match pairs
-  use({
-    "andymass/vim-matchup",
-    setup = function()
-      require("plugins.matchup").setup()
-    end,
-  })
-
-  use({
-    "phaazon/hop.nvim",
-    branch = "v2",
-    keys = { "<leader><leader>", "S", "s" },
-    config = function()
-      require("plugins.hop").config()
-    end,
-  })
-
-  -- Always highlight the quickest movement to any word on the current line
-  use({
-    "unblevable/quick-scope",
-    event = "BufWinEnter",
-    setup = function()
-      require("plugins.quickscope").setup()
-    end,
-  })
-
-  -------------------------------
-  -- Auto-completion and snippets
-  -------------------------------
-
-  -- Autocompletion
-  use({
-    {
-      "hrsh7th/nvim-cmp",
-      event = "InsertEnter",
-      requires = {
-        "onsails/lspkind-nvim", -- nice symbols for completion menu
-        "lukas-reineke/cmp-under-comparator", -- better sorting of dunder methods
-      },
-      config = function()
-        require("plugins.nvim_cmp").config()
-      end,
-    },
-    { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }, -- lsp
-    { "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" }, -- buffer contents
-    { "hrsh7th/cmp-path", after = "cmp-buffer" }, -- path
-    { "quangnguyen30192/cmp-nvim-ultisnips", after = "cmp-path" }, -- snippets
-    { "hrsh7th/cmp-cmdline", after = "cmp-nvim-ultisnips" }, -- cmdline
-    { "andersevenrud/cmp-tmux", after = "cmp-cmdline" }, -- tmux pane contents
-  })
-
-  -- Auto-close brackets, parentheses etc.
-  use({
-    "windwp/nvim-autopairs",
-    after = "nvim-cmp",
-    config = function()
-      require("plugins.autopairs").config()
-    end,
-  })
-
-  -- Auto-close more things like end/endfunction/endif etc.
-  use({
-    "tpope/vim-endwise",
-    event = "BufWinEnter",
-    setup = function()
-      require("plugins.endwise").setup()
-    end,
-  })
-
-  -- automatically set indent related config
-  use({
-    "NMAC427/guess-indent.nvim",
-    event = "BufRead",
-    config = function()
-      require("plugins.guess_indent").config()
-    end,
-  })
-
-  -- Snippets
-  use({
-    "SirVer/ultisnips",
-    requires = {
+    keys = {
+      { "<leader>of", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" },
       {
-        "honza/vim-snippets",
-        rtp = ".",
-        event = "InsertCharPre",
+        "<leader>oF",
+        "<cmd>NvimTreeFindFile<cr>",
+        desc = "Find current file in file tree",
       },
     },
-    setup = function()
-      require("plugins.ultisnips").setup()
-    end,
-  })
-
-  -- Lightweight snippet alternative (mostly used for LaTeX)
-  use({
-    "brennier/quicktex",
-    event = "InsertCharPre",
-    setup = function()
-      require("plugins.quicktex").setup()
-    end,
-  })
-
-  -- Expand HTML/CSS abbreviations
-  use({
-    "mattn/emmet-vim",
-    ft = { "html", "htmldjango", "vue", "css" },
-    setup = function()
-      require("plugins.emmet").setup()
-    end,
     config = function()
-      require("plugins.emmet").config()
+      vim.g.nvim_tree_auto_ignore_ft = { "startify", "dashboard" }
+
+      local tree_cb = require("nvim-tree.config").nvim_tree_callback
+
+      require("nvim-tree").setup({
+        view = {
+          adaptive_size = true,
+          mappings = {
+            list = {
+              { key = { "<CR>", "o", "<2-LeftMouse>", "l" }, cb = tree_cb("edit") },
+              { key = { "<BS>", "h" }, cb = tree_cb("close_node") },
+              { key = "zh", cb = tree_cb("toggle_dotfiles") },
+              { key = "zi", cb = tree_cb("toggle_custom") },
+              { key = "zg", cb = tree_cb("toggle_git_ignored") },
+              { key = { "-", "H" }, cb = tree_cb("dir_up") },
+              { key = { "<2-RightMouse>", "<C-]>", "L" }, cb = tree_cb("cd") },
+            },
+          },
+        },
+        filters = {
+          dotfiles = true,
+          custom = { "^\\.git", "^node_modules", "^\\.cache", "__pycache__" },
+        },
+        renderer = {
+          highlight_git = true,
+          add_trailing = true,
+          indent_markers = {
+            enable = true,
+          },
+        },
+        actions = {
+          open_file = {
+            quit_on_open = true,
+          },
+        },
+      })
     end,
-  })
+  },
 
-  -----------------------
-  -- Language integration
-  -----------------------
-
-  -- Treesitter
-  use({
-    {
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
-      config = function()
-        require("plugins.treesitter").config()
-      end,
-    },
-    -- Advanced text objects
-    { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
-    -- Context-aware text objects
-    { "RRethy/nvim-treesitter-textsubjects", after = "nvim-treesitter-textobjects" },
-    -- Always show treesitter context
-    {
-      "nvim-treesitter/nvim-treesitter-context",
-      after = "nvim-treesitter-textsubjects",
-    },
-    -- Colorize nested parentheses
-    { "mrjones2014/nvim-ts-rainbow", after = "nvim-treesitter-context" },
-    -- Auto-close and -rename html tags
-    { "windwp/nvim-ts-autotag", after = "nvim-ts-rainbow" },
-    -- Auto-set 'commentstring'
-    { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-ts-autotag" },
-    -- Explore treesitter
-    { "nvim-treesitter/playground", after = "nvim-ts-context-commentstring" },
-  })
-
-  -- LSP
-  use({
-    { "williamboman/mason.nvim" }, -- install lsp servers, linters, formatters etc.
-    { "williamboman/mason-lspconfig.nvim", after = "mason.nvim" }, -- mason lsp intergration
-    { "ray-x/lsp_signature.nvim", after = "mason-lspconfig.nvim" }, -- lsp signature help
-    { "j-hui/fidget.nvim", after = "lsp_signature.nvim" }, -- lsp progress hints
-    {
-      "stevearc/aerial.nvim", -- lsp symbol tree sidebar
-      after = "fidget.nvim",
-      config = function()
-        require("plugins.aerial_nvim").config()
-      end,
-    },
-    { "b0o/schemastore.nvim", after = "aerial.nvim" }, -- JSON schema support
-    { "jose-elias-alvarez/typescript.nvim", after = "schemastore.nvim" }, -- better typescript support
-    { "folke/neodev.nvim", after = "typescript.nvim" }, -- better lua support
-    {
-      -- Language server configuration
-      "neovim/nvim-lspconfig",
-      after = "neodev.nvim",
-      config = function()
-        require("plugins.lspconfig").config()
-      end,
-    },
-  })
-
-  -- LaTeX
-  use({
+  {
     "lervag/vimtex",
     ft = "tex",
-    setup = function()
-      require("plugins.vimtex").setup()
+    init = function()
+      vim.g.vimtex_view_method = "zathura"
+      vim.g.tex_flavor = "latex"
+      vim.g.vimtex_quickfix_latexlog = { overfull = 0, underfull = 0 }
     end,
     config = function()
-      require("plugins.vimtex").config()
+      local vimtex_event_1 =
+        vim.api.nvim_create_augroup("vimtex_event_1", { clear = true })
+
+      vim.api.nvim_create_autocmd("User", {
+        pattern = { "VimtexEventInitPost" },
+        command = "VimtexCompile",
+        group = vimtex_event_1,
+        desc = "Compile on initialization",
+      })
+
+      vim.api.nvim_create_autocmd("User", {
+        pattern = { "VimtexEventQuit" },
+        command = "VimtexClean",
+        group = vimtex_event_1,
+        desc = "Cleanup on quit",
+      })
+
+      local vimtex_latex_surround =
+        vim.api.nvim_create_augroup("vimtex_latex_surround", { clear = true })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "tex" },
+        callback = function()
+          vim.b["surround_" .. vim.fn.char2nr("e")] =
+            "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}"
+          vim.b["surround_" .. vim.fn.char2nr("c")] = "\\\1command: \1{\r}"
+        end,
+        group = vimtex_latex_surround,
+        desc = "Provide surround mappings",
+      })
     end,
-  })
+  },
 
-  -- Transparent editing of GPG encrypted files
-  use("jamessan/vim-gnupg")
+  { "jamessan/vim-gnupg" },
 
-  ----------------------
-  -- Syntax highlighting
-  ----------------------
-
-  -- Highlight color codes (eg. #42AFFE)
-  use({
+  {
     "NvChad/nvim-colorizer.lua",
     config = function()
-      require("plugins.colorizer").config()
+      require("colorizer").setup({
+        filetypes = {
+          "vim",
+          "css",
+          "html",
+          "javascript",
+          "typescript",
+          "lua",
+          html = {
+            mode = "background",
+          },
+        },
+      })
     end,
-  })
+  },
 
-  -- Semantic syntax highlighting for Python
-  -- Let's wait for https://github.com/nvim-treesitter/nvim-treesitter/issues/81
-  -- and then switch to Treesitter for semantic syntax highlighting
-  use({
-    "wookayin/semshi",
-    setup = function()
-      require("plugins.semshi").setup()
-    end,
-    config = function()
-      require("plugins.semshi").config()
-    end,
-  })
-
-  -- Better Python indenting
-  use({ "Vimjas/vim-python-pep8-indent", ft = "python" })
-
-  -- requirements.txt (Python)
-  use({ "raimon49/requirements.txt.vim" })
-
-  -- .tridactylrc
-  use({ "tridactyl/vim-tridactyl", ft = "tridactyl" })
-
-  -- jinja2 (Python)
-  use({ "Glench/Vim-Jinja2-Syntax", ft = { "jinja", "jinja.html", "jinja.sql" } })
-
-  -- .sxhkdrc
-  use({ "kovetskiy/sxhkd-vim", ft = "sxhkd" })
-
-  -- .tmux.conf
-  use({ "ericpruitt/tmux.vim", ft = "tmux" })
-
-  -- kitty.conf
-  use("fladson/vim-kitty")
-
-  -- Dockerfile
-  use({ "ekalinin/Dockerfile.vim", ft = "Dockerfile" })
-
-  -- nginx.conf
-  use({ "chr4/nginx.vim", ft = "nginx" })
-
-  ------------------
-  -- Developer tools
-  ------------------
-
-  -- Linting (for everything language servers can't do yet)
-  use({
-    "jose-elias-alvarez/null-ls.nvim",
-    requires = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("plugins.null_ls").config()
-    end,
-  })
-
-  -- Docstring generator
-  use({
+  {
     "kkoomen/vim-doge",
-    run = ":call doge#install()",
+    build = ":call doge#install()",
     cmd = "DogeGenerate",
-    setup = function()
-      require("plugins.doge").setup()
+    init = function()
+      vim.g.doge_enable_mappings = 1
+      vim.g.doge_mapping = "<Leader>rd"
+      vim.g.doge_buffer_mappings = 1
+      vim.g.doge_comment_interactive = 1
+      vim.g.doge_comment_jump_modes = { "n", "s" }
+      vim.g.doge_doc_standard_python = "numpy"
+      vim.g.doge_python_settings = { single_quotes = 0 }
     end,
-  })
+  },
 
-  -- Git
-  use({
-    {
-      "tpope/vim-fugitive",
-      cmd = { "Git", "Gwrite", "Gblame", "Gedit", "Gdiffsplit" },
-    },
-    -- Github integration
-    { "tpope/vim-rhubarb", after = "vim-fugitive" },
-    -- Bitbucket integration
-    { "tommcdo/vim-fubitive", after = "vim-fugitive" },
-    -- Show git commit under cursor
-    {
-      "rhysd/git-messenger.vim",
-      cmd = "GitMessenger",
-      keys = "<leader>gm",
-      config = function()
-        require("plugins.git_messenger").config()
-      end,
-    },
-    -- Diff view for changes of any git rev
-    use({
-      "sindrets/diffview.nvim",
-      requires = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons" },
-      cmd = { "DiffviewOpen", "DiffviewFileHistory" },
-      config = function()
-        require("plugins.diffview").config()
-      end,
-    }),
-  })
-
-  -- Convenient test invocation
-  use({
+  {
     "janko/vim-test",
     cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
-    setup = function()
-      require("plugins.vim_test").setup()
-    end,
-  })
+    keys = {
+      { "<leader>tn", "<cmd>TestNearest<cr>", desc = "Run nearest test" },
+      {
+        "<leader>tN",
+        ":TestNearest<space>",
+        desc = "Run nearest test (add flags)",
+        silent = false,
+      },
+      { "<leader>tf", "<cmd>TestFile<cr>", desc = "Run test file" },
+      { "<leader>ts", "<cmd>TestSuite<cr>", desc = "Run test suite" },
+      { "<leader>tl", "<cmd>TestLast<cr>", desc = "Run last test" },
+      {
+        "<leader>tL",
+        ":TestLast<space>",
+        desc = "Run last test (add flags)",
+        silent = false,
+      },
+      { "<leader>tt", "<cmd>TestLast<cr>", desc = "Run last test" },
+      {
+        "<leader>tg",
+        "<cmd>TestVisit<cr>",
+        desc = "Open last run test in current buffer",
+      },
+    },
+    dependencies = { "vim-dispatch" },
+    init = function()
+      vim.cmd([[
+        function! VimTestDefaultStrategy(cmd)
+          execute 'Start -wait=always ' . a:cmd
+        endfunction
+      ]])
 
-  -- Run jobs in background (builds, tests, runs etc.)
-  use({
+      vim.g["test#custom_strategies"] = { start = vim.fn["VimTestDefaultStrategy"] }
+      vim.g["test#strategy"] = "start"
+
+      -- :p causes problems with cargo test in rust
+      -- vim.g["test#filename_modifier"] = ":p"
+      vim.g["test#filename_modifier"] = ":."
+
+      -- Python
+      vim.g["test#python#pytest#file_pattern"] = "\\.py"
+      vim.g["test#python#runner"] = "pytest"
+
+      vim.g["test#python#pytest#options"] = {
+        nearest = "--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --no-cov",
+        file = "--no-cov",
+      }
+
+      -- JavaScript
+      vim.g["test#javascript#runner"] = "jest"
+
+      -- Rust
+      vim.g["test#rust#runner"] = "cargotest"
+    end,
+  },
+
+  {
     "tpope/vim-dispatch",
     cmd = { "Dispatch", "Make", "Focus", "Start" },
-    setup = function()
-      require("plugins.vim_dispatch").setup()
+    init = function()
+      vim.g.tmux_session = "popup"
     end,
     config = function()
-      require("plugins.vim_dispatch").config()
+      local map = vim.keymap.set
+      map("n", "t<cr>", "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " Enter<cr>")
+      map("n", "t<C-c>", "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " C-c<cr>")
+      map("n", "t<C-d>", "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " C-d<cr>")
     end,
-  })
+  },
 
-  -- Tmux interaction
-  use({ "tpope/vim-tbone", cmd = "Tmux" })
+  { "tpope/vim-tbone", cmd = "Tmux" },
 
-  -- Unix helpers
-  use({
+  {
     "tpope/vim-eunuch",
     cmd = {
       "Delete",
@@ -525,60 +672,120 @@ return require("packer").startup(function(use)
       "Wall",
       "W",
     },
-  })
+  },
 
-  -- Project helpers
-  use({
+  {
     "tpope/vim-projectionist",
-    setup = function()
-      require("plugins.projectionist").setup()
+    keys = {
+      { "<leader>aa", "<cmd>A<cr>", desc = "Open alternate file" },
+      { "<leader>av", "<cmd>AV<cr>", desc = "Open alternate file in vertical split" },
+      { "<leader>et", "<cmd>Etest<cr>", desc = "Edit test" },
+      { "<leader>evt", "<cmd>Vtest<cr>", desc = "Edit test in vertical split" },
+      { "<leader>es", "<cmd>Esource<cr>", desc = "Edit source" },
+      { "<leader>evs", "<cmd>Vsource<cr>", desc = "Edit source in vertical split" },
+    },
+    init = function()
+      vim.g.projectionist_heuristics = {
+        ["setup.py|requirements.txt|pyproject.toml"] = {
+          ["scripts/*.py"] = {
+            type = "script",
+            start = "-wait=always ipython --pdb {file}",
+          },
+          ["src/*.py"] = {
+            type = "source",
+            alternate = "tests/unit/{dirname|basename}/test_{basename}.py",
+            start = "-wait=always ipython --pdb -m {dot}",
+          },
+          ["tests/unit/**/test_*.py"] = {
+            type = "test",
+            start = "{project}",
+            alternate = "src/{project|basename}/{dirname}/{basename}.py",
+          },
+          ["README.md"] = {
+            type = "readme",
+          },
+          [".env"] = {
+            type = "env",
+          },
+        },
+      }
     end,
-    config = function()
-      require("plugins.projectionist").config()
-    end,
-  })
+  },
 
-  -- automatically change to project directory when opening files
-  use({
+  {
     "airblade/vim-rooter",
-    setup = function()
-      require("plugins.vim_rooter").setup()
+    init = function()
+      vim.g.rooter_silent_chdir = 1
+      vim.g.rooter_cd_cmd = "lcd"
+      vim.g.rooter_patterns = {
+        "!^.direnv",
+        "!^site-packages",
+        "!^node_modules",
+        "!../.project-root",
+        ".project-root",
+        "package.json",
+        "requirements.txt",
+        "setup.py",
+        "manage.py",
+        "pyproject.toml",
+        "Cargo.toml",
+        ".git",
+      }
     end,
-  })
+  },
 
-  -- Comment stuff out
-  use({
+  {
     "numToStr/Comment.nvim",
-    event = "BufWinEnter",
+    event = "VeryLazy",
     config = function()
-      require("plugins.comment").config()
+      require("Comment").setup({
+        opleader = {
+          line = "gc",
+          block = "gC",
+        },
+        toggler = {
+          line = "gcc",
+          block = "gcb",
+        },
+        mappings = {
+          basic = true,
+          ---Extra mapping
+          ---Includes `gco`, `gcO`, `gcA`
+          extra = false,
+          ---Extended mapping
+          ---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
+          extended = false,
+        },
+        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+      })
     end,
-  })
+  },
 
-  -- Interact with databases
-  use({
-    { "tpope/vim-dadbod", after = "vim-dadbod-ui" },
-    {
-      "kristijanhusak/vim-dadbod-ui",
-      requires = "tpope/vim-dadbod",
-      cmd = {
-        "DBUI",
-        "DBUIToggle",
-        "DBUIAddConnection",
-        "DBUIFindBuffer",
-        "DBUIRenameBuffer",
-        "DBUILastQueryInfo",
-        "DBUIHideNotifications",
-      },
-    },
-    {
-      "kristijanhusak/vim-dadbod-completion",
-      after = { "nvim-cmp", "vim-dadbod-ui" },
-    },
-  })
+  { "tpope/vim-dadbod", dependencies = "vim-dadbod-ui" },
 
-  -- Use tmux as REPL
-  use({
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = "tpope/vim-dadbod",
+    cmd = {
+      "DBUI",
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUIFindBuffer",
+      "DBUIRenameBuffer",
+      "DBUILastQueryInfo",
+      "DBUIHideNotifications",
+    },
+    keys = {
+      { "<leader>oD", "<cmd>DBUI<cr>", desc = "Open DBUI" },
+    },
+  },
+
+  {
+    "kristijanhusak/vim-dadbod-completion",
+    dependencies = { "nvim-cmp", "vim-dadbod-ui" },
+  },
+
+  {
     "jpalardy/vim-slime",
     cmd = {
       "SlimeConfig",
@@ -586,217 +793,100 @@ return require("packer").startup(function(use)
       "SlimeSend1",
     },
     keys = {
-      { "n", "<c-c><c-c>" },
-      { "v", "<c-c><c-c>" },
-      { "n", "<c-c>v" },
+      { "<c-c><c-c>", desc = "Send current paragraph to REPL" },
+      { "<c-c><c-c>", mode = "v", desc = "Send selected region to REPL" },
+      { "<c-c>v", desc = "Configure REPL" },
     },
-    setup = function()
-      require("plugins.slime").setup()
-    end,
-  })
+    init = function()
+      vim.g.slime_target = "tmux"
+      vim.g.slime_python_ipython = 0
+      vim.g.slime_bracketed_paste = 1
 
-  -- Run IPython cells
-  use({
+      -- always send text to the top-right pane in the current tmux tab
+      -- without asking
+      local socket_name = "default"
+      local tmux_env = os.getenv("TMUX")
+      if tmux_env ~= nil then
+        socket_name = vim.split(tmux_env, ",")[1]
+      end
+      vim.g.slime_default_config = {
+        socket_name = socket_name,
+        target_pane = "{bottom-right}",
+      }
+    end,
+  },
+
+  {
     "hanschen/vim-ipython-cell",
-    requires = "jpalardy/vim-slime",
-    after = "vim-slime",
+    dependencies = "vim-slime",
     ft = "python",
-    cmd = {
-      "IPythonCellRun",
-      "IPythonCellRunTime",
-      "IPythonCellExecuteCellVerbose",
-      "IPythonCellExecuteCellVerboseJump",
-      "IPythonCellClear",
-      "IPythonCellPrevCell",
-      "IPythonCellNextCell",
-    },
-    setup = function()
-      require("plugins.vim_ipython_cell").config()
+    init = function()
+      vim.g.ipython_cell_delimit_cells_by = "tags"
     end,
     config = function()
-      require("plugins.vim_ipython_cell").config()
+      local map = function(lhs, rhs, desc)
+        vim.keymap.set("n", lhs, "<cmd>IPythonCell" .. rhs .. "<cr>", { desc = desc })
+      end
+      map("<c-c><c-f>", "Run", "Run current file")
+      map("<c-c><c-t>", "RunTime", "Run and time current file")
+      map("<c-c><c-x>", "ExecuteCellVerbose", "Print and execute current cell")
+      map("<c-c><c-j>", "ExecuteCellVerboseJump", "Print and execute current cell")
+      map("<c-c><c-l>", "Clear", "Clear IPython screen")
+      map("[C", "PrevCell", "Go to previous cell header")
+      map("]C", "NextCell", "Go to next cell header")
     end,
-  })
+  },
 
-  -- Interact with jupyter kernels
-  use({
+  {
     "jupyter-vim/jupyter-vim",
     ft = "python",
-    cmd = {
-      "JupyterRunFile",
-      "JupyterSendCell",
-      "JupyterSendRange",
-      "PythonImportThisFile",
-    },
-    keys = {
-      { "n", "<localleader>e" },
-      { "v", "<localleader>e" },
-    },
     setup = function()
-      require("plugins.jupyter").config()
+      vim.g.jupyter_mapkeys = 1
     end,
     config = function()
-      require("plugins.jupyter").config()
+      local map = function(mode, lhs, rhs, desc)
+        vim.keymap.set(mode, lhs, rhs, { desc = desc })
+      end
+      map("n", "<localleader>R", "<cmd>JupyterRunFile<cr>", "Run file")
+      map("n", "<localleader>I", "<cmd>PythonImportThisFile<cr>", "Import file")
+      map("n", "<localleader>X", "<cmd>JupyterSendCell<cr>", "Send cell")
+      map("n", "<localleader>E", "<cmd>JupyterSendRange<cr>", "Send range")
+      map("n", "<localleader>e", "<Plug>JupyterRunTextObj", "Run text object")
+      map("v", "<localleader>e", "<Plug>JupyterRunVisual", "Run selection")
     end,
-  })
+  },
 
-  -- Floating terminal
-  use({
+  {
     "voldikss/vim-floaterm",
     cmd = {
       "FloatermToggle",
       "FloatermNew",
       "FloatermSend",
     },
-    setup = function()
-      require("plugins.floaterm").setup()
-    end,
-    config = function()
-      require("plugins.floaterm").config()
-    end,
-  })
-
-  -- Search and replace
-  use({
-    "nvim-pack/nvim-spectre",
-    requires = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons" },
-  })
-
-  -- Nice list for showing diagnostics, lsp references etc.
-  use({
-    "folke/trouble.nvim", -- lsp errors and diagnostics in quickfix
-    requires = "kyazdani42/nvim-web-devicons",
-    cmd = {
-      "Trouble",
-      "TroubleToggle",
-      "TroubleRefresh",
-      "TroubleClose",
+    keys = {
+      { "<leader>od", "<cmd>FloatermNew lazydocker<cr>", desc = "Open lazydocker" },
+      { "<leader>og", "<cmd>FloatermNew lazygit<cr>", desc = "Open lazygit" },
+      { "<leader>om", "<cmd>FloatermNew btm -m<cr>", desc = "Open system monitor" },
+      { "<leader>or", "<cmd>FloatermNew ranger<cr>", desc = "Open file browser" },
+      { "<leader>ou", "<cmd>FloatermNew ncdu<cr>", desc = "Open disk usage analyzer" },
     },
-    config = function()
-      require("plugins.trouble").config()
-    end,
-  })
-
-  -- Highlight and find TODO comments
-  use({
-    "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("plugins.todo_comments_nvim").config()
-    end,
-  })
-
-  -- Direnv integration
-  use("direnv/direnv.vim")
-
-  -- lua scratchpad
-  use({
-    "antoinemadec/FixCursorHold.nvim",
-    {
-      "rafcamlet/nvim-luapad",
-      after = "FixCursorHold.nvim",
-      cmd = "Luapad",
-      config = function()
-        require("luapad").setup({
-          count_limit = 200000,
-        })
-      end,
-    },
-  })
-
-  --------------------
-  -- Text manipulation
-  --------------------
-
-  -- Repeat almost everything
-  use("tpope/vim-repeat")
-
-  -- Simple quoting/enclosing
-  use({ "tpope/vim-surround", event = "BufRead" })
-
-  -- Easier JSON manipulation
-  use({ "tpope/vim-jdaddy", ft = "json" })
-
-  -- Switch between single- and multi-line statements
-  use({ "AndrewRadev/splitjoin.vim", event = "CursorHold" })
-
-  -- Toggle special words (true/false, on/off etc.)
-  use({
-    "AndrewRadev/switch.vim",
-    setup = function()
-      require("plugins.switch").setup()
-    end,
-  })
-
-  -- Align text by some character
-  use({
-    "tommcdo/vim-lion",
-    setup = function()
-      require("plugins.lion").setup()
-    end,
-  })
-
-  -- Simple table manipulation (e.g. in Markdown)
-  use({
-    "dhruvasagar/vim-table-mode",
-    setup = function()
-      require("plugins.table_mode").setup()
-    end,
-  })
-
-  -- Swap items in comma-separated lists
-  use("machakann/vim-swap")
-
-  -- Enhanced text objects
-  use({ "wellle/targets.vim", event = "BufRead" })
-
-  ----------------
-  -- Miscellaneous
-  ----------------
-
-  -- Neovim keymaps
-  use({
-    "folke/which-key.nvim",
-    config = function()
-      require("plugins.which_key").config()
-    end,
-  })
-
-  -- Various extensions
-  use({
-    "echasnovski/mini.nvim",
-    branch = "stable",
-    setup = function()
-      require("plugins.mini_nvim").setup()
+    init = function()
+      vim.g.floaterm_keymap_toggle = "<leader>ot"
+      vim.g.floaterm_keymap_prev = "<F2>"
+      vim.g.floaterm_keymap_next = "<F3>"
+      vim.g.floaterm_keymap_new = "<leader>oT"
+      vim.g.floaterm_width = 0.8
+      vim.g.floaterm_height = 0.8
+      vim.g.floaterm_wintitle = 0
+      vim.g.floaterm_autoclose = 1
+      vim.g.floaterm_opener = "edit"
     end,
     config = function()
-      require("plugins.mini_nvim").config()
+      vim.api.nvim_set_hl(
+        0,
+        "FloatermBorder",
+        { fg = "#ebdbb2", bg = nil, ctermfg = 0, ctermbg = 13 }
+      )
     end,
-  })
-
-  -- Useful keybindings
-  use("tpope/vim-unimpaired")
-
-  -- Restore buffer views automatically
-  use("zhimsel/vim-stay")
-
-  -- Session management
-  use({ "tpope/vim-obsession", cmd = "Obsession" }) -- session management
-
-  -- Profile vim startup time
-  use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
-
-  -- Clipboard interoperability
-  use({
-    "ojroques/nvim-osc52",
-    keys = "<leader>C",
-    config = function()
-      require("plugins.oscyank").config()
-    end,
-  })
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  if Packer_bootstrap then
-    require("packer").sync()
-  end
-end)
+  },
+}

@@ -1,4 +1,3 @@
-local map = vim.api.nvim_set_keymap
 local whichkey = require("which-key")
 
 whichkey.register({
@@ -23,12 +22,7 @@ whichkey.register({
       name = "buffer",
       a = { "<cmd>bufdo bd<CR>", "Close all buffers" },
       o = { "<cmd>BufOnly<CR>", "Close all buffers (except active buffer)" },
-      d = {
-        "<cmd>lua MiniBufremove.delete(0, true)<CR>",
-        "Close current buffer (ignore unsaved changes)",
-      },
     },
-    x = { "<cmd>lua MiniBufremove.delete()<CR>", "Close current buffer" },
     X = { "<cmd>edit#<CR>", "Re-open last closed buffer" },
     cd = {
       "<cmd>cd %:p:h<CR>:pwd<CR>",
@@ -76,7 +70,7 @@ whichkey.register({
     expr = true,
   },
 
-  [";dt"] = { "<C-r>=strftime('%Y-%m-%d')<CR>", "Insert current date", mode = "i" },
+  -- [";dt"] = { "<C-r>=strftime('%Y-%m-%d')<CR>", "Insert current date", mode = "i" },
 
   L = { ">gv", "Indent visual selection", mode = "v" },
   H = { "<gv", "Dedent visual selection", mode = "v" },
@@ -100,13 +94,6 @@ whichkey.register({
     mode = "v",
   },
 })
--- whichkey.register({
--- ["<Space><Space>"] = {
--- 	'<Esc>/<++><Enter>"_c4l',
--- 	"Jump to next guide",
--- 	mode = "i",
--- },
--- })
 
 -- remap 0 to go to first non-blank character (like ^)
 whichkey.register({
@@ -116,118 +103,12 @@ whichkey.register({
   ["0"] = { "^", "See :h ^", mode = "o" },
 })
 
+-- plugin mapping categories
 whichkey.register({
-  l = {
-    name = "lsp",
-    i = { "<cmd>LspInfo<cr>", "Lsp info" },
-    r = { "<cmd>LspRestart<cr>", "Restart LSP servers" },
-  },
-
-  f = {
-    name = "find",
-    b = { "<cmd>Telescope buffers<cr>", "Find buffers" },
-    m = { "<cmd>Telescope oldfiles<cr>", "Find most recently used files" },
-    k = { "<cmd>Telescope keymaps<cr>", "Find keymaps" },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Find symbols" },
-    S = {
-      "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-      "Find workspace symbols",
-    },
-    c = { "<cmd>Telescope git_bcommits<cr>", "Find git commits (file)" },
-    C = { "<cmd>Telescope git_commits<cr>", "Find git commits (repo)" },
-    u = { "<cmd>Telescope ultisnips<cr>", "Find snippets" },
-    q = { "<cmd>Telescope quickfix<cr>", "List items in the quickfix list" },
-    t = { "<cmd>TodoTelescope<cr>", "Find todos" },
-    ["/"] = {
-      "<cmd>Telescope current_buffer_fuzzy_find<cr>",
-      "Live fuzzy search inside of the currently open buffer",
-    },
-  },
-
-  g = {
-    name = "git",
-    ["<space>"] = { ":Git<space>", "Enter git command", silent = false },
-    s = { "<cmd>Git<cr>", "Status" },
-    co = { "<cmd>Git checkout<cr>", "Checkout" },
-    cc = { "<cmd>Git commit -v -q<cr>", "Commit" },
-    -- ct = { "<cmd>Git commit -v -q %:p<cr>", "Commit" },
-    ca = { "<cmd>Git commit --amend<cr>", "Amend" },
-    w = { "<cmd>Gwrite<cr>", "Stage" },
-    l = { "<cmd>DiffviewFileHistory %<cr>", "File history" },
-    m = "Line history",
-    b = { "<cmd>Gblame<cr>", "Blame" },
-    e = { "<cmd>Gedit<cr>", "Edit" },
-    d = { "<cmd>DiffviewOpen<cr>", "Diff" },
-    D = { ":DiffviewOpen<space>", "Diff (custom rev)", silent = false },
-    p = { "<cmd>Git pull<cr>", "Pull" },
-    P = { "<cmd>Git push<cr>", "Push" },
-  },
-
-  o = {
-    name = "open",
-    s = { "<cmd>AerialToggle right<cr>", "Toggle symbol tree" },
-    f = { "<cmd>NvimTreeToggle<cr>", "Toggle file tree" },
-    F = { "<cmd>NvimTreeFindFile<cr>", "Find current file in file tree" },
-    g = { "<cmd>FloatermNew lazygit<cr>", "Open lazygit" },
-    r = { "<cmd>FloatermNew ranger<cr>", "Open file browser" },
-    d = { "<cmd>FloatermNew lazydocker<cr>", "Open lazydocker" },
-    m = { "<cmd>FloatermNew btm -m<cr>", "Open system monitor" },
-    p = { "<cmd>TSPlaygroundToggle<cr>", "Toggle treesitter playground" },
-    u = { "<cmd>FloatermNew ncdu<cr>", "Show disk usage" },
-    l = { "<cmd>Mason<cr>", "Open Mason installer" },
-    D = { "<cmd>DBUI<cr>", "Open DBUI" },
-  },
-
-  p = {
-    name = "packer",
-    u = { "<cmd>PackerSync<cr>", "Packer sync" },
-    c = { "<cmd>PackerCompile<cr>", "Packer compile" },
-    s = { "<cmd>PackerStatus<cr>", "Packer status" },
-  },
-
-  q = {
-    name = "diagnostics",
-    q = { "<cmd>TroubleToggle<cr>", "List diagnostics" },
-    f = { "<cmd>TroubleToggle quickfix<cr>", "Toggle quickfix" },
-    l = { "<cmd>TroubleToggle loclist<cr>", "Toggle loclist" },
-    w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Toggle loclist" },
-    d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Toggle loclist" },
-    t = { "<cmd>TodoTrouble<cr>", "List todos" },
-  },
-
-  s = {
-    name = "replace",
-    r = {
-      "<cmd>lua require('spectre').open_file_search()<cr>",
-      "Search and replace in current file",
-    },
-    R = { "<cmd>lua require('spectre').open()<cr>", "Search and replace" },
-  },
-
-  t = {
-    name = "test",
-    n = { "<cmd>TestNearest<cr>", "Run nearest test" },
-    N = { ":TestNearest<space>", "Run nearest test (add flags)", silent = false },
-    f = { "<cmd>TestFile<cr>", "Run test file" },
-    s = { "<cmd>TestSuite<cr>", "Run test suite" },
-    l = { "<cmd>TestLast<cr>", "Run last test" },
-    L = { ":TestLast<space>", "Run last test (add flags)", silent = false },
-    t = { "<cmd>TestLast<cr>", "Run last test" },
-    g = { "<cmd>TestVisit<cr>", "Open last run test in current buffer" },
-  },
-}, {
-  prefix = "<leader>",
-})
-
--- ThePrimeagen/harpoon
-map(
-  "n",
-  "<BS><BS>",
-  "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
-  { noremap = true }
-)
-map("n", "<BS>m", "<cmd>lua require('harpoon.mark').add_file()<cr>", { noremap = true })
-map("n", "<BS>n", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", { noremap = true })
-map("n", "<BS>e", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { noremap = true })
-map("n", "<BS>i", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { noremap = true })
-map("n", "<BS>o", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", { noremap = true })
+  l = { name = "lsp" },
+  f = { name = "find" },
+  g = { name = "git", c = { name = "commit" } },
+  o = { name = "open" },
+  q = { name = "diagnostics" },
+  t = { name = "test" },
+}, { prefix = "<leader>" })
