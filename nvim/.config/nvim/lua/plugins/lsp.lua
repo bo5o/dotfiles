@@ -1,4 +1,6 @@
 return {
+  { "jose-elias-alvarez/typescript.nvim" },
+
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
@@ -9,12 +11,12 @@ return {
     dependencies = {
       "typescript.nvim",
       "mason.nvim",
-      "mason-lspconfig.nvim",
-      "lsp_signature.nvim",
-      "fidget.nvim",
+      { "williamboman/mason-lspconfig.nvim" },
+      { "ray-x/lsp_signature.nvim" },
+      { "j-hui/fidget.nvim" },
       "aerial.nvim",
-      "schemastore.nvim",
-      "neodev.nvim",
+      { "b0o/schemastore.nvim" },
+      { "folke/neodev.nvim" },
     },
     config = function()
       local mason = require("mason")
@@ -464,24 +466,38 @@ return {
     end,
   },
 
-  { "jose-elias-alvarez/typescript.nvim" },
-
   {
     "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+    cmd = "Mason",
     keys = {
       { "<leader>ol", "<cmd>Mason<cr>", desc = "Open Mason installer" },
     },
+    config = function()
+      require("mason").setup({
+        ui = {
+          height = 0.7,
+          border = "rounded",
+        },
+      })
+    end,
   },
 
-  { "williamboman/mason-lspconfig.nvim" },
-
-  { "ray-x/lsp_signature.nvim" },
-
-  { "j-hui/fidget.nvim" },
-
-  { "b0o/schemastore.nvim" },
-
-  { "folke/neodev.nvim" },
+  {
+    "jay-babu/mason-null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "mason.nvim",
+      "null-ls.nvim",
+    },
+    config = function()
+      require("mason-null-ls").setup({
+        ensure_installed = nil,
+        automatic_installation = false,
+        automatic_setup = false,
+      })
+    end,
+  },
 
   {
     "stevearc/aerial.nvim",
