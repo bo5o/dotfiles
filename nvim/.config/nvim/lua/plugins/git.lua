@@ -48,7 +48,6 @@ return {
 
   {
     "sindrets/diffview.nvim",
-    dependencies = {},
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     keys = {
       { "<leader>gl", "<cmd>DiffviewFileHistory %<cr>", desc = "File history" },
@@ -61,7 +60,6 @@ return {
       },
     },
     config = function()
-      local actions = require("diffview.actions")
       require("diffview").setup({
         diff_binaries = false, -- Show diffs for binaries
         enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
