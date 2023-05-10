@@ -363,6 +363,21 @@ return {
   },
 
   {
+    "RRethy/vim-illuminate",
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require("illuminate").configure({
+        providers = {
+          "lsp",
+          "treesitter",
+          "regex",
+        },
+        delay = 200,
+      })
+    end,
+  },
+
+  {
     "mattn/emmet-vim",
     ft = { "html", "htmldjango", "vue", "css" },
     init = function()
