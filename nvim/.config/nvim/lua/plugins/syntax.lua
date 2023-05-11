@@ -19,4 +19,5 @@ return {
   { "fladson/vim-kitty" },
   { "ekalinin/Dockerfile.vim", ft = "Dockerfile" },
   { "chr4/nginx.vim", ft = "nginx" },
+  { "jidn/vim-dbml", ft = "dbml" },
 }
