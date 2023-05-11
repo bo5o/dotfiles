@@ -48,25 +48,6 @@ plugins=(
     zsh-asdf-direnv # Fork at https://github.com/cbows/zsh-asdf-direnv
 )
 
-# global tool versions
-export PATH="$(asdf where direnv)/bin:$PATH"
-export PATH="$(asdf where neovim)/bin:$PATH"
-export PATH="$(asdf where ripgrep)/bin:$PATH"
-export PATH="$(asdf where bat)/bin:$PATH"
-export PATH="$(asdf where dotenv-linter)/bin:$PATH"
-export PATH="$(asdf where hadolint)/bin:$PATH"
-export PATH="$(asdf where shellcheck)/bin:$PATH"
-export PATH="$(asdf where shfmt)/bin:$PATH"
-export PATH="$(asdf where fd)/bin:$PATH"
-export PATH="$(asdf where lazygit)/bin:$PATH"
-export PATH="$(asdf where yq)/bin:$PATH"
-export PATH="$(asdf where nodejs)/bin:$PATH"
-export PATH="$(asdf where lazydocker)/bin:$PATH"
-export PATH="$(asdf where azure-cli)/bin:$PATH"
-tldr() { asdf exec tldr "$@"; }
-tmuxinator() { asdf exec tmuxinator "$@"; }
-neovide() { asdf exec neovide "$@"; }
-
 # completions
 # https://github.com/zsh-users/zsh-completions/issues/603
 fpath=($ZSH/custom/plugins/zsh-completions/src $fpath)
