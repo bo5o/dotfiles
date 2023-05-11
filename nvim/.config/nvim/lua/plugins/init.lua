@@ -855,7 +855,7 @@ return {
   {
     "jupyter-vim/jupyter-vim",
     ft = "python",
-    setup = function()
+    init = function()
       vim.g.jupyter_mapkeys = 1
     end,
     config = function()
