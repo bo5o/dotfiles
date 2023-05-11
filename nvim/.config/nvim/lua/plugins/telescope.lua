@@ -2,8 +2,8 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      "fhill2/telescope-ultisnips.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      { "fhill2/telescope-ultisnips.nvim" },
     },
     cmd = "Telescope",
     keys = {
@@ -14,7 +14,11 @@ return {
         desc = "Find most recently used files",
       },
       { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find keymaps" },
-      { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Find symbols" },
+      {
+        "<leader>fs",
+        "<cmd>Telescope lsp_document_symbols<cr>",
+        desc = "Find symbols",
+      },
       {
         "<leader>fS",
         "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
