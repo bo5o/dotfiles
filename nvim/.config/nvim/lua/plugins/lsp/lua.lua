@@ -17,6 +17,7 @@ function M.setup()
         format = { enable = false },
         workspace = {
           ignoreDir = { "undodir/**/*.lua" },
+          checkThirdParty = false,
         },
       },
     },
