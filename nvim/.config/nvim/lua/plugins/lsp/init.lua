@@ -343,7 +343,12 @@ return {
     config = function()
       require("mason-null-ls").setup({
         ensure_installed = nil,
-        automatic_installation = true,
+        automatic_installation = {
+          exclude = {
+            "trim_whitespace",
+            "trim_newlines",
+          },
+        },
       })
     end,
   },
