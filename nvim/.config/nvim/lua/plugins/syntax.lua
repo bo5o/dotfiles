@@ -20,4 +20,5 @@ return {
   { "ekalinin/Dockerfile.vim", ft = "Dockerfile" },
   { "chr4/nginx.vim", ft = "nginx" },
   { "jidn/vim-dbml", ft = "dbml" },
+  { "NoahTheDuke/vim-just", ft = "just" },
 }
