@@ -23,6 +23,10 @@ return {
           )
           highlight("FloatBorder", { ctermfg = nil, ctermbg = nil, cterm = nil })
           highlight("DiagnosticUnnecessary", { link = "Comment" })
+          highlight(
+            "ScrollViewCursor",
+            { fg = "#7daea3", bg = "#45403d", ctermfg = 109 }
+          )
         end,
       })
 

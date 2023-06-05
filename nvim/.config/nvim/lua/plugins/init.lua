@@ -378,6 +378,25 @@ return {
   },
 
   {
+    "dstein64/nvim-scrollview",
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require("scrollview").setup({
+        excluded_filetypes = {
+          "NvimTree",
+          "aerial",
+          "mason",
+          "floaterm",
+        },
+        signs_on_startup = { "cursor" },
+        current_only = true,
+        column = 1,
+        signs_column = 0,
+      })
+    end,
+  },
+
+  {
     "mattn/emmet-vim",
     ft = { "html", "htmldjango", "vue", "css" },
     init = function()
