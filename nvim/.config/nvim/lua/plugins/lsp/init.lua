@@ -111,6 +111,7 @@ return {
       require("plugins.lsp.rust").setup()
       require("plugins.lsp.json").setup()
       require("plugins.lsp.yaml").setup()
+      require("plugins.lsp.docker").setup()
       require("plugins.lsp.xml").setup()
       require("plugins.lsp.vue").setup(on_attach)
       require("plugins.lsp.typescript").setup(on_attach, capabilities)
