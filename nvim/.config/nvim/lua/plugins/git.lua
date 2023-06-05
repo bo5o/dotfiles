@@ -9,13 +9,13 @@ return {
 
   {
     "tpope/vim-fugitive",
-    cmd = { "Git", "Gwrite", "Gblame", "Gedit", "Gdiffsplit" },
+    cmd = { "Git", "Gwrite", "Gedit", "Gdiffsplit" },
     keys = {
       { "<leader>gco", "<cmd>Git checkout<cr>", desc = "Checkout" },
       { "<leader>gcc", "<cmd>Git commit -v -q<cr>", desc = "Commit" },
       { "<leader>gca", "<cmd>Git commit --amend<cr>", desc = "Amend" },
       { "<leader>gw", "<cmd>Gwrite<cr>", desc = "Stage" },
-      { "<leader>gb", "<cmd>Gblame<cr>", desc = "Blame" },
+      { "<leader>gb", "<cmd>Git blame<cr>", desc = "Blame" },
       { "<leader>ge", "<cmd>Gedit<cr>", desc = "Edit" },
       { "<leader>gp", "<cmd>Git pull<cr>", desc = "Pull" },
       { "<leader>gP", "<cmd>Git push<cr>", desc = "Push" },
