@@ -46,6 +46,7 @@ plugins=(
     tldr # https://github.com/tldr-pages/tldr-node-client#zsh
     taskwarrior
     zsh-asdf-direnv # Fork at https://github.com/cbows/zsh-asdf-direnv
+    just # https://github.com/casey/just/issues/618#issuecomment-601824467
 )
 
 # completions
