@@ -90,7 +90,7 @@ return {
           -- For more info, see |diffview-config-view.x.layout|.
           default = {
             -- Config for changed files, and staged files in diff views.
-            layout = "diff3_mixed",
+            layout = "diff2_horizontal",
             winbar_info = false, -- See |diffview-config-view.x.winbar_info|
           },
           merge_tool = {
