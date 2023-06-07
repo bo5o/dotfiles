@@ -83,6 +83,14 @@ return {
           extended_mode = false,
           max_file_lines = 1000,
         },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = "<Enter>",
+            node_incremental = "<Enter>",
+            node_decremental = "<BS>",
+          },
+        },
         playground = {
           enable = true,
           disable = {},
