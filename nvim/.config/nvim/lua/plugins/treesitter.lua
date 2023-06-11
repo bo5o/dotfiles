@@ -80,8 +80,12 @@ return {
         },
         rainbow = {
           enable = true,
-          extended_mode = false,
-          max_file_lines = 1000,
+          query = {
+            "rainbow-parens",
+            html = "rainbow-tags",
+            vue = "rainbow-tags",
+            latex = "rainbow-blocks",
+          },
         },
         incremental_selection = {
           enable = true,
@@ -122,7 +126,7 @@ return {
   -- Always show treesitter context
   { "nvim-treesitter/nvim-treesitter-context", dependencies = "nvim-treesitter" },
   -- Colorize nested parentheses
-  { "mrjones2014/nvim-ts-rainbow", dependencies = "nvim-treesitter" },
+  { "HiPhish/nvim-ts-rainbow2", dependencies = "nvim-treesitter" },
   -- Auto-close and -rename html tags
   { "windwp/nvim-ts-autotag", dependencies = "nvim-treesitter" },
   -- Auto-set 'commentstring'
