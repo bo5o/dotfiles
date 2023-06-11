@@ -36,6 +36,11 @@ return {
       },
       { "<leader>fu", "<cmd>Telescope ultisnips<cr>", desc = "Find snippets" },
       {
+        "<leader>fl",
+        "<cmd>Telescope resume<cr>",
+        desc = "Resume last telescope search",
+      },
+      {
         "<leader>fq",
         "<cmd>Telescope quickfix<cr>",
         desc = "List items in the quickfix list",
