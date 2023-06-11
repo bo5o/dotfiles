@@ -8,8 +8,8 @@ vim.filetype.add({
     [".*/models/.*%.sql"] = "jinja",
     [".*/macros/.*%.sql"] = "jinja",
     [".*/tests/.*%.sql"] = "jinja",
-    ["%.env%.(%a+)"] = function()
-      vim.fn["dist#ft#SetFileTypeSH"](vim.fn.getline(1))
+    ["%.env%.(%a+)"] = function(path, bufnr)
+      return require("vim.filetype.detect").sh(path, vim.filetype.getlines(bufnr))
     end,
     ["/tmp/psql%.edit.*"] = "sql",
     ["/tmp/vim-anywhere.*"] = "text",
