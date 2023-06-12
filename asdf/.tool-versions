@@ -1,4 +1,4 @@
-direnv 2.32.2
+direnv 2.32.3
 python 3.9.15
 nodejs 17.9.1
 hadolint 2.12.0
