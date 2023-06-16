@@ -2,5 +2,6 @@ pre-commit
 virtualenv
 ipython
 ipdb
-yamllint
 pip-tools
+keyring
+keyring-pass
