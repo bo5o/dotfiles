@@ -23,7 +23,7 @@ return {
       },
       { "ray-x/lsp_signature.nvim" },
       { "j-hui/fidget.nvim", tag = "legacy" },
-      { "b0o/schemastore.nvim" },
+      { "b0o/schemastore.nvim", version = false },
       { "folke/neodev.nvim" },
     },
     config = function()
