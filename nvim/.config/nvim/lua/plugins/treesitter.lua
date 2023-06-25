@@ -22,6 +22,7 @@ return {
           "lua",
           "markdown",
           "markdown_inline",
+          "php",
           "python",
           "query", -- for treesitter playground
           "rst",
