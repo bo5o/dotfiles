@@ -299,6 +299,7 @@ return {
 
   {
     "windwp/nvim-autopairs",
+    event = "InsertEnter",
     dependencies = "nvim-cmp",
     opts = {
       check_ts = true,
