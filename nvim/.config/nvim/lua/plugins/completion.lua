@@ -1,6 +1,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     dependencies = {
       { "onsails/lspkind-nvim" }, -- nice symbols for completion menu
       { "lukas-reineke/cmp-under-comparator" }, -- better sorting of dunder methods
