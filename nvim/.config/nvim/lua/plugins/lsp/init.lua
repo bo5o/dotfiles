@@ -326,14 +326,12 @@ return {
     keys = {
       { "<leader>ol", "<cmd>Mason<cr>", desc = "Open Mason installer" },
     },
-    config = function()
-      require("mason").setup({
-        ui = {
-          height = 0.7,
-          border = "rounded",
-        },
-      })
-    end,
+    opts = {
+      ui = {
+        height = 0.7,
+        border = "rounded",
+      },
+    },
   },
 
   {
@@ -343,17 +341,15 @@ return {
       "mason.nvim",
       "null-ls.nvim",
     },
-    config = function()
-      require("mason-null-ls").setup({
-        ensure_installed = nil,
-        automatic_installation = {
-          exclude = {
-            "trim_whitespace",
-            "trim_newlines",
-          },
+    opts = {
+      ensure_installed = nil,
+      automatic_installation = {
+        exclude = {
+          "trim_whitespace",
+          "trim_newlines",
         },
-      })
-    end,
+      },
+    },
   },
 
   {
@@ -362,49 +358,44 @@ return {
     keys = {
       { "<leader>os", "<cmd>AerialToggle right<cr>", desc = "Toggle symbol tree" },
     },
-    config = function()
-      require("aerial").setup({
-        backends = {
-          ["_"] = { "lsp", "treesitter" },
-          python = { "lsp" },
+    opts = {
+      backends = { "lsp", "treesitter", "markdown", "man" },
+      filter_kind = {
+        ["_"] = false,
+        python = {
+          -- "Array",
+          -- "Boolean",
+          "Class",
+          -- "Constant",
+          "Constructor",
+          "Enum",
+          "EnumMember",
+          -- "Event",
+          -- "Field",
+          -- "File",
+          "Function",
+          "Interface",
+          -- "Key",
+          "Method",
+          "Module",
+          -- "Namespace",
+          -- "Null",
+          -- "Number",
+          -- "Object",
+          -- "Operator",
+          -- "Package",
+          "Property",
+          -- "String",
+          "Struct",
+          -- "TypeParameter",
+          -- "Variable",
         },
-        filter_kind = {
-          ["_"] = false,
-          python = {
-            -- "Array",
-            -- "Boolean",
-            "Class",
-            -- "Constant",
-            "Constructor",
-            "Enum",
-            "EnumMember",
-            -- "Event",
-            -- "Field",
-            -- "File",
-            "Function",
-            "Interface",
-            -- "Key",
-            "Method",
-            "Module",
-            -- "Namespace",
-            -- "Null",
-            -- "Number",
-            -- "Object",
-            -- "Operator",
-            -- "Package",
-            "Property",
-            -- "String",
-            "Struct",
-            -- "TypeParameter",
-            -- "Variable",
-          },
+      },
+      ignore = {
+        filetypes = {
+          "startify",
         },
-        ignore = {
-          filetypes = {
-            "startify",
-          },
-        },
-      })
-    end,
+      },
+    },
   },
 }

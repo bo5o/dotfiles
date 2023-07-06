@@ -4,9 +4,7 @@ return {
   {
     "folke/which-key.nvim",
     lazy = true,
-    config = function()
-      require("which-key").setup({})
-    end,
+    config = true,
   },
 
   {
@@ -52,55 +50,53 @@ return {
         desc = "Toggle loclist",
       },
     },
-    config = function()
-      require("trouble").setup({
-        position = "bottom", -- position of the list can be: bottom, top, left, right
-        height = 10, -- height of the trouble list when position is top or bottom
-        width = 50, -- width of the list when position is left or right
-        icons = true, -- use devicons for filenames
-        mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
-        fold_open = "", -- icon used for open folds
-        fold_closed = "", -- icon used for closed folds
-        group = true, -- group results by file
-        padding = true, -- add an extra new line on top of the list
-        action_keys = { -- key mappings for actions in the trouble list
-          -- map to {} to remove a mapping, for example:
-          -- close = {},
-          close = "q", -- close the list
-          cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
-          refresh = "r", -- manually refresh
-          jump = { "<cr>", "<tab>" }, -- jump to the diagnostic or open / close folds
-          open_split = { "<c-x>" }, -- open buffer in new split
-          open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
-          open_tab = { "<c-t>" }, -- open buffer in new tab
-          jump_close = { "o" }, -- jump to the diagnostic and close the list
-          toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
-          toggle_preview = "P", -- toggle auto_preview
-          hover = "K", -- opens a small popup with the full multiline message
-          preview = "p", -- preview the diagnostic location
-          close_folds = { "zM", "zm" }, -- close all folds
-          open_folds = { "zR", "zr" }, -- open all folds
-          toggle_fold = { "zA", "za" }, -- toggle fold of current file
-          previous = "k", -- preview item
-          next = "j", -- next item
-        },
-        indent_lines = true, -- add an indent guide below the fold icons
-        auto_open = false, -- automatically open the list when you have diagnostics
-        auto_close = false, -- automatically close the list when you have no diagnostics
-        auto_preview = false, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
-        auto_fold = false, -- automatically fold a file trouble list at creation
-        auto_jump = { "lsp_definitions" }, -- for the given modes, automatically jump if there is only a single result
-        signs = {
-          -- icons / text used for a diagnostic
-          error = "",
-          warning = "",
-          hint = "",
-          information = "",
-          other = "﫠",
-        },
-        use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
-      })
-    end,
+    opts = {
+      position = "bottom", -- position of the list can be: bottom, top, left, right
+      height = 10, -- height of the trouble list when position is top or bottom
+      width = 50, -- width of the list when position is left or right
+      icons = true, -- use devicons for filenames
+      mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+      fold_open = "", -- icon used for open folds
+      fold_closed = "", -- icon used for closed folds
+      group = true, -- group results by file
+      padding = true, -- add an extra new line on top of the list
+      action_keys = { -- key mappings for actions in the trouble list
+        -- map to {} to remove a mapping, for example:
+        -- close = {},
+        close = "q", -- close the list
+        cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
+        refresh = "r", -- manually refresh
+        jump = { "<cr>", "<tab>" }, -- jump to the diagnostic or open / close folds
+        open_split = { "<c-x>" }, -- open buffer in new split
+        open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
+        open_tab = { "<c-t>" }, -- open buffer in new tab
+        jump_close = { "o" }, -- jump to the diagnostic and close the list
+        toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
+        toggle_preview = "P", -- toggle auto_preview
+        hover = "K", -- opens a small popup with the full multiline message
+        preview = "p", -- preview the diagnostic location
+        close_folds = { "zM", "zm" }, -- close all folds
+        open_folds = { "zR", "zr" }, -- open all folds
+        toggle_fold = { "zA", "za" }, -- toggle fold of current file
+        previous = "k", -- preview item
+        next = "j", -- next item
+      },
+      indent_lines = true, -- add an indent guide below the fold icons
+      auto_open = false, -- automatically open the list when you have diagnostics
+      auto_close = false, -- automatically close the list when you have no diagnostics
+      auto_preview = false, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+      auto_fold = false, -- automatically fold a file trouble list at creation
+      auto_jump = { "lsp_definitions" }, -- for the given modes, automatically jump if there is only a single result
+      signs = {
+        -- icons / text used for a diagnostic
+        error = "",
+        warning = "",
+        hint = "",
+        information = "",
+        other = "﫠",
+      },
+      use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
+    },
   },
 
   {
@@ -108,18 +104,16 @@ return {
     keys = {
       { "<leader>qt", "<cmd>TodoTrouble<cr>", desc = "List todos" },
     },
-    config = function()
-      require("todo-comments").setup({
-        colors = {
-          error = { "DiagnosticError", "ErrorMsg", "#ea6962" },
-          warning = { "DiagnosticWarn", "WarningMsg", "#d8a657" },
-          info = { "DiagnosticInfo", "#7daea3" },
-          hint = { "DiagnosticHint", "#a9b665" },
-          default = { "Identifier", "#7daea3" },
-          test = { "Identifier", "#7daea3" },
-        },
-      })
-    end,
+    opts = {
+      colors = {
+        error = { "DiagnosticError", "ErrorMsg", "#ea6962" },
+        warning = { "DiagnosticWarn", "WarningMsg", "#d8a657" },
+        info = { "DiagnosticInfo", "#7daea3" },
+        hint = { "DiagnosticHint", "#a9b665" },
+        default = { "Identifier", "#7daea3" },
+        test = { "Identifier", "#7daea3" },
+      },
+    },
   },
 
   { "direnv/direnv.vim" },
@@ -127,11 +121,9 @@ return {
   {
     "rafcamlet/nvim-luapad",
     cmd = "Luapad",
-    config = function()
-      require("luapad").setup({
-        count_limit = 200000,
-      })
-    end,
+    opts = {
+      count_limit = 200000,
+    },
   },
 
   { "tpope/vim-repeat" },
@@ -188,11 +180,9 @@ return {
         desc = "Close current buffer (ignore unsaved changes)",
       },
     },
-    config = function()
-      require("mini.bufremove").setup({
-        set_vim_settings = false,
-      })
-    end,
+    opts = {
+      set_vim_settings = false,
+    },
   },
 
   {
@@ -202,22 +192,20 @@ return {
     init = function()
       vim.g.miniindentscope_disable = true
     end,
-    config = function()
-      require("mini.indentscope").setup({
-        mappings = {
-          -- Textobjects
-          object_scope = "ii",
-          object_scope_with_border = "ai",
+    opts = {
+      mappings = {
+        -- Textobjects
+        object_scope = "ii",
+        object_scope_with_border = "ai",
 
-          -- Motions (jump to respective border line; if not present - body line)
-          goto_top = "",
-          goto_bottom = "",
-        },
-        options = {
-          border = "none",
-        },
-      })
-    end,
+        -- Motions (jump to respective border line; if not present - body line)
+        goto_top = "",
+        goto_bottom = "",
+      },
+      options = {
+        border = "none",
+      },
+    },
   },
 
   { "tpope/vim-unimpaired" },
@@ -256,29 +244,27 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      require("indent_blankline").setup({
-        char = "┊",
-        use_treesitter = true,
-        show_trailing_blankline_indent = true,
-        filetype_exclude = {
-          "help",
-          "vimwiki",
-          "markdown",
-          "startify",
-          "NvimTree",
-          "mason",
-        },
-        buftype_exclude = { "terminal", "nofile", "prompt" },
-        show_current_context = false,
-      })
-    end,
+    opts = {
+      char = "┊",
+      use_treesitter = true,
+      show_trailing_blankline_indent = true,
+      filetype_exclude = {
+        "help",
+        "vimwiki",
+        "markdown",
+        "startify",
+        "NvimTree",
+        "mason",
+      },
+      buftype_exclude = { "terminal", "nofile", "prompt" },
+      show_current_context = false,
+    },
   },
 
   {
     "mhinz/vim-startify",
     event = "VimEnter",
-    config = function()
+    init = function()
       vim.g.startify_list_order = { "files", "dir", "bookmarks", "commands" }
       vim.g.startify_bookmarks = {
         { c = "~/.config/nvim/init.lua" },
@@ -301,25 +287,27 @@ return {
   {
     "anuvyklack/windows.nvim",
     dependencies = "anuvyklack/middleclass",
-    config = function()
-      require("windows").setup()
-      vim.keymap.set("n", "<C-w>z", "<cmd>WindowsMaximize<cr>")
-      vim.keymap.set("n", "<C-w>_", "<cmd>WindowsMaximizeVertically<cr>")
-      vim.keymap.set("n", "<C-w>|", "<cmd>WindowsMaximizeHorizontally<cr>")
-      vim.keymap.set("n", "<C-w>=", "<cmd>WindowsEqualize<cr>")
-    end,
+    lazy = false,
+    keys = {
+      { "<C-w>z", "<cmd>WindowsMaximize<cr>" },
+      { "<C-w>_", "<cmd>WindowsMaximizeVertically<cr>" },
+      { "<C-w>|", "<cmd>WindowsMaximizeHorizontally<cr>" },
+      { "<C-w>=", "<cmd>WindowsEqualize<cr>" },
+    },
+    config = true,
   },
 
   {
     "windwp/nvim-autopairs",
     dependencies = "nvim-cmp",
-    config = function()
-      require("nvim-autopairs").setup({
-        check_ts = true,
-        enable_afterquote = true,
-        enable_moveright = true,
-        enable_check_bracket_line = true,
-      })
+    opts = {
+      check_ts = true,
+      enable_afterquote = true,
+      enable_moveright = true,
+      enable_check_bracket_line = true,
+    },
+    config = function(_, opts)
+      require("nvim-autopairs").setup(opts)
 
       local cmp = require("cmp")
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -347,9 +335,7 @@ return {
   {
     "NMAC427/guess-indent.nvim",
     event = "BufRead",
-    config = function()
-      require("guess-indent").setup()
-    end,
+    config = true,
   },
 
   {
@@ -365,15 +351,16 @@ return {
   {
     "RRethy/vim-illuminate",
     event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      require("illuminate").configure({
-        providers = {
-          "lsp",
-          "treesitter",
-          "regex",
-        },
-        delay = 200,
-      })
+    opts = {
+      providers = {
+        "lsp",
+        "treesitter",
+        "regex",
+      },
+      delay = 200,
+    },
+    config = function(_, opts)
+      require("illuminate").configure(opts)
     end,
   },
 
@@ -391,25 +378,33 @@ return {
   {
     "phaazon/hop.nvim",
     branch = "v2",
-    keys = { "<leader><leader>", "S", "s" },
-    config = function()
-      local hop = require("hop")
-      hop.setup({
-        keys = "arsdheiqwfpgjluy;zxcvbkmtn",
-      })
-
-      vim.keymap.set("n", "<leader><leader>", function()
-        hop.hint_words()
-      end, { desc = "hop word" })
-
-      vim.keymap.set("n", "S", function()
-        hop.hint_char2()
-      end, { desc = "hop sneak" })
-
-      vim.keymap.set("n", "s", function()
-        hop.hint_char2()
-      end, { desc = "hop sneak" })
-    end,
+    event = "BufWinEnter",
+    keys = {
+      {
+        "<leader><leader>",
+        function()
+          require("hop").hint_words()
+        end,
+        desc = "hop word",
+      },
+      {
+        "S",
+        function()
+          require("hop").hint_char2()
+        end,
+        desc = "hop sneak",
+      },
+      {
+        "s",
+        function()
+          require("hop").hint_char2()
+        end,
+        desc = "hop sneak",
+      },
+    },
+    opts = {
+      keys = "arsdheiqwfpgjluy;zxcvbkmtn",
+    },
   },
 
   {
@@ -425,32 +420,44 @@ return {
     keys = {
       {
         "<BS><BS>",
-        "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
+        function()
+          require("harpoon.ui").toggle_quick_menu()
+        end,
         desc = "Toggle harpoon menu",
       },
       {
         "<BS>m",
-        "<cmd>lua require('harpoon.mark').add_file()<cr>",
+        function()
+          require("harpoon.mark").add_file()
+        end,
         desc = "Mark file for harpoon",
       },
       {
         "<BS>n",
-        "<cmd>lua require('harpoon.ui').nav_file(1)<cr>",
+        function()
+          require("harpoon.ui").nav_file(1)
+        end,
         desc = "Navigate to first harpoon ",
       },
       {
         "<BS>e",
-        "<cmd>lua require('harpoon.ui').nav_file(2)<cr>",
+        function()
+          require("harpoon.ui").nav_file(2)
+        end,
         desc = "Navigate to second harpoon",
       },
       {
         "<BS>i",
-        "<cmd>lua require('harpoon.ui').nav_file(3)<cr>",
+        function()
+          require("harpoon.ui").nav_file(3)
+        end,
         desc = "Navigate to third harpoon",
       },
       {
         "<BS>o",
-        "<cmd>lua require('harpoon.ui').nav_file(4)<cr>",
+        function()
+          require("harpoon.ui").nav_file(4)
+        end,
         desc = "Navigate to fourth harpoon",
       },
     },
@@ -468,16 +475,21 @@ return {
       "NvimTreeToggle",
     },
     keys = {
-      { "<leader>of", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" },
+      {
+        "<leader>of",
+        "<cmd>NvimTreeToggle<cr>",
+        desc = "Toggle file tree",
+      },
       {
         "<leader>oF",
         "<cmd>NvimTreeFindFile<cr>",
         desc = "Find current file in file tree",
       },
     },
-    config = function()
+    init = function()
       vim.g.nvim_tree_auto_ignore_ft = { "startify", "dashboard" }
-
+    end,
+    config = function()
       local tree_cb = require("nvim-tree.config").nvim_tree_callback
 
       require("nvim-tree").setup({
@@ -518,6 +530,7 @@ return {
   {
     "lervag/vimtex",
     ft = "tex",
+    dependencies = { "nvim-cmp" },
     init = function()
       vim.g.vimtex_view_method = "zathura"
       vim.g.tex_flavor = "latex"
@@ -561,21 +574,19 @@ return {
 
   {
     "NvChad/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup({
-        filetypes = {
-          "vim",
-          "css",
-          "html",
-          "javascript",
-          "typescript",
-          "lua",
-          html = {
-            mode = "background",
-          },
+    opts = {
+      filetypes = {
+        "vim",
+        "css",
+        "html",
+        "javascript",
+        "typescript",
+        "lua",
+        html = {
+          mode = "background",
         },
-      })
-    end,
+      },
+    },
   },
 
   {
@@ -655,6 +666,7 @@ return {
   {
     "tpope/vim-dispatch",
     cmd = { "Dispatch", "Make", "Focus", "Start" },
+    dependencies = { "tpope/vim-tbone" },
     init = function()
       vim.g.tmux_session = "popup"
     end,
@@ -835,39 +847,41 @@ return {
     "hanschen/vim-ipython-cell",
     dependencies = "vim-slime",
     ft = "python",
+    keys = {
+      { "<c-c><c-f>", "IPythonCellRun", desc = "Run current file" },
+      { "<c-c><c-t>", "IPythonCellRunTime", desc = "Run and time current file" },
+      {
+        "<c-c><c-x>",
+        "IPythonCellExecuteCellVerbose",
+        desc = "Print and execute current cell",
+      },
+      {
+        "<c-c><c-j>",
+        "IPythonCellExecuteCellVerboseJump",
+        desc = "Print and execute current cell",
+      },
+      { "<c-c><c-l>", "IPythonCellClear", desc = "Clear IPython screen" },
+      { "[C", "IPythonCellPrevCell", desc = "Go to previous cell header" },
+      { "]C", "IPythonCellNextCell", desc = "Go to next cell header" },
+    },
     init = function()
       vim.g.ipython_cell_delimit_cells_by = "tags"
-    end,
-    config = function()
-      local map = function(lhs, rhs, desc)
-        vim.keymap.set("n", lhs, "<cmd>IPythonCell" .. rhs .. "<cr>", { desc = desc })
-      end
-      map("<c-c><c-f>", "Run", "Run current file")
-      map("<c-c><c-t>", "RunTime", "Run and time current file")
-      map("<c-c><c-x>", "ExecuteCellVerbose", "Print and execute current cell")
-      map("<c-c><c-j>", "ExecuteCellVerboseJump", "Print and execute current cell")
-      map("<c-c><c-l>", "Clear", "Clear IPython screen")
-      map("[C", "PrevCell", "Go to previous cell header")
-      map("]C", "NextCell", "Go to next cell header")
     end,
   },
 
   {
     "jupyter-vim/jupyter-vim",
     ft = "python",
+    keys = {
+      { "<localleader>R", "<cmd>JupyterRunFile<cr>", desc = "Run file" },
+      { "<localleader>I", "<cmd>PythonImportThisFile<cr>", desc = "Import file" },
+      { "<localleader>X", "<cmd>JupyterSendCell<cr>", desc = "Send cell" },
+      { "<localleader>E", "<cmd>JupyterSendRange<cr>", desc = "Send range" },
+      { "<localleader>e", "<Plug>JupyterRunTextObj", desc = "Run text object" },
+      { "<localleader>e", "<Plug>JupyterRunVisual", desc = "Run selection" },
+    },
     init = function()
       vim.g.jupyter_mapkeys = 1
-    end,
-    config = function()
-      local map = function(mode, lhs, rhs, desc)
-        vim.keymap.set(mode, lhs, rhs, { desc = desc })
-      end
-      map("n", "<localleader>R", "<cmd>JupyterRunFile<cr>", "Run file")
-      map("n", "<localleader>I", "<cmd>PythonImportThisFile<cr>", "Import file")
-      map("n", "<localleader>X", "<cmd>JupyterSendCell<cr>", "Send cell")
-      map("n", "<localleader>E", "<cmd>JupyterSendRange<cr>", "Send range")
-      map("n", "<localleader>e", "<Plug>JupyterRunTextObj", "Run text object")
-      map("v", "<localleader>e", "<Plug>JupyterRunVisual", "Run selection")
     end,
   },
 
@@ -895,13 +909,6 @@ return {
       vim.g.floaterm_wintitle = 0
       vim.g.floaterm_autoclose = 1
       vim.g.floaterm_opener = "edit"
-    end,
-    config = function()
-      vim.api.nvim_set_hl(
-        0,
-        "FloatermBorder",
-        { fg = "#ebdbb2", bg = nil, ctermfg = 0, ctermbg = 13 }
-      )
     end,
   },
 }

@@ -22,6 +22,10 @@ return {
             { fg = "#d65d0e", bold = true, ctermfg = 81, cterm = { underline = true } }
           )
           highlight("FloatBorder", { ctermfg = nil, ctermbg = nil, cterm = nil })
+          highlight(
+            "FloatermBorder",
+            { fg = "#ebdbb2", bg = nil, ctermfg = 0, ctermbg = 13 }
+          )
           highlight("DiagnosticUnnecessary", { link = "Comment" })
           highlight(
             "ScrollViewCursor",
