@@ -220,34 +220,6 @@ return {
           builtins.formatting.stylua,
           -- Gitcommit
           builtins.diagnostics.gitlint,
-          -- Python
-          builtins.diagnostics.pylint.with({
-            method = methods.DIAGNOSTICS_ON_SAVE,
-            condition = function(utils)
-              return utils.root_has_file(".pylintrc")
-            end,
-            dynamic_command = function(params)
-              return from_virtual_env(params)
-                or vim.fn.executable(params.command) == 1 and params.command
-            end,
-          }),
-          builtins.diagnostics.flake8.with({
-            method = methods.DIAGNOSTICS_ON_SAVE,
-            dynamic_command = function(params)
-              return from_virtual_env(params)
-                or vim.fn.executable(params.command) == 1 and params.command
-            end,
-          }),
-          builtins.diagnostics.mypy.with({
-            method = methods.DIAGNOSTICS_ON_SAVE,
-            timeout = 10000,
-            dynamic_command = function(params)
-              return from_virtual_env(params)
-                or vim.fn.executable(params.command) == 1 and params.command
-            end,
-          }),
-          builtins.formatting.black,
-          builtins.formatting.isort,
           -- Javascript/Typescript/Vue
           builtins.diagnostics.eslint_d.with({
             filetypes = { "javascript", "typescript", "vue" },
