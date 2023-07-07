@@ -17,7 +17,7 @@ return {
         dependencies = "mason.nvim",
         config = function()
           require("mason-lspconfig").setup({
-            automatic_installation = true,
+            automatic_installation = false,
           })
         end,
       },
