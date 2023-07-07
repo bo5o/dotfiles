@@ -215,16 +215,10 @@ return {
     dependencies = { "rafamadriz/friendly-snippets" },
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
-      require("luasnip").filetype_extend("python", {
-        "django",
-        "django-rest",
-      })
-      require("luasnip").filetype_extend("djangohtml", {
-        "djangohtml",
-      })
-      require("luasnip").filetype_extend("vue", {
-        "vue",
-      })
+      require("luasnip").filetype_extend("python", { "django" })
+      require("luasnip").filetype_extend("python", { "django-rest" })
+      require("luasnip").filetype_extend("djangohtml", { "djangohtml" })
+      require("luasnip").filetype_extend("vue", { "vue" })
     end,
   },
 
