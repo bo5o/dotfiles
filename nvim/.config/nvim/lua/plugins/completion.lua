@@ -3,28 +3,40 @@ return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
-      { "onsails/lspkind-nvim" }, -- nice symbols for completion menu
-      { "lukas-reineke/cmp-under-comparator" }, -- better sorting of dunder methods
-      { "hrsh7th/cmp-nvim-lsp" }, -- lsp completions
-      { "hrsh7th/cmp-buffer" }, -- buffer completions
-      { "hrsh7th/cmp-path" }, -- file path completions
-      { "quangnguyen30192/cmp-nvim-ultisnips" }, -- snippet completions
-      { "hrsh7th/cmp-cmdline" }, -- completions on cmdline
-      { "andersevenrud/cmp-tmux" }, -- completions from tmux pane content
+      { "onsails/lspkind-nvim" },
+      { "lukas-reineke/cmp-under-comparator" },
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-buffer" },
+      { "hrsh7th/cmp-path" },
+      { "saadparwaiz1/cmp_luasnip", dependencies = "L3MON4D3/LuaSnip" },
+      { "hrsh7th/cmp-cmdline" },
+      { "andersevenrud/cmp-tmux" },
     },
     config = function()
       local cmp = require("cmp")
       local cmp_under_comparator = require("cmp-under-comparator")
+      local luasnip = require("luasnip")
       local lspkind = require("lspkind")
 
       local t = function(str)
         return vim.api.nvim_replace_termcodes(str, true, true, true)
       end
 
+      local has_words_before = function()
+        unpack = unpack or table.unpack
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0
+          and vim.api
+              .nvim_buf_get_lines(0, line - 1, line, true)[1]
+              :sub(col, col)
+              :match("%s")
+            == nil
+      end
+
       cmp.setup({
         snippet = {
           expand = function(args)
-            vim.fn["UltiSnips#Anon"](args.body)
+            require("luasnip").lsp_expand(args.body)
           end,
         },
 
@@ -68,87 +80,47 @@ return {
           ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
           ["<C-e>"] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
           ["<CR>"] = cmp.mapping({
-            i = cmp.mapping.confirm({
+            i = function(fallback)
+              if cmp.visible() and cmp.get_active_entry() then
+                cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+              else
+                fallback()
+              end
+            end,
+            s = cmp.mapping.confirm({ select = true }),
+            c = cmp.mapping.confirm({
               behavior = cmp.ConfirmBehavior.Replace,
-              select = false,
+              select = true,
             }),
-            c = function(fallback)
-              if cmp.visible() then
-                cmp.confirm({
-                  behavior = cmp.ConfirmBehavior.Replace,
-                  select = false,
-                })
-              else
-                fallback()
-              end
-            end,
           }),
 
-          ["<Tab>"] = cmp.mapping({
-            c = function()
-              if cmp.visible() then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-              else
-                cmp.complete()
-              end
-            end,
-            i = function(fallback)
-              if cmp.visible() then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-              elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-                vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), "m", true)
-              else
-                fallback()
-              end
-            end,
-            s = function(fallback)
-              if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-                vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), "m", true)
-              else
-                fallback()
-              end
-            end,
-          }),
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+            elseif has_words_before() then
+              cmp.complete()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
 
-          ["<S-Tab>"] = cmp.mapping({
-            c = function()
-              if cmp.visible() then
-                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-              else
-                cmp.complete()
-              end
-            end,
-            i = function(fallback)
-              if cmp.visible() then
-                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-              elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-                return vim.api.nvim_feedkeys(
-                  t("<Plug>(ultisnips_jump_backward)"),
-                  "m",
-                  true
-                )
-              else
-                fallback()
-              end
-            end,
-            s = function(fallback)
-              if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-                return vim.api.nvim_feedkeys(
-                  t("<Plug>(ultisnips_jump_backward)"),
-                  "m",
-                  true
-                )
-              else
-                fallback()
-              end
-            end,
-          }),
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
         },
 
         sources = {
           { name = "nvim_lsp" },
           { name = "path" },
-          { name = "ultisnips" },
+          { name = "luasnip" },
           {
             name = "buffer",
             keyword_length = 4,
@@ -189,7 +161,7 @@ return {
             menu = {
               nvim_lsp = "[lsp]",
               path = "[path]",
-              ultisnips = "[snip]",
+              luasnip = "[snip]",
               buffer = "[buf]",
               tmux = "[tmux]",
             },
@@ -237,23 +209,22 @@ return {
   },
 
   {
-    "SirVer/ultisnips",
-    dependencies = {
-      {
-        "honza/vim-snippets",
-        event = "InsertCharPre",
-        config = function()
-          vim.opt.rtp:append(".")
-        end,
-      },
-    },
-    init = function()
-      vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
-      vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
-      vim.g.UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_backward)"
-      vim.g.UltiSnipsListSnippets = "<c-x><c-s>"
-      vim.g.UltiSnipsRemoveSelectModeMappings = 0
-      vim.g.ultisnips_python_style = "numpy"
+    "L3MON4D3/LuaSnip",
+    version = "1.*",
+    event = "InsertEnter",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip").filetype_extend("python", {
+        "django",
+        "django-rest",
+      })
+      require("luasnip").filetype_extend("djangohtml", {
+        "djangohtml",
+      })
+      require("luasnip").filetype_extend("vue", {
+        "vue",
+      })
     end,
   },
 
