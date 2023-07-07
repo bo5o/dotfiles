@@ -1,5 +1,9 @@
 local whichkey = require("which-key")
 
+-- Remap for dealing with word wrap
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
 whichkey.register({
   ["<C-p>"] = { "<Up>", "Search command history up", mode = "c", silent = false },
   ["<C-n>"] = { "<Down>", "Search command history down", mode = "c", silent = false },
