@@ -19,6 +19,7 @@ function M.setup()
           ignoreDir = { "undodir/**/*.lua" },
           checkThirdParty = false,
         },
+        telemetry = { enable = false },
       },
     },
   })
