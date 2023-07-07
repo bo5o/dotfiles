@@ -15,14 +15,12 @@ return {
       {
         "williamboman/mason-lspconfig.nvim",
         dependencies = "mason.nvim",
-        config = function()
-          require("mason-lspconfig").setup({
-            automatic_installation = false,
-          })
-        end,
+        opts = {
+          automatic_installation = false,
+        },
       },
       { "ray-x/lsp_signature.nvim" },
-      { "j-hui/fidget.nvim", tag = "legacy" },
+      { "j-hui/fidget.nvim", tag = "legacy", config = true },
       { "b0o/schemastore.nvim", version = false },
       { "folke/neodev.nvim" },
     },
