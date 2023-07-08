@@ -6,6 +6,7 @@ function M.setup()
       ["rust-analyzer"] = {
         checkOnSave = {
           command = "clippy",
+          extraArgs = { "--no-deps" },
         },
       },
     },
