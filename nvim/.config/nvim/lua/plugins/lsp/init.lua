@@ -5,8 +5,8 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     keys = {
-      { "<leader>li", "<cmd>LspInfo<cr>", desc = "Lsp info" },
-      { "<leader>lr", "<cmd>LspRestart<cr>", desc = "Restart LSP servers" },
+      { "<leader>cI", "<cmd>LspInfo<cr>", desc = "Lsp info" },
+      { "<leader>cS", "<cmd>LspRestart<cr>", desc = "Restart LSP servers" },
     },
     dependencies = {
       "typescript.nvim",
@@ -29,30 +29,24 @@ return {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(args)
           local lsp = vim.lsp.buf
-          local map = function(mode, lhs, rhs, desc)
+          local map = function(lhs, rhs, desc, mode)
             local opts = { desc = desc, buffer = args.buf, silent = true }
-            vim.keymap.set(mode, lhs, rhs, opts)
+            vim.keymap.set(mode or "n", lhs, rhs, opts)
           end
 
-          map("n", "gd", lsp.definition, "Go to definition")
-          map("n", "gD", lsp.declaration, "Go to declaration")
-          map("n", "K", lsp.hover, "Display hover information")
-          map("n", "gI", lsp.implementation, "List implementations")
-          map("n", "gr", "<cmd>TroubleToggle lsp_references<CR>", "List all references")
-          map("n", "<leader>K", lsp.signature_help, "Display signature help")
-          map("n", "gy", lsp.type_definition, "Go to t[y]pe definition")
-          map("n", "<leader><space>f", lsp.format, "Format current buffer")
-          map("n", "<leader><space>n", lsp.rename, "Rename all references")
-          map("n", "<leader><space>n", lsp.rename, "Rename all references")
-          map({ "n", "v" }, "<leader><space>a", lsp.code_action, "Select code action")
-          map("n", "<leader>lwa", lsp.add_workspace_folder, "Add workspace folder")
-          map(
-            "n",
-            "<leader>lwr",
-            lsp.remove_workspace_folder,
-            "Remove workspace folder"
-          )
-          map("n", "<leader>lwl", function()
+          map("gd", lsp.definition, "Go to definition")
+          map("gD", lsp.declaration, "Go to declaration")
+          map("K", lsp.hover, "Display hover information")
+          map("<c-k>", lsp.signature_help, "Display signature help")
+          map("gI", lsp.implementation, "List implementations")
+          map("gr", "<cmd>TroubleToggle lsp_references<CR>", "List all references")
+          map("gy", lsp.type_definition, "Go to t[y]pe definition")
+          map("<leader>cf", lsp.format, "Format current buffer")
+          map("<leader>cr", lsp.rename, "Rename all references")
+          map("<leader>ca", lsp.code_action, "Select code action", { "n", "v" })
+          map("<leader>cwa", lsp.add_workspace_folder, "Add workspace folder")
+          map("<leader>cwr", lsp.remove_workspace_folder, "Remove workspace folder")
+          map("<leader>cwl", function()
             print(vim.inspect(lsp.list_workspace_folders()))
           end, "List workspace folders")
         end,
