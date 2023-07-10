@@ -26,9 +26,8 @@ vim.opt.cmdheight = 1
 
 vim.opt.whichwrap:append({ ["<"] = true, [">"] = true, h = true, l = true })
 
--- Python host programs
-vim.g.python_host_prog = os.getenv("HOME") .. "/.virtualenvs/py2nvim/bin/python"
-vim.g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/py3nvim/bin/python"
+-- Python provider configuration
+vim.g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/nvim/py311/bin/python"
 
 vim.opt.showmode = false
 
