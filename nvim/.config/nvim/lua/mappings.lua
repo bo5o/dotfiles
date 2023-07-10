@@ -109,7 +109,7 @@ whichkey.register({
 
 -- plugin mapping categories
 whichkey.register({
-  l = { name = "lsp" },
+  c = { name = "code", w = { name = "workspace" } },
   f = { name = "find" },
   g = { name = "git", c = { name = "commit" } },
   o = { name = "open" },
