@@ -13,7 +13,10 @@ function M.setup()
           jedi_signature_help = { enabled = true },
           jedi_symbols = { enabled = true },
           black = { enabled = true },
-          ruff = { enabled = true },
+          ruff = {
+            enabled = true,
+            select = { "E", "F", "I" },
+          },
           mypy = {
             enabled = true,
             dmypy = true,
