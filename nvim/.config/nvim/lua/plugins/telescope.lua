@@ -4,6 +4,36 @@ return {
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       { "benfowler/telescope-luasnip.nvim" },
+      -- project management
+      {
+        "ahmedkhalf/project.nvim",
+        event = "VeryLazy",
+        opts = {
+          silent_chdir = true,
+          scope_chdir = "win",
+          patterns = {
+            "!^.direnv",
+            "!^site-packages",
+            "!^node_modules",
+            ".git",
+            "_darcs",
+            ".hg",
+            ".bzr",
+            ".svn",
+            "Makefile",
+            "Justfile",
+            "manage.py",
+            "pyproject.toml",
+            "setup.py",
+            "requirements.txt",
+            "package.json",
+            "Cargo.toml",
+          },
+        },
+        config = function(opts)
+          require("project_nvim").setup(opts)
+        end,
+      },
     },
     cmd = "Telescope",
     keys = {
@@ -51,6 +81,7 @@ return {
         "<cmd>Telescope current_buffer_fuzzy_find<cr>",
         desc = "Live fuzzy search inside of the currently open buffer",
       },
+      { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Find projects" },
     },
     config = function()
       local telescope = require("telescope")
@@ -142,7 +173,8 @@ return {
       )
 
       telescope.load_extension("fzf")
-      require("telescope").load_extension("luasnip")
+      telescope.load_extension("luasnip")
+      telescope.load_extension("projects")
     end,
   },
 }

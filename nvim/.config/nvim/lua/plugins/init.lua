@@ -509,6 +509,12 @@ return {
       local tree_cb = require("nvim-tree.config").nvim_tree_callback
 
       require("nvim-tree").setup({
+        sync_root_with_cwd = true,
+        respect_buf_cwd = true,
+        update_focused_file = {
+          enable = true,
+          update_root = true,
+        },
         view = {
           adaptive_size = true,
           mappings = {
@@ -751,28 +757,6 @@ return {
             type = "env",
           },
         },
-      }
-    end,
-  },
-
-  {
-    "airblade/vim-rooter",
-    init = function()
-      vim.g.rooter_silent_chdir = 1
-      vim.g.rooter_cd_cmd = "lcd"
-      vim.g.rooter_patterns = {
-        "!^.direnv",
-        "!^site-packages",
-        "!^node_modules",
-        "!../.project-root",
-        ".project-root",
-        "package.json",
-        "requirements.txt",
-        "setup.py",
-        "manage.py",
-        "pyproject.toml",
-        "Cargo.toml",
-        ".git",
       }
     end,
   },
