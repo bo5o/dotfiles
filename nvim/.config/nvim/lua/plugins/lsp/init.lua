@@ -279,8 +279,6 @@ return {
             filetypes = { "zsh" }, -- https://github.com/bash-lsp/bash-language-server/issues/252
           }),
           builtins.formatting.shfmt,
-          -- Go
-          builtins.formatting.gofmt,
           -- Tex
           builtins.diagnostics.chktex,
           builtins.formatting.latexindent,
