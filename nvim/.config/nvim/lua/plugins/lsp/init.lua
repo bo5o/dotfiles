@@ -312,12 +312,7 @@ return {
     },
     opts = {
       ensure_installed = nil,
-      automatic_installation = {
-        exclude = {
-          "trim_whitespace",
-          "trim_newlines",
-        },
-      },
+      automatic_installation = false,
     },
   },
 
