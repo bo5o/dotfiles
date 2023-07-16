@@ -264,13 +264,26 @@ return {
             end,
             prefer_local = "node_modules/.bin",
           }),
-          -- CSS/HTML/JSON/YAML/Markdown
+          -- Markdown
+          builtins.formatting.mdformat.with({
+            filetypes = { "markdown" },
+            condition = function(utils)
+              return utils.root_has_file({ ".mdformat.toml" })
+            end,
+          }),
+          builtins.formatting.prettierd.with({
+            filetypes = { "markdown" },
+            condition = function(utils)
+              return not utils.root_has_file({ ".mdformat.toml" })
+            end,
+          }),
+          -- CSS/HTML/YAML
           builtins.diagnostics.yamllint,
           builtins.diagnostics.markdownlint.with({
             filetypes = { "markdown", "vimwiki" },
           }),
           builtins.formatting.prettierd.with({
-            filetypes = { "css", "html", "json", "yaml", "markdown" },
+            filetypes = { "css", "html", "yaml" },
           }),
           -- Dockerfile
           builtins.diagnostics.hadolint,
