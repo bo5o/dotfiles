@@ -506,34 +506,45 @@ return {
       vim.g.nvim_tree_auto_ignore_ft = { "startify", "dashboard" }
     end,
     config = function()
-      local tree_cb = require("nvim-tree.config").nvim_tree_callback
+      local function on_attach(bufnr)
+        local api = require("nvim-tree.api")
+
+        local function nmap(lhs, rhs, desc)
+          local opts = {
+            desc = "nvim-tree: " .. desc,
+            buffer = bufnr,
+            noremap = true,
+            silent = true,
+            nowait = true,
+          }
+          vim.keymap.set("n", lhs, rhs, opts)
+        end
+
+        api.config.mappings.default_on_attach(bufnr)
+
+        nmap("o", api.node.open.edit, "Open")
+        nmap("l", api.node.open.edit, "Open")
+        nmap("h", api.node.navigate.parent_close, "Close Directory")
+        nmap("zh", api.tree.toggle_hidden_filter, "Toggle Filter: Hidden")
+        nmap("zi", api.tree.toggle_gitignore_filter, "Toggle Filter: Git Ignore")
+        nmap("H", api.tree.change_root_to_parent, "Up")
+        nmap("L", api.tree.change_root_to_node, "CD")
+      end
 
       require("nvim-tree").setup({
+        on_attach = on_attach,
         sync_root_with_cwd = true,
         respect_buf_cwd = true,
         update_focused_file = {
           enable = true,
           update_root = true,
         },
-        view = {
-          adaptive_size = true,
-          mappings = {
-            list = {
-              { key = { "<CR>", "o", "<2-LeftMouse>", "l" }, cb = tree_cb("edit") },
-              { key = { "<BS>", "h" }, cb = tree_cb("close_node") },
-              { key = "zh", cb = tree_cb("toggle_dotfiles") },
-              { key = "zi", cb = tree_cb("toggle_custom") },
-              { key = "zg", cb = tree_cb("toggle_git_ignored") },
-              { key = { "-", "H" }, cb = tree_cb("dir_up") },
-              { key = { "<2-RightMouse>", "<C-]>", "L" }, cb = tree_cb("cd") },
-            },
-          },
-        },
         filters = {
-          dotfiles = true,
+          dotfiles = false,
           custom = { "^\\.git", "^node_modules", "^\\.cache", "__pycache__" },
         },
         renderer = {
+          group_empty = true,
           highlight_git = true,
           add_trailing = true,
           indent_markers = {
