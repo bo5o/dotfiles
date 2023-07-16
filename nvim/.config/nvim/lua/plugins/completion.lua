@@ -3,14 +3,14 @@ return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
-      { "onsails/lspkind-nvim" },
-      { "lukas-reineke/cmp-under-comparator" },
-      { "hrsh7th/cmp-nvim-lsp" },
-      { "hrsh7th/cmp-buffer" },
-      { "hrsh7th/cmp-path" },
-      { "saadparwaiz1/cmp_luasnip", dependencies = "L3MON4D3/LuaSnip" },
-      { "hrsh7th/cmp-cmdline" },
-      { "andersevenrud/cmp-tmux" },
+      "onsails/lspkind-nvim",
+      "lukas-reineke/cmp-under-comparator",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-cmdline",
+      "andersevenrud/cmp-tmux",
     },
     config = function()
       local cmp = require("cmp")
@@ -119,7 +119,6 @@ return {
 
         sources = {
           { name = "nvim_lsp" },
-          { name = "path" },
           { name = "luasnip" },
           {
             name = "buffer",
@@ -130,6 +129,7 @@ return {
               end,
             },
           },
+          { name = "path" },
           {
             name = "tmux",
             keyword_length = 5,

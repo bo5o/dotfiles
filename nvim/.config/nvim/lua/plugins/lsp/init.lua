@@ -1,5 +1,6 @@
 return {
   { "jose-elias-alvarez/typescript.nvim", lazy = true },
+  { "simrat39/rust-tools.nvim", lazy = true },
 
   {
     "neovim/nvim-lspconfig",
@@ -29,6 +30,7 @@ return {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(args)
           local lsp = vim.lsp.buf
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
           local map = function(lhs, rhs, desc, mode)
             local opts = { desc = desc, buffer = args.buf, silent = true }
             vim.keymap.set(mode or "n", lhs, rhs, opts)
@@ -36,7 +38,11 @@ return {
 
           map("gd", lsp.definition, "Go to definition")
           map("gD", lsp.declaration, "Go to declaration")
-          map("K", lsp.hover, "Display hover information")
+          if client.name == "rust_analyzer" then
+            map("K", "<cmd>RustHoverActions<cr>", "Hover Actions (Rust)")
+          else
+            map("K", lsp.hover, "Display hover information")
+          end
           map("<c-k>", lsp.signature_help, "Display signature help")
           map("gI", lsp.implementation, "List implementations")
           map("gr", "<cmd>TroubleToggle lsp_references<CR>", "List all references")
@@ -100,7 +106,7 @@ return {
 
       require("plugins.lsp.python").setup()
       require("plugins.lsp.lua").setup()
-      require("plugins.lsp.rust").setup()
+      require("plugins.lsp.rust").setup(on_attach, capabilities)
       require("plugins.lsp.json").setup()
       require("plugins.lsp.yaml").setup()
       require("plugins.lsp.toml").setup()

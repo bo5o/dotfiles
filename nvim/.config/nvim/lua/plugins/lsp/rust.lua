@@ -1,12 +1,18 @@
 local M = {}
 
-function M.setup()
-  require("lspconfig").rust_analyzer.setup({
-    settings = {
-      ["rust-analyzer"] = {
-        checkOnSave = {
-          command = "clippy",
-          extraArgs = { "--no-deps" },
+function M.setup(on_attach, capabilities)
+  local rt = require("rust-tools")
+
+  rt.setup({
+    server = {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        ["rust-analyzer"] = {
+          checkOnSave = {
+            command = "clippy",
+            extraArgs = { "--no-deps" },
+          },
         },
       },
     },
