@@ -115,6 +115,7 @@ return {
       require("plugins.lsp.vue").setup(on_attach)
       require("plugins.lsp.typescript").setup(on_attach, capabilities)
       require("plugins.lsp.php").setup()
+      require("plugins.lsp.markdown").setup()
 
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = "rounded",
