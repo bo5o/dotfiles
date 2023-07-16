@@ -116,6 +116,7 @@ return {
       require("plugins.lsp.typescript").setup(on_attach, capabilities)
       require("plugins.lsp.php").setup()
       require("plugins.lsp.markdown").setup()
+      require("plugins.lsp.sh").setup()
 
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = "rounded",
@@ -275,7 +276,7 @@ return {
           builtins.diagnostics.hadolint,
           -- Shell
           builtins.diagnostics.shellcheck.with({
-            filetypes = { "sh", "zsh" },
+            filetypes = { "zsh" }, -- https://github.com/bash-lsp/bash-language-server/issues/252
           }),
           builtins.formatting.shfmt,
           -- Go
