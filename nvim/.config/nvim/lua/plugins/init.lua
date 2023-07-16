@@ -28,6 +28,21 @@ return {
   },
 
   {
+    "cshuaimin/ssr.nvim",
+    keys = {
+      {
+        "<leader>ssr",
+        function()
+          require("ssr").open()
+        end,
+        desc = "Structural search and replace",
+        mode = { "n", "x" },
+      },
+    },
+    opts = {},
+  },
+
+  {
     "folke/trouble.nvim", -- lsp errors and diagnostics in quickfix
     cmd = {
       "Trouble",
