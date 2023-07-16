@@ -3,7 +3,7 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      { "fhill2/telescope-ultisnips.nvim" },
+      { "benfowler/telescope-luasnip.nvim" },
     },
     cmd = "Telescope",
     keys = {
@@ -142,7 +142,7 @@ return {
       )
 
       telescope.load_extension("fzf")
-      telescope.load_extension("ultisnips")
+      require("telescope").load_extension("luasnip")
     end,
   },
 }
