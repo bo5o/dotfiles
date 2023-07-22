@@ -14,10 +14,10 @@ dotenv-linter 3.3.0
 poetry 1.5.1
 ruby 3.1.2
 rust 1.68.2
-lazygit 0.38.2
+lazygit 0.39.2
 fd 8.7.0
 yq 4.34.2
-lazydocker 0.20.0
+lazydocker 0.21.0
 php 8.1.10
 azure-cli 2.50.0
 postgres 14.1
