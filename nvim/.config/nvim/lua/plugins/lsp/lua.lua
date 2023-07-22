@@ -14,7 +14,13 @@ function M.setup()
     before_init = require("neodev.lsp").before_init,
     settings = {
       Lua = {
-        format = { enable = false },
+        format = {
+          enable = false,
+          defaultConfig = {
+            indent_style = "space",
+            indent_size = "2",
+          },
+        },
         workspace = {
           ignoreDir = { "undodir/**/*.lua" },
           checkThirdParty = false,
