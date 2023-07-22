@@ -150,13 +150,6 @@ return {
   { "AndrewRadev/splitjoin.vim", event = "CursorHold" },
 
   {
-    "AndrewRadev/switch.vim",
-    init = function()
-      vim.g.switch_mapping = "-"
-    end,
-  },
-
-  {
     "tommcdo/vim-lion",
     init = function()
       vim.g.lion_squeeze_spaces = 1

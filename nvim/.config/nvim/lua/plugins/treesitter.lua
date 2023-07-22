@@ -138,6 +138,24 @@ return {
   { "windwp/nvim-ts-autotag", dependencies = "nvim-treesitter" },
   -- Auto-set 'commentstring'
   { "JoosepAlviste/nvim-ts-context-commentstring", dependencies = "nvim-treesitter" },
+  -- Node actions
+  {
+    "ckolkey/ts-node-action",
+    dev = true,
+    dependencies = "nvim-treesitter",
+    config = function()
+      local actions = require("ts-node-action.actions")
+
+      require("ts-node-action").setup({})
+
+      vim.keymap.set(
+        "n",
+        "-",
+        require("ts-node-action").node_action,
+        { desc = "Trigger node action" }
+      )
+    end,
+  },
   -- Explore treesitter
   {
     "nvim-treesitter/playground",
