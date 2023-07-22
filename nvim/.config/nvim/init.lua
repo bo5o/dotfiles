@@ -23,6 +23,9 @@ require("lazy").setup("plugins", {
     -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
     border = "rounded",
   },
+  dev = {
+    path = "~/repos",
+  },
   custom_keys = {
     -- open lazygit log
     ["<localleader>l"] = function(plugin)
