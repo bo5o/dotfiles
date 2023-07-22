@@ -8,6 +8,11 @@ return {
   },
 
   {
+    "anuvyklack/hydra.nvim",
+    lazy = true,
+  },
+
+  {
     "nvim-pack/nvim-spectre",
     keys = {
       {

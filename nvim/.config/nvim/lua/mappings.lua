@@ -116,3 +116,30 @@ whichkey.register({
   q = { name = "diagnostics" },
   t = { name = "test" },
 }, { prefix = "<leader>" })
+
+local Hydra = require("hydra")
+
+Hydra({
+  name = "Side scroll",
+  mode = "n",
+  body = "z",
+  heads = {
+    { "h", "5zh" },
+    { "l", "5zl" },
+    { "H", "zH" },
+    { "L", "zL" },
+  },
+})
+
+Hydra({
+  name = "Windows",
+  mode = "n",
+  body = "<C-w>",
+  heads = {
+    { "<C-h>", "<C-w><" },
+    { "<C-l>", "<C-w>>" },
+    { "<C-j>", "<C-w>-" },
+    { "<C-k>", "<C-w>+" },
+    { "=", "<C-w>=" },
+  },
+})
