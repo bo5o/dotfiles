@@ -145,7 +145,116 @@ Hydra({
 })
 
 do
-  local ns = vim.api.nvim_create_namespace("hydra_swap_hl_node")
+  local shared = require("nvim-treesitter.textobjects.shared")
+  local swap = require("nvim-treesitter.textobjects.swap")
+  local ts_utils = require("nvim-treesitter.ts_utils")
+
+  local query_string = "@parameter.inner"
+
+  local function get_or_create_namespace()
+    return vim.api.nvim_create_namespace("hydra_swap_hl_node")
+  end
+
+  local function clear_highlight()
+    local hl_ns = get_or_create_namespace()
+    vim.api.nvim_buf_clear_namespace(0, hl_ns, 0, -1)
+  end
+
+  local function update_highlight(range)
+    local hl_ns = get_or_create_namespace()
+    local hl_group = "IncSearch"
+    local start = { range[1], range[2] }
+    local finish = { range[3], range[4] }
+    vim.highlight.range(0, hl_ns, hl_group, start, finish)
+  end
+
+  local function set_cursor_on_node(node)
+    local row, col, _ = node:start()
+    vim.api.nvim_win_set_cursor(0, { row + 1, col })
+  end
+
+  local function select_nth(n)
+    local _, _, node = shared.textobject_at_point(query_string)
+    if not node then
+      return
+    end
+
+    node = node:parent():named_child(n)
+    if not node then
+      return
+    end
+
+    set_cursor_on_node(node)
+
+    clear_highlight()
+  end
+
+  local function choose_adjacent(forward)
+    local _, _, node = shared.textobject_at_point(query_string)
+    if not node then
+      return
+    end
+
+    node = shared.get_adjacent(forward, node, query_string, nil, true)
+    if not node then
+      return
+    end
+
+    set_cursor_on_node(node)
+
+    clear_highlight()
+  end
+
+  local function get_siblings_for_edit(node)
+    local ranges = {}
+    local texts = {}
+    for sibling in node:parent():iter_children() do
+      if sibling:named() then
+        ranges[#ranges + 1] = ts_utils.node_to_lsp_range(sibling)
+        texts[#texts + 1] = vim.treesitter.get_node_text(sibling, 0)
+      end
+    end
+    return ranges, texts
+  end
+
+  local function sort_nodes(reverse)
+    local _, _, node = shared.textobject_at_point(query_string)
+    if not node then
+      return
+    end
+
+    local ranges, texts = get_siblings_for_edit(node)
+
+    table.sort(texts, function(a, b)
+      if reverse then
+        return a > b
+      end
+      return a < b
+    end)
+
+    local edits = {}
+    for i, range in ipairs(ranges) do
+      edits[#edits + 1] = { range = range, newText = texts[i] }
+    end
+
+    vim.lsp.util.apply_text_edits(edits, 0, "utf-8")
+  end
+
+  local function reverse_nodes()
+    local _, _, node = shared.textobject_at_point(query_string)
+    if not node then
+      return
+    end
+
+    local ranges, texts = get_siblings_for_edit(node)
+
+    local edits = {}
+    for i, range in ipairs(ranges) do
+      edits[#edits + 1] = { range = range, newText = texts[#texts + 1 - i] }
+    end
+
+    vim.lsp.util.apply_text_edits(edits, 0, "utf-8")
+  end
 
   Hydra({
     name = "Swap",
@@ -153,38 +262,122 @@ do
     body = "gs",
     heads = {
       {
-        "l",
-        "<cmd>TSTextobjectSwapNext @parameter.inner<cr>",
-        { desc = "next" },
+        "j",
+        function()
+          choose_adjacent(true)
+        end,
+      },
+      {
+        "k",
+        function()
+          choose_adjacent(false)
+        end,
+        { desc = "choose" },
       },
       {
         "h",
-        "<cmd>TSTextobjectSwapPrevious @parameter.inner<cr>",
-        { desc = "previous" },
+        function()
+          swap.swap_previous(query_string)
+        end,
+      },
+      {
+        "l",
+        function()
+          swap.swap_next(query_string)
+        end,
+        { desc = "swap" },
+      },
+      {
+        "1",
+        function()
+          select_nth(0)
+        end,
+      },
+      {
+        "2",
+        function()
+          select_nth(1)
+        end,
+      },
+      {
+        "3",
+        function()
+          select_nth(2)
+        end,
+      },
+      {
+        "4",
+        function()
+          select_nth(3)
+        end,
+      },
+      {
+        "5",
+        function()
+          select_nth(4)
+        end,
+      },
+      {
+        "6",
+        function()
+          select_nth(5)
+        end,
+      },
+      {
+        "7",
+        function()
+          select_nth(6)
+        end,
+      },
+      {
+        "8",
+        function()
+          select_nth(7)
+        end,
+      },
+      {
+        "9",
+        function()
+          select_nth(8)
+        end,
+        { desc = "select" },
+      },
+      {
+        "s",
+        function()
+          sort_nodes(false)
+          select_nth(0)
+        end,
+      },
+      {
+        "S",
+        function()
+          sort_nodes(true)
+          select_nth(0)
+        end,
+        { desc = "sort" },
+      },
+      {
+        "r",
+        function()
+          reverse_nodes()
+          select_nth(0)
+        end,
+        { desc = "reverse" },
       },
       { "<Esc>", nil, { color = "blue" } },
     },
     config = {
       invoke_on_body = true,
       on_key = function()
-        local shared = require("nvim-treesitter.textobjects.shared")
-
-        local _, range, _ = shared.textobject_at_point("@parameter.inner")
+        local _, range, _ = shared.textobject_at_point(query_string)
         if not range then
           return
         end
 
-        vim.highlight.range(
-          0,
-          ns,
-          "IncSearch",
-          { range[1], range[2] },
-          { range[3], range[4] }
-        )
+        update_highlight(range)
       end,
-      on_exit = function()
-        vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
-      end,
+      on_exit = clear_highlight,
     },
   })
 end
