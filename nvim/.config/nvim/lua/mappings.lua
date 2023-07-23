@@ -143,3 +143,48 @@ Hydra({
     { "=", "<C-w>=" },
   },
 })
+
+do
+  local ns = vim.api.nvim_create_namespace("hydra_swap_hl_node")
+
+  Hydra({
+    name = "Swap",
+    mode = "n",
+    body = "gs",
+    heads = {
+      {
+        "l",
+        "<cmd>TSTextobjectSwapNext @parameter.inner<cr>",
+        { desc = "next" },
+      },
+      {
+        "h",
+        "<cmd>TSTextobjectSwapPrevious @parameter.inner<cr>",
+        { desc = "previous" },
+      },
+      { "<Esc>", nil, { color = "blue" } },
+    },
+    config = {
+      invoke_on_body = true,
+      on_key = function()
+        local shared = require("nvim-treesitter.textobjects.shared")
+
+        local _, range, _ = shared.textobject_at_point("@parameter.inner")
+        if not range then
+          return
+        end
+
+        vim.highlight.range(
+          0,
+          ns,
+          "IncSearch",
+          { range[1], range[2] },
+          { range[3], range[4] }
+        )
+      end,
+      on_exit = function()
+        vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+      end,
+    },
+  })
+end

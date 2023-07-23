@@ -74,6 +74,9 @@ return {
             ["[["] = "@class.outer",
           },
         },
+        swap = {
+          enable = true,
+        },
       },
       textsubjects = {
         enable = true,

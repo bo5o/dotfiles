@@ -170,8 +170,6 @@ return {
     end,
   },
 
-  { "machakann/vim-swap" },
-
   { "wellle/targets.vim", event = "BufRead" },
 
   {
