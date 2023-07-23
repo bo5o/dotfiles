@@ -122,10 +122,13 @@ return {
           { name = "luasnip" },
           {
             name = "buffer",
-            keyword_length = 4,
             option = {
               get_bufnrs = function()
-                return vim.api.nvim_list_bufs()
+                return vim.tbl_filter(function(buf)
+                  local byte_size =
+                    vim.api.nvim_buf_get_offset(buf, vim.api.nvim_buf_line_count(buf))
+                  return byte_size < 1024 * 1024 -- 1 megabyte max
+                end, vim.api.nvim_list_bufs())
               end,
             },
           },
