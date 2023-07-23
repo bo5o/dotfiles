@@ -78,14 +78,6 @@ return {
           enable = true,
         },
       },
-      textsubjects = {
-        enable = true,
-        keymaps = {
-          ["."] = "textsubjects-smart",
-          [";"] = "textsubjects-container-outer",
-          ["i;"] = "textsubjects-container-inner",
-        },
-      },
       rainbow = {
         enable = true,
         query = {
@@ -131,8 +123,6 @@ return {
   },
   -- Advanced text objects
   { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter" },
-  -- Context-aware text objects
-  { "RRethy/nvim-treesitter-textsubjects", dependencies = "nvim-treesitter" },
   -- Always show treesitter context
   { "nvim-treesitter/nvim-treesitter-context", dependencies = "nvim-treesitter" },
   -- Colorize nested parentheses
@@ -147,8 +137,6 @@ return {
     dev = true,
     dependencies = "nvim-treesitter",
     config = function()
-      local actions = require("ts-node-action.actions")
-
       require("ts-node-action").setup({})
 
       vim.keymap.set(
