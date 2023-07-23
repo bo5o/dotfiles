@@ -6,6 +6,7 @@ return {
       "onsails/lspkind-nvim",
       "lukas-reineke/cmp-under-comparator",
       "hrsh7th/cmp-nvim-lsp",
+      "ray-x/cmp-treesitter",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
@@ -119,6 +120,7 @@ return {
 
         sources = {
           { name = "nvim_lsp" },
+          { name = "treesitter" },
           { name = "luasnip" },
           {
             name = "buffer",
@@ -135,7 +137,7 @@ return {
           { name = "path" },
           {
             name = "tmux",
-            keyword_length = 5,
+            keyword_length = 3,
             option = {
               all_panes = true,
               trigger_characters = {},
@@ -160,9 +162,10 @@ return {
 
         formatting = {
           format = lspkind.cmp_format({
-            with_text = true,
+            mode = "text",
             menu = {
               nvim_lsp = "[lsp]",
+              treesitter = "[ts]",
               path = "[path]",
               luasnip = "[snip]",
               buffer = "[buf]",
