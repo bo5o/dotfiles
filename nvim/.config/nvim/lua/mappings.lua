@@ -185,7 +185,6 @@ do
     end
 
     set_cursor_on_node(node)
-
     clear_highlight()
   end
 
@@ -201,13 +200,11 @@ do
     end
 
     set_cursor_on_node(node)
-
     clear_highlight()
   end
 
   local function get_siblings_for_edit(node)
-    local ranges = {}
-    local texts = {}
+    local ranges, texts = {}, {}
     for sibling in node:parent():iter_children() do
       if sibling:named() then
         ranges[#ranges + 1] = ts_utils.node_to_lsp_range(sibling)
@@ -238,6 +235,8 @@ do
     end
 
     vim.lsp.util.apply_text_edits(edits, 0, "utf-8")
+
+    clear_highlight()
   end
 
   local function reverse_nodes()
@@ -254,6 +253,8 @@ do
     end
 
     vim.lsp.util.apply_text_edits(edits, 0, "utf-8")
+
+    clear_highlight()
   end
 
   Hydra({
@@ -261,111 +262,25 @@ do
     mode = "n",
     body = "gs",
     heads = {
-      {
-        "j",
-        function()
-          choose_adjacent(true)
-        end,
-      },
-      {
-        "k",
-        function()
-          choose_adjacent(false)
-        end,
-        { desc = "choose" },
-      },
-      {
-        "h",
-        function()
-          swap.swap_previous(query_string)
-        end,
-      },
-      {
-        "l",
-        function()
-          swap.swap_next(query_string)
-        end,
-        { desc = "swap" },
-      },
-      {
-        "1",
-        function()
-          select_nth(0)
-        end,
-      },
-      {
-        "2",
-        function()
-          select_nth(1)
-        end,
-      },
-      {
-        "3",
-        function()
-          select_nth(2)
-        end,
-      },
-      {
-        "4",
-        function()
-          select_nth(3)
-        end,
-      },
-      {
-        "5",
-        function()
-          select_nth(4)
-        end,
-      },
-      {
-        "6",
-        function()
-          select_nth(5)
-        end,
-      },
-      {
-        "7",
-        function()
-          select_nth(6)
-        end,
-      },
-      {
-        "8",
-        function()
-          select_nth(7)
-        end,
-      },
-      {
-        "9",
-        function()
-          select_nth(8)
-        end,
-        { desc = "select" },
-      },
-      {
-        "s",
-        function()
-          sort_nodes(false)
-          select_nth(0)
-        end,
-      },
-      {
-        "S",
-        function()
-          sort_nodes(true)
-          select_nth(0)
-        end,
-        { desc = "sort" },
-      },
-      {
-        "r",
-        function()
-          reverse_nodes()
-          select_nth(0)
-        end,
-        { desc = "reverse" },
-      },
+      -- stylua: ignore start
+      { "j", function() choose_adjacent(true) end },
+      { "k", function() choose_adjacent(false) end, { desc = "choose" } },
+      { "h", function() swap.swap_previous(query_string) end },
+      { "l", function() swap.swap_next(query_string) end, { desc = "swap" } },
+      { "1", function() select_nth(0) end },
+      { "2", function() select_nth(1) end },
+      { "3", function() select_nth(2) end },
+      { "4", function() select_nth(3) end },
+      { "5", function() select_nth(4) end },
+      { "6", function() select_nth(5) end },
+      { "7", function() select_nth(6) end },
+      { "8", function() select_nth(7) end },
+      { "9", function() select_nth(8) end, { desc = "select" } },
+      { "s", function() sort_nodes(false) end },
+      { "S", function() sort_nodes(true) end, { desc = "sort" } },
+      { "r", function() reverse_nodes() end, { desc = "reverse" } },
       { "<Esc>", nil, { color = "blue" } },
+      -- stylua: ignore end
     },
     config = {
       invoke_on_body = true,
