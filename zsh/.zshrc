@@ -29,6 +29,7 @@ plugins=(
     yarn
     pip
     poetry
+    ssh-agent
     pass
     genpass
     brew
@@ -53,6 +54,12 @@ plugins=(
 # https://github.com/zsh-users/zsh-completions/issues/603
 fpath=($ZSH/custom/plugins/zsh-completions/src $fpath)
 fpath=(${ASDF_DIR}/completions $fpath)
+
+# ssh-agent
+zstyle :omz:plugins:ssh-agent agent-forwarding no
+zstyle :omz:plugins:ssh-agent quiet yes
+zstyle :omz:plugins:ssh-agent lazy yes
+zstyle :omz:plugins:ssh-agent lifetime 6h
 
 source $ZSH/oh-my-zsh.sh
 
