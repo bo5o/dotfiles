@@ -43,7 +43,7 @@ return {
           else
             map("K", lsp.hover, "Display hover information")
           end
-          map("<c-k>", lsp.signature_help, "Display signature help")
+          map("<leader>k", lsp.signature_help, "Display signature help")
           map("gI", lsp.implementation, "List implementations")
           map("gr", "<cmd>TroubleToggle lsp_references<CR>", "List all references")
           map("gy", lsp.type_definition, "Go to t[y]pe definition")
