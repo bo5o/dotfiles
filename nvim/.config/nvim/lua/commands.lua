@@ -40,6 +40,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "tex",
     "bib",
     "xml",
+    "lua",
   },
   group = file_type_settings,
   callback = function()
