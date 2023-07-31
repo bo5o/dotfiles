@@ -33,6 +33,7 @@ return {
         "rust",
         "sql",
         "toml",
+        "yaml",
         "typescript",
         "vue",
       },
