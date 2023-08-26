@@ -2,8 +2,8 @@
     excludesfile = ~/.gitignore_global
 	pager = less -RFX
 [user]
-    email = 32486983+cbows@users.noreply.github.com
-    name = cbows
+	email = 32486983+bo5o@users.noreply.github.com
+	name = bo5o
 [push]
     followTags = true
 [alias]
