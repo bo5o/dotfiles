@@ -476,6 +476,11 @@ return {
   },
 
   {
+    "stevearc/oil.nvim",
+    opts = {},
+  },
+
+  {
     "kyazdani42/nvim-tree.lua",
     version = "nightly",
     cmd = {
