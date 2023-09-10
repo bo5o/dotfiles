@@ -135,7 +135,7 @@ return {
   -- Node actions
   {
     "ckolkey/ts-node-action",
-    dev = true,
+    dev = false,
     dependencies = "nvim-treesitter",
     config = function()
       require("ts-node-action").setup({})
