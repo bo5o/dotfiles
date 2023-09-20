@@ -5,9 +5,10 @@ vim.filetype.add({
     [".flake8"] = "cfg",
   },
   pattern = {
-    [".*/models/.*%.sql"] = "jinja",
-    [".*/macros/.*%.sql"] = "jinja",
-    [".*/tests/.*%.sql"] = "jinja",
+    [".*/transforms/.*%.sql"] = "sql.jinja",
+    [".*/models/.*%.sql"] = "sql.jinja",
+    [".*/macros/.*%.sql"] = "sql.jinja",
+    [".*/tests/.*%.sql"] = "sql.jinja",
     ["%.env%.(%a+)"] = function(path, bufnr)
       return require("vim.filetype.detect").sh(path, vim.filetype.getlines(bufnr))
     end,

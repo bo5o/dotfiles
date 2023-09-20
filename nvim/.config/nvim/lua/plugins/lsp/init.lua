@@ -235,7 +235,7 @@ return {
           -- SQL
           builtins.diagnostics.sqlfluff.with({
             method = methods.DIAGNOSTICS_ON_SAVE,
-            extra_filetypes = { "jinja" },
+            extra_filetypes = { "sql.jinja" },
             condition = function(utils)
               return utils.root_has_file({ ".sqlfluff" })
             end,
@@ -252,7 +252,7 @@ return {
             prefer_local = true,
           }),
           builtins.formatting.sqlfmt.with({
-            filetypes = { "jinja.sql" },
+            filetypes = { "sql.jinja" },
             condition = function(utils)
               return utils.root_has_file({ "dbt_project.yml" })
             end,
