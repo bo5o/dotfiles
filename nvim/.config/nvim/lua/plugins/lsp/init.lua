@@ -241,20 +241,25 @@ return {
             end,
             to_stdin = false,
             timeout = 10000,
-            dynamic_command = function(params)
-              return from_virtual_env(params)
-                or vim.fn.executable(params.command) == 1 and params.command
-            end,
             args = {
               "lint",
               "-f",
               "github-annotation",
               "-n",
-              "--disable_progress_bar",
+              "--disable-progress-bar",
               "$FILENAME",
             },
+            prefer_local = true,
+          }),
+          builtins.formatting.sqlfmt.with({
+            filetypes = { "jinja.sql" },
+            condition = function(utils)
+              return utils.root_has_file({ "dbt_project.yml" })
+            end,
+            prefer_local = true,
           }),
           builtins.formatting.sql_formatter.with({
+            filetypes = { "sql" },
             extra_args = function(params)
               local config = search_upwards(".sql-formatter.json", {
                 start_from = params.bufname,
