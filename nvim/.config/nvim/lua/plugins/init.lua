@@ -256,20 +256,40 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-      char = "┊",
-      use_treesitter = true,
-      show_trailing_blankline_indent = true,
-      filetype_exclude = {
-        "help",
-        "vimwiki",
-        "markdown",
-        "startify",
-        "NvimTree",
-        "mason",
+      indent = { char = "┊" },
+      scope = { enabled = false },
+      whitespace = {
+        remove_blankline_trail = false,
       },
-      buftype_exclude = { "terminal", "nofile", "prompt" },
-      show_current_context = false,
+      exclude = {
+        filetypes = {
+          "help",
+          "vimwiki",
+          "markdown",
+          "startify",
+          "NvimTree",
+          "mason",
+          "lspinfo",
+          "packer",
+          "checkhealth",
+          "help",
+          "man",
+          "gitcommit",
+          "TelescopePrompt",
+          "TelescopeResults",
+          "",
+        },
+        buftypes = {
+          "terminal",
+          "nofile",
+          "prompt",
+          "quickfix",
+        },
+      },
     },
+    config = function(_, opts)
+      require("ibl").setup(opts)
+    end,
   },
 
   {
