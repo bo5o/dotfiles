@@ -109,9 +109,7 @@ return {
         enable = true,
       },
     },
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-    end,
+    main = "nvim-treesitter.configs",
   },
   -- Advanced text objects
   { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter" },
@@ -125,8 +123,7 @@ return {
     enabled = false,
     dependencies = "nvim-treesitter",
     config = function()
-      local rainbow_delimiters = require("rainbow-delimiters")
-      require("rainbow-delimiters.setup")({
+      require("rainbow-delimiters").setup({
         query = {
           [""] = "rainbow-delimiters",
           html = "rainbow-tags",
