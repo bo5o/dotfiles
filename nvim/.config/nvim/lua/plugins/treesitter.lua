@@ -79,15 +79,6 @@ return {
           enable = true,
         },
       },
-      rainbow = {
-        enable = true,
-        query = {
-          "rainbow-parens",
-          html = "rainbow-tags",
-          vue = "rainbow-tags",
-          latex = "rainbow-blocks",
-        },
-      },
       incremental_selection = {
         enable = true,
         keymaps = {
@@ -127,7 +118,25 @@ return {
   -- Always show treesitter context
   { "nvim-treesitter/nvim-treesitter-context", dependencies = "nvim-treesitter" },
   -- Colorize nested parentheses
-  { "HiPhish/nvim-ts-rainbow2", dependencies = "nvim-treesitter" },
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    -- rainbow delimiters cause noticeable lag
+    -- maybe some day will re-enable it
+    enabled = false,
+    dependencies = "nvim-treesitter",
+    config = function()
+      local rainbow_delimiters = require("rainbow-delimiters")
+      require("rainbow-delimiters.setup")({
+        query = {
+          [""] = "rainbow-delimiters",
+          html = "rainbow-tags",
+          vue = "rainbow-tags",
+          latex = "rainbow-blocks",
+        },
+      })
+    end,
+  },
+
   -- Auto-close and -rename html tags
   { "windwp/nvim-ts-autotag", dependencies = "nvim-treesitter" },
   -- Auto-set 'commentstring'
