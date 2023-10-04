@@ -8,7 +8,7 @@ set newtab about:blank
 
 
 " reload tridactylrc from github
-bind ,r source --url https://raw.githubusercontent.com/cbows/dotfiles/main/firefox/.tridactylrc
+bind ,r source --url https://raw.githubusercontent.com/bo5o/dotfiles/main/firefox/.tridactylrc
 
 " Comment toggler for Reddit and Hacker News
 bind ;c hint -c [class*="expand"],[class="togg"]
