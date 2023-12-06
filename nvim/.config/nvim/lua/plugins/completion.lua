@@ -35,6 +35,8 @@ return {
       end
 
       cmp.setup({
+        preselect = cmp.PreselectMode.None,
+
         snippet = {
           expand = function(args)
             require("luasnip").lsp_expand(args.body)
