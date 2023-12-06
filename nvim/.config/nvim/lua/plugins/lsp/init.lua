@@ -21,7 +21,7 @@ return {
         },
       },
       { "ray-x/lsp_signature.nvim" },
-      { "j-hui/fidget.nvim", tag = "legacy", config = true },
+      { "j-hui/fidget.nvim", opts = {} },
       { "b0o/schemastore.nvim", version = false },
       { "folke/neodev.nvim" },
     },
