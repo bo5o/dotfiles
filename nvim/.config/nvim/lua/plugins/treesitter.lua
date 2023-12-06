@@ -23,6 +23,7 @@ return {
         "json",
         "json5",
         "jsonc",
+        "java",
         "lua",
         "markdown",
         "markdown_inline",
