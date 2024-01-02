@@ -497,15 +497,8 @@ return {
 
   {
     "kyazdani42/nvim-tree.lua",
-    version = "nightly",
-    cmd = {
-      "NvimTreeClipboard",
-      "NvimTreeClose",
-      "NvimTreeFindFile",
-      "NvimTreeOpen",
-      "NvimTreeRefresh",
-      "NvimTreeToggle",
-    },
+    version = "*",
+    lazy = false,
     keys = {
       {
         "<leader>of",
