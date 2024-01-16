@@ -1,12 +1,12 @@
 local M = {}
 
-function M.setup(on_attach, capabilities)
-  local rt = require("rust-tools")
-
-  rt.setup({
+function M.setup(on_attach)
+  vim.g.rustaceanvim = {
+    -- Plugin configuration
+    tools = {},
+    -- LSP configuration
     server = {
       on_attach = on_attach,
-      capabilities = capabilities,
       settings = {
         ["rust-analyzer"] = {
           checkOnSave = {
@@ -16,7 +16,7 @@ function M.setup(on_attach, capabilities)
         },
       },
     },
-  })
+  }
 end
 
 return M
