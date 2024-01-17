@@ -137,7 +137,7 @@ return {
   },
 
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "typescript.nvim" },
@@ -320,7 +320,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "mason.nvim",
-      "null-ls.nvim",
+      "none-ls.nvim",
     },
     opts = {
       ensure_installed = nil,
