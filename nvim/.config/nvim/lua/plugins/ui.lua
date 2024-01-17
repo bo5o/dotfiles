@@ -130,7 +130,7 @@ return {
           "mason",
           "floaterm",
         },
-        signs_on_startup = { "cursor" },
+        signs_on_startup = { "cursor", "search" },
         current_only = true,
         column = 1,
         signs_column = 0,
