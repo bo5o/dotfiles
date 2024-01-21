@@ -553,6 +553,9 @@ return {
           dotfiles = false,
           custom = { "^\\.git", "^node_modules", "^\\.cache", "__pycache__" },
         },
+        view = {
+          width = {},
+        },
         renderer = {
           group_empty = true,
           highlight_git = true,
