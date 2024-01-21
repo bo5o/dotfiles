@@ -310,6 +310,7 @@ return {
       vim.g.startify_files_number = 4
       vim.g.startify_custom_indices = { "1", "2", "3", "4", "7", "8", "9", "0" }
       vim.g.startify_commands = {
+        { uu = { "Open lazy.nvim", ":Lazy" } },
         { up = { "Update plugins", ":Lazy sync" } },
       }
     end,
