@@ -44,6 +44,9 @@ require("lazy").setup("plugins", {
     -- get a notification when changes are found
     notify = false,
   },
+  checker = {
+    check_pinned = true,
+  },
 })
 
 require("settings")
