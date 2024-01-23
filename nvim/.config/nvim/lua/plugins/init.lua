@@ -573,6 +573,35 @@ return {
   },
 
   {
+    "stevearc/oil.nvim",
+    keys = {
+      { "<leader>oo", "<cmd>Oil<cr>", desc = "Open parent directory in oil" },
+    },
+    opts = {
+      keymaps = {
+        ["g?"] = "actions.show_help",
+        ["<CR>"] = "actions.select",
+        ["<C-s>"] = "actions.select_vsplit",
+        ["<C-h>"] = false,
+        ["<C-t>"] = "actions.select_tab",
+        ["<C-p>"] = "actions.preview",
+        ["<C-q>"] = "actions.close",
+        ["<C-l>"] = false,
+        ["-"] = "actions.parent",
+        ["_"] = "actions.open_cwd",
+        ["`"] = "actions.cd",
+        ["~"] = "actions.tcd",
+        ["gs"] = "actions.change_sort",
+        ["gx"] = "actions.open_external",
+        ["g."] = "actions.toggle_hidden",
+        ["g\\"] = "actions.toggle_trash",
+      },
+      delete_to_trash = true,
+      lsp_rename_autosave = true,
+    },
+  },
+
+  {
     "kyazdani42/nvim-tree.lua",
     version = "*",
     lazy = false,
