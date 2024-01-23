@@ -21,7 +21,17 @@ return {
         },
       },
       { "ray-x/lsp_signature.nvim" },
-      { "j-hui/fidget.nvim", opts = {} },
+      {
+        "j-hui/fidget.nvim",
+        opts = {
+          notification = {
+            window = {
+              winblend = 10,
+              border = "single",
+            },
+          },
+        },
+      },
       { "b0o/schemastore.nvim", version = false },
       { "folke/neodev.nvim" },
     },
