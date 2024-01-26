@@ -68,7 +68,6 @@ return {
         virtual_text = {
           source = "always",
         },
-        virtual_lines = false,
         float = {
           border = "rounded",
           source = "always",
@@ -133,13 +132,13 @@ return {
         })
 
       for type, icon in pairs({
-        Error = " ",
-        Warning = " ",
-        Hint = " ",
-        Information = " ",
+        Error = "󰅚 ",
+        Warn = "󰀪 ",
+        Hint = "󰌶 ",
+        Info = " ",
       }) do
         local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
 
       require("fidget").setup({})
