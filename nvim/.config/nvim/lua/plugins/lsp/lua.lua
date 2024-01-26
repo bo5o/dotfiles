@@ -5,7 +5,7 @@ function M.setup()
     library = {
       runtime = true,
       types = true,
-      plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+      plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim", "neotest" },
     },
     lspconfig = false,
   })

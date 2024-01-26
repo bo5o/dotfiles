@@ -759,23 +759,19 @@ return {
     "janko/vim-test",
     cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
     keys = {
-      { "<leader>tn", "<cmd>TestNearest<cr>", desc = "Run nearest test" },
       {
         "<leader>tN",
         ":TestNearest<space>",
         desc = "Run nearest test (add flags)",
         silent = false,
       },
-      { "<leader>tf", "<cmd>TestFile<cr>", desc = "Run test file" },
       { "<leader>ts", "<cmd>TestSuite<cr>", desc = "Run test suite" },
-      { "<leader>tl", "<cmd>TestLast<cr>", desc = "Run last test" },
       {
         "<leader>tL",
         ":TestLast<space>",
         desc = "Run last test (add flags)",
         silent = false,
       },
-      { "<leader>tt", "<cmd>TestLast<cr>", desc = "Run last test" },
       {
         "<leader>tg",
         "<cmd>TestVisit<cr>",
@@ -811,6 +807,114 @@ return {
 
       -- Rust
       vim.g["test#rust#runner"] = "cargotest"
+    end,
+  },
+
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "folke/neodev.nvim",
+      "rouge8/neotest-rust",
+      "nvim-neotest/neotest-vim-test",
+    },
+    keys = {
+      {
+        "<leader>tn",
+        function()
+          require("neotest").run.run()
+        end,
+        desc = "Run nearest test",
+      },
+      {
+        "<leader>tf",
+        function()
+          require("neotest").run.run(vim.fn.expand("%"))
+        end,
+        desc = "Run test file",
+      },
+      {
+        "<leader>tl",
+        function()
+          require("neotest").run.run_last()
+        end,
+        desc = "Run last test",
+      },
+      {
+        "<leader>tt",
+        function()
+          require("neotest").run.run_last()
+        end,
+        desc = "Run last test",
+      },
+      {
+        "<leader>tw",
+        function()
+          require("neotest").watch.toggle()
+        end,
+        "Watch nearest test",
+      },
+      {
+        "<leader>tW",
+        function()
+          require("neotest").watch.toggle(vim.fn.expand("%"))
+        end,
+        "Watch test file",
+      },
+      {
+        "<leader>to",
+        function()
+          require("neotest").output.open()
+        end,
+        desc = "Show test output (short)",
+      },
+      {
+        "<leader>tO",
+        function()
+          require("neotest").output.open({ enter = true, last_run = true })
+        end,
+        desc = "Show test output",
+      },
+      {
+        "<leader>ot",
+        function()
+          require("neotest").summary.toggle()
+        end,
+        desc = "Open test file summary",
+      },
+      {
+        "<leader>tp",
+        function()
+          require("neotest").output_panel.toggle()
+        end,
+        desc = "Open test output panel",
+      },
+      {
+        "]w",
+        function()
+          require("neotest").jump.next({ status = "failed" })
+        end,
+        desc = "Jump to next failed test",
+      },
+      {
+        "[w",
+        function()
+          require("neotest").jump.prev({ status = "failed" })
+        end,
+        desc = "Jump to previous failed test",
+      },
+    },
+    config = function()
+      require("neotest").setup({
+        adapters = {
+          require("neotest-rust"),
+          require("neotest-vim-test")({
+            ignore_file_types = { "rust" },
+          }),
+        },
+      })
     end,
   },
 

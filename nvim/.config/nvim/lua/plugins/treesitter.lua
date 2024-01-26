@@ -166,7 +166,7 @@ return {
     dependencies = "nvim-treesitter",
     keys = {
       {
-        "<leader>ot",
+        "<leader>oT",
         "<cmd>TSPlaygroundToggle<cr>",
         desc = "Toggle treesitter playground",
       },
