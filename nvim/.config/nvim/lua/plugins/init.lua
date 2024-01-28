@@ -866,7 +866,7 @@ return {
       {
         "<leader>to",
         function()
-          require("neotest").output.open()
+          require("neotest").output.open({ enter = true })
         end,
         desc = "Show test output (short)",
       },
