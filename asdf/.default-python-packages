@@ -5,3 +5,4 @@ ipdb
 pip-tools
 keyring
 keyring-pass
+libtmux
