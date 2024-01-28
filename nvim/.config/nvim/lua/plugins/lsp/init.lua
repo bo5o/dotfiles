@@ -45,16 +45,29 @@ return {
             vim.keymap.set(mode or "n", lhs, rhs, opts)
           end
 
-          map("gd", lsp.definition, "Go to definition")
+          map("gd", "<cmd>Lspsaga goto_definition<cr>", "Go to definition")
+          map("<leader>pd", "<cmd>Lspsaga peek_definition<cr>", "Peek definition")
           map("gD", lsp.declaration, "Go to declaration")
           map("K", lsp.hover, "Display hover information")
           map("<leader>k", lsp.signature_help, "Display signature help")
           map("gI", lsp.implementation, "List implementations")
-          map("gr", "<cmd>TroubleToggle lsp_references<CR>", "List all references")
-          map("gy", lsp.type_definition, "Go to t[y]pe definition")
+          map("gr", function()
+            require("trouble").toggle("lsp_references")
+          end, "List all references")
+          map("gy", "<cmd>Lspsaga goto_type_definition<cr>", "Go to t[y]pe definition")
+          map(
+            "<leader>py",
+            "<cmd>Lspsaga peek_type_definition<cr>",
+            "Peek type definition"
+          )
           map("<leader>cf", lsp.format, "Format current buffer")
-          map("<leader>cr", lsp.rename, "Rename all references")
-          map("<leader>ca", lsp.code_action, "Select code action", { "n", "v" })
+          map("<leader>cr", "<cmd>Lspsaga rename<cr>", "Rename all references")
+          map(
+            "<leader>ca",
+            "<cmd>Lspsaga code_action<cr>",
+            "Select code action",
+            { "n", "v" }
+          )
           map("<leader>cwa", lsp.add_workspace_folder, "Add workspace folder")
           map("<leader>cwr", lsp.remove_workspace_folder, "Remove workspace folder")
           map("<leader>cwl", function()
@@ -142,6 +155,29 @@ return {
       end
 
       require("fidget").setup({})
+    end,
+  },
+
+  {
+    "nvimdev/lspsaga.nvim",
+    event = "LspAttach",
+    config = function()
+      require("lspsaga").setup({
+        symbols_in_winbar = {
+          enable = true,
+        },
+        lightbulb = {
+          enable = true,
+          sign = false,
+          virtual_text = true,
+        },
+        implement = {
+          enable = true,
+        },
+        ui = {
+          code_action = " ",
+        },
+      })
     end,
   },
 
