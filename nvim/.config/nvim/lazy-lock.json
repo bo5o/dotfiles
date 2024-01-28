@@ -67,7 +67,7 @@
   "quick-scope": { "branch": "master", "commit": "256d81e391a22eeb53791ff62ce65f870418fa71" },
   "quicktex": { "branch": "master", "commit": "37338a375d00908b4658ad27bec9d5dfa9296e7d" },
   "requirements.txt.vim": { "branch": "master", "commit": "f7abd4d5dd1fe1625108dbb4e9ad3f29213b80e3" },
-  "rustaceanvim": { "branch": "master", "commit": "bc8c4b8f7606d5b7c067cd8369e25c1a7ff77bd0" },
+  "rustaceanvim": { "branch": "master", "commit": "29cc0dc24f4409fad079e2dd669ecfc347e923f6" },
   "schemastore.nvim": { "branch": "main", "commit": "85009f1efcea501d40fb7f575319516d5f93feaf" },
   "splitjoin.vim": { "branch": "main", "commit": "503e56ed103b58b6bd0880a3e61225c8b1c40033" },
   "ssr.nvim": { "branch": "main", "commit": "bb323ba621ac647b4ac5638b47666e3ef3c279e1" },
