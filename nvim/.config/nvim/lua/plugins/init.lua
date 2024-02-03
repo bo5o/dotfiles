@@ -879,7 +879,7 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "folke/neodev.nvim",
-      "rouge8/neotest-rust",
+      "mrcjkb/rustaceanvim",
       "nvim-neotest/neotest-vim-test",
     },
     keys = {
@@ -971,7 +971,7 @@ return {
     config = function()
       require("neotest").setup({
         adapters = {
-          require("neotest-rust"),
+          require("rustaceanvim/neotest"),
           require("neotest-vim-test")({
             ignore_file_types = { "rust" },
           }),
