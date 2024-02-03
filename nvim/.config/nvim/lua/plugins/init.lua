@@ -1188,17 +1188,54 @@ return {
       "FloatermSend",
     },
     keys = {
-      { "<leader>od", "<cmd>FloatermNew lazydocker<cr>", desc = "Open lazydocker" },
-      { "<leader>og", "<cmd>FloatermNew lazygit<cr>", desc = "Open lazygit" },
-      { "<leader>om", "<cmd>FloatermNew btm -m<cr>", desc = "Open system monitor" },
-      { "<leader>or", "<cmd>FloatermNew ranger<cr>", desc = "Open file browser" },
-      { "<leader>ou", "<cmd>FloatermNew ncdu<cr>", desc = "Open disk usage analyzer" },
+      {
+        "<C-\\>d",
+        "<cmd>FloatermNew lazydocker<cr>",
+        desc = "Open lazydocker",
+        mode = { "n", "t" },
+      },
+      {
+        "<C-\\>g",
+        "<cmd>FloatermNew lazygit<cr>",
+        desc = "Open lazygit",
+        mode = { "n", "t" },
+      },
+      {
+        "<C-\\>m",
+        "<cmd>FloatermNew btm -m<cr>",
+        desc = "Open system monitor",
+        mode = { "n", "t" },
+      },
+      {
+        "<C-\\>r",
+        "<cmd>FloatermNew ranger<cr>",
+        desc = "Open file browser",
+        mode = { "n", "t" },
+      },
+      {
+        "<C-\\>u",
+        "<cmd>FloatermNew ncdu<cr>",
+        desc = "Open disk usage analyzer",
+        mode = { "n", "t" },
+      },
+      {
+        "<c-\\><c-\\>",
+        "<cmd>FloatermToggle<cr>",
+        desc = "Toggle floaterm",
+        mode = { "n", "t" },
+      },
+      {
+        "<c-\\>N",
+        "<cmd>FloatTermNew<cr>",
+        desc = "New floaterm",
+        mode = { "n", "t" },
+      },
     },
     init = function()
-      vim.g.floaterm_keymap_toggle = "<leader>ot"
-      vim.g.floaterm_keymap_prev = "<F2>"
-      vim.g.floaterm_keymap_next = "<F3>"
-      vim.g.floaterm_keymap_new = "<leader>oT"
+      vim.g.floaterm_keymap_toggle = [[<c-\><c-\>]]
+      vim.g.floaterm_keymap_prev = "<c-\\>]"
+      vim.g.floaterm_keymap_next = "<c-\\>["
+      vim.g.floaterm_keymap_new = [[<c-\>N]]
       vim.g.floaterm_width = 0.8
       vim.g.floaterm_height = 0.8
       vim.g.floaterm_wintitle = 0
