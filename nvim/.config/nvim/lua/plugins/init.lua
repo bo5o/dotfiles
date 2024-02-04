@@ -827,7 +827,6 @@ return {
         desc = "Run nearest test (add flags)",
         silent = false,
       },
-      { "<leader>ts", "<cmd>TestSuite<cr>", desc = "Run test suite" },
       {
         "<leader>tL",
         ":TestLast<space>",
@@ -910,6 +909,13 @@ return {
           require("neotest").run.run_last()
         end,
         desc = "Run last test",
+      },
+      {
+        "<leader>ts",
+        function()
+          require("neotest").run.run({ suite = true })
+        end,
+        desc = "Run test suite",
       },
       {
         "<leader>tw",
@@ -1222,7 +1228,7 @@ return {
         "<c-\\><c-\\>",
         "<cmd>FloatermToggle<cr>",
         desc = "Toggle floaterm",
-        mode = { "n", "t" },
+        mode = { "n", "t", "i" },
       },
       {
         "<c-\\>N",
