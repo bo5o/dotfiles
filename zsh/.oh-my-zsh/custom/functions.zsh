@@ -112,3 +112,20 @@ vimwiki () {
         echo 'Usage: vimwiki [git] [args ...]'
     fi
 }
+
+backup() {
+    restic backup ${1:-$HOME/data}
+}
+
+backup-forget() {
+    restic forget \
+      --keep-hourly 20 \
+      --keep-daily 14 \
+      --keep-weekly 8 \
+      --keep-monthly 24 \
+      --keep-yearly 10
+}
+
+backup-restore() {
+    restic restore ${1:-latest} --target ${2:-$HOME/data}
+}

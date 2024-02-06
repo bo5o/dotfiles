@@ -18,3 +18,4 @@ export PYTHONBREAKPOINT="ipdb.set_trace"
 export VI_MODE_SET_CURSOR=true
 export XDG_DATA_HOME="$HOME/.local/share"
 export ASDF_GOLANG_MOD_VERSION_ENABLED=true
+export RESTIC_REPOSITORY="$HOME/cloud/backup"

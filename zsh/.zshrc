@@ -48,6 +48,7 @@ plugins=(
     taskwarrior
     zsh-asdf-direnv # Fork at https://github.com/cbows/zsh-asdf-direnv
     just # https://github.com/casey/just/issues/618#issuecomment-601824467
+    restic # https://restic.readthedocs.io/en/stable/020_installation.html#autocompletion
 )
 
 # completions
