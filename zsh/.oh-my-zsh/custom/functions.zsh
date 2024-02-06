@@ -114,18 +114,24 @@ vimwiki () {
 }
 
 backup() {
-    restic backup ${1:-$HOME/data}
+    restic backup --compression max ${1:-$HOME/data}
 }
 
 backup-forget() {
     restic forget \
+      --host "$(hostname)" \
       --keep-hourly 20 \
       --keep-daily 14 \
       --keep-weekly 8 \
       --keep-monthly 24 \
-      --keep-yearly 10
+      --keep-yearly 10 \
+      --prune
 }
 
 backup-restore() {
     restic restore ${1:-latest} --target ${2:-$HOME/data}
+}
+
+backup-init() {
+    restic init
 }
