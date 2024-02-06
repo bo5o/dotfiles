@@ -23,3 +23,4 @@ azure-cli 2.50.0
 postgres 14.1
 jq 1.7.1
 java temurin-17.0.8+101
+restic 0.16.4
