@@ -261,8 +261,6 @@ return {
           builtins.formatting.stylua,
           -- Gitcommit
           builtins.diagnostics.gitlint,
-          -- Javascript/Typescript/Vue
-          require("typescript.extensions.null-ls.code-actions"),
           -- SQL
           builtins.diagnostics.sqlfluff.with({
             method = methods.DIAGNOSTICS_ON_SAVE,
