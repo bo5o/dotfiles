@@ -137,6 +137,7 @@ return {
       require("plugins.lsp.xml").setup()
       require("plugins.lsp.vue").setup(on_attach)
       require("plugins.lsp.typescript").setup(on_attach, capabilities)
+      require("plugins.lsp.eslint").setup()
       require("plugins.lsp.php").setup()
       require("plugins.lsp.markdown").setup()
       require("plugins.lsp.sh").setup()
@@ -256,27 +257,11 @@ return {
             and not bufname:match("node_modules/.+$")
         end,
         sources = {
-          builtins.formatting.trim_whitespace,
-          builtins.formatting.trim_newlines.with({
-            disabled_filetypes = { "crontab" },
-          }),
           -- Lua
           builtins.formatting.stylua,
           -- Gitcommit
           builtins.diagnostics.gitlint,
           -- Javascript/Typescript/Vue
-          builtins.diagnostics.eslint_d.with({
-            filetypes = { "javascript", "typescript", "vue" },
-            prefer_local = "node_modules/.bin",
-          }),
-          builtins.formatting.eslint_d.with({
-            filetypes = { "javascript", "typescript", "vue" },
-            prefer_local = "node_modules/.bin",
-          }),
-          builtins.code_actions.eslint_d.with({
-            filetypes = { "javascript", "typescript", "vue" },
-            prefer_local = "node_modules/.bin",
-          }),
           require("typescript.extensions.null-ls.code-actions"),
           -- SQL
           builtins.diagnostics.sqlfluff.with({
@@ -339,13 +324,7 @@ return {
           -- Dockerfile
           builtins.diagnostics.hadolint,
           -- Shell
-          builtins.diagnostics.shellcheck.with({
-            filetypes = { "zsh" }, -- https://github.com/bash-lsp/bash-language-server/issues/252
-          }),
           builtins.formatting.shfmt,
-          -- Tex
-          builtins.diagnostics.chktex,
-          builtins.formatting.latexindent,
         },
       })
     end,
