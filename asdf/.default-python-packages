@@ -6,3 +6,4 @@ pip-tools
 keyring
 keyring-pass
 libtmux
+ranger-fm
