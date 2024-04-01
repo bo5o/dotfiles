@@ -14,7 +14,7 @@ dotenv-linter 3.3.0
 poetry 1.8.2
 ruby 3.1.2
 rust 1.76.0
-lazygit 0.40.2
+lazygit 0.41.0
 fd 9.0.0
 yq 4.35.2
 lazydocker 0.23.1
