@@ -1249,4 +1249,10 @@ return {
       vim.g.floaterm_opener = "edit"
     end,
   },
+
+  {
+    "lukas-reineke/headlines.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    opts = {},
+  },
 }
