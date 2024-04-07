@@ -440,7 +440,7 @@ return {
         { c = "~/.config/nvim/init.lua" },
         { g = "~/.gitconfig" },
         { p = "~/.oh-my-zsh/custom/p10k.zsh" },
-        { t = "~/.tmux.conf" },
+        { t = "~/.config/tmux/tmux.conf" },
         { z = "~/.zshrc" },
       }
       vim.g.startify_change_to_dir = 0
