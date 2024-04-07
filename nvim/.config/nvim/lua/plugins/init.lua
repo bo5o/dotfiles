@@ -393,9 +393,13 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile" },
+    main = "ibl",
     opts = {
       indent = { char = "┊" },
-      scope = { enabled = false },
+      scope = {
+        enabled = true,
+        show_start = false,
+      },
       whitespace = {
         remove_blankline_trail = false,
       },
@@ -425,9 +429,6 @@ return {
         },
       },
     },
-    config = function(_, opts)
-      require("ibl").setup(opts)
-    end,
   },
 
   {
