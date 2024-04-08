@@ -66,7 +66,6 @@ return {
             "<cmd>Lspsaga peek_type_definition<cr>",
             "Peek type definition"
           )
-          map("<leader>cf", lsp.format, "Format current buffer")
           map("<leader>cr", "<cmd>Lspsaga rename<cr>", "Rename all references")
           map(
             "<leader>ca",
@@ -189,141 +188,112 @@ return {
   },
 
   {
-    "nvimtools/none-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      { "typescript.nvim" },
+    "mfussenegger/nvim-lint",
+    config = function()
+      require("lint").linters_by_ft = {
+        sql = { "sqlfluff" },
+        ["sql.jinja"] = { "sqlfluff" },
+        gitcommit = { "gitlint" },
+        yaml = { "yamllint" },
+        markdown = { "markdownlint" },
+        vimwiki = { "markdownlint" },
+        dockerfile = { "hadolint" },
+      }
+
+      vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
+        callback = function()
+          require("lint").try_lint()
+        end,
+      })
+    end,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = {
+      {
+        "<leader>cf",
+        function()
+          require("conform").format({ async = true, lsp_fallback = true })
+        end,
+        mode = "",
+        desc = "Format buffer",
+      },
     },
     config = function()
-      local Path = require("plenary.path")
+      local slow_format_filetypes = {}
 
-      local function search_upwards(file, opts)
-        local start = Path:new(opts.start_from or vim.fn.expand("%"))
-        local stop = Path:new(opts.stop_at or vim.fn.expand("~"))
-
-        for _, dir in pairs(start:parents()) do
-          local config_file = Path:new(dir) / file
-
-          if config_file:is_file() then
-            return tostring(config_file)
-          end
-
-          if dir == tostring(stop) then
-            return nil
-          end
-        end
-      end
-
-      local function from_virtual_env(params)
-        local venv = vim.env.VIRTUAL_ENV
-        local command = nil
-        if venv then
-          command = tostring(Path:new(venv) / "bin" / params.command)
-        end
-        return command
-      end
-
-      local null_ls = require("null-ls")
-      local methods = null_ls.methods
-      local builtins = null_ls.builtins
-
-      local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
-
-      local function on_attach(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
-          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.format({ bufnr = bufnr })
-            end,
-            desc = "Format buffer on save, using null-ls last",
-          })
-        end
-      end
-
-      null_ls.setup({
-        debug = false,
-        debounce = 250,
-        -- diagnostics_format = "[#{s}] #{c}: #{m}",
-        on_attach = on_attach,
-        should_attach = function(bufnr)
-          local bufname = vim.api.nvim_buf_get_name(bufnr)
-          return not bufname:match("%.min%.css$")
-            and not bufname:match("%.min%.js$")
-            and not (bufname:match("%.git/.+$") and not bufname:match("COMMIT_EDITMSG$"))
-            and not bufname:match("site%-packages/.+$")
-            and not bufname:match("node_modules/.+$")
-        end,
-        sources = {
-          -- Lua
-          builtins.formatting.stylua,
-          -- Gitcommit
-          builtins.diagnostics.gitlint,
-          -- SQL
-          builtins.diagnostics.sqlfluff.with({
-            method = methods.DIAGNOSTICS_ON_SAVE,
-            extra_filetypes = { "sql.jinja" },
-            condition = function(utils)
-              return utils.root_has_file({ ".sqlfluff" })
-            end,
-            to_stdin = false,
-            timeout = 10000,
-            args = {
-              "lint",
-              "-f",
-              "github-annotation",
-              "-n",
-              "--disable-progress-bar",
-              "$FILENAME",
-            },
-            prefer_local = true,
-          }),
-          builtins.formatting.sqlfmt.with({
-            filetypes = { "sql.jinja" },
-            condition = function(utils)
-              return utils.root_has_file({ "dbt_project.yml" })
-            end,
-            prefer_local = true,
-          }),
-          builtins.formatting.sql_formatter.with({
-            filetypes = { "sql" },
-            extra_args = function(params)
-              local config = search_upwards(".sql-formatter.json", {
-                start_from = params.bufname,
-                stop_at = params.root,
-              })
-              return config and { "--config", config } or {}
-            end,
-            prefer_local = "node_modules/.bin",
-          }),
-          -- Markdown
-          builtins.formatting.mdformat.with({
-            filetypes = { "markdown" },
-            condition = function(utils)
-              return utils.root_has_file({ ".mdformat.toml" })
-            end,
-          }),
-          builtins.formatting.prettierd.with({
-            filetypes = { "markdown" },
-            condition = function(utils)
-              return not utils.root_has_file({ ".mdformat.toml" })
-            end,
-          }),
-          -- CSS/HTML/YAML
-          builtins.diagnostics.yamllint,
-          builtins.diagnostics.markdownlint.with({
-            filetypes = { "markdown", "vimwiki" },
-          }),
-          builtins.formatting.prettierd.with({
-            filetypes = { "css", "html", "yaml" },
-          }),
-          -- Dockerfile
-          builtins.diagnostics.hadolint,
-          -- Shell
-          builtins.formatting.shfmt,
+      require("conform").setup({
+        formatters_by_ft = {
+          lua = { "stylua" },
+          sql = { { "sqlfluff", "sqlfmt", "sql_formatter" } },
+          ["sql.jinja"] = { { "sqlfluff", "sqlfmt" } },
+          markdown = { "mdformat" },
+          sh = { "shfmt" },
+          bash = { "shfmt" },
+          just = { "just" },
+          ["_"] = { "trim_whitespace" },
         },
+        format_on_save = function(bufnr)
+          if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+            return
+          end
+
+          if slow_format_filetypes[vim.bo[bufnr].filetype] then
+            return
+          end
+
+          local function on_format(err)
+            if err and err:match("timeout$") then
+              slow_format_filetypes[vim.bo[bufnr].filetype] = true
+            end
+          end
+
+          return { timeout_ms = 500, lsp_fallback = true }, on_format
+        end,
+        format_after_save = function(bufnr)
+          if not slow_format_filetypes[vim.bo[bufnr].filetype] then
+            return
+          end
+          return { lsp_fallback = true }
+        end,
+      })
+    end,
+    init = function()
+      vim.api.nvim_create_user_command("FormatDisable", function(args)
+        if args.bang then
+          vim.b.disable_autoformat = true
+        else
+          vim.g.disable_autoformat = true
+        end
+      end, {
+        desc = "Disable autoformat-on-save",
+        bang = true,
+      })
+
+      vim.api.nvim_create_user_command("FormatEnable", function()
+        vim.b.disable_autoformat = false
+        vim.g.disable_autoformat = false
+      end, {
+        desc = "Re-enable autoformat-on-save",
+      })
+
+      vim.api.nvim_create_user_command("Format", function(args)
+        local range = nil
+        if args.count ~= -1 then
+          local end_line =
+            vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+          range = {
+            start = { args.line1, 0 },
+            ["end"] = { args.line2, end_line:len() },
+          }
+        end
+        require("conform").format({ async = true, lsp_fallback = true, range = range })
+      end, {
+        desc = "Format buffer",
+        range = true,
       })
     end,
   },
@@ -340,19 +310,6 @@ return {
         height = 0.7,
         border = "rounded",
       },
-    },
-  },
-
-  {
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "mason.nvim",
-      "none-ls.nvim",
-    },
-    opts = {
-      ensure_installed = nil,
-      automatic_installation = false,
     },
   },
 
