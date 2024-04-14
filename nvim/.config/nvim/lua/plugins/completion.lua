@@ -192,11 +192,17 @@ return {
 
       -- Use cmdline & path source for ':'
       cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline(),
         completion = { autocomplete = false },
         sources = cmp.config.sources({
           { name = "path" },
         }, {
-          { name = "cmdline" },
+          {
+            name = "cmdline",
+            option = {
+              ignore_cmds = { "Man", "!" },
+            },
+          },
         }),
       })
 
@@ -224,10 +230,23 @@ return {
     dependencies = { "rafamadriz/friendly-snippets" },
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
-      require("luasnip").filetype_extend("python", { "django" })
-      require("luasnip").filetype_extend("python", { "django-rest" })
-      require("luasnip").filetype_extend("djangohtml", { "djangohtml" })
-      require("luasnip").filetype_extend("vue", { "vue" })
+      require("luasnip.loaders.from_lua").lazy_load({ paths = "./snippets" })
+
+      local ls = require("luasnip")
+
+      ls.config.setup({
+        keep_roots = true,
+        link_roots = true,
+        link_children = true,
+        update_events = "TextChanged,TextChangedI",
+        delete_check_events = "TextChanged",
+        enable_autosnippets = true,
+      })
+
+      ls.filetype_extend("python", { "django" })
+      ls.filetype_extend("python", { "django-rest" })
+      ls.filetype_extend("djangohtml", { "djangohtml" })
+      ls.filetype_extend("vue", { "vue" })
     end,
   },
 
@@ -281,130 +300,6 @@ return {
         [";require"] = "{%- set <+++> = config.require('<++>') -%}",
         [";run"] = "{% set <+++> = run_query(<++>) %}",
         [";dict"] = "{{ dbt_utils.get_query_results_as_dict(<+++>) }}",
-      }
-
-      vim.g.quicktex_python = {
-        [" "] = jump,
-        -- docstrings
-        [";doc"] = '"""<+++>"""',
-        [";arg"] = "<+++> : <++>",
-        [";tod"] = "# TODO: <+++>",
-        [";todo"] = "# TODO: <+++>",
-        [";noqa"] = "# noqa: <+++>",
-        [";par"] = [[Parameters
-----------
-]],
-        [";params"] = [[Parameters
-----------
-]],
-        [";args"] = [[Parameters
-----------
-]],
-        [";ret"] = [[Returns
--------
-]],
-        [";rai"] = [[Raises
-------
-]],
-        [";err"] = [[Raises
-------
-]],
-        [";yie"] = [[Yields
-------
-]],
-        [";att"] = [[Attributes
-----------
-]],
-        [";catt"] = [[Class Attributes
-----------------
-]],
-        [";exa"] = [[Examples
---------
-]],
-        [";not"] = [[Notes
------
-]],
-        [";see"] = [[See Also
---------
-]],
-        [";key"] = [[Keyword
--------
-]],
-        [";Ref"] = [[References
-----------
-]],
-        [";war"] = [[Warning
--------
-]],
-        [";oth"] = [[Other
------
-]],
-        [";met"] = [[Methods
--------
-]],
-        [";exp"] = [[Examples
---------
-]],
-        [";obj"] = ":obj:`<+++>`<++>",
-        -- cross referencing
-        [";ref"] = ":ref:`<+++>`<++>",
-        -- classes and functons
-        [";cls"] = [[class <+++>(<++>):
-<++>]],
-        [";class"] = [[class <+++>(<++>):
-<++>]],
-        [";dclass"] = [[@dataclasses.dataclass
-class <+++>:
-<++>]],
-        [";defi"] = [[def __init__(self, <+++>):
-<++>]],
-        [";defc"] = [[@classmethod
-def <+++>(cls, <++>):
-<++>]],
-        [";defs"] = [[@staticmethod
-def <+++>(<++>):
-<++>]],
-        [";def@"] = [[@<+++>
-def <++>(<++>):
-<++>]],
-        [";defm"] = [[def <+++>(self, <++>):
-<++>]],
-        [";defm@"] = [[@<+++>
-def <++>(self, <++>):
-<++>]],
-        [";defp"] = [[@property
-def <+++>(self):
-<++>]],
-        [";defd"] = [[def __<+++>__(self, <++>):
-<++>]],
-        [";def"] = [[def <+++>(<++>):
-<++>]],
-        [";deft"] = [[def test_<+++>(<++>):
-<++>]],
-        [";adef"] = [[async def <+++>(<++>):
-<++>]],
-        [";fun"] = [[def <+++>(<++>):
-<++>]],
-        [";get"] = [[@property
-def <+++>(self):
-<++>]],
-        [";prop"] = [[@property
-def <+++>(self):
-<++>]],
-        [";set"] = [[@<+++>.setter
-def <++>(self, value):
-<++>]],
-        -- keywords
-        [";im"] = "import <+++>",
-        [";bp"] = "breakpoint()<+++>",
-        [";debug"] = "breakpoint()<+++>",
-        [";rt"] = "reveal_type(<+++>)",
-        -- general
-        [";pd"] = "import pandas as pd",
-        [";plt"] = "import matplotlib.pyplot as plt",
-        [";np"] = "import numpy as np",
-        [";#"] = " # ",
-        [";c"] = "# %%",
       }
 
       vim.g.quicktex_javascript = {
