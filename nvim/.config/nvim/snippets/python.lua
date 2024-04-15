@@ -1,12 +1,12 @@
 local ls = require("luasnip")
 local s = ls.s
-local t = ls.text_node
-local i = ls.insert_node
 local f = ls.function_node
 local parse = require("luasnip.util.parser").parse_snippet
 local fmt = require("luasnip.extras.fmt").fmt
 local postfix = require("luasnip.extras.postfix").postfix
 
+---@param trig string
+---@param repl string | table
 local function snippet(trig, repl)
   trig = ";" .. trig .. " "
   if type(repl) == "string" then
@@ -16,17 +16,20 @@ local function snippet(trig, repl)
   end
 end
 
+---@param trig string
+---@param repl string
 local function comment(trig, repl)
   return snippet(trig, "# " .. repl .. " ")
 end
 
+---@param trig string
+---@param repl string
 local function docstring_section(trig, repl)
-  return snippet(
-    trig,
-    fmt(repl .. "\n" .. string.rep("-", repl:len()) .. "\n{}", { i(1) })
-  )
+  local underline = string.rep("-", repl:len())
+  return snippet(trig, repl .. "\n" .. underline .. "\n$1")
 end
 
+---@param trig string
 local function sphinx_xref(trig)
   return postfix(".x" .. trig .. " ", {
     f(function(_, parent)
