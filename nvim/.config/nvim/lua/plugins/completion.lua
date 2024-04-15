@@ -257,26 +257,6 @@ return {
       local jump = [[:call search('<+.*+>')
 "_c/+>/e
 ]]
-      vim.g.quicktex_rst = {
-        [" "] = jump,
-        -- cross referencing
-        [":mod"] = ":mod:`<+++>` <++>",
-        [":class"] = ":class:`<+++>` <++>",
-        [":meth"] = ":meth:`<+++>` <++>",
-        [":func"] = ":func:`<+++>` <++>",
-        [":math"] = ":math:`<+++>` <++>",
-        [":data"] = ":data:`<+++>` <++>",
-        [":const"] = ":const:`<+++>` <++>",
-        [":attr"] = ":attr:`<+++>` <++>",
-        [":exc"] = ":exc:`<+++>` <++>",
-        [":obj"] = ":obj:`<+++>` <++>",
-        [":program"] = ":program:`<+++>` <++>",
-        [":ref"] = ":ref:`<+++>` <++>",
-        [":doc"] = ":doc:`<+++>` <++>",
-        [":download"] = ":download:`<+++>` <++>",
-        [":file"] = ":file:`<+++>` <++>",
-      }
-
       vim.g.quicktex_markdown = {
         [" "] = jump,
       }
