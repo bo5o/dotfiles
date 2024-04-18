@@ -30,10 +30,16 @@ keybinds {
         bind "Ctrl k" { Resize "Up"; }
         bind "Ctrl l" { Resize "Right"; }
 
+        bind "Alt -" { Resize "Decrease"; }
+        bind "Alt =" "Alt +" { Resize "Increase"; }
+
         bind "H" { MovePane "Left"; }
         bind "J" { MovePane "Down"; }
         bind "K" { MovePane "Up"; }
         bind "L" { MovePane "Right"; }
+
+        bind "u" { ToggleFloatingPanes; SwitchToMode "Normal"; }
+        bind "U" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
 
         bind "f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
         bind "C" { Clear; SwitchToMode "Normal"; }
@@ -45,7 +51,6 @@ keybinds {
         bind "n" { GoToNextTab; SwitchToMode "Normal"; }
         bind "p" { GoToPreviousTab; SwitchToMode "Normal"; }
         bind "Ctrl a" { GoToPreviousTab; SwitchToMode "Normal"; }
-
 
         bind "1" { GoToTab 1; SwitchToMode "Normal"; }
         bind "2" { GoToTab 2; SwitchToMode "Normal"; }
