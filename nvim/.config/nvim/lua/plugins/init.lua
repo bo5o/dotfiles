@@ -399,6 +399,7 @@ return {
       scope = {
         enabled = true,
         show_start = false,
+        show_end = false,
       },
       whitespace = {
         remove_blankline_trail = false,
