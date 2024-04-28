@@ -193,6 +193,8 @@ return {
       require("lint").linters_by_ft = {
         sql = { "sqlfluff" },
         ["sql.jinja"] = { "sqlfluff" },
+        ["html.jinja"] = { "djlint" },
+        ["jinja"] = { "djlint" },
         gitcommit = { "gitlint" },
         yaml = { "yamllint" },
         markdown = { "markdownlint" },
