@@ -4,6 +4,11 @@ vim.filetype.add({
     [".sqlfluff"] = "cfg",
     [".flake8"] = "cfg",
   },
+  extension = {
+    jinja = "jinja",
+    jinja2 = "jinja",
+    j2 = "jinja",
+  },
   pattern = {
     [".*/transforms/.*%.sql"] = "sql.jinja",
     [".*/models/.*%.sql"] = "sql.jinja",
