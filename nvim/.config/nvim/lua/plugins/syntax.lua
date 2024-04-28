@@ -1,7 +1,7 @@
 return {
   { "raimon49/requirements.txt.vim" },
   { "tridactyl/vim-tridactyl", ft = "tridactyl" },
-  { "Glench/Vim-Jinja2-Syntax", ft = { "jinja", "jinja.html", "jinja.sql" } },
+  { "Glench/Vim-Jinja2-Syntax", ft = { "jinja" } },
   { "kovetskiy/sxhkd-vim", ft = "sxhkd" },
   { "ericpruitt/tmux.vim", ft = "tmux" },
   { "fladson/vim-kitty" },
