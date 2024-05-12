@@ -8,14 +8,14 @@ shfmt 3.8.0
 shellcheck 0.10.0
 golang 1.22.2
 ripgrep 14.1.0
-github-cli 2.48.0
+github-cli 2.49.1
 maven 3.8.4
 dotenv-linter 3.3.0
-poetry 1.8.2
+poetry 1.8.3
 ruby 3.1.2
 rust 1.77.2
 lazygit 0.41.0
-fd 9.0.0
+fd 10.1.0
 yq 4.35.2
 lazydocker 0.23.1
 php 8.1.10
@@ -25,4 +25,4 @@ jq 1.7.1
 java temurin-17.0.8+101
 restic 0.16.4
 difftastic 0.57.0
-zellij 0.40.0
+zellij 0.40.1
