@@ -45,11 +45,9 @@ return {
             vim.keymap.set(mode or "n", lhs, rhs, opts)
           end
 
-          if vim.lsp.inlay_hint then
-            map("<leader>ch", function()
-              vim.lsp.inlay_hint.enable(args.buf, not vim.lsp.inlay_hint.is_enabled())
-            end, "Toggle inlay hints")
-          end
+          map("<leader>ch", function()
+            vim.lsp.inlay_hint.enable(args.buf, not vim.lsp.inlay_hint.is_enabled())
+          end, "Toggle inlay hints")
 
           map("gd", "<cmd>Lspsaga goto_definition<cr>", "Go to definition")
           map("<leader>pd", "<cmd>Lspsaga peek_definition<cr>", "Peek definition")
