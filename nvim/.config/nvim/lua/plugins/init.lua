@@ -364,33 +364,6 @@ return {
   { "tpope/vim-obsession", cmd = "Obsession" },
 
   {
-    "ojroques/nvim-osc52",
-    cond = function()
-      -- Check if connection is ssh
-      return os.getenv("SSH_CLIENT") ~= nil
-    end,
-    keys = {
-      {
-        "<leader>C",
-        function()
-          require("osc52").copy_operator()
-        end,
-        expr = true,
-        desc = "OSC52 copy",
-      },
-      { "<leader>CC", "<leader>C_", "n", remap = true },
-      {
-        "<leader>C",
-        function()
-          require("osc52").copy_visual()
-        end,
-        mode = "x",
-        desc = "OSC52 copy",
-      },
-    },
-  },
-
-  {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile" },
     main = "ibl",
