@@ -3,6 +3,13 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
+    keys = {
+      {
+        "<leader>oT",
+        "<cmd>InspectTree<cr>",
+        desc = "Inspect treesitter tree",
+      },
+    },
     opts = {
       ensure_installed = {
         "bash",
@@ -91,12 +98,6 @@ return {
           node_decremental = "<BS>",
         },
       },
-      playground = {
-        enable = true,
-        disable = {},
-        updatetime = 25,
-        persist_queries = false,
-      },
       query_linter = {
         enable = true,
         use_virtual_text = true,
@@ -152,18 +153,5 @@ return {
         { desc = "Trigger node action" }
       )
     end,
-  },
-
-  -- Explore treesitter
-  {
-    "nvim-treesitter/playground",
-    dependencies = "nvim-treesitter",
-    keys = {
-      {
-        "<leader>oT",
-        "<cmd>TSPlaygroundToggle<cr>",
-        desc = "Toggle treesitter playground",
-      },
-    },
   },
 }
