@@ -54,7 +54,6 @@ return {
           map("gd", "<cmd>Lspsaga goto_definition<cr>", "Go to definition")
           map("<leader>pd", "<cmd>Lspsaga peek_definition<cr>", "Peek definition")
           map("gD", lsp.declaration, "Go to declaration")
-          map("K", lsp.hover, "Display hover information")
           map("<leader>k", lsp.signature_help, "Display signature help")
           map("gI", lsp.implementation, "List implementations")
           map("gr", function()
@@ -95,10 +94,7 @@ return {
       local map = function(lhs, rhs, desc)
         vim.keymap.set("n", lhs, rhs, { desc = desc, silent = true })
       end
-      map("[d", diagnostic.goto_prev, "Go to previous diagnostic")
-      map("]d", diagnostic.goto_next, "Go to next diagnostic")
       map("<leader><space>l", diagnostic.setloclist, "Add diagnostics to location list")
-      map("<leader><space>d", diagnostic.open_float, "Show diagnostics")
 
       ---@diagnostic disable-next-line: unused-local
       local on_attach = function(client, bufnr)
