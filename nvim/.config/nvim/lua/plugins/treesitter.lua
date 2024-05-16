@@ -16,8 +16,10 @@ return {
         "gomod",
         "gowork",
         "gosum",
+        "graphql",
         "html",
         "htmldjango",
+        "http",
         "javascript",
         "jsdoc",
         "json",
@@ -37,6 +39,7 @@ return {
         "yaml",
         "typescript",
         "vue",
+        "xml",
       },
       highlight = {
         enable = true,
