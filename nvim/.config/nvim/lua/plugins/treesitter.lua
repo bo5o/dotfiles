@@ -136,17 +136,7 @@ return {
 
   -- Auto-close and -rename html tags
   { "windwp/nvim-ts-autotag", dependencies = "nvim-treesitter" },
-  -- Auto-set 'commentstring'
-  {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    dependencies = "nvim-treesitter",
-    setup = function()
-      vim.g.skip_ts_context_commentstring_module = true
-    end,
-    config = function()
-      require("ts_context_commentstring").setup({})
-    end,
-  },
+
   -- Node actions
   {
     "ckolkey/ts-node-action",
@@ -163,6 +153,7 @@ return {
       )
     end,
   },
+
   -- Explore treesitter
   {
     "nvim-treesitter/playground",
