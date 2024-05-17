@@ -46,7 +46,10 @@ return {
           end
 
           map("<leader>ch", function()
-            vim.lsp.inlay_hint.enable(args.buf, not vim.lsp.inlay_hint.is_enabled())
+            vim.lsp.inlay_hint.enable(
+              not vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf }),
+              { bufnr = args.buf }
+            )
           end, "Toggle inlay hints")
 
           map("gd", "<cmd>Lspsaga goto_definition<cr>", "Go to definition")
