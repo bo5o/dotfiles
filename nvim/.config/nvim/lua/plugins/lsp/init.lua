@@ -84,11 +84,11 @@ return {
       local diagnostic = vim.diagnostic
       diagnostic.config({
         virtual_text = {
-          source = "always",
+          source = true,
         },
         float = {
           border = "rounded",
-          source = "always",
+          source = true,
         },
       })
 
