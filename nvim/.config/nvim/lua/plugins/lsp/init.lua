@@ -234,6 +234,7 @@ return {
           sh = { "shfmt" },
           bash = { "shfmt" },
           just = { "just" },
+          css = { "prettierd" },
           ["_"] = { "trim_whitespace" },
         },
         format_on_save = function(bufnr)
