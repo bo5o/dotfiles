@@ -52,24 +52,24 @@ return {
           map("gd", "<cmd>Lspsaga goto_definition<cr>", "Go to definition")
           map("<leader>pd", "<cmd>Lspsaga peek_definition<cr>", "Peek definition")
           map("gD", lsp.declaration, "Go to declaration")
-          map("<leader>k", lsp.signature_help, "Display signature help")
+          map("<c-s>", lsp.signature_help, "Display signature help", { "i" })
           map("gI", lsp.implementation, "List implementations")
-          map("gr", function()
-            require("trouble").toggle("lsp_references")
-          end, "List all references")
+          map("gr", "<cmd>TroubleToggle lsp_references<cr>", "List all references")
           map("gy", "<cmd>Lspsaga goto_type_definition<cr>", "Go to t[y]pe definition")
           map(
             "<leader>py",
             "<cmd>Lspsaga peek_type_definition<cr>",
             "Peek type definition"
           )
-          map("<leader>cr", "<cmd>Lspsaga rename<cr>", "Rename all references")
+          map("crn", "<cmd>Lspsaga rename<cr>", "Rename all references")
+          map("crr", "<cmd>Lspsaga code_action<cr>", "Select code action")
           map(
-            "<leader>ca",
+            "<c-r><c-r>",
             "<cmd>Lspsaga code_action<cr>",
             "Select code action",
-            { "n", "v" }
+            { "v" }
           )
+          map("<c-r>r", "<cmd>Lspsaga code_action<cr>", "Select code action", { "v" })
           map("<leader>cwa", lsp.add_workspace_folder, "Add workspace folder")
           map("<leader>cwr", lsp.remove_workspace_folder, "Remove workspace folder")
           map("<leader>cwl", function()
