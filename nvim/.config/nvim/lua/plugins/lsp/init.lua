@@ -44,7 +44,7 @@ return {
             vim.keymap.set(mode or "n", lhs, rhs, opts)
           end
 
-          map("<leader>ch", function()
+          map("<leader>hi", function()
             vim.lsp.inlay_hint.enable(
               not vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf }),
               { bufnr = args.buf }
