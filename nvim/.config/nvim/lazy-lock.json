@@ -88,7 +88,7 @@
   "vim-eunuch": { "branch": "master", "commit": "8fb3904be27b6b60d086f87c2570085902414069" },
   "vim-floaterm": { "branch": "master", "commit": "4e28c8dd0271e10a5f55142fb6fe9b1599ee6160" },
   "vim-fubitive": { "branch": "master", "commit": "c85ca8fa2098aa05e816f5d0839a0dad6bfcca5a" },
-  "vim-fugitive": { "branch": "master", "commit": "a0b0c1ddc1ece7eabc846e586b6e35e9c4dabe1d" },
+  "vim-fugitive": { "branch": "master", "commit": "5a9bd42dd8dd127779f3cd8982a0419b7ca9c7f5" },
   "vim-gitgutter": { "branch": "main", "commit": "e801371917e52805a4ceb1e93f55ed1fba712f82" },
   "vim-gnupg": { "branch": "main", "commit": "f9b608f29003dfde6450931dc0f495a912973a88" },
   "vim-illuminate": { "branch": "master", "commit": "5eeb7951fc630682c322e88a9bbdae5c224ff0aa" },
