@@ -235,6 +235,7 @@ return {
           bash = { "shfmt" },
           just = { "just" },
           css = { "prettierd" },
+          ["*"] = { "injected" },
           ["_"] = { "trim_whitespace" },
         },
         format_on_save = function(bufnr)
