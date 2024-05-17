@@ -39,7 +39,6 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(args)
-          local lsp = vim.lsp.buf
           local map = function(lhs, rhs, desc, mode)
             local opts = { desc = desc, buffer = args.buf, silent = true }
             vim.keymap.set(mode or "n", lhs, rhs, opts)
@@ -54,9 +53,9 @@ return {
 
           map("gd", "<cmd>Lspsaga goto_definition<cr>", "Go to definition")
           map("<leader>pd", "<cmd>Lspsaga peek_definition<cr>", "Peek definition")
-          map("gD", lsp.declaration, "Go to declaration")
-          map("<c-s>", lsp.signature_help, "Display signature help", { "i" })
-          map("gI", lsp.implementation, "List implementations")
+          map("gD", vim.lsp.buf.declaration, "Go to declaration")
+          map("<c-s>", vim.lsp.buf.signature_help, "Display signature help", { "i" })
+          map("gI", vim.lsp.buf.implementation, "List implementations")
           map("gr", "<cmd>TroubleToggle lsp_references<cr>", "List all references")
           map("gy", "<cmd>Lspsaga goto_type_definition<cr>", "Go to t[y]pe definition")
           map(
@@ -73,10 +72,14 @@ return {
             { "v" }
           )
           map("<c-r>r", "<cmd>Lspsaga code_action<cr>", "Select code action", { "v" })
-          map("<leader>cwa", lsp.add_workspace_folder, "Add workspace folder")
-          map("<leader>cwr", lsp.remove_workspace_folder, "Remove workspace folder")
+          map("<leader>cwa", vim.lsp.buf.add_workspace_folder, "Add workspace folder")
+          map(
+            "<leader>cwr",
+            vim.lsp.buf.remove_workspace_folder,
+            "Remove workspace folder"
+          )
           map("<leader>cwl", function()
-            print(vim.inspect(lsp.list_workspace_folders()))
+            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, "List workspace folders")
         end,
       })
