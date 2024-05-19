@@ -761,19 +761,9 @@ return {
   { "jamessan/vim-gnupg" },
 
   {
-    "NvChad/nvim-colorizer.lua",
+    "brenoprata10/nvim-highlight-colors",
     opts = {
-      filetypes = {
-        "vim",
-        "css",
-        "html",
-        "javascript",
-        "typescript",
-        "lua",
-        html = {
-          mode = "background",
-        },
-      },
+      render = "virtual",
     },
   },
 
