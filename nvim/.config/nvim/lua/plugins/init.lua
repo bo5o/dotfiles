@@ -849,11 +849,14 @@ return {
   {
     "nvim-neotest/neotest",
     dependencies = {
+      "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
+      -- plugins
       "folke/neodev.nvim",
       "mrcjkb/rustaceanvim",
+      "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-vim-test",
     },
     keys = {
@@ -953,8 +956,9 @@ return {
       require("neotest").setup({
         adapters = {
           require("rustaceanvim/neotest"),
+          require("neotest-python"),
           require("neotest-vim-test")({
-            ignore_file_types = { "rust" },
+            ignore_file_types = { "rust", "python" },
           }),
         },
       })
