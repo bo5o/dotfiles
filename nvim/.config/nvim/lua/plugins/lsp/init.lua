@@ -241,6 +241,7 @@ return {
           bash = { "shfmt" },
           just = { "just" },
           css = { "prettierd" },
+          toml = { "taplo" },
           ["*"] = { "injected" },
           ["_"] = { "trim_whitespace" },
         },
