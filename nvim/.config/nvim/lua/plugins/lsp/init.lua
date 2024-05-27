@@ -234,7 +234,15 @@ return {
           ["sql.jinja"] = { { "sqlfluff", "sqlfmt" } },
           ["html.jinja"] = { "djlint" },
           htmldjango = { "djlint" },
-          python = { "ruff_format", "ruff_organize_imports" },
+          python = function(bufnr)
+            if
+              require("conform").get_formatter_info("ruff_format", bufnr).available
+            then
+              return { "ruff_organize_imports", "ruff_format" }
+            else
+              return { "isort", "black" }
+            end
+          end,
           html = { "djlint" },
           jinja = { "djlint" },
           markdown = { "mdformat" },
