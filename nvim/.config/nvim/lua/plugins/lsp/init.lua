@@ -234,6 +234,7 @@ return {
           ["sql.jinja"] = { { "sqlfluff", "sqlfmt" } },
           ["html.jinja"] = { "djlint" },
           htmldjango = { "djlint" },
+          python = { "ruff_format", "ruff_organize_imports" },
           html = { "djlint" },
           jinja = { "djlint" },
           markdown = { "mdformat" },
