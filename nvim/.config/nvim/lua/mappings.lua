@@ -51,6 +51,21 @@ whichkey.register({
 
   jk = { "<ESC>", "Switch to normal mode", mode = "i" },
 
+  -- jump around diagnostics
+  ["]d"] = {
+    function()
+      vim.diagnostic.goto_next({ float = true, wrap = false })
+    end,
+    "Jump to the next diagnostic",
+  },
+
+  ["[d"] = {
+    function()
+      vim.diagnostic.goto_prev({ float = true, wrap = false })
+    end,
+    "Jump to the previous diagnostic",
+  },
+
   -- ask before jumping tag stack if ambigous
   ["<C-]>"] = { "g<C-]>", "See :h CTRL-]" },
 
