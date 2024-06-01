@@ -844,7 +844,6 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       -- plugins
-      "folke/neodev.nvim",
       "mrcjkb/rustaceanvim",
       "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-vim-test",

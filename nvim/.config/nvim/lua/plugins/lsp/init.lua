@@ -3,6 +3,12 @@ return {
   { "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" } },
 
   {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {},
+  },
+
+  {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     keys = {
@@ -33,7 +39,6 @@ return {
         },
       },
       { "b0o/schemastore.nvim", version = false },
-      { "folke/neodev.nvim" },
     },
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
