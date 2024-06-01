@@ -6,7 +6,7 @@ function M.setup()
       Lua = {
         workspace = {
           ignoreDir = { "undodir/**/*.lua" },
-          -- checkThirdParty = false,
+          checkThirdParty = false,
         },
         telemetry = { enable = false },
       },
