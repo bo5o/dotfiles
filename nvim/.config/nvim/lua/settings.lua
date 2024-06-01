@@ -47,7 +47,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Don't redraw while executing macros (good performance config)
-vim.opt.lazyredraw = true
+vim.opt.lazyredraw = false
 
 -- For regular expressions turn magic on
 vim.opt.magic = true

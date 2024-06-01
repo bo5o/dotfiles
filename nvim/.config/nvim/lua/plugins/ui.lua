@@ -63,6 +63,43 @@ return {
   },
 
   {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      -- "rcarriga/nvim-notify",
+    },
+    opts = {
+      cmdline = {
+        enabled = false,
+      },
+      messages = {
+        enabled = false,
+      },
+      popupmenu = {
+        enabled = false,
+      },
+      lsp = {
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
+        },
+      },
+      presets = {
+        lsp_doc_border = true,
+      },
+      views = {
+        mini = {
+          position = {
+            row = -2,
+          },
+        },
+      },
+    },
+  },
+
+  {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     -- version = "*", -- https://github.com/akinsho/bufferline.nvim/issues/903

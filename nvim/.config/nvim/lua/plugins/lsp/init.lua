@@ -26,18 +26,6 @@ return {
           automatic_installation = false,
         },
       },
-      { "ray-x/lsp_signature.nvim" },
-      {
-        "j-hui/fidget.nvim",
-        opts = {
-          notification = {
-            window = {
-              winblend = 10,
-              border = "single",
-            },
-          },
-        },
-      },
       { "b0o/schemastore.nvim", version = false },
     },
     config = function()
@@ -105,16 +93,6 @@ return {
       end
       map("<leader><space>l", diagnostic.setloclist, "Add diagnostics to location list")
 
-      ---@diagnostic disable-next-line: unused-local
-      local on_attach = function(client, bufnr)
-        -- Configure signature help for completion
-        require("lsp_signature").on_attach({
-          bind = true,
-          hint_enable = false,
-          hi_parameter = "Search",
-        })
-      end
-
       local capabilities = vim.tbl_deep_extend(
         "force",
         vim.lsp.protocol.make_client_capabilities(),
@@ -124,7 +102,6 @@ return {
       local lspconfig = require("lspconfig")
       lspconfig.util.default_config =
         vim.tbl_extend("force", lspconfig.util.default_config, {
-          on_attach = on_attach,
           capabilities = capabilities,
           flags = {
             debounce_text_changes = 300,
@@ -133,7 +110,7 @@ return {
 
       require("plugins.lsp.python").setup()
       require("plugins.lsp.lua").setup()
-      require("plugins.lsp.rust").setup(on_attach)
+      require("plugins.lsp.rust").setup()
       require("plugins.lsp.json").setup()
       require("plugins.lsp.yaml").setup()
       require("plugins.lsp.toml").setup()
@@ -146,15 +123,6 @@ return {
       require("plugins.lsp.markdown").setup()
       require("plugins.lsp.sh").setup()
 
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = "rounded",
-      })
-
-      vim.lsp.handlers["textDocument/signatureHelp"] =
-        vim.lsp.with(vim.lsp.handlers.signature_help, {
-          border = "rounded",
-        })
-
       for type, icon in pairs({
         Error = "󰅚 ",
         Warn = "󰀪 ",
@@ -164,8 +132,6 @@ return {
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
-
-      require("fidget").setup({})
     end,
   },
 
