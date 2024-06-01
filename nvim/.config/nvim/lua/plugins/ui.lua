@@ -69,6 +69,37 @@ return {
       "MunifTanjim/nui.nvim",
       -- "rcarriga/nvim-notify",
     },
+    keys = {
+      {
+        "<leader>nh",
+        "<cmd>Noice history<cr>",
+        desc = "Notification history",
+      },
+      {
+        "<c-f>",
+        function()
+          if not require("noice.lsp").scroll(4) then
+            return "<c-f>"
+          end
+        end,
+        mode = { "n", "i", "s" },
+        desc = "Scroll hover down",
+        silent = true,
+        expr = true,
+      },
+      {
+        "<c-b>",
+        function()
+          if not require("noice.lsp").scroll(-4) then
+            return "<c-b>"
+          end
+        end,
+        mode = { "n", "i", "s" },
+        desc = "Scroll hover up",
+        silent = true,
+        expr = true,
+      },
+    },
     opts = {
       cmdline = {
         enabled = false,
