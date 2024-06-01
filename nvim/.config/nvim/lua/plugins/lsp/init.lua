@@ -49,7 +49,7 @@ return {
           map("gD", vim.lsp.buf.declaration, "Go to declaration")
           map("<c-s>", vim.lsp.buf.signature_help, "Display signature help", { "i" })
           map("gI", vim.lsp.buf.implementation, "List implementations")
-          map("gr", "<cmd>TroubleToggle lsp_references<cr>", "List all references")
+          map("gr", "<cmd>Trouble lsp_references toggle<cr>", "List all references")
           map("gy", "<cmd>Lspsaga goto_type_definition<cr>", "Go to t[y]pe definition")
           map(
             "<leader>py",
@@ -153,6 +153,7 @@ return {
         },
         ui = {
           code_action = " ",
+          title = false,
         },
       })
     end,
