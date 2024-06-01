@@ -102,7 +102,7 @@ return {
   {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
-    -- version = "*", -- https://github.com/akinsho/bufferline.nvim/issues/903
+    version = "*",
     config = function()
       require("bufferline").setup({
         options = {
