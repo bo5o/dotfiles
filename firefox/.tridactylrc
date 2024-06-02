@@ -50,6 +50,7 @@ bind k scrollline -5
 bind z8 zoom 80
 bind z0 zoom 100
 bind z2 zoom 120
+bind z4 zoom 140
 
 " copy elements
 bind ;y hint -p
