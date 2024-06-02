@@ -46,6 +46,10 @@ bind ,hl nohlsearch
 bind j scrollline 5
 bind k scrollline -5
 
+" zoom
+bind z7 zoom 70
+bind z0 zoom 100
+
 " copy elements
 bind ;y hint -p
 bind ;p hint -y
