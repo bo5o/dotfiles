@@ -15,7 +15,7 @@ vim.filetype.add({
     [".*/macros/.*%.sql"] = "sql.jinja",
     [".*/tests/.*%.sql"] = "sql.jinja",
     ["%.env%.(%a+)"] = function(path, bufnr)
-      return require("vim.filetype.detect").sh(path, vim.filetype.getlines(bufnr))
+      return require("vim.filetype.detect").shell(path, vim.filetype._getlines(bufnr))
     end,
     ["/tmp/psql%.edit.*"] = "sql",
     ["/tmp/vim-anywhere.*"] = "text",
