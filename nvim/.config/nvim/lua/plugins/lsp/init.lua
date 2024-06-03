@@ -222,6 +222,7 @@ return {
           bash = { "shfmt" },
           just = { "just" },
           css = { "prettierd" },
+          yaml = { "yamlfmt" },
           toml = { "taplo" },
           ["*"] = { "injected" },
           ["_"] = { "trim_whitespace" },
