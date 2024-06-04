@@ -12,7 +12,11 @@ function M.setup()
         hover = true,
         completion = true,
         validate = true,
-        schemas = require("schemastore").json.schemas(),
+        schemaStore = {
+          enable = false,
+          url = "",
+        },
+        schemas = require("schemastore").yaml.schemas(),
         format = {
           enable = false,
         },
