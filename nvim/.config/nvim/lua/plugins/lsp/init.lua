@@ -5,7 +5,14 @@ return {
   {
     "folke/lazydev.nvim",
     ft = "lua",
-    opts = {},
+    dependencies = {
+      "justinsgithub/wezterm-types",
+    },
+    opts = {
+      library = {
+        { path = "wezterm-types", mods = { "wezterm" } },
+      },
+    },
   },
 
   {
