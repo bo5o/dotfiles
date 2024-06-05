@@ -53,6 +53,7 @@ return {
       },
       highlight = {
         enable = true,
+        disable = { "just" },
       },
       indent = {
         enable = true,
