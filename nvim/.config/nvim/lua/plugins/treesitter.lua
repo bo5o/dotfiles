@@ -32,6 +32,7 @@ return {
         "json",
         "json5",
         "jsonc",
+        "just",
         "java",
         "lua",
         "markdown",
