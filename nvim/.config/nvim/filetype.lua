@@ -10,6 +10,10 @@ vim.filetype.add({
     j2 = "jinja",
   },
   pattern = {
+    ["docker-compose%.ya?ml"] = "yaml.docker-compose",
+    ["docker-compose%.(%a+)%.ya?ml"] = "yaml.docker-compose",
+    ["compose%.ya?ml"] = "yaml.docker-compose",
+    ["compose%.(%a+)%.ya?ml"] = "yaml.docker-compose",
     [".*/transforms/.*%.sql"] = "sql.jinja",
     [".*/models/.*%.sql"] = "sql.jinja",
     [".*/macros/.*%.sql"] = "sql.jinja",
