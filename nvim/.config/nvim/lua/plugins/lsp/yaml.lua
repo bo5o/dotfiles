@@ -16,6 +16,7 @@ function M.setup()
           enable = false,
           url = "",
         },
+        customTags = { "!reset sequence", "!override sequence" },
         schemas = require("schemastore").yaml.schemas(),
         format = {
           enable = false,
