@@ -21,6 +21,7 @@ return {
             ".bzr",
             ".svn",
             "Makefile",
+            "justfile",
             "Justfile",
             "manage.py",
             "pyproject.toml",
