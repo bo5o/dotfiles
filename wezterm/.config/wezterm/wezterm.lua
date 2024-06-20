@@ -6,7 +6,7 @@ wezterm.on("window-resized", function(window, _)
   local window_width = window:get_dimensions()["pixel_width"]
 
   if window_width > 2000 then
-    overrides.font_size = 14
+    overrides.font_size = 18
   else
     overrides.font_size = 12
   end
