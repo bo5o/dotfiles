@@ -49,6 +49,7 @@ plugins=(
     zsh-asdf-direnv
     just # https://github.com/casey/just/issues/618#issuecomment-601824467
     restic # https://restic.readthedocs.io/en/stable/020_installation.html#autocompletion
+    hcloud # https://github.com/hetznercloud/cli?tab=readme-ov-file#zsh
 )
 
 # completions
