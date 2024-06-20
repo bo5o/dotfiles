@@ -8,3 +8,5 @@ keyring
 keyring-pass
 libtmux
 ranger-fm
+ruff
+basedpyright
