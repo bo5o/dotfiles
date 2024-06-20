@@ -3,6 +3,7 @@ vim.filetype.add({
     ["sxhkdrc"] = "sxhkd",
     [".sqlfluff"] = "cfg",
     [".flake8"] = "cfg",
+    [".yamlfmt"] = "yaml",
   },
   extension = {
     jinja = "jinja",
