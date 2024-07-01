@@ -706,7 +706,7 @@
 
   # Postgres version from asdf.
   typeset -g POWERLEVEL9K_ASDF_POSTGRES_FOREGROUND=31
-  # typeset -g POWERLEVEL9K_ASDF_POSTGRES_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_ASDF_POSTGRES_VISUAL_IDENTIFIER_EXPANSION=' '
   # typeset -g POWERLEVEL9K_ASDF_POSTGRES_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # PHP version from asdf.
@@ -731,7 +731,7 @@
 
   # Bitwarden secrets manager version from asdf.
   typeset -g POWERLEVEL9K_ASDF_BITWARDEN_SECRETS_MANAGER_FOREGROUND=25
-  typeset -g POWERLEVEL9K_ASDF_BITWARDEN_SECRETS_MANAGER_VISUAL_IDENTIFIER_EXPANSION=''
+  typeset -g POWERLEVEL9K_ASDF_BITWARDEN_SECRETS_MANAGER_VISUAL_IDENTIFIER_EXPANSION='󰞀 '
   # typeset -g POWERLEVEL9K_ASDF_BITWARDEN_SECRETS_MANAGER_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   ##########[ nordvpn: nordvpn connection status, linux only (https://nordvpn.com/) ]###########
