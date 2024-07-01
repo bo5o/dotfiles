@@ -724,6 +724,16 @@
   # typeset -g POWERLEVEL9K_ASDF_JULIA_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_JULIA_SHOW_ON_UPGLOB='*.foo|*.bar'
 
+  # Hcloud version from asdf.
+  typeset -g POWERLEVEL9K_ASDF_HCLOUD_FOREGROUND=160
+  typeset -g POWERLEVEL9K_ASDF_HCLOUD_VISUAL_IDENTIFIER_EXPANSION=' '
+  # typeset -g POWERLEVEL9K_ASDF_HCLOUD_SHOW_ON_UPGLOB='*.foo|*.bar'
+
+  # Bitwarden secrets manager version from asdf.
+  typeset -g POWERLEVEL9K_ASDF_BITWARDEN_SECRETS_MANAGER_FOREGROUND=25
+  typeset -g POWERLEVEL9K_ASDF_BITWARDEN_SECRETS_MANAGER_VISUAL_IDENTIFIER_EXPANSION=''
+  # typeset -g POWERLEVEL9K_ASDF_BITWARDEN_SECRETS_MANAGER_SHOW_ON_UPGLOB='*.foo|*.bar'
+
   ##########[ nordvpn: nordvpn connection status, linux only (https://nordvpn.com/) ]###########
   # NordVPN connection indicator color.
   typeset -g POWERLEVEL9K_NORDVPN_FOREGROUND=39
