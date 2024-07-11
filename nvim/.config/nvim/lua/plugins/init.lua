@@ -564,7 +564,9 @@ return {
         ["g\\"] = "actions.toggle_trash",
       },
       delete_to_trash = true,
-      lsp_rename_autosave = true,
+      lsp_file_methods = {
+        autosave_changes = true,
+      },
     },
   },
 
