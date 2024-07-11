@@ -4,6 +4,8 @@ vim.filetype.add({
     [".sqlfluff"] = "cfg",
     [".flake8"] = "cfg",
     [".yamlfmt"] = "yaml",
+    ["requirements.lock"] = "requirements",
+    ["requirements-dev.lock"] = "requirements",
   },
   extension = {
     jinja = "jinja",
