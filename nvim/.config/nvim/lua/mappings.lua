@@ -1,136 +1,77 @@
 local whichkey = require("which-key")
 
+-- stylua: ignore start
+
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-whichkey.register({
-  ["<C-p>"] = { "<Up>", "Search command history up", mode = "c", silent = false },
-  ["<C-n>"] = { "<Down>", "Search command history down", mode = "c", silent = false },
-  ["<leader>w"] = { "<cmd>w!<CR>", "Save buffer to current file" },
+vim.keymap.set("c", "<C-p>", "<Up>", { desc = "Search command history up", silent = false })
+vim.keymap.set("c", "<C-n>", "<Down>", { desc = "Search command history down", silent = false })
 
-  ["<C-h>"] = { "<C-w>h", "Go to the left window" },
-  ["<C-j>"] = { "<C-w>j", "Go to the below window" },
-  ["<C-k>"] = { "<C-w>k", "Go to the above window" },
-  ["<C-l>"] = { "<C-w>l", "Go to the right window" },
+vim.keymap.set("n", "<leader>w", "<cmd>w!<CR>", { desc = "Save buffer to current file" })
 
-  ["<C-w>"] = {
-    pc = { "<cmd>pclose<CR>", 'Close any "Preview" window currently open' },
-    C = { "<cmd>tabclose<CR>", "Close current tab page" },
-    O = { "<cmd>tabonly<CR>", "Close all other tab pages" },
-    ["<C-f>"] = { "<C-w>vgf", "Open file under cursor in vertical split" },
-  },
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to the left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to the below window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to the above window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to the right window" })
 
-  ["<leader>"] = {
-    b = {
-      name = "buffer",
-      a = { "<cmd>bufdo bd<CR>", "Close all buffers" },
-      o = { "<cmd>BufOnly<CR>", "Close all buffers (except active buffer)" },
-    },
-    X = { "<cmd>edit#<CR>", "Re-open last closed buffer" },
-    cd = {
-      "<cmd>cd %:p:h<CR>:pwd<CR>",
-      "Change directory to location of current file",
-    },
-  },
 
-  -- keep screen centered when moving through search results
-  n = { "nzzzv", "See :h n" },
-  N = { "Nzzzv", "See :h N" },
+vim.keymap.set("n", "<C-w>pc", "<cmd>pclose<CR>", { desc = 'Close any "Preview" window currently open' })
+vim.keymap.set("n", "<C-w>C", "<cmd>tabclose<CR>", { desc = "Close current tab page" })
+vim.keymap.set("n", "<C-w>O", "<cmd>tabonly<CR>", { desc = "Close all other tab pages" })
+vim.keymap.set("n", "<C-w><C-f>", "<C-w>vgf", { desc = "Open file under cursor in vertical split" })
 
-  -- undo break points
-  [","] = { ",<C-g>u", "See :h ,", mode = "i" },
-  ["."] = { ".<C-g>u", "See :h .", mode = "i" },
-  ["!"] = { "!<C-g>u", "See :h !", mode = "i" },
-  ["?"] = { "?<C-g>u", "See :h ?", mode = "i" },
+vim.keymap.set("n", "<leader>ba", "<cmd>bufdo bd<CR>", { desc = "Close all buffers" })
+vim.keymap.set("n", "<leader>bo", "<cmd>BufOnly<CR>", { desc = "Close all buffers (except active buffer)" })
 
-  J = { "<cmd>move '>+1<cr>gv=gv", "Move visual selection down", mode = "v" },
-  K = { "<cmd>move '<-2<cr>gv=gv", "Move visual selection up", mode = "v" },
-  -- ["<C-j>"] = { "<esc><cmd>move .+1<cr>==gi", "Move visual selection down", mode = "i" },
-  -- ["<C-k>"] = { "<esc><cmd>move .-2<cr>==gi", "Move visual selection down", mode = "i" },
+vim.keymap.set("n", "<leader>X", "<cmd>edit#<CR>", { desc = "Re-open last closed buffer" })
+vim.keymap.set("n", "<leader>cd", "<cmd>cd %:p:h<CR>:pwd<CR>", { desc = "Change directory to location of current file" })
 
-  jk = { "<ESC>", "Switch to normal mode", mode = "i" },
+-- keep screen centered when moving through search results
+vim.keymap.set("n", "n", "nzzzv", { desc = "See :h n" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "See :h N" })
 
-  -- jump around diagnostics
-  ["]d"] = {
-    function()
-      vim.diagnostic.goto_next({ float = true, wrap = false })
-    end,
-    "Jump to the next diagnostic",
-  },
+-- undo break points
+vim.keymap.set("i", ",", ",<C-g>u", { desc = "See :h ," })
+vim.keymap.set("i", ".", ".<C-g>u", { desc = "See :h ." })
+vim.keymap.set("i", "!", "!<C-g>u", { desc = "See :h !" })
+vim.keymap.set("i", "?", "?<C-g>u", { desc = "See :h ?" })
 
-  ["[d"] = {
-    function()
-      vim.diagnostic.goto_prev({ float = true, wrap = false })
-    end,
-    "Jump to the previous diagnostic",
-  },
+vim.keymap.set("v", "J", "<cmd>move '>+1<cr>gv=gv", { desc = "Move visual selection down" })
+vim.keymap.set("v", "K", "<cmd>move '<-2<cr>gv=gv", { desc = "Move visual selection up" })
 
-  -- ask before jumping tag stack if ambigous
-  ["<C-]>"] = { "g<C-]>", "See :h CTRL-]" },
+vim.keymap.set("i", "jk", "<ESC>", { desc = "Switch to normal mode" })
 
-  -- remap 0 to go to first non-blank character (like ^)
-  ["0"] = { "^", "See :h ^", mode = "n" }, -- should be mode "nvo", see comments below
+-- jump around diagnostics
+vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next({ float = true, wrap = false }) end, { desc = "Jump to the next diagnostic" })
+vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev({ float = true, wrap = false }) end, { desc = "Jump to the previous diagnostic" })
 
-  -- navigate with custom guides
-  ["<Space><Space>"] = {
-    "<cmd>call<space>search('<+.*+>')<CR>\"_c/+>/e<CR>",
-    "Jump to next guide",
-  },
-
-  cn = { "*``cgn", "Start replacing word under cursor forwards" },
-  cN = { "*``cgN", "Start replacing word under cursor backwards" },
-
-  ["<C-u>"] = { "<Esc>viwUea", "Convert previous word to upper-case", mode = "i" },
-
-  ["<leader>hl"] = {
-    "(&hls && v:hlsearch ? ':nohls' : ':set hls').'\n'",
-    "Toggle hlsearch",
-    expr = true,
-  },
-
-  -- [";dt"] = { "<C-r>=strftime('%Y-%m-%d')<CR>", "Insert current date", mode = "i" },
-
-  L = { ">gv", "Indent visual selection", mode = "v" },
-  H = { "<gv", "Dedent visual selection", mode = "v" },
-
-  gb = { "<cmd>BufferLinePick<cr>", "Pick buffer" },
-})
-
--- TODO: https://github.com/folke/which-key.nvim/issues/174
---       put into section above when feature was added
-
--- keep screen centered when joining lines
-whichkey.register({
-  J = { "mzJ`z", "See :h J" },
-})
-
--- navigate with custom guides
-whichkey.register({
-  ["<Space><Space>"] = {
-    "<Esc><cmd>call<space>search('<+.*+>')<CR>\"_c/+>/e<CR>",
-    "Jump to next guide",
-    mode = "v",
-  },
-})
+-- ask before jumping tag stack if ambigous
+vim.keymap.set("n", "C-]", "g<C-]>", { desc = "See :h CTRL-]" })
 
 -- remap 0 to go to first non-blank character (like ^)
-whichkey.register({
-  ["0"] = { "^", "See :h ^", mode = "v" },
-})
-whichkey.register({
-  ["0"] = { "^", "See :h ^", mode = "o" },
-})
+vim.keymap.set({ "n", "v", "o" }, "0", "^", { desc = "See :h ^" })
 
--- plugin mapping categories
-whichkey.register({
-  c = { name = "code", w = { name = "workspace" } },
-  f = { name = "find" },
-  g = { name = "git", c = { name = "commit" } },
-  o = { name = "open" },
-  q = { name = "diagnostics" },
-  t = { name = "test" },
-}, { prefix = "<leader>" })
+-- navigate with custom guides
+vim.keymap.set("n", "<Space><Space>", "<cmd>call<space>search('<+.*+>')<CR>\"_c/+>/e<CR>", { desc = "Jump to next guide" })
+vim.keymap.set("v", "<Space><Space>", "<Esc><cmd>call<space>search('<+.*+>')<CR>\"_c/+>/e<CR>", { desc = "Jump to next guide" })
+
+vim.keymap.set("n", "cn", "*``cgn", { desc = "Start replacing word under cursor forwards" })
+vim.keymap.set("n", "cN", "*``cgN", { desc = "Start replacing word under cursor backwards" })
+
+vim.keymap.set("v", "L", ">gv", { desc = "Indent visual selection" })
+vim.keymap.set("v", "H", "<gv", { desc = "Dedent visual selection" })
+
+vim.keymap.set("i", "<C-u>", "<Esc>viwUea", { desc = "Convert previous word to upper-case" })
+
+vim.keymap.set("n", "<leader>hl", "(&hls && v:hlsearch ? ':nohls' : ':set hls').'\n'", { desc = "Toggle hlsearch", expr = true, })
+
+vim.keymap.set("n", "gb", "<cmd>BufferLinePick<cr>", { desc = "Pick buffer" })
+
+vim.keymap.set("n", "J", "mzJ`z", { desc = "See :h J" })
+
+-- stylua: ignore end
 
 local Hydra = require("hydra")
 
