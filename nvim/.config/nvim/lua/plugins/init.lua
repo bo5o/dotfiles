@@ -3,8 +3,34 @@ return {
 
   {
     "folke/which-key.nvim",
-    lazy = true,
-    config = true,
+    event = "VeryLazy",
+    opts = {
+      icons = {
+        mappings = false,
+        keys = {
+          Space = "␣",
+        },
+      },
+      preset = "helix",
+      spec = {
+        { "<leader>a", group = "alternate" },
+        { "<leader>b", group = "buffer" },
+        { "<leader>c", group = "code" },
+        { "<leader>cw", group = "workspace" },
+        { "<leader>e", group = "edit" },
+        { "<leader>ev", group = "vertical" },
+        { "<leader>f", group = "find" },
+        { "<leader>g", group = "git" },
+        { "<leader>gc", group = "commit" },
+        { "<leader>h", group = "hint/hunk/highlight" },
+        { "<leader>n", group = "notification" },
+        { "<leader>o", group = "open/toggle" },
+        { "<leader>p", group = "peek" },
+        { "<leader>q", group = "diagnostics" },
+        { "<leader>s", group = "search/replace" },
+        { "<leader>t", group = "test" },
+      },
+    },
   },
 
   {
