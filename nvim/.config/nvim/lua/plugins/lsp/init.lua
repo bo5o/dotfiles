@@ -95,11 +95,6 @@ return {
         },
       })
 
-      local map = function(lhs, rhs, desc)
-        vim.keymap.set("n", lhs, rhs, { desc = desc, silent = true })
-      end
-      map("<leader><space>l", diagnostic.setloclist, "Add diagnostics to location list")
-
       local capabilities = vim.tbl_deep_extend(
         "force",
         vim.lsp.protocol.make_client_capabilities(),
