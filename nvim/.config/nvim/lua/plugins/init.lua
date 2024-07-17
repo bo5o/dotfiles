@@ -8,6 +8,7 @@ return {
       icons = {
         mappings = false,
         keys = {
+          C = "^",
           Space = "␣",
         },
       },
