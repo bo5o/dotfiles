@@ -1151,8 +1151,8 @@ return {
   },
 
   {
-    "lukas-reineke/headlines.nvim",
-    dependencies = "nvim-treesitter/nvim-treesitter",
+    "MeanderingProgrammer/markdown.nvim",
+    main = "render-markdown",
     opts = {},
   },
 }
