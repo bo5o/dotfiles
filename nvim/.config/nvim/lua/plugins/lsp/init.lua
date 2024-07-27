@@ -1,6 +1,6 @@
 return {
   { "jose-elias-alvarez/typescript.nvim", lazy = true },
-  { "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" } },
+  { "mrcjkb/rustaceanvim", version = "^5", ft = { "rust" } },
 
   {
     "folke/lazydev.nvim",
