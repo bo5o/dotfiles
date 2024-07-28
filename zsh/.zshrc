@@ -44,7 +44,7 @@ plugins=(
     rg # rg --generate complete-zsh > ~/.oh-my-zsh/custom/plugins/rg/_rg
     fzf
     rust
-    tldr # https://github.com/tldr-pages/tldr-node-client#zsh
+    tldr # curl https://raw.githubusercontent.com/tldr-pages/tlrc/main/completions/_tldr --output ~/.oh-my-zsh/custom/plugins/tldr/_tldr
     taskwarrior
     zsh-asdf-direnv
     just # https://github.com/casey/just/issues/618#issuecomment-601824467
