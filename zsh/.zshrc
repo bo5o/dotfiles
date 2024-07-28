@@ -47,9 +47,9 @@ plugins=(
     tldr # curl https://raw.githubusercontent.com/tldr-pages/tlrc/main/completions/_tldr --output ~/.oh-my-zsh/custom/plugins/tldr/_tldr
     taskwarrior
     zsh-asdf-direnv
-    just # https://github.com/casey/just/issues/618#issuecomment-601824467
-    restic # https://restic.readthedocs.io/en/stable/020_installation.html#autocompletion
-    hcloud # https://github.com/hetznercloud/cli?tab=readme-ov-file#zsh
+    just # just --completions zsh > ~/.oh-my-zsh/custom/plugins/just/_just
+    restic # restic generate --zsh-completion ~/.oh-my-zsh/custom/plugins/restic/_restic
+    hcloud # hcloud completion zsh > ~/.oh-my-zsh/custom/plugins/hcloud/_hcloud
 )
 
 # completions
