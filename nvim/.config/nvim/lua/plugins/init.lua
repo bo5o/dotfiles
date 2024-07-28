@@ -40,7 +40,27 @@ return {
   },
 
   {
+    "MagicDuck/grug-far.nvim",
+    keys = {
+      {
+        "<leader>sr",
+        function()
+          require("grug-far").grug_far({
+            prefills = { flags = vim.fn.expand("%") },
+          })
+        end,
+        desc = "Search and replace in current file",
+      },
+      { "<leader>sR", "<cmd>GrugFar<cr>", desc = "Search and replace" },
+    },
+    config = function()
+      require("grug-far").setup({})
+    end,
+  },
+
+  {
     "nvim-pack/nvim-spectre",
+    enabled = false,
     keys = {
       {
         "<leader>sr",
