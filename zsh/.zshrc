@@ -34,19 +34,17 @@ plugins=(
     genpass
     brew
     colored-man-pages
-    zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting.git
     extract
     gitignore
     tmuxinator
     z
-    fd # curl https://raw.githubusercontent.com/sharkdp/fd/master/contrib/completion/_fd --output ~/.oh-my-zsh/custom/plugins/fd/_fd
-    rg # rg --generate complete-zsh > ~/.oh-my-zsh/custom/plugins/rg/_rg
     fzf
     rust
-    tldr # curl https://raw.githubusercontent.com/tldr-pages/tlrc/main/completions/_tldr --output ~/.oh-my-zsh/custom/plugins/tldr/_tldr
-    taskwarrior
-    zsh-asdf-direnv
+    # custom plugins
+    zsh-syntax-highlighting # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    zsh-asdf-direnv # git clone https://github.com/redxtech/zsh-asdf-direnv ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-asdf-direnv
     just # just --completions zsh > ~/.oh-my-zsh/custom/plugins/just/_just
+    tldr # curl https://raw.githubusercontent.com/tldr-pages/tlrc/main/completions/_tldr --output ~/.oh-my-zsh/custom/plugins/tldr/_tldr
     restic # restic generate --zsh-completion ~/.oh-my-zsh/custom/plugins/restic/_restic
     hcloud # hcloud completion zsh > ~/.oh-my-zsh/custom/plugins/hcloud/_hcloud
 )
@@ -55,6 +53,8 @@ plugins=(
 # https://github.com/zsh-users/zsh-completions/issues/603
 fpath=($ZSH/custom/plugins/zsh-completions/src $fpath)
 fpath=(${ASDF_DIR}/completions $fpath)
+fpath=($(asdf where ripgrep)/complete $fpath)
+fpath=($(asdf where fd)/autocomplete $fpath)
 
 # ssh-agent
 zstyle :omz:plugins:ssh-agent agent-forwarding no
