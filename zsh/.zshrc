@@ -40,8 +40,8 @@ plugins=(
     timewarrior # https://github.com/svenXY/timewarrior
     tmuxinator
     z
-    ripgrep
-    fd
+    fd # curl https://raw.githubusercontent.com/sharkdp/fd/master/contrib/completion/_fd --output ~/.oh-my-zsh/custom/plugins/fd/_fd
+    rg # rg --generate complete-zsh > ~/.oh-my-zsh/custom/plugins/rg/_rg
     fzf
     rust
     tldr # https://github.com/tldr-pages/tldr-node-client#zsh
