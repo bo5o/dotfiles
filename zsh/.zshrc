@@ -41,12 +41,12 @@ plugins=(
     fzf
     rust
     # custom plugins
-    zsh-syntax-highlighting # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     zsh-asdf-direnv # git clone https://github.com/redxtech/zsh-asdf-direnv ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-asdf-direnv
     just # just --completions zsh > ~/.oh-my-zsh/custom/plugins/just/_just
     tldr # curl https://raw.githubusercontent.com/tldr-pages/tlrc/main/completions/_tldr --output ~/.oh-my-zsh/custom/plugins/tldr/_tldr
     restic # restic generate --zsh-completion ~/.oh-my-zsh/custom/plugins/restic/_restic
     hcloud # hcloud completion zsh > ~/.oh-my-zsh/custom/plugins/hcloud/_hcloud
+    zsh-syntax-highlighting # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 )
 
 # completions
