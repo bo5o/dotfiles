@@ -37,7 +37,6 @@ plugins=(
     zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting.git
     extract
     gitignore
-    timewarrior # https://github.com/svenXY/timewarrior
     tmuxinator
     z
     fd # curl https://raw.githubusercontent.com/sharkdp/fd/master/contrib/completion/_fd --output ~/.oh-my-zsh/custom/plugins/fd/_fd
