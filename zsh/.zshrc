@@ -51,7 +51,7 @@ plugins=(
 
 # completions
 # https://github.com/zsh-users/zsh-completions/issues/603
-fpath=($ZSH/custom/plugins/zsh-completions/src $fpath)
+fpath=(${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions/src $fpath)
 fpath=(${ASDF_DIR}/completions $fpath)
 fpath=($(asdf where ripgrep)/complete $fpath)
 fpath=($(asdf where fd)/autocomplete $fpath)
