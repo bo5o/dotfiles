@@ -762,37 +762,32 @@ return {
   },
 
   {
-    "janko/vim-test",
+    "vim-test/vim-test",
     cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
     keys = {
       {
-        "<leader>tN",
+        "<leader>ty",
+        ":TestNearest<cr>",
+        desc = "Copy test command for nearest test",
+        silent = false,
+      },
+      {
+        "<leader>tY",
         ":TestNearest<space>",
-        desc = "Run nearest test (add flags)",
+        desc = "Copy test command for nearest test (extra args)",
         silent = false,
-      },
-      {
-        "<leader>tL",
-        ":TestLast<space>",
-        desc = "Run last test (add flags)",
-        silent = false,
-      },
-      {
-        "<leader>tg",
-        "<cmd>TestVisit<cr>",
-        desc = "Open last run test in current buffer",
       },
     },
     dependencies = { "vim-dispatch" },
     init = function()
       vim.cmd([[
-        function! VimTestDefaultStrategy(cmd)
-          execute 'Start -wait=always ' . a:cmd
+        function! ClipboardStrategy(cmd)
+            let @+ = a:cmd
         endfunction
       ]])
 
-      vim.g["test#custom_strategies"] = { start = vim.fn["VimTestDefaultStrategy"] }
-      vim.g["test#strategy"] = "start"
+      vim.g["test#custom_strategies"] = { clipboard = vim.fn["ClipboardStrategy"] }
+      vim.g["test#strategy"] = "clipboard"
 
       -- :p causes problems with cargo test in rust
       -- vim.g["test#filename_modifier"] = ":p"
@@ -803,8 +798,7 @@ return {
       vim.g["test#python#runner"] = "pytest"
 
       vim.g["test#python#pytest#options"] = {
-        nearest = "--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --no-cov",
-        file = "--no-cov",
+        nearest = "--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb",
       }
 
       -- JavaScript
@@ -829,11 +823,33 @@ return {
     },
     keys = {
       {
+        "<leader>ta",
+        function()
+          require("neotest").run.attach()
+        end,
+        desc = "Attach to the nearest test",
+      },
+      {
         "<leader>tn",
         function()
           require("neotest").run.run()
         end,
         desc = "Run nearest test",
+      },
+      {
+        "<leader>tN",
+        function()
+          local extra_args
+
+          local input = vim.fn.input("Extra args: ")
+          if input == "" or input == nil then
+            extra_args = {}
+          else
+            extra_args = vim.fn.split(input)
+          end
+          require("neotest").run.run({ extra_args = extra_args, suite = false })
+        end,
+        desc = "Run nearest test (extra args)",
       },
       {
         "<leader>tf",
@@ -940,15 +956,17 @@ return {
     init = function()
       vim.g.tmux_session = "popup"
     end,
-    config = function()
-      local map = vim.keymap.set
-      map("n", "t<cr>", "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " Enter<cr>")
-      map("n", "t<C-c>", "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " C-c<cr>")
-      map("n", "t<C-d>", "<cmd>Tmux send-keys -t " .. vim.g.tmux_session .. " C-d<cr>")
-    end,
   },
 
-  { "tpope/vim-tbone", cmd = "Tmux" },
+  {
+    "tpope/vim-tbone",
+    keys = {
+      { "t<cr>", "<cmd>Tmux send-keys -t {left} Enter<cr>" },
+      { "t<C-c>", "<cmd>Tmux send-keys -t {left} C-c<cr>" },
+      { "t<C-d>", "<cmd>Tmux send-keys -t {left} C-d<cr>" },
+    },
+    cmd = "Tmux",
+  },
 
   {
     "tpope/vim-eunuch",
