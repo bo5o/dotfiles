@@ -1189,8 +1189,19 @@ return {
   },
 
   {
-    "MeanderingProgrammer/markdown.nvim",
-    main = "render-markdown",
-    opts = {},
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {
+      heading = {
+        width = "block",
+        min_width = 88,
+      },
+      code = {
+        width = "block",
+        min_width = 88,
+        position = "right",
+        right_pad = 10,
+      },
+      dash = { width = 88 },
+    },
   },
 }
