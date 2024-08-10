@@ -1,4 +1,4 @@
-# boso's dotfiles
+# bo5o's dotfiles
 
 Clone the repo into your home directory.
 
