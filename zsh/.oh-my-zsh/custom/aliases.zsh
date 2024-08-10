@@ -51,8 +51,6 @@ alias ipycpu="CUDA_VISIBLE_DEVICES="" ipython"
 alias da="cd ~/latex/diplomarbeit"
 alias todo="todo.sh"
 alias Gst="gitcheck"
-alias gL="git pull --recurse-submodules"
-alias gfA="git fetch --all --prune --jobs=10 --recurse-submodules"
 alias disks='echo "-- m o u n t . p o i n t s"; lsblk -a; echo ""; echo "-- d i s k . u s a g e"; df -h;'
 alias dots='cd ~/dotfiles'
 alias dotfiles='cd ~/dotfiles'
