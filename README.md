@@ -1,41 +1,19 @@
-```
-     _                                    _      _
-    | |                     / |          | | o  | |
- __ | |   __           ,   /__|   __ _|_ | |    | |  _   ,
-/   |/ \_/  \_|  |  |_/ \_//  |  /  \_|  |/  |  |/  |/  / \_
-\___/\_/ \__/  \/ \/   \// \_/|_/\__/ |_/|__/|_/|__/|__/ \/
-                                         |\
-                                         |/
+# boso's dotfiles
+
+Clone the repo into your home directory.
+
+```sh
+git clone --recurse-submodules https://github.com/boso/dotfiles ~/dotfiles
 ```
 
-## Distro
+Enter the `dotfiles` directory.
 
-I use [Parabola GNU/Linux-libre](https://www.parabola.nu/).
-
-## Installation
-
-The easiest way to install the configuration for a specific package is as follows:
-
-1. Make sure you are in your home directory.
-
-```
-cd ~
+```sh
+cd ~/dotfiles
 ```
 
-2. Clone this repo.
+Use [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) to symlink the configuration for a specific tool into your home directory.
 
-```
-git clone https://github.com/cbows/dotfiles
-```
-
-3. Enter the `dotfiles` directory.
-
-```
-cd dotfiles
-```
-
-4. Use [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) to create symlinks for each package. For example:
-
-```
+```sh
 stow nvim
 ```
