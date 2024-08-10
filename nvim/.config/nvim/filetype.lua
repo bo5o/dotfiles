@@ -6,6 +6,7 @@ vim.filetype.add({
     [".yamlfmt"] = "yaml",
     ["requirements.lock"] = "requirements",
     ["requirements-dev.lock"] = "requirements",
+    [".markdownlintrc"] = "json",
   },
   extension = {
     jinja = "jinja",
