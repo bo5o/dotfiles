@@ -1,5 +1,0 @@
-# vim: ft=conf
-
-# Player options
-player=mpv --cache 2048
-default-stream=720p,480p,544p,540p,1216k

@@ -1,7 +1,0 @@
-configuration {
-    modi: "run,window,ssh";
-    sidebar-mode: true;
-    font: "hack 10";
-}
-
-@import "./sidebar.rasi"

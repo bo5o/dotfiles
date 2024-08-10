@@ -1,8 +1,0 @@
-#!/bin/sh
-#
-#   Open $EDITOR to edit a temporary file and
-#   copy its content after closing the editor.
-
-tfile=$(mktemp /tmp/vim-anywhere.XXXXXXXXX)
-st -e nvim $tfile
-cat $tfile | xclip -selection clipboard
