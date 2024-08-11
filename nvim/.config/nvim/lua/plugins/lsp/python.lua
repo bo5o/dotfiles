@@ -4,7 +4,7 @@ function M.setup()
   require("lspconfig").ruff.setup({})
   require("lspconfig").basedpyright.setup({
     settings = {
-      pyright = {
+      basedpyright = {
         disableOrganizeImports = true,
       },
     },
