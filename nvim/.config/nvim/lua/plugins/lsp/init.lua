@@ -174,6 +174,7 @@ return {
         markdown = { "markdownlint" },
         vimwiki = { "markdownlint" },
         dockerfile = { "hadolint" },
+        python = { "mypy" },
       }
 
       vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
