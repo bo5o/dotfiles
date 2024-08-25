@@ -4,7 +4,7 @@ nodejs 20.11.0
 hadolint 2.12.0
 neovim 0.10.1
 bat 0.24.0
-shfmt 3.8.0
+shfmt 3.9.0
 shellcheck 0.10.0
 golang 1.22.2
 ripgrep 14.1.0
@@ -15,7 +15,7 @@ poetry 1.8.3
 ruby 3.1.2
 rust 1.80.0
 lazygit 0.43.1
-fd 10.1.0
+fd 10.2.0
 yq 4.35.2
 lazydocker 0.23.1
 php 8.1.10
@@ -24,5 +24,5 @@ postgres 16.2
 jq 1.7.1
 java temurin-17.0.8+101
 restic 0.17.0
-difftastic 0.59.0
+difftastic 0.60.0
 zellij 0.40.1
