@@ -10,3 +10,4 @@ libtmux
 ranger-fm
 ruff
 basedpyright
+ast-grep-cli
