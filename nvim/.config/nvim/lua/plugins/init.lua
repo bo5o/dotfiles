@@ -41,28 +41,37 @@ return {
 
   {
     "MagicDuck/grug-far.nvim",
+    cmd = "GrugFar",
     keys = {
       {
         "<leader>sr",
         function()
           require("grug-far").open({
+            transient = true,
             prefills = { flags = vim.fn.expand("%") },
           })
         end,
+        mode = { "n", "v" },
         desc = "Search and replace in current file",
       },
       { "<leader>sR", "<cmd>GrugFar<cr>", desc = "Search and replace" },
       {
         "<leader>ssr",
         function()
-          require("grug-far").open({ engine = "astgrep" })
+          local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
+          require("grug-far").open({
+            engine = "astgrep",
+            transient = true,
+            prefills = {
+              filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+            },
+          })
         end,
+        mode = { "n", "v" },
         desc = "Structural search and replace",
       },
     },
-    config = function()
-      require("grug-far").setup({})
-    end,
+    opts = {},
   },
 
   {
