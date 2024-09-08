@@ -45,13 +45,20 @@ return {
       {
         "<leader>sr",
         function()
-          require("grug-far").grug_far({
+          require("grug-far").open({
             prefills = { flags = vim.fn.expand("%") },
           })
         end,
         desc = "Search and replace in current file",
       },
       { "<leader>sR", "<cmd>GrugFar<cr>", desc = "Search and replace" },
+      {
+        "<leader>ssr",
+        function()
+          require("grug-far").open({ engine = "astgrep" })
+        end,
+        desc = "Structural search and replace",
+      },
     },
     config = function()
       require("grug-far").setup({})
@@ -77,21 +84,6 @@ return {
         desc = "Search and replace",
       },
     },
-  },
-
-  {
-    "cshuaimin/ssr.nvim",
-    keys = {
-      {
-        "<leader>ssr",
-        function()
-          require("ssr").open()
-        end,
-        desc = "Structural search and replace",
-        mode = { "n", "x" },
-      },
-    },
-    opts = {},
   },
 
   {
