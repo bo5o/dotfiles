@@ -1,5 +1,4 @@
 return {
-  { "jose-elias-alvarez/typescript.nvim", lazy = true },
   { "mrcjkb/rustaceanvim", version = "^5", ft = { "rust" } },
 
   {
@@ -23,7 +22,6 @@ return {
       { "<leader>cS", "<cmd>LspRestart<cr>", desc = "Restart LSP servers" },
     },
     dependencies = {
-      "typescript.nvim",
       "mason.nvim",
       "aerial.nvim",
       {
@@ -119,7 +117,7 @@ return {
       require("plugins.lsp.docker").setup()
       require("plugins.lsp.xml").setup()
       require("plugins.lsp.vue").setup()
-      require("plugins.lsp.typescript").setup(capabilities)
+      require("plugins.lsp.typescript").setup()
       require("plugins.lsp.eslint").setup()
       require("plugins.lsp.php").setup()
       require("plugins.lsp.markdown").setup()
