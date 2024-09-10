@@ -51,7 +51,11 @@ return {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     keys = {
-      { "<leader>gl", "<cmd>DiffviewFileHistory %<cr>", desc = "File history" },
+      {
+        "<leader>gl",
+        "<cmd>DiffviewFileHistory --follow %<cr>",
+        desc = "File history",
+      },
       { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diff" },
       {
         "<leader>gD",
