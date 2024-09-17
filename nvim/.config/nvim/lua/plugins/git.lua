@@ -56,11 +56,21 @@ return {
         "<cmd>DiffviewFileHistory --follow %<cr>",
         desc = "File history",
       },
-      { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diff" },
+      {
+        "<leader>gL",
+        ":DiffviewFileHistory --follow<space>",
+        desc = "File history (with options)",
+        silent = false,
+      },
+      {
+        "<leader>gd",
+        "<cmd>DiffviewOpen<cr>",
+        desc = "Diff",
+      },
       {
         "<leader>gD",
         ":DiffviewOpen<space>",
-        desc = "Diff (custom rev)",
+        desc = "Diff (with options)",
         silent = false,
       },
     },
