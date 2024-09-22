@@ -198,6 +198,7 @@ return {
 
   {
     "stevearc/conform.nvim",
+    enabled = true,
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
     keys = {
@@ -211,13 +212,11 @@ return {
       },
     },
     config = function()
-      local slow_format_filetypes = {}
-
       require("conform").setup({
         formatters_by_ft = {
           lua = { "stylua" },
-          sql = { { "sqlfluff", "sqlfmt", "sql_formatter" } },
-          ["sql.jinja"] = { { "sqlfluff", "sqlfmt" } },
+          sql = { "sqlfluff", "sqlfmt", "sql_formatter", stop_after_first = true },
+          ["sql.jinja"] = { "sqlfluff", "sqlfmt", stop_after_first = true },
           ["html.jinja"] = { "djlint" },
           htmldjango = { "djlint" },
           python = function(bufnr)
@@ -229,7 +228,7 @@ return {
               return { "isort", "black" }
             end
           end,
-          html = { "djlint" },
+          html = { "prettierd", "djlint", stop_after_first = true },
           jinja = { "djlint" },
           markdown = { "mdformat", "injected" },
           sh = { "shfmt" },
@@ -245,23 +244,24 @@ return {
             return
           end
 
-          if slow_format_filetypes[vim.bo[bufnr].filetype] then
+          local bufname = vim.api.nvim_buf_get_name(bufnr)
+          if bufname:match("/node_modules/") then
             return
           end
 
-          local function on_format(err)
-            if err and err:match("timeout$") then
-              slow_format_filetypes[vim.bo[bufnr].filetype] = true
-            end
-          end
-
-          return { timeout_ms = 500, lsp_fallback = true }, on_format
+          return { timeout_ms = 500, lsp_format = "fallback" }
         end,
         format_after_save = function(bufnr)
+          if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+            return
+          end
+
+          local slow_format_filetypes = {}
           if not slow_format_filetypes[vim.bo[bufnr].filetype] then
             return
           end
-          return { lsp_fallback = true }
+
+          return { lsp_format = "fallback" }
         end,
       })
     end,
