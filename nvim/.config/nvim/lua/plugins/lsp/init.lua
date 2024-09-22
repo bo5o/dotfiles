@@ -113,6 +113,7 @@ return {
       require("plugins.lsp.rust").setup()
       require("plugins.lsp.json").setup()
       require("plugins.lsp.yaml").setup()
+      require("plugins.lsp.html").setup(capabilities)
       require("plugins.lsp.toml").setup()
       require("plugins.lsp.docker").setup()
       require("plugins.lsp.xml").setup()
