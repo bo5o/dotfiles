@@ -18,8 +18,8 @@ alias -s git="git clone --recurse-submodules"
 
 # personal aliases
 alias octave="octave-cli -q"
-alias ydl="youtube-dl"
-alias yta="youtube-dl -xic"
+alias ydl="yt-dlp"
+alias yta="yt-dlp -xic"
 alias r="ranger"
 alias m="ncmpcpp"
 alias paper="papis"
