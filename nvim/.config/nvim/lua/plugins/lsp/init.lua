@@ -114,6 +114,7 @@ return {
       require("plugins.lsp.json").setup()
       require("plugins.lsp.yaml").setup()
       require("plugins.lsp.html").setup(capabilities)
+      require("plugins.lsp.css").setup(capabilities)
       require("plugins.lsp.toml").setup()
       require("plugins.lsp.docker").setup()
       require("plugins.lsp.xml").setup()
@@ -173,6 +174,8 @@ return {
         markdown = { "markdownlint" },
         vimwiki = { "markdownlint" },
         dockerfile = { "hadolint" },
+        html = { "htmlhint" },
+        css = { "stylelint" },
       }
 
       vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
