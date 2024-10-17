@@ -11,6 +11,7 @@ alias -g G='| grep'
 alias -g F='| fzf -m'
 alias -g Y='| yank'
 alias -g X='| xargs'
+alias -g E='| entr'
 alias -g NF='./*(oc[1])'
 
 # suffix aliases
@@ -72,7 +73,9 @@ alias pipls="pip list"
 alias piplso="pip list --outdated"
 alias pipi="pip install"
 alias pipu="pip install -U"
-alias pup="pip-compile && pip-sync"
+alias pipc='uv pip compile requirements.in -o requirements.txt'
+alias pips='uv pip sync requirements.txt'
+alias pipup="pipc && pips"
 alias pyinit="touch __init__.py"
 alias za="zathura"
 alias ncdu="ncdu -rr -x"
@@ -105,3 +108,4 @@ alias btm='btm --theme gruvbox'
 alias fluff='sqlfluff'
 alias lvim='NVIM_APPNAME=nvim-lazy nvim'
 alias zj='zellij'
+alias uvad='uv add --dev'
