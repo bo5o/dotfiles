@@ -2,7 +2,6 @@ pre-commit
 virtualenv
 ipython
 ipdb
-pip-tools
 uv
 keyring
 keyring-pass
