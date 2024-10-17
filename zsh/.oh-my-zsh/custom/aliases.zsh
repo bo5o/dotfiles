@@ -1,18 +1,18 @@
 #!/usr/bin/env zsh
 
 # global aliases
-alias -g L='| less'
 alias -g B='| bat'
-alias -g J='| jq | bat -l json'
 alias -g C='| wc -l'
-alias -g H='| head'
-alias -g T='| tail'
-alias -g G='| grep'
-alias -g F='| fzf -m'
-alias -g Y='| yank'
-alias -g X='| xargs'
 alias -g E='| entr'
+alias -g F='| fzf -m'
+alias -g G='| grep'
+alias -g H='| head'
+alias -g J='| jq | bat -l json'
+alias -g L='| less'
 alias -g NF='./*(oc[1])'
+alias -g T='| tail'
+alias -g X='| xargs'
+alias -g Y='| yank'
 
 # suffix aliases
 alias -s git="git clone --recurse-submodules"
