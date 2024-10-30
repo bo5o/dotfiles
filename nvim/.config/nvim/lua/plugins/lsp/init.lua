@@ -112,6 +112,7 @@ return {
       require("plugins.lsp.lua").setup()
       require("plugins.lsp.rust").setup()
       require("plugins.lsp.json").setup()
+      require("plugins.lsp.ocaml").setup()
       require("plugins.lsp.yaml").setup()
       require("plugins.lsp.html").setup(capabilities)
       require("plugins.lsp.css").setup(capabilities)
@@ -240,6 +241,7 @@ return {
           css = { "prettierd" },
           yaml = { "yamlfmt" },
           toml = { "taplo" },
+          ocaml = { "ocamlformat" },
           ["_"] = { "trim_whitespace" },
         },
         format_on_save = function(bufnr)
