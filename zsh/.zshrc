@@ -47,6 +47,7 @@ plugins=(
     restic # restic generate --zsh-completion ~/.oh-my-zsh/custom/plugins/restic/_restic
     hcloud # hcloud completion zsh > ~/.oh-my-zsh/custom/plugins/hcloud/_hcloud
     ruff # ruff generate-shell-completion > ~/.oh-my-zsh/custom/plugins/ruff/_ruff
+    bws # bws completions zsh > ~/.oh-my-zsh/custom/plugins/bws/_bws
     zsh-asdf-direnv
     zsh-syntax-highlighting
 )
