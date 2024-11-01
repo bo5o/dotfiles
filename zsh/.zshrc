@@ -57,6 +57,7 @@ fpath=(${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions/src $fpath)
 fpath=(${ASDF_DIR}/completions $fpath)
 fpath=($(${ASDF_DIR}/bin/asdf where ripgrep)/complete $fpath)
 fpath=($(${ASDF_DIR}/bin/asdf where fd)/autocomplete $fpath)
+fpath=(${HOME}/.zfunc $fpath)
 
 # ssh-agent
 zstyle :omz:plugins:ssh-agent agent-forwarding no
