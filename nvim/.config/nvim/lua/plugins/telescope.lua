@@ -47,7 +47,10 @@ return {
       { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find keymaps" },
       {
         "<leader>fs",
-        "<cmd>Telescope lsp_document_symbols<cr>",
+        function()
+          local builtin = require("telescope.builtin")
+          return builtin.lsp_document_symbols() or builtin.treesitter()
+        end,
         desc = "Find symbols",
       },
       {
