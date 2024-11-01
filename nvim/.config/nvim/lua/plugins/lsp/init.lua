@@ -120,6 +120,7 @@ return {
       require("plugins.lsp.docker").setup()
       require("plugins.lsp.xml").setup()
       require("plugins.lsp.vue").setup()
+      require("plugins.lsp.vim").setup()
       require("plugins.lsp.typescript").setup()
       require("plugins.lsp.eslint").setup()
       require("plugins.lsp.php").setup()
