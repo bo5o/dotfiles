@@ -11,7 +11,7 @@ ripgrep 14.1.1
 github-cli 2.60.1
 maven 3.8.4
 dotenv-linter 3.3.0
-poetry 1.8.3
+poetry 1.8.4
 ruby 3.3.5
 rust 1.82.0
 lazygit 0.44.1
@@ -20,9 +20,9 @@ yq 4.35.2
 lazydocker 0.23.1
 php 8.1.10
 azure-cli 2.50.0
-postgres 16.2
+postgres 16.4
 jq 1.7.1
 java temurin-17.0.8+101
 restic 0.17.1
 difftastic 0.61.0
-zellij 0.40.1
+zellij 0.41.1
