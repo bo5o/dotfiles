@@ -801,7 +801,7 @@ return {
       vim.g["test#python#runner"] = "pytest"
 
       vim.g["test#python#pytest#options"] = {
-        nearest = "--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb",
+        nearest = "--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --no-cov",
       }
 
       -- JavaScript
