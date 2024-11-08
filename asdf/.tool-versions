@@ -18,11 +18,8 @@ lazygit 0.44.1
 fd 10.2.0
 yq 4.35.2
 lazydocker 0.23.1
-php 8.1.10
-azure-cli 2.50.0
 postgres 16.4
 jq 1.7.1
-java temurin-17.0.8+101
 restic 0.17.1
 difftastic 0.61.0
 zellij 0.41.1
