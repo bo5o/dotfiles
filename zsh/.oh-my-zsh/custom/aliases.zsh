@@ -18,95 +18,95 @@ alias -g Y='| yank'
 alias -s git="git clone --recurse-submodules"
 
 # personal aliases
-alias octave="octave-cli -q"
-alias ydl="yt-dlp"
-alias yta="yt-dlp -xic"
-alias r="ranger"
-alias m="ncmpcpp"
-alias paper="papis"
-alias papo="papis open"
-alias papex="papis export --bibtex"
-alias papa="papis add"
-alias pape="papis edit"
-alias sdn="sudo shutdown -h now"
+alias .a='source .venv/bin/activate'
+alias .d='deactivate'
+alias Dotfiles='cd ~/private'
+alias Gst="gitcheck"
+alias ackpy='ack --ignore-dir .venv --ignore-dir .tools --python'
+alias arst='asdf'
+alias btm='btm --theme gruvbox'
+alias crep="grep --color=always" # Color grep
+alias da="cd ~/latex/diplomarbeit"
+alias dcupw='docker compose up --watch'
 alias def="sdcv"
-alias yt="yt"
-alias vimprofile="nvim --cmd 'profile start profile.log' --cmd 'profile func *'"
-alias v="nvim"
-alias vi="nvim"
-alias vim="nvim"
-alias mutt="neomutt"
+alias disks='echo "-- m o u n t . p o i n t s"; lsblk -a; echo ""; echo "-- d i s k . u s a g e"; df -h;'
+alias dotfiles='cd ~/dotfiles'
+alias dots='cd ~/dotfiles'
+alias f='fzf'
+alias ffbare='firefox --new-instance -P bare'
+alias fluff='sqlfluff'
+alias h="tldr"
+alias help="tldr"
+alias info='info --vi-keys'
+alias ipy="ipython"
+alias ipycpu="CUDA_VISIBLE_DEVICES="" ipython"
 alias jc="jupyter console"
 alias jce="jupyter console --existing"
 alias jn="jupyter notebook"
-alias lt="ls -lAht"
-alias rm="rm -i"
-alias sm="~/bin/syncmail.sh"
-alias t="tmux attach || tmux new-session"
-alias ta="tmux attach -t"
-alias tns="tmux new-session -s"
-alias tls="tmux list-sessions"
-alias pdf="zathura"
-alias ipy="ipython"
-alias ipycpu="CUDA_VISIBLE_DEVICES="" ipython"
-alias da="cd ~/latex/diplomarbeit"
-alias todo="todo.sh"
-alias Gst="gitcheck"
-alias disks='echo "-- m o u n t . p o i n t s"; lsblk -a; echo ""; echo "-- d i s k . u s a g e"; df -h;'
-alias dots='cd ~/dotfiles'
-alias dotfiles='cd ~/dotfiles'
-alias Dotfiles='cd ~/private'
-alias info='info --vi-keys'
-alias md='mkdir -p -v'
-alias pdfgrep='pdfgrep -in'	# ignorecase, page number
-cpbak() { cp $1{,.bak} ;} # create backup copy
-open() { xdg-open "$@" > /dev/null 2>&1 ;} # open with default GUI program
-alias radioeins='mpv https://www.radioeins.de/live.m3u'
-alias news='newsboat'
 alias ka='killall'
-alias crep="grep --color=always" # Color grep
-alias help="tldr"
-alias h="tldr"
-alias wo="workon"
+alias lA='ls -A'
+alias lS='ls -1FSsh'
+alias lg='lazygit'
+alias lgb='lazygit branch'
+alias lt="ls -lAht"
+alias lvim='NVIM_APPNAME=nvim-lazy nvim'
+alias lzd='lazydocker'
+alias m="ncmpcpp"
+alias md='mkdir -p -v'
+alias mutt="neomutt"
+alias mux='tmuxinator'
+alias ncdu="ncdu -rr -x"
+alias news='newsboat'
+alias nh='sudo nethogs'
+alias octave="octave-cli -q"
+alias papa="papis add"
+alias pape="papis edit"
+alias paper="papis"
+alias papex="papis export --bibtex"
+alias papo="papis open"
+alias pdf="zathura"
+alias pdfgrep='pdfgrep -in'	# ignorecase, page number
+alias pipc='uv pip compile requirements.in -o requirements.txt'
 alias pipf="pip freeze | sort"
+alias pipi="pip install"
 alias pipls="pip list"
 alias piplso="pip list --outdated"
-alias pipi="pip install"
-alias pipu="pip install -U"
-alias pipc='uv pip compile requirements.in -o requirements.txt'
 alias pips='uv pip sync requirements.txt'
+alias pipu="pip install -U"
 alias pipup="pipc && pips"
-alias pyinit="touch __init__.py"
-alias za="zathura"
-alias ncdu="ncdu -rr -x"
-alias week="date +%V"
-alias year="date +%Y"
-alias ternimal-anaconda="ternimal length=100 thickness=1,4,1,0,0 radius=6,12 gradient=0:#666600,0.5:#00ff00,1:#003300"
-alias ternimal-swarm="ternimal length=200 thickness=0,4,19,0,0"
-alias ternimal-rainbow="ternimal length=20 thickness=70,15,0,1,0 padding=10 radius=5 gradient=0.03:#ffff00,0.15:#0000ff,0.3:#ff0000,0.5:#00ff00"
 alias pudb="pudb3"
-alias ffbare='firefox --new-instance -P bare'
-alias zshrc='${=EDITOR} ~/.zshrc'
-alias vimrc='${=EDITOR} ~/.config/nvim/init.vim'
-alias lS='ls -1FSsh'
-alias ackpy='ack --ignore-dir .venv --ignore-dir .tools --python'
-alias stow='stow -v'
+alias pyinit="touch __init__.py"
 alias qv='quickvenv'
-alias f='fzf'
+alias r="ranger"
+alias radioeins='mpv https://www.radioeins.de/live.m3u'
+alias rm="rm -i"
 alias sa='source .venv/bin/activate'
-alias .a='source .venv/bin/activate'
-alias .d='deactivate'
-alias mux='tmuxinator'
-alias arst='asdf'
-alias lA='ls -A'
-alias lg='lazygit'
+alias sdn="sudo shutdown -h now"
+alias sm="~/bin/syncmail.sh"
+alias stow='stow -v'
+alias t="tmux attach || tmux new-session"
+alias ta="tmux attach -t"
+alias ternimal-anaconda="ternimal length=100 thickness=1,4,1,0,0 radius=6,12 gradient=0:#666600,0.5:#00ff00,1:#003300"
+alias ternimal-rainbow="ternimal length=20 thickness=70,15,0,1,0 padding=10 radius=5 gradient=0.03:#ffff00,0.15:#0000ff,0.3:#ff0000,0.5:#00ff00"
+alias ternimal-swarm="ternimal length=200 thickness=0,4,19,0,0"
 alias tig='lazygit log'
-alias lgb='lazygit branch'
-alias lzd='lazydocker'
-alias dcupw='docker compose up --watch'
-alias nh='sudo nethogs'
-alias btm='btm --theme gruvbox'
-alias fluff='sqlfluff'
-alias lvim='NVIM_APPNAME=nvim-lazy nvim'
-alias zj='zellij'
+alias tls="tmux list-sessions"
+alias tns="tmux new-session -s"
+alias todo="todo.sh"
 alias uvad='uv add --dev'
+alias v="nvim"
+alias vi="nvim"
+alias vim="nvim"
+alias vimprofile="nvim --cmd 'profile start profile.log' --cmd 'profile func *'"
+alias vimrc='${=EDITOR} ~/.config/nvim/init.vim'
+alias week="date +%V"
+alias wo="workon"
+alias ydl="yt-dlp"
+alias year="date +%Y"
+alias yt="yt"
+alias yta="yt-dlp -xic"
+alias za="zathura"
+alias zj='zellij'
+alias zshrc='${=EDITOR} ~/.zshrc'
+cpbak() { cp $1{,.bak} ;} # create backup copy
+open() { xdg-open "$@" > /dev/null 2>&1 ;} # open with default GUI program
