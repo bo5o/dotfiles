@@ -458,6 +458,9 @@ return {
       { "<a-k>", "<cmd>TmuxNavigateUp<cr>" },
       { "<a-l>", "<cmd>TmuxNavigateRight<cr>" },
     },
+    init = function()
+      vim.g.tmux_navigator_no_wrap = 1
+    end,
   },
 
   {
