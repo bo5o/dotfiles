@@ -585,50 +585,55 @@ return {
 
   {
     "ThePrimeagen/harpoon",
+    branch = "harpoon2",
     keys = {
       {
         "<BS><BS>",
         function()
-          require("harpoon.ui").toggle_quick_menu()
+          local harpoon = require("harpoon")
+          harpoon.ui:toggle_quick_menu(harpoon:list())
         end,
         desc = "Toggle harpoon menu",
       },
       {
         "<BS>m",
         function()
-          require("harpoon.mark").add_file()
+          require("harpoon"):list():add()
         end,
         desc = "Mark file for harpoon",
       },
       {
         "<BS>n",
         function()
-          require("harpoon.ui").nav_file(1)
+          require("harpoon"):list():select(1)
         end,
         desc = "Navigate to first harpoon ",
       },
       {
         "<BS>e",
         function()
-          require("harpoon.ui").nav_file(2)
+          require("harpoon"):list():select(2)
         end,
         desc = "Navigate to second harpoon",
       },
       {
         "<BS>i",
         function()
-          require("harpoon.ui").nav_file(3)
+          require("harpoon"):list():select(3)
         end,
         desc = "Navigate to third harpoon",
       },
       {
         "<BS>o",
         function()
-          require("harpoon.ui").nav_file(4)
+          require("harpoon"):list():select(4)
         end,
         desc = "Navigate to fourth harpoon",
       },
     },
+    config = function()
+      require("harpoon"):setup()
+    end,
   },
 
   {
