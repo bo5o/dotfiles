@@ -173,6 +173,10 @@ return {
           }),
         },
 
+        window = {
+          documentation = cmp.config.window.bordered(),
+        },
+
         experimental = {
           native_menu = false,
           ghost_text = { hl_group = "Comment" },
