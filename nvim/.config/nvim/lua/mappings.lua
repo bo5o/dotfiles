@@ -16,6 +16,9 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to the below window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to the above window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to the right window" })
 
+vim.keymap.set("n", "<C-w>_", "<C-w>-", { desc = "Decrease height" })
+vim.keymap.set("n", "<C-w>-", "<C-w>s", { desc = "Split window" })
+vim.keymap.set("n", "<C-w>|", "<C-w>v", { desc = "Split window vertically" })
 
 vim.keymap.set("n", "<C-w>pc", "<cmd>pclose<CR>", { desc = 'Close any "Preview" window currently open' })
 vim.keymap.set("n", "<C-w>C", "<cmd>tabclose<CR>", { desc = "Close current tab page" })
