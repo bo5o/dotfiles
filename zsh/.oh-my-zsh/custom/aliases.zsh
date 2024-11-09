@@ -20,8 +20,6 @@ alias -s git="git clone --recurse-submodules"
 # personal aliases
 alias .a='source .venv/bin/activate'
 alias .d='deactivate'
-alias Dotfiles='cd ~/private'
-alias Gst="gitcheck"
 alias ackpy='ack --ignore-dir .venv --ignore-dir .tools --python'
 alias arst='asdf'
 alias btm='btm --theme gruvbox'
@@ -31,10 +29,12 @@ alias dcupw='docker compose up --watch'
 alias def="sdcv"
 alias disks='echo "-- m o u n t . p o i n t s"; lsblk -a; echo ""; echo "-- d i s k . u s a g e"; df -h;'
 alias dotfiles='cd ~/dotfiles'
+alias Dotfiles='cd ~/private'
 alias dots='cd ~/dotfiles'
 alias f='fzf'
 alias ffbare='firefox --new-instance -P bare'
 alias fluff='sqlfluff'
+alias Gst="gitcheck"
 alias h="tldr"
 alias help="tldr"
 alias info='info --vi-keys'
@@ -45,9 +45,9 @@ alias jce="jupyter console --existing"
 alias jn="jupyter notebook"
 alias ka='killall'
 alias lA='ls -A'
-alias lS='ls -1FSsh'
 alias lg='lazygit'
 alias lgb='lazygit branch'
+alias lS='ls -1FSsh'
 alias lt="ls -lAht"
 alias lvim='NVIM_APPNAME=nvim-lazy nvim'
 alias lzd='lazydocker'
@@ -108,5 +108,7 @@ alias yta="yt-dlp -xic"
 alias za="zathura"
 alias zj='zellij'
 alias zshrc='${=EDITOR} ~/.zshrc'
+
+# short functions
 cpbak() { cp $1{,.bak} ;} # create backup copy
 open() { xdg-open "$@" > /dev/null 2>&1 ;} # open with default GUI program
