@@ -11,8 +11,10 @@ return {
         pattern = "*",
         group = group,
         callback = function()
-          highlight("PopupWindow", { fg = "#ebdbb2", bg = "#3c3836" })
-          highlight("NormalFloat", { bg = "#32302f" })
+          highlight("PopupWindow", { fg = "#d4be98", bg = "#282828" })
+          highlight("NormalFloat", { bg = "#282828" })
+          highlight("TreesitterContext", { link = "Normal" })
+          highlight("TreesitterContextSeparator", { link = "IblIndent" })
           highlight(
             "QuickScopePrimary",
             { fg = "#fe8019", bold = true, ctermfg = 155, cterm = { underline = true } }

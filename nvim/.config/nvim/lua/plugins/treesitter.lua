@@ -119,7 +119,11 @@ return {
   -- Advanced text objects
   { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter" },
   -- Always show treesitter context
-  { "nvim-treesitter/nvim-treesitter-context", dependencies = "nvim-treesitter" },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    dependencies = "nvim-treesitter",
+    opts = { separator = "-", max_lines = 3 },
+  },
   -- Colorize nested parentheses
   {
     "HiPhish/rainbow-delimiters.nvim",
