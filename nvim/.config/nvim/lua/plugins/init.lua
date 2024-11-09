@@ -289,6 +289,29 @@ return {
   { "wellle/targets.vim", event = "BufRead" },
 
   {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      bigfile = { enabled = false },
+      notifier = { enabled = false },
+      quickfile = { enabled = false },
+      statuscolumn = { enabled = false },
+      words = { enabled = false },
+    },
+    keys = {
+      {
+        "<leader>gg",
+        function()
+          require("snacks").lazygit()
+        end,
+        desc = "Lazygit",
+      },
+    },
+  },
+
+  {
     "echasnovski/mini.bufremove",
     version = "*",
     keys = {
@@ -1139,12 +1162,6 @@ return {
         "<C-\\>d",
         "<cmd>FloatermNew lazydocker<cr>",
         desc = "Open lazydocker",
-        mode = { "n", "t" },
-      },
-      {
-        "<C-\\>g",
-        "<cmd>FloatermNew lazygit<cr>",
-        desc = "Open lazygit",
         mode = { "n", "t" },
       },
       {

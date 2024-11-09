@@ -26,14 +26,6 @@ require("lazy").setup("plugins", {
   dev = {
     path = "~/repos",
   },
-  custom_keys = {
-    -- open lazygit log
-    ["<localleader>l"] = function(plugin)
-      require("lazy.util").float_term({ "lazygit", "log" }, {
-        cwd = plugin.dir,
-      })
-    end,
-  },
   install = {
     -- install missing plugins on startup. This doesn't increase startup time.
     missing = false,
