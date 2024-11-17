@@ -35,6 +35,7 @@ alias f='fzf'
 alias ffbare='firefox --new-instance -P bare'
 alias fluff='sqlfluff'
 alias gab='git absorb'
+alias gg='lazygit'
 alias Gst="gitcheck"
 alias h="tldr"
 alias help="tldr"
