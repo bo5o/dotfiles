@@ -294,11 +294,7 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
-      bigfile = { enabled = false },
-      notifier = { enabled = false },
-      quickfile = { enabled = false },
-      statuscolumn = { enabled = false },
-      words = { enabled = false },
+      lazygit = { enabled = true },
     },
     keys = {
       {
