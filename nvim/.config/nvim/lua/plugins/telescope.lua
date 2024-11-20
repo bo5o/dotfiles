@@ -68,6 +68,7 @@ return {
         "<cmd>Telescope git_commits<cr>",
         desc = "Find git commits (repo)",
       },
+      { "<leader>fg", "<cmd>Telescope git_status<cr>", desc = "Find changed files" },
       { "<leader>fu", "<cmd>Telescope ultisnips<cr>", desc = "Find snippets" },
       {
         "<leader>fl",
