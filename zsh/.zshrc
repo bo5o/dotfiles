@@ -42,6 +42,7 @@ plugins=(
     fzf
     rust
     # custom plugins
+    gh # gh completions -s zsh > ~/.oh-my-zsh/custom/plugins/github-cli/_gh
     just # just --completions zsh > ~/.oh-my-zsh/custom/plugins/just/_just
     tldr # curl https://raw.githubusercontent.com/tldr-pages/tlrc/main/completions/_tldr --output ~/.oh-my-zsh/custom/plugins/tldr/_tldr
     restic # restic generate --zsh-completion ~/.oh-my-zsh/custom/plugins/restic/_restic
