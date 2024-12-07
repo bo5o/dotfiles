@@ -74,6 +74,8 @@ vim.keymap.set("n", "gb", "<cmd>BufferLinePick<cr>", { desc = "Pick buffer" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "See :h J" })
 
+vim.keymap.set("n", "yc", "yy<cmd>normal gcc<cr>p", { desc = "Paste line below and comment" })
+
 -- stylua: ignore end
 
 local Hydra = require("hydra")
