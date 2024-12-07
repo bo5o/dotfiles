@@ -1,11 +1,66 @@
 return {
   {
-    "airblade/vim-gitgutter",
-    event = { "BufReadPre", "BufNewFile" },
-    init = function()
-      vim.g.gitgutter_preview_win_floating = 0
-      vim.g.gitgutter_highlight_linenrs = 1
-    end,
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      signs_staged_enable = false,
+      numhl = true,
+      current_line_blame_opts = {
+        virt_text_pos = "eol",
+        delay = 300,
+      },
+      on_attach = function(bufnr)
+        local gitsigns = require("gitsigns")
+
+        local function map(mode, l, r, opts)
+          opts = opts or {}
+          opts.buffer = bufnr
+          vim.keymap.set(mode, l, r, opts)
+        end
+
+        -- Navigation
+        map("n", "]c", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "]c", bang = true })
+          else
+            gitsigns.nav_hunk("next")
+          end
+        end, { desc = "Next hunk" })
+
+        map("n", "[c", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "[c", bang = true })
+          else
+            gitsigns.nav_hunk("prev")
+          end
+        end, { desc = "Previous hunk" })
+
+        -- Stage hunk
+        map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Stage hunk" })
+        map("v", "<leader>hs", function()
+          gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+        end, { desc = "Stage hunk" })
+
+        -- Reset hunk
+        map("n", "<leader>hu", gitsigns.reset_hunk, { desc = "Reset hunk" })
+        map("v", "<leader>hu", function()
+          gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+        end, { desc = "Reset hunk" })
+
+        -- Preview hunk
+        map("n", "<leader>hp", gitsigns.preview_hunk_inline, { desc = "Preview hunk" })
+
+        -- Toggle line-wise git blame
+        map(
+          "n",
+          "<leader>gb",
+          gitsigns.toggle_current_line_blame,
+          { desc = "Toggle line-wise git blame" }
+        )
+
+        -- Text object
+        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+      end,
+    },
   },
 
   {
@@ -16,7 +71,7 @@ return {
       { "<leader>gcc", "<cmd>Git commit -v -q<cr>", desc = "Commit" },
       { "<leader>gca", "<cmd>Git commit --amend<cr>", desc = "Amend" },
       { "<leader>gw", "<cmd>Gwrite<cr>", desc = "Stage" },
-      { "<leader>gb", "<cmd>Git blame<cr>", desc = "Blame" },
+      { "<leader>gB", "<cmd>Git blame<cr>", desc = "Blame" },
       { "<leader>ge", "<cmd>Gedit<cr>", desc = "Edit" },
       { "<leader>gp", "<cmd>Git pull<cr>", desc = "Pull" },
       { "<leader>gP", "<cmd>Git push<cr>", desc = "Push" },
