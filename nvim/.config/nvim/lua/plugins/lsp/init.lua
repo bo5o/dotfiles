@@ -82,17 +82,6 @@ return {
         end,
       })
 
-      local diagnostic = vim.diagnostic
-      diagnostic.config({
-        virtual_text = {
-          source = true,
-        },
-        float = {
-          border = "rounded",
-          source = true,
-        },
-      })
-
       local capabilities = vim.tbl_deep_extend(
         "force",
         vim.lsp.protocol.make_client_capabilities(),
@@ -127,15 +116,37 @@ return {
       require("plugins.lsp.markdown").setup()
       require("plugins.lsp.sh").setup()
 
+      vim.diagnostic.config({
+        virtual_text = false,
+        float = {
+          border = "rounded",
+          source = true,
+        },
+      })
+
       for type, icon in pairs({
-        Error = "󰅚 ",
-        Warn = "󰀪 ",
-        Hint = "󰌶 ",
-        Info = " ",
+        Error = "●",
+        Warn = "●",
+        Info = "●",
+        Hint = "⦿",
       }) do
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
+    end,
+  },
+
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+    config = function()
+      require("tiny-inline-diagnostic").setup({
+        preset = "nonerdfont",
+        multilines = false,
+        multiple_diag_under_cursor = false,
+        show_source = true,
+      })
     end,
   },
 

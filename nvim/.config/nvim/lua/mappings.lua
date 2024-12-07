@@ -47,8 +47,8 @@ vim.keymap.set("v", "K", "<cmd>move '<-2<cr>gv=gv", { desc = "Move visual select
 vim.keymap.set("i", "jk", "<ESC>", { desc = "Switch to normal mode" })
 
 -- jump around diagnostics
-vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next({ float = true, wrap = false }) end, { desc = "Jump to the next diagnostic" })
-vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev({ float = true, wrap = false }) end, { desc = "Jump to the previous diagnostic" })
+vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next({ float = false, wrap = false }) end, { desc = "Jump to the next diagnostic" })
+vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev({ float = false, wrap = false }) end, { desc = "Jump to the previous diagnostic" })
 
 -- ask before jumping tag stack if ambigous
 vim.keymap.set("n", "C-]", "g<C-]>", { desc = "See :h CTRL-]" })
