@@ -62,6 +62,7 @@
   "oil.nvim": { "branch": "master", "commit": "9a59256c8e88b29d2150e99b5960b2f111e51f75" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
+  "profile.nvim": { "branch": "master", "commit": "d57df512bdade4c7a04a1bb6c89c8b54c5dce52a" },
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "quick-scope": { "branch": "master", "commit": "4d35d3b2bc6794666353dcc241b2680bd560416f" },
   "quicktex": { "branch": "master", "commit": "797fcbe4d7a025d9ea9bd0baa9245b46415ce48f" },

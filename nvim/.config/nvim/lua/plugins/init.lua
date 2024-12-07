@@ -1244,4 +1244,6 @@ return {
       dash = { width = 88 },
     },
   },
+
+  { "stevearc/profile.nvim" },
 }
