@@ -68,7 +68,7 @@ vim.keymap.set("v", "H", "<gv", { desc = "Dedent visual selection" })
 
 vim.keymap.set("i", "<C-u>", "<Esc>viwUea", { desc = "Convert previous word to upper-case" })
 
-vim.keymap.set("n", "<leader>hl", "(&hls && v:hlsearch ? ':nohls' : ':set hls').'\n'", { desc = "Toggle hlsearch", expr = true, })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Remove search match highlights" })
 
 vim.keymap.set("n", "gb", "<cmd>BufferLinePick<cr>", { desc = "Pick buffer" })
 
