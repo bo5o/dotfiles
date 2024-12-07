@@ -36,15 +36,24 @@ return {
           lualine_a = { "mode" },
           lualine_b = {
             "branch",
-            { "diff", colored = false },
+            { "diff", colored = true },
             {
               "diagnostics",
               sources = { "nvim_diagnostic" },
-              colored = false,
+              colored = true,
+              symbols = { error = "● ", warn = "● ", info = "● ", hint = "⦿ " },
             },
           },
           lualine_c = { "filename" },
-          lualine_x = { "encoding", "fileformat", "filetype" },
+          lualine_x = {
+            "encoding",
+            "fileformat",
+            {
+              "filetype",
+              colored = false,
+              icon = { align = "right" },
+            },
+          },
           lualine_y = { "progress" },
           lualine_z = { "location" },
         },
