@@ -76,6 +76,11 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "See :h J" })
 
 vim.keymap.set("n", "yc", "yy<cmd>normal gcc<cr>p", { desc = "Paste line below and comment" })
 
+vim.keymap.set("i", "<C-h>", "<cmd>normal h<cr>")
+vim.keymap.set("i", "<C-j>", "<cmd>normal j<cr>")
+vim.keymap.set("i", "<C-k>", "<cmd>normal k<cr>")
+vim.keymap.set("i", "<C-l>", "<cmd>normal l<cr>")
+
 -- stylua: ignore end
 
 local Hydra = require("hydra")
