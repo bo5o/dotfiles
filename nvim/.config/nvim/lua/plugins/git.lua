@@ -11,13 +11,14 @@ return {
       on_attach = function(bufnr)
         local gitsigns = require("gitsigns")
 
+        -- Mappings
         local function map(mode, l, r, opts)
           opts = opts or {}
           opts.buffer = bufnr
           vim.keymap.set(mode, l, r, opts)
         end
 
-        -- Navigation
+        -- Next hunk
         map("n", "]c", function()
           if vim.wo.diff then
             vim.cmd.normal({ "]c", bang = true })
@@ -26,6 +27,7 @@ return {
           end
         end, { desc = "Next hunk" })
 
+        -- Previous hunk
         map("n", "[c", function()
           if vim.wo.diff then
             vim.cmd.normal({ "[c", bang = true })
@@ -47,7 +49,13 @@ return {
         end, { desc = "Reset hunk" })
 
         -- Preview hunk
-        map("n", "<leader>hp", gitsigns.preview_hunk_inline, { desc = "Preview hunk" })
+        map(
+          "n",
+          "<leader>hp",
+          gitsigns.preview_hunk_inline,
+          { desc = "Preview hunk (inline)" }
+        )
+        map("n", "<leader>hP", gitsigns.preview_hunk, { desc = "Preview hunk" })
 
         -- Toggle line-wise git blame
         map(
