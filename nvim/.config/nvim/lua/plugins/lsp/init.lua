@@ -195,18 +195,7 @@ return {
         group = vim.api.nvim_create_augroup("lint", { clear = true }),
         callback = function()
           local lint = require("lint")
-
           lint.try_lint()
-
-          local use_mypy = vim.bo.filetype == "python"
-            and vim.env.VIRTUAL_ENV
-            and vim.fn.filereadable(
-                vim.fs.joinpath(vim.env.VIRTUAL_ENV, "bin", "mypy")
-              )
-              == 1
-          if use_mypy then
-            lint.try_lint("mypy")
-          end
         end,
       })
     end,
