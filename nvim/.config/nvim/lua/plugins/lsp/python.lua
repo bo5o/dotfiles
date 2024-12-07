@@ -2,6 +2,7 @@ local M = {}
 
 function M.setup()
   require("lspconfig").ruff.setup({})
+
   require("lspconfig").basedpyright.setup({
     settings = {
       basedpyright = {
@@ -10,7 +11,7 @@ function M.setup()
     },
   })
 
-  -- enable pylsp just for mypy
+  -- expose mypy through pylsp
   require("lspconfig").pylsp.setup({
     autostart = false,
     settings = {
