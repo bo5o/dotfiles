@@ -51,6 +51,7 @@ function M.setup()
   vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
     callback = function(opt)
+      ---@type vim.lsp.Client
       local client
       for _, item in ipairs(vim.lsp.get_clients()) do
         if item.name == "pylsp" then
@@ -63,7 +64,7 @@ function M.setup()
           == 1
       if condition then
         if client then
-          vim.lsp.buf_attach_client(opt.buf, client)
+          vim.lsp.buf_attach_client(opt.buf, client.id)
         else
           require("lspconfig.configs")["pylsp"].launch()
         end
