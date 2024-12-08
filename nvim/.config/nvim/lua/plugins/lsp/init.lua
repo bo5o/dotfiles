@@ -154,11 +154,10 @@ return {
           factor = 0.22,
         },
         options = {
-          use_icons_from_diagnostic = true,
           multiple_diag_under_cursor = true,
           multilines = false,
           format = function(diagnostic)
-            return diagnostic.message .. " [" .. diagnostic.source .. "]"
+            return diagnostic.message .. " [" .. string.lower(diagnostic.source) .. "]"
           end,
         },
       })
