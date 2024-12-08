@@ -51,8 +51,8 @@ function M.setup()
   vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
     callback = function(opt)
-      ---@type vim.lsp.Client
-      local client
+      ---@type vim.lsp.Client|nil
+      local client = nil
       for _, item in ipairs(vim.lsp.get_clients()) do
         if item.name == "pylsp" then
           client = item
