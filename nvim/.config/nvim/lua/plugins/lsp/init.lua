@@ -118,21 +118,20 @@ return {
 
       vim.diagnostic.config({
         virtual_text = false,
+        severity_sort = true,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = "●",
+            [vim.diagnostic.severity.WARN] = "●",
+            [vim.diagnostic.severity.INFO] = "●",
+            [vim.diagnostic.severity.HINT] = "⦿",
+          },
+        },
         float = {
           border = "rounded",
           source = true,
         },
       })
-
-      for type, icon in pairs({
-        Error = "●",
-        Warn = "●",
-        Info = "●",
-        Hint = "⦿",
-      }) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
     end,
   },
 
@@ -142,10 +141,13 @@ return {
     priority = 1000,
     config = function()
       require("tiny-inline-diagnostic").setup({
-        preset = "nonerdfont",
-        multilines = false,
-        multiple_diag_under_cursor = false,
-        show_source = true,
+        preset = "simple",
+        options = {
+          show_source = true,
+          use_icons_from_diagnostic = true,
+          multiple_diag_under_cursor = true,
+          multilines = false,
+        },
       })
     end,
   },
