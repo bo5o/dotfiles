@@ -141,12 +141,25 @@ return {
     priority = 1000,
     config = function()
       require("tiny-inline-diagnostic").setup({
-        preset = "simple",
+        signs = {
+          left = " ",
+          right = "",
+          diag = "●",
+          arrow = " ◀",
+          up_arrow = " ▲",
+          vertical = " │",
+          vertical_end = " └",
+        },
+        blend = {
+          factor = 0.22,
+        },
         options = {
-          show_source = true,
           use_icons_from_diagnostic = true,
           multiple_diag_under_cursor = true,
           multilines = false,
+          format = function(diagnostic)
+            return diagnostic.message .. " [" .. diagnostic.source .. "]"
+          end,
         },
       })
     end,
