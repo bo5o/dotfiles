@@ -1,7 +1,3 @@
-tree-sitter-cli
 tlrc
 cargo-nextest
-bottom
-just
-git-delta
 git-absorb
