@@ -156,9 +156,7 @@ return {
 
       vim.keymap.set("n", "<leader>fr", function()
         builtin.live_grep({
-          additional_args = function(opts)
-            return { "--hidden", "--ignore", "--glob=!.git/" }
-          end,
+          additional_args = { "--hidden", "--ignore", "--glob=!.git/" },
         })
       end, { silent = true, desc = "Live grep (incl. hidden)" })
 
