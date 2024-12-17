@@ -33,6 +33,7 @@ return {
         },
       },
       { "b0o/schemastore.nvim", version = false },
+      { "Davidyz/inlayhint-filler.nvim" },
     },
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -64,6 +65,9 @@ return {
           )
           map("crn", "<cmd>Lspsaga rename<cr>", "Rename all references")
           map("crr", "<cmd>Lspsaga code_action<cr>", "Select code action")
+          map("cri", function()
+            require("inlayhint-filler").fill()
+          end, "Insert inlay-hint under cursor")
           map(
             "<c-r><c-r>",
             "<cmd>Lspsaga code_action<cr>",
