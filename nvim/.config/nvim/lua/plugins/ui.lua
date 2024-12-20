@@ -11,8 +11,7 @@ return {
         },
         select = {
           enabled = true,
-          backend = { "telescope" },
-          telescope = require("telescope.themes").get_cursor({}),
+          backend = { "fzf_lua" },
         },
       })
     end,

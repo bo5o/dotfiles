@@ -1073,6 +1073,37 @@ return {
     end,
   },
 
+  {
+    "ahmedkhalf/project.nvim",
+    event = "VeryLazy",
+    opts = {
+      silent_chdir = true,
+      scope_chdir = "win",
+      patterns = {
+        "!^.direnv",
+        "!^site-packages",
+        "!^node_modules",
+        ".git",
+        "_darcs",
+        ".hg",
+        ".bzr",
+        ".svn",
+        "Makefile",
+        "justfile",
+        "Justfile",
+        "manage.py",
+        "pyproject.toml",
+        "setup.py",
+        "requirements.txt",
+        "package.json",
+        "Cargo.toml",
+      },
+    },
+    config = function(opts)
+      require("project_nvim").setup(opts)
+    end,
+  },
+
   { "tpope/vim-dadbod", dependencies = "vim-dadbod-ui" },
 
   {
