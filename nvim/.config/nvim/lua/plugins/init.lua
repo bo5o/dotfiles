@@ -30,6 +30,7 @@ return {
         { "<leader>q", group = "diagnostics" },
         { "<leader>s", group = "search/replace" },
         { "<leader>t", group = "test" },
+        { "g?", group = "printdebug" },
       },
     },
   },
@@ -1277,4 +1278,45 @@ return {
   },
 
   { "stevearc/profile.nvim" },
+
+  {
+    "andrewferrier/debugprint.nvim",
+    version = "*",
+    keys = {
+      { "g?", mode = "n" },
+    },
+    cmd = {
+      "ToggleCommentDebugPrints",
+      "DeleteDebugPrints",
+    },
+    opts = {
+      display_snippet = false,
+      display_counter = false,
+      filetypes = {
+        ["python"] = { left = 'print("', right = '", <++>)' },
+      },
+      keymaps = {
+        normal = {
+          plain_below = "g??",
+          plain_above = "",
+          variable_below = "",
+          variable_above = "",
+          variable_below_alwaysprompt = "",
+          variable_above_alwaysprompt = "",
+          textobj_below = "",
+          textobj_above = "",
+          toggle_comment_debug_prints = "g?c",
+          delete_debug_prints = "g?d",
+        },
+        insert = {
+          plain = "",
+          variable = "",
+        },
+        visual = {
+          variable_below = "",
+          variable_above = "",
+        },
+      },
+    },
+  },
 }
