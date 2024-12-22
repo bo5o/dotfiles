@@ -1076,9 +1076,11 @@ return {
   {
     "ahmedkhalf/project.nvim",
     event = "VeryLazy",
+    main = "project_nvim",
     opts = {
       silent_chdir = true,
       scope_chdir = "win",
+      detection_methods = { "pattern", "lsp" },
       patterns = {
         "!^.direnv",
         "!^site-packages",
@@ -1099,9 +1101,6 @@ return {
         "Cargo.toml",
       },
     },
-    config = function(opts)
-      require("project_nvim").setup(opts)
-    end,
   },
 
   { "tpope/vim-dadbod", dependencies = "vim-dadbod-ui" },
