@@ -3,6 +3,7 @@ return {
     "ibhagwan/fzf-lua",
     dependencies = {
       { "junegunn/fzf", build = "./install --bin" },
+      { "ahmedkhalf/project.nvim" },
     },
     cmd = "FzfLua",
     keys = {
@@ -16,8 +17,8 @@ return {
       {
         "<leader>fs",
         function()
-          local fzf_lua = require("fzf-lua")
-          return fzf_lua.lsp_document_symbols() or fzf_lua.treesitter()
+          local fzf = require("fzf-lua")
+          return fzf.lsp_document_symbols() or fzf.treesitter()
         end,
         desc = "Find symbols",
       },
@@ -51,10 +52,19 @@ return {
       { "<leader>ft", "<cmd>TodoFzfLua<cr>", desc = "Find todos" },
       {
         "<leader>f/",
-        "<cmd>FzfLua current_buffer_fuzzy_find<cr>",
+        "<cmd>FzfLua lgrep_curbuf<cr>",
         desc = "Live fuzzy search inside of the currently open buffer",
       },
-      { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find files" },
+      {
+        "<leader>ff",
+        function()
+          local fzf = require("fzf-lua")
+          local cwd = require("project_nvim.project").get_project_root()
+            or vim.fs.getcwd()
+          return fzf.git_files({ cwd = cwd }) or fzf.files({ cwd = cwd })
+        end,
+        desc = "Find files",
+      },
       { "<leader>fr", "<cmd>FzfLua live_grep<cr>", desc = "Live grep" },
     },
     config = function()
