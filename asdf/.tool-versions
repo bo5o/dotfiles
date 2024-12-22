@@ -1,7 +1,7 @@
 direnv 2.35.0
 python 3.12.7
 nodejs 20.11.0
-neovim 0.10.2
+neovim 0.10.3
 bat 0.24.0
 golang 1.23.4
 ripgrep 14.1.1
