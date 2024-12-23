@@ -61,13 +61,24 @@ return {
           local fzf = require("fzf-lua")
           local cwd = require("project_nvim.project").get_project_root()
             or vim.fs.getcwd()
-          return fzf.git_files({ cwd = cwd }) or fzf.files({ cwd = cwd })
+          local opts = { cwd = cwd, formatter = { "path.filename_first", 2 } }
+          return fzf.git_files(opts) or fzf.files(opts)
         end,
         desc = "Find files",
+      },
+      {
+        "<leader>fp",
+        function()
+          local opts = { cwd = "~/projects", formatter = { "path.filename_first", 2 } }
+          return require("fzf-lua").files(opts)
+        end,
+        desc = "Find files in all projects",
       },
       { "<leader>fr", "<cmd>FzfLua live_grep<cr>", desc = "Live grep" },
     },
     config = function()
+      local actions = require("fzf-lua.actions")
+
       require("fzf-lua").setup({
         "telescope",
         winopts = {
@@ -82,19 +93,23 @@ return {
           },
         },
         oldfiles = {
+          cwd_only = true,
+          stat_file = true,
           include_current_session = true,
         },
+        files = {
+          actions = {
+            ["ctrl-g"] = false,
+            ["ctrl-i"] = { actions.toggle_ignore },
+            ["ctrl-h"] = { actions.toggle_hidden },
+          },
+        },
         grep = {
-          rg_opts = "--column "
-            .. "--line-number "
-            .. "--no-heading "
-            .. "--color=always "
-            .. "--smart-case "
-            .. "--hidden "
-            .. "--ignore "
-            .. "--max-columns=4096 "
-            .. "--glob='!{.git,.direnv,node_modules}/*' "
-            .. "-e",
+          actions = {
+            ["ctrl-g"] = false,
+            ["ctrl-i"] = { actions.toggle_ignore },
+            ["ctrl-h"] = { actions.toggle_hidden },
+          },
         },
       })
     end,
