@@ -7,7 +7,15 @@ return {
     },
     cmd = "FzfLua",
     keys = {
-      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Find buffers" },
+      {
+        "<leader>fb",
+        function()
+          return require("fzf-lua").buffers({
+            formatter = { "path.filename_first", 2 },
+          })
+        end,
+        desc = "Find buffers",
+      },
       {
         "<leader>fm",
         "<cmd>FzfLua oldfiles<cr>",
