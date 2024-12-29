@@ -20,7 +20,7 @@ restic 0.17.3
 difftastic 0.61.0
 zellij 0.41.2
 uv 0.5.11
-tree-sitter 0.24.4
+tree-sitter 0.24.6
 just 1.38.0
 delta 0.18.2
 bottom 0.10.2
