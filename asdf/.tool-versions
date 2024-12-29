@@ -17,7 +17,7 @@ lazydocker 0.24.1
 postgres 16.4
 jq 1.7.1
 restic 0.17.3
-difftastic 0.61.0
+difftastic 0.62.0
 zellij 0.41.2
 uv 0.5.13
 tree-sitter 0.24.6
