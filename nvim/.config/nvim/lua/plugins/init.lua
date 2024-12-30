@@ -30,6 +30,7 @@ return {
         { "<leader>q", group = "diagnostics" },
         { "<leader>s", group = "search/replace" },
         { "<leader>t", group = "test" },
+        { "<leader>T", group = "test (neotest)" },
       },
     },
   },
@@ -816,28 +817,63 @@ return {
     cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
     keys = {
       {
-        "<leader>ty",
-        ":TestNearest<cr>",
-        desc = "Copy test command for nearest test",
+        "<leader>tf",
+        "<cmd>TestFile<cr>",
+        desc = "Run tests for the current file",
         silent = false,
       },
       {
-        "<leader>tY",
+        "<leader>ts",
+        "<cmd>TestSuite<cr>",
+        desc = "Run test suite of the current file",
+      },
+      {
+        "<leader>tS",
+        ":TestSuite<space>",
+        desc = "Run test suite of the current file (add flags)",
+      },
+      {
+        "<leader>tn",
+        "<cmd>TestNearest<cr>",
+        desc = "Run a test nearest to the cursor",
+      },
+      {
+        "<leader>tN",
         ":TestNearest<space>",
-        desc = "Copy test command for nearest test (extra args)",
+        desc = "Run a test nearest to the cursor (add flags)",
+        silent = false,
+      },
+      { "<leader>tt", "<cmd>TestLast<cr>", desc = "Run the last test" },
+      { "<leader>tl", "<cmd>TestLast<cr>", desc = "Run the last test" },
+      {
+        "<leader>tL",
+        ":TestLast<space>",
+        desc = "Run the last test (add flags)",
+        silent = false,
+      },
+      {
+        "<leader>ty",
+        "<cmd>TestNearest -strategy=clipboard<cr>",
+        desc = "Copy test command for nearest test",
+      },
+      {
+        "<leader>tY",
+        ":TestNearest -strategy=clipboard<space>",
+        desc = "Copy test command for nearest test (add flags)",
         silent = false,
       },
     },
     dependencies = { "vim-dispatch" },
     init = function()
-      vim.cmd([[
-        function! ClipboardStrategy(cmd)
-            let @+ = a:cmd
-        endfunction
-      ]])
-
-      vim.g["test#custom_strategies"] = { clipboard = vim.fn["ClipboardStrategy"] }
-      vim.g["test#strategy"] = "clipboard"
+      vim.g["test#custom_strategies"] = {
+        clipboard = function(cmd)
+          vim.fn.setreg("+", cmd)
+        end,
+        start = function(cmd)
+          vim.fn.execute("Start -wait=always " .. cmd)
+        end,
+      }
+      vim.g["test#strategy"] = "start"
 
       -- :p causes problems with cargo test in rust
       -- vim.g["test#filename_modifier"] = ":p"
@@ -849,6 +885,7 @@ return {
 
       vim.g["test#python#pytest#options"] = {
         nearest = "--pdb --pdbcls=IPython.terminal.debugger:TerminalPdb --no-cov",
+        file = "--no-cov",
       }
 
       -- JavaScript
@@ -873,85 +910,70 @@ return {
     },
     keys = {
       {
-        "<leader>ta",
+        "<leader>Ta",
         function()
           require("neotest").run.attach()
         end,
         desc = "Attach to the nearest test",
       },
       {
-        "<leader>tn",
+        "<leader>Tn",
         function()
           require("neotest").run.run()
         end,
         desc = "Run nearest test",
       },
       {
-        "<leader>tN",
-        function()
-          local extra_args
-
-          local input = vim.fn.input("Extra args: ")
-          if input == "" or input == nil then
-            extra_args = {}
-          else
-            extra_args = vim.fn.split(input)
-          end
-          require("neotest").run.run({ extra_args = extra_args, suite = false })
-        end,
-        desc = "Run nearest test (extra args)",
-      },
-      {
-        "<leader>tf",
+        "<leader>Tf",
         function()
           require("neotest").run.run(vim.fn.expand("%"))
         end,
         desc = "Run test file",
       },
       {
-        "<leader>tl",
+        "<leader>Tl",
         function()
           require("neotest").run.run_last()
         end,
         desc = "Run last test",
       },
       {
-        "<leader>tt",
+        "<leader>Tt",
         function()
           require("neotest").run.run_last()
         end,
         desc = "Run last test",
       },
       {
-        "<leader>ts",
+        "<leader>Ts",
         function()
           require("neotest").run.run({ suite = true })
         end,
         desc = "Run test suite",
       },
       {
-        "<leader>tw",
+        "<leader>Tw",
         function()
           require("neotest").watch.toggle()
         end,
         "Watch nearest test",
       },
       {
-        "<leader>tW",
+        "<leader>TW",
         function()
           require("neotest").watch.toggle(vim.fn.expand("%"))
         end,
         "Watch test file",
       },
       {
-        "<leader>to",
+        "<leader>To",
         function()
           require("neotest").output.open({ enter = true })
         end,
         desc = "Show test output (short)",
       },
       {
-        "<leader>tO",
+        "<leader>TO",
         function()
           require("neotest").output.open({ enter = true, last_run = true })
         end,
@@ -965,7 +987,7 @@ return {
         desc = "Open test file summary",
       },
       {
-        "<leader>tp",
+        "<leader>Tp",
         function()
           require("neotest").output_panel.toggle()
         end,
@@ -1011,9 +1033,10 @@ return {
   {
     "tpope/vim-tbone",
     keys = {
-      { "t<cr>", "<cmd>Tmux send-keys -t {left} Enter<cr>" },
-      { "t<C-c>", "<cmd>Tmux send-keys -t {left} C-c<cr>" },
-      { "t<C-d>", "<cmd>Tmux send-keys -t {left} C-d<cr>" },
+      { "t<cr>", "<cmd>Tmux send-keys -t popup Enter<cr>" },
+      { "t<C-c>", "<cmd>Tmux send-keys -t popup C-c<cr>" },
+      { "t<C-d>", "<cmd>Tmux send-keys -t popup C-d<cr>" },
+      { "t<C-l>", "<cmd>Tmux send-keys -t popup C-l<cr>" },
     },
     cmd = "Tmux",
   },
