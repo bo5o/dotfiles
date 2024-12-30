@@ -114,7 +114,6 @@ return {
         },
         grep = {
           actions = {
-            ["ctrl-g"] = false,
             ["ctrl-i"] = { actions.toggle_ignore },
             ["ctrl-h"] = { actions.toggle_hidden },
           },
