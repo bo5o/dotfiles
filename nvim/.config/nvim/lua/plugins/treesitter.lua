@@ -124,6 +124,28 @@ return {
     dependencies = "nvim-treesitter",
     opts = { separator = "-", max_lines = 3 },
   },
+  -- Walk treesitter nodes
+  {
+    "aaronik/treewalker.nvim",
+    dependencies = { "nvimtools/hydra.nvim" },
+    config = function()
+      require("treewalker").setup({ highlight = false })
+
+      local hydra = require("hydra")
+
+      hydra({
+        name = "Walk",
+        mode = "n",
+        body = "gw",
+        heads = {
+          { "h", "<cmd>Treewalke Left<cr>" },
+          { "j", "<cmd>Treewalke Down<cr>" },
+          { "k", "<cmd>Treewalke Up<cr>" },
+          { "l", "<cmd>Treewalke Right<cr>" },
+        },
+      })
+    end,
+  },
   -- Colorize nested parentheses
   {
     "HiPhish/rainbow-delimiters.nvim",

@@ -81,6 +81,7 @@
   "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "b77b0b5d44394a9efc273210fb4471e44813d351" },
   "tmux.vim": { "branch": "master", "commit": "ce26eaa235bc241363a19ffee9497a8bb7f9b572" },
   "todo-comments.nvim": { "branch": "main", "commit": "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0" },
+  "treewalker.nvim": { "branch": "main", "commit": "49cc3289e1eda4c126f0ec92861ac64b93c41a49" },
   "trouble.nvim": { "branch": "main", "commit": "46cf952fc115f4c2b98d4e208ed1e2dce08c9bf6" },
   "ts-node-action": { "branch": "master", "commit": "6d3b60754fd87963d70eadaa2f77873b447eac26" },
   "vim-dadbod": { "branch": "master", "commit": "f740950d0703099e0f172016f10e0e39f50fd0ba" },
