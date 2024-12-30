@@ -138,10 +138,10 @@ return {
         mode = "n",
         body = "gw",
         heads = {
-          { "h", "<cmd>Treewalke Left<cr>" },
-          { "j", "<cmd>Treewalke Down<cr>" },
-          { "k", "<cmd>Treewalke Up<cr>" },
-          { "l", "<cmd>Treewalke Right<cr>" },
+          { "h", "<cmd>Treewalker Left<cr>" },
+          { "j", "<cmd>Treewalker Down<cr>" },
+          { "k", "<cmd>Treewalker Up<cr>" },
+          { "l", "<cmd>Treewalker Right<cr>" },
         },
       })
     end,
