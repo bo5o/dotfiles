@@ -68,12 +68,6 @@ return {
           map("cri", function()
             require("inlayhint-filler").fill()
           end, "Insert inlay-hint under cursor")
-          map(
-            "<c-r><c-r>",
-            "<cmd>Lspsaga code_action<cr>",
-            "Select code action",
-            { "v" }
-          )
           map("<c-r>r", "<cmd>Lspsaga code_action<cr>", "Select code action", { "v" })
           map("<leader>cwa", vim.lsp.buf.add_workspace_folder, "Add workspace folder")
           map(
