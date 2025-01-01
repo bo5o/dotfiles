@@ -31,3 +31,4 @@ nvim/.config/nvim/vimspector/gadgets/**
 ipython/.jupyter/migrated
 .luarc.json
 tmux/.config/tmux/plugins
+/.env
