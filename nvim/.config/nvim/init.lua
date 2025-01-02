@@ -18,7 +18,10 @@ vim.g.mapleader = ","
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-require("lazy").setup("plugins", {
+require("lazy").setup({
+  { import = "plugins" },
+  { import = "overrides.work" },
+}, {
   ui = {
     -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
     border = "rounded",
