@@ -20,3 +20,4 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 export RESTIC_REPOSITORY="sftp:storagebox:backup/$(hostname)"
 export RESTIC_PASSWORD_COMMAND="pass restic/$(hostname)/RESTIC_PASSWORD"
+export NEOVIM_CONTEXT="home"
