@@ -5,7 +5,6 @@ return {
       return vim.env.ANTHROPIC_API_KEY ~= nil
     end,
     dependencies = {
-      "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "MeanderingProgrammer/render-markdown.nvim",
     },
@@ -41,20 +40,15 @@ return {
         mode = { "v" },
       },
     },
-    config = function()
-      require("codecompanion").setup({
+    opts = function()
+      local adapter = "anthropic"
+      return {
         strategies = {
-          chat = {
-            adapter = "anthropic",
-          },
-          inline = {
-            adapter = "anthropic",
-          },
-          cmd = {
-            adapter = "anthropic",
-          },
+          chat = { adapter = adapter },
+          inline = { adapter = adapter },
+          cmd = { adapter = adapter },
         },
-      })
+      }
     end,
   },
 }
