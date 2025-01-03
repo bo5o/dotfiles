@@ -1,13 +1,11 @@
 return {
+  -- Generate token with `:Copilot auth`
+  { "github/copilot.vim", cmd = "Copilot" },
   {
     "olimorris/codecompanion.nvim",
     cond = function()
       return vim.env.NEOVIM_CONTEXT == "work"
     end,
-    dependencies = {
-      -- Generate token with `:Copilot auth`
-      { "github/copilot.vim", cmd = "Copilot" },
-    },
     opts = function()
       local adapter = "copilot"
       return {
