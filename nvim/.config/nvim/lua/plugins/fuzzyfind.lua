@@ -70,7 +70,7 @@ return {
           local cwd = require("project_nvim.project").get_project_root()
             or vim.fs.getcwd()
           local opts = { cwd = cwd, formatter = { "path.filename_first", 2 } }
-          return fzf.git_files(opts) or fzf.files(opts)
+          return fzf.files(opts)
         end,
         desc = "Find files",
       },
