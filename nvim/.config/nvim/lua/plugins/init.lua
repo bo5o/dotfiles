@@ -49,10 +49,21 @@ return {
         function()
           require("grug-far").open({
             transient = true,
-            prefills = { flags = vim.fn.expand("%") },
+            prefills = { paths = vim.fn.expand("%") },
           })
         end,
-        mode = { "n", "v" },
+        mode = "n",
+        desc = "Search and replace in current file",
+      },
+      {
+        "<leader>sr",
+        function()
+          require("grug-far").with_visual_selection({
+            transient = true,
+            prefills = { paths = vim.fn.expand("%") },
+          })
+        end,
+        mode = "v",
         desc = "Search and replace in current file",
       },
       { "<leader>sR", "<cmd>GrugFar<cr>", desc = "Search and replace" },
