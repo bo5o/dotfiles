@@ -1298,6 +1298,7 @@ return {
 
   {
     "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown", "codecompanion" },
     opts = {
       heading = {
         width = "block",

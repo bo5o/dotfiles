@@ -11,7 +11,6 @@ return {
     },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "MeanderingProgrammer/render-markdown.nvim",
       { "echasnovski/mini.diff", version = "*" },
     },
     keys = {
