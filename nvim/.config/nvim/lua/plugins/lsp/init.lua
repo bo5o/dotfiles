@@ -393,6 +393,7 @@ return {
           "startify",
         },
       },
+      show_guides = true,
     },
   },
 }
