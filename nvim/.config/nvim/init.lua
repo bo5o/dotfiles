@@ -20,7 +20,12 @@ vim.g.loaded_netrwPlugin = 1
 
 require("lazy").setup({
   { import = "plugins" },
-  { import = "overrides.work" },
+  {
+    import = "overrides.work",
+    cond = function()
+      return vim.env.NEOVIM_CONTEXT == "work"
+    end,
+  },
 }, {
   ui = {
     -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.

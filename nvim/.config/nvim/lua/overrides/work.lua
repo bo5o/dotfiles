@@ -3,9 +3,6 @@ return {
   { "github/copilot.vim", cmd = "Copilot" },
   {
     "olimorris/codecompanion.nvim",
-    cond = function()
-      return vim.env.NEOVIM_CONTEXT == "work"
-    end,
     opts = function()
       local adapter = "copilot"
       return {
