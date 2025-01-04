@@ -4,6 +4,11 @@ return {
     cond = function()
       return vim.env.ANTHROPIC_API_KEY ~= nil
     end,
+    cmd = {
+      "CodeCompanion",
+      "CodeCompanionChat",
+      "CodeCompanionActions",
+    },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "MeanderingProgrammer/render-markdown.nvim",
@@ -15,6 +20,12 @@ return {
         "<cmd>CodeCompanionChat Toggle<cr>",
         desc = "Toggle AI chat",
         mode = { "n" },
+      },
+      {
+        "<leader>oa",
+        ":CodeCompanionChat Add<cr>",
+        desc = "Send to AI chat",
+        mode = { "v" },
       },
       {
         "cra",
@@ -45,7 +56,17 @@ return {
       local adapter = "anthropic"
       return {
         strategies = {
-          chat = { adapter = adapter },
+          chat = {
+            adapter = adapter,
+            keymaps = {
+              send = {
+                modes = { n = "<C-s>", i = "<C-s>" },
+                index = 2,
+                callback = "keymaps.send",
+                description = "Send",
+              },
+            },
+          },
           inline = { adapter = adapter },
           cmd = { adapter = adapter },
         },
