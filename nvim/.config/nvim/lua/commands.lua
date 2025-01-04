@@ -48,3 +48,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.shiftwidth = 2
   end,
 })
+
+-- Expand 'cc' and 'ccc' into 'CodeCompanion' and 'CodeCompanionChat'
+vim.cmd([[cab cc CodeCompanion]])
+vim.cmd([[cab ccc CodeCompanionChat]])
