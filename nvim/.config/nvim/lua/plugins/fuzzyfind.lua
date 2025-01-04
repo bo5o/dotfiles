@@ -84,10 +84,9 @@ return {
       },
       { "<leader>fr", "<cmd>FzfLua live_grep<cr>", desc = "Live grep" },
     },
-    config = function()
+    opts = function()
       local actions = require("fzf-lua.actions")
-
-      require("fzf-lua").setup({
+      return {
         "telescope",
         winopts = {
           preview = {
@@ -118,7 +117,7 @@ return {
             ["ctrl-h"] = { actions.toggle_hidden },
           },
         },
-      })
+      }
     end,
   },
 }
