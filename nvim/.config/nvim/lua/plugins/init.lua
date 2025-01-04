@@ -176,6 +176,14 @@ return {
         position = "right",
         size = 0.4,
       },
+      modes = {
+        lsp_base = {
+          params = {
+            -- include the current location in the results
+            include_current = true,
+          },
+        },
+      },
     },
   },
 
