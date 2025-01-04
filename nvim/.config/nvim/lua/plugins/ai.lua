@@ -7,6 +7,7 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "MeanderingProgrammer/render-markdown.nvim",
+      { "echasnovski/mini.diff", version = "*" },
     },
     keys = {
       {
@@ -47,6 +48,11 @@ return {
           chat = { adapter = adapter },
           inline = { adapter = adapter },
           cmd = { adapter = adapter },
+        },
+        display = {
+          diff = {
+            provider = "mini_diff",
+          },
         },
       }
     end,
