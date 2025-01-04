@@ -52,17 +52,13 @@ return {
           end, "Toggle inlay hints")
 
           map("gd", "<cmd>Lspsaga goto_definition<cr>", "Go to definition")
-          map("<leader>pd", "<cmd>Lspsaga peek_definition<cr>", "Peek definition")
+          map("gp", "<cmd>Lspsaga peek_definition<cr>", "Peek definition")
           map("gD", vim.lsp.buf.declaration, "Go to declaration")
           map("<c-s>", vim.lsp.buf.signature_help, "Display signature help", { "i" })
           map("gI", vim.lsp.buf.implementation, "List implementations")
           map("gr", "<cmd>Trouble lsp_references toggle<cr>", "List all references")
-          map("gy", "<cmd>Lspsaga goto_type_definition<cr>", "Go to t[y]pe definition")
-          map(
-            "<leader>py",
-            "<cmd>Lspsaga peek_type_definition<cr>",
-            "Peek type definition"
-          )
+          map("gY", "<cmd>Lspsaga goto_type_definition<cr>", "Go to t[y]pe definition")
+          map("gy", "<cmd>Lspsaga peek_type_definition<cr>", "Peek type definition")
           map("crn", "<cmd>Lspsaga rename<cr>", "Rename all references")
           map("crr", "<cmd>Lspsaga code_action<cr>", "Select code action")
           map("cri", function()
@@ -182,6 +178,14 @@ return {
         ui = {
           code_action = "🗲",
           title = false,
+        },
+        definition = {
+          keys = {
+            edit = "<c-w>e",
+            vsplit = "<c-w>v",
+            split = "<c-w>s",
+            close = "<c-w>q",
+          },
         },
       })
     end,
