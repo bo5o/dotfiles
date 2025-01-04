@@ -168,7 +168,15 @@ return {
         desc = "Jump to last trouble item",
       },
     },
-    opts = {},
+    ---@ type trouble.Config
+    opts = {
+      preview = {
+        type = "split",
+        relative = "win",
+        position = "right",
+        size = 0.4,
+      },
+    },
   },
 
   {

@@ -57,7 +57,9 @@ return {
           map("gD", vim.lsp.buf.declaration, "Go to declaration")
           map("<c-s>", vim.lsp.buf.signature_help, "Display signature help", { "i" })
           map("gI", vim.lsp.buf.implementation, "List implementations")
-          map("gr", "<cmd>Trouble lsp_references toggle<cr>", "List all references")
+          map("gr", function()
+            require("trouble").toggle({ mode = "lsp_references", auto_refresh = false })
+          end, "Show references")
           map("gY", "<cmd>Lspsaga goto_type_definition<cr>", "Go to t[y]pe definition")
           map("gy", "<cmd>Lspsaga peek_type_definition<cr>", "Peek type definition")
           map("crn", "<cmd>Lspsaga rename<cr>", "Rename all references")
@@ -187,6 +189,11 @@ return {
             vsplit = "<c-w>v",
             split = "<c-w>s",
             close = "<c-w>q",
+          },
+        },
+        finder = {
+          keys = {
+            toggle_or_open = "<cr>",
           },
         },
       })
