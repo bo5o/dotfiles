@@ -34,6 +34,7 @@ return {
       },
       { "b0o/schemastore.nvim", version = false },
       { "Davidyz/inlayhint-filler.nvim" },
+      { "antosha417/nvim-lsp-file-operations", opts = {} },
     },
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -80,7 +81,8 @@ return {
       local capabilities = vim.tbl_deep_extend(
         "force",
         vim.lsp.protocol.make_client_capabilities(),
-        require("cmp_nvim_lsp").default_capabilities()
+        require("cmp_nvim_lsp").default_capabilities(),
+        require("lsp-file-operations").default_capabilities()
       )
 
       local lspconfig = require("lspconfig")
