@@ -22,6 +22,7 @@ vim.keymap.set("n", "<C-w>|", "<C-w>v", { desc = "Split window vertically" })
 
 vim.keymap.set("n", "<C-w>pc", "<cmd>pclose<CR>", { desc = 'Close any "Preview" window currently open' })
 vim.keymap.set("n", "<C-w>C", "<cmd>tabclose<CR>", { desc = "Close current tab page" })
+vim.keymap.set("n", "<C-w>Q", "<cmd>tabclose<CR>", { desc = "Close current tab page" })
 vim.keymap.set("n", "<C-w>O", "<cmd>tabonly<CR>", { desc = "Close all other tab pages" })
 vim.keymap.set("n", "<C-w><C-f>", "<C-w>vgf", { desc = "Open file under cursor in vertical split" })
 
