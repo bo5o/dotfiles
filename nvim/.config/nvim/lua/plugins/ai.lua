@@ -11,7 +11,7 @@ return {
     },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      { "echasnovski/mini.diff", version = "*" },
+      { "echasnovski/mini.diff", version = "*", opts = {} },
     },
     keys = {
       {
