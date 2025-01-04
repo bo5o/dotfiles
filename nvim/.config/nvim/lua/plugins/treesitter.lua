@@ -124,24 +124,53 @@ return {
     dependencies = "nvim-treesitter",
     opts = { separator = "-", max_lines = 3 },
   },
-  -- Walk treesitter nodes
+  -- Navigate around treesitter nodes
   {
     "aaronik/treewalker.nvim",
-    dependencies = { "nvimtools/hydra.nvim" },
     config = function()
       require("treewalker").setup({ highlight = false })
 
       local hydra = require("hydra")
 
+      -- movement
       hydra({
         name = "Walk",
         mode = "n",
         body = "gw",
         heads = {
-          { "h", "<cmd>Treewalker Left<cr>" },
-          { "j", "<cmd>Treewalker Down<cr>" },
-          { "k", "<cmd>Treewalker Up<cr>" },
-          { "l", "<cmd>Treewalker Right<cr>" },
+          { "h", "<cmd>Treewalker Left<cr>", { desc = "Go to node to the left" } },
+          { "j", "<cmd>Treewalker Down<cr>", { desc = "Go to node below" } },
+          { "k", "<cmd>Treewalker Up<cr>", { desc = "Go to node above" } },
+          { "l", "<cmd>Treewalker Right<cr>", { desc = "Go to node to the right" } },
+        },
+      })
+
+      -- swapping
+      hydra({
+        name = "Swap",
+        mode = "n",
+        body = "gs",
+        heads = {
+          {
+            "h",
+            "<cmd>Treewalker SwapLeft<cr>",
+            { desc = "Swap with node to the left" },
+          },
+          {
+            "j",
+            "<cmd>Treewalker SwapDown<cr>",
+            { desc = "Swap with node below" },
+          },
+          {
+            "k",
+            "<cmd>Treewalker SwapUp<cr>",
+            { desc = "Swap with node above" },
+          },
+          {
+            "l",
+            "<cmd>Treewalker SwapRight<cr>",
+            { desc = "Swap with node to the right" },
+          },
         },
       })
     end,
