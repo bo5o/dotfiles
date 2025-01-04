@@ -1035,8 +1035,15 @@ return {
   {
     "tpope/vim-dispatch",
     cmd = { "Dispatch", "Make", "Focus", "Start" },
-    dependencies = { "tpope/vim-tbone" },
+    keys = {
+      {
+        "'<space>",
+        ":Start -wait=always<space>",
+        desc = "Start a process in the tmux popup session",
+      },
+    },
     init = function()
+      vim.g.dispatch_no_maps = 1
       vim.g.tmux_session = "popup"
     end,
   },
