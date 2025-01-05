@@ -125,6 +125,11 @@ return {
     },
     opts = function()
       local actions = require("fzf-lua.actions")
+      local file_sel_to_trouble = function(selected, opts)
+        opts = vim.tbl_deep_extend("keep", opts, { copen = false })
+        actions.file_sel_to_qf(selected, opts)
+        vim.cmd([[Trouble qflist open]])
+      end
       return {
         "telescope",
         winopts = {
@@ -154,6 +159,7 @@ return {
           actions = {
             ["ctrl-i"] = { actions.toggle_ignore },
             ["ctrl-h"] = { actions.toggle_hidden },
+            ["ctrl-q"] = { fn = file_sel_to_trouble, prefix = "select-all+" },
           },
         },
       }
