@@ -1,3 +1,27 @@
+---List git worktrees
+---@return string[] | nil
+local list_worktrees = function()
+  local obj = vim.system({ "git", "worktree", "list" }, { text = true }):wait()
+  local code, output = obj.code, obj.stdout
+  if code ~= 0 or not output then
+    return nil
+  end
+  return vim.fn.split(output, "\n")
+end
+
+---Open a diff against the same file in another git worktree
+---@param file string File path
+---@param worktree string Worktree path
+local diff_worktree = function(file, worktree)
+  local Path = require("plenary.path")
+  local root = vim.fs.root(0, ".git")
+  if not root then
+    return
+  end
+  local target = Path:new(worktree) / Path:new(file):make_relative(root)
+  vim.cmd("diffsplit " .. target:absolute())
+end
+
 return {
   {
     "ibhagwan/fzf-lua",
@@ -83,6 +107,21 @@ return {
         desc = "Find files in all projects",
       },
       { "<leader>fr", "<cmd>FzfLua live_grep<cr>", desc = "Live grep" },
+      {
+        "<leader>fw",
+        function()
+          local paths = list_worktrees()
+          if not paths then
+            return
+          end
+          vim.ui.select(paths, { prompt = "Choose a worktree:" }, function(choice)
+            local worktree = vim.fn.split(choice)[1]
+            local file = vim.api.nvim_buf_get_name(0)
+            diff_worktree(file, worktree)
+          end)
+        end,
+        desc = "Find current file in another worktree and open it in diff mode",
+      },
     },
     opts = function()
       local actions = require("fzf-lua.actions")
