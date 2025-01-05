@@ -118,6 +118,7 @@ return {
         "<leader>gl",
         "<cmd>DiffviewFileHistory --follow %<cr>",
         desc = "File history",
+        mode = { "n", "v" },
       },
       {
         "<leader>gL",
