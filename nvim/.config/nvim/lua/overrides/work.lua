@@ -1,6 +1,16 @@
 return {
   -- Generate token with `:Copilot auth`
-  { "github/copilot.vim", cmd = "Copilot" },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    config = function()
+      require("copilot").setup({
+        panel = { enabled = false },
+        suggestion = { enabled = false },
+        filetype = { ["*"] = false },
+      })
+    end,
+  },
   {
     "olimorris/codecompanion.nvim",
     opts = function()
