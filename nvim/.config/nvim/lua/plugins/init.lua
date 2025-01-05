@@ -351,7 +351,7 @@ return {
         function()
           require("mini.bufremove").delete()
         end,
-        desc = "Close current buffer (ignore unsaved changes)",
+        desc = "Close current buffer",
       },
     },
     opts = {
@@ -382,7 +382,14 @@ return {
     },
   },
 
-  { "tpope/vim-unimpaired" },
+  {
+    "tpope/vim-unimpaired",
+    config = function()
+      vim.keymap.set("n", "yoD", "<cmd>diffoff!<cr>", {
+        desc = "Switch off diff mode in all windows in the current tab page where 'diff' is set",
+      })
+    end,
+  },
 
   { "zhimsel/vim-stay" },
 
