@@ -161,7 +161,12 @@ return {
 
         formatting = {
           format = lspkind.cmp_format({
-            mode = "text",
+            preset = "codicons",
+            symbol_map = {
+              String = "",
+              Spell = "",
+            },
+            mode = "symbol_text",
             menu = {
               nvim_lsp = "[lsp]",
               treesitter = "[ts]",
