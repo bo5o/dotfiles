@@ -169,14 +169,16 @@ return {
                 Spell = "",
               },
               mode = "symbol_text",
-              menu = {
-                nvim_lsp = "[lsp] ",
-                treesitter = "[ts] ",
-                path = "[path] ",
-                luasnip = "[snip] ",
-                buffer = "[buf] ",
-                tmux = "[tmux] ",
-              },
+              menu = vim.tbl_map(function(s)
+                return s .. " "
+              end, {
+                nvim_lsp = "[lsp]",
+                treesitter = "[ts]",
+                path = "[path]",
+                luasnip = "[snip]",
+                buffer = "[buf]",
+                tmux = "[tmux]",
+              }),
               show_labelDetails = true,
             })(entry, vim_item)
 
