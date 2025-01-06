@@ -33,6 +33,7 @@ return {
             "ScrollViewCursor",
             { fg = "#7daea3", bg = "#45403d", ctermfg = 109 }
           )
+          highlight("CmpItemMenu", { fg = "#928374", ctermfg = 245 })
         end,
       })
 

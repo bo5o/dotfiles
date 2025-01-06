@@ -159,23 +159,41 @@ return {
           },
         },
 
+        ---@diagnostic disable-next-line: missing-fields
         formatting = {
-          format = lspkind.cmp_format({
-            preset = "codicons",
-            symbol_map = {
-              String = "",
-              Spell = "",
-            },
-            mode = "symbol_text",
-            menu = {
-              nvim_lsp = "[lsp]",
-              treesitter = "[ts]",
-              path = "[path]",
-              luasnip = "[snip]",
-              buffer = "[buf]",
-              tmux = "[tmux]",
-            },
-          }),
+          format = function(entry, vim_item)
+            local item = lspkind.cmp_format({
+              preset = "codicons",
+              symbol_map = {
+                String = "",
+                Spell = "",
+              },
+              mode = "symbol_text",
+              menu = {
+                nvim_lsp = "[lsp] ",
+                treesitter = "[ts] ",
+                path = "[path] ",
+                luasnip = "[snip] ",
+                buffer = "[buf] ",
+                tmux = "[tmux] ",
+              },
+              show_labelDetails = true,
+            })(entry, vim_item)
+
+            local kind = vim.split(item.kind, "%s", { trimempty = true })
+            local icon, type = kind[1] or "", kind[2] or ""
+            item.kind = icon .. "  " .. "(" .. type .. ")"
+
+            local menu = vim.split(item.menu, "%s", { trimempty = true })
+            local source, details = menu[1] or "", menu[2] or ""
+            if source == "[tmux]" then
+              item.menu = source
+            else
+              item.menu = string.format("%-6s %s", source, details)
+            end
+
+            return item
+          end,
         },
 
         window = {
