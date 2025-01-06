@@ -191,6 +191,7 @@ return {
             else
               item.menu = string.format("%-6s %s", source, details)
             end
+            item.menu = vim.trim(item.menu)
 
             return item
           end,
