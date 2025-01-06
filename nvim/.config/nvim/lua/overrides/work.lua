@@ -13,6 +13,7 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
+    cond = true,
     opts = function()
       local adapter = "copilot"
       return {
