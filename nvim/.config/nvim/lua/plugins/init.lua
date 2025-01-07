@@ -1153,6 +1153,7 @@ return {
         "!^.direnv",
         "!^site-packages",
         "!^node_modules",
+        "!=src",
         ".git",
         "_darcs",
         ".hg",
