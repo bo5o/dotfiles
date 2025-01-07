@@ -56,7 +56,11 @@ return {
           map("gp", "<cmd>Lspsaga peek_definition<cr>", "Peek definition")
           map("gD", vim.lsp.buf.declaration, "Go to declaration")
           map("<c-s>", vim.lsp.buf.signature_help, "Display signature help", { "i" })
-          map("gI", vim.lsp.buf.implementation, "List implementations")
+          map(
+            "gI",
+            "<cmd>Trouble lsp_implementations auto_refresh=false<cr>",
+            "List implementations"
+          )
           map("gr", function()
             require("trouble").toggle({ mode = "lsp_references", auto_refresh = false })
           end, "Show references")
