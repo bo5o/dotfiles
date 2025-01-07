@@ -1,20 +1,33 @@
 local M = {}
 
 function M.setup()
-  require("lspconfig").ts_ls.setup({
-    init_options = {
-      plugins = {
-        {
-          name = "@vue/typescript-plugin",
-          location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-          languages = { "javascript", "typescript", "vue" },
+  require("lspconfig").vtsls.setup({
+    settings = {
+      complete_function_calls = true,
+      vtsls = {
+        enableMoveToFileCodeAction = true,
+        autoUseWorkspaceTsdk = true,
+        experimental = {
+          maxInlayHintLength = 30,
+          completion = {
+            enableServerSideFuzzyMatch = true,
+          },
         },
       },
-    },
-    filetypes = {
-      "javascript",
-      "typescript",
-      "vue",
+      typescript = {
+        updateImportsOnFileMove = { enabled = "always" },
+        suggest = {
+          completeFunctionCalls = true,
+        },
+        inlayHints = {
+          enumMemberValues = { enabled = true },
+          functionLikeReturnTypes = { enabled = true },
+          parameterNames = { enabled = "literals" },
+          parameterTypes = { enabled = true },
+          propertyDeclarationTypes = { enabled = true },
+          variableTypes = { enabled = false },
+        },
+      },
     },
   })
 end
