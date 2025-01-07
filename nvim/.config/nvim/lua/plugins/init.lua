@@ -471,7 +471,15 @@ return {
       { "<C-w>z", "<cmd>WindowsMaximize<cr>" },
       { "<C-w>=", "<cmd>WindowsEqualize<cr>" },
     },
-    config = true,
+    opts = {
+      autowidth = {
+        enable = true,
+        winwidth = 14, -- 80 + 14 = 94
+      },
+      animation = {
+        enable = false,
+      },
+    },
   },
 
   {
