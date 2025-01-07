@@ -9,6 +9,7 @@ function M.setup()
       })
     end,
   })
+  require("lspconfig").biome.setup({})
 end
 
 return M
