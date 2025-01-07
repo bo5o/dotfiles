@@ -169,6 +169,10 @@ return {
                 Spell = "",
               },
               mode = "symbol_text",
+              maxwidth = {
+                abbr = 35,
+                menu = 35,
+              },
               menu = vim.tbl_map(function(s)
                 return s .. " "
               end, {
