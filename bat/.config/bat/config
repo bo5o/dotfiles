@@ -1,5 +1,5 @@
---map-syntax dev-requirements.txt:requirements.txt
---map-syntax dev-requirements.in:requirements.txt
---map-syntax requirements.in:requirements.txt
+--map-syntax dev-requirements.txt:Requirements.txt
+--map-syntax dev-requirements.in:Requirements.txt
+--map-syntax requirements.in:Requirements.txt
 --theme gruvbox-dark
 --terminal-width -10
