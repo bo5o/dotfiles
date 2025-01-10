@@ -948,6 +948,7 @@ return {
       "mrcjkb/rustaceanvim",
       "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-vim-test",
+      "nvim-neotest/neotest-jest",
     },
     keys = {
       {
@@ -1054,8 +1055,14 @@ return {
         adapters = {
           require("rustaceanvim/neotest"),
           require("neotest-python"),
+          require("neotest-jest"),
           require("neotest-vim-test")({
-            ignore_file_types = { "rust", "python" },
+            ignore_file_types = {
+              "rust",
+              "python",
+              "javascript",
+              "typescript",
+            },
           }),
         },
       })
