@@ -840,18 +840,17 @@ return {
   },
 
   {
-    "kkoomen/vim-doge",
-    build = ":call doge#install()",
-    cmd = "DogeGenerate",
-    init = function()
-      vim.g.doge_enable_mappings = 1
-      vim.g.doge_mapping = "<Leader>rd"
-      vim.g.doge_buffer_mappings = 1
-      vim.g.doge_comment_interactive = 1
-      vim.g.doge_comment_jump_modes = { "n", "s" }
-      vim.g.doge_doc_standard_python = "numpy"
-      vim.g.doge_python_settings = { single_quotes = 0 }
-    end,
+    "danymat/neogen",
+    keys = {
+      { "crd", "<cmd>Neogen<cr>", desc = "Generate docstring" },
+    },
+    opts = {
+      languages = {
+        python = { template = { annotation_convention = "google_docstrings" } },
+        javascript = { template = { annotation_convention = "jsdoc" } },
+        typescript = { template = { annotation_convention = "tsdoc" } },
+      },
+    },
   },
 
   {
