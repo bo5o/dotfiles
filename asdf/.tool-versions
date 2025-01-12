@@ -10,7 +10,7 @@ maven 3.8.4
 poetry 1.8.5
 ruby 3.3.5
 rust 1.82.0
-lazygit 0.44.1
+lazygit 0.45.0
 fd 10.2.0
 yq 4.44.6
 lazydocker 0.24.1
