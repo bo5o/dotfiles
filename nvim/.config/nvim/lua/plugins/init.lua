@@ -391,8 +391,6 @@ return {
     end,
   },
 
-  { "zhimsel/vim-stay" },
-
   { "tpope/vim-obsession", cmd = "Obsession" },
 
   {
