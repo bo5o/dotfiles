@@ -1,6 +1,6 @@
 \set QUIET 1
 -- formatting
-\x auto
+-- \x auto
 
 \set VERBOSITY verbose
 \set ON_ERROR_ROLLBACK interactive
@@ -31,9 +31,6 @@
 -- Autocomplete keywords (like SELECT) in upper-case, even if you started
 -- typing them in lower case.
 \set COMP_KEYWORD_CASE upper
-
--- greeting
-\echo '\nWelcome, my magistrate\n'
 
 --helpful queries
 \set uptime 'select now() - backend_start as uptime from pg_stat_activity where pid = pg_backend_pid();'
