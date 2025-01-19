@@ -581,34 +581,43 @@ return {
   },
 
   {
-    "smoka7/hop.nvim",
-    version = "*",
-    event = "BufWinEnter",
+    "folke/flash.nvim",
+    event = "VeryLazy",
     keys = {
       {
-        "<leader><leader>",
+        "s",
+        mode = { "n", "x", "o" },
         function()
-          require("hop").hint_words()
+          require("flash").jump()
         end,
-        desc = "hop word",
+        desc = "Flash",
       },
       {
         "S",
+        mode = { "n", "x", "o" },
         function()
-          require("hop").hint_char2()
+          require("flash").treesitter()
         end,
-        desc = "hop sneak",
+        desc = "Flash Treesitter",
       },
       {
-        "s",
+        "r",
+        mode = { "o" },
         function()
-          require("hop").hint_char2()
+          require("flash").remote()
         end,
-        desc = "hop sneak",
+        desc = "Remote Flash",
       },
     },
+    ---@type Flash.Config
+    ---@diagnostic disable-next-line: missing-fields
     opts = {
-      keys = "arsdheiqwfpgjluy;zxcvbkmtn",
+      labels = "arstdhneiqwfpgjluyozxcvbkm",
+      modes = {
+        char = {
+          enabled = false,
+        },
+      },
     },
   },
 
