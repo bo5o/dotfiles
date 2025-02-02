@@ -1,0 +1,5 @@
+[plugin]
+deps = [{ use = "yazi-rs/plugins:full-border", rev = "02d18be" }]
+
+[flavor]
+deps = [{ use = "bennyyip/gruvbox-dark", rev = "b4cc9f2" }]
