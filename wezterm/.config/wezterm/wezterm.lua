@@ -15,7 +15,10 @@ wezterm.on("window-resized", function(window, _)
 end)
 
 return {
-  font = wezterm.font("Iosevka Fixed SS14"),
+  font = wezterm.font_with_fallback({
+    "Iosevka Fixed SS14",
+    { family = "Symbols Nerd Font Mono", scale = 0.75 }
+  }),
   font_size = 12,
   line_height = 1.00,
   color_scheme = "Gruvbox dark, medium (base16)",
