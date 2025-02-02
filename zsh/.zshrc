@@ -18,6 +18,9 @@ COMPLETION_WAITING_DOTS="true"
 export ASDF_DIR="$HOME/.asdf"
 export DIRENV_LOG_FORMAT=""
 
+# override zoxide command
+export ZOXIDE_CMD_OVERRIDE="j"
+
 # Plugins (can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
     git
@@ -38,7 +41,7 @@ plugins=(
     extract
     gitignore
     tmuxinator
-    z
+    zoxide
     fzf
     rust
     # custom plugins
