@@ -323,8 +323,72 @@ return {
     ---@type snacks.Config
     opts = {
       lazygit = { enabled = true },
+      picker = {
+        win = {
+          input = {
+            keys = {
+              ["<c-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
+              ["<c-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+              ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
+            },
+          },
+        },
+        layout = { -- "telescope"
+          layout = {
+            box = "horizontal",
+            backdrop = false,
+            width = 0.8,
+            height = 0.85,
+            border = "none",
+            {
+              box = "vertical",
+              {
+                win = "list",
+                title = " Results ",
+                title_pos = "center",
+                border = "rounded",
+              },
+              {
+                win = "input",
+                height = 1,
+                border = "rounded",
+                title = "{title} {live} {flags}",
+                title_pos = "center",
+              },
+            },
+            {
+              win = "preview",
+              title = "{preview:Preview}",
+              width = 0.60,
+              border = "rounded",
+              title_pos = "center",
+            },
+          },
+        },
+      },
     },
     keys = {
+      {
+        "<leader>fi",
+        function()
+          require("snacks").picker.icons()
+        end,
+        desc = "Find icons",
+      },
+      {
+        "<leader>fn",
+        function()
+          require("snacks").picker.notifications()
+        end,
+        desc = "Find notifications",
+      },
+      {
+        "<leader>fd",
+        function()
+          require("snacks").picker.diagnostics_buffer()
+        end,
+        desc = "Find diagnostics",
+      },
       {
         "<leader>gg",
         function()
