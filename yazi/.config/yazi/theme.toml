@@ -1,2 +1,5 @@
 [flavor]
 dark = "gruvbox-dark"
+
+[manager]
+preview_hovered = { bg = "#32302f", bold = true }
