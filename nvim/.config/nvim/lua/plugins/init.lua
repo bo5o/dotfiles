@@ -400,6 +400,21 @@ return {
   },
 
   {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    keys = {
+      {
+        -- Open in the current working directory
+        "<leader>or",
+        "<cmd>Yazi<cr>",
+        desc = "Open file manager",
+      },
+    },
+    ---@type YaziConfig
+    opts = {},
+  },
+
+  {
     "echasnovski/mini.bufremove",
     version = "*",
     keys = {
