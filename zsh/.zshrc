@@ -18,9 +18,6 @@ COMPLETION_WAITING_DOTS="true"
 export ASDF_DIR="$HOME/.asdf"
 export DIRENV_LOG_FORMAT=""
 
-# override zoxide command
-export ZOXIDE_CMD_OVERRIDE="j"
-
 # Plugins (can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
     git
@@ -41,7 +38,6 @@ plugins=(
     extract
     gitignore
     tmuxinator
-    zoxide # use `zoxide import --from=z "$HOME/.z"` to migrate
     fzf
     rust
     # custom plugins
@@ -70,6 +66,9 @@ zstyle :omz:plugins:ssh-agent lazy yes
 zstyle :omz:plugins:ssh-agent lifetime 6h
 
 source $ZSH/oh-my-zsh.sh
+
+# use `zoxide import --from=z "$HOME/.z"` to migrate from z
+eval "$(zoxide init --cmd j zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.oh-my-zsh/custom/p10k.zsh.
 [[ ! -f ~/.oh-my-zsh/custom/p10k.zsh ]] || source ~/.oh-my-zsh/custom/p10k.zsh
