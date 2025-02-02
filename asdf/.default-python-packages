@@ -4,7 +4,6 @@ ipdb
 keyring
 keyring-pass
 libtmux
-ranger-fm
 ruff
 basedpyright
 ast-grep-cli
