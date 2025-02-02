@@ -41,7 +41,7 @@ plugins=(
     extract
     gitignore
     tmuxinator
-    zoxide
+    zoxide # use `zoxide import --from=z "$HOME/.z"` to migrate
     fzf
     rust
     # custom plugins
