@@ -52,11 +52,11 @@ return {
       },
     },
     opts = function()
-      local adapter = "anthropic"
+      local default_adapter = "anthropic"
       return {
         strategies = {
           chat = {
-            adapter = adapter,
+            adapter = default_adapter,
             keymaps = {
               send = {
                 modes = { n = "<C-s>", i = "<C-s>" },
@@ -65,9 +65,19 @@ return {
                 description = "Send",
               },
             },
+            roles = {
+              llm = function(adapter)
+                return string.format(
+                  "%s%s",
+                  adapter.formatted_name,
+                  adapter.parameters.model and " (" .. adapter.parameters.model .. ")"
+                    or adapter.schema.model.default
+                )
+              end,
+            },
           },
-          inline = { adapter = adapter },
-          cmd = { adapter = adapter },
+          inline = { adapter = default_adapter },
+          cmd = { adapter = default_adapter },
         },
         display = {
           diff = {
