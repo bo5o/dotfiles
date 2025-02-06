@@ -32,3 +32,5 @@ ipython/.jupyter/migrated
 .luarc.json
 tmux/.config/tmux/plugins
 /.env
+yazi/.config/yazi/plugins
+yazi/.config/yazi/flavors
