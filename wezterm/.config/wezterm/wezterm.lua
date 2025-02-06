@@ -1,23 +1,9 @@
 local wezterm = require("wezterm")
 
-wezterm.on("window-resized", function(window, _)
-  local overrides = window:get_config_overrides() or {}
-
-  local window_width = window:get_dimensions()["pixel_width"]
-
-  if window_width > 2000 then
-    overrides.font_size = 18
-  else
-    overrides.font_size = 12
-  end
-
-  window:set_config_overrides(overrides)
-end)
-
 return {
   font = wezterm.font_with_fallback({
     "Iosevka Fixed SS14",
-    { family = "Symbols Nerd Font Mono", scale = 0.90 }
+    { family = "Symbols Nerd Font Mono", scale = 0.90 },
   }),
   font_size = 12,
   line_height = 1.00,
