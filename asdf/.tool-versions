@@ -19,7 +19,7 @@ jq 1.7.1
 restic 0.17.3
 difftastic 0.62.0
 zellij 0.41.2
-uv 0.5.26
+uv 0.5.29
 tree-sitter 0.24.7
 just 1.39.0
 delta 0.18.2
