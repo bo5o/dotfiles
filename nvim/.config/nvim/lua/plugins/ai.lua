@@ -1,9 +1,18 @@
 return {
+  -- Generate token for copilot with `:Copilot auth`
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    config = function()
+      require("copilot").setup({
+        panel = { enabled = false },
+        suggestion = { enabled = false },
+        filetype = { ["*"] = false },
+      })
+    end,
+  },
   {
     "olimorris/codecompanion.nvim",
-    cond = function()
-      return vim.env.ANTHROPIC_API_KEY ~= nil
-    end,
     cmd = {
       "CodeCompanion",
       "CodeCompanionChat",
@@ -52,7 +61,8 @@ return {
       },
     },
     opts = function()
-      local default_adapter = "anthropic"
+      local default_adapter = vim.env.ANTHROPIC_API_KEY ~= nil and "anthropic"
+        or "copilot"
       return {
         strategies = {
           chat = {
@@ -83,6 +93,19 @@ return {
           diff = {
             provider = "mini_diff",
           },
+        },
+        adapters = {
+          copilot = function()
+            return require("codecompanion.adapters").extend("copilot", {
+              schema = {
+                model = {
+                  default = "claude-3.5-sonnet",
+                  -- default = "o1-2024-12-17",
+                  -- default = "o3-mini-2025-01-31",
+                },
+              },
+            })
+          end,
         },
       }
     end,
