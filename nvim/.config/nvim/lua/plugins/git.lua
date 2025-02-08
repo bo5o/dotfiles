@@ -3,7 +3,7 @@ return {
     "lewis6991/gitsigns.nvim",
     opts = {
       signs_staged_enable = false,
-      numhl = true,
+      numhl = false,
       current_line_blame_opts = {
         virt_text_pos = "eol",
         delay = 300,
