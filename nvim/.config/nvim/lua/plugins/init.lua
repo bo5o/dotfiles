@@ -220,7 +220,15 @@ return {
 
   { "tpope/vim-jdaddy", ft = "json" },
 
-  { "AndrewRadev/splitjoin.vim", event = "CursorHold" },
+  {
+    "Wansmer/treesj",
+    keys = {
+      { "gS", "<cmd>TSJToggle<cr>", desc = "Toggle single/multi-line statement" },
+    },
+    opts = {
+      use_default_keymaps = false,
+    },
+  },
 
   {
     "tommcdo/vim-lion",
