@@ -314,7 +314,14 @@ return {
     end,
   },
 
-  { "wellle/targets.vim", event = "BufRead" },
+  {
+    "echasnovski/mini.ai",
+    version = "*",
+    event = "BufRead",
+    opts = {
+      custom_textobjects = { f = false, ["?"] = false },
+    },
+  },
 
   {
     "folke/snacks.nvim",
