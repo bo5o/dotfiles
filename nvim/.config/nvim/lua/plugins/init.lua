@@ -87,27 +87,6 @@ return {
   },
 
   {
-    "nvim-pack/nvim-spectre",
-    enabled = false,
-    keys = {
-      {
-        "<leader>sr",
-        function()
-          require("spectre").open_file_search()
-        end,
-        desc = "Search and replace in current file",
-      },
-      {
-        "<leader>sR",
-        function()
-          require("spectre").open()
-        end,
-        desc = "Search and replace",
-      },
-    },
-  },
-
-  {
     "folke/trouble.nvim", -- lsp errors and diagnostics in quickfix
     cmd = {
       "Trouble",
@@ -206,19 +185,9 @@ return {
 
   { "direnv/direnv.vim" },
 
-  {
-    "rafcamlet/nvim-luapad",
-    cmd = "Luapad",
-    opts = {
-      count_limit = 200000,
-    },
-  },
-
   { "tpope/vim-repeat" },
 
   { "tpope/vim-surround", event = "BufRead" },
-
-  { "tpope/vim-jdaddy", ft = "json" },
 
   {
     "Wansmer/treesj",
@@ -313,13 +282,6 @@ return {
           augend.semver.alias.semver,
         },
       })
-    end,
-  },
-
-  {
-    "dhruvasagar/vim-table-mode",
-    init = function()
-      vim.g.table_mode_map_prefix = "<localleader>t"
     end,
   },
 
@@ -485,8 +447,6 @@ return {
       })
     end,
   },
-
-  { "tpope/vim-obsession", cmd = "Obsession" },
 
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -1352,48 +1312,6 @@ return {
   },
 
   {
-    "hanschen/vim-ipython-cell",
-    dependencies = "vim-slime",
-    ft = "python",
-    keys = {
-      { "<c-c><c-f>", "IPythonCellRun", desc = "Run current file" },
-      { "<c-c><c-t>", "IPythonCellRunTime", desc = "Run and time current file" },
-      {
-        "<c-c><c-x>",
-        "IPythonCellExecuteCellVerbose",
-        desc = "Print and execute current cell",
-      },
-      {
-        "<c-c><c-j>",
-        "IPythonCellExecuteCellVerboseJump",
-        desc = "Print and execute current cell",
-      },
-      { "<c-c><c-l>", "IPythonCellClear", desc = "Clear IPython screen" },
-      { "[C", "IPythonCellPrevCell", desc = "Go to previous cell header" },
-      { "]C", "IPythonCellNextCell", desc = "Go to next cell header" },
-    },
-    init = function()
-      vim.g.ipython_cell_delimit_cells_by = "tags"
-    end,
-  },
-
-  {
-    "jupyter-vim/jupyter-vim",
-    ft = "python",
-    keys = {
-      { "<localleader>R", "<cmd>JupyterRunFile<cr>", desc = "Run file" },
-      { "<localleader>I", "<cmd>PythonImportThisFile<cr>", desc = "Import file" },
-      { "<localleader>X", "<cmd>JupyterSendCell<cr>", desc = "Send cell" },
-      { "<localleader>E", "<cmd>JupyterSendRange<cr>", desc = "Send range" },
-      { "<localleader>e", "<Plug>JupyterRunTextObj", desc = "Run text object" },
-      { "<localleader>e", "<Plug>JupyterRunVisual", desc = "Run selection" },
-    },
-    init = function()
-      vim.g.jupyter_mapkeys = 1
-    end,
-  },
-
-  {
     "voldikss/vim-floaterm",
     cmd = {
       "FloatermToggle",
@@ -1411,12 +1329,6 @@ return {
         "<C-\\>m",
         "<cmd>FloatermNew btm -m<cr>",
         desc = "Open system monitor",
-        mode = { "n", "t" },
-      },
-      {
-        "<C-\\>r",
-        "<cmd>FloatermNew ranger<cr>",
-        desc = "Open file browser",
         mode = { "n", "t" },
       },
       {
