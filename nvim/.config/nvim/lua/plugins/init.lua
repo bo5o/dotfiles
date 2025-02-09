@@ -231,12 +231,13 @@ return {
   },
 
   {
-    "tommcdo/vim-lion",
-    init = function()
-      vim.g.lion_squeeze_spaces = 1
-      vim.g.lion_map_right = "ga"
-      vim.g.lion_map_left = "gA"
-    end,
+    "echasnovski/mini.align",
+    version = "*",
+    keys = {
+      { "ga", mode = { "n", "v" } },
+      { "gA", mode = { "n", "v" } },
+    },
+    opts = {},
   },
 
   {
