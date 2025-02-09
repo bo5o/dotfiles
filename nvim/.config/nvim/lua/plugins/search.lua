@@ -165,4 +165,50 @@ return {
       }
     end,
   },
+
+  {
+    "MagicDuck/grug-far.nvim",
+    cmd = "GrugFar",
+    keys = {
+      {
+        "<leader>sr",
+        function()
+          require("grug-far").open({
+            transient = true,
+            prefills = { paths = vim.fn.expand("%") },
+          })
+        end,
+        mode = "n",
+        desc = "Search and replace in current file",
+      },
+      {
+        "<leader>sr",
+        function()
+          require("grug-far").with_visual_selection({
+            transient = true,
+            prefills = { paths = vim.fn.expand("%") },
+          })
+        end,
+        mode = "v",
+        desc = "Search and replace in current file",
+      },
+      { "<leader>sR", "<cmd>GrugFar<cr>", desc = "Search and replace" },
+      {
+        "<leader>ssr",
+        function()
+          local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
+          require("grug-far").open({
+            engine = "astgrep",
+            transient = true,
+            prefills = {
+              filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+            },
+          })
+        end,
+        mode = { "n", "v" },
+        desc = "Structural search and replace",
+      },
+    },
+    opts = {},
+  },
 }
