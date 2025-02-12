@@ -47,6 +47,7 @@ return {
         "toml",
         "yaml",
         "typescript",
+        "typst",
         "vim",
         "vue",
         "xml",

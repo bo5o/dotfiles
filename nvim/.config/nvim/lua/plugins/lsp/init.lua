@@ -114,6 +114,7 @@ return {
       require("plugins.lsp.vue").setup()
       require("plugins.lsp.vim").setup()
       require("plugins.lsp.typescript").setup()
+      require("plugins.lsp.typst").setup()
       require("plugins.lsp.eslint").setup()
       require("plugins.lsp.php").setup()
       require("plugins.lsp.markdown").setup()
