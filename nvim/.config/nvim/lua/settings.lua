@@ -32,7 +32,6 @@ vim.g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/nvim/py311/bin/pyt
 vim.opt.showmode = false
 
 -- Diff options
--- vim.opt.diffopt = { "vertical" }
 vim.opt.diffopt = {
   "internal",
   "filler",
