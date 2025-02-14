@@ -32,9 +32,18 @@ vim.g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/nvim/py311/bin/pyt
 vim.opt.showmode = false
 
 -- Diff options
-vim.opt.diffopt = { "vertical" }
+-- vim.opt.diffopt = { "vertical" }
+vim.opt.diffopt = {
+  "internal",
+  "filler",
+  "closeoff",
+  "vertical",
+  "indent-heuristic",
+  "linematch:60",
+  "algorithm:histogram",
+}
 
-vim.opt.fillchars:append({ diff = "/" })
+vim.opt.fillchars:append({ diff = "⟋" })
 
 -- Space to keep above, below and to the side of the cursor
 vim.opt.scrolloff = 8
