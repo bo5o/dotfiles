@@ -29,7 +29,6 @@ plugins=(
     yarn
     pip
     uv
-    poetry
     ssh-agent
     pass
     genpass
