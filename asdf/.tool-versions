@@ -1,5 +1,5 @@
 direnv 2.35.0
-python 3.12.8
+python 3.12.9
 nodejs 20.11.0
 neovim 0.10.4
 bat 0.25.0
@@ -16,11 +16,11 @@ lazydocker 0.24.1
 postgres 16.4
 jq 1.7.1
 restic 0.17.3
-difftastic 0.62.0
+difftastic 0.63.0
 zellij 0.41.2
-uv 0.5.29
-tree-sitter 0.24.7
+uv 0.6.2
+tree-sitter 0.25.2
 just 1.39.0
 delta 0.18.2
 bottom 0.10.2
-zoxide 0.9.6
+zoxide 0.9.7
