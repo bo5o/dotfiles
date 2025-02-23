@@ -225,6 +225,13 @@ return {
         desc = "Find diagnostics",
       },
       {
+        "<leader>fu",
+        function()
+          require("snacks").picker.undo()
+        end,
+        desc = "Find in undo history",
+      },
+      {
         "<leader>gg",
         function()
           require("snacks").lazygit()

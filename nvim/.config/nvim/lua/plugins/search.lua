@@ -70,7 +70,6 @@ return {
         desc = "Find git commits (repo)",
       },
       { "<leader>fg", "<cmd>FzfLua git_status<cr>", desc = "Find changed files" },
-      { "<leader>fu", "<cmd>FzfLua ultisnips<cr>", desc = "Find snippets" },
       {
         "<leader>fl",
         "<cmd>FzfLua resume<cr>",
