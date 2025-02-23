@@ -156,12 +156,14 @@ return {
           multiple_diag_under_cursor = true,
           multilines = false,
           format = function(diagnostic)
-            return diagnostic.message
-              .. " ("
-              .. diagnostic.code
-              .. ") ["
-              .. string.lower(diagnostic.source)
-              .. "]"
+            local text = diagnostic.message
+            if diagnostic.code ~= nil then
+              text = text .. " (" .. diagnostic.code .. ")"
+            end
+            if diagnostic.source ~= nil then
+              text = text .. " [" .. diagnostic.source .. "]"
+            end
+            return text
           end,
         },
       })
