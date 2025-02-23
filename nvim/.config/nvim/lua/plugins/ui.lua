@@ -1,23 +1,5 @@
 return {
   {
-    "stevearc/dressing.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("dressing").setup({
-        input = {
-          enabled = true,
-          prompt_align = "left",
-          border = "rounded",
-        },
-        select = {
-          enabled = true,
-          backend = { "fzf_lua" },
-        },
-      })
-    end,
-  },
-
-  {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     config = function()

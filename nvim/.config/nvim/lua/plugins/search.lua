@@ -123,6 +123,19 @@ return {
         desc = "Find current file in another worktree and open it in diff mode",
       },
     },
+    init = function()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "VeryLazy",
+        callback = function()
+          ---@diagnostic disable-next-line: duplicate-set-field
+          vim.ui.select = function(...)
+            require("lazy").load({ plugins = { "fzf-lua" } })
+            require("fzf-lua").register_ui_select()
+            return vim.ui.select(...)
+          end
+        end,
+      })
+    end,
     opts = function()
       local actions = require("fzf-lua.actions")
       local file_sel_to_trouble = function(selected, opts)
