@@ -151,23 +151,17 @@ return {
     priority = 1000,
     config = function()
       require("tiny-inline-diagnostic").setup({
-        signs = {
-          left = " ",
-          right = "",
-          diag = "●",
-          arrow = " ◀",
-          up_arrow = " ▲",
-          vertical = " │",
-          vertical_end = " └",
-        },
-        blend = {
-          factor = 0.22,
-        },
+        preset = "powerline",
         options = {
           multiple_diag_under_cursor = true,
           multilines = false,
           format = function(diagnostic)
-            return diagnostic.message .. " [" .. string.lower(diagnostic.source) .. "]"
+            return diagnostic.message
+              .. " ("
+              .. diagnostic.code
+              .. ") ["
+              .. string.lower(diagnostic.source)
+              .. "]"
           end,
         },
       })
