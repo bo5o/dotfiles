@@ -36,9 +36,21 @@
 	ff = only
 [rebase]
 	autosquash = true
+    updateRefs = true
 [init]
 	defaultBranch = main
 [submodule]
 	recurse = true
 [rerere]
 	enabled = true
+[fetch]
+    all = true
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
+[diff]
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
