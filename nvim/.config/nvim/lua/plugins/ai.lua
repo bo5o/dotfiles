@@ -99,9 +99,7 @@ return {
             return require("codecompanion.adapters").extend("copilot", {
               schema = {
                 model = {
-                  default = "claude-3.5-sonnet",
-                  -- default = "o1-2024-12-17",
-                  -- default = "o3-mini-2025-01-31",
+                  default = "claude-3.7-sonnet",
                 },
               },
             })
