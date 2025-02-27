@@ -20,7 +20,6 @@ return {
     },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      { "echasnovski/mini.diff", version = "*", opts = {} },
     },
     keys = {
       {
@@ -88,11 +87,6 @@ return {
           },
           inline = { adapter = default_adapter },
           cmd = { adapter = default_adapter },
-        },
-        display = {
-          diff = {
-            provider = "mini_diff",
-          },
         },
         adapters = {
           copilot = function()
