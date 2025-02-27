@@ -7,3 +7,4 @@ libtmux
 ruff
 basedpyright
 ast-grep-cli
+pynvim
