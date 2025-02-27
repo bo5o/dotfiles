@@ -128,26 +128,6 @@ vim.keymap.set("i", "<C-j>", "<cmd>normal j<cr>")
 vim.keymap.set("i", "<C-k>", "<cmd>normal k<cr>")
 vim.keymap.set("i", "<C-l>", "<cmd>normal l<cr>")
 
--- profiling
-vim.keymap.set("", "<leader>pp", function()
-  local prof = require("profile")
-  if prof.is_recording() then
-    prof.stop()
-    vim.ui.input({
-      prompt = "Save profile to:",
-      completion = "file",
-      default = "profile.json",
-    }, function(filename)
-      if filename then
-        prof.export(filename)
-        vim.notify(string.format("Wrote %s", filename))
-      end
-    end)
-  else
-    prof.start("*")
-  end
-end)
-
 -- hydra modes
 local Hydra = require("hydra")
 

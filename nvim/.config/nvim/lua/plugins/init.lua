@@ -154,55 +154,71 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
-    ---@type snacks.Config
-    opts = {
-      input = { enabled = true },
-      lazygit = { enabled = true },
-      picker = {
-        win = {
-          input = {
-            keys = {
-              ["<c-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
-              ["<c-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
-              ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
+    opts = function()
+      Snacks.toggle.profiler():map("<leader>pp")
+      Snacks.toggle.profiler_highlights():map("<leader>ph")
+
+      return {
+        input = { enabled = true },
+        lazygit = { enabled = true },
+        profiler = {
+          filter_mod = {
+            ["^vim%."] = true,
+          },
+        },
+        picker = {
+          win = {
+            input = {
+              keys = {
+                ["<c-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
+                ["<c-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+                ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
+              },
+            },
+          },
+          layout = { -- "telescope"
+            layout = {
+              box = "horizontal",
+              backdrop = false,
+              width = 0.8,
+              height = 0.85,
+              border = "none",
+              {
+                box = "vertical",
+                {
+                  win = "list",
+                  title = " Results ",
+                  title_pos = "center",
+                  border = "rounded",
+                },
+                {
+                  win = "input",
+                  height = 1,
+                  border = "rounded",
+                  title = "{title} {live} {flags}",
+                  title_pos = "center",
+                },
+              },
+              {
+                win = "preview",
+                title = "{preview:Preview}",
+                width = 0.60,
+                border = "rounded",
+                title_pos = "center",
+              },
             },
           },
         },
-        layout = { -- "telescope"
-          layout = {
-            box = "horizontal",
-            backdrop = false,
-            width = 0.8,
-            height = 0.85,
-            border = "none",
-            {
-              box = "vertical",
-              {
-                win = "list",
-                title = " Results ",
-                title_pos = "center",
-                border = "rounded",
-              },
-              {
-                win = "input",
-                height = 1,
-                border = "rounded",
-                title = "{title} {live} {flags}",
-                title_pos = "center",
-              },
-            },
-            {
-              win = "preview",
-              title = "{preview:Preview}",
-              width = 0.60,
-              border = "rounded",
-              title_pos = "center",
-            },
-          },
-        },
-      },
-    },
+      }
+    end,
     keys = {
+      {
+        "<leader>ps",
+        function()
+          Snacks.profiler.scratch()
+        end,
+        desc = "Profiler Scratch Buffer",
+      },
       {
         "<leader>fi",
         function()
