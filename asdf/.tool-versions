@@ -9,7 +9,7 @@ github-cli 2.64.0
 maven 3.8.4
 ruby 3.3.5
 rust 1.84.0
-lazygit 0.47.2
+lazygit 0.48.0
 fd 10.2.0
 yq 4.45.1
 lazydocker 0.24.1
@@ -18,7 +18,7 @@ jq 1.7.1
 restic 0.17.3
 difftastic 0.63.0
 zellij 0.41.2
-uv 0.6.2
+uv 0.6.4
 tree-sitter 0.25.2
 just 1.39.0
 delta 0.18.2
