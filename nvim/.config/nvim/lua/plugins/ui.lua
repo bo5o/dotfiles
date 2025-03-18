@@ -27,6 +27,7 @@ return {
           },
           lualine_c = { "filename" },
           lualine_x = {
+            "lsp_status",
             "encoding",
             "fileformat",
             {
