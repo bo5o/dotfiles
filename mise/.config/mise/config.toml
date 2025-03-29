@@ -1,0 +1,43 @@
+[tools]
+ast-grep = "0.36.2"
+bat = "0.25.0"
+bottom = "0.10.2"
+cargo-binstall = "1.12.2"
+"cargo:git-absorb" = "0.7.0"
+"cargo:tlrc" = "1.11.0"
+delta = "0.18.2"
+difftastic = "0.63.0"
+direnv = "2.35.0"
+fd = "10.2.0"
+"gem:tmuxinator" = "3.3.4"
+github-cli = "2.64.0"
+go = "1.24.1"
+jq = "1.7.1"
+just = "1.40.0"
+lazydocker = "0.24.1"
+lazygit = "0.48.0"
+maven = "3.8.4"
+neovim = "0.11.0"
+node = "20.11.1"
+"pipx:basedpyright" = "1.28.4"
+postgres = "16.4"
+pre-commit = "4.2.0"
+python = "3.12.9"
+restic = "0.18.0"
+ripgrep = "14.1.1"
+ruby = "3.3.5"
+ruff = "0.11.2"
+rust = "1.84.0"
+tree-sitter = "0.25.3"
+usage = "2.0.7"
+uv = "0.6.10"
+yazi = "25.3.2"
+yq = "4.45.1"
+zellij = "0.42.1"
+zoxide = "0.9.7"
+
+[settings]
+experimental = true
+
+[settings.python]
+compile = true

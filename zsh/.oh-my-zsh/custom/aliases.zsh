@@ -21,7 +21,7 @@ alias -s git="git clone --recurse-submodules"
 alias .a='source .venv/bin/activate'
 alias .d='deactivate'
 alias ackpy='ack --ignore-dir .venv --ignore-dir .tools --python'
-alias arst='asdf'
+alias arst='mise'
 alias btm='btm --theme gruvbox'
 alias crep="grep --color=always" # Color grep
 alias da="cd ~/latex/diplomarbeit"

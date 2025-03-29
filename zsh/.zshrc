@@ -14,8 +14,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# asdf + direnv settings
-export ASDF_DIR="$HOME/.asdf"
+# mise + direnv settings
+export MISE_DATA_DIR="$HOME/.local/share/mise"
 export DIRENV_LOG_FORMAT=""
 
 # Plugins (can be found in ~/.oh-my-zsh/plugins/*)
@@ -29,6 +29,8 @@ plugins=(
     yarn
     pip
     uv
+    mise
+    direnv
     ssh-agent
     pass
     genpass
@@ -45,17 +47,15 @@ plugins=(
     tldr # curl https://raw.githubusercontent.com/tldr-pages/tlrc/main/completions/_tldr --output ~/.oh-my-zsh/custom/plugins/tldr/_tldr
     restic # restic generate --zsh-completion ~/.oh-my-zsh/custom/plugins/restic/_restic
     hcloud # hcloud completion zsh > ~/.oh-my-zsh/custom/plugins/hcloud/_hcloud
-    ruff # ruff generate-shell-completion > ~/.oh-my-zsh/custom/plugins/ruff/_ruff
+    ruff # ruff generate-shell-completion zsh > ~/.oh-my-zsh/custom/plugins/ruff/_ruff
     bws # bws completions zsh > ~/.oh-my-zsh/custom/plugins/bws/_bws
-    zsh-asdf-direnv
+    rg # rg --generate complete-zsh > ~/.oh-my-zsh/custom/plugins/rg/_rg
+    fd # curl https://raw.githubusercontent.com/sharkdp/fd/refs/heads/master/contrib/completion/_fd --output ~/.oh-my-zsh/custom/plugins/fd/_fd
     zsh-syntax-highlighting
 )
 
 # completions
 fpath=(${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions/src $fpath)
-fpath=(${ASDF_DIR}/completions $fpath)
-fpath=($(${ASDF_DIR}/bin/asdf where ripgrep)/complete $fpath)
-fpath=($(${ASDF_DIR}/bin/asdf where fd)/autocomplete $fpath)
 fpath=(${HOME}/.zfunc $fpath)
 
 # ssh-agent
