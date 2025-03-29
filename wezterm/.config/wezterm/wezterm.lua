@@ -1,12 +1,24 @@
 local wezterm = require("wezterm")
 
+local function get_text_scaling_factor()
+  local f = assert(
+    io.popen("gsettings get org.gnome.desktop.interface text-scaling-factor", "r")
+  )
+  local factor = assert(f:read("*a"))
+  f:close()
+
+  factor = string.gsub(factor, "%s+$", "")
+
+  return factor
+end
+
 wezterm.on("window-resized", function(window, _)
   local overrides = window:get_config_overrides() or {}
 
   local window_width = window:get_dimensions()["pixel_width"]
 
   if window_width > 2000 then
-    overrides.font_size = 18
+    overrides.font_size = 18 / get_text_scaling_factor()
   else
     overrides.font_size = 12
   end
