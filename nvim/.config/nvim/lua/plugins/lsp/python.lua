@@ -13,12 +13,12 @@ function M.setup()
       if client == nil then
         return
       end
-      if client.name == "ruff" then
+      if client.name == "ruff" or client.name == "pylsp" then
         -- disable hover in favor of Pyright
         client.server_capabilities.hoverProvider = false
       end
     end,
-    desc = "LSP: Disable hover capability from Ruff",
+    desc = "LSP: Disable hover capability from ruff and pylsp",
   })
 
   require("lspconfig").basedpyright.setup({
