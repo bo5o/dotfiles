@@ -136,3 +136,5 @@ vim.opt.list = true
 vim.opt.listchars =
   { tab = "→ ", eol = "¬", trail = "⋅", extends = "❯", precedes = "❮" }
 vim.opt.showbreak = "↪"
+
+vim.o.winborder = "rounded"
