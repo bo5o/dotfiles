@@ -1,4 +1,4 @@
-theme = "gruvbox-material"
+theme = GruvboxDark
 
 font-family = "Iosevka Fixed SS14"
 font-size = 12
