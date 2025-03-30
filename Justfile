@@ -5,7 +5,7 @@ default:
 githubusercontent := "https://raw.githubusercontent.com"
 plugin_dir := "zsh/.oh-my-zsh/custom/plugins"
 
-update-custom-zsh-plugins:
+update-oh-my-zsh-custom-plugins:
     mkdir -p {{ plugin_dir }}/gh && \
         mise exec github-cli -- gh completion -s zsh > {{ plugin_dir }}/gh/_gh
     mkdir -p {{ plugin_dir }}/just && \
