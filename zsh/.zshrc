@@ -21,8 +21,9 @@ export PATH="$MISE_DATA_DIR/shims:$PATH"
 # direnv settings
 export DIRENV_LOG_FORMAT=""
 
-# Plugins (can be found in ~/.oh-my-zsh/plugins/*)
+# Plugins
 plugins=(
+    # from ~/.oh-my-zsh/plugins
     git
     vi-mode
     docker
@@ -43,16 +44,17 @@ plugins=(
     tmuxinator
     fzf
     rust
-    # custom plugins
-    gh # gh completions -s zsh > ~/.oh-my-zsh/custom/plugins/gh/_gh
-    just # just --completions zsh > ~/.oh-my-zsh/custom/plugins/just/_just
-    tldr # curl https://raw.githubusercontent.com/tldr-pages/tlrc/main/completions/_tldr --output ~/.oh-my-zsh/custom/plugins/tldr/_tldr
-    restic # restic generate --zsh-completion ~/.oh-my-zsh/custom/plugins/restic/_restic
-    hcloud # hcloud completion zsh > ~/.oh-my-zsh/custom/plugins/hcloud/_hcloud
-    ruff # ruff generate-shell-completion zsh > ~/.oh-my-zsh/custom/plugins/ruff/_ruff
-    bws # bws completions zsh > ~/.oh-my-zsh/custom/plugins/bws/_bws
-    rg # rg --generate complete-zsh > ~/.oh-my-zsh/custom/plugins/rg/_rg
-    fd # curl https://raw.githubusercontent.com/sharkdp/fd/refs/heads/master/contrib/completion/_fd --output ~/.oh-my-zsh/custom/plugins/fd/_fd
+    # from ~/.oh-my-zsh/custom/plugins
+    gh
+    just
+    tldr
+    restic
+    hcloud
+    ruff
+    bws
+    rg
+    fd
+    mise
     zsh-syntax-highlighting
 )
 
