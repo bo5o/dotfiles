@@ -28,3 +28,6 @@ update-custom-zsh-plugins:
     mkdir -p {{ plugin_dir }}/fd && \
         curl {{ githubusercontent }}/sharkdp/fd/refs/heads/master/contrib/completion/_fd \
             --output {{ plugin_dir }}/fd/_fd
+    git submodule update --init --recursive
+    git -C {{ plugin_dir }}/zsh-completions pull
+    git -C {{ plugin_dir }}/zsh-syntax-highlighting pull
