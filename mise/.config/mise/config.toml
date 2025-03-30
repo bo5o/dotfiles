@@ -3,8 +3,8 @@ ast-grep = "0.36.2"
 bat = "0.25.0"
 bottom = "0.10.2"
 cargo-binstall = "1.12.2"
-"cargo:git-absorb" = "0.7.0"
-"cargo:tlrc" = "1.11.0"
+"ubi:tummychow/git-absorb" = "0.7.0"
+"ubi:tldr-pages/tlrc" = { version = "1.11.0", exe = "tldr" }
 delta = "0.18.2"
 difftastic = "0.63.0"
 direnv = "2.35.0"
@@ -35,6 +35,9 @@ yazi = "25.3.2"
 yq = "4.45.1"
 zellij = "0.42.1"
 zoxide = "0.9.7"
+
+[alias.bitwarden-secrets-manager.versions]
+"1.0.0" = "bws-v1.0.0"
 
 [settings]
 experimental = true
