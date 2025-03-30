@@ -14,8 +14,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# mise + direnv settings
+# setup mise
 export MISE_DATA_DIR="$HOME/.local/share/mise"
+export PATH="$MISE_DATA_DIR/shims:$PATH"
+
+# direnv settings
 export DIRENV_LOG_FORMAT=""
 
 # Plugins (can be found in ~/.oh-my-zsh/plugins/*)
@@ -29,7 +32,6 @@ plugins=(
     yarn
     pip
     uv
-    mise
     direnv
     ssh-agent
     pass
