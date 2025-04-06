@@ -116,7 +116,13 @@ return {
     keys = {
       {
         "<leader>gl",
-        "<cmd>DiffviewFileHistory --follow %<cr>",
+        function()
+          if next(require("diffview.lib").views) == nil then
+            vim.cmd("DiffviewFileHistory --follow %")
+          else
+            vim.cmd("DiffviewClose")
+          end
+        end,
         desc = "File history",
         mode = { "n", "v" },
       },
@@ -128,7 +134,13 @@ return {
       },
       {
         "<leader>gd",
-        "<cmd>DiffviewOpen<cr>",
+        function()
+          if next(require("diffview.lib").views) == nil then
+            vim.cmd("DiffviewOpen")
+          else
+            vim.cmd("DiffviewClose")
+          end
+        end,
         desc = "Diff",
       },
       {
