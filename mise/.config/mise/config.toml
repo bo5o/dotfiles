@@ -36,6 +36,8 @@ yq = "4.45.1"
 zellij = "0.42.1"
 zoxide = "0.9.7"
 fzf = "0.61.1"
+yamllint = "1.37.0"
+yamlfmt = "0.16.0"
 
 [alias.bitwarden-secrets-manager.versions]
 "1.0.0" = "bws-v1.0.0"
