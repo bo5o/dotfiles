@@ -67,6 +67,7 @@ taplo = "0.9.3"
 "npm:awk-language-server" = "0.10.6"
 "pipx:djlint" = "1.36.4"
 "npm:markdownlint-cli" = "0.44.0"
+"ubi:ribru17/ts_query_ls" = "1.10.0"
 
 [alias.bitwarden-secrets-manager.versions]
 "1.0.0" = "bws-v1.0.0"
