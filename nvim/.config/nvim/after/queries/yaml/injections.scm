@@ -7,4 +7,3 @@
     (block_scalar) @injection.content
     (#set! injection.language "dockerfile")
     (#offset! @injection.content 0 1 0 0)))
-
