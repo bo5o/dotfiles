@@ -120,6 +120,7 @@ return {
       require("plugins.lsp.php").setup()
       require("plugins.lsp.markdown").setup()
       require("plugins.lsp.sh").setup()
+      require("plugins.lsp.query").setup()
 
       vim.diagnostic.config({
         virtual_text = false,
@@ -277,6 +278,7 @@ return {
           yaml = { "yamlfmt" },
           toml = { "taplo" },
           ocaml = { "ocamlformat" },
+          query = { lsp_format = "prefer" },
           ["_"] = { "trim_whitespace" },
         },
         format_on_save = function(bufnr)
