@@ -6,5 +6,4 @@ return {
   { "ericpruitt/tmux.vim", ft = "tmux" },
   { "chr4/nginx.vim", ft = "nginx" },
   { "jidn/vim-dbml", ft = "dbml" },
-  { "NoahTheDuke/vim-just", ft = "just" },
 }

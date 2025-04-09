@@ -104,7 +104,6 @@
   "vim-illuminate": { "branch": "master", "commit": "19cb21f513fc2b02f0c66be70107741e837516a1" },
   "vim-ipython-cell": { "branch": "master", "commit": "35e25f63c0de4fa3d9f9b1d8922905cd309795ce" },
   "vim-jdaddy": { "branch": "master", "commit": "23b67752cb869dd9c8f3109173b69aa96a1f3acf" },
-  "vim-just": { "branch": "main", "commit": "b7f9505f93ede57c4ec011405592280b3f1755ec" },
   "vim-lion": { "branch": "master", "commit": "ce46593ecd60e6051fb6e4d3986d2fc9f5a618b1" },
   "vim-matchup": { "branch": "master", "commit": "ea2ff43e09e68b63fc6d9268fc5d82d82d433cb3" },
   "vim-obsession": { "branch": "master", "commit": "ed9dfc7c2cc917ace8b24f4f9f80a91e05614b63" },
