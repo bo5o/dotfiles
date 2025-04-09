@@ -121,6 +121,7 @@ return {
       require("plugins.lsp.markdown").setup()
       require("plugins.lsp.sh").setup()
       require("plugins.lsp.query").setup()
+      require("plugins.lsp.just").setup()
 
       vim.diagnostic.config({
         virtual_text = false,
