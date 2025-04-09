@@ -1,5 +1,5 @@
 return {
-  { "mrcjkb/rustaceanvim", version = "^5", ft = { "rust" } },
+  { "mrcjkb/rustaceanvim", version = "^6", ft = { "rust" } },
 
   {
     "folke/lazydev.nvim",
