@@ -128,6 +128,13 @@ vim.keymap.set("i", "<C-j>", "<cmd>normal j<cr>")
 vim.keymap.set("i", "<C-k>", "<cmd>normal k<cr>")
 vim.keymap.set("i", "<C-l>", "<cmd>normal l<cr>")
 
+vim.keymap.set(
+  "n",
+  "<leader>cI",
+  "<cmd>checkhealth vim.lsp<cr>",
+  { desc = "Show LSP info" }
+)
+
 -- hydra modes
 local Hydra = require("hydra")
 

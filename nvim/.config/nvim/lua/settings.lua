@@ -149,3 +149,29 @@ vim.opt.listchars =
 vim.opt.showbreak = "↪"
 
 vim.o.winborder = "rounded"
+
+vim.lsp.enable({
+  "basedpyright",
+  "bashls",
+  "biome",
+  "cssls",
+  "dockerls",
+  "eslint",
+  "html",
+  "intelephense",
+  "jsonls",
+  "just",
+  "lemminx",
+  "lua_ls",
+  "marksman",
+  "ocamllsp",
+  "pylsp",
+  "ruff",
+  "tinymist",
+  "taplo",
+  "ts_query_ls",
+  "vimls",
+  "volar",
+  "vtsls",
+  "yamlls",
+})

@@ -1,5 +1,26 @@
 return {
-  { "mrcjkb/rustaceanvim", version = "^6", ft = { "rust" } },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^6",
+    ft = { "rust" },
+    init = function()
+      vim.g.rustaceanvim = {
+        -- Plugin configuration
+        tools = {},
+        -- LSP configuration
+        server = {
+          settings = {
+            ["rust-analyzer"] = {
+              checkOnSave = {
+                command = "clippy",
+                extraArgs = { "--no-deps" },
+              },
+            },
+          },
+        },
+      }
+    end,
+  },
 
   {
     "folke/lazydev.nvim",
@@ -17,21 +38,13 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    lazy = false,
     keys = {
-      { "<leader>cI", "<cmd>LspInfo<cr>", desc = "Lsp info" },
       { "<leader>cS", "<cmd>LspRestart<cr>", desc = "Restart LSP servers" },
     },
     dependencies = {
       "mason.nvim",
       "aerial.nvim",
-      {
-        "williamboman/mason-lspconfig.nvim",
-        dependencies = "mason.nvim",
-        opts = {
-          automatic_installation = false,
-        },
-      },
       { "b0o/schemastore.nvim", version = false },
       { "Davidyz/inlayhint-filler.nvim" },
       { "antosha417/nvim-lsp-file-operations", opts = {} },
@@ -100,28 +113,6 @@ return {
             debounce_text_changes = 300,
           },
         })
-
-      require("plugins.lsp.python").setup()
-      require("plugins.lsp.lua").setup()
-      require("plugins.lsp.rust").setup()
-      require("plugins.lsp.json").setup()
-      require("plugins.lsp.ocaml").setup()
-      require("plugins.lsp.yaml").setup()
-      require("plugins.lsp.html").setup(capabilities)
-      require("plugins.lsp.css").setup(capabilities)
-      require("plugins.lsp.toml").setup()
-      require("plugins.lsp.docker").setup()
-      require("plugins.lsp.xml").setup()
-      require("plugins.lsp.vue").setup()
-      require("plugins.lsp.vim").setup()
-      require("plugins.lsp.typescript").setup()
-      require("plugins.lsp.typst").setup()
-      require("plugins.lsp.eslint").setup()
-      require("plugins.lsp.php").setup()
-      require("plugins.lsp.markdown").setup()
-      require("plugins.lsp.sh").setup()
-      require("plugins.lsp.query").setup()
-      require("plugins.lsp.just").setup()
 
       vim.diagnostic.config({
         virtual_text = false,
