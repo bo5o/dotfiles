@@ -18,9 +18,6 @@ COMPLETION_WAITING_DOTS="true"
 export MISE_DATA_DIR="$HOME/.local/share/mise"
 export PATH="$MISE_DATA_DIR/shims:$PATH"
 
-# direnv settings
-export DIRENV_LOG_FORMAT=""
-
 # Plugins
 plugins=(
     # from ~/.oh-my-zsh/plugins
