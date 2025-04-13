@@ -70,6 +70,7 @@ taplo = "0.9.3"
 "ubi:ribru17/ts_query_ls" = "1.10.0"
 "cargo:just-lsp" = "0.2.0"
 "npm:intelephense" = "1.14.4"
+"ubi:supabase-community/postgres-language-server" = { version = "0.4.0", rename_exe = "postgrestools" }
 
 [alias.bitwarden-secrets-manager.versions]
 "1.0.0" = "bws-v1.0.0"
