@@ -167,38 +167,36 @@ return {
   {
     "nvimdev/lspsaga.nvim",
     event = "LspAttach",
-    config = function()
-      require("lspsaga").setup({
-        symbols_in_winbar = {
-          enable = true,
+    opts = {
+      symbols_in_winbar = {
+        enable = true,
+      },
+      lightbulb = {
+        enable = true,
+        sign = false,
+        virtual_text = true,
+      },
+      implement = {
+        enable = true,
+      },
+      ui = {
+        code_action = "🗲",
+        title = false,
+      },
+      definition = {
+        keys = {
+          edit = "<c-w>e",
+          vsplit = "<c-w>v",
+          split = "<c-w>s",
+          close = "<c-w>q",
         },
-        lightbulb = {
-          enable = true,
-          sign = false,
-          virtual_text = true,
+      },
+      finder = {
+        keys = {
+          toggle_or_open = "<cr>",
         },
-        implement = {
-          enable = true,
-        },
-        ui = {
-          code_action = "🗲",
-          title = false,
-        },
-        definition = {
-          keys = {
-            edit = "<c-w>e",
-            vsplit = "<c-w>v",
-            split = "<c-w>s",
-            close = "<c-w>q",
-          },
-        },
-        finder = {
-          keys = {
-            toggle_or_open = "<cr>",
-          },
-        },
-      })
-    end,
+      },
+    },
   },
 
   {
