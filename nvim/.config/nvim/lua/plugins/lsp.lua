@@ -572,6 +572,7 @@ return {
     dependencies = { "nvim-treesitter" },
     keys = {
       { "<leader>os", "<cmd>AerialToggle right<cr>", desc = "Toggle symbol tree" },
+      { "gO", "<cmd>AerialToggle right<cr>", desc = "Toggle symbol tree" },
     },
     opts = {
       backends = { "lsp", "treesitter", "markdown", "man" },
