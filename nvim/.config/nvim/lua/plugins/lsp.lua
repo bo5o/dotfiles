@@ -63,7 +63,9 @@ return {
           map("gd", "<cmd>Lspsaga goto_definition<cr>", "Go to definition")
           map("gp", "<cmd>Lspsaga peek_definition<cr>", "Peek definition")
           map("gD", vim.lsp.buf.declaration, "Go to declaration")
-          map("<c-s>", vim.lsp.buf.signature_help, "Display signature help", { "i" })
+          map("<c-s>", function()
+            vim.lsp.buf.signature_help({ border = "rounded" })
+          end, "Display signature help", { "i" })
           map(
             "gI",
             "<cmd>Trouble lsp_implementations auto_refresh=false<cr>",
