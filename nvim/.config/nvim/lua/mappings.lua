@@ -71,10 +71,10 @@ vim.keymap.set("i", "jk", "<ESC>", { desc = "Switch to normal mode" })
 
 -- jump around diagnostics
 vim.keymap.set("n", "]d", function()
-  vim.diagnostic.goto_next({ float = false, wrap = false })
+  vim.diagnostic.jump({ count = 1, wrap = false })
 end, { desc = "Jump to the next diagnostic" })
 vim.keymap.set("n", "[d", function()
-  vim.diagnostic.goto_prev({ float = false, wrap = false })
+  vim.diagnostic.jump({ count = -1, wrap = false })
 end, { desc = "Jump to the previous diagnostic" })
 
 -- ask before jumping tag stack if ambigous
