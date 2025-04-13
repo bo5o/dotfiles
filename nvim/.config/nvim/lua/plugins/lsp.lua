@@ -98,22 +98,14 @@ return {
         end,
       })
 
-      local capabilities = vim.tbl_deep_extend(
-        "force",
-        vim.lsp.protocol.make_client_capabilities(),
-        require("cmp_nvim_lsp").default_capabilities(),
-        require("lsp-file-operations").default_capabilities()
-      )
-
-      local lspconfig = require("lspconfig")
-      lspconfig.util.default_config =
-        vim.tbl_extend("force", lspconfig.util.default_config, {
-          capabilities = capabilities,
-          flags = {
-            debounce_text_changes = 300,
-          },
-        })
-
+      vim.lsp.config("*", {
+        capabilities = vim.tbl_deep_extend(
+          "error",
+          require("cmp_nvim_lsp").default_capabilities(),
+          require("lsp-file-operations").default_capabilities()
+        ),
+        flags = {
+          debounce_text_changes = 300,
         },
       })
     end,
