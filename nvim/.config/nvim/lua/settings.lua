@@ -148,8 +148,6 @@ vim.opt.listchars =
   { tab = "→ ", eol = "¬", trail = "⋅", extends = "❯", precedes = "❮" }
 vim.opt.showbreak = "↪"
 
-vim.o.winborder = "rounded"
-
 vim.diagnostic.config({
   virtual_text = false,
   severity_sort = true,
