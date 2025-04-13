@@ -88,7 +88,7 @@ return {
           map("<leader>cwl", function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, "List workspace folders")
-          map("<leader>cI", "<cmd>LspRestart<cr>", "Restart LSP servers")
+          map("<leader>cS", "<cmd>LspRestart<cr>", "Restart LSP servers")
         end,
       })
 
