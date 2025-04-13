@@ -38,13 +38,7 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    lazy = false,
-    keys = {
-      { "<leader>cS", "<cmd>LspRestart<cr>", desc = "Restart LSP servers" },
-    },
     dependencies = {
-      "mason.nvim",
-      "aerial.nvim",
       { "b0o/schemastore.nvim", version = false },
       { "Davidyz/inlayhint-filler.nvim" },
       { "antosha417/nvim-lsp-file-operations", opts = {} },
@@ -95,8 +89,255 @@ return {
           map("<leader>cwl", function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, "List workspace folders")
+          map("<leader>cI", "<cmd>LspRestart<cr>", "Restart LSP servers")
         end,
       })
+
+      ---@type { [string]: vim.lsp.Config }
+      local servers = {
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              disableOrganizeImports = true,
+            },
+          },
+        },
+        bashls = {},
+        biome = {},
+        cssls = {
+          capabilities = {
+            textDocument = {
+              completion = {
+                completionItem = {
+                  snippetSupport = true,
+                },
+              },
+            },
+          },
+        },
+        dockerls = {},
+        eslint = {
+          on_attach = function(client, bufnr)
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              buffer = bufnr,
+              command = "EslintFixAll",
+            })
+          end,
+        },
+        html = {
+          capabilities = {
+            textDocument = {
+              completion = {
+                completionItem = {
+                  snippetSupport = true,
+                },
+              },
+            },
+          },
+        },
+        intelephense = {},
+        jsonls = {},
+        just = {},
+        lemminx = {
+          init_options = {
+            settings = {
+              xml = {
+                format = {
+                  splitAttributes = true,
+                },
+              },
+            },
+          },
+        },
+        lua_ls = {
+          on_init = function(client)
+            if client.workspace_folders then
+              local path = client.workspace_folders[1].name
+              if
+                path ~= vim.fn.stdpath("config")
+                and (
+                  vim.uv.fs_stat(path .. "/.luarc.json")
+                  or vim.uv.fs_stat(path .. "/.luarc.jsonc")
+                )
+              then
+                return
+              end
+            end
+
+            client.config.settings.Lua =
+              vim.tbl_deep_extend("force", client.config.settings.Lua, {
+                runtime = {
+                  version = "LuaJIT",
+                },
+                workspace = {
+                  checkThirdParty = false,
+                  ignoreDir = { "undodir/**/*.lua" },
+                  library = {
+                    vim.env.VIMRUNTIME,
+                  },
+                },
+                telemetry = { enable = false },
+              })
+          end,
+          settings = {
+            Lua = {},
+          },
+        },
+        marksman = {},
+        ocamllsp = {},
+        pylsp = {
+          -- expose mypy through pylsp
+          settings = {
+            pylsp = {
+              plugins = {
+                -- enable mypy daemon
+                mypy = {
+                  enabled = true,
+                  dmypy = true,
+                  strict = true,
+                  report_progress = true,
+                },
+
+                -- disable all other plugins
+                jedi_completion = { enabled = false },
+                jedi_definition = { enabled = false },
+                jedi_hover = { enabled = false },
+                jedi_references = { enabled = false },
+                jedi_signature_help = { enabled = false },
+                jedi_symbols = { enabled = false },
+                autopep8 = { enabled = false },
+                flake8 = { enabled = false },
+                mccabe = { enabled = false },
+                preload = { enabled = false },
+                pycodestyle = { enabled = false },
+                pydocstyle = { enabled = false },
+                pyflakes = { enabled = false },
+                pylint = { enabled = false },
+                rope_autoimport = { enabled = false },
+                rope_completion = { enabled = false },
+                yapf = { enabled = false },
+              },
+            },
+          },
+          on_attach = function(client)
+            -- stop server if mypy is not available in the current virtual environment
+            local mypy_available = vim.env.VIRTUAL_ENV
+              and vim.uv.fs_stat(vim.fs.joinpath(vim.env.VIRTUAL_ENV, "bin", "mypy"))
+            if not mypy_available then
+              client:stop()
+            end
+          end,
+        },
+        ruff = {
+          on_attach = function(client)
+            -- disable hover in favor of pyright
+            client.server_capabilities.hoverProvider = false
+          end,
+        },
+        tinymist = {
+          settings = {
+            formatterMode = "typstyle",
+          },
+        },
+        taplo = {},
+        ts_query_ls = {
+          settings = {
+            parser_install_directories = {
+              vim.fs.joinpath(vim.fn.stdpath("data"), "/lazy/nvim-treesitter/parser/"),
+            },
+            language_retrieval_patterns = {
+              "languages/src/([^/]+)/[^/]+\\.scm$",
+            },
+          },
+        },
+        vimls = {},
+        volar = {
+          init_options = {
+            vue = {
+              hybridMode = true,
+            },
+          },
+        },
+        vtsls = {
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+            "vue",
+          },
+          settings = {
+            complete_function_calls = true,
+            vtsls = {
+              enableMoveToFileCodeAction = true,
+              autoUseWorkspaceTsdk = true,
+              experimental = {
+                maxInlayHintLength = 30,
+                completion = {
+                  enableServerSideFuzzyMatch = true,
+                },
+              },
+              tsserver = {
+                globalPlugins = {},
+              },
+            },
+            typescript = {
+              updateImportsOnFileMove = { enabled = "always" },
+              suggest = {
+                completeFunctionCalls = true,
+              },
+              inlayHints = {
+                enumMemberValues = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                parameterNames = { enabled = "literals" },
+                parameterTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                variableTypes = { enabled = false },
+              },
+            },
+          },
+          before_init = function(params, config)
+            local lib_path = vim.fs.find(
+              "node_modules/@vue/language-server",
+              { path = params.workspaceFolders[1].name, upward = true }
+            )[1]
+            if lib_path then
+              table.insert(config.settings.vtsls.tsserver.globalPlugins, {
+                name = "@vue/typescript-plugin",
+                location = lib_path,
+                languages = { "vue" },
+                configNamespace = "typescript",
+                enableForWorkspaceTypeScriptVersions = true,
+              })
+            end
+          end,
+        },
+        yamlls = {
+          settings = {
+            redhat = {
+              telemetry = {
+                enabled = false,
+              },
+            },
+            yaml = {
+              hover = true,
+              completion = true,
+              validate = true,
+              schemaStore = {
+                enable = false,
+                url = "",
+              },
+              customTags = { "!reset sequence", "!override sequence" },
+              schemas = require("schemastore").yaml.schemas(),
+              format = {
+                enable = false,
+              },
+            },
+          },
+        },
+      }
 
       vim.lsp.config("*", {
         capabilities = vim.tbl_deep_extend(
@@ -108,6 +349,11 @@ return {
           debounce_text_changes = 300,
         },
       })
+
+      for server, settings in pairs(servers) do
+        vim.lsp.config(server, settings)
+        vim.lsp.enable(server)
+      end
     end,
   },
 
