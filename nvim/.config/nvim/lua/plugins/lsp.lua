@@ -451,7 +451,7 @@ return {
     cmd = { "ConformInfo" },
     keys = {
       {
-        "<leader>cf",
+        "crf",
         function()
           require("conform").format({ async = true, lsp_fallback = true })
         end,
