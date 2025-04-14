@@ -184,7 +184,7 @@ return {
         },
         marksman = {},
         ocamllsp = {},
-        postgres_lsp = {},
+        -- postgres_lsp = {},
         pylsp = {
           -- expose mypy through pylsp
           settings = {
