@@ -184,7 +184,9 @@ return {
         },
         marksman = {},
         ocamllsp = {},
-        -- postgres_lsp = {},
+        postgres_lsp = {
+          workspace_required = true,
+        },
         pylsp = {
           -- expose mypy through pylsp
           settings = {
@@ -233,6 +235,10 @@ return {
             -- disable hover in favor of pyright
             client.server_capabilities.hoverProvider = false
           end,
+        },
+        sqruff = {
+          root_markers = { ".sqruff" },
+          workspace_required = true,
         },
         tinymist = {
           settings = {
@@ -421,8 +427,6 @@ return {
     "mfussenegger/nvim-lint",
     config = function()
       require("lint").linters_by_ft = {
-        sql = { "sqlfluff" },
-        ["sql.jinja"] = { "sqlfluff" },
         ["html.jinja"] = { "djlint" },
         ["jinja"] = { "djlint" },
         gitcommit = { "gitlint" },
@@ -439,6 +443,13 @@ return {
         callback = function()
           local lint = require("lint")
           lint.try_lint()
+          -- run sqlfluff only if config file exists
+          if
+            vim.startswith(vim.bo.filetype, "sql")
+            and vim.fs.root(0, ".sqlfluff") ~= nil
+          then
+            lint.try_lint("sqlfluff")
+          end
         end,
       })
     end,
@@ -453,7 +464,7 @@ return {
       {
         "crf",
         function()
-          require("conform").format({ async = true, lsp_fallback = true })
+          require("conform").format({ async = true })
         end,
         mode = "n",
         desc = "Format buffer",
@@ -461,10 +472,25 @@ return {
     },
     config = function()
       require("conform").setup({
+        default_format_opts = {
+          lsp_format = "fallback",
+        },
         formatters_by_ft = {
           lua = { "stylua" },
-          sql = { "sqlfluff", "sqlfmt", "sql_formatter", stop_after_first = true },
-          ["sql.jinja"] = { "sqlfluff", "sqlfmt", stop_after_first = true },
+          sql = function()
+            if vim.fs.root(0, ".sqlfluff") ~= nil then
+              return { "sqlfluff", lsp_format = "prefer" }
+            else
+              return { "sql_formatter", lsp_format = "prefer" }
+            end
+          end,
+          ["sql.jinja"] = function()
+            if vim.fs.root(0, ".sqlfluff") ~= nil then
+              return { "sqlfluff", lsp_format = "prefer" }
+            else
+              return { lsp_format = "prefer" }
+            end
+          end,
           ["html.jinja"] = { "djlint" },
           htmldjango = { "djlint" },
           python = function(bufnr)
@@ -478,6 +504,7 @@ return {
           end,
           html = { "prettierd", "djlint", stop_after_first = true },
           jinja = { "djlint" },
+          json = { "biome" },
           markdown = { "mdformat", "injected" },
           sh = { "shfmt" },
           bash = { "shfmt" },
@@ -544,7 +571,11 @@ return {
             ["end"] = { args.line2, end_line:len() },
           }
         end
-        require("conform").format({ async = true, lsp_fallback = true, range = range })
+        require("conform").format({
+          async = true,
+          lsp_format = "fallback",
+          range = range,
+        })
       end, {
         desc = "Format buffer",
         range = true,
