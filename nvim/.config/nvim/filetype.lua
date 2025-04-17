@@ -2,6 +2,7 @@ vim.filetype.add({
   filename = {
     ["sxhkdrc"] = "sxhkd",
     [".sqlfluff"] = "cfg",
+    [".sqruff"] = "cfg",
     [".flake8"] = "cfg",
     [".yamlfmt"] = "yaml",
     ["requirements.lock"] = "requirements",
