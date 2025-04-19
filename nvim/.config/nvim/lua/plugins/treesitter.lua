@@ -144,7 +144,7 @@ return {
       hydra({
         name = "Walk",
         mode = "n",
-        body = "gw",
+        body = "gW",
         heads = {
           { "h", "<cmd>Treewalker Left<cr>", { desc = "Go to node to the left" } },
           { "j", "<cmd>Treewalker Down<cr>", { desc = "Go to node below" } },
