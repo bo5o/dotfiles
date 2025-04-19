@@ -571,15 +571,10 @@ return {
             ["end"] = { args.line2, end_line:len() },
           }
         end
-        require("conform").format({
-          async = true,
-          lsp_format = "fallback",
-          range = range,
-        })
-      end, {
-        desc = "Format buffer",
-        range = true,
-      })
+        require("conform").format({ async = true, range = range })
+      end, { desc = "Format buffer", range = true })
+
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
   },
 
