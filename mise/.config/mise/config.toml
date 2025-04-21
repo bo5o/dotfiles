@@ -54,7 +54,7 @@ shfmt = "3.11.0"
 "npm:markuplint" = "4.12.0"
 marksman = "2024-12-18"
 lua-language-server = "3.14.0"
-"npm:sql-formatter" = "15.5.2"
+"npm:sql-formatter" = "15.6.0"
 "npm:stylelint" = "16.18.0"
 stylua = "2.0.2"
 taplo = "0.9.3"
@@ -67,10 +67,10 @@ taplo = "0.9.3"
 "npm:awk-language-server" = "0.10.6"
 "pipx:djlint" = "1.36.4"
 "npm:markdownlint-cli" = "0.44.0"
-"ubi:ribru17/ts_query_ls" = "1.10.0"
+"ubi:ribru17/ts_query_ls" = "1.11.0"
 "cargo:just-lsp" = "0.2.0"
 "npm:intelephense" = "1.14.4"
-"ubi:supabase-community/postgres-language-server" = { version = "0.4.0", rename_exe = "postgrestools" }
+"ubi:supabase-community/postgres-language-server" = { version = "0.5.0", rename_exe = "postgrestools" }
 "pipx:sqruff" = "0.25.29"
 
 [alias.bitwarden-secrets-manager.versions]
