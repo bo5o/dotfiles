@@ -119,9 +119,9 @@ vim.keymap.set("n", "gb", "<cmd>BufferLinePick<cr>", { desc = "Pick buffer" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "See :h J" })
 
-vim.keymap.set("n", "yc", "yy<cmd>normal gcc<cr>p", {
-  desc = "Paste line below and comment",
-})
+vim.keymap.set("n", "ycc", "yy<cmd>normal gcc<cr>p", { desc = "Copy line and comment" })
+
+vim.keymap.set("x", "/", "<Esc>/\\%V", { desc = "Search within visual selection" })
 
 vim.keymap.set("i", "<C-h>", "<cmd>normal h<cr>")
 vim.keymap.set("i", "<C-j>", "<cmd>normal j<cr>")
