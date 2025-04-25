@@ -77,7 +77,8 @@ return {
     keys = {
       { "<leader>gco", "<cmd>Git checkout<cr>", desc = "Checkout" },
       { "<leader>gcc", "<cmd>Git commit -v -q<cr>", desc = "Commit" },
-      { "<leader>gca", "<cmd>Git commit --amend<cr>", desc = "Amend" },
+      { "<leader>gca", "<cmd>Git absorb<cr>", desc = "Absorb" },
+      { "<leader>gcm", "<cmd>Git commit --amend<cr>", desc = "Amend" },
       { "<leader>gw", "<cmd>Gwrite<cr>", desc = "Stage" },
       { "<leader>gB", "<cmd>Git blame<cr>", desc = "Blame" },
       { "<leader>ge", "<cmd>Gedit<cr>", desc = "Edit" },
