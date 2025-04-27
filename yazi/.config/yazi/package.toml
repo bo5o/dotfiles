@@ -1,11 +1,11 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "4b027c7"
+rev = "864a021"
 hash = "1f3dad061209081a6b04dd6ff2cb06c7"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "4b027c7"
+rev = "864a021"
 hash = "dd97eede8e20e59cd2604e8006e470e2"
 
 [[plugin.deps]]
@@ -15,5 +15,5 @@ hash = "833314e2c2bd0de8d43ef2341cb0853b"
 
 [[flavor.deps]]
 use = "bennyyip/gruvbox-dark"
-rev = "b4cc9f2"
-hash = "f44c42bcbed3c8564100e45e2fe3649a"
+rev = "91fdfa7"
+hash = "f48f510e5505f5d01e79c4f8257ec5cb"
