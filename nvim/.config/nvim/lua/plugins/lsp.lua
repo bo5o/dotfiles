@@ -92,6 +92,8 @@ return {
         end,
       })
 
+      local eslint_on_attach = vim.lsp.config.eslint.on_attach
+
       ---@type { [string]: vim.lsp.Config }
       local servers = {
         basedpyright = {
@@ -117,11 +119,15 @@ return {
         dockerls = {},
         eslint = {
           on_attach = function(client, bufnr)
+            if eslint_on_attach ~= nil then
+              eslint_on_attach(client, bufnr)
+            end
             vim.api.nvim_create_autocmd("BufWritePre", {
               buffer = bufnr,
-              command = "EslintFixAll",
+              command = "LspEslintFixAll",
             })
           end,
+          workspace_required = true,
         },
         html = {
           capabilities = {
@@ -493,6 +499,8 @@ return {
           end,
           ["html.jinja"] = { "djlint" },
           htmldjango = { "djlint" },
+          javascript = { "biome", lsp_format = "fallback" },
+          typescript = { "biome", lsp_format = "fallback" },
           python = function(bufnr)
             if
               require("conform").get_formatter_info("ruff_format", bufnr).available
