@@ -117,6 +117,7 @@ return {
           },
         },
         dockerls = {},
+        docker_compose_language_service = {},
         eslint = {
           on_attach = function(client, bufnr)
             if eslint_on_attach ~= nil then
