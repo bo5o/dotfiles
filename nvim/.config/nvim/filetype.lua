@@ -9,6 +9,7 @@ vim.filetype.add({
     ["requirements-dev.lock"] = "requirements",
     ["uv.lock"] = "toml",
     [".markdownlintrc"] = "json",
+    ["Caddyfile"] = "caddy",
   },
   extension = {
     jinja = "jinja",
