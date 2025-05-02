@@ -500,8 +500,8 @@ return {
           end,
           ["html.jinja"] = { "djlint" },
           htmldjango = { "djlint" },
-          javascript = { "biome", lsp_format = "fallback" },
-          typescript = { "biome", lsp_format = "fallback" },
+          javascript = { "biome", "prettierd", lsp_format = "fallback" },
+          typescript = { "biome", "prettierd", lsp_format = "fallback" },
           python = function(bufnr)
             if
               require("conform").get_formatter_info("ruff_format", bufnr).available
@@ -524,6 +524,7 @@ return {
           ocaml = { "ocamlformat" },
           query = { lsp_format = "prefer" },
           caddy = { "caddyfmt" },
+          vue = { "prettierd" },
           ["_"] = { "trim_whitespace" },
         },
         formatters = {
