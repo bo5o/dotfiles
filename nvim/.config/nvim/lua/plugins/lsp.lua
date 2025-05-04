@@ -327,6 +327,19 @@ return {
             end
           end,
           on_attach = function(client, bufnr)
+            vim.api.nvim_buf_create_user_command(
+              0,
+              "LspTypescriptCodeAction",
+              function()
+                local code_actions =
+                  client.server_capabilities.codeActionProvider.codeActionKinds
+                require("lspsaga.codeaction"):code_action({
+                  context = { only = code_actions },
+                })
+              end,
+              {}
+            )
+
             vim.api.nvim_create_autocmd("BufWritePre", {
               buffer = bufnr,
               callback = function()
