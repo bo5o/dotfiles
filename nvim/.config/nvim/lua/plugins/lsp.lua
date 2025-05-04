@@ -52,6 +52,8 @@ return {
             vim.keymap.set(mode or "n", lhs, rhs, opts)
           end
 
+          local client = vim.lsp.get_client_by_id(args.data.client_id) --[[@as vim.lsp.Client]]
+
           map("<leader>hi", function()
             vim.lsp.inlay_hint.enable(
               not vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf }),
@@ -59,8 +61,27 @@ return {
             )
           end, "Toggle inlay hints")
 
+          local goto_definition
+
+          -- use vtsls special goto definition if it is active for given buffer
+          if #vim.lsp.get_clients({ name = "vtsls", bufnr = args.buf }) == 1 then
+            goto_definition = function()
+              local params =
+                vim.lsp.util.make_position_params(0, client.offset_encoding)
+              require("trouble").open({
+                mode = "lsp_command",
+                params = {
+                  command = "typescript.goToSourceDefinition",
+                  arguments = { params.textDocument.uri, params.position },
+                },
+              })
+            end
+          else
+            goto_definition = "<cmd>Lspsaga goto_definition<cr>"
+          end
+
           map("K", "<cmd>Lspsaga hover_doc<cr>", "Hover")
-          map("gd", "<cmd>Lspsaga goto_definition<cr>", "Go to definition")
+          map("gd", goto_definition, "Go to definition")
           map("gp", "<cmd>Lspsaga peek_definition<cr>", "Peek definition")
           map("gD", vim.lsp.buf.declaration, "Go to declaration")
           map(
