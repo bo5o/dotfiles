@@ -340,18 +340,15 @@ return {
               {}
             )
 
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              buffer = bufnr,
-              callback = function()
-                vim.lsp.buf.code_action({
-                  apply = true,
-                  context = {
-                    only = { "source.organizeImports" },
-                    diagnostics = {},
-                  },
-                })
-              end,
-            })
+            vim.keymap.set("n", "cro", function()
+              vim.lsp.buf.code_action({
+                apply = true,
+                context = {
+                  only = { "source.organizeImports" },
+                  diagnostics = {},
+                },
+              })
+            end, { desc = "Organize imports", buffer = bufnr, silent = true })
           end,
         },
         yamlls = {
