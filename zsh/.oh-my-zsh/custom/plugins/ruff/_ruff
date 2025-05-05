@@ -41,7 +41,7 @@ _arguments "${_arguments_options[@]}" : \
 '--output-format=[Output serialization format for violations. The default serialization format is "full"]:OUTPUT_FORMAT:(concise full json json-lines junit grouped github gitlab pylint rdjson azure sarif)' \
 '-o+[Specify file to write the linter output to (default\: stdout)]:OUTPUT_FILE:_files' \
 '--output-file=[Specify file to write the linter output to (default\: stdout)]:OUTPUT_FILE:_files' \
-'--target-version=[The minimum Python version that should be supported]:TARGET_VERSION:(py37 py38 py39 py310 py311 py312 py313)' \
+'--target-version=[The minimum Python version that should be supported]:TARGET_VERSION:(py37 py38 py39 py310 py311 py312 py313 py314)' \
 '*--select=[Comma-separated list of rule codes to enable (or ALL, to enable all rules)]:RULE_CODE:((ALL\:"all rules"
 AIR\:"Airflow"
 ERA\:"eradicate"
@@ -9057,6 +9057,7 @@ lint.ruff.parenthesize-tuple-in-subscript\:"Whether to prefer accessing items ke
 lint.ruff.extend-markup-names\:"A list of additional callable names that behave like \[\`markupsafe.Markup\`\](https\://markupsafe.palletsprojects.com/en/stable/escaping/#markupsafe.Markup)."
 lint.ruff.allowed-markup-calls\:"A list of callable names, whose result may be safely passed into \[\`markupsafe.Markup\`\](https\://markupsafe.palletsprojects.com/en/stable/escaping/#markupsafe.Markup)."
 lint.preview\:"Whether to enable preview mode. When preview mode is enabled, Ruff will use unstable rules and fixes."
+lint.typing-extensions\:"Whether to allow imports from the third-party \`typing_extensions\` module for Python versions before a symbol was added to the first-party \`typing\` module."
 format\:"Configures the way Ruff formats your code."
 format.exclude\:"A list of file patterns to exclude from formatting in addition to the files excluded globally (see \[\`exclude\`\](#exclude), and \[\`extend-exclude\`\](#extend-exclude))."
 format.preview\:"Whether to enable the unstable preview style formatting."
@@ -9125,7 +9126,7 @@ _arguments "${_arguments_options[@]}" : \
 '--line-length=[Set the line-length]:LINE_LENGTH:_default' \
 '--stdin-filename=[The name of the file when passing it through stdin]:STDIN_FILENAME:_files' \
 '*--extension=[List of mappings from file extension to language (one of \`python\`, \`ipynb\`, \`pyi\`). For example, to treat \`.ipy\` files as IPython notebooks, use \`--extension ipy\:ipynb\`]:EXTENSION:_default' \
-'--target-version=[The minimum Python version that should be supported]:TARGET_VERSION:(py37 py38 py39 py310 py311 py312 py313)' \
+'--target-version=[The minimum Python version that should be supported]:TARGET_VERSION:(py37 py38 py39 py310 py311 py312 py313 py314)' \
 '--range=[When specified, Ruff will try to only format the code in the given range. It might be necessary to extend the start backwards or the end forwards, to fully enclose a logical line. The \`<RANGE>\` uses the format \`<start_line>\:<start_column>-<end_line>\:<end_column>\`.]:RANGE:_default' \
 '*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--check[Avoid writing any formatted files back; instead, exit with a non-zero status code if any files would have been modified, and zero otherwise]' \
@@ -9193,7 +9194,7 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '--direction=[The direction of the import map. By default, generates a dependency map, i.e., a map from file to files that it depends on. Use \`--direction dependents\` to generate a map from file to files that depend on it]:DIRECTION:((dependencies\:"Construct a map from module to its dependencies (i.e., the modules that it imports)"
 dependents\:"Construct a map from module to its dependents (i.e., the modules that import it)"))' \
-'--target-version=[The minimum Python version that should be supported]:TARGET_VERSION:(py37 py38 py39 py310 py311 py312 py313)' \
+'--target-version=[The minimum Python version that should be supported]:TARGET_VERSION:(py37 py38 py39 py310 py311 py312 py313 py314)' \
 '*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--detect-string-imports[Attempt to detect imports from string literals]' \
 '--preview[Enable preview mode. Use \`--no-preview\` to disable]' \
