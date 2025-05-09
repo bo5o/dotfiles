@@ -3,7 +3,7 @@ default:
     @just --justfile {{ source_file() }} --list --unsorted
 
 githubusercontent := "https://raw.githubusercontent.com"
-plugin_dir := ".oh-my-zsh/custom/plugins"
+plugin_dir := join(env("ZSH_CUSTOM", "~/.oh-my-zsh/custom"), "plugins")
 
 # upgrade zsh plugins
 upgrade:
