@@ -66,3 +66,15 @@ update-oh-my-zsh-custom-plugins:
     @echo -n "Updating zsh-syntax-highlighting..."
     @git -C {{ plugin_dir }}/zsh-syntax-highlighting pull -q
     @echo "DONE"
+
+upgrade-yazi-plugins:
+    mise x yazi -- ya pack -u
+
+install-yazi-plugins:
+    mise x yazi -- ya pack -i
+
+upgrade-mise-tools:
+    mise up --bump --interactive
+
+install-mise-tools *args:
+    mise i {{ args }}
