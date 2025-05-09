@@ -67,3 +67,6 @@ upgrade:
     @echo -n "Updating zsh-syntax-highlighting..."
     @git -C {{ plugin_dir }}/zsh-syntax-highlighting pull -q
     @echo "DONE"
+
+    @{{ env("ZSH") }}/tools/upgrade.sh -v minimal
+    @echo "DONE"
