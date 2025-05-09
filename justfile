@@ -2,7 +2,7 @@ mod? mise '~/.just/mise'
 mod? yazi '~/.just/yazi'
 mod? zsh '~/.just/zsh'
 
-stowables := "zsh mise yazi"
+packages := "zsh mise yazi tmux nvim lazygit direnv git bat ripgrep wezterm psql"
 
 [private]
 default:
@@ -17,8 +17,8 @@ install:
     just mise install
     just yazi install
 
-stow *args=stowables:
+stow *args=packages:
     stow -v {{ args }}
 
-unstow *args=stowables:
+unstow *args=packages:
     just stow -D {{ args }}
