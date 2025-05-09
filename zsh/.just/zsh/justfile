@@ -4,6 +4,7 @@ default:
 
 githubusercontent := "https://raw.githubusercontent.com"
 plugin_dir := join(env("ZSH_CUSTOM", "~/.oh-my-zsh/custom"), "plugins")
+tool_dir := join(env("ZSH", "~/.oh-my-zsh"), "tools")
 
 # upgrade zsh plugins
 upgrade:
@@ -68,5 +69,5 @@ upgrade:
     @git -C {{ plugin_dir }}/zsh-syntax-highlighting pull -q
     @echo "DONE"
 
-    @{{ env("ZSH") }}/tools/upgrade.sh -v minimal
+    @{{ tool_dir }}/upgrade.sh -v minimal
     @echo "DONE"
