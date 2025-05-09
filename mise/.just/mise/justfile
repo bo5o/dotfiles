@@ -1,6 +1,6 @@
 [private]
 default:
-    @just --list --unsorted
+    @just --justfile {{ source_file() }} --list --unsorted
 
 # upgrade mise tools
 upgrade:

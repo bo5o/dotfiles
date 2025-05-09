@@ -1,6 +1,8 @@
-mod mise
-mod yazi
-mod zsh
+mod? mise '~/.just/mise'
+mod? yazi '~/.just/yazi'
+mod? zsh '~/.just/zsh'
+
+stowables := "zsh mise yazi"
 
 [private]
 default:
@@ -15,11 +17,8 @@ install:
     just mise install
     just yazi install
 
-stow *args:
+stow *args=stowables:
     stow -v {{ args }}
 
-stow-all *args:
-    just stow {{ args }} zsh mise yazi
-
-unstow *args:
+unstow *args=stowables:
     just stow -D {{ args }}
