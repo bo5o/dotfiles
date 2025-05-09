@@ -1,70 +1,70 @@
 [private]
 default:
-    @just --list zsh --unsorted
+    @just --list --unsorted
 
 githubusercontent := "https://raw.githubusercontent.com"
-plugin_dir := "zsh/.oh-my-zsh/custom/plugins"
+plugin_dir := ".oh-my-zsh/custom/plugins"
 
 # upgrade zsh plugins
 upgrade:
-    @echo -n "Updating github-cli..."
+    @echo -n "Updating github-cli completions..."
     @mkdir -p {{ plugin_dir }}/gh && \
-        mise exec github-cli -- gh completion -s zsh > {{ plugin_dir }}/gh/_gh
+        mise x github-cli -- gh completion -s zsh > {{ plugin_dir }}/gh/_gh
     @echo "DONE"
 
-    @echo -n "Updating just..."
+    @echo -n "Updating just completions..."
     @mkdir -p {{ plugin_dir }}/just && \
-        mise exec just -- just --completions zsh > {{ plugin_dir }}/just/_just
+        mise x just -- just --completions zsh > {{ plugin_dir }}/just/_just
     @echo "DONE"
 
-    @echo -n "Updating restic..."
+    @echo -n "Updating restic completions..."
     @mkdir -p {{ plugin_dir }}/restic && \
-        mise exec restic -- restic -q generate --zsh-completion {{ plugin_dir }}/restic/_restic
+        mise x restic -- restic -q generate --zsh-completion {{ plugin_dir }}/restic/_restic
     @echo "DONE"
 
-    @echo -n "Updating hcloud..."
+    @echo -n "Updating hcloud completions..."
     @mkdir -p {{ plugin_dir }}/hcloud && \
-        mise exec hcloud -- hcloud completion zsh > {{ plugin_dir }}/hcloud/_hcloud
+        mise x hcloud -- hcloud completion zsh > {{ plugin_dir }}/hcloud/_hcloud
     @echo "DONE"
 
-    @echo -n "Updating ruff..."
+    @echo -n "Updating ruff completions..."
     @mkdir -p {{ plugin_dir }}/ruff && \
-        mise exec ruff -- ruff generate-shell-completion zsh > {{ plugin_dir }}/ruff/_ruff
+        mise x ruff -- ruff generate-shell-completion zsh > {{ plugin_dir }}/ruff/_ruff
     @echo "DONE"
 
-    @echo -n "Updating bitwarden-secrets-manager..."
+    @echo -n "Updating bitwarden-secrets-manager completions..."
     @mkdir -p {{ plugin_dir }}/bws && \
-        mise exec bitwarden-secrets-manager -- bws completions zsh > {{ plugin_dir }}/bws/_bws
+        mise x bitwarden-secrets-manager -- bws completions zsh > {{ plugin_dir }}/bws/_bws
     @echo "DONE"
 
-    @echo -n "Updating ripgrep..."
+    @echo -n "Updating ripgrep completions..."
     @mkdir -p {{ plugin_dir }}/rg && \
-        mise exec ripgrep -- rg --generate complete-zsh > {{ plugin_dir }}/rg/_rg
+        mise x ripgrep -- rg --generate complete-zsh > {{ plugin_dir }}/rg/_rg
     @echo "DONE"
 
-    @echo -n "Updating mise..."
+    @echo -n "Updating mise completions..."
     @mkdir -p {{ plugin_dir }}/mise && \
         mise completion zsh > {{ plugin_dir }}/mise/_mise
     @echo "DONE"
 
-    @echo -n "Updating tldr..."
+    @echo -n "Updating tldr completions..."
     @mkdir -p {{ plugin_dir }}/tldr && \
         curl -s {{ githubusercontent }}/tldr-pages/tlrc/main/completions/_tldr \
             --output {{ plugin_dir }}/tldr/_tldr
     @echo "DONE"
 
-    @echo -n "Updating fd..."
+    @echo -n "Updating fd completions..."
     @mkdir -p {{ plugin_dir }}/fd && \
         curl -s {{ githubusercontent }}/sharkdp/fd/refs/heads/master/contrib/completion/_fd \
             --output {{ plugin_dir }}/fd/_fd
     @git submodule update --init --recursive
     @echo "DONE"
 
-    @echo -n "Updating zsh-completions..."
+    @echo -n "Updating zsh-completions plugin..."
     @git -C {{ plugin_dir }}/zsh-completions pull -q
     @echo "DONE"
 
-    @echo -n "Updating zsh-syntax-highlighting..."
+    @echo -n "Updating zsh-syntax-highlighting plugin..."
     @git -C {{ plugin_dir }}/zsh-syntax-highlighting pull -q
     @echo "DONE"
 

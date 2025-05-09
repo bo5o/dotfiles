@@ -1,6 +1,6 @@
 [private]
 default:
-    @just --list yazi --unsorted
+    @just --list --unsorted
 
 # upgrade yazi plugins
 upgrade:

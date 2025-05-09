@@ -1,6 +1,6 @@
 [private]
 default:
-    @just --list mise --unsorted
+    @just --list --unsorted
 
 # upgrade mise tools
 upgrade:
