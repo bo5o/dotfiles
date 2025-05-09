@@ -121,6 +121,9 @@ return {
           settings = {
             basedpyright = {
               disableOrganizeImports = true,
+              analysis = {
+                useLibraryCodeForTypes = true,
+              },
             },
           },
         },
