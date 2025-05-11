@@ -22,6 +22,21 @@ fsw() {
   git switch $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
+hh() {
+  if [[ $# -eq 0 ]]; then
+    echo "Utility to pretty-print help for a given command."
+    echo ""
+    echo -e "\e[1;4mUsage:\e[0m hh [COMMAND]"
+    echo ""
+    echo -e "\e[1;4mArguments:\e[0m"
+    echo "  [COMMAND]... The command for which to show help"
+    return 1
+  fi
+  $1 --help | bat --style=plain --language=help
+}
+
+compdef _command hh
+
 wetter()
 {
     curl -H "Accept-Language: ${LANG%_*}" wttr.in/"${1:-Berlin}"
