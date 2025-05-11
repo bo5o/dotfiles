@@ -43,6 +43,11 @@ upgrade:
         mise x ripgrep -- rg --generate complete-zsh > {{ plugin_dir }}/rg/_rg
     @echo "DONE"
 
+    @echo -n "Updating bat completions..."
+    @mkdir -p {{ plugin_dir }}/bat && \
+        mise x bat -- bat --completion zsh > {{ plugin_dir }}/bat/_bat
+    @echo "DONE"
+
     @echo -n "Updating mise completions..."
     @mkdir -p {{ plugin_dir }}/mise && \
         mise completion zsh > {{ plugin_dir }}/mise/_mise

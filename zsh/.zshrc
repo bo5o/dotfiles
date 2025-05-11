@@ -42,6 +42,7 @@ plugins=(
     fzf
     rust
     # from ~/.oh-my-zsh/custom/plugins
+    bat
     gh
     just
     tldr
