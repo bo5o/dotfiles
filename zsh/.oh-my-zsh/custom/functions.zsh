@@ -32,7 +32,7 @@ hh() {
     echo "  [COMMAND]... The command for which to show help"
     return 1
   fi
-  $1 --help | bat --style=plain --language=help
+  "$@" --help | bat --style=plain --language=help
 }
 
 compdef _command hh
