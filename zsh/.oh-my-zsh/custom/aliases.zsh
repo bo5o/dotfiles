@@ -2,6 +2,9 @@
 
 # global aliases
 alias -g B='| bat'
+alias -g Bmd='| bat -l md'
+alias -g Bsh='| bat -l sh'
+alias -g Bjson='| jq | bat -l json'
 alias -g C='| wc -l'
 alias -g E='| entr'
 alias -g F='| fzf -m'
