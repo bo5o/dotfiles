@@ -10,12 +10,12 @@ alias -g E='| entr'
 alias -g F='| fzf -m'
 alias -g G='| rg'
 alias -g H='| head'
-alias -g J='| jq | bat -l json'
+alias -g J='| jq'
 alias -g L='| less'
 alias -g NF='./*(oc[1])'
 alias -g T='| tail'
 alias -g X='| xargs'
-alias -g Y='| yank'
+alias -g Y='| yq'
 
 # suffix aliases
 alias -s git="git clone --recurse-submodules"
