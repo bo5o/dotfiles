@@ -1,5 +1,5 @@
 [tools]
-ast-grep = "0.38.0"
+ast-grep = "0.38.1"
 bat = "0.25.0"
 bottom = "0.10.2"
 cargo-binstall = "1.12.4"
