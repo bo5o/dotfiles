@@ -33,5 +33,6 @@ vim.filetype.add({
     ["/tmp/calcurse.*"] = "markdown",
     [".*/%.calcurse/notes/.*"] = "markdown",
     [".*pass.*%.txt"] = "secret",
+    [".*%.py%.lock"] = "toml",
   },
 })
