@@ -2,7 +2,7 @@
 
 ((string_content) @injection.content
   (#match? @injection.content
-    "(SELECT|select|INSERT|insert|UPDATE|update|DELETE|delete).+(FROM|from|INTO|into|VALUES|values|SET|set)")
+    "^\\s*(SELECT|select|INSERT|insert|UPDATE|update|DELETE|delete).+(FROM|from|INTO|into|VALUES|values|SET|set)")
   (#set! injection.language "sql"))
 
 (function_definition
