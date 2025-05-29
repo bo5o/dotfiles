@@ -43,6 +43,7 @@ plugins=(
     rust
     # from ~/.oh-my-zsh/custom/plugins
     bat
+    hyperfine
     gh
     just
     tldr
