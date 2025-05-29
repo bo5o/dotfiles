@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 # global aliases
+alias -g A='| llm -f - '
 alias -g B='| bat'
 alias -g Bmd='| bat -l md'
 alias -g Bsh='| bat -l sh'
