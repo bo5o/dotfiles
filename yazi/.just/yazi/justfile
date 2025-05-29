@@ -4,8 +4,8 @@ default:
 
 # upgrade yazi plugins
 upgrade:
-    mise x yazi -- ya pack -u
+    mise x yazi -- ya pkg upgrade
 
 # install yazi plugins
 install:
-    mise x yazi -- ya pack -i
+    mise x yazi -- ya pkg install
