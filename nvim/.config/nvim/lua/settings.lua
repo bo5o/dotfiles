@@ -28,7 +28,7 @@ vim.opt.whichwrap:append({ ["<"] = true, [">"] = true, h = true, l = true })
 
 -- Python provider configuration
 vim.g.python3_host_prog = os.getenv("MISE_DATA_DIR")
-  .. "/installs/python/3.12.9/bin/python"
+  .. "/installs/python/3.13.3/bin/python"
 
 vim.opt.showmode = false
 
