@@ -1,12 +1,12 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "4df8f70"
-hash = "1f3dad061209081a6b04dd6ff2cb06c7"
+rev = "a54b96a"
+hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "4df8f70"
-hash = "dd97eede8e20e59cd2604e8006e470e2"
+rev = "a54b96a"
+hash = "c0b6cd7dc830b96e77e5c8a71eec7926"
 
 [[plugin.deps]]
 use = "wylie102/duckdb"
