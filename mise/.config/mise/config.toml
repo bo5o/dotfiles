@@ -74,6 +74,7 @@ taplo = { version = "0.10.0", matching = "full" }
 "pipx:sqruff" = "0.26.3"
 duckdb = "1.3.0"
 hyperfine = "1.19.0"
+"pipx:llm" = { version = "0.25", uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-github-copilot" }
 
 [alias.bitwarden-secrets-manager.versions]
 "1.0.0" = "bws-v1.0.0"
