@@ -10,8 +10,8 @@ hash = "c0b6cd7dc830b96e77e5c8a71eec7926"
 
 [[plugin.deps]]
 use = "wylie102/duckdb"
-rev = "02f902d"
-hash = "9893839d5134aaecf6fafbeff6cac18e"
+rev = "3f8c863"
+hash = "87b9233a74325e95011670ed20bbd0d4"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
