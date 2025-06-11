@@ -75,6 +75,7 @@ taplo = { version = "0.10.0", matching = "full" }
 duckdb = "1.3.0"
 hyperfine = "1.19.0"
 "pipx:llm" = { version = "0.26", uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-github-copilot --with llm-commit --with llm-templates-fabric --with llm-hacker-news --with llm-fragments-pdf --with llm-docs" }
+dive = "0.13.1"
 
 [alias.bitwarden-secrets-manager.versions]
 "1.0.0" = "bws-v1.0.0"
