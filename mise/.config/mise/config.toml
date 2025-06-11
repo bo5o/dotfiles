@@ -10,7 +10,7 @@ difftastic = "0.63.0"
 direnv = "2.36.0"
 fd = "10.2.0"
 "gem:tmuxinator" = "3.3.4"
-github-cli = "2.74.0"
+github-cli = "2.74.1"
 go = "1.24.4"
 jq = "1.8.0"
 just = "1.40.0"
@@ -71,7 +71,7 @@ taplo = { version = "0.10.0", matching = "full" }
 "cargo:just-lsp" = "0.2.3"
 "npm:intelephense" = "1.14.4"
 "ubi:supabase-community/postgres-language-server" = { version = "0.7.0", rename_exe = "postgrestools" }
-"pipx:sqruff" = "0.26.5"
+"pipx:sqruff" = "0.26.6"
 duckdb = "1.3.0"
 hyperfine = "1.19.0"
 "pipx:llm" = { version = "0.26", uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-github-copilot --with llm-commit --with llm-templates-fabric --with llm-hacker-news --with llm-fragments-pdf --with llm-docs" }
