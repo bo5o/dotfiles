@@ -1,6 +1,7 @@
 mod? mise '~/.just/mise'
 mod? yazi '~/.just/yazi'
 mod? zsh '~/.just/zsh'
+mod? docker '~/.just/docker'
 
 packages := "zsh mise yazi tmux nvim lazygit direnv git bat wezterm psql"
 
@@ -16,6 +17,7 @@ upgrade:
 install:
     -just mise install
     -just yazi install
+    -just docker install
 
 stow *args=packages:
     stow -v {{ args }}

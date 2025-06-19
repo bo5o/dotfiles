@@ -1,0 +1,9 @@
+[private]
+default:
+    @just --justfile {{ source_file() }} --list --unsorted
+
+# install docker plugins
+install *args:
+    mkdir -p ~/.docker/cli-plugins
+    rm -f ~/.docker/cli-plugins/docker-pussh && \
+        ln -sf $(mise which docker-pussh) ~/.docker/cli-plugins/docker-pussh
