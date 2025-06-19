@@ -40,6 +40,7 @@
   "lspsaga.nvim": { "branch": "main", "commit": "920b1253e1a26732e53fac78412f6da7f674671d" },
   "lualine.nvim": { "branch": "master", "commit": "a94fc68960665e54408fe37dcf573193c4ce82c9" },
   "mason.nvim": { "branch": "main", "commit": "8024d64e1330b86044fed4c8494ef3dcd483a67c" },
+  "mcphub.nvim": { "branch": "main", "commit": "85a7a659fc82da1429a2241ab61e9ce07b3db374" },
   "middleclass": { "branch": "master", "commit": "9fab4d5bca67262614960960ca35c4740eb2be2c" },
   "mini.ai": { "branch": "main", "commit": "e139eb1101beb0250fea322f8c07a42f0f175688" },
   "mini.align": { "branch": "main", "commit": "969bdcdf9b88e30bda9cb8ad6f56afed208778ad" },

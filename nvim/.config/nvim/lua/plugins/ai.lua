@@ -12,6 +12,13 @@ return {
     end,
   },
   {
+    "ravitemer/mcphub.nvim",
+    keys = {
+      { "<leader>om", "<cmd>MCPHub<cr>", desc = "Open MCP hub" },
+    },
+    opts = {},
+  },
+  {
     "olimorris/codecompanion.nvim",
     cmd = {
       "CodeCompanion",
@@ -98,6 +105,16 @@ return {
               },
             })
           end,
+        },
+        extensions = {
+          mcphub = {
+            callback = "mcphub.extensions.codecompanion",
+            opts = {
+              show_result_in_chat = true,
+              make_vars = true,
+              make_slash_commands = true,
+            },
+          },
         },
       }
     end,
