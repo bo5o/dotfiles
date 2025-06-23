@@ -2,8 +2,8 @@
 ast-grep = "0.38.5"
 bat = "0.25.0"
 bottom = "0.10.2"
-cargo-binstall = "1.13.0"
 "ubi:tldr-pages/tlrc" = { version = "1.11.1", exe = "tldr" }
+cargo-binstall = "1.14.1"
 "ubi:tummychow/git-absorb" = "0.8.0"
 delta = "0.18.2"
 difftastic = "0.64.0"
@@ -58,7 +58,7 @@ lua-language-server = "3.14.0"
 "npm:stylelint" = "16.21.0"
 stylua = "2.1.0"
 taplo = { version = "0.10.0", matching = "full" }
-"ubi:Myriad-Dreamin/tinymist" = "0.13.12"
+"ubi:Myriad-Dreamin/tinymist" = "0.13.14"
 "npm:vim-language-server" = "2.3.1"
 "pipx:vim-vint" = "0.3.21"
 "npm:@vue/language-server" = "2.2.10"
