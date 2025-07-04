@@ -54,6 +54,7 @@ plugins=(
     bws
     rg
     fd
+    dust
     mise
     zsh-syntax-highlighting
 )
