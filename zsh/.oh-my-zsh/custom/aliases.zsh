@@ -92,6 +92,7 @@ alias rm="rm -i"
 alias sa='source .venv/bin/activate'
 alias sdn="sudo shutdown -h now"
 alias sm="~/bin/syncmail.sh"
+alias spot="ncspot"
 alias stow='stow -v'
 alias t="tmux attach || tmux new-session"
 alias ta="tmux attach -t"
