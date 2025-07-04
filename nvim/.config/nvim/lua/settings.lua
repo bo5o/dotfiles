@@ -20,6 +20,7 @@ vim.opt.cursorline = true
 
 -- Highlight column at 88 chars
 vim.opt.colorcolumn = "88"
+vim.opt.textwidth = 88
 
 -- Height of the command bar
 vim.opt.cmdheight = 1
