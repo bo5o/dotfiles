@@ -44,6 +44,7 @@ plugins=(
     # from ~/.oh-my-zsh/custom/plugins
     bat
     hyperfine
+    dive
     gh
     just
     tldr
