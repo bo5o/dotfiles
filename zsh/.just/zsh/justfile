@@ -48,6 +48,16 @@ upgrade:
         mise x bat -- bat --completion zsh > {{ plugin_dir }}/bat/_bat
     @echo "DONE"
 
+    @echo -n "Updating xh completions..."
+    @mkdir -p {{ plugin_dir }}/xh && \
+        mise x xh -- xh --generate complete-zsh > {{ plugin_dir }}/xh/_xh
+    @echo "DONE"
+
+    @echo -n "Updating dive completions..."
+    @mkdir -p {{ plugin_dir }}/dive && \
+        mise x dive -- dive completion zsh > {{ plugin_dir }}/dive/_dive
+    @echo "DONE"
+
     @echo -n "Updating mise completions..."
     @mkdir -p {{ plugin_dir }}/mise && \
         mise completion zsh > {{ plugin_dir }}/mise/_mise
@@ -63,8 +73,15 @@ upgrade:
     @mkdir -p {{ plugin_dir }}/fd && \
         curl -s {{ githubusercontent }}/sharkdp/fd/refs/heads/master/contrib/completion/_fd \
             --output {{ plugin_dir }}/fd/_fd
-    @git submodule update --init --recursive
     @echo "DONE"
+
+    @echo -n "Updating dust completions..."
+    @mkdir -p {{ plugin_dir }}/dust && \
+        curl -s {{ githubusercontent }}/bootandy/dust/refs/heads/master/completions/_dust \
+            --output {{ plugin_dir }}/dust/_dust
+    @echo "DONE"
+
+    @git submodule update --init --recursive
 
     @echo -n "Updating zsh-completions plugin..."
     @git -C {{ plugin_dir }}/zsh-completions pull -q
