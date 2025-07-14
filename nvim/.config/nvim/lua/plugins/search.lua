@@ -116,6 +116,7 @@ return {
           return require("fzf-lua").live_grep(opts)
         end,
         desc = "Live grep",
+        mode = { "n", "v" },
       },
       {
         "<leader>fw",
