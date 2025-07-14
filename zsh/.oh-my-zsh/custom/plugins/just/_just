@@ -19,6 +19,7 @@ _just() {
 '--chooser=[Override binary invoked by \`--choose\`]: :_default' \
 '--color=[Print colorful output]: :(always auto never)' \
 '--command-color=[Echo recipe lines in <COMMAND-COLOR>]: :(black blue cyan green purple red yellow)' \
+'--cygpath=[Use binary at <CYGPATH> to convert between unix and Windows paths.]: :_files' \
 '(-E --dotenv-path)--dotenv-filename=[Search for environment file named <DOTENV-FILENAME> instead of \`.env\`]: :_default' \
 '-E+[Load <DOTENV-PATH> as environment file instead of searching for one]: :_files' \
 '--dotenv-path=[Load <DOTENV-PATH> as environment file instead of searching for one]: :_files' \
