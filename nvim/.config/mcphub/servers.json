@@ -19,7 +19,8 @@
       "command": "uvx",
       "args": [
         "blender-mcp"
-      ]
+      ],
+      "disabled": true
     },
     "context7": {
       "command": "npx",
