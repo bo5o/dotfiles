@@ -55,7 +55,7 @@ shfmt = "3.12.0"
 marksman = "2024-12-18"
 lua-language-server = "3.15.0"
 "npm:sql-formatter" = "15.6.6"
-"npm:stylelint" = "16.21.1"
+"npm:stylelint" = "16.22.0"
 stylua = "2.1.0"
 taplo = { version = "0.10.0", matching = "full" }
 "ubi:Myriad-Dreamin/tinymist" = "0.13.14"
