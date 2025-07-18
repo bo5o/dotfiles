@@ -9121,6 +9121,7 @@ lint.ruff.extend-markup-names\:"A list of additional callable names that behave 
 lint.ruff.allowed-markup-calls\:"A list of callable names, whose result may be safely passed into \[\`markupsafe.Markup\`\](https\://markupsafe.palletsprojects.com/en/stable/escaping/#markupsafe.Markup)."
 lint.preview\:"Whether to enable preview mode. When preview mode is enabled, Ruff will use unstable rules and fixes."
 lint.typing-extensions\:"Whether to allow imports from the third-party \`typing_extensions\` module for Python versions before a symbol was added to the first-party \`typing\` module."
+lint.future-annotations\:"Whether to allow rules to add \`from __future__ import annotations\` in cases where this would simplify a fix or enable a new diagnostic."
 format\:"Configures the way Ruff formats your code."
 format.exclude\:"A list of file patterns to exclude from formatting in addition to the files excluded globally (see \[\`exclude\`\](#exclude), and \[\`extend-exclude\`\](#extend-exclude))."
 format.preview\:"Whether to enable the unstable preview style formatting."
