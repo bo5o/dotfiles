@@ -234,10 +234,12 @@ return {
                 -- disable all other plugins
                 jedi_completion = { enabled = false },
                 jedi_definition = { enabled = false },
+                jedi_type_definition = { enabled = false },
                 jedi_hover = { enabled = false },
                 jedi_references = { enabled = false },
                 jedi_signature_help = { enabled = false },
                 jedi_symbols = { enabled = false },
+                signature = { formatter = "ruff" },
                 autopep8 = { enabled = false },
                 flake8 = { enabled = false },
                 mccabe = { enabled = false },
