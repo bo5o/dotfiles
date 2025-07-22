@@ -105,19 +105,7 @@ return {
         end,
         desc = "Find files in all projects",
       },
-      {
-        "<leader>fr",
-        function()
-          local opts = {}
-          local cword = vim.fn.expand("<cword>")
-          if #cword > 1 then
-            opts.search = cword
-          end
-          return require("fzf-lua").live_grep(opts)
-        end,
-        desc = "Live grep",
-        mode = { "n", "v" },
-      },
+      { "<leader>fr", "<cmd>FzfLua live_grep<cr>", desc = "Live grep" },
       {
         "<leader>fw",
         function()
