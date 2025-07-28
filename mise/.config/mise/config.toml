@@ -1,9 +1,9 @@
 [tools]
-ast-grep = "0.39.1"
+ast-grep = "0.39.2"
 bat = "0.25.0"
 bottom = "0.10.2"
 "ubi:tldr-pages/tlrc" = { version = "1.11.1", exe = "tldr" }
-cargo-binstall = "1.14.1"
+cargo-binstall = "1.14.2"
 "ubi:tummychow/git-absorb" = "0.8.0"
 delta = "0.18.2"
 difftastic = "0.64.0"
@@ -35,7 +35,7 @@ yazi = "25.5.31"
 yq = "4.47.1"
 zellij = "0.42.2"
 zoxide = "0.9.8"
-fzf = "0.64.0"
+fzf = "0.65.0"
 yamllint = "1.37.1"
 yamlfmt = "0.17.2"
 hadolint = "2.12.0"
@@ -71,7 +71,7 @@ taplo = { version = "0.10.0", matching = "full" }
 "cargo:just-lsp" = "0.2.4"
 "npm:intelephense" = "1.14.4"
 "ubi:supabase-community/postgres-language-server" = { version = "0.10.0", rename_exe = "postgrestools" }
-"pipx:sqruff" = "0.28.2"
+"pipx:sqruff" = "0.29.0"
 duckdb = "1.3.2"
 hyperfine = "1.19.0"
 "pipx:llm" = { version = "0.26", uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-github-copilot --with llm-commit --with llm-templates-fabric --with llm-hacker-news --with llm-fragments-pdf --with llm-docs" }
