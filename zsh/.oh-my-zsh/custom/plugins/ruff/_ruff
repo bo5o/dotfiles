@@ -9258,6 +9258,7 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '--direction=[The direction of the import map. By default, generates a dependency map, i.e., a map from file to files that it depends on. Use \`--direction dependents\` to generate a map from file to files that depend on it]:DIRECTION:((dependencies\:"Construct a map from module to its dependencies (i.e., the modules that it imports)"
 dependents\:"Construct a map from module to its dependents (i.e., the modules that import it)"))' \
+'--min-dots=[The minimum number of dots in a string import to consider it a valid import]:MIN_DOTS:_default' \
 '--target-version=[The minimum Python version that should be supported]:TARGET_VERSION:(py37 py38 py39 py310 py311 py312 py313 py314)' \
 '--python=[Path to a virtual environment to use for resolving additional dependencies]:PYTHON:_files' \
 '*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
