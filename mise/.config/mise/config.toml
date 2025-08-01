@@ -2,6 +2,7 @@
 ast-grep = "0.39.2"
 bat = "0.25.0"
 bottom = "0.10.2"
+"ubi:tldr-pages/tlrc" = { version = "1.11.1", exe = "tldr" }
 cargo-binstall = "1.14.2"
 "ubi:tummychow/git-absorb" = "0.8.0"
 delta = "0.18.2"
@@ -9,7 +10,7 @@ difftastic = "0.64.0"
 direnv = "2.37.1"
 fd = "10.2.0"
 "gem:tmuxinator" = "3.3.4"
-github-cli = "2.76.1"
+github-cli = "2.76.2"
 go = "1.24.5"
 jq = "1.8.1"
 just = "1.42.4"
@@ -76,14 +77,13 @@ hyperfine = "1.19.0"
 "pipx:llm" = { version = "0.26", uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-github-copilot --with llm-commit --with llm-templates-fabric --with llm-hacker-news --with llm-fragments-pdf --with llm-docs" }
 dive = "0.13.1"
 xh = "0.24.1"
-dust = "1.2.2"
+dust = "1.2.3"
 tokei = "12.1.2"
 "http:ncdu" = { url = "https://dev.yorhel.nl/download/ncdu-2.8.1-linux-x86_64.tar.gz", version = "2.8.1" }
 "ubi:https://github.com/psviderski/unregistry/archive/refs/tags/v0.1.3.tar.gz" = { version = "v0.1.3", exe = "docker-pussh" }
 "npm:mcp-hub" = "4.2.0"
 "cargo:ncspot" = "latest"
 "github:garethgeorge/backrest" = "1.8.1"
-"pipx:tldr" = "3.4.1"
 
 [alias.bitwarden-secrets-manager.versions]
 "1.0.0" = "bws-v1.0.0"
