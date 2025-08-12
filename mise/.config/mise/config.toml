@@ -74,7 +74,7 @@ taplo = { version = "0.10.0", matching = "full" }
 "pipx:sqruff" = "0.29.1"
 duckdb = "1.3.2"
 hyperfine = "1.19.0"
-"pipx:llm" = { version = "0.27", uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-github-copilot --with llm-commit --with llm-templates-fabric --with llm-hacker-news --with llm-fragments-pdf --with llm-docs" }
+"pipx:llm" = { version = "0.27.1", uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-github-copilot --with llm-commit --with llm-templates-fabric --with llm-hacker-news --with llm-fragments-pdf --with llm-docs" }
 dive = "0.13.1"
 xh = "0.24.1"
 dust = "1.2.3"
