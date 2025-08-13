@@ -30,6 +30,7 @@ alias ackpy='ack --ignore-dir .venv --ignore-dir .tools --python'
 alias alu='sudo apt update && apt list -u && sudo apt upgrade'
 alias arst='mise'
 alias btm='btm --theme gruvbox'
+alias chat='nvim -c "CodeCompanionChat" -c "only"'
 alias crep="grep --color=always" # Color grep
 alias da="cd ~/latex/diplomarbeit"
 alias dcupw='docker compose up --watch'
