@@ -18,6 +18,11 @@ upgrade:
         mise x just -- just --completions zsh > {{ plugin_dir }}/just/_just
     @echo "DONE"
 
+    @echo -n "Updating jj completions..."
+    @mkdir -p {{ plugin_dir }}/jj && \
+        mise x jj -- jj util completion zsh > {{ plugin_dir }}/jj/_jj
+    @echo "DONE"
+
     @echo -n "Updating restic completions..."
     @mkdir -p {{ plugin_dir }}/restic && \
         mise x restic -- restic -q generate --zsh-completion {{ plugin_dir }}/restic/_restic

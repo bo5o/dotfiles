@@ -26,6 +26,7 @@ plugins=(
     docker
     docker-compose
     jira
+    jj
     rsync
     yarn
     pip
