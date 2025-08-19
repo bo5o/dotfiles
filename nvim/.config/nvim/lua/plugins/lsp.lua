@@ -268,6 +268,11 @@ return {
             -- disable hover in favor of pyright
             client.server_capabilities.hoverProvider = false
           end,
+          capabilities = {
+            general = {
+              positionEncodings = { "utf-16" },
+            },
+          },
         },
         sqruff = {
           root_markers = { ".sqruff" },
