@@ -30,7 +30,7 @@ ruff = "0.12.9"
 rust = "1.89.0"
 tree-sitter = "0.25.8"
 usage = "2.2.2"
-uv = "0.8.11"
+uv = "0.8.12"
 yazi = "25.5.31"
 yq = "4.47.1"
 jj = "0.32.0"
@@ -73,7 +73,7 @@ taplo = { version = "0.10.0", matching = "full" }
 "cargo:just-lsp" = "0.2.5"
 "npm:intelephense" = "1.14.4"
 "ubi:supabase-community/postgres-language-server" = { version = "0.10.0", rename_exe = "postgrestools" }
-"pipx:sqruff" = "0.29.1"
+"pipx:sqruff" = "0.29.3"
 duckdb = "1.3.2"
 hyperfine = "1.19.0"
 "pipx:llm" = { version = "0.27.1", uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-github-copilot --with llm-commit --with llm-templates-fabric --with llm-hacker-news --with llm-fragments-pdf --with llm-docs" }
