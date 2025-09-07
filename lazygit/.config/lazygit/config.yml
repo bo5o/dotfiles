@@ -3,3 +3,7 @@ git:
   autoForwardBranches: none
 gui:
   showDivergenceFromBaseBranch: arrowAndNumber
+keybinding:
+  universal:
+    suspendApp: <disabled>
+    redo: <c-z>
