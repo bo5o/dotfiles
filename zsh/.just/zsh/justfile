@@ -40,7 +40,7 @@ upgrade:
 
     @echo -n "Updating bitwarden-secrets-manager completions..."
     @mkdir -p {{ plugin_dir }}/bws && \
-        mise x bitwarden-secrets-manager -- bws completions zsh > {{ plugin_dir }}/bws/_bws
+        mise x "github:bitwarden/sdk-sm@bws-v1.0.0" -- bws completions zsh > {{ plugin_dir }}/bws/_bws
     @echo "DONE"
 
     @echo -n "Updating ripgrep completions..."
