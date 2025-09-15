@@ -392,6 +392,7 @@ return {
       vim.g.startify_commands = {
         { uu = { "Open lazy.nvim", ":Lazy" } },
         { up = { "Update plugins", ":Lazy sync" } },
+        { ur = { "Restore plugins", ":Lazy restore" } },
       }
     end,
   },
