@@ -106,6 +106,7 @@ alias tns="tmux new-session -s"
 alias todo="todo.sh"
 alias uvad='uv add --dev'
 alias v="nvim"
+alias vec="vectorcode"
 alias vi="nvim"
 alias vim="nvim"
 alias vimprofile="nvim --cmd 'profile start profile.log' --cmd 'profile func *'"
