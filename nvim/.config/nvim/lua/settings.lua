@@ -44,6 +44,8 @@ vim.opt.diffopt = {
   "algorithm:histogram",
 }
 
+vim.opt.winborder = "rounded"
+
 vim.opt.fillchars:append({ diff = "⟋" })
 
 -- Space to keep above, below and to the side of the cursor
