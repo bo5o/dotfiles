@@ -52,6 +52,7 @@ plugins=(
     restic
     hcloud
     ruff
+    vectorcode
     bws
     rg
     fd
