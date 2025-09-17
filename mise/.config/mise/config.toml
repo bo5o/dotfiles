@@ -86,6 +86,7 @@ tokei = "12.1.2"
 "npm:mcp-hub" = "4.2.1"
 "cargo:ncspot" = "latest"
 "github:garethgeorge/backrest" = "1.9.2"
+"pipx:vectorcode" = { version = "0.7.16", extras = "mcp,lsp" }
 
 [alias.bitwarden-secrets-manager.versions]
 "1.0.0" = "bws-v1.0.0"
