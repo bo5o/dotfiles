@@ -23,8 +23,11 @@ return {
   {
     "Davidyz/VectorCode",
     version = "*",
+    cmd = "VectorCode",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
+    opts = {
+      async_backend = "lsp",
+    },
   },
 
   {

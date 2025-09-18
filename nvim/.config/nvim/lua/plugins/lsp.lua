@@ -54,6 +54,12 @@ return {
 
           local client = vim.lsp.get_client_by_id(args.data.client_id) --[[@as vim.lsp.Client]]
 
+          if
+            #vim.lsp.get_clients({ name = "vectorcode_server", bufnr = args.buf }) == 1
+          then
+            return
+          end
+
           map("<leader>hi", function()
             vim.lsp.inlay_hint.enable(
               not vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf }),
@@ -274,6 +280,7 @@ return {
             },
           },
         },
+        vectorcode_server = {},
         sqruff = {
           root_markers = { ".sqruff" },
           workspace_required = true,
