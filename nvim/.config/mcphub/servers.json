@@ -34,6 +34,20 @@
         "sequentialthinking"
       ],
       "command": "mise"
+    },
+    "vectorcode": {
+      "args": [
+        "exec",
+        "pipx:vectorcode",
+        "--",
+        "vectorcode-mcp-server"
+      ],
+      "autoApprove": [
+        "files_ls",
+        "ls",
+        "query"
+      ],
+      "command": "mise"
     }
   }
 }
