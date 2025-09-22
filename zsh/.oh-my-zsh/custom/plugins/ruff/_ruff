@@ -9154,6 +9154,7 @@ analyze.exclude\:"A list of file patterns to exclude from analysis in addition t
 analyze.preview\:"Whether to enable preview mode. When preview mode is enabled, Ruff will expose unstable commands."
 analyze.direction\:"Whether to generate a map from file to files that it depends on (dependencies) or files that depend on it (dependents)."
 analyze.detect-string-imports\:"Whether to detect imports from string literals. When enabled, Ruff will search for string literals that '\''look like'\'' import paths, and include them in the import map, if they resolve to valid Python modules."
+analyze.string-imports-min-dots\:"The minimum number of dots in a string to consider it a valid import."
 analyze.include-dependencies\:"A map from file path to the list of Python or non-Python file paths or globs that should be considered dependencies of that file, regardless of whether relevant imports are detected."))' \
 && ret=0
 ;;
