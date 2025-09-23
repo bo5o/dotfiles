@@ -36,6 +36,7 @@
   "indent-blankline.nvim": { "branch": "master", "commit": "005b56001b2cb30bfa61b7986bc50657816ba4ba" },
   "inlayhint-filler.nvim": { "branch": "main", "commit": "0ce859f2216fb6e77cbfc337d05cb685a09cae37" },
   "jupyter-vim": { "branch": "master", "commit": "91eef96d0f26ce37db241833341d08d11c8e5215" },
+  "kulala.nvim": { "branch": "main", "commit": "ab3effad17d5dbb4d5d34b6289fa4dc97155045c" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lazydev.nvim": { "branch": "main", "commit": "258d2a5ef4a3e3d6d9ba9da72c9725c53e9afcbd" },
   "lspkind-nvim": { "branch": "master", "commit": "3ddd1b4edefa425fda5a9f95a4f25578727c0bb3" },

@@ -297,6 +297,7 @@ return {
             },
           },
         },
+        kulala_ls = {},
         vimls = {},
         vue_ls = {
           init_options = {
@@ -464,6 +465,7 @@ return {
         enable = true,
         sign = false,
         virtual_text = true,
+        ignore = { clients = { "kulala" } },
       },
       implement = {
         enable = true,
@@ -577,6 +579,7 @@ return {
           bash = { "shfmt" },
           just = { "just" },
           css = { "prettierd" },
+          http = { "kulala-fmt" },
           yaml = { "yamlfmt" },
           toml = { "taplo" },
           ocaml = { "ocamlformat" },
