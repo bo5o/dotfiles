@@ -88,6 +88,8 @@ tokei = "12.1.2"
 "github:garethgeorge/backrest" = "1.9.2"
 "pipx:vectorcode" = { version = "0.7.17", extras = "mcp,lsp" }
 "cargo:bandwhich" = "0.23.1"
+"npm:@mistweaverco/kulala-ls" = "1.10.0"
+"npm:@mistweaverco/kulala-fmt" = "2.10.0"
 
 [alias.bitwarden-secrets-manager.versions]
 "1.0.0" = "bws-v1.0.0"
