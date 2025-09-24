@@ -297,7 +297,6 @@ return {
             },
           },
         },
-        kulala_ls = {},
         vimls = {},
         vue_ls = {
           init_options = {
@@ -579,7 +578,7 @@ return {
           bash = { "shfmt" },
           just = { "just" },
           css = { "prettierd" },
-          http = { "kulala-fmt" },
+          http = { lsp_format = "prefer" },
           yaml = { "yamlfmt" },
           toml = { "taplo" },
           ocaml = { "ocamlformat" },
