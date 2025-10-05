@@ -16,6 +16,7 @@ _just() {
     local context curcontext="$curcontext" state line
     local common=(
 '(--no-aliases)--alias-style=[Set list command alias display style]: :(left right separate)' \
+'--ceiling=[Do not ascend above <CEILING> directory when searching for a justfile.]: :_files' \
 '--chooser=[Override binary invoked by \`--choose\`]: :_default' \
 '--color=[Print colorful output]: :(always auto never)' \
 '--command-color=[Echo recipe lines in <COMMAND-COLOR>]: :(black blue cyan green purple red yellow)' \
