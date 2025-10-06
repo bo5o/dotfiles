@@ -70,7 +70,7 @@ taplo = { version = "0.10.0", matching = "full" }
 "pipx:djlint" = "1.36.4"
 "npm:markdownlint-cli" = "0.45.0"
 "ubi:ribru17/ts_query_ls" = "3.11.1"
-"cargo:just-lsp" = "0.2.6"
+"cargo:just-lsp" = "0.2.7"
 "npm:intelephense" = "1.14.4"
 "ubi:supabase-community/postgres-language-server" = { version = "0.15.1", rename_exe = "postgrestools" }
 "pipx:sqruff" = "0.29.3"
