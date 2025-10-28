@@ -72,7 +72,7 @@ taplo = { version = "0.10.0", matching = "full" }
 "ubi:ribru17/ts_query_ls" = "3.11.1"
 "cargo:just-lsp" = "0.2.7"
 "npm:intelephense" = "1.14.4"
-"ubi:supabase-community/postgres-language-server" = { version = "0.16.0", rename_exe = "postgrestools" }
+"ubi:supabase-community/postgres-language-server" = { version = "0.17.1", rename_exe = "postgrestools" }
 "pipx:sqruff" = "0.29.3"
 duckdb = "1.4.1"
 hyperfine = "1.19.0"
