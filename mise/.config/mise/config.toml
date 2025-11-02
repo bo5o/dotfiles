@@ -3,7 +3,7 @@ ast-grep = "0.39.7"
 bat = "0.26.0"
 "pipx:tldr" = "3.4.3"
 bottom = "0.11.2"
-cargo-binstall = "1.15.9"
+cargo-binstall = "1.15.10"
 "ubi:tummychow/git-absorb" = "0.8.0"
 delta = "0.18.2"
 difftastic = { version = "0.65.0", exe = "difft" }
