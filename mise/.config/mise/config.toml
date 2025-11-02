@@ -90,6 +90,7 @@ tokei = "12.1.2"
 "cargo:bandwhich" = "0.23.1"
 "cargo:inlyne" = "0.5.0"
 "npm:@anthropic-ai/claude-code" = "2.0.31"
+"github:jorgerojas26/lazysql" = "0.4.3"
 
 [alias.bitwarden-secrets-manager.versions]
 "1.0.0" = "bws-v1.0.0"
