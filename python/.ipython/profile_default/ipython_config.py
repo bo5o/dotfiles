@@ -441,9 +441,9 @@ c.TerminalIPythonApp.display_banner = False
 #  Default: 1000
 # c.InteractiveShell.cache_size = 1000
 
-## Set the color scheme (nocolor, neutral, linux, lightbg).
+## Set the color scheme (nocolor, neutral, linux, lightbg, gruvbox-dark).
 #  Default: 'neutral'
-c.InteractiveShell.colors = "linux"
+c.InteractiveShell.colors = "gruvbox-dark"
 
 #  Default: False
 # c.InteractiveShell.debug = False
