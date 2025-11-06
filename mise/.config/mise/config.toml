@@ -91,7 +91,7 @@ tokei = "12.1.2"
 "cargo:inlyne" = "0.5.0"
 "npm:@anthropic-ai/claude-code" = "2.0.34"
 "github:jorgerojas26/lazysql" = "0.4.3"
-gemini-cli = "0.11.3"
+gemini-cli = "0.12.0"
 git-lfs = "3.7.1"
 
 [alias.bitwarden-secrets-manager.versions]
