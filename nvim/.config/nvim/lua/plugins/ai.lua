@@ -1,17 +1,4 @@
 return {
-  -- Generate token for copilot with `:Copilot auth`
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    config = function()
-      require("copilot").setup({
-        panel = { enabled = false },
-        suggestion = { enabled = false },
-        filetype = { ["*"] = false },
-      })
-    end,
-  },
-
   {
     "ravitemer/mcphub.nvim",
     keys = {
@@ -87,7 +74,7 @@ return {
     },
     opts = function()
       local default_adapter = vim.env.ANTHROPIC_API_KEY ~= nil and "anthropic"
-        or "copilot"
+        or "gemini"
       return {
         strategies = {
           chat = {
@@ -119,11 +106,11 @@ return {
         },
         adapters = {
           http = {
-            copilot = function()
-              return require("codecompanion.adapters").extend("copilot", {
+            gemini = function()
+              return require("codecompanion.adapters").extend("gemini", {
                 schema = {
                   model = {
-                    default = "claude-sonnet-4",
+                    default = "gemini-2.5-flash",
                   },
                 },
               })
