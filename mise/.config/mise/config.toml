@@ -89,7 +89,7 @@ tokei = "12.1.2"
 "pipx:vectorcode" = { version = "0.7.18", extras = "mcp,lsp" }
 "cargo:bandwhich" = "0.23.1"
 "cargo:inlyne" = "0.5.0"
-"npm:@anthropic-ai/claude-code" = "2.0.34"
+"npm:@anthropic-ai/claude-code" = "2.0.35"
 "github:jorgerojas26/lazysql" = "0.4.3"
 gemini-cli = "0.12.0"
 git-lfs = "3.7.1"
