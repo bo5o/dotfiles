@@ -1,0 +1,19 @@
+{
+  "tools": {
+    "sandbox": true
+  },
+  "privacy": {
+    "usageStatisticsEnabled": false
+  },
+  "security": {
+    "auth": {
+      "selectedType": "gemini-api-key",
+      "enforcedType": "gemini-api-key"
+    }
+  },
+  "mcpServers": {
+    "context7": {
+      "httpUrl": "https://mcp.context7.com/mcp"
+    }
+  }
+}
