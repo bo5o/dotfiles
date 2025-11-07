@@ -29,6 +29,7 @@ alias .d='deactivate'
 alias ackpy='ack --ignore-dir .venv --ignore-dir .tools --python'
 alias alu='sudo apt update && apt list -u && sudo apt upgrade'
 alias arst='mise'
+alias boo='ghostty +boo'
 alias btm='btm --theme gruvbox'
 alias chat='nvim -c "CodeCompanionChat" -c "only"'
 alias crep="grep --color=always" # Color grep
