@@ -8999,7 +8999,7 @@ _arguments "${_arguments_options[@]}" : \
 '-h[Print help]' \
 '--help[Print help]' \
 '::option -- Config key to show:((cache-dir\:"A path to the cache directory."
-extend\:"A path to a local \`pyproject.toml\` or \`ruff.toml\` file to merge into this configuration. User home directory and environment variables will be expanded."
+extend\:"A path to a local \`pyproject.toml\` file to merge into this configuration. User home directory and environment variables will be expanded."
 output-format\:"The style in which violation messages should be formatted\: \`'\''full'\''\` (default) (shows source), \`'\''concise'\''\`, \`'\''grouped'\''\` (group messages by file), \`'\''json'\''\` (machine-readable), \`'\''junit'\''\` (machine-readable XML), \`'\''github'\''\` (GitHub Actions annotations), \`'\''gitlab'\''\` (GitLab CI code quality report), \`'\''pylint'\''\` (Pylint text format) or \`'\''azure'\''\` (Azure Pipeline logging commands)."
 fix\:"Enable fix behavior by-default when running \`ruff\` (overridden by the \`--fix\` and \`--no-fix\` command-line flags). Only includes automatic fixes unless \`--unsafe-fixes\` is provided."
 unsafe-fixes\:"Enable application of unsafe fixes. If excluded, a hint will be displayed when unsafe fixes are available. If set to false, the hint will be hidden."
