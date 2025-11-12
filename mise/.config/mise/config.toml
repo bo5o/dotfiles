@@ -71,7 +71,7 @@ taplo = { version = "0.10.0", matching = "full" }
 "npm:markdownlint-cli" = "0.45.0"
 "ubi:ribru17/ts_query_ls" = "3.12.0"
 "cargo:just-lsp" = "0.2.8"
-"npm:intelephense" = "1.14.4"
+"npm:intelephense" = "1.15.1"
 "ubi:supabase-community/postgres-language-server" = { version = "0.17.2", rename_exe = "postgrestools" }
 "pipx:sqruff" = "0.29.3"
 duckdb = "1.4.1"
