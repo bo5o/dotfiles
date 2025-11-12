@@ -122,3 +122,27 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.colorcolumn = ""
   end,
 })
+
+vim.api.nvim_create_user_command("SqlmeshRewrite", function()
+  local s_pos = vim.fn.getcharpos("'<")
+  local e_pos = vim.fn.getcharpos("'>")
+  local lines = vim.fn.getregion(s_pos, e_pos)
+
+  local text = table.concat(lines, "\n")
+  if not text or text:match("^%s*$") then
+    return
+  end
+
+  local result = vim.system({ "sqlmesh", "rewrite", text }):wait()
+
+  local start_row = s_pos[2]
+  local end_row = e_pos[2]
+
+  vim.api.nvim_buf_set_lines(
+    0,
+    start_row - 1,
+    end_row,
+    false,
+    vim.split(result.stdout or "", "\n")
+  )
+end, { range = true, desc = "Rewrite visual selection with 'sqlmesh rewrite'" })
