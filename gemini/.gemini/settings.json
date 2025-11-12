@@ -11,11 +11,6 @@
       "enforcedType": "gemini-api-key"
     }
   },
-  "mcpServers": {
-    "context7": {
-      "httpUrl": "https://mcp.context7.com/mcp"
-    }
-  },
   "general": {
     "vimMode": true
   },
