@@ -91,6 +91,12 @@ upgrade:
             --output {{ plugin_dir }}/dust/_dust
     @echo "DONE"
 
+    @echo -n "Updating dbt completions..."
+    @mkdir -p {{ plugin_dir }}/dbt && \
+        curl -s {{ githubusercontent }}/dbt-labs/dbt-completion.bash/refs/heads/master/_dbt \
+            --output {{ plugin_dir }}/dbt/_dbt
+    @echo "DONE"
+
     @git submodule update --init --recursive
 
     @echo -n "Updating zsh-completions plugin..."

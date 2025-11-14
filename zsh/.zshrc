@@ -56,6 +56,7 @@ plugins=(
     bws
     rg
     fd
+    dbt
     dust
     xh
     mise
