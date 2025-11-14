@@ -7995,6 +7995,7 @@ TRY401\:"verbose-log-message"))' \
 '--cache-dir=[Path to the cache directory]:CACHE_DIR:_files' \
 '--stdin-filename=[The name of the file when passing it through stdin]:STDIN_FILENAME:_files' \
 '*--extension=[List of mappings from file extension to language (one of \`python\`, \`ipynb\`, \`pyi\`). For example, to treat \`.ipy\` files as IPython notebooks, use \`--extension ipy\:ipynb\`]:EXTENSION:_default' \
+'(--show-files --show-settings --ignore-noqa --statistics --stdin-filename -w --watch --fix --diff)--add-noqa=[Enable automatic additions of \`noqa\` directives to failing lines. Optionally provide a reason to append after the codes]' \
 '*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--fix[Apply fixes to resolve lint violations. Use \`--no-fix\` to disable or \`--unsafe-fixes\` to include unsafe fixes]' \
 '--no-fix[]' \
@@ -8020,7 +8021,6 @@ TRY401\:"verbose-log-message"))' \
 '(--exit-non-zero-on-fix)--exit-zero[Exit with status code "0", even upon detecting lint violations]' \
 '(-e --exit-zero)--exit-non-zero-on-fix[Exit with a non-zero status code if any files were modified via fix, even if no lint violations remain]' \
 '(--diff -w --watch)--statistics[Show counts for every rule with at least one violation]' \
-'(--show-files --show-settings --ignore-noqa --statistics --stdin-filename -w --watch --fix --diff)--add-noqa[Enable automatic additions of \`noqa\` directives to failing lines]' \
 '(--add-noqa --show-settings --ignore-noqa --statistics --stdin-filename -w --watch)--show-files[See the files Ruff will be run against with the current settings]' \
 '(--add-noqa --show-files --ignore-noqa --statistics --stdin-filename -w --watch)--show-settings[See the settings Ruff will use to lint a given Python file]' \
 '-v[Enable verbose logging]' \
