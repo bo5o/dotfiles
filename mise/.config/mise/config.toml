@@ -86,7 +86,7 @@ tokei = "12.1.2"
 "npm:mcp-hub" = "4.2.1"
 "cargo:ncspot" = "latest"
 "github:garethgeorge/backrest" = "1.10.1"
-"pipx:vectorcode" = { version = "0.7.18", extras = "mcp,lsp" }
+"pipx:vectorcode" = { version = "0.7.19", extras = "mcp,lsp" }
 "cargo:bandwhich" = "0.23.1"
 "cargo:inlyne" = "0.5.0"
 "npm:@anthropic-ai/claude-code" = "2.0.37"
