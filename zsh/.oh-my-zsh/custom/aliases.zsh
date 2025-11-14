@@ -34,6 +34,9 @@ alias btm='btm --theme gruvbox'
 alias chat='nvim -c "CodeCompanionChat" -c "only"'
 alias crep="grep --color=always" # Color grep
 alias da="cd ~/latex/diplomarbeit"
+alias dbtlm="dbt ls -s state:modified"
+alias dbtrm="dbt run -s state:modified"
+alias dbttm="dbt test -m state:modified"
 alias dcupw='docker compose up --watch'
 alias def="sdcv"
 alias disks='echo "-- m o u n t . p o i n t s"; lsblk -a; echo ""; echo "-- d i s k . u s a g e"; df -h;'
