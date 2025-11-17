@@ -6,7 +6,7 @@ bottom = "0.11.4"
 cargo-binstall = "1.16.0"
 "ubi:tummychow/git-absorb" = "0.8.0"
 delta = "0.18.2"
-difftastic = { version = "0.65.0", exe = "difft" }
+difftastic = { version = "0.67.0", exe = "difft" }
 direnv = "2.37.1"
 fd = "10.3.0"
 "gem:tmuxinator" = "3.3.5"
