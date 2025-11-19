@@ -68,7 +68,7 @@ taplo = { version = "0.10.0", matching = "full" }
 "npm:bash-language-server" = "5.6.0"
 "npm:awk-language-server" = "0.10.6"
 "pipx:djlint" = "1.36.4"
-"npm:markdownlint-cli" = "0.45.0"
+"npm:markdownlint-cli" = "0.46.0"
 "ubi:ribru17/ts_query_ls" = "3.12.0"
 "cargo:just-lsp" = "0.2.8"
 "npm:intelephense" = "1.15.3"
