@@ -12,7 +12,8 @@
     }
   },
   "general": {
-    "vimMode": true
+    "vimMode": true,
+    "previewFeatures": true
   },
   "ui": {
     "theme": "GitHub"
