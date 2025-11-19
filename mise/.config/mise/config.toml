@@ -75,7 +75,7 @@ taplo = { version = "0.10.0", matching = "full" }
 "ubi:supabase-community/postgres-language-server" = { version = "0.17.2", rename_exe = "postgrestools" }
 "pipx:sqruff" = "0.29.3"
 duckdb = "1.4.2"
-hyperfine = "1.19.0"
+hyperfine = "1.20.0"
 "pipx:llm" = { version = "0.27.1", uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-github-copilot --with llm-commit --with llm-templates-fabric --with llm-hacker-news --with llm-fragments-pdf --with llm-docs" }
 dive = "0.13.1"
 xh = "0.25.0"
