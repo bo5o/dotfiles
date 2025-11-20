@@ -53,6 +53,7 @@ plugins=(
     hcloud
     ruff
     vectorcode
+    marimo
     bws
     rg
     fd
