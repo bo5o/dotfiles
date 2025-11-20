@@ -112,6 +112,11 @@ set autocontainmode relaxed
 autocontain -s github\.(com|dev) github
 autocontain -s gitlab\.com gitlab
 autocontain -s exercism\.org exercism
+
 autocontain -s google\.com Work
-autocontain -s atlassian.net Work
-autocontain -s miro.com Work
+autocontain -s atlassian\.(com|net) Work
+autocontain -s miro\.com Work
+autocontain -s billwerk\.com Work
+autocontain -s frisbii(-transform)?\.com Work
+autocontain -s app\.personio\.com Work
+autocontain -s app\.desk\.ly Work
