@@ -75,6 +75,8 @@ return {
     opts = function()
       local default_adapter = vim.env.ANTHROPIC_API_KEY ~= nil and "anthropic"
         or "gemini"
+      local title_model = default_adapter == "gemini" and "gemini-2.5-flash"
+        or "claude-haiku-4-5-20251001"
       return {
         strategies = {
           chat = {
@@ -110,7 +112,7 @@ return {
               return require("codecompanion.adapters").extend("gemini", {
                 schema = {
                   model = {
-                    default = "gemini-2.5-pro",
+                    default = "gemini-3-pro-preview",
                   },
                 },
               })
@@ -186,7 +188,7 @@ return {
                 ---Adapter for generating titles (defaults to current chat adapter)
                 adapter = nil, -- "copilot"
                 ---Model for generating titles (defaults to current chat model)
-                model = nil, -- "gpt-4o"
+                model = title_model, -- "gpt-4o"
                 ---Number of user prompts after which to refresh the title (0 to disable)
                 refresh_every_n_prompts = 0, -- e.g., 3 to refresh after every 3rd user prompt
                 ---Maximum number of times to refresh the title (default: 3)
