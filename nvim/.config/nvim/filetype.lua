@@ -34,5 +34,6 @@ vim.filetype.add({
     [".*/%.calcurse/notes/.*"] = "markdown",
     [".*pass.*%.txt"] = "secret",
     [".*%.py%.lock"] = "toml",
+    ["Jenkinsfile%.(%a+)"] = "groovy",
   },
 })
