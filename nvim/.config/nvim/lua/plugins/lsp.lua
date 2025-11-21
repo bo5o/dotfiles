@@ -571,6 +571,7 @@ return {
             end
           end,
           html = { "prettierd", "djlint", stop_after_first = true },
+          groovy = { "npm-groovy-lint", "injected" },
           jinja = { "djlint" },
           json = { "biome" },
           markdown = { "mdformat", "injected" },
@@ -595,6 +596,11 @@ return {
           },
         },
         format_on_save = function(bufnr)
+          local ignore_filetypes = { "groovy" }
+          if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+            return
+          end
+
           if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
             return
           end
