@@ -589,6 +589,9 @@ return {
           ["_"] = { "trim_whitespace" },
         },
         formatters = {
+          shfmt = {
+            append_args = { "-i", "2" },
+          },
           caddyfmt = {
             command = "caddy",
             args = { "fmt", "-" },
