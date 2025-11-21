@@ -589,6 +589,9 @@ return {
           ["_"] = { "trim_whitespace" },
         },
         formatters = {
+          taplo = {
+            append_args = { "--option", "array_auto_collapse=false" },
+          },
           shfmt = {
             append_args = { "-i", "2" },
           },
