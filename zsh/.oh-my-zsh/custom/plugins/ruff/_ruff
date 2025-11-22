@@ -9200,7 +9200,8 @@ analyze.preview\:"Whether to enable preview mode. When preview mode is enabled, 
 analyze.direction\:"Whether to generate a map from file to files that it depends on (dependencies) or files that depend on it (dependents)."
 analyze.detect-string-imports\:"Whether to detect imports from string literals. When enabled, Ruff will search for string literals that '\''look like'\'' import paths, and include them in the import map, if they resolve to valid Python modules."
 analyze.string-imports-min-dots\:"The minimum number of dots in a string to consider it a valid import."
-analyze.include-dependencies\:"A map from file path to the list of Python or non-Python file paths or globs that should be considered dependencies of that file, regardless of whether relevant imports are detected."))' \
+analyze.include-dependencies\:"A map from file path to the list of Python or non-Python file paths or globs that should be considered dependencies of that file, regardless of whether relevant imports are detected."
+analyze.type-checking-imports\:"Whether to include imports that are only used for type checking (i.e., imports within \`if TYPE_CHECKING\:\` blocks). When enabled (default), type-checking-only imports are included in the import graph. When disabled, they are excluded."))' \
 && ret=0
 ;;
 (linter)
@@ -9330,6 +9331,8 @@ dependents\:"Construct a map from module to its dependents (i.e., the modules th
 '--detect-string-imports[Attempt to detect imports from string literals]' \
 '--preview[Enable preview mode. Use \`--no-preview\` to disable]' \
 '--no-preview[]' \
+'--type-checking-imports[Include imports that are only used for type checking (i.e., imports within \`if TYPE_CHECKING\:\` blocks). Use \`--no-type-checking-imports\` to exclude imports that are only used for type checking]' \
+'--no-type-checking-imports[]' \
 '-v[Enable verbose logging]' \
 '--verbose[Enable verbose logging]' \
 '-q[Print diagnostics, but nothing else]' \
