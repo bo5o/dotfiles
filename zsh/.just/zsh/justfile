@@ -73,11 +73,6 @@ upgrade:
         mise x dive -- dive completion zsh > {{ plugin_dir }}/dive/_dive
     @echo "DONE"
 
-    @echo -n "Updating mise completions..."
-    @mkdir -p {{ plugin_dir }}/mise && \
-        mise completion zsh > {{ plugin_dir }}/mise/_mise
-    @echo "DONE"
-
     @echo -n "Updating tldr completions..."
     @mkdir -p {{ plugin_dir }}/tldr && \
         curl -s {{ githubusercontent }}/tldr-pages/tlrc/main/completions/_tldr \
