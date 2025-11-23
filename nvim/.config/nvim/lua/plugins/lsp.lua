@@ -590,7 +590,12 @@ return {
         },
         formatters = {
           taplo = {
-            append_args = { "--option", "array_auto_collapse=false" },
+            append_args = {
+              "--option",
+              "array_auto_collapse=false",
+              "--option",
+              "column_width=88",
+            },
           },
           shfmt = {
             append_args = { "-i", "2" },
