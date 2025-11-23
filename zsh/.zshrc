@@ -31,7 +31,6 @@ plugins=(
     yarn
     pip
     uv
-    direnv
     ssh-agent
     pass
     genpass
