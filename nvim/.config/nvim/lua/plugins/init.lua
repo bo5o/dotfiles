@@ -137,8 +137,6 @@ return {
     },
   },
 
-  { "direnv/direnv.vim" },
-
   { "tpope/vim-repeat" },
 
   {
