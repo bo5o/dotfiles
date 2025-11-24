@@ -3,7 +3,7 @@ mod? yazi '~/.just/yazi'
 mod? zsh '~/.just/zsh'
 mod? docker '~/.just/docker'
 
-packages := "zsh mise yazi tmux nvim lazygit direnv git bat wezterm psql"
+packages := "zsh mise yazi tmux nvim lazygit git bat wezterm psql"
 
 [private]
 default:
