@@ -92,6 +92,7 @@ tokei = "12.1.2"
 "github:jorgerojas26/lazysql" = "0.4.3"
 gemini-cli = "0.17.1"
 git-lfs = "3.7.1"
+"cargo:presenterm" = "0.15.1"
 
 [alias.bitwarden-secrets-manager.versions]
 "1.0.0" = "bws-v1.0.0"
