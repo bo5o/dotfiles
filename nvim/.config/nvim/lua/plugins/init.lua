@@ -1225,16 +1225,46 @@ return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "codecompanion", "mcphub" },
+    keys = {
+      {
+        "yom",
+        "<cmd>RenderMarkdown toggle<cr>",
+        desc = "Toggle markdown rendering",
+      },
+      {
+        "[om",
+        "<cmd>RenderMarkdown enable<cr>",
+        desc = "Enable markdown rendering",
+      },
+      {
+        "]om",
+        "<cmd>RenderMarkdown disable<cr>",
+        desc = "Disable markdown rendering",
+      },
+    },
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
     opts = {
       heading = {
         width = "block",
         min_width = 88,
+        position = "inline",
+        sign = false,
+        backgrounds = {
+          "markdownH1",
+          "markdownH2",
+          "markdownH3",
+          "markdownH4",
+          "markdownH5",
+          "markdownH6",
+        },
       },
       code = {
         width = "block",
         min_width = 88,
         position = "right",
         right_pad = 10,
+        sign = false,
       },
       dash = { width = 88 },
     },
