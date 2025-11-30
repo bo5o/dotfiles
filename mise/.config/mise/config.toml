@@ -68,7 +68,7 @@ taplo = { version = "0.10.0", matching = "full" }
 "npm:awk-language-server" = "0.10.6"
 "pipx:djlint" = "1.36.4"
 "npm:markdownlint-cli" = "0.46.0"
-"ubi:ribru17/ts_query_ls" = "3.12.0"
+"ubi:ribru17/ts_query_ls" = "3.13.0"
 "cargo:just-lsp" = "0.2.8"
 "npm:intelephense" = "1.16.2"
 "ubi:supabase-community/postgres-language-server" = { version = "0.17.2", rename_exe = "postgrestools" }
