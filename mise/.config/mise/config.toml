@@ -8,7 +8,7 @@ cargo-binstall = "1.16.2"
 delta = "0.18.2"
 difftastic = { version = "0.67.0", exe = "difft" }
 fd = "10.3.0"
-"gem:tmuxinator" = "3.3.5"
+"gem:tmuxinator" = "3.3.6"
 github-cli = "2.83.1"
 go = "1.25.4"
 jq = "1.8.1"
