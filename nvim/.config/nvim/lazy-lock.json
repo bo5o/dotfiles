@@ -23,7 +23,7 @@
   "flash.nvim": { "branch": "main", "commit": "fcea7ff883235d9024dc41e638f164a450c14ca2" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "fzf": { "branch": "master", "commit": "cfc37caabcf97f43595b5a06d60d6c7d36ba43e9" },
-  "fzf-lua": { "branch": "main", "commit": "ed140c90465a18f893bb2f5fcfbc23c661e583cd" },
+  "fzf-lua": { "branch": "main", "commit": "cae96b04f6cad98a3ad24349731df5e56b384c3c" },
   "git-messenger.vim": { "branch": "master", "commit": "fd124457378a295a5d1036af4954b35d6b807385" },
   "gitsigns.nvim": { "branch": "main", "commit": "5813e4878748805f1518cee7abb50fd7205a3a48" },
   "grug-far.nvim": { "branch": "main", "commit": "b58b2d65863f4ebad88b10a1ddd519e5380466e0" },
@@ -118,13 +118,13 @@
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "vim-table-mode": { "branch": "master", "commit": "e4365bde024f73e205eefa2fb78e3029ddb92ea9" },
   "vim-tbone": { "branch": "master", "commit": "79d28199d5edf70337957e13942b5d970755d943" },
-  "vim-test": { "branch": "master", "commit": "bbdc7f5d6280a047c3b1a951614454555a566356" },
+  "vim-test": { "branch": "master", "commit": "1eeb12774a0f251571700ccf68da27789b2f0852" },
   "vim-tmux-navigator": { "branch": "master", "commit": "c45243dc1f32ac6bcf6068e5300f3b2b237e576a" },
   "vim-tridactyl": { "branch": "master", "commit": "fdd069bde3a34c786abed4601b6d59a065590ad9" },
   "vim-unimpaired": { "branch": "master", "commit": "db65482581a28e4ccf355be297f1864a4e66985c" },
   "vimtex": { "branch": "master", "commit": "32bcb3922c20588e00de68f73c86312eda2141ad" },
-  "wezterm-types": { "branch": "main", "commit": "35d3ba2974ba95e098494a5ec0ec8cbc8e9f0e3d" },
+  "wezterm-types": { "branch": "main", "commit": "8ce18f4d110d7015dce037cff357a28f6f9e3f74" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "windows.nvim": { "branch": "main", "commit": "c7492552b23d0ab30325e90b56066ec51242adc8" },
-  "yazi.nvim": { "branch": "main", "commit": "b8aac56472626a511f1d5afb33cefc088602266b" }
+  "yazi.nvim": { "branch": "main", "commit": "afeed7582ae7adc11da418ecc689fe79b3d107e8" }
 }
