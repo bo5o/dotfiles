@@ -73,7 +73,7 @@ return {
 
   {
     "tpope/vim-fugitive",
-    cmd = { "Git", "Gwrite", "Gedit", "Gdiffsplit", "Gvdiffsplit" },
+    cmd = { "Git", "Gwrite", "Gedit", "Gdiffsplit", "Gvdiffsplit", "Gvsplit" },
     keys = {
       { "<leader>gco", "<cmd>Git checkout<cr>", desc = "Checkout" },
       { "<leader>gcc", "<cmd>Git commit -v -q<cr>", desc = "Commit" },
