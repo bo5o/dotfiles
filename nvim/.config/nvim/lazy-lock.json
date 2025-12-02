@@ -81,7 +81,7 @@
   "render-markdown.nvim": { "branch": "main", "commit": "6e0e8902dac70fecbdd8ce557d142062a621ec38" },
   "requirements.txt.vim": { "branch": "master", "commit": "d55452136a162ac31b15876ab98c00bd1b6c312f" },
   "rustaceanvim": { "branch": "master", "commit": "88575b98bb9937fb9983ddec5e532b67e75ce677" },
-  "schemastore.nvim": { "branch": "main", "commit": "5f2299987a1937612c910f00db39156bab6a6b35" },
+  "schemastore.nvim": { "branch": "main", "commit": "e9c00ea7813006dfa29f35c174f83f0184d45a93" },
   "snacks.nvim": { "branch": "main", "commit": "fe7cfe9800a182274d0f868a74b7263b8c0c020b" },
   "sxhkd-vim": { "branch": "master", "commit": "7b7937ff5c220fbef3bdd883d567513246516e06" },
   "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "38b06435305c30966b7ceb0a43e460dc43acaada" },
@@ -126,5 +126,5 @@
   "wezterm-types": { "branch": "main", "commit": "8ce18f4d110d7015dce037cff357a28f6f9e3f74" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "windows.nvim": { "branch": "main", "commit": "c7492552b23d0ab30325e90b56066ec51242adc8" },
-  "yazi.nvim": { "branch": "main", "commit": "afeed7582ae7adc11da418ecc689fe79b3d107e8" }
+  "yazi.nvim": { "branch": "main", "commit": "7ffb707ab34d425486eee0ae195546c25e05bf42" }
 }
