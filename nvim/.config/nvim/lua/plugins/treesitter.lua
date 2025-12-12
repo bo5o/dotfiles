@@ -24,6 +24,7 @@ return {
         "gowork",
         "gosum",
         "graphql",
+        "groovy",
         "html",
         "htmldjango",
         "http",
