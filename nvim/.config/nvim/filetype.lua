@@ -10,11 +10,13 @@ vim.filetype.add({
     ["uv.lock"] = "toml",
     [".markdownlintrc"] = "json",
     ["Caddyfile"] = "caddy",
+    ["Jenkinsfile"] = "groovy",
   },
   extension = {
     jinja = "jinja",
     jinja2 = "jinja",
     j2 = "jinja",
+    jenkins = "groovy",
   },
   pattern = {
     ["docker-compose%.ya?ml"] = "yaml.docker-compose",
