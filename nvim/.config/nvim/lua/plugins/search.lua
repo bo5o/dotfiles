@@ -22,6 +22,11 @@ local diff_worktree = function(file, worktree)
   vim.cmd("diffsplit " .. target:absolute())
 end
 
+local get_base_dir = function()
+  local project = require("project_nvim.project")
+  return vim.fs.root(0, ".git") or project.get_project_root() or vim.fs.getcwd()
+end
+
 return {
   {
     "ibhagwan/fzf-lua",
@@ -90,9 +95,10 @@ return {
         "<leader>ff",
         function()
           local fzf = require("fzf-lua")
-          local cwd = require("project_nvim.project").get_project_root()
-            or vim.fs.getcwd()
-          local opts = { cwd = cwd, formatter = { "path.filename_first", 2 } }
+          local opts = {
+            cwd = get_base_dir(),
+            formatter = { "path.filename_first", 2 },
+          }
           return fzf.files(opts)
         end,
         desc = "Find files",
@@ -105,7 +111,13 @@ return {
         end,
         desc = "Find files in all projects",
       },
-      { "<leader>fr", "<cmd>FzfLua live_grep<cr>", desc = "Live grep" },
+      {
+        "<leader>fr",
+        function()
+          return require("fzf-lua").live_grep({ cwd = get_base_dir() })
+        end,
+        desc = "Live grep",
+      },
       {
         "<leader>fw",
         function()
