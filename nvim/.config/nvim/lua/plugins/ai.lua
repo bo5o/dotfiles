@@ -19,6 +19,7 @@ return {
 
   {
     "olimorris/codecompanion.nvim",
+    version = "^17.0.0",
     cmd = {
       "CodeCompanion",
       "CodeCompanionChat",
