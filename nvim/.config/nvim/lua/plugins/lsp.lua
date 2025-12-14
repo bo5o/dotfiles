@@ -448,6 +448,9 @@ return {
             end
             return text
           end,
+          experimental = {
+            use_window_local_extmarks = true,
+          },
         },
       })
     end,
