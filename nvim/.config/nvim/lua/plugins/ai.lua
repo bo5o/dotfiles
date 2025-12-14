@@ -1,6 +1,7 @@
 return {
   {
     "ravitemer/mcphub.nvim",
+    commit = "8ff40b5edc649959bb7e89d25ae18e055554859a", -- wait for codecompanion v18.0.0
     keys = {
       { "<leader>om", "<cmd>MCPHub<cr>", desc = "Open MCP hub" },
     },
@@ -19,7 +20,7 @@ return {
 
   {
     "olimorris/codecompanion.nvim",
-    version = "^17.0.0",
+    version = "^17.0.0", -- TODO: bump to 18
     cmd = {
       "CodeCompanion",
       "CodeCompanionChat",
@@ -27,7 +28,10 @@ return {
     },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "ravitemer/codecompanion-history.nvim",
+      {
+        "ravitemer/codecompanion-history.nvim",
+        commit = "eb99d256352144cf3b6a1c45608ec25544a0813d", -- wait for codecompanion v18.0.0
+      },
     },
     keys = {
       {
