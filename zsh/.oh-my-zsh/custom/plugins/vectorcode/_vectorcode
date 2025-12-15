@@ -38,6 +38,9 @@ _shtab_vectorcode_options=(
   "(- : *)"{-s,--print-completion}"[Print completion script.]:print_completion:(bash zsh tcsh)"
 )
 
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_defaults_added=0
+
 _shtab_vectorcode_check_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
   "--debug[Enable debug mode.]"
@@ -47,6 +50,9 @@ _shtab_vectorcode_check_options=(
   ":Item to be checked. Possible options\: \[config\]:(config)"
   ":Item to be checked. Possible options\: \[config\]:(config)"
 )
+
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_check_defaults_added=0
 
 _shtab_vectorcode_chunks_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
@@ -60,6 +66,9 @@ _shtab_vectorcode_chunks_options=(
   "(*)::Paths to files to be chunked.:_files"
 )
 
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_chunks_defaults_added=0
+
 _shtab_vectorcode_clean_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
   "--debug[Enable debug mode.]"
@@ -67,6 +76,9 @@ _shtab_vectorcode_clean_options=(
   {--pipe,-p}"[Print structured output for other programs to process.]"
   "--no_stderr[Suppress all STDERR messages.]"
 )
+
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_clean_defaults_added=0
 
 _shtab_vectorcode_drop_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
@@ -76,6 +88,9 @@ _shtab_vectorcode_drop_options=(
   "--no_stderr[Suppress all STDERR messages.]"
 )
 
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_drop_defaults_added=0
+
 _shtab_vectorcode_files_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
   "--debug[Enable debug mode.]"
@@ -83,6 +98,9 @@ _shtab_vectorcode_files_options=(
   {--pipe,-p}"[Print structured output for other programs to process.]"
   "--no_stderr[Suppress all STDERR messages.]"
 )
+
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_files_defaults_added=0
 
 _shtab_vectorcode_files_ls_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
@@ -92,6 +110,9 @@ _shtab_vectorcode_files_ls_options=(
   "--no_stderr[Suppress all STDERR messages.]"
 )
 
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_files_ls_defaults_added=0
+
 _shtab_vectorcode_files_rm_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
   "--debug[Enable debug mode.]"
@@ -100,6 +121,9 @@ _shtab_vectorcode_files_rm_options=(
   "--no_stderr[Suppress all STDERR messages.]"
   "(*):Files to be removed from the collection.:"
 )
+
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_files_rm_defaults_added=0
 
 _shtab_vectorcode_init_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
@@ -111,6 +135,9 @@ _shtab_vectorcode_init_options=(
   "--hooks[Add git hooks to the current project, if it\'s a git repo.]"
 )
 
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_init_defaults_added=0
+
 _shtab_vectorcode_ls_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
   "--debug[Enable debug mode.]"
@@ -118,6 +145,9 @@ _shtab_vectorcode_ls_options=(
   {--pipe,-p}"[Print structured output for other programs to process.]"
   "--no_stderr[Suppress all STDERR messages.]"
 )
+
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_ls_defaults_added=0
 
 _shtab_vectorcode_prompts_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
@@ -128,6 +158,9 @@ _shtab_vectorcode_prompts_options=(
   "(*)::The subcommand(s) to get the prompts for. When not provided, VectorCode will print the prompts for \`query\`.:(query vectorise ls)"
   "(*)::The subcommand(s) to get the prompts for. When not provided, VectorCode will print the prompts for \`query\`.:(query vectorise ls)"
 )
+
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_prompts_defaults_added=0
 
 _shtab_vectorcode_query_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
@@ -146,6 +179,9 @@ _shtab_vectorcode_query_options=(
   "(*):Query keywords.:"
 )
 
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_query_defaults_added=0
+
 _shtab_vectorcode_update_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
   "--debug[Enable debug mode.]"
@@ -153,6 +189,9 @@ _shtab_vectorcode_update_options=(
   {--pipe,-p}"[Print structured output for other programs to process.]"
   "--no_stderr[Suppress all STDERR messages.]"
 )
+
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_update_defaults_added=0
 
 _shtab_vectorcode_vectorise_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
@@ -169,6 +208,9 @@ _shtab_vectorcode_vectorise_options=(
   "(*)::Paths to files to be vectorised.:_files"
 )
 
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_vectorise_defaults_added=0
+
 _shtab_vectorcode_version_options=(
   "(- : *)"{-h,--help}"[show this help message and exit]"
   "--debug[Enable debug mode.]"
@@ -177,12 +219,19 @@ _shtab_vectorcode_version_options=(
   "--no_stderr[Suppress all STDERR messages.]"
 )
 
+# guard to ensure default positional specs are added only once per session
+_shtab_vectorcode_version_defaults_added=0
+
 
 _shtab_vectorcode() {
-  local context state line curcontext="$curcontext" one_or_more='(-)*' remainder='(*)'
+  local context state line curcontext="$curcontext" one_or_more='(*)' remainder='(-)*' default='*::: :->vectorcode'
 
-  if ((${_shtab_vectorcode_options[(I)${(q)one_or_more}*]} + ${_shtab_vectorcode_options[(I)${(q)remainder}*]} == 0)); then  # noqa: E501
-    _shtab_vectorcode_options+=(': :_shtab_vectorcode_commands' '*::: :->vectorcode')
+  # Add default positional/remainder specs only if none exist, and only once per session
+  if (( ! _shtab_vectorcode_defaults_added )); then
+    if (( ${_shtab_vectorcode_options[(I)${(q)one_or_more}*]} +          ${_shtab_vectorcode_options[(I)${(q)remainder}*]} +          ${_shtab_vectorcode_options[(I)${(q)default}]} == 0 )); then
+      _shtab_vectorcode_options+=(': :_shtab_vectorcode_commands' '*::: :->vectorcode')
+    fi
+    _shtab_vectorcode_defaults_added=1
   fi
   _arguments -C -s $_shtab_vectorcode_options
 
@@ -209,10 +258,14 @@ _shtab_vectorcode() {
 }
 
 _shtab_vectorcode_files() {
-  local context state line curcontext="$curcontext" one_or_more='(-)*' remainder='(*)'
+  local context state line curcontext="$curcontext" one_or_more='(*)' remainder='(-)*' default='*::: :->files'
 
-  if ((${_shtab_vectorcode_files_options[(I)${(q)one_or_more}*]} + ${_shtab_vectorcode_files_options[(I)${(q)remainder}*]} == 0)); then  # noqa: E501
-    _shtab_vectorcode_files_options+=(': :_shtab_vectorcode_files_commands' '*::: :->files')
+  # Add default positional/remainder specs only if none exist, and only once per session
+  if (( ! _shtab_vectorcode_files_defaults_added )); then
+    if (( ${_shtab_vectorcode_files_options[(I)${(q)one_or_more}*]} +          ${_shtab_vectorcode_files_options[(I)${(q)remainder}*]} +          ${_shtab_vectorcode_files_options[(I)${(q)default}]} == 0 )); then
+      _shtab_vectorcode_files_options+=(': :_shtab_vectorcode_files_commands' '*::: :->files')
+    fi
+    _shtab_vectorcode_files_defaults_added=1
   fi
   _arguments -C -s $_shtab_vectorcode_files_options
 
