@@ -1,5 +1,5 @@
 [tools]
-ast-grep = "0.40.1"
+ast-grep = "0.40.2"
 bat = "0.26.1"
 "pipx:tldr" = "3.4.3"
 bottom = "0.11.4"
