@@ -81,7 +81,7 @@ xh = "0.25.0"
 dust = "1.2.3"
 "cargo:tokei" = "13.0.0"
 "http:ncdu" = { url = "https://dev.yorhel.nl/download/ncdu-2.9.1-linux-x86_64.tar.gz", version = "2.9.1" }
-"github:psviderski/unregistry" = { version = "0.4.0", exe = "docker-pussh" }
+"github:psviderski/unregistry" = { version = "0.4.1", exe = "docker-pussh" }
 "npm:mcp-hub" = "4.2.1"
 "cargo:ncspot" = "latest"
 "github:garethgeorge/backrest" = "1.10.1"
