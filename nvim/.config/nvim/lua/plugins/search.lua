@@ -95,10 +95,7 @@ return {
         "<leader>ff",
         function()
           local fzf = require("fzf-lua")
-          local opts = {
-            cwd = get_base_dir(),
-            formatter = { "path.filename_first", 2 },
-          }
+          local opts = { cwd = get_base_dir() }
           return fzf.files(opts)
         end,
         desc = "Find files",
@@ -173,6 +170,10 @@ return {
           include_current_session = true,
         },
         files = {
+          cwd_prompt = true,
+          cwd_prompt_shorten_len = 16,
+          cwd_prompt_shorten_val = 1,
+          formatter = { "path.filename_first", 2 },
           actions = {
             ["ctrl-g"] = false,
             ["ctrl-i"] = { actions.toggle_ignore },
