@@ -449,7 +449,7 @@ return {
             return text
           end,
           experimental = {
-            use_window_local_extmarks = true,
+            use_window_local_extmarks = false,
           },
         },
       })
