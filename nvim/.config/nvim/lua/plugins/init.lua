@@ -806,7 +806,7 @@ return {
           vim.fn.setreg("+", cmd)
         end,
         start = function(cmd)
-          vim.fn.execute("Start -wait=always " .. cmd)
+          vim.fn.execute("Start -wait=always mise exec -- " .. cmd)
         end,
       }
       vim.g["test#strategy"] = "start"
