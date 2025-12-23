@@ -1,4 +1,7 @@
 # vim: ft=conf
+mise.local.toml
+mise.*.local.toml
+.env
 
 # tags
 tags
