@@ -77,7 +77,7 @@ return {
       local default_adapter = vim.env.ANTHROPIC_API_KEY ~= nil and "anthropic"
         or "gemini"
       local title_model = default_adapter == "gemini" and "gemini-3-flash-preview"
-        or "claude-haiku-4-5-20251001"
+        or "claude-haiku-4-5"
       return {
         strategies = {
           chat = {
