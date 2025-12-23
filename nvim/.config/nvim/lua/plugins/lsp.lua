@@ -123,6 +123,9 @@ return {
               disableOrganizeImports = true,
               analysis = {
                 useLibraryCodeForTypes = true,
+                diagnosticSeverityOverrides = {
+                  reportImplicitStringConcatenation = false,
+                },
               },
             },
           },
