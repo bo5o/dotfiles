@@ -1,8 +1,9 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    branch = "main",
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
     keys = {
       {
         "<leader>oT",
@@ -10,6 +11,10 @@ return {
         desc = "Inspect treesitter tree",
       },
     },
+  },
+  {
+    "MeanderingProgrammer/treesitter-modules.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
       ensure_installed = {
         "bash",
@@ -60,42 +65,6 @@ return {
       indent = {
         enable = true,
       },
-      autopairs = {
-        enable = true,
-      },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-            ["ac"] = "@class.outer",
-            ["ic"] = "@class.inner",
-            ["as"] = {
-              query = "@scope",
-              query_group = "locals",
-              desc = "Select language scope",
-            },
-          },
-          include_surrounding_whitespace = false,
-        },
-        move = {
-          enable = true,
-          set_jumps = true,
-          goto_next_start = {
-            ["]m"] = "@function.outer",
-            ["]]"] = "@class.outer",
-          },
-          goto_previous_start = {
-            ["[m"] = "@function.outer",
-            ["[["] = "@class.outer",
-          },
-        },
-        swap = {
-          enable = true,
-        },
-      },
       incremental_selection = {
         enable = true,
         keymaps = {
@@ -104,19 +73,7 @@ return {
           node_decremental = "<BS>",
         },
       },
-      query_linter = {
-        enable = true,
-        use_virtual_text = true,
-        lint_events = { "BufWrite", "CursorHold" },
-      },
-      autotag = {
-        enable = true,
-      },
-      matchup = {
-        enable = true,
-      },
     },
-    main = "nvim-treesitter.configs",
     init = function()
       require("vim.treesitter.query").add_predicate("is-mise?", function(_, _, bufnr, _)
         local filepath = vim.api.nvim_buf_get_name(tonumber(bufnr) or 0)
@@ -126,13 +83,111 @@ return {
     end,
   },
   -- Advanced text objects
-  { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter" },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    keys = {
+      {
+        "af",
+        function()
+          local select = require("nvim-treesitter-textobjects.select")
+          select.select_textobject("@function.outer", "textobjects")
+        end,
+        mode = { "x", "o" },
+        desc = "Select outer function",
+      },
+      {
+        "if",
+        function()
+          local select = require("nvim-treesitter-textobjects.select")
+          select.select_textobject("@function.inner", "textobjects")
+        end,
+        mode = { "x", "o" },
+        desc = "Select inner function",
+      },
+      {
+        "ac",
+        function()
+          local select = require("nvim-treesitter-textobjects.select")
+          select.select_textobject("@class.outer", "textobjects")
+        end,
+        mode = { "x", "o" },
+        desc = "Select outer class",
+      },
+      {
+        "ic",
+        function()
+          local select = require("nvim-treesitter-textobjects.select")
+          select.select_textobject("@class.inner", "textobjects")
+        end,
+        mode = { "x", "o" },
+        desc = "Select inner class",
+      },
+      {
+        "as",
+        function()
+          local select = require("nvim-treesitter-textobjects.select")
+          select.select_textobject("@local.scope", "locals")
+        end,
+        mode = { "x", "o" },
+        desc = "Select local scope",
+      },
+      {
+        "]m",
+        function()
+          local move = require("nvim-treesitter-textobjects.move")
+          move.goto_next_start("@function.outer", "textobjects")
+        end,
+        mode = { "n", "x", "o" },
+        desc = "Next function start",
+      },
+      {
+        "]]",
+        function()
+          local move = require("nvim-treesitter-textobjects.move")
+          move.goto_next_start("@class.outer", "textobjects")
+        end,
+        mode = { "n", "x", "o" },
+        desc = "Next class start",
+      },
+      {
+        "[m",
+        function()
+          local move = require("nvim-treesitter-textobjects.move")
+          move.goto_previous_start("@function.outer", "textobjects")
+        end,
+        mode = { "n", "x", "o" },
+        desc = "Previous function start",
+      },
+      {
+        "[[",
+        function()
+          local move = require("nvim-treesitter-textobjects.move")
+          move.goto_previous_start("@class.outer", "textobjects")
+        end,
+        mode = { "n", "x", "o" },
+        desc = "Previous class start",
+      },
+    },
+    opts = {
+      select = {
+        lookahead = true,
+        include_surrounding_whitespace = false,
+      },
+      move = {
+        set_jumps = true,
+      },
+    },
+  },
+
   -- Always show treesitter context
   {
     "nvim-treesitter/nvim-treesitter-context",
     dependencies = "nvim-treesitter",
     opts = { separator = "-", max_lines = 3 },
   },
+
   -- Navigate around treesitter nodes
   {
     "aaronik/treewalker.nvim",
@@ -184,27 +239,13 @@ return {
       })
     end,
   },
-  -- Colorize nested parentheses
-  {
-    "HiPhish/rainbow-delimiters.nvim",
-    -- rainbow delimiters cause noticeable lag
-    -- maybe some day will re-enable it
-    enabled = false,
-    dependencies = "nvim-treesitter",
-    config = function()
-      require("rainbow-delimiters").setup({
-        query = {
-          [""] = "rainbow-delimiters",
-          html = "rainbow-tags",
-          vue = "rainbow-tags",
-          latex = "rainbow-blocks",
-        },
-      })
-    end,
-  },
 
   -- Auto-close and -rename html tags
-  { "windwp/nvim-ts-autotag", dependencies = "nvim-treesitter" },
+  {
+    "windwp/nvim-ts-autotag",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {},
+  },
 
   -- Node actions
   {
