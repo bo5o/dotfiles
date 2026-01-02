@@ -47,7 +47,6 @@ return {
         "jsdoc",
         "json",
         "json5",
-        "jsonc",
         "just",
         "java",
         "lua",
