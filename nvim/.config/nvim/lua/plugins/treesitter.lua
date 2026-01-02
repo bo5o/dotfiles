@@ -23,8 +23,35 @@ return {
   {
     "MeanderingProgrammer/treesitter-modules.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+    lazy = false,
     ---@module 'treesitter-modules'
     ---@type ts.mod.UserConfig
+    keys = {
+      {
+        "<Enter>",
+        function()
+          require("treesitter-modules").init_selection()
+        end,
+        mode = "n",
+        desc = "Init incremental selection",
+      },
+      {
+        "<Enter>",
+        function()
+          require("treesitter-modules").node_incremental()
+        end,
+        mode = "x",
+        desc = "Expand incremental selection",
+      },
+      {
+        "<BS>",
+        function()
+          require("treesitter-modules").node_decremental()
+        end,
+        mode = "x",
+        desc = "Shrink incremental selection",
+      },
+    },
     opts = {
       ensure_installed = {
         "bash",
@@ -76,11 +103,6 @@ return {
       },
       incremental_selection = {
         enable = true,
-        keymaps = {
-          init_selection = "<Enter>",
-          node_incremental = "<Enter>",
-          node_decremental = "<BS>",
-        },
       },
     },
   },
@@ -88,6 +110,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     branch = "main",
+    lazy = false,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     keys = {
       {
