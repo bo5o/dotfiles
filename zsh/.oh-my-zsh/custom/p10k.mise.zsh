@@ -6,6 +6,7 @@
     for plugin in ${(k)plugins}; do
       local parts=("${(@s/ /)plugin}")
       local tool=${${(U)parts[1]}#*:}
+      tool=${tool//[^A-Z0-9_]/_}
       local version=${parts[2]}
       p10k segment -r -i "${tool}_ICON" -s $tool -t "$version"
     done
@@ -143,9 +144,9 @@
   # typeset -g POWERLEVEL9K_MISE_HCLOUD_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Bitwarden secrets manager version from mise.
-  typeset -g POWERLEVEL9K_MISE_BITWARDEN_SECRETS_MANAGER_FOREGROUND='#7daea3'
-  typeset -g POWERLEVEL9K_MISE_BITWARDEN_SECRETS_MANAGER_VISUAL_IDENTIFIER_EXPANSION='󰞀 '
-  # typeset -g POWERLEVEL9K_MISE_BITWARDEN_SECRETS_MANAGER_SHOW_ON_UPGLOB='*.foo|*.bar'
+  typeset -g POWERLEVEL9K_MISE_BITWARDEN_SDK_SM_FOREGROUND='#7daea3'
+  typeset -g POWERLEVEL9K_MISE_BITWARDEN_SDK_SM_VISUAL_IDENTIFIER_EXPANSION='󰞀 '
+  # typeset -g POWERLEVEL9K_MISE_BITWARDEN_SDK_SM_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # Substitute the default asdf prompt element
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=("${POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS[@]/asdf/mise}")
