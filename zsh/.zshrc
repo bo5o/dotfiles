@@ -59,6 +59,7 @@ plugins=(
     dbt
     dust
     xh
+    fnox
     mise
     zsh-syntax-highlighting
 )
