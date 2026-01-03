@@ -203,7 +203,7 @@ return {
         },
 
         window = {
-          documentation = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered({ border = "rounded" }),
         },
 
         experimental = {
