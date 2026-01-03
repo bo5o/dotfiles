@@ -58,6 +58,11 @@ upgrade:
         mise x bat -- bat --completion zsh > {{ plugin_dir }}/bat/_bat
     @echo "DONE"
 
+    @echo -n "Updating fnox completions..."
+    @mkdir -p {{ plugin_dir }}/fnox && \
+        mise x fnox -- fnox completion zsh > {{ plugin_dir }}/fnox/_fnox
+    @echo "DONE"
+
     @echo -n "Updating marimo completions..."
     @mkdir -p {{ plugin_dir }}/marimo && \
         _MARIMO_COMPLETE=zsh_source mise x pipx:marimo -- marimo > {{ plugin_dir }}/marimo/_marimo
