@@ -290,6 +290,7 @@ return {
           },
         },
         taplo = {},
+        tofu_ls = {},
         ts_query_ls = {
           settings = {
             parser_install_directories = {
@@ -580,6 +581,7 @@ return {
           groovy = { "npm-groovy-lint", "injected" },
           jinja = { "djlint" },
           json = { "biome" },
+          terraform = { lsp_format = "prefer" },
           markdown = { "mdformat", "injected" },
           sh = { "shfmt" },
           bash = { "shfmt" },

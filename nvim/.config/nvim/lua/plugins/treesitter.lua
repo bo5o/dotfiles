@@ -67,6 +67,7 @@ return {
         "gosum",
         "graphql",
         "groovy",
+        "hcl",
         "html",
         "htmldjango",
         "http",
