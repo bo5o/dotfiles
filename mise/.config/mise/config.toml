@@ -59,7 +59,7 @@ lua-language-server = "3.16.4"
 "npm:stylelint" = "16.26.1"
 stylua = "2.3.1"
 taplo = { version = "0.10.0", matching = "full" }
-"github:Myriad-Dreamin/tinymist" = "0.14.4"
+"github:Myriad-Dreamin/tinymist" = "0.14.6"
 "npm:vim-language-server" = "2.3.1"
 "pipx:vim-vint" = "0.3.21"
 "npm:@vue/language-server" = "3.2.1"
