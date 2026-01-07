@@ -95,6 +95,39 @@ return {
   -- Bitbucket integration
   { "tommcdo/vim-fubitive", cmd = { "GBrowse" }, dependencies = "vim-fugitive" },
 
+  -- Jira integration
+  {
+    "letieu/jira.nvim",
+    keys = {
+      {
+        "<leader>oj",
+        function()
+          local project_key = os.getenv("JIRA_PROJECT")
+          require("jira.board").open(project_key)
+          if project_key ~= nil then
+            require("jira.board").load_view(project_key, "JQL")
+          end
+        end,
+        desc = "Open Jira",
+      },
+    },
+    cmd = { "Jira" },
+    opts = {
+      jira = {
+        base = os.getenv("JIRA_BASE_URL"),
+        email = os.getenv("JIRA_EMAIL"),
+        token = os.getenv("JIRA_TOKEN"),
+        type = "basic",
+        limit = 200,
+      },
+      queries = {
+        ["Next sprint"] = "project = '%s' AND sprint in futureSprints() ORDER BY Rank ASC",
+        ["Backlog"] = "project = '%s' AND (issuetype IN standardIssueTypes() OR issuetype IN ('Sub-task', 'Subtask')) AND (sprint IS EMPTY OR sprint NOT IN openSprints()) AND statusCategory != Done ORDER BY Rank ASC",
+        ["My Tasks"] = "assignee = currentUser() AND statusCategory != Done ORDER BY updated DESC",
+      },
+    },
+  },
+
   -- Show git commit under cursor
   {
     "rhysd/git-messenger.vim",

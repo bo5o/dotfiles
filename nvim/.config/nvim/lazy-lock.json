@@ -33,6 +33,7 @@
   "hydra.nvim": { "branch": "main", "commit": "8c4a9f621ec7cdc30411a1f3b6d5eebb12b469dc" },
   "indent-blankline.nvim": { "branch": "master", "commit": "005b56001b2cb30bfa61b7986bc50657816ba4ba" },
   "inlayhint-filler.nvim": { "branch": "main", "commit": "4b2b8d0df39d1ad7aaa7c101e5c382333b5bde01" },
+  "jira.nvim": { "branch": "main", "commit": "5922b29fadec8838b44c9b139e774a585494a795" },
   "jupyter-vim": { "branch": "master", "commit": "91eef96d0f26ce37db241833341d08d11c8e5215" },
   "kulala.nvim": { "branch": "main", "commit": "cd3eaa83b8d60533837202dede73238334d71832" },
   "lazy.nvim": { "branch": "main", "commit": "85c7ff3711b730b4030d03144f6db6375044ae82" },
