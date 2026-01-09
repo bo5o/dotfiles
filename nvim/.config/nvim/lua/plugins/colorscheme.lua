@@ -34,6 +34,9 @@ return {
             { fg = "#7daea3", bg = "#45403d", ctermfg = 109 }
           )
           highlight("CmpItemMenu", { fg = "#928374", ctermfg = 245 })
+
+          highlight("DiffDelete", { fg = "#444444" })
+          highlight("DiffText", { bg = "#374141", ctermbg = 23 })
         end,
       })
 

@@ -46,7 +46,7 @@ vim.opt.diffopt = {
 
 vim.opt.winborder = "rounded"
 
-vim.opt.fillchars:append({ diff = "⟋" })
+vim.opt.fillchars:append({ diff = "╱" })
 
 -- Space to keep above, below and to the side of the cursor
 vim.opt.scrolloff = 8
