@@ -25,7 +25,7 @@
   "fzf": { "branch": "master", "commit": "3f94bcb5bf93b0c04a7fc4087dff8f99e84e4a9b" },
   "fzf-lua": { "branch": "main", "commit": "a03d68e40eea835a1cdbd9f93049708dab3621e6" },
   "git-messenger.vim": { "branch": "master", "commit": "fd124457378a295a5d1036af4954b35d6b807385" },
-  "gitsigns.nvim": { "branch": "main", "commit": "72acb69020c92d99cf388bfeb390481ccec50c04" },
+  "gitsigns.nvim": { "branch": "main", "commit": "42d6aed4e94e0f0bbced16bbdcc42f57673bd75e" },
   "grug-far.nvim": { "branch": "main", "commit": "794f03c97afc7f4b03fb6ec5111be507df1850cf" },
   "gruvbox-material": { "branch": "master", "commit": "e4359a2f80ef7275b080be180841c62ca8322757" },
   "guess-indent.nvim": { "branch": "main", "commit": "84a4987ff36798c2fc1169cbaff67960aed9776f" },
@@ -129,5 +129,5 @@
   "wezterm-types": { "branch": "main", "commit": "c6c710039e2c3cda471d1480113e2146bd87c897" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "windows.nvim": { "branch": "main", "commit": "c7492552b23d0ab30325e90b56066ec51242adc8" },
-  "yazi.nvim": { "branch": "main", "commit": "30d8c852a0ca52437dad84cf5c92962d565a54a9" }
+  "yazi.nvim": { "branch": "main", "commit": "6eeeab6c340514cc9eb205ac4b60b7e0eee74a77" }
 }
