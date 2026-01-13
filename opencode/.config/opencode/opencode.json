@@ -1,0 +1,6 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "gruvbox",
+  "model": "gemini/gemini-3-flash-preview",
+  "autoupdate": false
+}
