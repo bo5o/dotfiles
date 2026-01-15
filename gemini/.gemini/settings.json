@@ -43,5 +43,7 @@
     },
     "theme": "GruvboxMaterialDarkMedium"
   },
+  "experimental": {
+    "skills": true
   }
 }
