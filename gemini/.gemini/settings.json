@@ -9,7 +9,8 @@
     "auth": {
       "selectedType": "gemini-api-key",
       "enforcedType": "gemini-api-key"
-    }
+    },
+    "disableYoloMode": true
   },
   "general": {
     "vimMode": true,
