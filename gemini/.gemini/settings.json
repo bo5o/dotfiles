@@ -16,6 +16,31 @@
     "previewFeatures": true
   },
   "ui": {
-    "theme": "GitHub"
+    "customThemes": {
+      "GruvboxMaterialDarkMedium": {
+        "name": "GruvboxMaterialDarkMedium",
+        "type": "custom",
+        "Background": "#282828",
+        "Foreground": "#d4be98",
+        "LightBlue": "#7daea3",
+        "AccentBlue": "#7daea3",
+        "AccentPurple": "#d3869b",
+        "AccentCyan": "#89b482",
+        "AccentGreen": "#a9b665",
+        "AccentYellow": "#d8a657",
+        "AccentRed": "#ea6962",
+        "Comment": "#7c6f64",
+        "Gray": "#928374",
+        "DiffAdded": "#34381b",
+        "DiffRemoved": "#402120",
+        "GradientColors": [
+          "#ea6962",
+          "#d8a657",
+          "#7daea3"
+        ]
+      }
+    },
+    "theme": "GruvboxMaterialDarkMedium"
+  },
   }
 }
