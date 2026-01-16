@@ -46,7 +46,7 @@ hadolint = "2.14.0"
 "npm:vscode-langservers-extracted" = "4.10.0"
 "npm:@fsouza/prettierd" = "0.26.2"
 "pipx:gitlint-core" = { version = "0.19.1", uvx_args = "--with gitlint" }
-"pipx:sqlfluff" = "3.5.0"
+"pipx:sqlfluff" = "4.0.0"
 "npm:yaml-language-server" = "1.19.2"
 "pipx:mdformat" = "1.0.0"
 rust-analyzer = "2026-01-12"
