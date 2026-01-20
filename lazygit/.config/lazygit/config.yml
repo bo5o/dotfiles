@@ -7,3 +7,40 @@ keybinding:
   universal:
     suspendApp: <disabled>
     redo: <c-z>
+customCommands:
+  - key: '<c-v>'
+    context: 'files'
+    command: |
+      #!/bin/sh
+      set -euo pipefail
+
+      PROMPT="
+      Use the Conventional Commit Messages specification to generate a commit
+      message for the given changes.
+
+      You can use one of the following commit types:
+
+      - build: changes that affect the build system or external dependencies
+      - feat: a new feature
+      - fix: a bug fix
+      - chore: other changes that don't modify src or test files
+      - ci: changes to CI configuration files and scripts
+      - docs: documentation only changes
+      - perf: a code change that improves performance
+      - refactor: a code change that neither fixes a bug nor adds a feature
+      - revert: reverts a previous commit
+      - style: changes that do not affect the meaning of the code
+      - test: adding missing tests or correcting existing tests
+
+      Some general things to consider:
+
+      - Abstract the changes to a higher level and not just describe the code changes.
+      - Generate commit messages that accurately describe these changes, ensuring they
+        are helpful to someone reading the project's history.
+      - A well-crafted commit message can significantly aid in the maintenance and
+        understanding of the project over time.
+      "
+
+      git diff --staged | llm -x -s "$PROMPT" | git commit -e -F -
+    description: 'Commit with AI'
+    output: terminal
