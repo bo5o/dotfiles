@@ -129,5 +129,5 @@
   "wezterm-types": { "branch": "main", "commit": "4e55f18722aaeff964b5965293fbb72a31a19b40" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "windows.nvim": { "branch": "main", "commit": "c7492552b23d0ab30325e90b56066ec51242adc8" },
-  "yazi.nvim": { "branch": "main", "commit": "5634692fab930cb3ef8359760a11418b2d4d2d85" }
+  "yazi.nvim": { "branch": "main", "commit": "bf4056540f31682769a8dbc74f95ea7423990b95" }
 }
