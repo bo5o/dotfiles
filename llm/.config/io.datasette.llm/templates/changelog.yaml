@@ -1,0 +1,7 @@
+---
+prompt: |
+  Generate a changelog for version $version according to the keepachangelog
+  specification. Use $date as the release date for this version. You do not need to
+  include the usual keepachangelog header (format is based on...).
+
+  These are the changes since the previous version: $input
