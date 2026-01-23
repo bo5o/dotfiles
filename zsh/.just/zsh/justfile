@@ -58,6 +58,11 @@ upgrade:
         mise x bat -- bat --completion zsh > {{ plugin_dir }}/bat/_bat
     @echo "DONE"
 
+    @echo -n "Updating fj completions..."
+    @mkdir -p {{ plugin_dir }}/fj && \
+        mise x "cargo:forgejo-cli" -- fj completion zsh > {{ plugin_dir }}/fj/_fj
+    @echo "DONE"
+
     @echo -n "Updating fnox completions..."
     @mkdir -p {{ plugin_dir }}/fnox && \
         mise x fnox -- fnox completion zsh > {{ plugin_dir }}/fnox/_fnox
