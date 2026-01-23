@@ -56,6 +56,7 @@ plugins=(
     bws
     rg
     fd
+    fj
     dbt
     dust
     xh
