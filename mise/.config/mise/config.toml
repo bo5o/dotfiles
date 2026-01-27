@@ -84,7 +84,7 @@ dust = "1.2.4"
 "github:psviderski/unregistry" = { version = "0.4.1", exe = "docker-pussh" }
 "npm:mcp-hub" = "4.2.1"
 "cargo:ncspot" = "latest"
-"github:garethgeorge/backrest" = "1.11.1"
+"github:garethgeorge/backrest" = "1.11.2"
 "pipx:vectorcode" = { version = "0.7.20", extras = "mcp,lsp" }
 "cargo:bandwhich" = "0.23.1"
 "cargo:inlyne" = "0.5.0"
