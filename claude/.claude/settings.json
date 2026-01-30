@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "defaultMode": "default"
+  },
+  "sandbox": {
+    "enabled": false,
+    "autoAllowBashIfSandboxed": false,
+    "allowUnsandboxedCommands": false
+  }
+}
