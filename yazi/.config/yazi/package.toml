@@ -1,12 +1,12 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "6f50636"
+rev = "557684b"
 hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "6f50636"
-hash = "563e4068979d1466d3dfc2e70a296947"
+rev = "557684b"
+hash = "bf75a487d1d3b0f9e93a118e30714e09"
 
 [[plugin.deps]]
 use = "wylie102/duckdb"
@@ -15,7 +15,7 @@ hash = "87b9233a74325e95011670ed20bbd0d4"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "6f50636"
+rev = "557684b"
 hash = "56fdabc96fc1f4d53c96eb884b02a5be"
 
 [[flavor.deps]]
