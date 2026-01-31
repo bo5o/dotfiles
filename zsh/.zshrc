@@ -51,6 +51,7 @@ plugins=(
     restic
     hcloud
     ruff
+    tailscale
     vectorcode
     marimo
     bws
