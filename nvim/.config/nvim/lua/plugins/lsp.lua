@@ -117,6 +117,18 @@ return {
 
       ---@type { [string]: vim.lsp.Config }
       local servers = {
+        ansiblels = {
+          settings = {
+            ansible = {
+              validation = {
+                enabled = true,
+                lint = {
+                  enabled = false,
+                },
+              },
+            },
+          },
+        },
         basedpyright = {
           settings = {
             basedpyright = {
@@ -504,6 +516,7 @@ return {
         ["jinja"] = { "djlint" },
         gitcommit = { "gitlint" },
         yaml = { "yamllint" },
+        ["yaml.ansible"] = { "ansible_lint" },
         markdown = { "markdownlint" },
         vimwiki = { "markdownlint" },
         dockerfile = { "hadolint" },
@@ -589,6 +602,7 @@ return {
           css = { "prettierd" },
           http = { lsp_format = "prefer" },
           yaml = { "yamlfmt" },
+          ["yaml.ansible"] = { "yamlfmt" },
           toml = { "taplo" },
           ocaml = { "ocamlformat" },
           query = { lsp_format = "prefer" },
