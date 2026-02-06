@@ -101,6 +101,7 @@ git-cliff = "2.12.0"
 "cargo:forgejo-cli" = "0.4.0"
 "pipx:ansible" = { version = "13.3.0", uvx_args = "--with-executables-from ansible-core --with-executables-from ansible-dev-tools --with-executables-from ansible-lint" }
 "npm:@ansible/ansible-language-server" = "1.2.3"
+fx = "39.2.0"
 
 [settings]
 experimental = true
