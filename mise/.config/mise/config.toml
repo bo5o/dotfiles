@@ -44,7 +44,7 @@ hadolint = "2.14.0"
 "npm:@microsoft/compose-language-service" = "0.4.0"
 "npm:@vtsls/language-server" = "0.3.0"
 "npm:vscode-langservers-extracted" = "4.10.0"
-"npm:@fsouza/prettierd" = "0.26.2"
+"npm:@fsouza/prettierd" = "0.27.0"
 "pipx:gitlint-core" = { version = "0.19.1", uvx_args = "--with gitlint" }
 "pipx:sqlfluff" = "4.0.0"
 "npm:yaml-language-server" = "1.19.2"
