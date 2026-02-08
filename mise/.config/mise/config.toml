@@ -1,7 +1,7 @@
 [tools]
 ast-grep = "0.40.5"
 bat = "0.26.1"
-"pipx:tldr" = "3.4.3"
+"pipx:tldr" = "3.4.4"
 bottom = "0.12.3"
 cargo-binstall = "1.17.4"
 "github:tummychow/git-absorb" = "0.8.0"
