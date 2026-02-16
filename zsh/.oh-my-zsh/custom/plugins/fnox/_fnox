@@ -23,7 +23,7 @@ _fnox() {
       return 1
   fi
 
-  local spec_file="${TMPDIR:-/tmp}/usage__usage_spec_fnox_1_11_0.spec"
+  local spec_file="${TMPDIR:-/tmp}/usage__usage_spec_fnox_1_12_1.spec"
   if [[ ! -f "$spec_file" ]]; then
     fnox usage > "$spec_file"
   fi
