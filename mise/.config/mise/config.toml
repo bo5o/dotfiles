@@ -92,7 +92,7 @@ claude-code = "2.1.42"
 "github:jorgerojas26/lazysql" = "0.4.6"
 gemini-cli = "0.28.2"
 git-lfs = "3.7.1"
-"cargo:presenterm" = "0.15.1"
+"cargo:presenterm" = "0.16.0"
 "github:opentofu/tofu-ls" = "0.3.1"
 "github:bitwarden/sdk-sm" = { version = "2.0.0", version_prefix = "bws-v" }
 fnox = "1.12.1"
