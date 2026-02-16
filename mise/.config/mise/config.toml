@@ -4,7 +4,7 @@ bat = "0.26.1"
 "pipx:tldr" = "3.4.4"
 bottom = "0.12.3"
 cargo-binstall = "1.17.5"
-"github:tummychow/git-absorb" = "0.8.0"
+"github:tummychow/git-absorb" = "0.9.0"
 delta = "0.18.2"
 difftastic = { version = "0.67.0", exe = "difft" }
 fd = "10.3.0"
