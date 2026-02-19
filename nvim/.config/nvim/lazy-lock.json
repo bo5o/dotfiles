@@ -127,7 +127,7 @@
   "vim-tridactyl": { "branch": "master", "commit": "fdd069bde3a34c786abed4601b6d59a065590ad9" },
   "vim-unimpaired": { "branch": "master", "commit": "db65482581a28e4ccf355be297f1864a4e66985c" },
   "vimtex": { "branch": "master", "commit": "95b93a24740f7b89dd8331326b41bdd1337d79f6" },
-  "wezterm-types": { "branch": "main", "commit": "7d12bfeeef34e4f043c2370ad5d9810e42d6829e" },
+  "wezterm-types": { "branch": "main", "commit": "e8ae66b78f2c26cbc6c8776352a339b9df949b96" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "windows.nvim": { "branch": "main", "commit": "c7492552b23d0ab30325e90b56066ec51242adc8" },
   "yazi.nvim": { "branch": "main", "commit": "7e35f0090a6d4b2c05301c10a05cb36ea18c7091" }
