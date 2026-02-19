@@ -55,6 +55,7 @@ plugins=(
     vectorcode
     marimo
     bws
+    sg
     rg
     fd
     fj
