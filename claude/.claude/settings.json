@@ -6,5 +6,8 @@
     "enabled": false,
     "autoAllowBashIfSandboxed": false,
     "allowUnsandboxedCommands": false
+  },
+  "enabledPlugins": {
+    "ast-grep@ast-grep-marketplace": true
   }
 }
