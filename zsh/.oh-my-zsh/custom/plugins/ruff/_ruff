@@ -9106,6 +9106,7 @@ extend-include\:"A list of file patterns to include when linting, in addition to
 force-exclude\:"Whether to enforce \[\`exclude\`\](#exclude) and \[\`extend-exclude\`\](#extend-exclude) patterns, even for paths that are passed to Ruff explicitly. Typically, Ruff will lint any paths passed in directly, even if they would typically be excluded. Setting \`force-exclude = true\` will cause Ruff to respect these exclusions unequivocally."
 include\:"A list of file patterns to include when linting."
 respect-gitignore\:"Whether to automatically exclude files that are ignored by \`.ignore\`, \`.gitignore\`, \`.git/info/exclude\`, and global \`gitignore\` files. Enabled by default."
+extension\:"A mapping of custom file extensions to known file types (overridden by the \`--extension\` command-line flag)."
 builtins\:"A list of builtins to treat as defined references, in addition to the system builtins."
 namespace-packages\:"Mark the specified directories as namespace packages. For the purpose of module resolution, Ruff will treat those directories and all their subdirectories as if they contained an \`__init__.py\` file."
 target-version\:"The minimum Python version to target, e.g., when considering automatic code upgrades, like rewriting type annotations. Ruff will not propose changes using features that are not available in the given version."
