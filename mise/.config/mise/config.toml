@@ -107,6 +107,7 @@ biome = "2.4.2"
 
 [settings]
 experimental = true
+env_shell_expand = true
 
 [settings.python]
 compile = true
