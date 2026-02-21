@@ -92,7 +92,7 @@ return {
             },
             roles = {
               llm = function(adapter)
-                if not adapter.parameters then
+                if not adapter.parameters or not adapter.parameters.model then
                   return adapter.formatted_name
                 end
                 return string.format(
@@ -108,6 +108,20 @@ return {
           cmd = { adapter = default_adapter },
         },
         adapters = {
+          acp = {
+            claude_code = function()
+              return require("codecompanion.adapters").extend("claude_code", {
+                env = {
+                  ANTHROPIC_API_KEY = vim.env.ANTHROPIC_API_KEY,
+                },
+                commands = {
+                  default = {
+                    "claude-agent-acp",
+                  },
+                },
+              })
+            end,
+          },
           http = {
             gemini = function()
               return require("codecompanion.adapters").extend("gemini", {
@@ -190,7 +204,7 @@ return {
               auto_generate_title = true,
               title_generation_opts = {
                 ---Adapter for generating titles (defaults to current chat adapter)
-                adapter = nil, -- "copilot"
+                adapter = default_adapter,
                 ---Model for generating titles (defaults to current chat model)
                 model = title_model, -- "gpt-4o"
                 ---Number of user prompts after which to refresh the title (0 to disable)
