@@ -29,3 +29,6 @@ Session.vim
 
 # custom
 .project-root
+
+# claude
+CLAUDE.local.md
