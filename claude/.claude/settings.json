@@ -2,12 +2,12 @@
   "permissions": {
     "defaultMode": "default"
   },
+  "enabledPlugins": {
+    "ast-grep@ast-grep-marketplace": true
+  },
   "sandbox": {
     "enabled": false,
     "autoAllowBashIfSandboxed": false,
     "allowUnsandboxedCommands": false
-  },
-  "enabledPlugins": {
-    "ast-grep@ast-grep-marketplace": true
   }
 }
