@@ -1,6 +1,14 @@
 {
   "permissions": {
-    "defaultMode": "default"
+    "defaultMode": "default",
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./.mise.local.toml)",
+      "Read(./.mise.*.local.toml)",
+      "Read(./.fnox.local.toml)",
+      "Read(./.fnox.*.local.toml)"
+    ]
   },
   "enabledPlugins": {
     "astral@astral-sh": true,
