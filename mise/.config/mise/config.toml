@@ -62,7 +62,7 @@ taplo = { version = "0.10.0", matching = "full" }
 "github:Myriad-Dreamin/tinymist" = "0.14.10"
 "npm:vim-language-server" = "2.3.1"
 "pipx:vim-vint" = "0.3.21"
-"npm:@vue/language-server" = "3.2.4"
+"npm:@vue/language-server" = "3.2.5"
 "npm:htmlhint" = "1.9.1"
 "npm:bash-language-server" = "5.6.0"
 "npm:awk-language-server" = "0.10.6"
