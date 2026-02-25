@@ -14,7 +14,12 @@
   },
   "general": {
     "vimMode": true,
-    "previewFeatures": true
+    "previewFeatures": true,
+    "sessionRetention": {
+      "warningAcknowledged": true,
+      "enabled": true,
+      "maxAge": "120d"
+    }
   },
   "ui": {
     "customThemes": {
