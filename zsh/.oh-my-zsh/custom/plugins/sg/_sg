@@ -131,6 +131,7 @@ entity\:"Show per-file/per-rule tracing information"))' \
 '(-C --context)--before=[Show NUM lines before each match]:NUM:_default' \
 '-C+[Show NUM lines around each match]:NUM:_default' \
 '--context=[Show NUM lines around each match]:NUM:_default' \
+'(-i --interactive)--max-results=[Show at most NUM results and stop running once the limit is reached]:NUM:_default' \
 '-c+[Path to ast-grep root config, default is sgconfig.yml]:CONFIG_FILE:_files' \
 '--config=[Path to ast-grep root config, default is sgconfig.yml]:CONFIG_FILE:_files' \
 '--include-metadata[Include rule metadata in the json output]' \
