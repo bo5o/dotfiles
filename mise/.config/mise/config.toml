@@ -88,7 +88,7 @@ dust = "1.2.4"
 "pipx:vectorcode" = { version = "0.7.20", extras = "mcp,lsp" }
 "cargo:bandwhich" = "0.23.1"
 "cargo:inlyne" = "0.5.0"
-claude-code = "2.1.50"
+claude-code = "2.1.59"
 "github:jorgerojas26/lazysql" = "0.4.8"
 gemini-cli = "0.30.0"
 git-lfs = "3.7.1"
