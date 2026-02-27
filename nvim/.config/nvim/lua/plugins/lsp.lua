@@ -592,6 +592,7 @@ return {
           end,
           html = { "prettierd", "djlint", stop_after_first = true },
           groovy = { "npm-groovy-lint", "injected" },
+          make = { "bake" },
           jinja = { "djlint" },
           json = { "biome" },
           terraform = { lsp_format = "prefer" },
