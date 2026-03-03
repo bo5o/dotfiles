@@ -25,3 +25,4 @@ system: |
     helpful to someone reading the project's history.
   - A well-crafted commit message can significantly aid in the maintenance and
     understanding of the project over time.
+  - Respect gitlint configuration if provided.
