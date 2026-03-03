@@ -43,6 +43,11 @@ upgrade:
         mise x ruff -- ruff generate-shell-completion zsh > {{ plugin_dir }}/ruff/_ruff
     @echo "DONE"
 
+    @echo -n "Updating gitlint completions..."
+    @mkdir -p {{ plugin_dir }}/gitlint && \
+        _GITLINT_COMPLETE=zsh_source mise x "pipx:gitlint-core" -- gitlint > {{ plugin_dir }}/gitlint/_gitlint
+    @echo "DONE"
+
     @echo -n "Updating vectorcode completions..."
     @mkdir -p {{ plugin_dir }}/vectorcode && \
         mise x "pipx:vectorcode" -- vectorcode --print-completion zsh > {{ plugin_dir }}/vectorcode/_vectorcode

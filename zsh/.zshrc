@@ -52,6 +52,7 @@ plugins=(
     hcloud
     ruff
     tailscale
+    gitlint
     vectorcode
     marimo
     bws
