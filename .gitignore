@@ -24,7 +24,6 @@ ipython/.jupyter/nbconfig/
 ipython/.ipython/profile_default/db/
 zsh/.oh-my-zsh/custom/*_.zsh
 zsh/.oh-my-zsh/custom/*_Z.zsh
-zsh/.oh-my-zsh/custom/plugins/tldr/_tldr
 ranger/.config/ranger/plugins/*.pyo
 __pycache__
 nvim/.config/nvim/vimspector/gadgets/**

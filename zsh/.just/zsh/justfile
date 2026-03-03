@@ -95,7 +95,8 @@ upgrade:
 
     @echo -n "Updating tldr completions..."
     @mkdir -p {{ plugin_dir }}/tldr && \
-        mise x "pipx:tldr" -- tldr --print-completion zsh > {{ plugin_dir }}/tldr/_tldr
+        curl -s {{ githubusercontent }}/tealdeer-rs/tealdeer/refs/heads/main/completion/zsh_tealdeer \
+            --output {{ plugin_dir }}/tldr/_tldr
     @echo "DONE"
 
     @echo -n "Updating fd completions..."
