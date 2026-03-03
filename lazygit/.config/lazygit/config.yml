@@ -13,6 +13,7 @@ keybinding:
 customCommands:
   - key: '<c-v>'
     context: 'files'
-    command: git diff --staged | llm -t conventional-commit | git commit -e -F -
+    command: git diff --staged | llm -t conventional-commit $([ -f .gitlint ] && echo
+      '-f .gitlint') | git commit -e -F -
     description: 'Commit with AI'
     output: terminal
