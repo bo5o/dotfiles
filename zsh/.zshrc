@@ -50,6 +50,7 @@ plugins=(
     restic
     hcloud
     ruff
+    tldr
     tailscale
     gitlint
     vectorcode
