@@ -95,8 +95,7 @@ upgrade:
 
     @echo -n "Updating tldr completions..."
     @mkdir -p {{ plugin_dir }}/tldr && \
-        curl -s {{ githubusercontent }}/tldr-pages/tlrc/main/completions/_tldr \
-            --output {{ plugin_dir }}/tldr/_tldr
+        mise x "pipx:tldr" -- tldr --print-completion zsh > {{ plugin_dir }}/tldr/_tldr
     @echo "DONE"
 
     @echo -n "Updating fd completions..."
