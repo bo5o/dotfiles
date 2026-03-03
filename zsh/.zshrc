@@ -47,7 +47,6 @@ plugins=(
     dive
     gh
     just
-    tldr
     restic
     hcloud
     ruff
