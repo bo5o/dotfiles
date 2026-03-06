@@ -579,8 +579,18 @@ return {
           end,
           ["html.jinja"] = { "djlint" },
           htmldjango = { "djlint" },
-          javascript = { "biome", "prettierd", lsp_format = "fallback" },
-          typescript = { "biome", "prettierd", lsp_format = "fallback" },
+          javascript = {
+            "oxfmt",
+            "biome",
+            lsp_format = "fallback",
+            stop_after_first = true,
+          },
+          typescript = {
+            "oxfmt",
+            "biome",
+            lsp_format = "fallback",
+            stop_after_first = true,
+          },
           python = function(bufnr)
             if
               require("conform").get_formatter_info("ruff_format", bufnr).available
@@ -590,17 +600,17 @@ return {
               return { "isort", "black" }
             end
           end,
-          html = { "prettierd", "djlint", stop_after_first = true },
+          html = { "oxfmt", "djlint", stop_after_first = true },
           groovy = { "npm-groovy-lint", "injected" },
           make = { "bake" },
           jinja = { "djlint" },
-          json = { "biome" },
+          json = { "oxfmt", "biome", stop_after_first = true },
           terraform = { lsp_format = "prefer" },
-          markdown = { "mdformat", "injected" },
+          markdown = { "oxfmt", "injected" },
           sh = { "shfmt" },
           bash = { "shfmt" },
           just = { "just" },
-          css = { "prettierd" },
+          css = { "oxfmt", stop_after_first = true },
           http = { lsp_format = "prefer" },
           yaml = { "yamlfmt" },
           ["yaml.ansible"] = { "yamlfmt" },
@@ -608,7 +618,7 @@ return {
           ocaml = { "ocamlformat" },
           query = { lsp_format = "prefer" },
           caddy = { "caddyfmt" },
-          vue = { "prettierd" },
+          vue = { "oxfmt", stop_after_first = true },
           ["_"] = { "trim_whitespace" },
         },
         formatters = {
