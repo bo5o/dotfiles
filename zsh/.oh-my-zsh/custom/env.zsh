@@ -22,3 +22,4 @@ export RESTIC_REPOSITORY="sftp:storagebox:backup/$(hostname)"
 export RESTIC_PASSWORD_COMMAND="pass restic/$(hostname)/RESTIC_PASSWORD"
 export NEOVIM_CONTEXT="home"
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+export DO_NOT_TRACK=true
