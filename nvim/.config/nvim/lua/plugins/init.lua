@@ -825,10 +825,12 @@ return {
       }
 
       -- JavaScript
-      vim.g["test#javascript#runner"] = "jest"
+      vim.g["test#javascript#runner"] = "vitest"
+      vim.g["test#javascript#vitest#executable"] = "mise exec -- vitest"
 
       -- Rust
       vim.g["test#rust#runner"] = "cargotest"
+      vim.g["test#rust#cargotest#executable"] = "mise exec -- cargotest"
     end,
   },
 
@@ -844,6 +846,7 @@ return {
       "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-vim-test",
       "nvim-neotest/neotest-jest",
+      "marilari88/neotest-vitest",
     },
     keys = {
       {
@@ -951,6 +954,7 @@ return {
           require("rustaceanvim/neotest"),
           require("neotest-python"),
           require("neotest-jest"),
+          require("neotest-vitest"),
           require("neotest-vim-test")({
             ignore_file_types = {
               "rust",
