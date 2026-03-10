@@ -7,7 +7,7 @@ cargo-binstall = "1.17.7"
 "github:tummychow/git-absorb" = "0.9.0"
 delta = "0.18.2"
 difftastic = { version = "0.67.0", exe = "difft" }
-fd = "10.4.1"
+fd = "10.4.2"
 "gem:tmuxinator" = "3.3.7"
 github-cli = "2.87.3"
 go = "1.26.1"
