@@ -1,6 +1,5 @@
 {
   "permissions": {
-    "defaultMode": "default",
     "deny": [
       "Read(./.env)",
       "Read(./.env.*)",
@@ -8,13 +7,20 @@
       "Read(./.mise.*.local.toml)",
       "Read(./.fnox.local.toml)",
       "Read(./.fnox.*.local.toml)"
-    ]
+    ],
+    "defaultMode": "default"
   },
-  "autoMemoryEnabled": false,
   "enabledPlugins": {
     "astral@astral-sh": true,
     "ast-grep@ast-grep-marketplace": true,
-    "frontend-design@claude-plugins-official": true
+    "frontend-design@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "explanatory-output-style@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "learning-output-style@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "astral-sh": {
@@ -34,5 +40,6 @@
     "enabled": false,
     "autoAllowBashIfSandboxed": false,
     "allowUnsandboxedCommands": false
-  }
+  },
+  "autoMemoryEnabled": false
 }
