@@ -622,6 +622,13 @@ return {
           ["_"] = { "trim_whitespace" },
         },
         formatters = {
+          injected = {
+            options = {
+              lang_to_formatters = {
+                yaml = {},
+              },
+            },
+          },
           taplo = {
             append_args = {
               "--option",
