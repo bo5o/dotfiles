@@ -67,9 +67,6 @@ return {
       {
         "<leader>ql",
         "<cmd>Trouble loclist toggle<cr>",
-        function()
-          require("trouble").toggle("loclist")
-        end,
         desc = "Toggle loclist",
       },
       {

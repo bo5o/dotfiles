@@ -238,7 +238,7 @@ return {
 
       local augroup = vim.api.nvim_create_augroup("DadbodSql", { clear = true })
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "sql", " mysql", "plsql" },
+        pattern = { "sql", "mysql", "plsql" },
         callback = function()
           cmp.setup.buffer({
             sources = {
@@ -310,16 +310,6 @@ return {
         [";require"] = "{%- set <+++> = config.require('<++>') -%}",
         [";run"] = "{% set <+++> = run_query(<++>) %}",
         [";dict"] = "{{ dbt_utils.get_query_results_as_dict(<+++>) }}",
-      }
-
-      vim.g.quicktex_javascript = {
-        [" "] = jump,
-        -- docstrings
-        [";tod"] = "// TODO: <+++>",
-        -- functions
-        [";af"] = "(<+++>) => {<++>}",
-        -- keywords
-        [";im"] = 'import {<++>} from "<+++>"',
       }
 
       vim.g.quicktex_javascript = {

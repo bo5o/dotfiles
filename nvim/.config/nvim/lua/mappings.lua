@@ -78,7 +78,7 @@ vim.keymap.set("n", "[d", function()
 end, { desc = "Jump to the previous diagnostic" })
 
 -- ask before jumping tag stack if ambigous
-vim.keymap.set("n", "C-]", "g<C-]>", { desc = "See :h CTRL-]" })
+vim.keymap.set("n", "<C-]>", "g<C-]>", { desc = "See :h CTRL-]" })
 
 -- remap 0 to go to first non-blank character (like ^)
 vim.keymap.set({ "n", "v", "o" }, "0", "^", { desc = "See :h ^" })
