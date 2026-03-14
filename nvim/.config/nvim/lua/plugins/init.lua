@@ -634,9 +634,6 @@ return {
         desc = "Find current file in file tree",
       },
     },
-    init = function()
-      vim.g.nvim_tree_auto_ignore_ft = { "startify", "dashboard" }
-    end,
     config = function()
       local function on_attach(bufnr)
         local api = require("nvim-tree.api")
@@ -669,7 +666,9 @@ return {
         respect_buf_cwd = true,
         update_focused_file = {
           enable = true,
-          update_root = true,
+          update_root = {
+            enable = true,
+          },
         },
         filters = {
           dotfiles = false,
@@ -680,7 +679,7 @@ return {
         },
         renderer = {
           group_empty = true,
-          highlight_git = true,
+          highlight_git = "name",
           add_trailing = true,
           indent_markers = {
             enable = true,
