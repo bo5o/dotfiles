@@ -32,6 +32,7 @@ return {
       library = {
         { path = "wezterm-types", mods = { "wezterm" } },
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        { path = "nvim-lspconfig", words = { "lspconfig" } },
       },
     },
   },
@@ -130,6 +131,7 @@ return {
           },
         },
         basedpyright = {
+          ---@type lspconfig.settings.basedpyright
           settings = {
             basedpyright = {
               disableOrganizeImports = true,
@@ -224,6 +226,7 @@ return {
                 telemetry = { enable = false },
               })
           end,
+          ---@type lspconfig.settings.lua_ls
           settings = {
             Lua = {},
           },
@@ -235,6 +238,7 @@ return {
         },
         pylsp = {
           -- expose mypy through pylsp
+          ---@type lspconfig.settings.pylsp
           settings = {
             pylsp = {
               plugins = {
@@ -297,6 +301,7 @@ return {
           workspace_required = true,
         },
         tinymist = {
+          ---@type lspconfig.settings.tinymist
           settings = {
             formatterMode = "typstyle",
           },
@@ -331,6 +336,7 @@ return {
             "typescript.tsx",
             "vue",
           },
+          ---@type lspconfig.settings.vtsls
           settings = {
             complete_function_calls = true,
             vtsls = {
@@ -402,6 +408,7 @@ return {
           end,
         },
         yamlls = {
+          ---@type lspconfig.settings.yamlls
           settings = {
             redhat = {
               telemetry = {
