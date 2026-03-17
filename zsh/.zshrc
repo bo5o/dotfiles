@@ -48,6 +48,7 @@ plugins=(
     gh
     just
     restic
+    workmux
     hcloud
     ruff
     tldr
