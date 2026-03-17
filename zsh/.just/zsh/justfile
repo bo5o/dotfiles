@@ -63,6 +63,11 @@ upgrade:
         mise x ripgrep -- rg --generate complete-zsh > {{ plugin_dir }}/rg/_rg
     @echo "DONE"
 
+    @echo -n "Updating workmux completions..."
+    @mkdir -p {{ plugin_dir }}/workmux && \
+        mise x workmux -- workmux completions zsh > {{ plugin_dir }}/workmux/_workmux
+    @echo "DONE"
+
     @echo -n "Updating bat completions..."
     @mkdir -p {{ plugin_dir }}/bat && \
         mise x bat -- bat --completion zsh > {{ plugin_dir }}/bat/_bat
