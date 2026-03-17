@@ -50,8 +50,8 @@ _arguments "${_arguments_options[@]}" : \
 '--description=[]:DESCRIPTION:_default' \
 '-r+[Creates a new remote with the given name for the new repo]:REMOTE:_default' \
 '--remote=[Creates a new remote with the given name for the new repo]:REMOTE:_default' \
-'-S+[Use SSH for the new remote instead of HTTP(S)]' \
-'--ssh=[Use SSH for the new remote instead of HTTP(S)]' \
+'-S+[Use SSH for the new remote instead of HTTP(S)]::SSH:(true false)' \
+'--ssh=[Use SSH for the new remote instead of HTTP(S)]::SSH:(true false)' \
 '-P[]' \
 '--private[]' \
 '-p[Pushes the current branch to the default branch on the new repo. Implies \`--remote=origin\` (setting remote manually overrides this)]' \
@@ -113,8 +113,8 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (clone)
 _arguments "${_arguments_options[@]}" : \
-'-S+[Clone the repo over SSH instead of HTTP(S)]' \
-'--ssh=[Clone the repo over SSH instead of HTTP(S)]' \
+'-S+[Clone the repo over SSH instead of HTTP(S)]::SSH:(true false)' \
+'--ssh=[Clone the repo over SSH instead of HTTP(S)]::SSH:(true false)' \
 '-I+[An SSH key file to use when cloning over SSH]:IDENTITY_FILE:_files' \
 '--identity-file=[An SSH key file to use when cloning over SSH]:IDENTITY_FILE:_files' \
 '-h[Print help]' \
@@ -347,8 +347,8 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (close)
 _arguments "${_arguments_options[@]}" : \
-'-w+[A comment to leave on the issue before closing it]' \
-'--with-msg=[A comment to leave on the issue before closing it]' \
+'-w+[A comment to leave on the issue before closing it]::WITH_MSG:_default' \
+'--with-msg=[A comment to leave on the issue before closing it]::WITH_MSG:_default' \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-h[Print help]' \
@@ -755,8 +755,8 @@ _arguments "${_arguments_options[@]}" : \
 (checkout)
 _arguments "${_arguments_options[@]}" : \
 '--branch-name=[The name to give the newly created branch]:NAME:_default' \
-'-S+[Pull the commits using SSH instead of HTTP(S)]' \
-'--ssh=[Pull the commits using SSH instead of HTTP(S)]' \
+'-S+[Pull the commits using SSH instead of HTTP(S)]::SSH:(true false)' \
+'--ssh=[Pull the commits using SSH instead of HTTP(S)]::SSH:(true false)' \
 '-I+[An SSH key file to use when cloning over SSH]:IDENTITY_FILE:_files' \
 '--identity-file=[An SSH key file to use when cloning over SSH]:IDENTITY_FILE:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
@@ -862,8 +862,8 @@ esac
 ;;
 (close)
 _arguments "${_arguments_options[@]}" : \
-'-w+[A comment to add before closing]' \
-'--with-msg=[A comment to add before closing]' \
+'-w+[A comment to add before closing]::WITH_MSG:_default' \
+'--with-msg=[A comment to add before closing]::WITH_MSG:_default' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 '::pr -- The pull request to close:_default' \
@@ -875,8 +875,8 @@ _arguments "${_arguments_options[@]}" : \
 '--method=[The merge style to use]:METHOD:(merge rebase rebase-merge squash manual)' \
 '-t+[The title of the merge or squash commit to be created]:TITLE:_default' \
 '--title=[The title of the merge or squash commit to be created]:TITLE:_default' \
-'-m+[The body of the merge or squash commit to be created]' \
-'--message=[The body of the merge or squash commit to be created]' \
+'-m+[The body of the merge or squash commit to be created]::MESSAGE:_default' \
+'--message=[The body of the merge or squash commit to be created]::MESSAGE:_default' \
 '-d[Option to delete the corresponding branch afterwards]' \
 '--delete[Option to delete the corresponding branch afterwards]' \
 '-h[Print help]' \
@@ -1066,8 +1066,8 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-p+[]:PATH:_files' \
 '--path=[]:PATH:_files' \
-'-S+[Clone the repo over SSH instead of HTTP(S)]' \
-'--ssh=[Clone the repo over SSH instead of HTTP(S)]' \
+'-S+[Clone the repo over SSH instead of HTTP(S)]::SSH:(true false)' \
+'--ssh=[Clone the repo over SSH instead of HTTP(S)]::SSH:(true false)' \
 '-I+[An SSH key file to use when cloning over SSH]:IDENTITY_FILE:_files' \
 '--identity-file=[An SSH key file to use when cloning over SSH]:IDENTITY_FILE:_files' \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
@@ -1559,14 +1559,14 @@ _arguments "${_arguments_options[@]}" : \
         case $line[1] in
             (create)
 _arguments "${_arguments_options[@]}" : \
-'-T+[Create a new cooresponding tag for this release. Defaults to release'\''s name]' \
-'--create-tag=[Create a new cooresponding tag for this release. Defaults to release'\''s name]' \
+'-T+[Create a new cooresponding tag for this release. Defaults to release'\''s name]::CREATE_TAG:_default' \
+'--create-tag=[Create a new cooresponding tag for this release. Defaults to release'\''s name]::CREATE_TAG:_default' \
 '-t+[Pre-existing tag to use]:TAG:_default' \
 '--tag=[Pre-existing tag to use]:TAG:_default' \
 '*-a+[Include a file as an attachment]:ATTACH:_default' \
 '*--attach=[Include a file as an attachment]:ATTACH:_default' \
-'-b+[Text of the release body]' \
-'--body=[Text of the release body]' \
+'-b+[Text of the release body]::BODY:_default' \
+'--body=[Text of the release body]::BODY:_default' \
 '-B+[]:BRANCH:_default' \
 '--branch=[]:BRANCH:_default' \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
@@ -1588,8 +1588,8 @@ _arguments "${_arguments_options[@]}" : \
 '--rename=[]:RENAME:_default' \
 '-t+[Corresponding tag for this release]:TAG:_default' \
 '--tag=[Corresponding tag for this release]:TAG:_default' \
-'-b+[Text of the release body]' \
-'--body=[Text of the release body]' \
+'-b+[Text of the release body]::BODY:_default' \
+'--body=[Text of the release body]::BODY:_default' \
 '-d+[]:DRAFT:(true false)' \
 '--draft=[]:DRAFT:(true false)' \
 '-p+[]:PRERELEASE:(true false)' \
@@ -1843,8 +1843,8 @@ _arguments "${_arguments_options[@]}" : \
         case $line[1] in
             (create)
 _arguments "${_arguments_options[@]}" : \
-'-b+[Text of the tag'\''s message]' \
-'--body=[Text of the tag'\''s message]' \
+'-b+[Text of the tag'\''s message]::BODY:_default' \
+'--body=[Text of the tag'\''s message]::BODY:_default' \
 '-B+[]:BRANCH:_default' \
 '--branch=[]:BRANCH:_default' \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
@@ -3101,8 +3101,8 @@ _arguments "${_arguments_options[@]}" : \
 '--description=[]:DESCRIPTION:_default' \
 '-r+[Creates a new remote with the given name for the new repo]:REMOTE:_default' \
 '--remote=[Creates a new remote with the given name for the new repo]:REMOTE:_default' \
-'-S+[Use SSH for the new remote instead of HTTP(S)]' \
-'--ssh=[Use SSH for the new remote instead of HTTP(S)]' \
+'-S+[Use SSH for the new remote instead of HTTP(S)]::SSH:(true false)' \
+'--ssh=[Use SSH for the new remote instead of HTTP(S)]::SSH:(true false)' \
 '-P[]' \
 '--private[]' \
 '-p[Pushes the current branch to the default branch on the new repo. Implies \`--remote=origin\` (setting remote manually overrides this)]' \
