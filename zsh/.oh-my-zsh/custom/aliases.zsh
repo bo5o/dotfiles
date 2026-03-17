@@ -118,6 +118,7 @@ alias vim="nvim"
 alias vimprofile="nvim --cmd 'profile start profile.log' --cmd 'profile func *'"
 alias vimrc='${=EDITOR} ~/.config/nvim/init.vim'
 alias week="date +%V"
+alias wm="workmux"
 alias wo="workon"
 alias ydl="yt-dlp"
 alias year="date +%Y"
