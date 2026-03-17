@@ -1,0 +1,12 @@
+---
+nerdfont: true
+merge_strategy: rebase
+agent: claude
+mode: session
+
+windows:
+  - name: editor
+    panes:
+      - command: <agent>
+        focus: true
+      - split: horizontal
