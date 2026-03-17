@@ -1,5 +1,76 @@
 {
+  "autoMemoryEnabled": false,
+  "enabledPlugins": {
+    "ast-grep@ast-grep-marketplace": true,
+    "astral@astral-sh": true,
+    "claude-md-management@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "explanatory-output-style@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "learning-output-style@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "ast-grep-marketplace": {
+      "source": {
+        "repo": "ast-grep/agent-skill",
+        "source": "github"
+      }
+    },
+    "astral-sh": {
+      "source": {
+        "repo": "astral-sh/claude-code-plugins",
+        "source": "github"
+      }
+    }
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "command": "workmux set-window-status waiting",
+            "type": "command"
+          }
+        ],
+        "matcher": "permission_prompt|elicitation_dialog"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "workmux set-window-status working",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "workmux set-window-status done",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "command": "workmux set-window-status working",
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
+    "defaultMode": "default",
     "deny": [
       "Read(./.env)",
       "Read(./.env.*)",
@@ -7,39 +78,11 @@
       "Read(./.mise.*.local.toml)",
       "Read(./.fnox.local.toml)",
       "Read(./.fnox.*.local.toml)"
-    ],
-    "defaultMode": "default"
-  },
-  "enabledPlugins": {
-    "astral@astral-sh": true,
-    "ast-grep@ast-grep-marketplace": true,
-    "frontend-design@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true,
-    "commit-commands@claude-plugins-official": true,
-    "security-guidance@claude-plugins-official": true,
-    "claude-md-management@claude-plugins-official": true,
-    "explanatory-output-style@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
-    "learning-output-style@claude-plugins-official": true
-  },
-  "extraKnownMarketplaces": {
-    "astral-sh": {
-      "source": {
-        "source": "github",
-        "repo": "astral-sh/claude-code-plugins"
-      }
-    },
-    "ast-grep-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "ast-grep/agent-skill"
-      }
-    }
+    ]
   },
   "sandbox": {
-    "enabled": false,
+    "allowUnsandboxedCommands": false,
     "autoAllowBashIfSandboxed": false,
-    "allowUnsandboxedCommands": false
-  },
-  "autoMemoryEnabled": false
+    "enabled": false
+  }
 }
