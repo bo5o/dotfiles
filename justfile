@@ -2,6 +2,7 @@ mod? mise '~/.just/mise'
 mod? yazi '~/.just/yazi'
 mod? zsh '~/.just/zsh'
 mod? docker '~/.just/docker'
+mod? workmux '~/.just/workmux'
 
 packages := "zsh mise yazi tmux nvim lazygit git bat wezterm psql llm"
 
