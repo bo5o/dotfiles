@@ -49,6 +49,7 @@ plugins=(
     just
     restic
     workmux
+    lima
     hcloud
     ruff
     tldr
