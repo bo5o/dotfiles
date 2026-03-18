@@ -104,7 +104,7 @@ biome = "2.4.6"
 oxfmt = "0.41.0"
 "npm:@zed-industries/claude-agent-acp" = "0.22.1"
 "pipx:mbake" = "1.4.5"
-workmux = "0.1.139"
+workmux = "0.1.140"
 lima = "2.1.0"
 
 [settings]
