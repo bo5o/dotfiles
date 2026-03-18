@@ -84,23 +84,30 @@ exec gosu "${WM_TARGET_UID}:${WM_TARGET_GID}" env HOME=/tmp "$@"
 SCRIPT
 RUN chmod +x /usr/local/bin/network-init.sh
 
-# Install and activate mise
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-ENV MISE_DATA_DIR="/mise"
-ENV MISE_CONFIG_DIR="/mise"
-ENV MISE_CACHE_DIR="/mise/cache"
-ENV MISE_INSTALL_PATH="/usr/local/bin/mise"
-ENV PATH="/mise/shims:$PATH"
+# Install mise via official apt repository
+RUN install -dm 755 /etc/apt/keyrings && \
+    curl -fSs https://mise.jdx.dev/gpg-key.pub | tee /etc/apt/keyrings/mise-archive-keyring.asc 1>/dev/null && \
+    echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.asc] https://mise.jdx.dev/deb stable main" | tee /etc/apt/sources.list.d/mise.list && \
+    apt-get update -y && \
+    apt-get install -y --no-install-recommends mise && \
+    rm -rf /var/lib/apt/lists/*
 
 ARG WORKMUX_VERSION
 ARG CLAUDE_CODE_VERSION
+ARG GEMINI_CLI_VERSION
+ARG NODE_VERSION
+
+ENV MISE_DATA_DIR=/usr/local/share/mise
+
 RUN mise install --system \
     workmux@${WORKMUX_VERSION} \
-    claude-code@${CLAUDE_CODE_VERSION}
+    claude-code@${CLAUDE_CODE_VERSION} \
+    node@${NODE_VERSION} \
+    gemini-cli@${GEMINI_CLI_VERSION}
 
 # --- claude agent ---
 # Claude Code checks $HOME/.local/bin/claude when installMethod is "native".
 # Container sets HOME=/tmp, so place a symlink to suppress the warning.
 RUN mkdir -p /tmp/.local/bin && \
-    ln -s $(mise where claude) /tmp/.local/bin/claude && \
+    ln -s $(mise where claude-code) /tmp/.local/bin/claude && \
     chmod 777 /tmp/.local

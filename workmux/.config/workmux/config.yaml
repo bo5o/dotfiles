@@ -1,12 +1,16 @@
 ---
 nerdfont: true
+theme: mossfire
 merge_strategy: rebase
 agent: claude
-mode: session
+mode: window
 
-windows:
-  - name: editor
-    panes:
-      - command: <agent>
-        focus: true
-      - split: horizontal
+panes:
+  - command: <agent>
+    focus: true
+  - split: horizontal
+
+sandbox:
+  enabled: true
+  network:
+    policy: deny

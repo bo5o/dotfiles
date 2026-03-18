@@ -1,0 +1,12 @@
+[private]
+default:
+    @just --justfile {{ source_file() }} --list --unsorted
+
+build:
+    docker build \
+        --build-arg WORKMUX_VERSION=$(mise current workmux) \
+        --build-arg CLAUDE_CODE_VERSION=$(mise current claude-code) \
+        --build-arg NODE_VERSION=$(mise current node) \
+        --build-arg GEMINI_CLI_VERSION=$(mise current gemini-cli) \
+        -t workmux-sandbox \
+        {{ justfile_dir() }}/workmux
