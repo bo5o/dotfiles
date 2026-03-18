@@ -8,7 +8,6 @@ mode: window
 panes:
   - command: <agent>
     focus: true
-    percentage: 30
   - command: nvim
     split: horizontal
     percentage: 70
