@@ -5,7 +5,25 @@ git:
     - useExternalDiffGitConfig: false # default pager
     - externalDiffCommand: difft --color=always --display=inline
 gui:
+  nerdFontsVersion: "3"
   showDivergenceFromBaseBranch: arrowAndNumber
+  theme:
+    selectedLineBgColor:
+      - "#45403d"
+    searchingActiveBorderColor:
+      - "bold"
+    optionsTextColor:
+      - "#a9b665"
+    defaultFgColor:
+      - "#d4be98"
+    cherryPickedCommitFgColor:
+      - "#a9b665"
+    cherryPickedCommitBgColor:
+      - "#7daea3"
+    activeBorderColor:
+      - "bold"
+    unstagedChangesColor:
+      - "#ea6962"
 keybinding:
   universal:
     suspendApp: <disabled>
