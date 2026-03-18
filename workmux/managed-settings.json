@@ -1,0 +1,15 @@
+{
+  "autoMemoryEnabled": false,
+  "permissions": {
+    "defaultMode": "default",
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./.mise.local.toml)",
+      "Read(./.mise.*.local.toml)",
+      "Read(./.fnox.local.toml)",
+      "Read(./.fnox.*.local.toml)"
+    ]
+  },
+  "model": "opus"
+}

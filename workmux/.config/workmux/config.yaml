@@ -10,7 +10,31 @@ panes:
     focus: true
   - split: horizontal
 
+status_icons:
+  working: "\U000F16A6 "
+  waiting: "\U000F0186 "
+  done: "\U000F012C "
+
 sandbox:
-  enabled: true
+  enabled: false
+  image: workmux-sandbox
+  extra_mounts:
+    - host_path: ~/dotfiles/workmux/managed-settings.json
+      guest_path: /etc/claude-code/managed-settings.json
+      writable: false
+  env_passthrough:
+    - GITHUB_TOKEN
   network:
     policy: deny
+    allowed_domains:
+      - "api.anthropic.com"
+      - "platform.claude.com"
+      - "github.com"
+      - "*.github.com"
+      - "*.githubusercontent.com"
+      - "mise-versions.jdx.dev"
+      - "awscli.amazonaws.com"
+      - "registry.npmjs.org"
+      - "pypi.org"
+      - "files.pythonhosted.org"
+      - "nodejs.org"

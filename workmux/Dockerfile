@@ -1,14 +1,35 @@
-FROM debian:bookworm-slim
+ARG DEBIAN_VERSION=trixie
+FROM debian:${DEBIAN_VERSION}-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    ca-certificates \
-    git \
-    jq \
-    iptables \
-    gosu \
     build-essential \
+    ca-certificates \
+    curl \
+    git \
+    gosu \
+    iptables \
+    libbz2-dev \
+    libffi-dev \
+    liblzma-dev \
+    libncursesw5-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxmlsec1-dev \
+    libzstd-dev \
+    make \
+    tk-dev \
+    xz-utils \
+    zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
+
+# Install mise
+RUN install -dm 755 /etc/apt/keyrings && \
+    curl -fSs https://mise.jdx.dev/gpg-key.pub | tee /etc/apt/keyrings/mise-archive-keyring.asc > /dev/null && \
+    echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.asc] https://mise.jdx.dev/deb stable main" | tee /etc/apt/sources.list.d/mise.list && \
+    apt-get update && apt-get install -y --no-install-recommends mise && \
+    rm -rf /var/lib/apt/lists/*
 
 # Embed network init script (sets up iptables firewall, then drops privileges)
 RUN cat <<'SCRIPT' > /usr/local/bin/network-init.sh
@@ -84,30 +105,24 @@ exec gosu "${WM_TARGET_UID}:${WM_TARGET_GID}" env HOME=/tmp "$@"
 SCRIPT
 RUN chmod +x /usr/local/bin/network-init.sh
 
-# Install mise via official apt repository
-RUN install -dm 755 /etc/apt/keyrings && \
-    curl -fSs https://mise.jdx.dev/gpg-key.pub | tee /etc/apt/keyrings/mise-archive-keyring.asc 1>/dev/null && \
-    echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.asc] https://mise.jdx.dev/deb stable main" | tee /etc/apt/sources.list.d/mise.list && \
-    apt-get update -y && \
-    apt-get install -y --no-install-recommends mise && \
-    rm -rf /var/lib/apt/lists/*
-
-ARG WORKMUX_VERSION
-ARG CLAUDE_CODE_VERSION
-ARG GEMINI_CLI_VERSION
-ARG NODE_VERSION
-
-ENV MISE_DATA_DIR=/usr/local/share/mise
-
-RUN mise install --system \
-    workmux@${WORKMUX_VERSION} \
-    claude-code@${CLAUDE_CODE_VERSION} \
-    node@${NODE_VERSION} \
-    gemini-cli@${GEMINI_CLI_VERSION}
+# Install workmux (needed for sandbox RPC)
+RUN curl -fsSL https://raw.githubusercontent.com/raine/workmux/main/scripts/install.sh | bash
 
 # --- claude agent ---
-# Claude Code checks $HOME/.local/bin/claude when installMethod is "native".
-# Container sets HOME=/tmp, so place a symlink to suppress the warning.
-RUN mkdir -p /tmp/.local/bin && \
-    ln -s $(mise where claude-code) /tmp/.local/bin/claude && \
+# Install Claude Code, then move to a globally accessible path so the binary
+# is reachable when running as an arbitrary non-root UID (--user uid:gid).
+RUN curl -fsSL https://claude.ai/install.sh | bash && \
+    target="$(readlink -f /root/.local/bin/claude)" && \
+    mv /root/.local/share/claude /opt/claude && \
+    ln -s "/opt/claude/versions/$(basename "$target")" /usr/local/bin/claude && \
+    # Claude Code checks $HOME/.local/bin/claude when installMethod is "native".
+    # Container sets HOME=/tmp, so place a symlink to suppress the warning.
+    mkdir -p /tmp/.local/bin && \
+    ln -s /usr/local/bin/claude /tmp/.local/bin/claude && \
     chmod 777 /tmp/.local
+
+ARG PYTHON_VERSION=3.13
+ENV PYTHON_VERSION=${PYTHON_VERSION}
+ENV MISE_PYTHON_COMPILE=1
+
+ENV MISE_INSTALL_PATH="/usr/local/bin/mise"

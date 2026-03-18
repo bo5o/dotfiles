@@ -1,2 +1,3 @@
 Dockerfile
 .dockerignore
+managed-settings.json
