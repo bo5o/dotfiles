@@ -1,0 +1,106 @@
+FROM debian:bookworm-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    ca-certificates \
+    git \
+    jq \
+    iptables \
+    gosu \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Embed network init script (sets up iptables firewall, then drops privileges)
+RUN cat <<'SCRIPT' > /usr/local/bin/network-init.sh
+#!/bin/bash
+set -euo pipefail
+
+if [ -n "${WM_PROXY_HOST:-}" ] && [ -n "${WM_PROXY_PORT:-}" ]; then
+    # Resolve hostnames to ALL IPs (multi-A records, round-robin DNS)
+    PROXY_IPS=$(getent ahostsv4 "$WM_PROXY_HOST" | awk '{print $1}' | sort -u)
+    RPC_HOST="${WM_RPC_HOST:-$WM_PROXY_HOST}"
+    RPC_IPS=$(getent ahostsv4 "$RPC_HOST" | awk '{print $1}' | sort -u)
+
+    if [ -z "$PROXY_IPS" ] || [ -z "$RPC_IPS" ]; then
+        echo "network-init: failed to resolve proxy/RPC host" >&2
+        exit 1
+    fi
+
+    # IPv4: default deny outbound
+    iptables -P OUTPUT DROP
+    iptables -A OUTPUT -o lo -j ACCEPT
+    iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+    # Allow DNS (UDP/TCP 53) to configured nameservers.
+    # Without this, any hostname resolution hangs until timeout.
+    if [ -f /etc/resolv.conf ]; then
+        grep '^nameserver' /etc/resolv.conf | awk '{print $2}' | while read -r ns; do
+            iptables -A OUTPUT -d "$ns" -p udp --dport 53 -j ACCEPT
+            iptables -A OUTPUT -d "$ns" -p tcp --dport 53 -j ACCEPT
+        done
+    fi
+
+    # Allow ALL resolved proxy IPs (handles multi-A DNS)
+    for ip in $PROXY_IPS; do
+        iptables -A OUTPUT -d "$ip" -p tcp --dport "$WM_PROXY_PORT" -j ACCEPT
+    done
+
+    # Allow ALL resolved RPC IPs
+    if [ -n "${WM_RPC_PORT:-}" ]; then
+        for ip in $RPC_IPS; do
+            iptables -A OUTPUT -d "$ip" -p tcp --dport "$WM_RPC_PORT" -j ACCEPT
+        done
+    fi
+
+    # Reject (not drop) everything else to fail fast instead of hanging
+    iptables -A OUTPUT -j REJECT
+
+    # IPv6: block entirely to prevent leaks (fail closed)
+    if ip6tables -L -n >/dev/null 2>&1; then
+        ip6tables -P OUTPUT DROP
+        ip6tables -A OUTPUT -o lo -j ACCEPT
+        ip6tables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+        ip6tables -A OUTPUT -j REJECT
+    else
+        # If ip6tables unavailable, disable IPv6 via sysctl as fallback
+        if ! sysctl -w net.ipv6.conf.all.disable_ipv6=1 2>/dev/null; then
+            echo "network-init: failed to block IPv6 (neither ip6tables nor sysctl available)" >&2
+            exit 1
+        fi
+    fi
+fi
+
+# Fix PTY ownership so the unprivileged user can read/write the terminal.
+# Docker allocates the PTY as root; after gosu drops privileges, the user
+# has no access to /dev/pts/0 unless we transfer ownership.
+if [ -t 0 ]; then
+    chown "${WM_TARGET_UID}:${WM_TARGET_GID}" "$(tty)"
+fi
+
+# Drop privileges and exec the user command.
+# gosu resets HOME via getpwuid() which returns "/" for UIDs not in /etc/passwd.
+# Preserve the container's HOME=/tmp so agents find their config dirs.
+exec gosu "${WM_TARGET_UID}:${WM_TARGET_GID}" env HOME=/tmp "$@"
+SCRIPT
+RUN chmod +x /usr/local/bin/network-init.sh
+
+# Install and activate mise
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+ENV MISE_DATA_DIR="/mise"
+ENV MISE_CONFIG_DIR="/mise"
+ENV MISE_CACHE_DIR="/mise/cache"
+ENV MISE_INSTALL_PATH="/usr/local/bin/mise"
+ENV PATH="/mise/shims:$PATH"
+
+ARG WORKMUX_VERSION
+ARG CLAUDE_CODE_VERSION
+RUN mise install --system \
+    workmux@${WORKMUX_VERSION} \
+    claude-code@${CLAUDE_CODE_VERSION}
+
+# --- claude agent ---
+# Claude Code checks $HOME/.local/bin/claude when installMethod is "native".
+# Container sets HOME=/tmp, so place a symlink to suppress the warning.
+RUN mkdir -p /tmp/.local/bin && \
+    ln -s $(mise where claude) /tmp/.local/bin/claude && \
+    chmod 777 /tmp/.local

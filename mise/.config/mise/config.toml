@@ -105,6 +105,7 @@ oxfmt = "0.41.0"
 "npm:@zed-industries/claude-agent-acp" = "0.22.0"
 "pipx:mbake" = "1.4.5"
 workmux = "0.1.139"
+lima = "2.1.0"
 
 [settings]
 experimental = true
