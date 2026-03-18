@@ -3,4 +3,6 @@ theme = Gruvbox Dark
 font-family = "Iosevka Fixed SS14"
 font-size = 14
 
+freetype-load-flags = no-light
+
 window-decoration = false
