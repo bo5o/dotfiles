@@ -4,7 +4,7 @@ default:
 
 # upgrade mise tools
 upgrade:
-    mise up --bump --interactive
+    mise up --bump --interactive --exclude lua
 
 # install mise tools
 install *args:
