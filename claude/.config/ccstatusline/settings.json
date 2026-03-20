@@ -22,13 +22,31 @@
     ],
     [
       {
-        "id": "b69e16c4-bfe1-414c-a4d5-f6b392642ede",
-        "type": "total-speed",
-        "rawValue": true,
-        "metadata": {
-          "windowSeconds": "0"
-        },
-        "color": ""
+        "id": "db574a82-ddcc-43a9-bc3e-009a71a89dd1",
+        "type": "custom-text",
+        "customText": "↑ "
+      },
+      {
+        "id": "64128689-8bcd-4c06-a94e-ce6617f046ec",
+        "type": "input-speed",
+        "color": "",
+        "rawValue": true
+      },
+      {
+        "id": "56a43eda-f6d6-4646-bfd4-4c17b279350d",
+        "type": "separator",
+        "character": " "
+      },
+      {
+        "id": "e8f6fdf4-1d71-4046-be2c-b3cf463b216e",
+        "type": "custom-text",
+        "customText": "↓ "
+      },
+      {
+        "id": "8fea475d-0c2d-4f77-b9f6-547b9636f4cd",
+        "type": "output-speed",
+        "color": "",
+        "rawValue": true
       },
       {
         "id": "352da968-87c0-4fd1-880a-5c3351d8992a",
