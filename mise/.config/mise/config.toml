@@ -70,7 +70,7 @@ taplo = { version = "0.10.0", matching = "full" }
 "cargo:just-lsp" = "0.4.0"
 "npm:intelephense" = "1.16.5"
 "github:supabase-community/postgres-language-server" = { version = "0.22.1", rename_exe = "postgrestools" }
-"pipx:sqruff" = "0.37.2"
+"pipx:sqruff" = "0.37.3"
 duckdb = "1.5.0"
 hyperfine = "1.20.0"
 "pipx:llm" = { version = "0.29", uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-gemini --with llm-commit --with llm-templates-fabric --with llm-hacker-news --with llm-fragments-pdf --with pymupdf-layout --with llm-docs" }
