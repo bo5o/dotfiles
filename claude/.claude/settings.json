@@ -55,7 +55,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "ccusage statusline --visual-burn-rate emoji",
+    "command": "ccstatusline",
     "padding": 0
   },
   "enabledPlugins": {
@@ -89,5 +89,7 @@
     "autoAllowBashIfSandboxed": false,
     "allowUnsandboxedCommands": false
   },
-  "autoMemoryEnabled": false
+  "autoMemoryEnabled": false,
+  "model": "opus[1m]"
 }
+
