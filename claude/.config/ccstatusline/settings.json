@@ -22,30 +22,42 @@
     ],
     [
       {
+        "id": "b69e16c4-bfe1-414c-a4d5-f6b392642ede",
+        "type": "total-speed",
+        "rawValue": true,
+        "metadata": {
+          "windowSeconds": "0"
+        },
+        "color": ""
+      },
+      {
         "id": "352da968-87c0-4fd1-880a-5c3351d8992a",
-        "type": "flex-separator"
+        "type": "flex-separator",
+        "color": ""
       },
       {
         "id": "f159bb88-64ec-48ed-84df-452d3ab71d03",
         "type": "session-usage",
         "color": "yellow",
-        "rawValue": false,
+        "rawValue": true,
         "metadata": {
-          "display": "time"
+          "display": "progress-short"
         }
       },
       {
-        "id": "1a2a7fa2-a380-4370-b6e2-371f6f085e47",
-        "type": "separator"
+        "id": "5331e170-934b-4ad5-b78b-97e72e7d6aca",
+        "type": "separator",
+        "color": "yellow",
+        "character": "|"
       },
       {
         "id": "baf131c3-bf46-4d93-aebe-849d13289d2f",
         "type": "reset-timer",
         "color": "yellow",
+        "rawValue": true,
         "metadata": {
           "display": "time"
-        },
-        "rawValue": true
+        }
       }
     ]
   ],
