@@ -1,5 +1,63 @@
 {
-  "autoMemoryEnabled": false,
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./.mise.local.toml)",
+      "Read(./.mise.*.local.toml)",
+      "Read(./.fnox.local.toml)",
+      "Read(./.fnox.*.local.toml)"
+    ],
+    "defaultMode": "default"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "permission_prompt|elicitation_dialog",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status waiting"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status working"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status done"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status working"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "ccusage statusline --visual-burn-rate emoji",
+    "padding": 0
+  },
   "enabledPlugins": {
     "ast-grep@ast-grep-marketplace": true,
     "astral@astral-sh": true,
@@ -15,74 +73,21 @@
   "extraKnownMarketplaces": {
     "ast-grep-marketplace": {
       "source": {
-        "repo": "ast-grep/agent-skill",
-        "source": "github"
+        "source": "github",
+        "repo": "ast-grep/agent-skill"
       }
     },
     "astral-sh": {
       "source": {
-        "repo": "astral-sh/claude-code-plugins",
-        "source": "github"
+        "source": "github",
+        "repo": "astral-sh/claude-code-plugins"
       }
     }
   },
-  "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "command": "workmux set-window-status waiting",
-            "type": "command"
-          }
-        ],
-        "matcher": "permission_prompt|elicitation_dialog"
-      }
-    ],
-    "PostToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "workmux set-window-status working",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "command": "workmux set-window-status done",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "command": "workmux set-window-status working",
-            "type": "command"
-          }
-        ]
-      }
-    ]
-  },
-  "permissions": {
-    "defaultMode": "default",
-    "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)",
-      "Read(./.mise.local.toml)",
-      "Read(./.mise.*.local.toml)",
-      "Read(./.fnox.local.toml)",
-      "Read(./.fnox.*.local.toml)"
-    ]
-  },
   "sandbox": {
-    "allowUnsandboxedCommands": false,
+    "enabled": false,
     "autoAllowBashIfSandboxed": false,
-    "enabled": false
-  }
+    "allowUnsandboxedCommands": false
+  },
+  "autoMemoryEnabled": false
 }
