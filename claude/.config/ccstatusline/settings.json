@@ -22,6 +22,10 @@
     ],
     [
       {
+        "id": "352da968-87c0-4fd1-880a-5c3351d8992a",
+        "type": "flex-separator"
+      },
+      {
         "id": "f159bb88-64ec-48ed-84df-452d3ab71d03",
         "type": "session-usage",
         "color": "yellow",
@@ -31,8 +35,8 @@
         }
       },
       {
-        "id": "352da968-87c0-4fd1-880a-5c3351d8992a",
-        "type": "flex-separator"
+        "id": "1a2a7fa2-a380-4370-b6e2-371f6f085e47",
+        "type": "separator"
       },
       {
         "id": "baf131c3-bf46-4d93-aebe-849d13289d2f",
@@ -40,13 +44,15 @@
         "color": "yellow",
         "metadata": {
           "display": "time"
-        }
+        },
+        "rawValue": true
       }
     ]
   ],
   "flexMode": "full",
   "compactThreshold": 60,
   "colorLevel": 1,
+  "defaultPadding": "",
   "inheritSeparatorColors": false,
   "globalBold": false,
   "powerline": {
@@ -60,6 +66,5 @@
     "startCaps": [],
     "endCaps": [],
     "autoAlign": false
-  },
-  "defaultPadding": ""
+  }
 }
