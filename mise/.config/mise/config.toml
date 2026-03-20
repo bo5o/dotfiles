@@ -5,7 +5,7 @@ bat = "0.26.1"
 bottom = "0.12.3"
 cargo-binstall = "1.17.7"
 "github:tummychow/git-absorb" = "0.9.0"
-delta = "0.18.2"
+delta = "0.19.0"
 difftastic = { version = "0.68.0", exe = "difft" }
 fd = "10.4.2"
 "gem:tmuxinator" = "3.3.7"
