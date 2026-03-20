@@ -106,6 +106,8 @@ oxfmt = "0.41.0"
 "pipx:mbake" = "1.4.5"
 workmux = "0.1.141"
 lima = "2.1.0"
+"github:Ataraxy-Labs/sem" = "0.3.10"
+"npm:ccusage" = "18.0.10"
 
 [settings]
 experimental = true
