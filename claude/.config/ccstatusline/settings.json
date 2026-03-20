@@ -24,7 +24,7 @@
       {
         "id": "db574a82-ddcc-43a9-bc3e-009a71a89dd1",
         "type": "custom-text",
-        "customText": "↑ "
+        "customText": "▲ "
       },
       {
         "id": "64128689-8bcd-4c06-a94e-ce6617f046ec",
@@ -40,7 +40,7 @@
       {
         "id": "e8f6fdf4-1d71-4046-be2c-b3cf463b216e",
         "type": "custom-text",
-        "customText": "↓ "
+        "customText": "▼ "
       },
       {
         "id": "8fea475d-0c2d-4f77-b9f6-547b9636f4cd",
@@ -87,14 +87,11 @@
   "globalBold": false,
   "powerline": {
     "enabled": false,
-    "separators": [
-      ""
-    ],
-    "separatorInvertBackground": [
-      false
-    ],
+    "separators": [""],
+    "separatorInvertBackground": [false],
     "startCaps": [],
     "endCaps": [],
     "autoAlign": false
   }
 }
+
