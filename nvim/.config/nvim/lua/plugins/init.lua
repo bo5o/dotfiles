@@ -1240,7 +1240,7 @@ return {
 
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "codecompanion", "mcphub" },
+    ft = { "markdown", "codecompanion" },
     keys = {
       {
         "yom",

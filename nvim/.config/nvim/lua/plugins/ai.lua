@@ -1,13 +1,5 @@
 return {
   {
-    "ravitemer/mcphub.nvim",
-    keys = {
-      { "<leader>om", "<cmd>MCPHub<cr>", desc = "Open MCP hub" },
-    },
-    opts = {},
-  },
-
-  {
     "Davidyz/VectorCode",
     version = "*",
     cmd = "VectorCode",
@@ -138,14 +130,6 @@ return {
           },
         },
         extensions = {
-          mcphub = {
-            callback = "mcphub.extensions.codecompanion",
-            opts = {
-              show_result_in_chat = true,
-              make_vars = true,
-              make_slash_commands = true,
-            },
-          },
           vectorcode = {
             opts = {
               tool_group = {
