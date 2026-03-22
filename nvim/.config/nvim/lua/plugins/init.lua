@@ -837,8 +837,17 @@ return {
       }
 
       -- JavaScript
-      vim.g["test#javascript#runner"] = "vitest"
-      vim.g["test#javascript#vitest#executable"] = "mise exec -- vitest"
+      local js_runner = os.getenv("VIMTEST_JS_RUNNER")
+      if js_runner == "playwright" then
+        vim.g["test#javascript#runner"] = "playwright"
+        vim.g["test#javascript#playwright#executable"] = "mise exec -- playwright test"
+      elseif js_runner == "jest" then
+        vim.g["test#javascript#runner"] = "jest"
+        vim.g["test#javascript#jest#executable"] = "mise exec -- jest"
+      else
+        vim.g["test#javascript#runner"] = "vitest"
+        vim.g["test#javascript#vitest#executable"] = "mise exec -- vitest"
+      end
 
       -- Rust
       vim.g["test#rust#runner"] = "cargotest"
