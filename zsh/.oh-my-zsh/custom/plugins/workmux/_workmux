@@ -148,6 +148,7 @@ _arguments "${_arguments_options[@]}" : \
 (list)
 _arguments "${_arguments_options[@]}" : \
 '--pr[Show PR status for each worktree (requires gh CLI)]' \
+'--json[Output as JSON]' \
 '-h[Print help]' \
 '--help[Print help]' \
 '*::filter -- Filter by worktree name or branch (supports multiple):_default' \
@@ -156,6 +157,7 @@ _arguments "${_arguments_options[@]}" : \
 (ls)
 _arguments "${_arguments_options[@]}" : \
 '--pr[Show PR status for each worktree (requires gh CLI)]' \
+'--json[Output as JSON]' \
 '-h[Print help]' \
 '--help[Print help]' \
 '*::filter -- Filter by worktree name or branch (supports multiple):_default' \
@@ -216,6 +218,13 @@ _arguments "${_arguments_options[@]}" : \
 '--help[Print help]' \
 ':name -- Worktree name (supports cross-project with project\:handle syntax):_default' \
 '*::command -- Command to run (everything after --):_default' \
+&& ret=0
+;;
+(sync-files)
+_arguments "${_arguments_options[@]}" : \
+'--all[Sync all worktrees instead of just the current one]' \
+'-h[Print help]' \
+'--help[Print help]' \
 && ret=0
 ;;
 (init)
@@ -669,6 +678,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(sync-files)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
 (init)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
@@ -875,6 +888,7 @@ _workmux_base_commands() {
 'status:Query agent status for worktrees' \
 'wait:Wait for agents to reach a target status' \
 'run:Run a command in a worktree'\''s window' \
+'sync-files:Re-apply file operations (copy/symlink) to worktrees' \
 'init:Generate example .workmux.yaml configuration file' \
 'setup:Set up agent status tracking hooks and install skills' \
 'docs:Show detailed documentation (renders README.md)' \
@@ -1072,6 +1086,7 @@ _workmux_base__help_commands() {
 'status:Query agent status for worktrees' \
 'wait:Wait for agents to reach a target status' \
 'run:Run a command in a worktree'\''s window' \
+'sync-files:Re-apply file operations (copy/symlink) to worktrees' \
 'init:Generate example .workmux.yaml configuration file' \
 'setup:Set up agent status tracking hooks and install skills' \
 'docs:Show detailed documentation (renders README.md)' \
@@ -1344,6 +1359,11 @@ _workmux_base__help__status_commands() {
     local commands; commands=()
     _describe -t commands 'workmux help status commands' commands "$@"
 }
+(( $+functions[_workmux_base__help__sync-files_commands] )) ||
+_workmux_base__help__sync-files_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help sync-files commands' commands "$@"
+}
 (( $+functions[_workmux_base__help__update_commands] )) ||
 _workmux_base__help__update_commands() {
     local commands; commands=()
@@ -1555,6 +1575,11 @@ _workmux_base__setup_commands() {
 _workmux_base__status_commands() {
     local commands; commands=()
     _describe -t commands 'workmux status commands' commands "$@"
+}
+(( $+functions[_workmux_base__sync-files_commands] )) ||
+_workmux_base__sync-files_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux sync-files commands' commands "$@"
 }
 (( $+functions[_workmux_base__update_commands] )) ||
 _workmux_base__update_commands() {
