@@ -56,7 +56,7 @@
       {
         "id": "f159bb88-64ec-48ed-84df-452d3ab71d03",
         "type": "session-usage",
-        "color": "yellow",
+        "color": "",
         "rawValue": true,
         "metadata": {
           "display": "progress-short"
@@ -65,13 +65,13 @@
       {
         "id": "5331e170-934b-4ad5-b78b-97e72e7d6aca",
         "type": "separator",
-        "color": "yellow",
+        "color": "",
         "character": "|"
       },
       {
         "id": "baf131c3-bf46-4d93-aebe-849d13289d2f",
         "type": "reset-timer",
-        "color": "yellow",
+        "color": "",
         "rawValue": true,
         "metadata": {
           "display": "time"
@@ -94,4 +94,3 @@
     "autoAlign": false
   }
 }
-
