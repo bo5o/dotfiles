@@ -87,6 +87,8 @@ _arguments "${_arguments_options[@]}" : \
 '(-s --session)--new[Force opening in a new window (creates suffix like -2, -3) instead of switching to existing]' \
 '-s[Open in session mode (overrides stored mode for this worktree)]' \
 '--session[Open in session mode (overrides stored mode for this worktree)]' \
+'-c[Resume the agent'\''s most recent conversation in this worktree]' \
+'--continue[Resume the agent'\''s most recent conversation in this worktree]' \
 '(-p --prompt -P --prompt-file)-e[Open \$EDITOR to write the prompt]' \
 '(-p --prompt -P --prompt-file)--prompt-editor[Open \$EDITOR to write the prompt]' \
 '--prompt-file-only[Write the prompt file without injecting it into agent commands. The prompt is written to .workmux/PROMPT-<branch>.md in the worktree, but no agent pane is required. Useful when your editor has an embedded agent that reads the prompt file directly]' \
