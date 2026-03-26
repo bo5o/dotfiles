@@ -104,6 +104,13 @@ _arguments "${_arguments_options[@]}" : \
 '::name -- Worktree name (defaults to current directory if omitted):_default' \
 && ret=0
 ;;
+(resurrect)
+_arguments "${_arguments_options[@]}" : \
+'--dry-run[Show what would be restored without doing it]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
 (merge)
 _arguments "${_arguments_options[@]}" : \
 '--into=[The target branch to merge into (defaults to main_branch from config)]:INTO:_default' \
@@ -644,6 +651,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(resurrect)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
 (merge)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
@@ -879,6 +890,7 @@ _workmux_base_commands() {
 'add:Create a new worktree and tmux window' \
 'open:Open a tmux window for an existing worktree' \
 'close:Close a worktree'\''s tmux window (keeps the worktree and branch)' \
+'resurrect:Restore worktree windows after a tmux or computer crash' \
 'merge:Merge a branch, then clean up the worktree and tmux window' \
 'remove:Remove a worktree, tmux window, and branch without merging' \
 'rm:Remove a worktree, tmux window, and branch without merging' \
@@ -1079,6 +1091,7 @@ _workmux_base__help_commands() {
 'add:Create a new worktree and tmux window' \
 'open:Open a tmux window for an existing worktree' \
 'close:Close a worktree'\''s tmux window (keeps the worktree and branch)' \
+'resurrect:Restore worktree windows after a tmux or computer crash' \
 'merge:Merge a branch, then clean up the worktree and tmux window' \
 'remove:Remove a worktree, tmux window, and branch without merging' \
 'list:List all worktrees' \
@@ -1271,6 +1284,11 @@ _workmux_base__help__remove_commands() {
     local commands; commands=()
     _describe -t commands 'workmux help remove commands' commands "$@"
 }
+(( $+functions[_workmux_base__help__resurrect_commands] )) ||
+_workmux_base__help__resurrect_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help resurrect commands' commands "$@"
+}
 (( $+functions[_workmux_base__help__run_commands] )) ||
 _workmux_base__help__run_commands() {
     local commands; commands=()
@@ -1420,6 +1438,11 @@ _workmux_base__path_commands() {
 _workmux_base__remove_commands() {
     local commands; commands=()
     _describe -t commands 'workmux remove commands' commands "$@"
+}
+(( $+functions[_workmux_base__resurrect_commands] )) ||
+_workmux_base__resurrect_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux resurrect commands' commands "$@"
 }
 (( $+functions[_workmux_base__run_commands] )) ||
 _workmux_base__run_commands() {
