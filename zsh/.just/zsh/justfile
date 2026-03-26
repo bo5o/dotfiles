@@ -15,7 +15,7 @@ upgrade:
 
     @echo -n "Updating just completions..."
     @mkdir -p {{ plugin_dir }}/just && \
-        mise x just -- just --completions zsh > {{ plugin_dir }}/just/_just
+        mise x just -- env JUST_COMPLETE=zsh just > {{ plugin_dir }}/just/_just
     @echo "DONE"
 
     @echo -n "Updating ast-grep completions..."
