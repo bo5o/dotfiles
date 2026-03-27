@@ -610,7 +610,6 @@ return {
           html = { "oxfmt", "djlint", stop_after_first = true },
           groovy = { "npm-groovy-lint", "injected" },
           make = { "bake" },
-          jinja = { "djlint" },
           json = { "oxfmt", "biome", stop_after_first = true },
           terraform = { lsp_format = "prefer" },
           markdown = { "oxfmt", "injected" },
