@@ -7,7 +7,6 @@ export MANPATH="/usr/local/texlive/2017/texmf-dist/doc/man:$MANPATH"
 export INFOPATH="/usr/local/texlive/2017/texmf-dist/doc/info:$INFOPATH"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.fzf/bin:$PATH"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export GPG_TTY=$TTY
