@@ -80,7 +80,7 @@ upgrade:
 
     @echo -n "Updating fj completions..."
     @mkdir -p {{ plugin_dir }}/fj && \
-        mise x "cargo:forgejo-cli" -- fj completion zsh > {{ plugin_dir }}/fj/_fj
+        mise x "forgejo:forgejo-contrib/forgejo-cli" -- fj completion zsh > {{ plugin_dir }}/fj/_fj
     @echo "DONE"
 
     @echo -n "Updating fnox completions..."
