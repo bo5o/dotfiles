@@ -113,6 +113,7 @@ lima = "2.1.0"
 [settings]
 experimental = true
 env_shell_expand = true
+disable_backends = ["asdf"]
 
 [settings.python]
 compile = true
