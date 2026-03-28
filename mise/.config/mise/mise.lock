@@ -28,6 +28,31 @@ url = "https://github.com/FiloSottile/age/releases/download/v1.3.1/age-v1.3.1-da
 checksum = "sha256:c56e8ce22f7e80cb85ad946cc82d198767b056366201d3e1a2b93d865be38154"
 url = "https://github.com/FiloSottile/age/releases/download/v1.3.1/age-v1.3.1-windows-amd64.zip"
 
+[[tools."aqua:apache/maven"]]
+version = "3.9.14"
+backend = "aqua:apache/maven"
+
+[tools."aqua:apache/maven"."platforms.linux-arm64"]
+url = "https://archive.apache.org/dist/maven/maven-3/3.9.14/binaries/apache-maven-3.9.14-bin.tar.gz"
+
+[tools."aqua:apache/maven"."platforms.linux-arm64-musl"]
+url = "https://archive.apache.org/dist/maven/maven-3/3.9.14/binaries/apache-maven-3.9.14-bin.tar.gz"
+
+[tools."aqua:apache/maven"."platforms.linux-x64"]
+url = "https://archive.apache.org/dist/maven/maven-3/3.9.14/binaries/apache-maven-3.9.14-bin.tar.gz"
+
+[tools."aqua:apache/maven"."platforms.linux-x64-musl"]
+url = "https://archive.apache.org/dist/maven/maven-3/3.9.14/binaries/apache-maven-3.9.14-bin.tar.gz"
+
+[tools."aqua:apache/maven"."platforms.macos-arm64"]
+url = "https://archive.apache.org/dist/maven/maven-3/3.9.14/binaries/apache-maven-3.9.14-bin.tar.gz"
+
+[tools."aqua:apache/maven"."platforms.macos-x64"]
+url = "https://archive.apache.org/dist/maven/maven-3/3.9.14/binaries/apache-maven-3.9.14-bin.tar.gz"
+
+[tools."aqua:apache/maven"."platforms.windows-x64"]
+url = "https://archive.apache.org/dist/maven/maven-3/3.9.14/binaries/apache-maven-3.9.14-bin.tar.gz"
+
 [[tools."aqua:neovim/neovim"]]
 version = "0.11.6"
 backend = "aqua:neovim/neovim"
@@ -1422,10 +1447,6 @@ url = "https://github.com/artempyanykh/marksman/releases/download/2026-02-08/mar
 checksum = "sha256:a6d05beb08ebe41b0a9f09c98a438540421436fa5531424c22e0bb1d22529705"
 url = "https://github.com/artempyanykh/marksman/releases/download/2026-02-08/marksman.exe"
 
-[[tools.maven]]
-version = "3.9.14"
-backend = "asdf:maven"
-
 [[tools.node]]
 version = "25.8.2"
 backend = "core:node"
@@ -1593,10 +1614,6 @@ extras = "mcp,lsp"
 [[tools."pipx:vim-vint"]]
 version = "0.3.21"
 backend = "pipx:vim-vint"
-
-[[tools.postgres]]
-version = "16.4"
-backend = "asdf:postgres"
 
 [[tools.pre-commit]]
 version = "4.5.1"
@@ -1797,6 +1814,10 @@ url = "https://github.com/astral-sh/ruff/releases/download/0.15.8/ruff-x86_64-ap
 [tools.ruff."platforms.windows-x64"]
 checksum = "sha256:1e6ebd021dc9cefa8b9f15b5d6500c275ec49a0f2da968824845c34f30060c78"
 url = "https://github.com/astral-sh/ruff/releases/download/0.15.8/ruff-x86_64-pc-windows-msvc.zip"
+
+[[tools.rust]]
+version = "1.94.1"
+backend = "core:rust"
 
 [[tools.rust-analyzer]]
 version = "2026-03-23"
@@ -2046,6 +2067,31 @@ url = "https://github.com/astral-sh/uv/releases/download/0.11.2/uv-x86_64-apple-
 [tools.uv."platforms.windows-x64"]
 checksum = "sha256:171b7ccda1bbd562da6babeffcf533a1c6cc7862cf998da826e1db534fc43e48"
 url = "https://github.com/astral-sh/uv/releases/download/0.11.2/uv-x86_64-pc-windows-msvc.zip"
+
+[[tools."vfox:mise-plugins/vfox-postgres"]]
+version = "16.4"
+backend = "vfox:mise-plugins/vfox-postgres"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.linux-arm64"]
+url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.linux-arm64-musl"]
+url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.linux-x64"]
+url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.linux-x64-musl"]
+url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.macos-arm64"]
+url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.macos-x64"]
+url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.windows-x64"]
+url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
 
 [[tools.workmux]]
 version = "0.1.157"
