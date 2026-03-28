@@ -224,10 +224,6 @@ url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.8/ca
 version = "0.23.1"
 backend = "cargo:bandwhich"
 
-[[tools."cargo:forgejo-cli"]]
-version = "0.4.1"
-backend = "cargo:forgejo-cli"
-
 [[tools."cargo:inlyne"]]
 version = "0.5.0"
 backend = "cargo:inlyne"
@@ -496,6 +492,30 @@ url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/379322618"
 checksum = "sha256:57950f6a90c2422e4816cc453ff218c6647f038e97ffc3b880614c1e96332e8b"
 url = "https://github.com/jdx/fnox/releases/download/v1.19.0/fnox-x86_64-pc-windows-msvc.zip"
 url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/379322616"
+
+[[tools."forgejo:forgejo-contrib/forgejo-cli"]]
+version = "0.4.1"
+backend = "forgejo:forgejo-contrib/forgejo-cli"
+
+[tools."forgejo:forgejo-contrib/forgejo-cli"."platforms.linux-arm64"]
+url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.4.1/forgejo-cli-linux.tar.gz"
+url_api = "https://codeberg.org/attachments/20c8b5d5-1e87-47b8-8a05-90cd88e8f341"
+
+[tools."forgejo:forgejo-contrib/forgejo-cli"."platforms.linux-arm64-musl"]
+url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.4.1/forgejo-cli-linux.tar.gz"
+url_api = "https://codeberg.org/attachments/20c8b5d5-1e87-47b8-8a05-90cd88e8f341"
+
+[tools."forgejo:forgejo-contrib/forgejo-cli"."platforms.linux-x64"]
+url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.4.1/forgejo-cli-linux.tar.gz"
+url_api = "https://codeberg.org/attachments/20c8b5d5-1e87-47b8-8a05-90cd88e8f341"
+
+[tools."forgejo:forgejo-contrib/forgejo-cli"."platforms.linux-x64-musl"]
+url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.4.1/forgejo-cli-linux.tar.gz"
+url_api = "https://codeberg.org/attachments/20c8b5d5-1e87-47b8-8a05-90cd88e8f341"
+
+[tools."forgejo:forgejo-contrib/forgejo-cli"."platforms.windows-x64"]
+url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.4.1/forgejo-cli-windows.zip"
+url_api = "https://codeberg.org/attachments/7884b06c-6ed4-42f0-b4bc-20791d89e5a1"
 
 [[tools.fx]]
 version = "39.2.0"
