@@ -915,7 +915,7 @@ _workmux_base_commands() {
 'set-window-status:Set agent status for the current tmux window (used by hooks)' \
 'set-base:Set the base branch for the current worktree (used after rebasing)' \
 '_exec:Execute a run spec (internal use)' \
-'last-done:Switch to the agent that most recently completed its task' \
+'last-done:Switch to the agent that most recently completed or is waiting for input' \
 'last-agent:Switch to the last visited agent (toggle between two)' \
 'host-exec:Execute a command on the host (used by guest shims)' \
 'clipboard-read:Read clipboard from host (used by sandbox clipboard shims)' \
@@ -1114,7 +1114,7 @@ _workmux_base__help_commands() {
 'set-window-status:Set agent status for the current tmux window (used by hooks)' \
 'set-base:Set the base branch for the current worktree (used after rebasing)' \
 '_exec:Execute a run spec (internal use)' \
-'last-done:Switch to the agent that most recently completed its task' \
+'last-done:Switch to the agent that most recently completed or is waiting for input' \
 'last-agent:Switch to the last visited agent (toggle between two)' \
 'host-exec:Execute a command on the host (used by guest shims)' \
 'clipboard-read:Read clipboard from host (used by sandbox clipboard shims)' \
