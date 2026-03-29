@@ -214,36 +214,36 @@ checksum = "sha256:567879fd7210f8a692cd2657b41eda43c7713bef74dd025b240247accdda1
 url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_x86_64-pc-windows-msvc.zip"
 
 [[tools.cargo-binstall]]
-version = "1.17.8"
+version = "1.17.9"
 backend = "aqua:cargo-bins/cargo-binstall"
 
 [tools.cargo-binstall."platforms.linux-arm64"]
-checksum = "sha256:81d6245bd1a7a89e914d29af81d82280540e94927e61492a0fc359820cd97abb"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.8/cargo-binstall-aarch64-unknown-linux-musl.tgz"
+checksum = "sha256:89df253cc00a307209daee7648272bba4d8a342fce084d5922f6b3f4e4db0e25"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.9/cargo-binstall-aarch64-unknown-linux-musl.tgz"
 
 [tools.cargo-binstall."platforms.linux-arm64-musl"]
-checksum = "sha256:81d6245bd1a7a89e914d29af81d82280540e94927e61492a0fc359820cd97abb"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.8/cargo-binstall-aarch64-unknown-linux-musl.tgz"
+checksum = "sha256:89df253cc00a307209daee7648272bba4d8a342fce084d5922f6b3f4e4db0e25"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.9/cargo-binstall-aarch64-unknown-linux-musl.tgz"
 
 [tools.cargo-binstall."platforms.linux-x64"]
-checksum = "sha256:1da1ef72448db667cc4ae6d48e37451087602c8c07dc61782a4a5e538303e015"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.8/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+checksum = "sha256:bdea3fd820b118576316bf69c8240f454857287717809e6ecef010faace901ff"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.9/cargo-binstall-x86_64-unknown-linux-musl.tgz"
 
 [tools.cargo-binstall."platforms.linux-x64-musl"]
-checksum = "sha256:1da1ef72448db667cc4ae6d48e37451087602c8c07dc61782a4a5e538303e015"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.8/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+checksum = "sha256:bdea3fd820b118576316bf69c8240f454857287717809e6ecef010faace901ff"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.9/cargo-binstall-x86_64-unknown-linux-musl.tgz"
 
 [tools.cargo-binstall."platforms.macos-arm64"]
-checksum = "sha256:af87346fdb186f0a2333bc0a30cfddd6faa98b31145ef1bb19c284aedea65972"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.8/cargo-binstall-aarch64-apple-darwin.zip"
+checksum = "sha256:021d537caa2071bbcd8ec50b210ea45af68a6983cca7780918b3603ef68d2585"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.9/cargo-binstall-aarch64-apple-darwin.zip"
 
 [tools.cargo-binstall."platforms.macos-x64"]
-checksum = "sha256:db353e01b582c97382178db9b4dfe22d81109782e480a38f3db953e62f569952"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.8/cargo-binstall-x86_64-apple-darwin.zip"
+checksum = "sha256:1d4fbd74c15274a029dd92e19a0ead8e1831b6e6b60f0f5c3690ef517022c41c"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.9/cargo-binstall-x86_64-apple-darwin.zip"
 
 [tools.cargo-binstall."platforms.windows-x64"]
-checksum = "sha256:fef07560d4e391812091bb30c6ed1bd5289f74403a0c947b47b8a8c7a597b51b"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.8/cargo-binstall-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:d17b413a19592af2cf57f9f742d49bef8837099e1407d73e79de5bc7834c4fd6"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.17.9/cargo-binstall-x86_64-pc-windows-msvc.zip"
 
 [[tools."cargo:bandwhich"]]
 version = "0.23.1"

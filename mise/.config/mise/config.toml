@@ -3,7 +3,7 @@ ast-grep = "0.42.0"
 bat = "0.26.1"
 "cargo:tealdeer" = "1.8.1"
 bottom = "0.12.3"
-cargo-binstall = "1.17.8"
+cargo-binstall = "1.17.9"
 "github:tummychow/git-absorb" = "0.9.0"
 delta = "0.19.2"
 difftastic = { version = "0.68.0", exe = "difft" }
