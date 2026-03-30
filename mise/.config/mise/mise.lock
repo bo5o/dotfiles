@@ -2094,6 +2094,31 @@ url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
 [tools."vfox:mise-plugins/vfox-postgres"."platforms.windows-x64"]
 url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
 
+[[tools."vfox:mise-plugins/vfox-postgres"]]
+version = "17.9"
+backend = "vfox:mise-plugins/vfox-postgres"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.linux-arm64"]
+url = "https://ftp.postgresql.org/pub/source/v17.9/postgresql-17.9.tar.gz"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.linux-arm64-musl"]
+url = "https://ftp.postgresql.org/pub/source/v17.9/postgresql-17.9.tar.gz"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.linux-x64"]
+url = "https://ftp.postgresql.org/pub/source/v17.9/postgresql-17.9.tar.gz"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.linux-x64-musl"]
+url = "https://ftp.postgresql.org/pub/source/v17.9/postgresql-17.9.tar.gz"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.macos-arm64"]
+url = "https://ftp.postgresql.org/pub/source/v17.9/postgresql-17.9.tar.gz"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.macos-x64"]
+url = "https://ftp.postgresql.org/pub/source/v17.9/postgresql-17.9.tar.gz"
+
+[tools."vfox:mise-plugins/vfox-postgres"."platforms.windows-x64"]
+url = "https://ftp.postgresql.org/pub/source/v17.9/postgresql-17.9.tar.gz"
+
 [[tools.workmux]]
 version = "0.1.157"
 backend = "github:raine/workmux"
