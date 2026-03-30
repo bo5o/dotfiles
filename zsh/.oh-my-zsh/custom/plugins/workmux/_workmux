@@ -268,6 +268,101 @@ _arguments "${_arguments_options[@]}" : \
 '--help[Print help]' \
 && ret=0
 ;;
+(sidebar)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_workmux_base__sidebar_commands" \
+"*::: :->sidebar" \
+&& ret=0
+
+    case $state in
+    (sidebar)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:workmux-sidebar-command-$line[1]:"
+        case $line[1] in
+            (next)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(prev)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(jump)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':index -- Agent number (1-9):_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_workmux_base__sidebar__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:workmux-sidebar-help-command-$line[1]:"
+        case $line[1] in
+            (next)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(prev)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(jump)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(_sidebar-run)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(_sidebar-sync)
+_arguments "${_arguments_options[@]}" : \
+'--window=[Target window ID (from tmux hook context)]:WINDOW:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(_sidebar-reflow)
+_arguments "${_arguments_options[@]}" : \
+'--window=[Target window ID]:WINDOW:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(_sidebar-daemon)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
 (dashboard)
 _arguments "${_arguments_options[@]}" : \
 '-P+[Preview pane size as percentage (10-90). Larger = more preview, less table]:PREVIEW_SIZE:_default' \
@@ -715,6 +810,50 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(sidebar)
+_arguments "${_arguments_options[@]}" : \
+":: :_workmux_base__help__sidebar_commands" \
+"*::: :->sidebar" \
+&& ret=0
+
+    case $state in
+    (sidebar)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:workmux-help-sidebar-command-$line[1]:"
+        case $line[1] in
+            (next)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(prev)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(jump)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(_sidebar-run)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(_sidebar-sync)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(_sidebar-reflow)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(_sidebar-daemon)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
 (dashboard)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
@@ -908,6 +1047,11 @@ _workmux_base_commands() {
 'docs:Show detailed documentation (renders README.md)' \
 'changelog:Show the changelog (what'\''s new in each version)' \
 'update:Update workmux to the latest version' \
+'sidebar:Toggle a live agent status sidebar in tmux' \
+'_sidebar-run:Run the sidebar TUI (internal use)' \
+'_sidebar-sync:Sync sidebar into a window (internal use, called by tmux hooks)' \
+'_sidebar-reflow:Reflow sidebar layout after window resize (internal use, called by tmux hooks)' \
+'_sidebar-daemon:Run the sidebar daemon (internal use)' \
 'dashboard:Show a TUI dashboard of all active workmux agents across all sessions' \
 'config:Manage global configuration' \
 'claude:Claude Code integration commands' \
@@ -958,6 +1102,26 @@ _workmux_base___complete-handles_commands() {
 _workmux_base___exec_commands() {
     local commands; commands=()
     _describe -t commands 'workmux _exec commands' commands "$@"
+}
+(( $+functions[_workmux_base___sidebar-daemon_commands] )) ||
+_workmux_base___sidebar-daemon_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux _sidebar-daemon commands' commands "$@"
+}
+(( $+functions[_workmux_base___sidebar-reflow_commands] )) ||
+_workmux_base___sidebar-reflow_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux _sidebar-reflow commands' commands "$@"
+}
+(( $+functions[_workmux_base___sidebar-run_commands] )) ||
+_workmux_base___sidebar-run_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux _sidebar-run commands' commands "$@"
+}
+(( $+functions[_workmux_base___sidebar-sync_commands] )) ||
+_workmux_base___sidebar-sync_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux _sidebar-sync commands' commands "$@"
 }
 (( $+functions[_workmux_base__add_commands] )) ||
 _workmux_base__add_commands() {
@@ -1107,6 +1271,11 @@ _workmux_base__help_commands() {
 'docs:Show detailed documentation (renders README.md)' \
 'changelog:Show the changelog (what'\''s new in each version)' \
 'update:Update workmux to the latest version' \
+'sidebar:Toggle a live agent status sidebar in tmux' \
+'_sidebar-run:Run the sidebar TUI (internal use)' \
+'_sidebar-sync:Sync sidebar into a window (internal use, called by tmux hooks)' \
+'_sidebar-reflow:Reflow sidebar layout after window resize (internal use, called by tmux hooks)' \
+'_sidebar-daemon:Run the sidebar daemon (internal use)' \
 'dashboard:Show a TUI dashboard of all active workmux agents across all sessions' \
 'config:Manage global configuration' \
 'claude:Claude Code integration commands' \
@@ -1157,6 +1326,26 @@ _workmux_base__help___complete-handles_commands() {
 _workmux_base__help___exec_commands() {
     local commands; commands=()
     _describe -t commands 'workmux help _exec commands' commands "$@"
+}
+(( $+functions[_workmux_base__help___sidebar-daemon_commands] )) ||
+_workmux_base__help___sidebar-daemon_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help _sidebar-daemon commands' commands "$@"
+}
+(( $+functions[_workmux_base__help___sidebar-reflow_commands] )) ||
+_workmux_base__help___sidebar-reflow_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help _sidebar-reflow commands' commands "$@"
+}
+(( $+functions[_workmux_base__help___sidebar-run_commands] )) ||
+_workmux_base__help___sidebar-run_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help _sidebar-run commands' commands "$@"
+}
+(( $+functions[_workmux_base__help___sidebar-sync_commands] )) ||
+_workmux_base__help___sidebar-sync_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help _sidebar-sync commands' commands "$@"
 }
 (( $+functions[_workmux_base__help__add_commands] )) ||
 _workmux_base__help__add_commands() {
@@ -1373,6 +1562,30 @@ _workmux_base__help__set-window-status_commands() {
 _workmux_base__help__setup_commands() {
     local commands; commands=()
     _describe -t commands 'workmux help setup commands' commands "$@"
+}
+(( $+functions[_workmux_base__help__sidebar_commands] )) ||
+_workmux_base__help__sidebar_commands() {
+    local commands; commands=(
+'next:Switch to the next agent in sidebar order' \
+'prev:Switch to the previous agent in sidebar order' \
+'jump:Jump to the Nth agent in sidebar order (1-indexed)' \
+    )
+    _describe -t commands 'workmux help sidebar commands' commands "$@"
+}
+(( $+functions[_workmux_base__help__sidebar__jump_commands] )) ||
+_workmux_base__help__sidebar__jump_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help sidebar jump commands' commands "$@"
+}
+(( $+functions[_workmux_base__help__sidebar__next_commands] )) ||
+_workmux_base__help__sidebar__next_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help sidebar next commands' commands "$@"
+}
+(( $+functions[_workmux_base__help__sidebar__prev_commands] )) ||
+_workmux_base__help__sidebar__prev_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help sidebar prev commands' commands "$@"
 }
 (( $+functions[_workmux_base__help__status_commands] )) ||
 _workmux_base__help__status_commands() {
@@ -1595,6 +1808,61 @@ _workmux_base__set-window-status_commands() {
 _workmux_base__setup_commands() {
     local commands; commands=()
     _describe -t commands 'workmux setup commands' commands "$@"
+}
+(( $+functions[_workmux_base__sidebar_commands] )) ||
+_workmux_base__sidebar_commands() {
+    local commands; commands=(
+'next:Switch to the next agent in sidebar order' \
+'prev:Switch to the previous agent in sidebar order' \
+'jump:Jump to the Nth agent in sidebar order (1-indexed)' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'workmux sidebar commands' commands "$@"
+}
+(( $+functions[_workmux_base__sidebar__help_commands] )) ||
+_workmux_base__sidebar__help_commands() {
+    local commands; commands=(
+'next:Switch to the next agent in sidebar order' \
+'prev:Switch to the previous agent in sidebar order' \
+'jump:Jump to the Nth agent in sidebar order (1-indexed)' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'workmux sidebar help commands' commands "$@"
+}
+(( $+functions[_workmux_base__sidebar__help__help_commands] )) ||
+_workmux_base__sidebar__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux sidebar help help commands' commands "$@"
+}
+(( $+functions[_workmux_base__sidebar__help__jump_commands] )) ||
+_workmux_base__sidebar__help__jump_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux sidebar help jump commands' commands "$@"
+}
+(( $+functions[_workmux_base__sidebar__help__next_commands] )) ||
+_workmux_base__sidebar__help__next_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux sidebar help next commands' commands "$@"
+}
+(( $+functions[_workmux_base__sidebar__help__prev_commands] )) ||
+_workmux_base__sidebar__help__prev_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux sidebar help prev commands' commands "$@"
+}
+(( $+functions[_workmux_base__sidebar__jump_commands] )) ||
+_workmux_base__sidebar__jump_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux sidebar jump commands' commands "$@"
+}
+(( $+functions[_workmux_base__sidebar__next_commands] )) ||
+_workmux_base__sidebar__next_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux sidebar next commands' commands "$@"
+}
+(( $+functions[_workmux_base__sidebar__prev_commands] )) ||
+_workmux_base__sidebar__prev_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux sidebar prev commands' commands "$@"
 }
 (( $+functions[_workmux_base__status_commands] )) ||
 _workmux_base__status_commands() {
