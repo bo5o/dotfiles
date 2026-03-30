@@ -1821,36 +1821,36 @@ version = "1.94.1"
 backend = "core:rust"
 
 [[tools.rust-analyzer]]
-version = "2026-03-23"
+version = "2026-03-30"
 backend = "aqua:rust-lang/rust-analyzer"
 
 [tools.rust-analyzer."platforms.linux-arm64"]
-checksum = "sha256:dc1cedc81fcd9fec44e2866a6b791435d0135be090bde97d7f0b639d1d235d68"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-23/rust-analyzer-aarch64-unknown-linux-gnu.gz"
+checksum = "sha256:09db55b95f4a01030e251659b30f16230e5fd174372b24a950556b469429c705"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-30/rust-analyzer-aarch64-unknown-linux-gnu.gz"
 
 [tools.rust-analyzer."platforms.linux-arm64-musl"]
-checksum = "sha256:dc1cedc81fcd9fec44e2866a6b791435d0135be090bde97d7f0b639d1d235d68"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-23/rust-analyzer-aarch64-unknown-linux-gnu.gz"
+checksum = "sha256:09db55b95f4a01030e251659b30f16230e5fd174372b24a950556b469429c705"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-30/rust-analyzer-aarch64-unknown-linux-gnu.gz"
 
 [tools.rust-analyzer."platforms.linux-x64"]
-checksum = "sha256:14d53f5e71ec0223a776398733cb12ed529899380408c719fc398036feb07e1c"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-23/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+checksum = "sha256:2f704c61728f916f5befdd4db0abae7f37be53706d3146077a423e8f4ca459b7"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-30/rust-analyzer-x86_64-unknown-linux-gnu.gz"
 
 [tools.rust-analyzer."platforms.linux-x64-musl"]
-checksum = "sha256:14d53f5e71ec0223a776398733cb12ed529899380408c719fc398036feb07e1c"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-23/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+checksum = "sha256:2f704c61728f916f5befdd4db0abae7f37be53706d3146077a423e8f4ca459b7"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-30/rust-analyzer-x86_64-unknown-linux-gnu.gz"
 
 [tools.rust-analyzer."platforms.macos-arm64"]
-checksum = "sha256:1377a03f8a3a6a095b908a8722695c38e4b1ecc1f7d1db750b6e0845fca10c12"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-23/rust-analyzer-aarch64-apple-darwin.gz"
+checksum = "sha256:862005cb86a0bd85d40cc83dc34ee83ec31e6389f7b6476e072b21a9b1ebb9ad"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-30/rust-analyzer-aarch64-apple-darwin.gz"
 
 [tools.rust-analyzer."platforms.macos-x64"]
-checksum = "sha256:10f1d119e8d3e24073c3d3b6d1b574bdf9852ad91ad581d92a1f72b36d4eb331"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-23/rust-analyzer-x86_64-apple-darwin.gz"
+checksum = "sha256:b307cacae5f2f48fd2547bd21027ca7b576752f378318b5344a20b795006a749"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-30/rust-analyzer-x86_64-apple-darwin.gz"
 
 [tools.rust-analyzer."platforms.windows-x64"]
-checksum = "sha256:56e83a530adb5ccf602f5a868a87f580f6a7a14f6d3313b359c48d49f8901baf"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-23/rust-analyzer-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:4624278f096c6a26af2fbb2da314d05857bc55f0f75831c9626137bc8ba79ec9"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-03-30/rust-analyzer-x86_64-pc-windows-msvc.zip"
 
 [[tools.shellcheck]]
 version = "0.11.0"
@@ -2068,31 +2068,6 @@ url = "https://github.com/astral-sh/uv/releases/download/0.11.2/uv-x86_64-apple-
 [tools.uv."platforms.windows-x64"]
 checksum = "sha256:171b7ccda1bbd562da6babeffcf533a1c6cc7862cf998da826e1db534fc43e48"
 url = "https://github.com/astral-sh/uv/releases/download/0.11.2/uv-x86_64-pc-windows-msvc.zip"
-
-[[tools."vfox:mise-plugins/vfox-postgres"]]
-version = "16.4"
-backend = "vfox:mise-plugins/vfox-postgres"
-
-[tools."vfox:mise-plugins/vfox-postgres"."platforms.linux-arm64"]
-url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
-
-[tools."vfox:mise-plugins/vfox-postgres"."platforms.linux-arm64-musl"]
-url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
-
-[tools."vfox:mise-plugins/vfox-postgres"."platforms.linux-x64"]
-url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
-
-[tools."vfox:mise-plugins/vfox-postgres"."platforms.linux-x64-musl"]
-url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
-
-[tools."vfox:mise-plugins/vfox-postgres"."platforms.macos-arm64"]
-url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
-
-[tools."vfox:mise-plugins/vfox-postgres"."platforms.macos-x64"]
-url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
-
-[tools."vfox:mise-plugins/vfox-postgres"."platforms.windows-x64"]
-url = "https://ftp.postgresql.org/pub/source/v16.4/postgresql-16.4.tar.gz"
 
 [[tools."vfox:mise-plugins/vfox-postgres"]]
 version = "17.9"
