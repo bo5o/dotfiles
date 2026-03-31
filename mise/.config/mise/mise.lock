@@ -1595,7 +1595,7 @@ backend = "pipx:llm"
 uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-gemini --with llm-commit --with llm-templates-fabric --with llm-hacker-news --with llm-fragments-pdf --with pymupdf-layout --with llm-docs"
 
 [[tools."pipx:mbake"]]
-version = "1.4.5"
+version = "1.4.6"
 backend = "pipx:mbake"
 
 [[tools."pipx:sqlfluff"]]
