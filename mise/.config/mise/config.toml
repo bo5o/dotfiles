@@ -100,7 +100,7 @@ git-cliff = "2.12.0"
 "pipx:ansible" = { version = "13.5.0", uvx_args = "--with-executables-from ansible-core --with-executables-from ansible-dev-tools --with-executables-from ansible-lint --with docker --with bitwarden-sdk" }
 "npm:@ansible/ansible-language-server" = "1.2.3"
 fx = "39.2.0"
-biome = "2.4.9"
+biome = "2.4.10"
 oxfmt = "0.42.0"
 "npm:@agentclientprotocol/claude-agent-acp" = "0.24.2"
 "pipx:mbake" = "1.4.5"

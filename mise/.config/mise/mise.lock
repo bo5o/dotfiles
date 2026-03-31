@@ -150,36 +150,37 @@ checksum = "sha256:0f729b4b6f5f28d395c641eacc2e9ff68d0096b85aa0eec344aa62425144b
 url = "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-pc-windows-msvc.zip"
 
 [[tools.biome]]
-version = "2.4.9"
+version = "2.4.10"
 backend = "aqua:biomejs/biome"
 
 [tools.biome."platforms.linux-arm64"]
-checksum = "sha256:3f4516bfddca114ee5c727f7614803eb7a566991ddb8ca1bb9ebe1eb8c36bfe7"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.9/biome-linux-arm64"
+checksum = "sha256:4ce5f5750abdce244087e42d73a177c0c1b930f23320c52bf3e973bbc18489de"
+url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.10/biome-linux-arm64"
 
 [tools.biome."platforms.linux-arm64-musl"]
-checksum = "sha256:3f4516bfddca114ee5c727f7614803eb7a566991ddb8ca1bb9ebe1eb8c36bfe7"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.9/biome-linux-arm64"
+checksum = "sha256:4ce5f5750abdce244087e42d73a177c0c1b930f23320c52bf3e973bbc18489de"
+url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.10/biome-linux-arm64"
 
 [tools.biome."platforms.linux-x64"]
-checksum = "sha256:209550f80e5443011de329f658f86f496008a82e081626349cfe1dddd6156425"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.9/biome-linux-x64"
+checksum = "sha256:fb9423a99ea4be5036f4ee95667fcc5a67e8ff72bd6d23e392033a70fb755d90"
+url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.10/biome-linux-x64"
+provenance = "github-attestations"
 
 [tools.biome."platforms.linux-x64-musl"]
-checksum = "sha256:209550f80e5443011de329f658f86f496008a82e081626349cfe1dddd6156425"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.9/biome-linux-x64"
+checksum = "sha256:fb9423a99ea4be5036f4ee95667fcc5a67e8ff72bd6d23e392033a70fb755d90"
+url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.10/biome-linux-x64"
 
 [tools.biome."platforms.macos-arm64"]
-checksum = "sha256:8d40e92275fcbaf0a157b5146f71b8c71ce61e50102ac4385170022e76938d85"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.9/biome-darwin-arm64"
+checksum = "sha256:c6782336dff872beec7d34e1b801c533bd296b5dcf2a30d3cf6335bca975e984"
+url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.10/biome-darwin-arm64"
 
 [tools.biome."platforms.macos-x64"]
-checksum = "sha256:f5b7e584d1e993157638ce2d32335dbe754c4be94c4774f43aaf569918161c15"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.9/biome-darwin-x64"
+checksum = "sha256:8269b5ef30bbc1fcf0cff5695bdc3733d417744ae638df70e7dabc3b82590fca"
+url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.10/biome-darwin-x64"
 
 [tools.biome."platforms.windows-x64"]
-checksum = "sha256:b33519e33e6807e37d57767f7c49fc8fe5205819d267924a8fe8a20d7ce296cf"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.9/biome-win32-x64.exe"
+checksum = "sha256:a2bdc915914114c09a6f38ea092af2e450953bf3ace76bc143f2ab4d5a17b238"
+url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.10/biome-win32-x64.exe"
 
 [[tools.bottom]]
 version = "0.12.3"
