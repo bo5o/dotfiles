@@ -117,6 +117,8 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", {
 
 vim.keymap.set("n", "gb", "<cmd>BufferLinePick<cr>", { desc = "Pick buffer" })
 
+vim.keymap.set("n", "<leader>ou", "<cmd>Undotree<cr>", { desc = "Toggle undo tree" })
+
 vim.keymap.set("n", "J", "mzJ`z", { desc = "See :h J" })
 
 vim.keymap.set("n", "ycc", "yy<cmd>normal gcc<cr>p", { desc = "Copy line and comment" })
