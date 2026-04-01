@@ -18,8 +18,6 @@ vim.g.mapleader = ","
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.cmd("packadd nvim.undotree")
-
 require("lazy").setup("plugins", {
   ui = {
     -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
@@ -42,6 +40,8 @@ require("lazy").setup("plugins", {
     check_pinned = true,
   },
 })
+
+vim.cmd("packadd nvim.undotree")
 
 require("settings")
 
