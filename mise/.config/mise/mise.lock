@@ -1975,36 +1975,37 @@ url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-x8
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-windows-x86_64.zip"
 
 [[tools.tree-sitter]]
-version = "0.26.7"
+version = "0.26.8"
 backend = "aqua:tree-sitter/tree-sitter"
 
 [tools.tree-sitter."platforms.linux-arm64"]
-checksum = "sha256:86a317732cc597e1576f8b11b4853f78fedd2a3c756923e33f323667dee6b4be"
-url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.7/tree-sitter-linux-arm64.gz"
+checksum = "sha256:e339d6533b20830dd1666fe320aff85d301b3f59964a3836870b77f4827f9a17"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-linux-arm64.gz"
 
 [tools.tree-sitter."platforms.linux-arm64-musl"]
-checksum = "sha256:86a317732cc597e1576f8b11b4853f78fedd2a3c756923e33f323667dee6b4be"
-url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.7/tree-sitter-linux-arm64.gz"
+checksum = "sha256:e339d6533b20830dd1666fe320aff85d301b3f59964a3836870b77f4827f9a17"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-linux-arm64.gz"
 
 [tools.tree-sitter."platforms.linux-x64"]
-checksum = "sha256:4367a46bc8abbb8328d6efbeb26e86807af0a3a7e462548a3924f87289ee1e9c"
-url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.7/tree-sitter-linux-x64.gz"
+checksum = "sha256:9754a32800f0b970152782df177b4a47c711e34e651a7aceb384d8bd29fa136e"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-linux-x64.gz"
+provenance = "github-attestations"
 
 [tools.tree-sitter."platforms.linux-x64-musl"]
-checksum = "sha256:4367a46bc8abbb8328d6efbeb26e86807af0a3a7e462548a3924f87289ee1e9c"
-url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.7/tree-sitter-linux-x64.gz"
+checksum = "sha256:9754a32800f0b970152782df177b4a47c711e34e651a7aceb384d8bd29fa136e"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-linux-x64.gz"
 
 [tools.tree-sitter."platforms.macos-arm64"]
-checksum = "sha256:24162119aca35a160a2752a4457b17f3c47f7b2895ab63002c66b8dfd1bb41d1"
-url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.7/tree-sitter-macos-arm64.gz"
+checksum = "sha256:024e2cee34723524d62d41bde4d2b4af23c8bbe0236e116c79c0b37d9575889e"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-macos-arm64.gz"
 
 [tools.tree-sitter."platforms.macos-x64"]
-checksum = "sha256:bbb1df269cd462393e8826bee55f2b09ccbc0d7b8b914c9827bebd6c467087ca"
-url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.7/tree-sitter-macos-x64.gz"
+checksum = "sha256:d0daa279054c1d1cedb08f5ca784b451ceb1f0e6b083b112d07317958ae77fe0"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-macos-x64.gz"
 
 [tools.tree-sitter."platforms.windows-x64"]
-checksum = "sha256:5cea52c5e8000fbe56c41148dd3124fded2fe7cd0f66e4194bf92532905c55ff"
-url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.7/tree-sitter-windows-x64.gz"
+checksum = "sha256:28301a969412066bf4818c30c71d9c313091a9b9dc24b53a14ddda3a8e2cc2bb"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-windows-x64.gz"
 
 [[tools.usage]]
 version = "3.2.0"
