@@ -10,6 +10,26 @@ return {
         "<cmd>InspectTree<cr>",
         desc = "Inspect treesitter tree",
       },
+      {
+        "<Enter>",
+        "van",
+        remap = true,
+        desc = "Init incremental selection",
+      },
+      {
+        "<Enter>",
+        "an",
+        mode = "x",
+        remap = true,
+        desc = "Expand incremental selection",
+      },
+      {
+        "<BS>",
+        "in",
+        mode = "x",
+        remap = true,
+        desc = "Shrink incremental selection",
+      },
     },
     init = function()
       require("vim.treesitter.query").add_predicate("is-mise?", function(_, _, bufnr, _)
@@ -18,42 +38,8 @@ return {
         return string.match(filename, ".*mise.*%.toml$") ~= nil
       end, { force = true, all = false })
     end,
-  },
-
-  {
-    "MeanderingProgrammer/treesitter-modules.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    lazy = false,
-    ---@module 'treesitter-modules'
-    ---@type ts.mod.UserConfig
-    keys = {
-      {
-        "<Enter>",
-        function()
-          require("treesitter-modules").init_selection()
-        end,
-        mode = "n",
-        desc = "Init incremental selection",
-      },
-      {
-        "<Enter>",
-        function()
-          require("treesitter-modules").node_incremental()
-        end,
-        mode = "x",
-        desc = "Expand incremental selection",
-      },
-      {
-        "<BS>",
-        function()
-          require("treesitter-modules").node_decremental()
-        end,
-        mode = "x",
-        desc = "Shrink incremental selection",
-      },
-    },
-    opts = {
-      ensure_installed = {
+    config = function()
+      local languages = {
         "bash",
         "caddy",
         "comment",
@@ -95,18 +81,31 @@ return {
         "vim",
         "vue",
         "xml",
-      },
-      highlight = {
-        enable = true,
-        disable = { "just" },
-      },
-      indent = {
-        enable = true,
-      },
-      incremental_selection = {
-        enable = true,
-      },
-    },
+      }
+
+      local highlight_disable = { just = true }
+
+      require("nvim-treesitter").install(languages)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("treesitter.setup", {}),
+        callback = function(args)
+          local buf = args.buf
+          local filetype = args.match
+
+          local language = vim.treesitter.language.get_lang(filetype) or filetype
+          if not vim.treesitter.language.add(language) then
+            return
+          end
+
+          if not highlight_disable[language] then
+            vim.treesitter.start(buf, language)
+          end
+
+          vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
+    end,
   },
   -- Advanced text objects
   {

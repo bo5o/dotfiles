@@ -141,6 +141,10 @@ return {
     version = "*",
     event = "BufRead",
     opts = {
+      mappings = {
+        around_next = "ax",
+        inside_next = "ix",
+      },
       custom_textobjects = { f = false, ["?"] = false },
     },
   },
