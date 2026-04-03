@@ -272,6 +272,8 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (sidebar)
 _arguments "${_arguments_options[@]}" : \
+'-s[Scope sidebar to current tmux session only]' \
+'--session[Scope sidebar to current tmux session only]' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_workmux_base__sidebar_commands" \
