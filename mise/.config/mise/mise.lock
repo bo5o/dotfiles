@@ -1402,36 +1402,36 @@ checksum = "sha256:2dc5b10aa3a4f26d08c1f3fe83e37e01f85a7d9db0d1d5cb6985b18af96ab
 url = "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Darwin-x86_64.tar.gz"
 
 [[tools.lua-language-server]]
-version = "3.17.1"
+version = "3.18.0"
 backend = "aqua:LuaLS/lua-language-server"
 
 [tools.lua-language-server."platforms.linux-arm64"]
-checksum = "sha256:680285a36d8cf7b17ca4be7a2f9c93643ebd8daec0b7425a6b7a02d003f3da81"
-url = "https://github.com/LuaLS/lua-language-server/releases/download/3.17.1/lua-language-server-3.17.1-linux-arm64.tar.gz"
+checksum = "sha256:dc04ef175525cb2ee2f8348280ceffcd4dbb284c9143db2434168e0740adf44a"
+url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.0/lua-language-server-3.18.0-linux-arm64.tar.gz"
 
 [tools.lua-language-server."platforms.linux-arm64-musl"]
-checksum = "sha256:680285a36d8cf7b17ca4be7a2f9c93643ebd8daec0b7425a6b7a02d003f3da81"
-url = "https://github.com/LuaLS/lua-language-server/releases/download/3.17.1/lua-language-server-3.17.1-linux-arm64.tar.gz"
+checksum = "sha256:dc04ef175525cb2ee2f8348280ceffcd4dbb284c9143db2434168e0740adf44a"
+url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.0/lua-language-server-3.18.0-linux-arm64.tar.gz"
 
 [tools.lua-language-server."platforms.linux-x64"]
-checksum = "sha256:248b0858a0afc8233f2535e89b648398b2202cb96cf51ce187e3263923dd0223"
-url = "https://github.com/LuaLS/lua-language-server/releases/download/3.17.1/lua-language-server-3.17.1-linux-x64.tar.gz"
+checksum = "sha256:21ddc896959f1ea60fa37562535774ec32a23c2cb1e01953a6bb3567a2f8162a"
+url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.0/lua-language-server-3.18.0-linux-x64.tar.gz"
 
 [tools.lua-language-server."platforms.linux-x64-musl"]
-checksum = "sha256:248b0858a0afc8233f2535e89b648398b2202cb96cf51ce187e3263923dd0223"
-url = "https://github.com/LuaLS/lua-language-server/releases/download/3.17.1/lua-language-server-3.17.1-linux-x64.tar.gz"
+checksum = "sha256:21ddc896959f1ea60fa37562535774ec32a23c2cb1e01953a6bb3567a2f8162a"
+url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.0/lua-language-server-3.18.0-linux-x64.tar.gz"
 
 [tools.lua-language-server."platforms.macos-arm64"]
-checksum = "sha256:a69ffcef61d3eb4ca7b7bc92d69cb85892c8af15120bf2815768ed0afe5ed3bc"
-url = "https://github.com/LuaLS/lua-language-server/releases/download/3.17.1/lua-language-server-3.17.1-darwin-arm64.tar.gz"
+checksum = "sha256:7b01a8301dfb1fbe4666f407067c5553fd8f62f8b9591e56927b964f1d10ae4c"
+url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.0/lua-language-server-3.18.0-darwin-arm64.tar.gz"
 
 [tools.lua-language-server."platforms.macos-x64"]
-checksum = "sha256:5e976b24868aa5810427eaa1224b77a1fb258b02cb66ffc2ba83bae0e2706641"
-url = "https://github.com/LuaLS/lua-language-server/releases/download/3.17.1/lua-language-server-3.17.1-darwin-x64.tar.gz"
+checksum = "sha256:331556f9ca35d258e42abcd59541f98b47be6f4c2e2628b833edc23b5e55bfd6"
+url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.0/lua-language-server-3.18.0-darwin-x64.tar.gz"
 
 [tools.lua-language-server."platforms.windows-x64"]
-checksum = "sha256:795670a80d35b23e7ecf932ede742609f2267314f2df64054b020698fcc8a892"
-url = "https://github.com/LuaLS/lua-language-server/releases/download/3.17.1/lua-language-server-3.17.1-win32-x64.zip"
+checksum = "sha256:bdc0f5062ca0812d6ae6cd8f6aaa2bd3ef72af895dbfe255f46a30ce074d0f52"
+url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.0/lua-language-server-3.18.0-win32-x64.zip"
 
 [[tools.marksman]]
 version = "2026-02-08"
