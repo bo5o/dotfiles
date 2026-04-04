@@ -1373,32 +1373,33 @@ checksum = "sha256:435b53165ff4604e201549b9317eb0b8bb5b3f6728be612656988e90c821a
 url = "https://github.com/jesseduffield/lazygit/releases/download/v0.60.0/lazygit_0.60.0_windows_x86_64.zip"
 
 [[tools.lima]]
-version = "2.1.0"
+version = "2.1.1"
 backend = "aqua:lima-vm/lima"
 
 [tools.lima."platforms.linux-arm64"]
-checksum = "sha256:8b806c81f38ad7ea8104f196b414e243726cad1dfa6aa52843608d55df8c5290"
-url = "https://github.com/lima-vm/lima/releases/download/v2.1.0/lima-2.1.0-Linux-aarch64.tar.gz"
+checksum = "sha256:1011d18701697e2a559c044932309728fd6488a5380673c489556784924bf3ca"
+url = "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Linux-aarch64.tar.gz"
 
 [tools.lima."platforms.linux-arm64-musl"]
-checksum = "sha256:8b806c81f38ad7ea8104f196b414e243726cad1dfa6aa52843608d55df8c5290"
-url = "https://github.com/lima-vm/lima/releases/download/v2.1.0/lima-2.1.0-Linux-aarch64.tar.gz"
+checksum = "sha256:1011d18701697e2a559c044932309728fd6488a5380673c489556784924bf3ca"
+url = "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Linux-aarch64.tar.gz"
 
 [tools.lima."platforms.linux-x64"]
-checksum = "sha256:9e52c605790649aceac1f894eb2bb7cdb45897257faafb54ff30ce6a576bebfa"
-url = "https://github.com/lima-vm/lima/releases/download/v2.1.0/lima-2.1.0-Linux-x86_64.tar.gz"
+checksum = "sha256:0f89235de8c3676d988d863cfef37ac7cf4b8a14ba05d5d678a99dfea1db2d3c"
+url = "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Linux-x86_64.tar.gz"
+provenance = "github-attestations"
 
 [tools.lima."platforms.linux-x64-musl"]
-checksum = "sha256:9e52c605790649aceac1f894eb2bb7cdb45897257faafb54ff30ce6a576bebfa"
-url = "https://github.com/lima-vm/lima/releases/download/v2.1.0/lima-2.1.0-Linux-x86_64.tar.gz"
+checksum = "sha256:0f89235de8c3676d988d863cfef37ac7cf4b8a14ba05d5d678a99dfea1db2d3c"
+url = "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Linux-x86_64.tar.gz"
 
 [tools.lima."platforms.macos-arm64"]
-checksum = "sha256:1da852bce2f98b8310fb53e5047e08ff798880ddf9ae4b3161d4de4e73777b34"
-url = "https://github.com/lima-vm/lima/releases/download/v2.1.0/lima-2.1.0-Darwin-arm64.tar.gz"
+checksum = "sha256:b6b0e6701189cd8c4e549cc39e6d054dc681487798b9b774ad2cbd30c08b2bd8"
+url = "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Darwin-arm64.tar.gz"
 
 [tools.lima."platforms.macos-x64"]
-checksum = "sha256:529d6dad275bded4bd1fb17c6df4d22f11917712aab1693f5bc43286b5e78824"
-url = "https://github.com/lima-vm/lima/releases/download/v2.1.0/lima-2.1.0-Darwin-x86_64.tar.gz"
+checksum = "sha256:2dc5b10aa3a4f26d08c1f3fe83e37e01f85a7d9db0d1d5cb6985b18af96ab07d"
+url = "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Darwin-x86_64.tar.gz"
 
 [[tools.lua-language-server]]
 version = "3.17.1"
