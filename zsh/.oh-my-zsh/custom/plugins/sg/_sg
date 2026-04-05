@@ -37,8 +37,8 @@ _arguments "${_arguments_options[@]}" : \
 '--selector=[AST kind to extract sub-part of pattern to match]:KIND:_default' \
 '-r+[String to replace the matched AST node]:FIX:_default' \
 '--rewrite=[String to replace the matched AST node]:FIX:_default' \
-'-l+[The language of the pattern. Supported languages are\: \[Bash, C, Cpp, CSharp, Css, Elixir, Go, Haskell, Hcl, Html, Java, JavaScript, Json, Kotlin, Lua, Nix, Php, Python, Ruby, Rust, Scala, Solidity, Swift, Tsx, TypeScript, Yaml\]]:LANG:_default' \
-'--lang=[The language of the pattern. Supported languages are\: \[Bash, C, Cpp, CSharp, Css, Elixir, Go, Haskell, Hcl, Html, Java, JavaScript, Json, Kotlin, Lua, Nix, Php, Python, Ruby, Rust, Scala, Solidity, Swift, Tsx, TypeScript, Yaml\]]:LANG:_default' \
+'-l+[The language of the pattern. Supported languages are\: \[Bash, C, Cpp, CSharp, Css, Dart, Elixir, Go, Haskell, Hcl, Html, Java, JavaScript, Json, Kotlin, Lua, Nix, Php, Python, Ruby, Rust, Scala, Solidity, Swift, Tsx, TypeScript, Yaml\]]:LANG:_default' \
+'--lang=[The language of the pattern. Supported languages are\: \[Bash, C, Cpp, CSharp, Css, Dart, Elixir, Go, Haskell, Hcl, Html, Java, JavaScript, Json, Kotlin, Lua, Nix, Php, Python, Ruby, Rust, Scala, Solidity, Swift, Tsx, TypeScript, Yaml\]]:LANG:_default' \
 '--debug-query=[Print query pattern'\''s tree-sitter AST. Requires lang be set explicitly]::format:((pattern\:"Print the query parsed in Pattern format"
 ast\:"Print the query in tree-sitter AST format, only named nodes are shown"
 cst\:"Print the query in tree-sitter CST format, both named and unnamed nodes are shown"
@@ -154,6 +154,10 @@ _arguments "${_arguments_options[@]}" : \
 '--snapshot-dir=[Specify the directory name storing snapshots. Default to __snapshots__]:SNAPSHOT_DIR:_files' \
 '-f+[Only run rule test cases that matches REGEX]:REGEX:_default' \
 '--filter=[Only run rule test cases that matches REGEX]:REGEX:_default' \
+'--color=[Controls output color]:WHEN:((auto\:"Try to use colors, but don'\''t force the issue. If the output is piped to another program, or the console isn'\''t available on Windows, or if TERM=dumb, or if \`NO_COLOR\` is defined, for example, then don'\''t use colors"
+always\:"Try very hard to emit colors. This includes emitting ANSI colors on Windows if the console API is unavailable (not implemented yet)"
+ansi\:"Ansi is like Always, except it never tries to use anything other than emitting ANSI color codes"
+never\:"Never emit colors"))' \
 '-c+[Path to ast-grep root config, default is sgconfig.yml]:CONFIG_FILE:_files' \
 '--config=[Path to ast-grep root config, default is sgconfig.yml]:CONFIG_FILE:_files' \
 '(-U --update-all)--skip-snapshot-tests[Only check if the test code is valid, without checking rule output. Turn it on when you want to ignore the output of rules. Conflicts with --update-all]' \
