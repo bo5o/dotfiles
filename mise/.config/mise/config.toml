@@ -47,7 +47,7 @@ hadolint = "2.14.0"
 "pipx:gitlint-core" = { version = "0.19.1", uvx_args = "--with gitlint" }
 "pipx:sqlfluff" = "4.1.0"
 "npm:yaml-language-server" = "1.21.0"
-rust-analyzer = "2026-03-30"
+rust-analyzer = "2026-04-06"
 shellcheck = "0.11.0"
 shfmt = "3.13.0"
 "npm:markuplint" = "4.14.1"
