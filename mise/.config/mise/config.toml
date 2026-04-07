@@ -55,7 +55,7 @@ marksman = "2026-02-08"
 lua-language-server = "3.18.0"
 "npm:sql-formatter" = "15.7.3"
 "npm:stylelint" = "17.6.0"
-stylua = "2.4.0"
+stylua = "2.4.1"
 taplo = { version = "0.10.0", matching = "full" }
 "github:Myriad-Dreamin/tinymist" = "0.14.16"
 "npm:vim-language-server" = "2.3.1"
