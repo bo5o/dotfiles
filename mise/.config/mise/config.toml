@@ -10,7 +10,7 @@ difftastic = { version = "0.68.0", exe = "difft" }
 fd = "10.4.2"
 "gem:tmuxinator" = "3.3.8"
 github-cli = "2.89.0"
-go = "1.26.1"
+go = "1.26.2"
 jq = "1.8.1"
 just = "1.49.0"
 lazydocker = "0.25.0"
