@@ -46,6 +46,7 @@ _arguments "${_arguments_options[@]}" : \
 '--max-concurrent=[Maximum number of worktrees to run concurrently. When set, waits for a slot to open before creating new worktrees]:MAX_CONCURRENT:_default' \
 '(-a --agent)-l+[Use a named pane layout from config instead of default panes]:LAYOUT:_default' \
 '(-a --agent)--layout=[Use a named pane layout from config instead of default panes]:LAYOUT:_default' \
+'--fork=[Fork the last conversation from the current worktree into the new one. Specify a session ID to fork a specific conversation, or omit for most recent]::FORK:_default' \
 '(--pr)-A[Generate branch name from prompt using LLM]' \
 '(--pr)--auto-name[Generate branch name from prompt using LLM]' \
 '(-p --prompt -P --prompt-file)-e[Open \$EDITOR to write the prompt]' \
