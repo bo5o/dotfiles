@@ -81,7 +81,7 @@
     "autoAllowBashIfSandboxed": false,
     "allowUnsandboxedCommands": false
   },
-  "autoMemoryEnabled": false,
-  "model": "opus[1m]"
+  "model": "opus[1m]",
+  "showThinkingSummaries": true,
+  "autoMemoryEnabled": false
 }
-
