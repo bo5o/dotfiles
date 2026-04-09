@@ -1622,13 +1622,6 @@ backend = "pipx:sqlfluff"
 version = "0.37.3"
 backend = "pipx:sqruff"
 
-[[tools."pipx:vectorcode"]]
-version = "0.7.20"
-backend = "pipx:vectorcode"
-
-[tools."pipx:vectorcode".options]
-extras = "mcp,lsp"
-
 [[tools."pipx:vim-vint"]]
 version = "0.3.21"
 backend = "pipx:vim-vint"
