@@ -55,7 +55,6 @@ plugins=(
     tldr
     tailscale
     gitlint
-    vectorcode
     marimo
     bws
     sg
