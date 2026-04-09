@@ -7,26 +7,32 @@ backend = "aqua:FiloSottile/age"
 [tools.age."platforms.linux-arm64"]
 checksum = "sha256:c6878a324421b69e3e20b00ba17c04bc5c6dab0030cfe55bf8f68fa8d9e9093a"
 url = "https://github.com/FiloSottile/age/releases/download/v1.3.1/age-v1.3.1-linux-arm64.tar.gz"
+provenance = "github-attestations"
 
 [tools.age."platforms.linux-arm64-musl"]
 checksum = "sha256:c6878a324421b69e3e20b00ba17c04bc5c6dab0030cfe55bf8f68fa8d9e9093a"
 url = "https://github.com/FiloSottile/age/releases/download/v1.3.1/age-v1.3.1-linux-arm64.tar.gz"
+provenance = "github-attestations"
 
 [tools.age."platforms.linux-x64"]
 checksum = "sha256:bdc69c09cbdd6cf8b1f333d372a1f58247b3a33146406333e30c0f26e8f51377"
 url = "https://github.com/FiloSottile/age/releases/download/v1.3.1/age-v1.3.1-linux-amd64.tar.gz"
+provenance = "github-attestations"
 
 [tools.age."platforms.linux-x64-musl"]
 checksum = "sha256:bdc69c09cbdd6cf8b1f333d372a1f58247b3a33146406333e30c0f26e8f51377"
 url = "https://github.com/FiloSottile/age/releases/download/v1.3.1/age-v1.3.1-linux-amd64.tar.gz"
+provenance = "github-attestations"
 
 [tools.age."platforms.macos-arm64"]
 checksum = "sha256:01120ea2cbf0463d4c6bd767f99f3271bbed1cdc8a9aa718a76ba1fe4f01998b"
 url = "https://github.com/FiloSottile/age/releases/download/v1.3.1/age-v1.3.1-darwin-arm64.tar.gz"
+provenance = "github-attestations"
 
 [tools.age."platforms.windows-x64"]
 checksum = "sha256:c56e8ce22f7e80cb85ad946cc82d198767b056366201d3e1a2b93d865be38154"
 url = "https://github.com/FiloSottile/age/releases/download/v1.3.1/age-v1.3.1-windows-amd64.zip"
+provenance = "github-attestations"
 
 [[tools."aqua:apache/maven"]]
 version = "3.9.14"
@@ -156,10 +162,12 @@ backend = "aqua:biomejs/biome"
 [tools.biome."platforms.linux-arm64"]
 checksum = "sha256:4ce5f5750abdce244087e42d73a177c0c1b930f23320c52bf3e973bbc18489de"
 url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.10/biome-linux-arm64"
+provenance = "github-attestations"
 
 [tools.biome."platforms.linux-arm64-musl"]
 checksum = "sha256:4ce5f5750abdce244087e42d73a177c0c1b930f23320c52bf3e973bbc18489de"
 url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.10/biome-linux-arm64"
+provenance = "github-attestations"
 
 [tools.biome."platforms.linux-x64"]
 checksum = "sha256:fb9423a99ea4be5036f4ee95667fcc5a67e8ff72bd6d23e392033a70fb755d90"
@@ -169,18 +177,22 @@ provenance = "github-attestations"
 [tools.biome."platforms.linux-x64-musl"]
 checksum = "sha256:fb9423a99ea4be5036f4ee95667fcc5a67e8ff72bd6d23e392033a70fb755d90"
 url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.10/biome-linux-x64"
+provenance = "github-attestations"
 
 [tools.biome."platforms.macos-arm64"]
 checksum = "sha256:c6782336dff872beec7d34e1b801c533bd296b5dcf2a30d3cf6335bca975e984"
 url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.10/biome-darwin-arm64"
+provenance = "github-attestations"
 
 [tools.biome."platforms.macos-x64"]
 checksum = "sha256:8269b5ef30bbc1fcf0cff5695bdc3733d417744ae638df70e7dabc3b82590fca"
 url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.10/biome-darwin-x64"
+provenance = "github-attestations"
 
 [tools.biome."platforms.windows-x64"]
 checksum = "sha256:a2bdc915914114c09a6f38ea092af2e450953bf3ace76bc143f2ab4d5a17b238"
 url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.10/biome-win32-x64.exe"
+provenance = "github-attestations"
 
 [[tools.bottom]]
 version = "0.12.3"
@@ -189,30 +201,37 @@ backend = "aqua:ClementTsang/bottom"
 [tools.bottom."platforms.linux-arm64"]
 checksum = "sha256:944f372beeaac326cbe3eb4424d7bae600173cec2b0bba363557cd72cc98a3e2"
 url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_aarch64-unknown-linux-musl.tar.gz"
+provenance = "github-attestations"
 
 [tools.bottom."platforms.linux-arm64-musl"]
 checksum = "sha256:944f372beeaac326cbe3eb4424d7bae600173cec2b0bba363557cd72cc98a3e2"
 url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_aarch64-unknown-linux-musl.tar.gz"
+provenance = "github-attestations"
 
 [tools.bottom."platforms.linux-x64"]
 checksum = "sha256:0d6352079422fda8f4ee242eb849f45a6008db96d6c1cd35e8436babc51bc33f"
 url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_x86_64-unknown-linux-musl.tar.gz"
+provenance = "github-attestations"
 
 [tools.bottom."platforms.linux-x64-musl"]
 checksum = "sha256:0d6352079422fda8f4ee242eb849f45a6008db96d6c1cd35e8436babc51bc33f"
 url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_x86_64-unknown-linux-musl.tar.gz"
+provenance = "github-attestations"
 
 [tools.bottom."platforms.macos-arm64"]
 checksum = "sha256:106e9493d20192d18dbe46d4c99f680d817c796724103ee258567070fcd16429"
 url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_aarch64-apple-darwin.tar.gz"
+provenance = "github-attestations"
 
 [tools.bottom."platforms.macos-x64"]
 checksum = "sha256:5744b5c78db14b85e025c31ded93ba038041e6ff2e8c16ea1d2f9bdb6487316f"
 url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_x86_64-apple-darwin.tar.gz"
+provenance = "github-attestations"
 
 [tools.bottom."platforms.windows-x64"]
 checksum = "sha256:567879fd7210f8a692cd2657b41eda43c7713bef74dd025b240247accdda14fb"
 url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_x86_64-pc-windows-msvc.zip"
+provenance = "github-attestations"
 
 [[tools.cargo-binstall]]
 version = "1.17.9"
@@ -687,30 +706,37 @@ backend = "aqua:cli/cli"
 [tools.github-cli."platforms.linux-arm64"]
 checksum = "sha256:9e64a623dfc242990aa5d9b3f507111149c4282f66b68eaad1dc79eeb13b9ce5"
 url = "https://github.com/cli/cli/releases/download/v2.89.0/gh_2.89.0_linux_arm64.tar.gz"
+provenance = "github-attestations"
 
 [tools.github-cli."platforms.linux-arm64-musl"]
 checksum = "sha256:9e64a623dfc242990aa5d9b3f507111149c4282f66b68eaad1dc79eeb13b9ce5"
 url = "https://github.com/cli/cli/releases/download/v2.89.0/gh_2.89.0_linux_arm64.tar.gz"
+provenance = "github-attestations"
 
 [tools.github-cli."platforms.linux-x64"]
 checksum = "sha256:d0422caade520530e76c1c558da47daebaa8e1203d6b7ff10ad7d6faba3490d8"
 url = "https://github.com/cli/cli/releases/download/v2.89.0/gh_2.89.0_linux_amd64.tar.gz"
+provenance = "github-attestations"
 
 [tools.github-cli."platforms.linux-x64-musl"]
 checksum = "sha256:d0422caade520530e76c1c558da47daebaa8e1203d6b7ff10ad7d6faba3490d8"
 url = "https://github.com/cli/cli/releases/download/v2.89.0/gh_2.89.0_linux_amd64.tar.gz"
+provenance = "github-attestations"
 
 [tools.github-cli."platforms.macos-arm64"]
 checksum = "sha256:2423d02ec0a2094898c378703a1b28a5846c08700f87461363857cb8cb3fda94"
 url = "https://github.com/cli/cli/releases/download/v2.89.0/gh_2.89.0_macOS_arm64.zip"
+provenance = "github-attestations"
 
 [tools.github-cli."platforms.macos-x64"]
 checksum = "sha256:862e21cac6a71f81e7cd6e5127e3cd344f8537441ad2db94cd208319dd17b6e9"
 url = "https://github.com/cli/cli/releases/download/v2.89.0/gh_2.89.0_macOS_amd64.zip"
+provenance = "github-attestations"
 
 [tools.github-cli."platforms.windows-x64"]
 checksum = "sha256:f3326f6406c98c99701b257d77e2b040eedf83d0176c2c2e9809aa339ceb467e"
 url = "https://github.com/cli/cli/releases/download/v2.89.0/gh_2.89.0_windows_amd64.zip"
+provenance = "github-attestations"
 
 [[tools."github:Ataraxy-Labs/sem"]]
 version = "0.3.14"
@@ -1251,30 +1277,37 @@ backend = "aqua:jqlang/jq"
 [tools.jq."platforms.linux-arm64"]
 checksum = "sha256:6bc62f25981328edd3cfcfe6fe51b073f2d7e7710d7ef7fcdac28d4e384fc3d4"
 url = "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux-arm64"
+provenance = "github-attestations"
 
 [tools.jq."platforms.linux-arm64-musl"]
 checksum = "sha256:6bc62f25981328edd3cfcfe6fe51b073f2d7e7710d7ef7fcdac28d4e384fc3d4"
 url = "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux-arm64"
+provenance = "github-attestations"
 
 [tools.jq."platforms.linux-x64"]
 checksum = "sha256:020468de7539ce70ef1bceaf7cde2e8c4f2ca6c3afb84642aabc5c97d9fc2a0d"
 url = "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux-amd64"
+provenance = "github-attestations"
 
 [tools.jq."platforms.linux-x64-musl"]
 checksum = "sha256:020468de7539ce70ef1bceaf7cde2e8c4f2ca6c3afb84642aabc5c97d9fc2a0d"
 url = "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux-amd64"
+provenance = "github-attestations"
 
 [tools.jq."platforms.macos-arm64"]
 checksum = "sha256:a9fe3ea2f86dfc72f6728417521ec9067b343277152b114f4e98d8cb0e263603"
 url = "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-macos-arm64"
+provenance = "github-attestations"
 
 [tools.jq."platforms.macos-x64"]
 checksum = "sha256:e80dbe0d2a2597e3c11c404f03337b981d74b4a8504b70586c354b7697a7c27f"
 url = "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-macos-amd64"
+provenance = "github-attestations"
 
 [tools.jq."platforms.windows-x64"]
 checksum = "sha256:23cb60a1354eed6bcc8d9b9735e8c7b388cd1fdcb75726b93bc299ef22dd9334"
 url = "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-windows-amd64.exe"
+provenance = "github-attestations"
 
 [[tools.just]]
 version = "1.49.0"
@@ -1379,10 +1412,12 @@ backend = "aqua:lima-vm/lima"
 [tools.lima."platforms.linux-arm64"]
 checksum = "sha256:1011d18701697e2a559c044932309728fd6488a5380673c489556784924bf3ca"
 url = "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Linux-aarch64.tar.gz"
+provenance = "github-attestations"
 
 [tools.lima."platforms.linux-arm64-musl"]
 checksum = "sha256:1011d18701697e2a559c044932309728fd6488a5380673c489556784924bf3ca"
 url = "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Linux-aarch64.tar.gz"
+provenance = "github-attestations"
 
 [tools.lima."platforms.linux-x64"]
 checksum = "sha256:0f89235de8c3676d988d863cfef37ac7cf4b8a14ba05d5d678a99dfea1db2d3c"
@@ -1392,14 +1427,17 @@ provenance = "github-attestations"
 [tools.lima."platforms.linux-x64-musl"]
 checksum = "sha256:0f89235de8c3676d988d863cfef37ac7cf4b8a14ba05d5d678a99dfea1db2d3c"
 url = "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Linux-x86_64.tar.gz"
+provenance = "github-attestations"
 
 [tools.lima."platforms.macos-arm64"]
 checksum = "sha256:b6b0e6701189cd8c4e549cc39e6d054dc681487798b9b774ad2cbd30c08b2bd8"
 url = "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Darwin-arm64.tar.gz"
+provenance = "github-attestations"
 
 [tools.lima."platforms.macos-x64"]
 checksum = "sha256:2dc5b10aa3a4f26d08c1f3fe83e37e01f85a7d9db0d1d5cb6985b18af96ab07d"
 url = "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Darwin-x86_64.tar.gz"
+provenance = "github-attestations"
 
 [[tools.lua-language-server]]
 version = "3.18.1"
@@ -1763,27 +1801,27 @@ backend = "core:ruby"
 
 [tools.ruby."platforms.linux-arm64"]
 checksum = "sha256:f4bae6aba123a65817cb005d35f994781935f58d6388dd6bd3d5cd27f793a463"
-url = "https://github.com/jdx/ruby/releases/download/4.0.2/ruby-4.0.2.arm64_linux.tar.gz"
+url = "https://github.com/jdx/ruby/releases/download/4.0.2-1/ruby-4.0.2.arm64_linux.tar.gz"
 provenance = "github-attestations"
 
 [tools.ruby."platforms.linux-arm64-musl"]
 checksum = "sha256:f4bae6aba123a65817cb005d35f994781935f58d6388dd6bd3d5cd27f793a463"
-url = "https://github.com/jdx/ruby/releases/download/4.0.2/ruby-4.0.2.arm64_linux.tar.gz"
+url = "https://github.com/jdx/ruby/releases/download/4.0.2-1/ruby-4.0.2.arm64_linux.tar.gz"
 provenance = "github-attestations"
 
 [tools.ruby."platforms.linux-x64"]
 checksum = "sha256:4564603d7f314912091b01978627be183a16b057e3c98309eed0137c3b74601a"
-url = "https://github.com/jdx/ruby/releases/download/4.0.2/ruby-4.0.2.x86_64_linux.tar.gz"
+url = "https://github.com/jdx/ruby/releases/download/4.0.2-1/ruby-4.0.2.x86_64_linux.tar.gz"
 provenance = "github-attestations"
 
 [tools.ruby."platforms.linux-x64-musl"]
 checksum = "sha256:4564603d7f314912091b01978627be183a16b057e3c98309eed0137c3b74601a"
-url = "https://github.com/jdx/ruby/releases/download/4.0.2/ruby-4.0.2.x86_64_linux.tar.gz"
+url = "https://github.com/jdx/ruby/releases/download/4.0.2-1/ruby-4.0.2.x86_64_linux.tar.gz"
 provenance = "github-attestations"
 
 [tools.ruby."platforms.macos-arm64"]
 checksum = "sha256:3719af6ceff6c1b977eecf5b48e398827ea82872377480684b75db5925b78493"
-url = "https://github.com/jdx/ruby/releases/download/4.0.2/ruby-4.0.2.macos.tar.gz"
+url = "https://github.com/jdx/ruby/releases/download/4.0.2-1/ruby-4.0.2.macos.tar.gz"
 provenance = "github-attestations"
 
 [tools.ruby."platforms.macos-x64"]
@@ -1801,10 +1839,12 @@ backend = "aqua:astral-sh/ruff"
 [tools.ruff."platforms.linux-arm64"]
 checksum = "sha256:e017dd0c1fd7475aaddc49bde8cddcee3c27d42f6ce139a96df0c1022e06d85b"
 url = "https://github.com/astral-sh/ruff/releases/download/0.15.9/ruff-aarch64-unknown-linux-musl.tar.gz"
+provenance = "github-attestations"
 
 [tools.ruff."platforms.linux-arm64-musl"]
 checksum = "sha256:e017dd0c1fd7475aaddc49bde8cddcee3c27d42f6ce139a96df0c1022e06d85b"
 url = "https://github.com/astral-sh/ruff/releases/download/0.15.9/ruff-aarch64-unknown-linux-musl.tar.gz"
+provenance = "github-attestations"
 
 [tools.ruff."platforms.linux-x64"]
 checksum = "sha256:e30e6e50dbf925b42335f28e2fa296d404294f294159b314dca47b88317fc477"
@@ -1814,18 +1854,22 @@ provenance = "github-attestations"
 [tools.ruff."platforms.linux-x64-musl"]
 checksum = "sha256:e30e6e50dbf925b42335f28e2fa296d404294f294159b314dca47b88317fc477"
 url = "https://github.com/astral-sh/ruff/releases/download/0.15.9/ruff-x86_64-unknown-linux-musl.tar.gz"
+provenance = "github-attestations"
 
 [tools.ruff."platforms.macos-arm64"]
 checksum = "sha256:013d878f17c625550e4a6b19235c22fc229639f66f563bb72cb2c896aeca11e8"
 url = "https://github.com/astral-sh/ruff/releases/download/0.15.9/ruff-aarch64-apple-darwin.tar.gz"
+provenance = "github-attestations"
 
 [tools.ruff."platforms.macos-x64"]
 checksum = "sha256:7e0fe9daba25848f85cb3d43e47ecd7d23f14e92e8799f92c1bcd8319a4ce4f8"
 url = "https://github.com/astral-sh/ruff/releases/download/0.15.9/ruff-x86_64-apple-darwin.tar.gz"
+provenance = "github-attestations"
 
 [tools.ruff."platforms.windows-x64"]
 checksum = "sha256:e38fddd19805bc8f7329003c2abdaf49d8ca9e5bc0c6702e8472e16f127bcd44"
 url = "https://github.com/astral-sh/ruff/releases/download/0.15.9/ruff-x86_64-pc-windows-msvc.zip"
+provenance = "github-attestations"
 
 [[tools.rust]]
 version = "1.94.1"
@@ -1991,10 +2035,12 @@ backend = "aqua:tree-sitter/tree-sitter"
 [tools.tree-sitter."platforms.linux-arm64"]
 checksum = "sha256:e339d6533b20830dd1666fe320aff85d301b3f59964a3836870b77f4827f9a17"
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-linux-arm64.gz"
+provenance = "github-attestations"
 
 [tools.tree-sitter."platforms.linux-arm64-musl"]
 checksum = "sha256:e339d6533b20830dd1666fe320aff85d301b3f59964a3836870b77f4827f9a17"
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-linux-arm64.gz"
+provenance = "github-attestations"
 
 [tools.tree-sitter."platforms.linux-x64"]
 checksum = "sha256:9754a32800f0b970152782df177b4a47c711e34e651a7aceb384d8bd29fa136e"
@@ -2004,18 +2050,22 @@ provenance = "github-attestations"
 [tools.tree-sitter."platforms.linux-x64-musl"]
 checksum = "sha256:9754a32800f0b970152782df177b4a47c711e34e651a7aceb384d8bd29fa136e"
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-linux-x64.gz"
+provenance = "github-attestations"
 
 [tools.tree-sitter."platforms.macos-arm64"]
 checksum = "sha256:024e2cee34723524d62d41bde4d2b4af23c8bbe0236e116c79c0b37d9575889e"
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-macos-arm64.gz"
+provenance = "github-attestations"
 
 [tools.tree-sitter."platforms.macos-x64"]
 checksum = "sha256:d0daa279054c1d1cedb08f5ca784b451ceb1f0e6b083b112d07317958ae77fe0"
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-macos-x64.gz"
+provenance = "github-attestations"
 
 [tools.tree-sitter."platforms.windows-x64"]
 checksum = "sha256:28301a969412066bf4818c30c71d9c313091a9b9dc24b53a14ddda3a8e2cc2bb"
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-windows-x64.gz"
+provenance = "github-attestations"
 
 [[tools.usage]]
 version = "3.2.0"
