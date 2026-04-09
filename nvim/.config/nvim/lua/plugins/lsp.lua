@@ -293,9 +293,6 @@ return {
             },
           },
         },
-        vectorcode_server = {
-          filetypes = { "codecompanion" },
-        },
         sqruff = {
           root_markers = { ".sqruff" },
           workspace_required = true,

@@ -1,15 +1,5 @@
 return {
   {
-    "Davidyz/VectorCode",
-    version = "*",
-    cmd = "VectorCode",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      async_backend = "lsp",
-    },
-  },
-
-  {
     "olimorris/codecompanion.nvim",
     version = "^18.0.0",
     cmd = {
@@ -130,39 +120,6 @@ return {
           },
         },
         extensions = {
-          vectorcode = {
-            opts = {
-              tool_group = {
-                -- this will register a tool group called `@vectorcode_toolbox` that contains all 3 tools
-                enabled = true,
-                -- a list of extra tools that you want to include in `@vectorcode_toolbox`.
-                -- if you use @vectorcode_vectorise, it'll be very handy to include
-                -- `file_search` here.
-                extras = {},
-                collapse = false, -- whether the individual tools should be shown in the chat
-              },
-              tool_opts = {
-                ["*"] = {},
-                ls = {},
-                vectorise = {},
-                query = {
-                  max_num = { chunk = -1, document = -1 },
-                  default_num = { chunk = 50, document = 10 },
-                  include_stderr = false,
-                  use_lsp = true,
-                  no_duplicate = true,
-                  chunk_mode = false,
-                  summarise = {
-                    enabled = false,
-                    adapter = nil,
-                    query_augmented = true,
-                  },
-                },
-                files_ls = {},
-                files_rm = {},
-              },
-            },
-          },
           history = {
             enabled = true,
             opts = {
@@ -228,23 +185,6 @@ return {
                 },
               },
 
-              -- Memory system (requires VectorCode CLI)
-              memory = {
-                -- Automatically index summaries when they are generated
-                auto_create_memories_on_summary_generation = true,
-                -- Path to the VectorCode executable
-                vectorcode_exe = "vectorcode",
-                -- Tool configuration
-                tool_opts = {
-                  -- Default number of memories to retrieve
-                  default_num = 10,
-                },
-                -- Enable notifications for indexing progress
-                notify = true,
-                -- Index all existing memories on startup
-                -- (requires VectorCode 0.6.12+ for efficient incremental indexing)
-                index_on_startup = false,
-              },
             },
           },
         },
