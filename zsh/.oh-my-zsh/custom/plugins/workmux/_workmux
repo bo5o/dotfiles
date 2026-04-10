@@ -372,6 +372,8 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-P+[Preview pane size as percentage (10-90). Larger = more preview, less table]:PREVIEW_SIZE:_default' \
 '--preview-size=[Preview pane size as percentage (10-90). Larger = more preview, less table]:PREVIEW_SIZE:_default' \
+'-t+[Open directly on the specified tab]:TAB:(agents worktrees)' \
+'--tab=[Open directly on the specified tab]:TAB:(agents worktrees)' \
 '-d[Open diff view directly for the current worktree]' \
 '--diff[Open diff view directly for the current worktree]' \
 '-s[Filter to only show agents in the current session]' \
