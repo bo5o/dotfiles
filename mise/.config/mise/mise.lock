@@ -1044,43 +1044,43 @@ url = "https://github.com/ribru17/ts_query_ls/releases/download/v3.16.0/ts_query
 url_api = "https://api.github.com/repos/ribru17/ts_query_ls/releases/assets/364216386"
 
 [[tools."github:supabase-community/postgres-language-server"]]
-version = "0.23.0"
+version = "0.24.0"
 backend = "github:supabase-community/postgres-language-server"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.linux-arm64"]
-checksum = "sha256:f322e1126d24ae83ac3ad98c48791f3948238529c17ccc0e4bdb3322d54a95dc"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.23.0/postgres-language-server_aarch64-unknown-linux-gnu"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/391571831"
+checksum = "sha256:0ac61662d31c59acb72528a1db8699c275a4e632305589ef586eef8d029c4ba7"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_aarch64-unknown-linux-gnu"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975745"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.linux-arm64-musl"]
-checksum = "sha256:f322e1126d24ae83ac3ad98c48791f3948238529c17ccc0e4bdb3322d54a95dc"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.23.0/postgres-language-server_aarch64-unknown-linux-gnu"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/391571831"
+checksum = "sha256:0ac61662d31c59acb72528a1db8699c275a4e632305589ef586eef8d029c4ba7"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_aarch64-unknown-linux-gnu"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975745"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.linux-x64"]
-checksum = "sha256:17c83b5b055612c35caef924e973fcb6f74a72f91a35057282d494f31ee0498e"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.23.0/postgres-language-server_x86_64-unknown-linux-gnu"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/391571828"
+checksum = "sha256:8f29540c66002b4a735d5e3a5640c2e1d3fe2042ce38eff2eea8b2efdaa34794"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_x86_64-unknown-linux-gnu"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975752"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.linux-x64-musl"]
-checksum = "sha256:1f7db0fb365772ee6014d7352b259dea375a22a3abb0a4073fc4746ae27faf7e"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.23.0/postgres-language-server_x86_64-unknown-linux-musl"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/391571826"
+checksum = "sha256:0d0e9add79baf1b6c2acd59417a483c33f30015ff354f1b8e4c04cff26622473"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_x86_64-unknown-linux-musl"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975751"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.macos-arm64"]
-checksum = "sha256:31073dbc2151ade9a64838fad70bc4bfa916a8dcf41e06ba7f414193e8f68aa1"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.23.0/postgres-language-server_aarch64-apple-darwin"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/391571818"
+checksum = "sha256:1f6836ff7b729e788699220da74ec40e5de77488e0fa6c72e4492d63e9f4f1ac"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_aarch64-apple-darwin"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975750"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.macos-x64"]
-checksum = "sha256:cd6c5abdf9a089b4a1d51900de5a26a0188370fcad72305a90384d252d3106ca"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.23.0/postgres-language-server_x86_64-apple-darwin"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/391571823"
+checksum = "sha256:85a69dd1ddd050ce0c547cf627bbc92d5590987c0ea3539e662b5c428db6a310"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_x86_64-apple-darwin"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975744"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.windows-x64"]
-checksum = "sha256:b0ee27ca13196766a6ef2d3467bb78931c4f2de59d954e11b111d9072e1d3ff7"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.23.0/postgres-language-server_x86_64-pc-windows-msvc.exe"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/391571825"
+checksum = "sha256:6e9dfd69ddddf683fe5af6f3288cfa3f48f58b377471383b655a87e3148481bd"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_x86_64-pc-windows-msvc.exe"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975748"
 
 [[tools."github:tummychow/git-absorb"]]
 version = "0.9.0"
