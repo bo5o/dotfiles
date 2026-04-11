@@ -120,7 +120,7 @@
   "vim-syntax-codeowners": { "branch": "master", "commit": "57c1ca9358f1fa82c4adfd8f0f9292da26e01681" },
   "vim-table-mode": { "branch": "master", "commit": "e4365bde024f73e205eefa2fb78e3029ddb92ea9" },
   "vim-tbone": { "branch": "master", "commit": "79d28199d5edf70337957e13942b5d970755d943" },
-  "vim-test": { "branch": "master", "commit": "c6c74fa3fcc6d9687362b407245aea580f17d922" },
+  "vim-test": { "branch": "master", "commit": "bca51394b5febc6e50492d88e8e124f5c5147087" },
   "vim-tmux-navigator": { "branch": "master", "commit": "e41c431a0c7b7388ae7ba341f01a0d217eb3a432" },
   "vim-tridactyl": { "branch": "master", "commit": "fdd069bde3a34c786abed4601b6d59a065590ad9" },
   "vim-unimpaired": { "branch": "master", "commit": "db65482581a28e4ccf355be297f1864a4e66985c" },
