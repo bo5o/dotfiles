@@ -39,7 +39,7 @@
   "mini.align": { "branch": "main", "commit": "60c61c8c63dca41b5ac6bfc36b52df69b1a03e6b" },
   "mini.bufremove": { "branch": "main", "commit": "10857aa39160c127694151828914df3131ba83b6" },
   "mini.indentscope": { "branch": "main", "commit": "0308f949f31769e509696af5d5f91cebb2159c69" },
-  "mini.notify": { "branch": "main", "commit": "29ec27f60bf4b63e447c851d9061c434d80795a6" },
+  "mini.notify": { "branch": "main", "commit": "32d3544b9368c76c562f22027ab25b750647fdf1" },
   "mini.sessions": { "branch": "main", "commit": "2e419949f6846871b3b87bcd7c418b0d1f0ad68a" },
   "neogen": { "branch": "main", "commit": "23e7e9f883d01289ebd90e98025acc860ea26366" },
   "neotest": { "branch": "master", "commit": "fd0b7986dd0ae04e38ec7dc0c78a432e3820839c" },

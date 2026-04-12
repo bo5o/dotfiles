@@ -55,7 +55,7 @@ return {
 
   {
     "echasnovski/mini.notify",
-    version = "*",
+    version = false,
     event = "VeryLazy",
     keys = {
       {
