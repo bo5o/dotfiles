@@ -1,129 +1,97 @@
 return {
   {
-    "hrsh7th/nvim-cmp",
+    "saghen/blink.cmp",
+    version = "1.*",
     event = "InsertEnter",
     dependencies = {
-      "onsails/lspkind-nvim",
-      "lukas-reineke/cmp-under-comparator",
-      "hrsh7th/cmp-nvim-lsp",
-      "ray-x/cmp-treesitter",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-cmdline",
-      "andersevenrud/cmp-tmux",
+      "rafamadriz/friendly-snippets",
+      "L3MON4D3/LuaSnip",
+      "mgalliou/blink-cmp-tmux",
     },
-    config = function()
-      local cmp = require("cmp")
-      local cmp_under_comparator = require("cmp-under-comparator")
-      local luasnip = require("luasnip")
-      local lspkind = require("lspkind")
 
-      local t = function(str)
-        return vim.api.nvim_replace_termcodes(str, true, true, true)
-      end
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      keymap = {
+        preset = "none",
 
-      local has_words_before = function()
-        unpack = unpack or table.unpack
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0
-          and vim.api
-              .nvim_buf_get_lines(0, line - 1, line, true)[1]
-              :sub(col, col)
-              :match("%s")
-            == nil
-      end
+        ["<C-n>"] = { "select_next", "fallback" },
+        ["<C-p>"] = { "select_prev", "fallback" },
+        ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-e>"] = { "hide", "fallback" },
+        ["<CR>"] = { "accept", "fallback" },
 
-      cmp.setup({
-        preselect = cmp.PreselectMode.None,
+        ["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
+        ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
+      },
 
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
+      appearance = {
+        nerd_font_variant = "mono",
+      },
+
+      completion = {
+        keyword = { range = "full" },
+
+        list = {
+          selection = { preselect = false, auto_insert = true },
         },
 
-        mapping = {
-          ["<C-n>"] = cmp.mapping({
-            c = function()
-              if cmp.visible() then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-              else
-                vim.api.nvim_feedkeys(t("<Down>"), "n", true)
-              end
-            end,
-            i = function(fallback)
-              if cmp.visible() then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-              else
-                fallback()
-              end
-            end,
-          }),
-
-          ["<C-p>"] = cmp.mapping({
-            c = function()
-              if cmp.visible() then
-                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-              else
-                vim.api.nvim_feedkeys(t("<Up>"), "n", true)
-              end
-            end,
-            i = function(fallback)
-              if cmp.visible() then
-                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-              else
-                fallback()
-              end
-            end,
-          }),
-          ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-          ["<C-e>"] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
-          ["<CR>"] = cmp.mapping({
-            i = function(fallback)
-              if cmp.visible() and cmp.get_active_entry() then
-                cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-              else
-                fallback()
-              end
-            end,
-            s = cmp.mapping.confirm({ select = true }),
-            c = cmp.mapping.confirm({
-              behavior = cmp.ConfirmBehavior.Replace,
-              select = true,
-            }),
-          }),
-
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
-            elseif has_words_before() then
-              cmp.complete()
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
+        menu = {
+          border = "rounded",
+          winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None,PmenuKind:BlinkCmpMenu,PmenuExtra:BlinkCmpMenu",
+          draw = {
+            treesitter = { "lsp" },
+            columns = {
+              { "kind_icon" },
+              { "label", "label_description", gap = 1 },
+              { "source_icon" },
+            },
+            components = {
+              source_icon = {
+                ellipsis = false,
+                text = function(ctx)
+                  local icons = {
+                    lsp = " ",
+                    path = " ",
+                    snippets = "󰩫 ",
+                    buffer = " ",
+                    tmux = " ",
+                    dadbod = "󰆼 ",
+                  }
+                  return icons[ctx.source_id] or ctx.source_id
+                end,
+                highlight = "BlinkCmpSource",
+              },
+            },
+          },
         },
 
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "treesitter" },
-          { name = "luasnip" },
-          {
-            name = "buffer",
-            option = {
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 500,
+          window = { border = "rounded" },
+        },
+
+        ghost_text = { enabled = true },
+      },
+
+      snippets = { preset = "luasnip" },
+
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer", "tmux" },
+
+        per_filetype = {
+          sql = { "dadbod", "buffer" },
+          mysql = { "dadbod", "buffer" },
+          plsql = { "dadbod", "buffer" },
+        },
+
+        providers = {
+          lsp = {
+            fallbacks = {},
+          },
+          buffer = {
+            opts = {
               get_bufnrs = function()
                 return vim.tbl_filter(function(buf)
                   local byte_size =
@@ -133,123 +101,41 @@ return {
               end,
             },
           },
-          { name = "path" },
-          {
+          tmux = {
+            module = "blink-cmp-tmux",
             name = "tmux",
-            keyword_length = 3,
-            option = {
-              all_panes = true,
-              trigger_characters = {},
+            score_offset = -3,
+            opts = {
+              panes = "all",
             },
           },
-        },
-
-        sorting = {
-          comparators = {
-            cmp.config.compare.offset,
-            cmp.config.compare.exact,
-            cmp.config.compare.score,
-            cmp_under_comparator.under,
-            cmp.config.compare.recently_used,
-            cmp.config.compare.locality,
-            cmp.config.compare.kind,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.length,
-            cmp.config.compare.order,
+          dadbod = {
+            module = "vim_dadbod_completion.blink",
+            name = "Dadbod",
           },
         },
+      },
 
-        ---@diagnostic disable-next-line: missing-fields
-        formatting = {
-          format = function(entry, vim_item)
-            local item = lspkind.cmp_format({
-              preset = "codicons",
-              symbol_map = {
-                String = "",
-                Spell = "",
-              },
-              mode = "symbol_text",
-              maxwidth = {
-                abbr = 35,
-                menu = 35,
-              },
-              menu = vim.tbl_map(function(s)
-                return s .. " "
-              end, {
-                nvim_lsp = "[lsp]",
-                treesitter = "[ts]",
-                path = "[path]",
-                luasnip = "[snip]",
-                buffer = "[buf]",
-                tmux = "[tmux]",
-              }),
-              show_labelDetails = true,
-            })(entry, vim_item)
-
-            local kind = vim.split(item.kind, "%s", { trimempty = true })
-            local icon, type = kind[1] or "", kind[2] or ""
-            item.kind = icon .. "  " .. "(" .. type .. ")"
-
-            local menu = vim.split(item.menu, "%s", { trimempty = true })
-            local source, details = menu[1] or "", menu[2] or ""
-            if source == "[tmux]" then
-              item.menu = source
-            else
-              item.menu = vim.trim(string.format("%-6s %s", source, details))
-            end
-
-            return item
-          end,
-        },
-
-        window = {
-          documentation = cmp.config.window.bordered({ border = "rounded" }),
-        },
-
-        experimental = {
-          native_menu = false,
-          ghost_text = { hl_group = "Comment" },
-        },
-      })
-
-      -- Use buffer source for `/`
-      cmp.setup.cmdline("/", {
-        completion = { autocomplete = false },
-        sources = {
-          { name = "buffer" },
-        },
-      })
-
-      -- Use cmdline & path source for ':'
-      cmp.setup.cmdline(":", {
-        mapping = cmp.mapping.preset.cmdline(),
-        completion = { autocomplete = false },
-        sources = cmp.config.sources({
-          { name = "path" },
-        }, {
-          {
-            name = "cmdline",
-            option = {
-              ignore_cmds = { "Man", "!" },
-            },
+      cmdline = {
+        keymap = { preset = "cmdline" },
+        completion = {
+          menu = {
+            auto_show = function(ctx)
+              return vim.fn.getcmdtype() == ":"
+            end,
           },
-        }),
-      })
+          ghost_text = { enabled = true },
+        },
+      },
 
-      local augroup = vim.api.nvim_create_augroup("DadbodSql", { clear = true })
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "sql", "mysql", "plsql" },
-        callback = function()
-          cmp.setup.buffer({
-            sources = {
-              { name = "vim-dadbod-completion" },
-            },
-          })
-        end,
-        group = augroup,
-        desc = "Add vim-dadbod-completion in sql files",
-      })
-    end,
+      signature = { enabled = true },
+
+      fuzzy = {
+        implementation = "prefer_rust",
+        sorts = { "exact", "score", "sort_text" },
+      },
+    },
+    opts_extend = { "sources.default" },
   },
 
   {
@@ -284,7 +170,7 @@ return {
     "brennier/quicktex",
     event = "InsertCharPre",
     init = function()
-      local jump = [[:call search('<+.*+>')
+      local jump = [[:call search('<+.*+>')
 "_c/+>/e
 ]]
       vim.g.quicktex_markdown = {
@@ -327,9 +213,9 @@ return {
         [" "] = jump,
         ["m"] = "( <+++> ) <++>",
         -- Environments
-        ["env"] = [[Bvedi\begin{pa}
+        ["env"] = [[Bvedi\begin{pa}
 <+++>
-\end{pa}]],
+\end{pa}]],
         ["ol"] = [[\begin{enumerate}
 \item <+++>
 \end{enumerate}]],
@@ -361,7 +247,7 @@ return {
         ["para"] = "(<+++>) <++>",
         ["todo"] = [[\todo{<+++>}
 <++>]],
-        ["cmd"] = [[Bi\Ea{<+++>}<++>]],
+        ["cmd"] = [[Bi\Ea{<+++>}<++>]],
         ["texroot"] = "%! TEX root = .",
         -- Citing and referencing
         ["cref"] = [[\cref{<+++>}<++>]],
@@ -556,12 +442,12 @@ return {
         ["fl"] = [[\mathcal{L} ]],
         ["fv"] = [[\mathcal{V} ]],
         -- encapsulating keywords
-        ["hat"] = [[Bi\\hat{Els} ]],
-        ["bar"] = [[Bi\\overline{Els} ]],
-        ["tild"] = [[Bi\\tilde{Els} ]],
-        ["vec"] = [[Bi\\vect{Els} ]],
-        ["comp"] = [[Bi\\underline{Els} ]],
-        ["adj"] = [[Bi\\adj{Els} ]],
+        ["hat"] = [[Bi\\hat{Els} ]],
+        ["bar"] = [[Bi\\overline{Els} ]],
+        ["tild"] = [[Bi\\tilde{Els} ]],
+        ["vec"] = [[Bi\\vect{Els} ]],
+        ["comp"] = [[Bi\\underline{Els} ]],
+        ["adj"] = [[Bi\\adj{Els} ]],
         ["star"] = [[<BS>^* ]],
         -- linear algebra
         ["matrix"] = [[

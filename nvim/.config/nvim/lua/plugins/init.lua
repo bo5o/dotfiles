@@ -455,29 +455,12 @@ return {
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    dependencies = "nvim-cmp",
     opts = {
       check_ts = true,
       enable_afterquote = true,
       enable_moveright = true,
       enable_check_bracket_line = true,
     },
-    config = function(_, opts)
-      require("nvim-autopairs").setup(opts)
-
-      local cmp = require("cmp")
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-
-      cmp.event:on(
-        "confirm_done",
-        cmp_autopairs.on_confirm_done({
-          map_char = {
-            all = "(",
-            tex = "{",
-          },
-        })
-      )
-    end,
   },
 
   {
@@ -701,7 +684,6 @@ return {
   {
     "lervag/vimtex",
     ft = "tex",
-    dependencies = { "nvim-cmp" },
     init = function()
       vim.g.vimtex_view_method = "zathura"
       vim.g.tex_flavor = "latex"
@@ -1147,7 +1129,7 @@ return {
 
   {
     "kristijanhusak/vim-dadbod-completion",
-    dependencies = { "nvim-cmp", "vim-dadbod-ui" },
+    dependencies = { "vim-dadbod-ui" },
   },
 
   {

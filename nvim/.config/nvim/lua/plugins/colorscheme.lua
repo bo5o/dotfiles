@@ -33,7 +33,13 @@ return {
             "ScrollViewCursor",
             { fg = "#7daea3", bg = "#45403d", ctermfg = 109 }
           )
-          highlight("CmpItemMenu", { fg = "#928374", ctermfg = 245 })
+          highlight("BlinkCmpMenu", { bg = "#282828" })
+          highlight("BlinkCmpMenuBorder", { fg = "#928374", bg = "#282828" })
+          highlight("BlinkCmpLabel", { bg = "NONE" })
+          highlight("BlinkCmpLabelDetail", { fg = "#928374", bg = "NONE" })
+          highlight("BlinkCmpLabelDescription", { fg = "#928374", bg = "NONE" })
+          highlight("BlinkCmpKind", { bg = "NONE" })
+          highlight("BlinkCmpSource", { bg = "NONE" })
 
           highlight("DiffDelete", { fg = "#444444" })
           highlight("DiffText", { bg = "#374141", ctermbg = 23 })
