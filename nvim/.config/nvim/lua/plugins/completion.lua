@@ -81,7 +81,13 @@ return {
       snippets = { preset = "luasnip" },
 
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "tmux" },
+        default = {
+          "lsp",
+          "path",
+          "snippets",
+          "buffer",
+          "tmux",
+        },
 
         per_filetype = {
           sql = { "dadbod", "buffer" },
@@ -109,7 +115,7 @@ return {
             name = "tmux",
             score_offset = -3,
             opts = {
-              panes = "all",
+              panes = "session",
             },
           },
           dadbod = {
