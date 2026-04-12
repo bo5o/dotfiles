@@ -1282,4 +1282,16 @@ return {
   },
 
   { "stevearc/profile.nvim" },
+
+  {
+    "echasnovski/mini.sessions",
+    version = false,
+    cmd = "Restart",
+    config = function()
+      require("mini.sessions").setup()
+      vim.api.nvim_create_user_command("Restart", function()
+        require("mini.sessions").restart()
+      end, { desc = "Restart Neovim (preserving session)" })
+    end,
+  },
 }
