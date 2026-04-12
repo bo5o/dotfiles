@@ -18,15 +18,18 @@ return {
         ["<C-n>"] = { "select_next", "fallback" },
         ["<C-p>"] = { "select_prev", "fallback" },
         ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
-        ["<C-e>"] = { "hide", "fallback" },
         ["<CR>"] = { "accept", "fallback" },
 
         ["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
         ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
+
+        ["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
+        ["<C-f>"] = { "scroll_signature_down", "scroll_documentation_down", "fallback" },
+        ["<C-b>"] = { "scroll_signature_up", "scroll_documentation_up", "fallback" },
       },
 
       appearance = {
-        nerd_font_variant = "mono",
+        nerd_font_variant = "normal",
       },
 
       completion = {
@@ -51,12 +54,12 @@ return {
                 ellipsis = false,
                 text = function(ctx)
                   local icons = {
-                    lsp = " ",
-                    path = " ",
-                    snippets = "󰩫 ",
-                    buffer = " ",
-                    tmux = " ",
-                    dadbod = "󰆼 ",
+                    lsp = "",
+                    path = "",
+                    snippets = "󰩫",
+                    buffer = "",
+                    tmux = "",
+                    dadbod = "󰆼",
                   }
                   return icons[ctx.source_id] or ctx.source_id
                 end,
@@ -117,18 +120,24 @@ return {
       },
 
       cmdline = {
-        keymap = { preset = "cmdline" },
+        keymap = {
+          preset = "cmdline",
+          ["<C-n>"] = { "fallback" },
+          ["<C-p>"] = { "fallback" },
+        },
         completion = {
-          menu = {
-            auto_show = function(ctx)
-              return vim.fn.getcmdtype() == ":"
-            end,
-          },
+          menu = { auto_show = false },
           ghost_text = { enabled = true },
         },
       },
 
-      signature = { enabled = true },
+      signature = {
+        enabled = true,
+        window = {
+          show_documentation = true,
+          border = "rounded",
+        },
+      },
 
       fuzzy = {
         implementation = "prefer_rust",

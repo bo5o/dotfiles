@@ -112,6 +112,9 @@ return {
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, "List workspace folders")
           map("<leader>cS", "<cmd>lsp restart<cr>", "Restart LSP servers")
+          map("<C-s>", function()
+            require("blink.cmp").show_signature()
+          end, "Show signature help (blink)", "i")
         end,
       })
 

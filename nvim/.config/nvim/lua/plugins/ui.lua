@@ -54,78 +54,36 @@ return {
   },
 
   {
-    "folke/noice.nvim",
+    "echasnovski/mini.notify",
+    version = "*",
     event = "VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      -- "rcarriga/nvim-notify",
-    },
     keys = {
       {
         "<leader>nh",
-        "<cmd>Noice history<cr>",
+        function()
+          require("mini.notify").show_history()
+        end,
         desc = "Notification history",
-      },
-      {
-        "<c-f>",
-        function()
-          if not require("noice.lsp").scroll(4) then
-            return "<c-f>"
-          end
-        end,
-        mode = { "n", "i", "s" },
-        desc = "Scroll hover down",
-        silent = true,
-        expr = true,
-      },
-      {
-        "<c-b>",
-        function()
-          if not require("noice.lsp").scroll(-4) then
-            return "<c-b>"
-          end
-        end,
-        mode = { "n", "i", "s" },
-        desc = "Scroll hover up",
-        silent = true,
-        expr = true,
       },
     },
     opts = {
-      cmdline = {
-        enabled = false,
+      lsp_progress = {
+        enable = true,
+        duration_last = 5000,
       },
-      messages = {
-        enabled = false,
-      },
-      popupmenu = {
-        enabled = false,
-      },
-      notify = {
-        enabled = false,
-      },
-      lsp = {
-        hover = {
-          enabled = false,
-        },
-        signature = {
-          enabled = true,
-        },
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
-          ["vim.lsp.util.stylize_markdown"] = false,
-          ["cmp.entry.get_documentation"] = false,
-        },
-      },
-      presets = {
-        lsp_doc_border = true,
-      },
-      views = {
-        mini = {
-          position = {
-            row = -2,
-          },
-        },
+      window = {
+        config = function()
+          local has_statusline = vim.o.laststatus > 0
+          local pad = vim.o.cmdheight + (has_statusline and 1 or 0)
+          return {
+            anchor = "SE",
+            col = vim.o.columns - 2,
+            row = vim.o.lines - pad,
+            border = "none",
+            title = "",
+          }
+        end,
+        winblend = 25,
       },
     },
   },

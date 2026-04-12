@@ -25,6 +25,9 @@ vim.opt.textwidth = 88
 -- Height of the command bar
 vim.opt.cmdheight = 1
 
+-- Enable experimental ui2 module
+require("vim._core.ui2").enable({ enable = true })
+
 vim.opt.whichwrap:append({ ["<"] = true, [">"] = true, h = true, l = true })
 
 -- Python provider configuration
