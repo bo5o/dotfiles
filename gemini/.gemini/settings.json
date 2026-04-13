@@ -54,5 +54,7 @@
   "experimental": {
     "skills": true
   },
+  "agents": {
+    "overrides": {}
   }
 }
