@@ -1657,7 +1657,7 @@ version = "4.1.0"
 backend = "pipx:sqlfluff"
 
 [[tools."pipx:sqruff"]]
-version = "0.37.3"
+version = "0.38.0"
 backend = "pipx:sqruff"
 
 [[tools."pipx:vim-vint"]]
