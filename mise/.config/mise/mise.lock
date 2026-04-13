@@ -409,36 +409,36 @@ checksum = "sha256:3e764ff28c7b89f4da679deac80483249fbbae3a1d512c103d54609eec090
 url = "https://github.com/wagoodman/dive/releases/download/v0.13.1/dive_0.13.1_windows_amd64.zip"
 
 [[tools.duckdb]]
-version = "1.5.1"
+version = "1.5.2"
 backend = "aqua:duckdb/duckdb"
 
 [tools.duckdb."platforms.linux-arm64"]
-checksum = "sha256:7b2c347da27309a3927e126b937277495932e9d28fc7687623561ae74521a493"
-url = "https://github.com/duckdb/duckdb/releases/download/v1.5.1/duckdb_cli-linux-arm64.zip"
+checksum = "sha256:28b15a8d78e6df62f6ec43da6b0e6397dcd28e25ab93d847df3c5c97f59375f5"
+url = "https://github.com/duckdb/duckdb/releases/download/v1.5.2/duckdb_cli-linux-arm64.zip"
 
 [tools.duckdb."platforms.linux-arm64-musl"]
-checksum = "sha256:7b2c347da27309a3927e126b937277495932e9d28fc7687623561ae74521a493"
-url = "https://github.com/duckdb/duckdb/releases/download/v1.5.1/duckdb_cli-linux-arm64.zip"
+checksum = "sha256:28b15a8d78e6df62f6ec43da6b0e6397dcd28e25ab93d847df3c5c97f59375f5"
+url = "https://github.com/duckdb/duckdb/releases/download/v1.5.2/duckdb_cli-linux-arm64.zip"
 
 [tools.duckdb."platforms.linux-x64"]
-checksum = "sha256:7414b29d4e77ae833ff170a489a59b74331f96d3fde72aa3bb8437dedbcea180"
-url = "https://github.com/duckdb/duckdb/releases/download/v1.5.1/duckdb_cli-linux-amd64.zip"
+checksum = "sha256:fc9145affabca627431e73ddaf6b8117e5c192692480c13886f227be202d5d15"
+url = "https://github.com/duckdb/duckdb/releases/download/v1.5.2/duckdb_cli-linux-amd64.zip"
 
 [tools.duckdb."platforms.linux-x64-musl"]
-checksum = "sha256:7414b29d4e77ae833ff170a489a59b74331f96d3fde72aa3bb8437dedbcea180"
-url = "https://github.com/duckdb/duckdb/releases/download/v1.5.1/duckdb_cli-linux-amd64.zip"
+checksum = "sha256:fc9145affabca627431e73ddaf6b8117e5c192692480c13886f227be202d5d15"
+url = "https://github.com/duckdb/duckdb/releases/download/v1.5.2/duckdb_cli-linux-amd64.zip"
 
 [tools.duckdb."platforms.macos-arm64"]
-checksum = "sha256:fa6bddb0e1ce80cb0ea40201b8f5fc1a28693b2a2aec3295ed4cfc41b770485d"
-url = "https://github.com/duckdb/duckdb/releases/download/v1.5.1/duckdb_cli-osx-universal.zip"
+checksum = "sha256:de789904e1b0b5f305d31b88a6fd8bd4f6ed3f63a00d95f8c7a2559a0995a2f1"
+url = "https://github.com/duckdb/duckdb/releases/download/v1.5.2/duckdb_cli-osx-universal.zip"
 
 [tools.duckdb."platforms.macos-x64"]
-checksum = "sha256:fa6bddb0e1ce80cb0ea40201b8f5fc1a28693b2a2aec3295ed4cfc41b770485d"
-url = "https://github.com/duckdb/duckdb/releases/download/v1.5.1/duckdb_cli-osx-universal.zip"
+checksum = "sha256:de789904e1b0b5f305d31b88a6fd8bd4f6ed3f63a00d95f8c7a2559a0995a2f1"
+url = "https://github.com/duckdb/duckdb/releases/download/v1.5.2/duckdb_cli-osx-universal.zip"
 
 [tools.duckdb."platforms.windows-x64"]
-checksum = "sha256:22cc4b9dcffe6b01300d2e78b5918a13cf4335305fec854a9277db3bbf2e4a83"
-url = "https://github.com/duckdb/duckdb/releases/download/v1.5.1/duckdb_cli-windows-amd64.zip"
+checksum = "sha256:d7b4f5774419c2e9eb14cb7361d3488821ef0244f8af461fd2c6fcb6f43bc3e0"
+url = "https://github.com/duckdb/duckdb/releases/download/v1.5.2/duckdb_cli-windows-amd64.zip"
 
 [[tools.dust]]
 version = "1.2.4"
