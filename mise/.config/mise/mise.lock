@@ -739,38 +739,38 @@ url = "https://github.com/cli/cli/releases/download/v2.89.0/gh_2.89.0_windows_am
 provenance = "github-attestations"
 
 [[tools."github:Ataraxy-Labs/sem"]]
-version = "0.3.15"
+version = "0.3.19"
 backend = "github:Ataraxy-Labs/sem"
 
 [tools."github:Ataraxy-Labs/sem"."platforms.linux-arm64"]
-checksum = "sha256:39b3f50ace068f7ff5a44a46d05111462657743f4a71467524f8d5e9de6aebfd"
-url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.15/sem-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/393390655"
+checksum = "sha256:0d223820b6af8d025f2c07139b29716fee991703c00c12eacf27c741dd554a1f"
+url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.19/sem-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/395026287"
 
 [tools."github:Ataraxy-Labs/sem"."platforms.linux-arm64-musl"]
-checksum = "sha256:39b3f50ace068f7ff5a44a46d05111462657743f4a71467524f8d5e9de6aebfd"
-url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.15/sem-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/393390655"
+checksum = "sha256:0d223820b6af8d025f2c07139b29716fee991703c00c12eacf27c741dd554a1f"
+url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.19/sem-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/395026287"
 
 [tools."github:Ataraxy-Labs/sem"."platforms.linux-x64"]
-checksum = "sha256:d0b7358fd86997c8394b0b170d33095095edf797bd325658453db3c59061293d"
-url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.15/sem-linux-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/393390653"
+checksum = "sha256:df84da34e69acaa46cdc318ba7a80ac11d788c41f415b1c01d2a16f4a937609f"
+url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.19/sem-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/395026286"
 
 [tools."github:Ataraxy-Labs/sem"."platforms.linux-x64-musl"]
-checksum = "sha256:d0b7358fd86997c8394b0b170d33095095edf797bd325658453db3c59061293d"
-url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.15/sem-linux-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/393390653"
+checksum = "sha256:df84da34e69acaa46cdc318ba7a80ac11d788c41f415b1c01d2a16f4a937609f"
+url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.19/sem-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/395026286"
 
 [tools."github:Ataraxy-Labs/sem"."platforms.macos-arm64"]
-checksum = "sha256:698caa160ea06f0db465358e20289601b6ea256529701291f5cc6e55cdb3b8d5"
-url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.15/sem-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/393390654"
+checksum = "sha256:f213fe17897e207599ed845ac01cedfcade69c04135f945178b541432a0e0c20"
+url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.19/sem-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/395026289"
 
 [tools."github:Ataraxy-Labs/sem"."platforms.windows-x64"]
-checksum = "sha256:30b27ad0ff2220952155c62eecf756fbe05d9ca8819989d5c19e3821f96c65f5"
-url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.15/sem-windows-x86_64.zip"
-url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/393390656"
+checksum = "sha256:4aab0b2a1e7f4d48a4d60f62e70d45bbc94999456f2cbf857d2d04a4dc9acf7d"
+url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.19/sem-windows-x86_64.zip"
+url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/395026290"
 
 [[tools."github:Myriad-Dreamin/tinymist"]]
 version = "0.14.16"
