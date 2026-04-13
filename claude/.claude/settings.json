@@ -10,6 +10,7 @@
     ],
     "defaultMode": "default"
   },
+  "model": "opus[1m]",
   "hooks": {
     "Notification": [
       {
@@ -60,7 +61,8 @@
   },
   "enabledPlugins": {
     "ast-grep@ast-grep-marketplace": false,
-    "code-simplifier@claude-plugins-official": false
+    "code-simplifier@claude-plugins-official": false,
+    "frontend-design@claude-plugins-official": false
   },
   "extraKnownMarketplaces": {
     "ast-grep-marketplace": {
@@ -81,7 +83,6 @@
     "autoAllowBashIfSandboxed": false,
     "allowUnsandboxedCommands": false
   },
-  "model": "opus[1m]",
-  "showThinkingSummaries": true,
-  "autoMemoryEnabled": false
+  "autoMemoryEnabled": false,
+  "showThinkingSummaries": true
 }
