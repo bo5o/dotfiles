@@ -632,7 +632,7 @@ version = "3.3.8"
 backend = "gem:tmuxinator"
 
 [[tools.gemini-cli]]
-version = "0.37.2"
+version = "0.38.0"
 backend = "npm:@google/gemini-cli"
 
 [[tools.git-cliff]]
