@@ -105,7 +105,7 @@ oxfmt = "0.45.0"
 "pipx:mbake" = "1.4.6"
 workmux = "0.1.182"
 lima = "2.1.1"
-"github:Ataraxy-Labs/sem" = "0.3.20"
+"github:Ataraxy-Labs/sem" = "0.3.21"
 "npm:ccusage" = "18.0.10"
 "npm:ccstatusline" = "2.2.8"
 
