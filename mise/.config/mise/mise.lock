@@ -540,28 +540,29 @@ url = "https://github.com/jdx/fnox/releases/download/v1.20.0/fnox-x86_64-pc-wind
 url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/388763121"
 
 [[tools."forgejo:forgejo-contrib/forgejo-cli"]]
-version = "0.4.1"
+version = "0.5.0"
 backend = "forgejo:forgejo-contrib/forgejo-cli"
 
 [tools."forgejo:forgejo-contrib/forgejo-cli"."platforms.linux-arm64"]
-url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.4.1/forgejo-cli-linux.tar.gz"
-url_api = "https://codeberg.org/attachments/20c8b5d5-1e87-47b8-8a05-90cd88e8f341"
+url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.5.0/forgejo-cli-aarch64-linux.tar.gz"
+url_api = "https://codeberg.org/attachments/1cdc5641-e2b9-4480-9b69-95c0643fffda"
 
 [tools."forgejo:forgejo-contrib/forgejo-cli"."platforms.linux-arm64-musl"]
-url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.4.1/forgejo-cli-linux.tar.gz"
-url_api = "https://codeberg.org/attachments/20c8b5d5-1e87-47b8-8a05-90cd88e8f341"
+url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.5.0/forgejo-cli-aarch64-linux.tar.gz"
+url_api = "https://codeberg.org/attachments/1cdc5641-e2b9-4480-9b69-95c0643fffda"
 
 [tools."forgejo:forgejo-contrib/forgejo-cli"."platforms.linux-x64"]
-url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.4.1/forgejo-cli-linux.tar.gz"
-url_api = "https://codeberg.org/attachments/20c8b5d5-1e87-47b8-8a05-90cd88e8f341"
+checksum = "blake3:d9548904371aec6ef691bcd4be6c0ee0ac0084d2165112b32d16b4d72514ce5f"
+url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.5.0/forgejo-cli-x86_64-linux.tar.gz"
+url_api = "https://codeberg.org/attachments/52f7cd01-2970-43ba-b8db-5882e749a488"
 
 [tools."forgejo:forgejo-contrib/forgejo-cli"."platforms.linux-x64-musl"]
-url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.4.1/forgejo-cli-linux.tar.gz"
-url_api = "https://codeberg.org/attachments/20c8b5d5-1e87-47b8-8a05-90cd88e8f341"
+url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.5.0/forgejo-cli-x86_64-linux.tar.gz"
+url_api = "https://codeberg.org/attachments/52f7cd01-2970-43ba-b8db-5882e749a488"
 
 [tools."forgejo:forgejo-contrib/forgejo-cli"."platforms.windows-x64"]
-url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.4.1/forgejo-cli-windows.zip"
-url_api = "https://codeberg.org/attachments/7884b06c-6ed4-42f0-b4bc-20791d89e5a1"
+url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.5.0/forgejo-cli-x86_64-windows.zip"
+url_api = "https://codeberg.org/attachments/3e230bf9-c8d2-4bb4-bd5a-92e9262d3be5"
 
 [[tools.fx]]
 version = "39.2.0"

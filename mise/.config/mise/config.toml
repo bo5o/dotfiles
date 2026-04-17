@@ -95,7 +95,7 @@ git-lfs = "3.7.1"
 fnox = "1.20.0"
 age = "1.3.1"
 git-cliff = "2.12.0"
-"forgejo:forgejo-contrib/forgejo-cli" = "0.4.1"
+"forgejo:forgejo-contrib/forgejo-cli" = "0.5.0"
 "pipx:ansible" = { version = "13.5.0", uvx_args = "--with-executables-from ansible-core --with-executables-from ansible-dev-tools --with-executables-from ansible-lint --with docker --with bitwarden-sdk" }
 "npm:@ansible/ansible-language-server" = "1.2.3"
 fx = "39.2.0"
