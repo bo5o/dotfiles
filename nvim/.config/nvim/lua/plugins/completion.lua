@@ -185,9 +185,12 @@ return {
     "brennier/quicktex",
     event = "InsertCharPre",
     init = function()
-      local jump = [[:call search('<+.*+>')
-"_c/+>/e
-]]
+      local jump = vim.api.nvim_replace_termcodes(
+        "<Esc>:call search('<+.*+>')<CR>\"_c/+>/e<CR>",
+        true,
+        false,
+        true
+      )
       vim.g.quicktex_markdown = {
         [" "] = jump,
       }
