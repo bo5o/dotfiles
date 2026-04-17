@@ -1628,7 +1628,7 @@ backend = "pipx:ansible"
 uvx_args = "--with-executables-from ansible-core --with-executables-from ansible-dev-tools --with-executables-from ansible-lint --with docker --with bitwarden-sdk"
 
 [[tools."pipx:basedpyright"]]
-version = "1.39.0"
+version = "1.39.2"
 backend = "pipx:basedpyright"
 
 [[tools."pipx:djlint"]]
