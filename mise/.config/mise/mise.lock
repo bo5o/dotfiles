@@ -1613,7 +1613,7 @@ version = "4.10.0"
 backend = "npm:vscode-langservers-extracted"
 
 [[tools."npm:yaml-language-server"]]
-version = "1.21.0"
+version = "1.22.0"
 backend = "npm:yaml-language-server"
 
 [[tools.oxfmt]]
