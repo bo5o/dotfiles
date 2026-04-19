@@ -1570,7 +1570,7 @@ version = "2.2.8"
 backend = "npm:ccstatusline"
 
 [[tools."npm:ccusage"]]
-version = "18.0.10"
+version = "18.0.11"
 backend = "npm:ccusage"
 
 [[tools."npm:dockerfile-language-server-nodejs"]]
