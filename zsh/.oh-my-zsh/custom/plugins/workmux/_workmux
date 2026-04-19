@@ -131,6 +131,15 @@ _arguments "${_arguments_options[@]}" : \
 '::name -- Worktree name or branch (defaults to current directory):_default' \
 && ret=0
 ;;
+(rename)
+_arguments "${_arguments_options[@]}" : \
+'-b[Also rename the underlying git branch to match the new handle]' \
+'--branch[Also rename the underlying git branch to match the new handle]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'*::names -- \[OLD_NAME\] NEW_NAME. If only one argument is given, renames the current worktree:_default' \
+&& ret=0
+;;
 (remove)
 _arguments "${_arguments_options[@]}" : \
 '(--all)--gone[Remove worktrees whose upstream remote branch has been deleted (e.g., after PR merge)]' \
@@ -761,6 +770,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(rename)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
 (remove)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
@@ -1038,6 +1051,7 @@ _workmux_base_commands() {
 'close:Close a worktree'\''s tmux window (keeps the worktree and branch)' \
 'resurrect:Restore worktree windows after a tmux or computer crash' \
 'merge:Merge a branch, then clean up the worktree and tmux window' \
+'rename:Rename a worktree, its tmux window/session, and (optionally) its branch' \
 'remove:Remove a worktree, tmux window, and branch without merging' \
 'rm:Remove a worktree, tmux window, and branch without merging' \
 'list:List all worktrees' \
@@ -1264,6 +1278,7 @@ _workmux_base__help_commands() {
 'close:Close a worktree'\''s tmux window (keeps the worktree and branch)' \
 'resurrect:Restore worktree windows after a tmux or computer crash' \
 'merge:Merge a branch, then clean up the worktree and tmux window' \
+'rename:Rename a worktree, its tmux window/session, and (optionally) its branch' \
 'remove:Remove a worktree, tmux window, and branch without merging' \
 'list:List all worktrees' \
 'path:Get the filesystem path of a worktree' \
@@ -1480,6 +1495,11 @@ _workmux_base__help__remove_commands() {
     local commands; commands=()
     _describe -t commands 'workmux help remove commands' commands "$@"
 }
+(( $+functions[_workmux_base__help__rename_commands] )) ||
+_workmux_base__help__rename_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help rename commands' commands "$@"
+}
 (( $+functions[_workmux_base__help__resurrect_commands] )) ||
 _workmux_base__help__resurrect_commands() {
     local commands; commands=()
@@ -1658,6 +1678,11 @@ _workmux_base__path_commands() {
 _workmux_base__remove_commands() {
     local commands; commands=()
     _describe -t commands 'workmux remove commands' commands "$@"
+}
+(( $+functions[_workmux_base__rename_commands] )) ||
+_workmux_base__rename_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux rename commands' commands "$@"
 }
 (( $+functions[_workmux_base__resurrect_commands] )) ||
 _workmux_base__resurrect_commands() {
@@ -1985,7 +2010,7 @@ _workmux() {
     # For commands that take handles or branches, offer only those
     # (no file fallback from _default). Flag completion is handled above.
     case "$cmd" in
-        open|remove|rm|path|merge|close)
+        open|remove|rm|rename|path|merge|close)
             _workmux_handles
             ;;
         send|capture|status|wait|run)
