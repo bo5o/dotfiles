@@ -151,6 +151,14 @@ return {
         actions.file_sel_to_qf(selected, opts)
         vim.cmd([[Trouble qflist open]])
       end
+      local toggle_root = function(_, opts)
+        local root = get_base_dir()
+        local cwd = vim.fn.getcwd()
+        local current = vim.fs.normalize(opts.cwd or cwd)
+        local o = vim.tbl_deep_extend("keep", { resume = true }, opts.__call_opts or {})
+        o.cwd = current == vim.fs.normalize(root) and cwd or root
+        opts.__call_fn(o)
+      end
       return {
         "telescope",
         winopts = {
@@ -178,12 +186,14 @@ return {
             ["ctrl-g"] = false,
             ["ctrl-i"] = { actions.toggle_ignore },
             ["ctrl-h"] = { actions.toggle_hidden },
+            ["ctrl-o"] = { fn = toggle_root },
           },
         },
         grep = {
           actions = {
             ["ctrl-i"] = { actions.toggle_ignore },
             ["ctrl-h"] = { actions.toggle_hidden },
+            ["ctrl-o"] = { fn = toggle_root },
             ["ctrl-q"] = { fn = file_sel_to_trouble, prefix = "select-all+" },
           },
         },
