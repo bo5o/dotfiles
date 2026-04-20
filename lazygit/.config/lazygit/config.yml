@@ -47,7 +47,7 @@ customCommands:
         command: git absorb --and-rebase
         description: 'Absorb and rebase'
         output: terminal
-      - key: 'd'
+      - key: 'n'
         context: 'files'
         command: git absorb --dry-run
         description: 'Dry run (preview)'
