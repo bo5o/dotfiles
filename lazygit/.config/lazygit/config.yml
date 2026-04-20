@@ -34,3 +34,16 @@ customCommands:
     command: git diff --staged | llm -t conventional-commit | git commit -e -F -
     description: 'Commit with AI'
     output: terminal
+  - key: 'b'
+    description: 'Absorb staged changes into past commits'
+    commandMenu:
+      - key: 'b'
+        context: 'files'
+        command: git absorb
+        description: 'Absorb (create fixup commits only)'
+        output: terminal
+      - key: 'r'
+        context: 'files'
+        command: git absorb --and-rebase
+        description: 'Absorb and rebase'
+        output: terminal
