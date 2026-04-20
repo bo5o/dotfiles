@@ -47,3 +47,13 @@ customCommands:
         command: git absorb --and-rebase
         description: 'Absorb and rebase'
         output: terminal
+      - key: 'd'
+        context: 'files'
+        command: git absorb --dry-run
+        description: 'Dry run (preview)'
+        output: terminal
+      - key: 'w'
+        context: 'files'
+        command: git absorb --whole-file --and-rebase
+        description: 'Absorb whole-file and rebase'
+        output: terminal
