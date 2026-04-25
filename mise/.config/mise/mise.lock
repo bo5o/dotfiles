@@ -377,6 +377,41 @@ url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-x86_
 checksum = "sha256:a87429ebc75343c9731debfd083b954bbd1e87011f962078b9ade92e33440348"
 url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-x86_64-pc-windows-msvc.zip"
 
+[[tools.difftastic]]
+version = "0.68.0"
+backend = "aqua:Wilfred/difftastic"
+
+[tools.difftastic.options]
+"vars.exe" = "difft"
+
+[tools.difftastic."platforms.linux-arm64"]
+checksum = "sha256:faadfb3a88c194033449092fad3a86f1179738a0b3bfc44580c83473bdb17451"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-aarch64-unknown-linux-gnu.tar.gz"
+
+[tools.difftastic."platforms.linux-arm64-musl"]
+checksum = "sha256:faadfb3a88c194033449092fad3a86f1179738a0b3bfc44580c83473bdb17451"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-aarch64-unknown-linux-gnu.tar.gz"
+
+[tools.difftastic."platforms.linux-x64"]
+checksum = "sha256:c242d19dd36deca88da9792ab81781babc309c4f3e9ccc8ce8b3a175b52e7b16"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-x86_64-unknown-linux-musl.tar.gz"
+
+[tools.difftastic."platforms.linux-x64-musl"]
+checksum = "sha256:c242d19dd36deca88da9792ab81781babc309c4f3e9ccc8ce8b3a175b52e7b16"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-x86_64-unknown-linux-musl.tar.gz"
+
+[tools.difftastic."platforms.macos-arm64"]
+checksum = "sha256:35df7904af1c1aec9570f08e1a7825301ee317f3131b6b4edbf3f6d8d209cd8c"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-aarch64-apple-darwin.tar.gz"
+
+[tools.difftastic."platforms.macos-x64"]
+checksum = "sha256:9c727343fd0fc0504cb004b6619358e5446324e09562fb8e39d66bc82e680070"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-x86_64-apple-darwin.tar.gz"
+
+[tools.difftastic."platforms.windows-x64"]
+checksum = "sha256:a87429ebc75343c9731debfd083b954bbd1e87011f962078b9ade92e33440348"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-x86_64-pc-windows-msvc.zip"
+
 [[tools.dive]]
 version = "0.13.1"
 backend = "aqua:wagoodman/dive"
@@ -1703,8 +1738,36 @@ backend = "core:python"
 compile = "true"
 
 [tools.python."platforms.linux-x64"]
-checksum = "sha256:c838ac128a6e9c944b30301880472349eca8cd1abc79fb0d359ac2a358569389"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260408/cpython-3.14.4+20260408-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
+checksum = "sha256:fe9a9c32d13870af632cbac3dfc7528ae53597e94472aa4c7d6a42e8166136cd"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260414/cpython-3.14.4+20260414-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
+
+[[tools.python]]
+version = "3.14.4"
+backend = "core:python"
+
+[tools.python."platforms.linux-arm64"]
+checksum = "sha256:b8b597fdb2f8dccdc502c11947b60a4b65eb6bce79cfa60c7ccf9b6e8352c60a"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260414/cpython-3.14.4+20260414-aarch64-unknown-linux-gnu-install_only_stripped.tar.gz"
+
+[tools.python."platforms.linux-arm64-musl"]
+checksum = "sha256:b8b597fdb2f8dccdc502c11947b60a4b65eb6bce79cfa60c7ccf9b6e8352c60a"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260414/cpython-3.14.4+20260414-aarch64-unknown-linux-gnu-install_only_stripped.tar.gz"
+
+[tools.python."platforms.linux-x64-musl"]
+checksum = "sha256:fe9a9c32d13870af632cbac3dfc7528ae53597e94472aa4c7d6a42e8166136cd"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260414/cpython-3.14.4+20260414-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
+
+[tools.python."platforms.macos-arm64"]
+checksum = "sha256:6f304f4ec30854611f23316578302235fb517cd970519ecdd11a8c4db87fd843"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260414/cpython-3.14.4+20260414-aarch64-apple-darwin-install_only_stripped.tar.gz"
+
+[tools.python."platforms.macos-x64"]
+checksum = "sha256:d51250a32fa5d9f0799c7bcb71720c27b10a3afd4a7de288120f96085d508a5a"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260414/cpython-3.14.4+20260414-x86_64-apple-darwin-install_only_stripped.tar.gz"
+
+[tools.python."platforms.windows-x64"]
+checksum = "sha256:a976991dcd085c1bb5d9a8084823a6bc8b7f9b079d8c432574a6ddd68c3a6fe1"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260414/cpython-3.14.4+20260414-x86_64-pc-windows-msvc-install_only_stripped.tar.gz"
 
 [[tools.restic]]
 version = "0.18.1"
@@ -1981,6 +2044,34 @@ url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-w
 [[tools.taplo]]
 version = "0.10.0"
 backend = "aqua:tamasfe/taplo"
+
+[tools.taplo."platforms.linux-arm64"]
+url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-aarch64.gz"
+
+[tools.taplo."platforms.linux-arm64-musl"]
+url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-aarch64.gz"
+
+[tools.taplo."platforms.linux-x64"]
+url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86_64.gz"
+
+[tools.taplo."platforms.linux-x64-musl"]
+url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86_64.gz"
+
+[tools.taplo."platforms.macos-arm64"]
+url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-aarch64.gz"
+
+[tools.taplo."platforms.macos-x64"]
+url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-x86_64.gz"
+
+[tools.taplo."platforms.windows-x64"]
+url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-windows-x86_64.zip"
+
+[[tools.taplo]]
+version = "0.10.0"
+backend = "aqua:tamasfe/taplo"
+
+[tools.taplo.options]
+"vars.matching" = "full"
 
 [tools.taplo."platforms.linux-arm64"]
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-aarch64.gz"
