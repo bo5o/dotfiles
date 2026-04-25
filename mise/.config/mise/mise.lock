@@ -1645,7 +1645,7 @@ backend = "pipx:gitlint-core"
 uvx_args = "--with gitlint"
 
 [[tools."pipx:llm"]]
-version = "0.30"
+version = "0.31"
 backend = "pipx:llm"
 
 [tools."pipx:llm".options]
