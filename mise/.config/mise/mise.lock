@@ -1606,7 +1606,7 @@ version = "15.7.3"
 backend = "npm:sql-formatter"
 
 [[tools."npm:stylelint"]]
-version = "17.8.0"
+version = "17.9.0"
 backend = "npm:stylelint"
 
 [[tools."npm:vim-language-server"]]
