@@ -1,0 +1,15 @@
+[private]
+default:
+    @just --justfile {{ source_file() }} --list --unsorted
+
+pkg_dir := join(justfile_dir(), "gnome")
+
+# dump gnome settings
+dump:
+    dconf dump /org/gnome/desktop/wm/keybindings/ > {{ pkg_dir }}/keybinds.conf
+    dconf dump /org/gnome/shell/extensions/paperwm/ > {{ pkg_dir }}/paperwm.conf
+
+# load gnome settings
+load:
+    dconf load /org/gnome/desktop/wm/keybindings/ < {{ pkg_dir }}/keybinds.conf
+    dconf load /org/gnome/shell/extensions/paperwm/ < {{ pkg_dir }}/paperwm.conf

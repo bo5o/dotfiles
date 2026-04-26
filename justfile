@@ -3,8 +3,9 @@ mod? yazi '~/.just/yazi'
 mod? zsh '~/.just/zsh'
 mod? docker '~/.just/docker'
 mod? workmux '~/.just/workmux'
+mod? gnome '~/.just/gnome'
 
-packages := "zsh mise yazi tmux nvim lazygit git bat wezterm psql llm"
+packages := "zsh mise yazi tmux nvim lazygit git bat wezterm psql llm gnome"
 
 [private]
 default:
