@@ -349,38 +349,6 @@ url = "https://github.com/dandavison/delta/releases/download/0.19.2/delta-0.19.2
 version = "0.68.0"
 backend = "aqua:Wilfred/difftastic"
 
-[tools.difftastic."platforms.linux-arm64"]
-checksum = "sha256:faadfb3a88c194033449092fad3a86f1179738a0b3bfc44580c83473bdb17451"
-url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-aarch64-unknown-linux-gnu.tar.gz"
-
-[tools.difftastic."platforms.linux-arm64-musl"]
-checksum = "sha256:faadfb3a88c194033449092fad3a86f1179738a0b3bfc44580c83473bdb17451"
-url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-aarch64-unknown-linux-gnu.tar.gz"
-
-[tools.difftastic."platforms.linux-x64"]
-checksum = "sha256:c242d19dd36deca88da9792ab81781babc309c4f3e9ccc8ce8b3a175b52e7b16"
-url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-x86_64-unknown-linux-musl.tar.gz"
-
-[tools.difftastic."platforms.linux-x64-musl"]
-checksum = "sha256:c242d19dd36deca88da9792ab81781babc309c4f3e9ccc8ce8b3a175b52e7b16"
-url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-x86_64-unknown-linux-musl.tar.gz"
-
-[tools.difftastic."platforms.macos-arm64"]
-checksum = "sha256:35df7904af1c1aec9570f08e1a7825301ee317f3131b6b4edbf3f6d8d209cd8c"
-url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-aarch64-apple-darwin.tar.gz"
-
-[tools.difftastic."platforms.macos-x64"]
-checksum = "sha256:9c727343fd0fc0504cb004b6619358e5446324e09562fb8e39d66bc82e680070"
-url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-x86_64-apple-darwin.tar.gz"
-
-[tools.difftastic."platforms.windows-x64"]
-checksum = "sha256:a87429ebc75343c9731debfd083b954bbd1e87011f962078b9ade92e33440348"
-url = "https://github.com/Wilfred/difftastic/releases/download/0.68.0/difft-x86_64-pc-windows-msvc.zip"
-
-[[tools.difftastic]]
-version = "0.68.0"
-backend = "aqua:Wilfred/difftastic"
-
 [tools.difftastic.options]
 "vars.exe" = "difft"
 
@@ -815,39 +783,39 @@ version = "0.14.16"
 backend = "github:Myriad-Dreamin/tinymist"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-arm64"]
-checksum = "sha256:3aef71a2c428e25c2ab1e293391c58b842ea22479f502ec5f2eea2e3b6fe85b4"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/tinymist-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100385"
+checksum = "sha256:29f5522cdf314c3938c0a77b559ba36cdcc99e4c7c7c9e60e76d674697ab3d54"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100475"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-arm64-musl"]
-checksum = "sha256:b9d860af30f9212c18cc4ced160c2bf42d6e2acac3f968d9dd5d96eb6738bfec"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/tinymist-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100387"
+checksum = "sha256:3803d006e4c05630e08dfefaecc82804063b280b50217a64884432caa520c291"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100477"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-x64"]
-checksum = "sha256:c36e3ec2bcbc37610a4b21c032efe78928f4925b1a8987b30997914ef650af03"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/tinymist-viewer-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100452"
+checksum = "sha256:e0a8ef4da3d38b99e9e89291f5ff0db4967fa36f9410740f0ca14d6cee1d12e3"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100522"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-x64-musl"]
-checksum = "sha256:2c7b82ae82596cb0385bdf0b044c2f3b002fbde142b902b70acb099ca097b626"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/tinymist-viewer-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100454"
+checksum = "sha256:13bc585dd34323418795fe4f7323029bbc94bcb8c6c0b054dc50261ba39b00f0"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100524"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.macos-arm64"]
-checksum = "sha256:3c077f74d1caa6e2cbb5d4726e5ef4f5f49e7ecb4a6742a2e7a7e72e7133ba87"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/tinymist-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100379"
+checksum = "sha256:a8cd761bf1ea48ca1983c82c633c8c81251ba82faa4d7083c6c3392293c07e62"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100470"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.macos-x64"]
-checksum = "sha256:e9defc4d074e0e6a188746f187e3971590c212f60476bbfb77950a8cb70f3b8f"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/tinymist-viewer-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100447"
+checksum = "sha256:3dcd87d942443561ce837850e6f9f15f215520aed7ea12167ffb373c1e8c25cc"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100515"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.windows-x64"]
-checksum = "sha256:55bc8b757517e1114ed7b7d317bf78562c5e259eab4ecf16ecce359215ab39d9"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/tinymist-viewer-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100450"
+checksum = "sha256:c42a16416b089db73558a3867f194036e50d3e85461206826cd390608d9a0cc6"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100517"
 
 [[tools."github:bitwarden/sdk-sm"]]
 version = "2.0.0"
@@ -1086,39 +1054,39 @@ version = "0.24.0"
 backend = "github:supabase-community/postgres-language-server"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.linux-arm64"]
-checksum = "sha256:0ac61662d31c59acb72528a1db8699c275a4e632305589ef586eef8d029c4ba7"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_aarch64-unknown-linux-gnu"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975745"
+checksum = "sha256:b8234050aa4fb5412dbc5a35172e66de440ee8bf1754a66eaaa0e33670a33bf0"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgrestools_aarch64-unknown-linux-gnu"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975743"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.linux-arm64-musl"]
-checksum = "sha256:0ac61662d31c59acb72528a1db8699c275a4e632305589ef586eef8d029c4ba7"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_aarch64-unknown-linux-gnu"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975745"
+checksum = "sha256:b8234050aa4fb5412dbc5a35172e66de440ee8bf1754a66eaaa0e33670a33bf0"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgrestools_aarch64-unknown-linux-gnu"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975743"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.linux-x64"]
-checksum = "sha256:8f29540c66002b4a735d5e3a5640c2e1d3fe2042ce38eff2eea8b2efdaa34794"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_x86_64-unknown-linux-gnu"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975752"
+checksum = "sha256:fdd904e5cda0c51f11a848d1da29d8ed242db18bb0507e7b1d3c7c939cb3cb2f"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgrestools_x86_64-unknown-linux-gnu"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975738"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.linux-x64-musl"]
-checksum = "sha256:0d0e9add79baf1b6c2acd59417a483c33f30015ff354f1b8e4c04cff26622473"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_x86_64-unknown-linux-musl"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975751"
+checksum = "sha256:1c51f47061041f67585392a3d9372da50f0cd3de76348c87bb1d39a5c641ce3d"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgrestools_x86_64-unknown-linux-musl"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975739"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.macos-arm64"]
-checksum = "sha256:1f6836ff7b729e788699220da74ec40e5de77488e0fa6c72e4492d63e9f4f1ac"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_aarch64-apple-darwin"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975750"
+checksum = "sha256:f0dbc4d0c1e7aa09ca73114829fc3f1f6211c2be759428f8f18f75d12afff982"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgrestools_aarch64-apple-darwin"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975746"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.macos-x64"]
-checksum = "sha256:85a69dd1ddd050ce0c547cf627bbc92d5590987c0ea3539e662b5c428db6a310"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_x86_64-apple-darwin"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975744"
+checksum = "sha256:711f64fc4c4304075a149c567719b6dbe4131942718929e17015cd2bc7e25777"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgrestools_x86_64-apple-darwin"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975741"
 
 [tools."github:supabase-community/postgres-language-server"."platforms.windows-x64"]
-checksum = "sha256:6e9dfd69ddddf683fe5af6f3288cfa3f48f58b377471383b655a87e3148481bd"
-url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgres-language-server_x86_64-pc-windows-msvc.exe"
-url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975748"
+checksum = "sha256:5041e684fdd138961b67ab859c6e90dd817f22c8ff278882c7cbc14382a60eb1"
+url = "https://github.com/supabase-community/postgres-language-server/releases/download/0.24.0/postgrestools_x86_64-pc-windows-msvc.exe"
+url_api = "https://api.github.com/repos/supabase-community/postgres-language-server/releases/assets/393975740"
 
 [[tools."github:tummychow/git-absorb"]]
 version = "0.9.0"
@@ -2040,31 +2008,6 @@ url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-m
 [tools.stylua."platforms.windows-x64"]
 checksum = "sha256:9b1627b6034aa7ea0ce80485d2a07e777447548839a40acda6e30824a2bba07a"
 url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-windows-x86_64.zip"
-
-[[tools.taplo]]
-version = "0.10.0"
-backend = "aqua:tamasfe/taplo"
-
-[tools.taplo."platforms.linux-arm64"]
-url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-aarch64.gz"
-
-[tools.taplo."platforms.linux-arm64-musl"]
-url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-aarch64.gz"
-
-[tools.taplo."platforms.linux-x64"]
-url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86_64.gz"
-
-[tools.taplo."platforms.linux-x64-musl"]
-url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86_64.gz"
-
-[tools.taplo."platforms.macos-arm64"]
-url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-aarch64.gz"
-
-[tools.taplo."platforms.macos-x64"]
-url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-x86_64.gz"
-
-[tools.taplo."platforms.windows-x64"]
-url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-windows-x86_64.zip"
 
 [[tools.taplo]]
 version = "0.10.0"
