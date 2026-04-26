@@ -84,5 +84,7 @@
     "allowUnsandboxedCommands": false
   },
   "autoMemoryEnabled": false,
-  "showThinkingSummaries": true
+  "showThinkingSummaries": true,
+  "theme": "dark-ansi",
+  "editorMode": "vim"
 }
