@@ -970,43 +970,43 @@ url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.4.8/lazysql_
 url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/357474013"
 
 [[tools."github:opentofu/tofu-ls"]]
-version = "0.4.0"
+version = "0.4.1"
 backend = "github:opentofu/tofu-ls"
 
 [tools."github:opentofu/tofu-ls"."platforms.linux-arm64"]
-checksum = "sha256:461c95600e15ca2a497e89de27a4232d40a495abc8e2cad0674c2935d0fff726"
-url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.0/tofu-ls_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/370695621"
+checksum = "sha256:7bd503c554db6c85d44344f5bb58ca811909bce518f5d5b70076563d989ac30b"
+url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.1/tofu-ls_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/404338540"
 
 [tools."github:opentofu/tofu-ls"."platforms.linux-arm64-musl"]
-checksum = "sha256:461c95600e15ca2a497e89de27a4232d40a495abc8e2cad0674c2935d0fff726"
-url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.0/tofu-ls_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/370695621"
+checksum = "sha256:7bd503c554db6c85d44344f5bb58ca811909bce518f5d5b70076563d989ac30b"
+url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.1/tofu-ls_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/404338540"
 
 [tools."github:opentofu/tofu-ls"."platforms.linux-x64"]
-checksum = "sha256:6e7fd3fd9f68d1dbea514ff20ca3767b5cbd566b716cef9332487797d771c644"
-url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.0/tofu-ls_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/370695604"
+checksum = "sha256:cd95bbf1256a3aac1528fb5914ede4b230fcdc27b476d2a06ba95163d443cc22"
+url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.1/tofu-ls_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/404338501"
 
 [tools."github:opentofu/tofu-ls"."platforms.linux-x64-musl"]
-checksum = "sha256:6e7fd3fd9f68d1dbea514ff20ca3767b5cbd566b716cef9332487797d771c644"
-url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.0/tofu-ls_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/370695604"
+checksum = "sha256:cd95bbf1256a3aac1528fb5914ede4b230fcdc27b476d2a06ba95163d443cc22"
+url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.1/tofu-ls_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/404338501"
 
 [tools."github:opentofu/tofu-ls"."platforms.macos-arm64"]
-checksum = "sha256:96eb8be1ac88af106d71c30c9a5416812144203e32686afef71a0bc672045ea2"
-url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.0/tofu-ls_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/370695602"
+checksum = "sha256:776951a9966c0acc08bfb8153da1b71c02ef7720916c1b43e6a9c2bca18698d5"
+url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.1/tofu-ls_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/404338503"
 
 [tools."github:opentofu/tofu-ls"."platforms.macos-x64"]
-checksum = "sha256:37c092797a9780a6e08b7d2575f63dc0641ce32a4031d0313224e04b190589b1"
-url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.0/tofu-ls_Darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/370695619"
+checksum = "sha256:59029bd1b7d079b71b9541bd8a38db785068fc22bad04bf5d999c342acf8e931"
+url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.1/tofu-ls_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/404338500"
 
 [tools."github:opentofu/tofu-ls"."platforms.windows-x64"]
-checksum = "sha256:e8be373c25e4c2011d7912103e1403cc330b7cad6c291bbb69764c8ead168103"
-url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.0/tofu-ls_Windows_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/370695601"
+checksum = "sha256:801ceaeab170295f79d3cbc7bb090cf663148a29aa95655cd2fd45f36f40fdec"
+url = "https://github.com/opentofu/tofu-ls/releases/download/v0.4.1/tofu-ls_Windows_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/404338532"
 
 [[tools."github:psviderski/unregistry"]]
 version = "0.4.2"
