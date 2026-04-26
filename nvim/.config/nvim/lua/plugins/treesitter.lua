@@ -64,6 +64,7 @@ return {
         "json5",
         "just",
         "java",
+        "kdl",
         "lua",
         "markdown",
         "markdown_inline",
