@@ -1294,4 +1294,13 @@ return {
       end, { desc = "Restart Neovim (preserving session)" })
     end,
   },
+
+  {
+    "andrewferrier/wrapping.nvim",
+    ft = "markdown",
+    opts = {
+      create_keymaps = false,
+      auto_set_mode_filetype_allowlist = { "markdown" },
+    },
+  },
 }
