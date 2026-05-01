@@ -162,18 +162,6 @@ return {
         },
         dockerls = {},
         docker_compose_language_service = {},
-        eslint = {
-          on_attach = function(client, bufnr)
-            if eslint_on_attach ~= nil then
-              eslint_on_attach(client, bufnr)
-            end
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              buffer = bufnr,
-              command = "LspEslintFixAll",
-            })
-          end,
-          workspace_required = true,
-        },
         html = {
           capabilities = {
             textDocument = {
