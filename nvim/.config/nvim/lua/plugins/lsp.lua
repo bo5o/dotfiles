@@ -624,7 +624,7 @@ return {
           ocaml = { "ocamlformat" },
           query = { lsp_format = "prefer" },
           caddy = { "caddyfmt" },
-          vue = { "oxfmt", stop_after_first = true },
+          vue = { "oxfmt", lsp_format = "never" },
           ["_"] = { "trim_whitespace" },
         },
         formatters = {
