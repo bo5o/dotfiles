@@ -149,7 +149,6 @@ return {
           },
         },
         bashls = {},
-        biome = {},
         cssls = {
           capabilities = {
             textDocument = {
