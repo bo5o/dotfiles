@@ -286,8 +286,8 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (sidebar)
 _arguments "${_arguments_options[@]}" : \
-'-s[Scope sidebar to current tmux session only]' \
-'--session[Scope sidebar to current tmux session only]' \
+'-s[Scope sidebar to this session, or toggle this session off when global sidebar is active]' \
+'--session[Scope sidebar to this session, or toggle this session off when global sidebar is active]' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_workmux_base__sidebar_commands" \
