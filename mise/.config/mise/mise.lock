@@ -1542,7 +1542,7 @@ version = "0.31.4"
 backend = "npm:@agentclientprotocol/claude-agent-acp"
 
 [[tools."npm:@ansible/ansible-language-server"]]
-version = "26.4.4"
+version = "26.4.5"
 backend = "npm:@ansible/ansible-language-server"
 
 [[tools."npm:@microsoft/compose-language-service"]]
