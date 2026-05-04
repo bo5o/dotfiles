@@ -275,7 +275,25 @@ return {
         DiffviewOpen = {},
         DiffviewFileHistory = {},
       },
-      hooks = {}, -- See ':h diffview-config-hooks'
+      hooks = { -- See ':h diffview-config-hooks'
+        diff_buf_win_enter = function(bufnr)
+          -- Re-trigger nvim-treesitter-context's on_attach so it disables
+          -- itself on diff buffers (it only evaluates on_attach once per
+          -- buffer on BufReadPost, so working-tree files loaded before
+          -- diffview opened would otherwise keep context enabled and
+          -- desync scrollbind between the diff panes).
+          pcall(vim.api.nvim_exec_autocmds, "BufReadPost", {
+            buffer = bufnr,
+            group = "treesitter_context_update",
+          })
+        end,
+        view_closed = function()
+          local ok, tsc = pcall(require, "treesitter-context")
+          if ok and tsc.enabled() then
+            tsc.enable()
+          end
+        end,
+      },
     },
   },
 }

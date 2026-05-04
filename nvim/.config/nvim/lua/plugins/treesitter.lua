@@ -212,7 +212,13 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     dependencies = "nvim-treesitter",
-    opts = { separator = "-", max_lines = 3 },
+    opts = {
+      separator = "-",
+      max_lines = 3,
+      on_attach = function(buf)
+        return not vim.b[buf].ts_context_disable
+      end,
+    },
   },
 
   -- Navigate around treesitter nodes
