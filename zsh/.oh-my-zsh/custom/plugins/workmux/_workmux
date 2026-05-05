@@ -375,6 +375,12 @@ _arguments "${_arguments_options[@]}" : \
 '--help[Print help]' \
 && ret=0
 ;;
+(_sidebar-reflow-all)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
 (_sidebar-daemon)
 _arguments "${_arguments_options[@]}" : \
 '-h[Print help]' \
@@ -874,6 +880,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(_sidebar-reflow-all)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
 (_sidebar-daemon)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
@@ -1076,6 +1086,7 @@ _workmux_base_commands() {
 '_sidebar-run:Run the sidebar TUI (internal use)' \
 '_sidebar-sync:Sync sidebar into a window (internal use, called by tmux hooks)' \
 '_sidebar-reflow:Reflow sidebar layout after window resize (internal use, called by tmux hooks)' \
+'_sidebar-reflow-all:Reflow sidebar layouts in all windows (internal use, called by tmux hooks)' \
 '_sidebar-daemon:Run the sidebar daemon (internal use)' \
 'dashboard:Show a TUI dashboard of all active workmux agents across all sessions' \
 'config:Manage global configuration' \
@@ -1137,6 +1148,11 @@ _workmux_base___sidebar-daemon_commands() {
 _workmux_base___sidebar-reflow_commands() {
     local commands; commands=()
     _describe -t commands 'workmux _sidebar-reflow commands' commands "$@"
+}
+(( $+functions[_workmux_base___sidebar-reflow-all_commands] )) ||
+_workmux_base___sidebar-reflow-all_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux _sidebar-reflow-all commands' commands "$@"
 }
 (( $+functions[_workmux_base___sidebar-run_commands] )) ||
 _workmux_base___sidebar-run_commands() {
@@ -1301,6 +1317,7 @@ _workmux_base__help_commands() {
 '_sidebar-run:Run the sidebar TUI (internal use)' \
 '_sidebar-sync:Sync sidebar into a window (internal use, called by tmux hooks)' \
 '_sidebar-reflow:Reflow sidebar layout after window resize (internal use, called by tmux hooks)' \
+'_sidebar-reflow-all:Reflow sidebar layouts in all windows (internal use, called by tmux hooks)' \
 '_sidebar-daemon:Run the sidebar daemon (internal use)' \
 'dashboard:Show a TUI dashboard of all active workmux agents across all sessions' \
 'config:Manage global configuration' \
@@ -1362,6 +1379,11 @@ _workmux_base__help___sidebar-daemon_commands() {
 _workmux_base__help___sidebar-reflow_commands() {
     local commands; commands=()
     _describe -t commands 'workmux help _sidebar-reflow commands' commands "$@"
+}
+(( $+functions[_workmux_base__help___sidebar-reflow-all_commands] )) ||
+_workmux_base__help___sidebar-reflow-all_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help _sidebar-reflow-all commands' commands "$@"
 }
 (( $+functions[_workmux_base__help___sidebar-run_commands] )) ||
 _workmux_base__help___sidebar-run_commands() {
