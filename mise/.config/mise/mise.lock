@@ -2331,36 +2331,36 @@ checksum = "sha256:2aee32f1de46a20672f48c25df3018839798bd509143f2ce05fdab1550ff5
 url = "https://github.com/mikefarah/yq/releases/download/v4.53.2/yq_windows_amd64.exe"
 
 [[tools.zellij]]
-version = "0.44.1"
+version = "0.44.2"
 backend = "aqua:zellij-org/zellij"
 
 [tools.zellij."platforms.linux-arm64"]
-checksum = "sha256:6f028bb569d29be968c961249c5f80d5336ad4ad4b3cd79af8e32afab57b0948"
-url = "https://github.com/zellij-org/zellij/releases/download/v0.44.1/zellij-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:e0b2ddbf050d58577b09b2a032a54f1a3fac0e214d1605c5969e8936340fff6b"
+url = "https://github.com/zellij-org/zellij/releases/download/v0.44.2/zellij-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.zellij."platforms.linux-arm64-musl"]
-checksum = "sha256:6f028bb569d29be968c961249c5f80d5336ad4ad4b3cd79af8e32afab57b0948"
-url = "https://github.com/zellij-org/zellij/releases/download/v0.44.1/zellij-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:e0b2ddbf050d58577b09b2a032a54f1a3fac0e214d1605c5969e8936340fff6b"
+url = "https://github.com/zellij-org/zellij/releases/download/v0.44.2/zellij-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.zellij."platforms.linux-x64"]
-checksum = "sha256:669825021d529fca5d939888263c9d2a90762145191fa07581a15250e8af2b49"
-url = "https://github.com/zellij-org/zellij/releases/download/v0.44.1/zellij-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:26e1753b4c8451912523c7d8700c5aed75392ea57f0b1c988560f3bbc7775744"
+url = "https://github.com/zellij-org/zellij/releases/download/v0.44.2/zellij-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.zellij."platforms.linux-x64-musl"]
-checksum = "sha256:669825021d529fca5d939888263c9d2a90762145191fa07581a15250e8af2b49"
-url = "https://github.com/zellij-org/zellij/releases/download/v0.44.1/zellij-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:26e1753b4c8451912523c7d8700c5aed75392ea57f0b1c988560f3bbc7775744"
+url = "https://github.com/zellij-org/zellij/releases/download/v0.44.2/zellij-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.zellij."platforms.macos-arm64"]
-checksum = "sha256:544c19a9353f0ecc52877ef1e80b1c1dcbf8f258b4817077f9520099c12cc30c"
-url = "https://github.com/zellij-org/zellij/releases/download/v0.44.1/zellij-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:2f914c95d9d57e15573cbfb3848071b8f34a0b7f3f8951876b3de20ec9e32ac7"
+url = "https://github.com/zellij-org/zellij/releases/download/v0.44.2/zellij-aarch64-apple-darwin.tar.gz"
 
 [tools.zellij."platforms.macos-x64"]
-checksum = "sha256:590071e02f7733d25201ec9a97c5bd661ac7da3cbdf2ae52a11685b36654b7dc"
-url = "https://github.com/zellij-org/zellij/releases/download/v0.44.1/zellij-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:1150710e3f78211144a7b0e58235b8fa459ea3797b2063cfa03b183487298cd0"
+url = "https://github.com/zellij-org/zellij/releases/download/v0.44.2/zellij-x86_64-apple-darwin.tar.gz"
 
 [tools.zellij."platforms.windows-x64"]
-checksum = "sha256:69d7a913de40388bdb64a440b82e6ed2ac4c7232e88d0899b085c88550ec8b8f"
-url = "https://github.com/zellij-org/zellij/releases/download/v0.44.1/zellij-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:9e5c90d99d8def4042dd2b464dc62db7cbcb496353525c3321fc57eb4f83a306"
+url = "https://github.com/zellij-org/zellij/releases/download/v0.44.2/zellij-x86_64-pc-windows-msvc.zip"
 
 [[tools.zoxide]]
 version = "0.9.9"
