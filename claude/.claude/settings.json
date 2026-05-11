@@ -1,12 +1,16 @@
 {
   "permissions": {
     "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)",
-      "Read(./.mise.local.toml)",
-      "Read(./.mise.*.local.toml)",
-      "Read(./.fnox.local.toml)",
-      "Read(./.fnox.*.local.toml)"
+      "Read(.env)",
+      "Read(.env.*)",
+      "Read(.mise.local.toml)",
+      "Read(.mise.*.local.toml)",
+      "Read(mise.local.toml)",
+      "Read(mise.*.local.toml)",
+      "Read(.fnox.local.toml)",
+      "Read(.fnox.*.local.toml)",
+      "Read(fnox.local.toml)",
+      "Read(fnox.*.local.toml)"
     ],
     "defaultMode": "default"
   },
