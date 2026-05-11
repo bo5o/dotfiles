@@ -2157,38 +2157,38 @@ url = "https://ftp.postgresql.org/pub/source/v17.9/postgresql-17.9.tar.gz"
 url = "https://ftp.postgresql.org/pub/source/v17.9/postgresql-17.9.tar.gz"
 
 [[tools.workmux]]
-version = "0.1.202"
+version = "0.1.204"
 backend = "github:raine/workmux"
 
 [tools.workmux."platforms.linux-arm64"]
-checksum = "sha256:e41809b25071799325dad07c1851cc2b690556d01aaac681f1da2849337a95e7"
-url = "https://github.com/raine/workmux/releases/download/v0.1.202/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/412912140"
+checksum = "sha256:992e8d6462f8a9d585d1b64286ab249d50f8c25fbb05fb090fb433c9a5b4bf71"
+url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175972"
 
 [tools.workmux."platforms.linux-arm64-musl"]
-checksum = "sha256:e41809b25071799325dad07c1851cc2b690556d01aaac681f1da2849337a95e7"
-url = "https://github.com/raine/workmux/releases/download/v0.1.202/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/412912140"
+checksum = "sha256:992e8d6462f8a9d585d1b64286ab249d50f8c25fbb05fb090fb433c9a5b4bf71"
+url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175972"
 
 [tools.workmux."platforms.linux-x64"]
-checksum = "sha256:5df28033a307d353999cf87a4dee27a58d3257c684862a29b1121dc7a15c3a98"
-url = "https://github.com/raine/workmux/releases/download/v0.1.202/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/412912138"
+checksum = "sha256:7c5e570d3ec075287d101bf89aa51a4dd22ee5030edfb9c3915535194ad982ad"
+url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175967"
 
 [tools.workmux."platforms.linux-x64-musl"]
-checksum = "sha256:5df28033a307d353999cf87a4dee27a58d3257c684862a29b1121dc7a15c3a98"
-url = "https://github.com/raine/workmux/releases/download/v0.1.202/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/412912138"
+checksum = "sha256:7c5e570d3ec075287d101bf89aa51a4dd22ee5030edfb9c3915535194ad982ad"
+url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175967"
 
 [tools.workmux."platforms.macos-arm64"]
-checksum = "sha256:602b69dfc9749e65dc72b7d308c2eed0211a118878376fcdddd5dccd10d6c36a"
-url = "https://github.com/raine/workmux/releases/download/v0.1.202/workmux-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/412912143"
+checksum = "sha256:b2c51a91c942305c1eef699f6b0f142069f2a83944067b984021bf230644f8c5"
+url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175974"
 
 [tools.workmux."platforms.macos-x64"]
-checksum = "sha256:e151550b25fbc25b010e74a092021357e336d5db4b5b2fabd2ff7249d13c61cd"
-url = "https://github.com/raine/workmux/releases/download/v0.1.202/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/412912139"
+checksum = "sha256:bdf7be5f321266c69625563809761d0c33db62092a95672ada5ffc84221ebf44"
+url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175970"
 
 [[tools.xh]]
 version = "0.25.3"
