@@ -1558,7 +1558,7 @@ version = "5.6.0"
 backend = "npm:bash-language-server"
 
 [[tools."npm:ccstatusline"]]
-version = "2.2.12"
+version = "2.2.13"
 backend = "npm:ccstatusline"
 
 [[tools."npm:ccusage"]]
