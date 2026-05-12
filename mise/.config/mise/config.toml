@@ -53,7 +53,7 @@ shfmt = "3.13.1"
 "npm:markuplint" = "4.18.3"
 marksman = "2026-02-08"
 lua-language-server = "3.18.2"
-"npm:sql-formatter" = "15.7.3"
+"npm:sql-formatter" = "15.7.4"
 "npm:stylelint" = "17.11.0"
 stylua = "2.4.1"
 taplo = { version = "0.10.0", matching = "full" }
