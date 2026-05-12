@@ -1589,7 +1589,7 @@ version = "0.48.0"
 backend = "npm:markdownlint-cli"
 
 [[tools."npm:markuplint"]]
-version = "4.18.1"
+version = "4.18.3"
 backend = "npm:markuplint"
 
 [[tools."npm:mcp-hub"]]
