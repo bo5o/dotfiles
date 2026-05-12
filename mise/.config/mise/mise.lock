@@ -767,43 +767,50 @@ url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.5.4/sem-windows-
 url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/417845866"
 
 [[tools."github:Myriad-Dreamin/tinymist"]]
-version = "0.14.16"
+version = "0.14.18"
 backend = "github:Myriad-Dreamin/tinymist"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-arm64"]
-checksum = "sha256:29f5522cdf314c3938c0a77b559ba36cdcc99e4c7c7c9e60e76d674697ab3d54"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100475"
+checksum = "sha256:2192192aba4e0331487f9b1828b73826274ff2593ce9a3539d85e5ed17c552da"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416927975"
+github_attestations = "unavailable"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-arm64-musl"]
-checksum = "sha256:3803d006e4c05630e08dfefaecc82804063b280b50217a64884432caa520c291"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100477"
+checksum = "sha256:d1cea2d0642c614098578cfb6a486f4740fb9baadfe33d402131065069812df4"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416927976"
+github_attestations = "unavailable"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-x64"]
-checksum = "sha256:e0a8ef4da3d38b99e9e89291f5ff0db4967fa36f9410740f0ca14d6cee1d12e3"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100522"
+checksum = "sha256:17e2ab04b0151e51cba58e11c1ed172c0d3e83d9b18ba01d26d8998917639e8a"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416928017"
+github_attestations = "unavailable"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-x64-musl"]
-checksum = "sha256:13bc585dd34323418795fe4f7323029bbc94bcb8c6c0b054dc50261ba39b00f0"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100524"
+checksum = "sha256:13fcf59d6f53bb96d7f721ee3d3cc41dadd1ea573f8a05581f9401f6aec520e6"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416928018"
+github_attestations = "unavailable"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.macos-arm64"]
-checksum = "sha256:a8cd761bf1ea48ca1983c82c633c8c81251ba82faa4d7083c6c3392293c07e62"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100470"
+checksum = "sha256:a8f900277673fdd283a1992af5b8e3d52de36d0557f8e27c2c7d0086850e9d83"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416927970"
+github_attestations = "unavailable"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.macos-x64"]
-checksum = "sha256:3dcd87d942443561ce837850e6f9f15f215520aed7ea12167ffb373c1e8c25cc"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100515"
+checksum = "sha256:c630b1d42bfd84851eab19b9c11d83d829190b4f73a51114846c8a9dd67ad16d"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416928010"
+github_attestations = "unavailable"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.windows-x64"]
-checksum = "sha256:c42a16416b089db73558a3867f194036e50d3e85461206826cd390608d9a0cc6"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.16/typlite-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/389100517"
+checksum = "sha256:7cce804530c989cffec6422f558c88da70d5e6372a51570eaa94c429fe9fea4f"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416928012"
+github_attestations = "unavailable"
 
 [[tools."github:bitwarden/sdk-sm"]]
 version = "2.0.0"
