@@ -15,7 +15,7 @@ _ruff() {
 
     local context curcontext="$curcontext" state line
     _arguments "${_arguments_options[@]}" : \
-'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
+'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option (e.g., \`--config "lint.line-length = 100"\` or \`--config "format.quote-style = '\''single'\''"\`). Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--color=[Control when colored output is used]:WHEN:((auto\:"Display colors if the output goes to an interactive terminal"
 always\:"Always display colors"
 never\:"Never display colors"))' \
@@ -511,6 +511,7 @@ TID251\:"banned-api"
 TID252\:"relative-imports"
 TID253\:"banned-module-level-imports"
 TID254\:"lazy-import-mismatch"
+TID255\:"lazy-import-immediately-resolved"
 TD001\:"invalid-todo-tag"
 TD002\:"missing-todo-author"
 TD003\:"missing-todo-link"
@@ -1526,6 +1527,7 @@ TID251\:"banned-api"
 TID252\:"relative-imports"
 TID253\:"banned-module-level-imports"
 TID254\:"lazy-import-mismatch"
+TID255\:"lazy-import-immediately-resolved"
 TD001\:"invalid-todo-tag"
 TD002\:"missing-todo-author"
 TD003\:"missing-todo-link"
@@ -2541,6 +2543,7 @@ TID251\:"banned-api"
 TID252\:"relative-imports"
 TID253\:"banned-module-level-imports"
 TID254\:"lazy-import-mismatch"
+TID255\:"lazy-import-immediately-resolved"
 TD001\:"invalid-todo-tag"
 TD002\:"missing-todo-author"
 TD003\:"missing-todo-link"
@@ -3556,6 +3559,7 @@ TID251\:"banned-api"
 TID252\:"relative-imports"
 TID253\:"banned-module-level-imports"
 TID254\:"lazy-import-mismatch"
+TID255\:"lazy-import-immediately-resolved"
 TD001\:"invalid-todo-tag"
 TD002\:"missing-todo-author"
 TD003\:"missing-todo-link"
@@ -4575,6 +4579,7 @@ TID251\:"banned-api"
 TID252\:"relative-imports"
 TID253\:"banned-module-level-imports"
 TID254\:"lazy-import-mismatch"
+TID255\:"lazy-import-immediately-resolved"
 TD001\:"invalid-todo-tag"
 TD002\:"missing-todo-author"
 TD003\:"missing-todo-link"
@@ -5590,6 +5595,7 @@ TID251\:"banned-api"
 TID252\:"relative-imports"
 TID253\:"banned-module-level-imports"
 TID254\:"lazy-import-mismatch"
+TID255\:"lazy-import-immediately-resolved"
 TD001\:"invalid-todo-tag"
 TD002\:"missing-todo-author"
 TD003\:"missing-todo-link"
@@ -6605,6 +6611,7 @@ TID251\:"banned-api"
 TID252\:"relative-imports"
 TID253\:"banned-module-level-imports"
 TID254\:"lazy-import-mismatch"
+TID255\:"lazy-import-immediately-resolved"
 TD001\:"invalid-todo-tag"
 TD002\:"missing-todo-author"
 TD003\:"missing-todo-link"
@@ -7620,6 +7627,7 @@ TID251\:"banned-api"
 TID252\:"relative-imports"
 TID253\:"banned-module-level-imports"
 TID254\:"lazy-import-mismatch"
+TID255\:"lazy-import-immediately-resolved"
 TD001\:"invalid-todo-tag"
 TD002\:"missing-todo-author"
 TD003\:"missing-todo-link"
@@ -8175,7 +8183,7 @@ TRY401\:"verbose-log-message"))' \
 '--stdin-filename=[The name of the file when passing it through stdin]:STDIN_FILENAME:_files' \
 '*--extension=[List of mappings from file extension to language (one of \`python\`, \`ipynb\`, \`pyi\`). For example, to treat \`.ipy\` files as IPython notebooks, use \`--extension ipy\:ipynb\`]:EXTENSION:_default' \
 '(--show-files --show-settings --ignore-noqa --statistics --stdin-filename -w --watch --fix --diff)--add-noqa=[Enable automatic additions of \`noqa\` directives to failing lines. Optionally provide a reason to append after the codes]' \
-'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
+'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option (e.g., \`--config "lint.line-length = 100"\` or \`--config "format.quote-style = '\''single'\''"\`). Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--color=[Control when colored output is used]:WHEN:((auto\:"Display colors if the output goes to an interactive terminal"
 always\:"Always display colors"
 never\:"Never display colors"))' \
@@ -8220,7 +8228,7 @@ never\:"Never display colors"))' \
 (rule)
 _arguments "${_arguments_options[@]}" : \
 '--output-format=[Output format]:OUTPUT_FORMAT:(text json)' \
-'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
+'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option (e.g., \`--config "lint.line-length = 100"\` or \`--config "format.quote-style = '\''single'\''"\`). Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--color=[Control when colored output is used]:WHEN:((auto\:"Display colors if the output goes to an interactive terminal"
 always\:"Always display colors"
 never\:"Never display colors"))' \
@@ -8641,6 +8649,7 @@ TID251\:"banned-api"
 TID252\:"relative-imports"
 TID253\:"banned-module-level-imports"
 TID254\:"lazy-import-mismatch"
+TID255\:"lazy-import-immediately-resolved"
 TD001\:"invalid-todo-tag"
 TD002\:"missing-todo-author"
 TD003\:"missing-todo-link"
@@ -9195,7 +9204,7 @@ TRY401\:"verbose-log-message"))' \
 (config)
 _arguments "${_arguments_options[@]}" : \
 '--output-format=[Output format]:OUTPUT_FORMAT:(text json)' \
-'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
+'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option (e.g., \`--config "lint.line-length = 100"\` or \`--config "format.quote-style = '\''single'\''"\`). Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--color=[Control when colored output is used]:WHEN:((auto\:"Display colors if the output goes to an interactive terminal"
 always\:"Always display colors"
 never\:"Never display colors"))' \
@@ -9423,7 +9432,7 @@ analyze.type-checking-imports\:"Whether to include imports that are only used fo
 (linter)
 _arguments "${_arguments_options[@]}" : \
 '--output-format=[Output format]:OUTPUT_FORMAT:(text json)' \
-'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
+'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option (e.g., \`--config "lint.line-length = 100"\` or \`--config "format.quote-style = '\''single'\''"\`). Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--color=[Control when colored output is used]:WHEN:((auto\:"Display colors if the output goes to an interactive terminal"
 always\:"Always display colors"
 never\:"Never display colors"))' \
@@ -9440,7 +9449,7 @@ never\:"Never display colors"))' \
 ;;
 (clean)
 _arguments "${_arguments_options[@]}" : \
-'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
+'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option (e.g., \`--config "lint.line-length = 100"\` or \`--config "format.quote-style = '\''single'\''"\`). Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--color=[Control when colored output is used]:WHEN:((auto\:"Display colors if the output goes to an interactive terminal"
 always\:"Always display colors"
 never\:"Never display colors"))' \
@@ -9457,7 +9466,7 @@ never\:"Never display colors"))' \
 ;;
 (generate-shell-completion)
 _arguments "${_arguments_options[@]}" : \
-'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
+'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option (e.g., \`--config "lint.line-length = 100"\` or \`--config "format.quote-style = '\''single'\''"\`). Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--color=[Control when colored output is used]:WHEN:((auto\:"Display colors if the output goes to an interactive terminal"
 always\:"Always display colors"
 never\:"Never display colors"))' \
@@ -9483,7 +9492,7 @@ _arguments "${_arguments_options[@]}" : \
 '--target-version=[The minimum Python version that should be supported]:TARGET_VERSION:(py37 py38 py39 py310 py311 py312 py313 py314 py315)' \
 '--range=[When specified, Ruff will try to only format the code in the given range. It might be necessary to extend the start backwards or the end forwards, to fully enclose a logical line. The \`<RANGE>\` uses the format \`<start_line>\:<start_column>-<end_line>\:<end_column>\`.]:RANGE:_default' \
 '--output-format=[Output serialization format for violations, when used with \`--check\`. The default serialization format is "full"]:OUTPUT_FORMAT:(concise full json json-lines junit grouped github gitlab pylint rdjson azure sarif)' \
-'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
+'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option (e.g., \`--config "lint.line-length = 100"\` or \`--config "format.quote-style = '\''single'\''"\`). Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--color=[Control when colored output is used]:WHEN:((auto\:"Display colors if the output goes to an interactive terminal"
 always\:"Always display colors"
 never\:"Never display colors"))' \
@@ -9512,7 +9521,7 @@ never\:"Never display colors"))' \
 ;;
 (server)
 _arguments "${_arguments_options[@]}" : \
-'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
+'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option (e.g., \`--config "lint.line-length = 100"\` or \`--config "format.quote-style = '\''single'\''"\`). Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--color=[Control when colored output is used]:WHEN:((auto\:"Display colors if the output goes to an interactive terminal"
 always\:"Always display colors"
 never\:"Never display colors"))' \
@@ -9531,7 +9540,7 @@ never\:"Never display colors"))' \
 ;;
 (analyze)
 _arguments "${_arguments_options[@]}" : \
-'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
+'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option (e.g., \`--config "lint.line-length = 100"\` or \`--config "format.quote-style = '\''single'\''"\`). Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--color=[Control when colored output is used]:WHEN:((auto\:"Display colors if the output goes to an interactive terminal"
 always\:"Always display colors"
 never\:"Never display colors"))' \
@@ -9561,7 +9570,7 @@ dependents\:"Construct a map from module to its dependents (i.e., the modules th
 '--min-dots=[The minimum number of dots in a string import to consider it a valid import]:MIN_DOTS:_default' \
 '--target-version=[The minimum Python version that should be supported]:TARGET_VERSION:(py37 py38 py39 py310 py311 py312 py313 py314 py315)' \
 '--python=[Path to a virtual environment to use for resolving additional dependencies]:PYTHON:_files' \
-'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
+'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option (e.g., \`--config "lint.line-length = 100"\` or \`--config "format.quote-style = '\''single'\''"\`). Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--color=[Control when colored output is used]:WHEN:((auto\:"Display colors if the output goes to an interactive terminal"
 always\:"Always display colors"
 never\:"Never display colors"))' \
@@ -9613,7 +9622,7 @@ esac
 (version)
 _arguments "${_arguments_options[@]}" : \
 '--output-format=[]:OUTPUT_FORMAT:(text json)' \
-'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option. Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
+'*--config=[Either a path to a TOML configuration file (\`pyproject.toml\` or \`ruff.toml\`), or a TOML \`<KEY> = <VALUE>\` pair (such as you might find in a \`ruff.toml\` configuration file) overriding a specific configuration option (e.g., \`--config "lint.line-length = 100"\` or \`--config "format.quote-style = '\''single'\''"\`). Overrides of individual settings using this option always take precedence over all configuration files, including configuration files that were also specified using \`--config\`]:CONFIG_OPTION:_default' \
 '--color=[Control when colored output is used]:WHEN:((auto\:"Display colors if the output goes to an interactive terminal"
 always\:"Always display colors"
 never\:"Never display colors"))' \
