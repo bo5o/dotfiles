@@ -1543,7 +1543,7 @@ checksum = "sha256:089a02c4c687451c9f0b7f1bfd252dae85a7ba27df0295a14096bdcc956fd
 url = "https://nodejs.org/dist/v26.1.0/node-v26.1.0-win-x64.zip"
 
 [[tools."npm:@agentclientprotocol/claude-agent-acp"]]
-version = "0.33.1"
+version = "0.34.1"
 backend = "npm:@agentclientprotocol/claude-agent-acp"
 
 [[tools."npm:@ansible/ansible-language-server"]]
