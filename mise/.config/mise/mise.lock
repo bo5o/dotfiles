@@ -263,7 +263,7 @@ version = "0.23.1"
 backend = "cargo:bandwhich"
 
 [[tools."cargo:inlyne"]]
-version = "0.5.0"
+version = "0.5.1"
 backend = "cargo:inlyne"
 
 [[tools."cargo:just-lsp"]]
