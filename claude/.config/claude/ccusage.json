@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ccusage.com/config-schema.json",
+  "defaults": {
+    "timezone": "Europe/Berlin",
+    "breakdown": true,
+    "mode": "auto"
+  },
+  "commands": {
+    "blocks": {
+      "active": true,
+      "tokenLimit": "max"
+    },
+    "weekly": {
+      "startOfWeek": "monday"
+    }
+  }
+}
