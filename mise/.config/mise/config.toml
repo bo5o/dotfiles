@@ -107,7 +107,7 @@ workmux = "0.1.208"
 lima = "2.1.1"
 "github:Ataraxy-Labs/sem" = "0.5.5"
 "npm:ccusage" = "18.0.11"
-"npm:ccstatusline" = "2.2.18"
+"npm:ccstatusline" = "2.2.19"
 
 [settings]
 experimental = true
