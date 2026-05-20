@@ -33,6 +33,7 @@ alias arst='mise'
 alias boo='ghostty +boo'
 alias btm='btm --theme gruvbox'
 alias ccu='ccusage claude'
+alias ccuc='ccusage claude --compact'
 alias chat='nvim -c "CodeCompanionChat" -c "only"'
 alias claude='claude --thinking-display summarized'
 alias crep="grep --color=always" # Color grep
