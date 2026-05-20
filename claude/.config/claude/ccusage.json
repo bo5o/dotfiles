@@ -2,7 +2,7 @@
   "$schema": "https://ccusage.com/config-schema.json",
   "defaults": {
     "timezone": "Europe/Berlin",
-    "breakdown": true,
+    "breakdown": false,
     "mode": "auto"
   },
   "commands": {
