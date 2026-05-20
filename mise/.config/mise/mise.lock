@@ -233,30 +233,37 @@ backend = "aqua:cargo-bins/cargo-binstall"
 [tools.cargo-binstall."platforms.linux-arm64"]
 checksum = "sha256:2001eee8da26705ad9627e57a25c23eb4639647521205f3e4a7b4e09d067d199"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-aarch64-unknown-linux-musl.tgz"
+provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-arm64-musl"]
 checksum = "sha256:2001eee8da26705ad9627e57a25c23eb4639647521205f3e4a7b4e09d067d199"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-aarch64-unknown-linux-musl.tgz"
+provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-x64"]
 checksum = "sha256:4a50fcf01418862e2fa8e4076cb6cb80ff4061b0c0b1464e71a63ce01ee29bde"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-x64-musl"]
 checksum = "sha256:4a50fcf01418862e2fa8e4076cb6cb80ff4061b0c0b1464e71a63ce01ee29bde"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.macos-arm64"]
 checksum = "sha256:bf9da6a27e432784f361cfbc70a6d04e548abc548470ae9a7587c3cffb8fb0a7"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-aarch64-apple-darwin.zip"
+provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.macos-x64"]
 checksum = "sha256:39257851fe4fd8cc9dd81fb318f15d589b7178b74165879eddeda8062bd9fcf2"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-apple-darwin.zip"
+provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.windows-x64"]
 checksum = "sha256:dd1f425c177aa1a57c9b17883ff76257f913a5f0afb35424f0767c6984164b7f"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-pc-windows-msvc.zip"
+provenance = "github-attestations"
 
 [[tools."cargo:bandwhich"]]
 version = "0.23.1"
@@ -746,37 +753,31 @@ backend = "github:Ataraxy-Labs/sem"
 checksum = "sha256:142000e8224e23801ddaa08b80164bbaf11d4c55fc418de5ac4e3a1a78426bff"
 url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.5.5/sem-linux-arm64.tar.gz"
 url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/422052719"
-github_attestations = "unavailable"
 
 [tools."github:Ataraxy-Labs/sem"."platforms.linux-arm64-musl"]
 checksum = "sha256:142000e8224e23801ddaa08b80164bbaf11d4c55fc418de5ac4e3a1a78426bff"
 url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.5.5/sem-linux-arm64.tar.gz"
 url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/422052719"
-github_attestations = "unavailable"
 
 [tools."github:Ataraxy-Labs/sem"."platforms.linux-x64"]
 checksum = "sha256:f756e732b612876a0d8460661801007a34d561136bbcb25153496561165a4e8f"
 url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.5.5/sem-linux-x86_64.tar.gz"
 url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/422052716"
-github_attestations = "unavailable"
 
 [tools."github:Ataraxy-Labs/sem"."platforms.linux-x64-musl"]
 checksum = "sha256:f756e732b612876a0d8460661801007a34d561136bbcb25153496561165a4e8f"
 url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.5.5/sem-linux-x86_64.tar.gz"
 url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/422052716"
-github_attestations = "unavailable"
 
 [tools."github:Ataraxy-Labs/sem"."platforms.macos-arm64"]
 checksum = "sha256:055acb71004d2b513ea4ec98393429d56bcb887971025dfa7782961cd91c587b"
 url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.5.5/sem-darwin-arm64.tar.gz"
 url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/422052720"
-github_attestations = "unavailable"
 
 [tools."github:Ataraxy-Labs/sem"."platforms.windows-x64"]
 checksum = "sha256:78c756eb72fc2bde8219fc76309a3c7a7d372d6722614757b521f590a3aad162"
 url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.5.5/sem-windows-x86_64.zip"
 url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/422052717"
-github_attestations = "unavailable"
 
 [[tools."github:Myriad-Dreamin/tinymist"]]
 version = "0.14.18"
@@ -786,43 +787,36 @@ backend = "github:Myriad-Dreamin/tinymist"
 checksum = "sha256:2192192aba4e0331487f9b1828b73826274ff2593ce9a3539d85e5ed17c552da"
 url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-aarch64-unknown-linux-gnu.tar.gz"
 url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416927975"
-github_attestations = "unavailable"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-arm64-musl"]
 checksum = "sha256:d1cea2d0642c614098578cfb6a486f4740fb9baadfe33d402131065069812df4"
 url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-aarch64-unknown-linux-musl.tar.gz"
 url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416927976"
-github_attestations = "unavailable"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-x64"]
 checksum = "sha256:17e2ab04b0151e51cba58e11c1ed172c0d3e83d9b18ba01d26d8998917639e8a"
 url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-x86_64-unknown-linux-gnu.tar.gz"
 url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416928017"
-github_attestations = "unavailable"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-x64-musl"]
 checksum = "sha256:13fcf59d6f53bb96d7f721ee3d3cc41dadd1ea573f8a05581f9401f6aec520e6"
 url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-x86_64-unknown-linux-musl.tar.gz"
 url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416928018"
-github_attestations = "unavailable"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.macos-arm64"]
 checksum = "sha256:a8f900277673fdd283a1992af5b8e3d52de36d0557f8e27c2c7d0086850e9d83"
 url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-aarch64-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416927970"
-github_attestations = "unavailable"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.macos-x64"]
 checksum = "sha256:c630b1d42bfd84851eab19b9c11d83d829190b4f73a51114846c8a9dd67ad16d"
 url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-x86_64-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416928010"
-github_attestations = "unavailable"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.windows-x64"]
 checksum = "sha256:7cce804530c989cffec6422f558c88da70d5e6372a51570eaa94c429fe9fea4f"
 url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.18/typlite-x86_64-pc-windows-msvc.zip"
 url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/416928012"
-github_attestations = "unavailable"
 
 [[tools."github:bitwarden/sdk-sm"]]
 version = "2.0.0"
