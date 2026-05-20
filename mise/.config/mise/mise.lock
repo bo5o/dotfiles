@@ -1252,36 +1252,36 @@ checksum = "sha256:1c5ac3015caf0b15ae81cbafa1d94024dbd17b5dff933204d489787dfb95f
 url = "https://github.com/jj-vcs/jj/releases/download/v0.41.0/jj-v0.41.0-x86_64-pc-windows-msvc.zip"
 
 [[tools.jjui]]
-version = "0.10.5"
+version = "0.10.6"
 backend = "aqua:idursun/jjui"
 
 [tools.jjui."platforms.linux-arm64"]
-checksum = "sha256:9ff372e08ec6a290fe09fbb3d3dafa22bbfe9ad69b99d0e981a370b73ed372bc"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-linux-arm64.zip"
+checksum = "sha256:5c44472f7d90ea0a581d9ccfc94edf6d7f90128e1546680bb91335f67e05a26b"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.6/jjui-0.10.6-linux-arm64.zip"
 
 [tools.jjui."platforms.linux-arm64-musl"]
-checksum = "sha256:9ff372e08ec6a290fe09fbb3d3dafa22bbfe9ad69b99d0e981a370b73ed372bc"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-linux-arm64.zip"
+checksum = "sha256:5c44472f7d90ea0a581d9ccfc94edf6d7f90128e1546680bb91335f67e05a26b"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.6/jjui-0.10.6-linux-arm64.zip"
 
 [tools.jjui."platforms.linux-x64"]
-checksum = "sha256:f33b10edc9159a418436f23282afd3d8b52d2fb7cffa6e84f0f8cc0a9a80d4b1"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-linux-amd64.zip"
+checksum = "sha256:44729642373df091cf61f2f7b498cef77bce22fd584912fa8172aa73ab5dc486"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.6/jjui-0.10.6-linux-amd64.zip"
 
 [tools.jjui."platforms.linux-x64-musl"]
-checksum = "sha256:f33b10edc9159a418436f23282afd3d8b52d2fb7cffa6e84f0f8cc0a9a80d4b1"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-linux-amd64.zip"
+checksum = "sha256:44729642373df091cf61f2f7b498cef77bce22fd584912fa8172aa73ab5dc486"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.6/jjui-0.10.6-linux-amd64.zip"
 
 [tools.jjui."platforms.macos-arm64"]
-checksum = "sha256:e3c3304fa7d80cd0a2da4b21b9a4597420fce90fca44fea99b0a969708e931e2"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-darwin-arm64.zip"
+checksum = "sha256:3eed6f9e4faa361fb3ac01676385ee3eb56b656ded1660ece65c45f7c0a28a32"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.6/jjui-0.10.6-darwin-arm64.zip"
 
 [tools.jjui."platforms.macos-x64"]
-checksum = "sha256:62839294bfa9b26e5e5d74bb3b6ed96e5ed83f118173e0190aeb752ed076be7c"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-darwin-amd64.zip"
+checksum = "sha256:1c3a3ca94b2636813a122b5b1b0ab01c4f540ebfc3b3da032eb201f74f03af95"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.6/jjui-0.10.6-darwin-amd64.zip"
 
 [tools.jjui."platforms.windows-x64"]
-checksum = "sha256:2623b2b21512123c921b02586c7d2654792f0b38516a41e08d294d3e0cf66dc0"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-windows-amd64.zip"
+checksum = "sha256:977275a48f99ecf64bbcba52f274ccf0ed60bf0cf2cf952f0737a042c2a606e5"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.6/jjui-0.10.6-windows-amd64.zip"
 
 [[tools.jq]]
 version = "1.8.1"
