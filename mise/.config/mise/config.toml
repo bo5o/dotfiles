@@ -106,7 +106,7 @@ oxfmt = "0.51.0"
 workmux = "0.1.209"
 lima = "2.1.1"
 "github:Ataraxy-Labs/sem" = "0.5.5"
-"npm:ccusage" = "19.0.3"
+"npm:ccusage" = "20.0.0"
 "npm:ccstatusline" = "2.2.19"
 
 [settings]
