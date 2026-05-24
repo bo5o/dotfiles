@@ -1446,6 +1446,34 @@ checksum = "sha256:2dc5b10aa3a4f26d08c1f3fe83e37e01f85a7d9db0d1d5cb6985b18af96ab
 url = "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Darwin-x86_64.tar.gz"
 provenance = "github-attestations"
 
+[[tools.lnav]]
+version = "0.14.0"
+backend = "aqua:tstack/lnav"
+
+[tools.lnav."platforms.linux-arm64"]
+checksum = "sha256:027e9f540567cd0e9ba00335ab9be0275a414b14608e10d49dc2d6a2633aa546"
+url = "https://github.com/tstack/lnav/releases/download/v0.14.0/lnav-0.14.0-linux-musl-arm64.zip"
+
+[tools.lnav."platforms.linux-arm64-musl"]
+checksum = "sha256:027e9f540567cd0e9ba00335ab9be0275a414b14608e10d49dc2d6a2633aa546"
+url = "https://github.com/tstack/lnav/releases/download/v0.14.0/lnav-0.14.0-linux-musl-arm64.zip"
+
+[tools.lnav."platforms.linux-x64"]
+checksum = "sha256:9d146d1da2af005a77920afff5da96d2ae0771ee25450b0954b27de95e7f0f57"
+url = "https://github.com/tstack/lnav/releases/download/v0.14.0/lnav-0.14.0-linux-musl-x86_64.zip"
+
+[tools.lnav."platforms.linux-x64-musl"]
+checksum = "sha256:9d146d1da2af005a77920afff5da96d2ae0771ee25450b0954b27de95e7f0f57"
+url = "https://github.com/tstack/lnav/releases/download/v0.14.0/lnav-0.14.0-linux-musl-x86_64.zip"
+
+[tools.lnav."platforms.macos-arm64"]
+checksum = "sha256:f282d567e1bdb2c3e54d9502671b8011c0d4e3700b2616cf72778602f8ee0371"
+url = "https://github.com/tstack/lnav/releases/download/v0.14.0/lnav-0.14.0-aarch64-macos.zip"
+
+[tools.lnav."platforms.windows-x64"]
+checksum = "sha256:62e35078b0ba6ff94cb38a3e31df0197b372a96e3e516a0bfc740061729be023"
+url = "https://github.com/tstack/lnav/releases/download/v0.14.0/lnav-0.14.0-windows-x86_64.zip"
+
 [[tools.lua-language-server]]
 version = "3.18.2"
 backend = "aqua:LuaLS/lua-language-server"

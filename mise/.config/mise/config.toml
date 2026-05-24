@@ -108,6 +108,7 @@ lima = "2.1.1"
 "github:Ataraxy-Labs/sem" = "0.6.0"
 "npm:ccusage" = "20.0.4"
 "npm:ccstatusline" = "2.2.19"
+lnav = "latest"
 
 [settings]
 experimental = true
