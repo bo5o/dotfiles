@@ -65,6 +65,7 @@ alias ka='killall'
 alias lA='ls -A'
 alias lg='lazygit'
 alias lgb='lazygit branch'
+alias lj='lazyjournal'
 alias llm-changelog='git log --patch --oneline $(git describe --tags --abbrev=0)..HEAD | llm -t changelog -p date $(date +%F) -p version'
 alias lS='ls -1FSsh'
 alias lt="ls -lAht"
