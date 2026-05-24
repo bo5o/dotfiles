@@ -110,6 +110,7 @@ lima = "2.1.1"
 "npm:ccstatusline" = "2.2.19"
 lnav = "latest"
 tmux = "latest"
+lazyjournal = "latest"
 
 [settings]
 experimental = true
