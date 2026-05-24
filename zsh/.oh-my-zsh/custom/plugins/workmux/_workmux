@@ -33,6 +33,8 @@ _arguments "${_arguments_options[@]}" : \
 '(--base -A --auto-name)--pr=[Pull request number to checkout]:PR:_default' \
 '--base=[Base branch/commit/tag to branch from (overrides config base_branch, defaults to current branch)]:BASE:_default' \
 '--name=[Explicit name for the worktree directory and tmux window (overrides worktree_naming strategy and worktree_prefix)]:NAME:_default' \
+'--target-name=[Explicit name for the workmux-managed tmux target]:TARGET_NAME:_default' \
+'--parent-session=[Parent tmux session for window-mode targets]:PARENT_SESSION:_default' \
 '(-P --prompt-file -e --prompt-editor)-p+[Inline prompt text to store in the new worktree]:PROMPT:_default' \
 '(-P --prompt-file -e --prompt-editor)--prompt=[Inline prompt text to store in the new worktree]:PROMPT:_default' \
 '(-p --prompt -e --prompt-editor)-P+[Path to a file whose contents should be used as the prompt]:PROMPT_FILE:_files' \
@@ -83,6 +85,8 @@ _arguments "${_arguments_options[@]}" : \
 (open)
 _arguments "${_arguments_options[@]}" : \
 '--mode=[Override the multiplexer mode for this command only]:MODE:(window session)' \
+'--target-name=[Explicit name for the workmux-managed tmux target]:TARGET_NAME:_default' \
+'--parent-session=[Parent tmux session for window-mode targets]:PARENT_SESSION:_default' \
 '(-P --prompt-file -e --prompt-editor)-p+[Inline prompt text to store in the new worktree]:PROMPT:_default' \
 '(-P --prompt-file -e --prompt-editor)--prompt=[Inline prompt text to store in the new worktree]:PROMPT:_default' \
 '(-p --prompt -e --prompt-editor)-P+[Path to a file whose contents should be used as the prompt]:PROMPT_FILE:_files' \
