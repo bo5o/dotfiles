@@ -635,7 +635,7 @@ checksum = "sha256:f69da60d536b32f34d4ec4291f1a3fa1bd47165577cf190692ac7320875b2
 url = "https://github.com/junegunn/fzf/releases/download/v0.73.0/fzf-0.73.0-windows_amd64.zip"
 
 [[tools."gem:tmuxinator"]]
-version = "3.3.8"
+version = "3.4.0"
 backend = "gem:tmuxinator"
 
 [[tools.gemini-cli]]
