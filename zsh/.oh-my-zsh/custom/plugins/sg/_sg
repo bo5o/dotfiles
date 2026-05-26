@@ -34,21 +34,23 @@ _ast-grep() {
 _arguments "${_arguments_options[@]}" : \
 '-p+[AST pattern to match]:PATTERN:_default' \
 '--pattern=[AST pattern to match]:PATTERN:_default' \
-'--selector=[AST kind to extract sub-part of pattern to match]:KIND:_default' \
-'-r+[String to replace the matched AST node]:FIX:_default' \
-'--rewrite=[String to replace the matched AST node]:FIX:_default' \
-'-l+[The language of the pattern. Supported languages are\: \[Bash, C, Cpp, CSharp, Css, Dart, Elixir, Go, Haskell, Hcl, Html, Java, JavaScript, Json, Kotlin, Lua, Nix, Php, Python, Ruby, Rust, Scala, Solidity, Swift, Tsx, TypeScript, Yaml\]]:LANG:_default' \
-'--lang=[The language of the pattern. Supported languages are\: \[Bash, C, Cpp, CSharp, Css, Dart, Elixir, Go, Haskell, Hcl, Html, Java, JavaScript, Json, Kotlin, Lua, Nix, Php, Python, Ruby, Rust, Scala, Solidity, Swift, Tsx, TypeScript, Yaml\]]:LANG:_default' \
-'--debug-query=[Print query pattern'\''s tree-sitter AST. Requires lang be set explicitly]::format:((pattern\:"Print the query parsed in Pattern format"
-ast\:"Print the query in tree-sitter AST format, only named nodes are shown"
-cst\:"Print the query in tree-sitter CST format, both named and unnamed nodes are shown"
-sexp\:"Print the query in S-expression format"))' \
-'--strictness=[The strictness of the pattern]:STRICTNESS:((cst\:"Match exact all node"
+'(-k --kind)--selector=[AST kind to extract sub-part of pattern to match]:KIND:_default' \
+'(-k --kind)--strictness=[The strictness of the pattern]:STRICTNESS:((cst\:"Match exact all node"
 smart\:"Match all node except source trivial nodes"
 ast\:"Match only ast nodes"
 relaxed\:"Match ast node except comments"
 signature\:"Match ast node except comments, without text"
 template\:"Similar to smart but match text only, node kinds are ignored"))' \
+'(-p --pattern)-k+[AST kind to match]:KIND:_default' \
+'(-p --pattern)--kind=[AST kind to match]:KIND:_default' \
+'-r+[String to replace the matched AST node]:FIX:_default' \
+'--rewrite=[String to replace the matched AST node]:FIX:_default' \
+'-l+[The language of the pattern. Supported languages are\: \[Bash, C, Cpp, CSharp, Css, Dart, Elixir, Go, Haskell, Hcl, Html, Java, JavaScript, Json, Kotlin, Lua, Markdown, Nix, Php, Python, Ruby, Rust, Scala, Solidity, Swift, Tsx, TypeScript, Yaml\]]:LANG:_default' \
+'--lang=[The language of the pattern. Supported languages are\: \[Bash, C, Cpp, CSharp, Css, Dart, Elixir, Go, Haskell, Hcl, Html, Java, JavaScript, Json, Kotlin, Lua, Markdown, Nix, Php, Python, Ruby, Rust, Scala, Solidity, Swift, Tsx, TypeScript, Yaml\]]:LANG:_default' \
+'--debug-query=[Print query pattern'\''s tree-sitter AST. Requires lang be set explicitly]::format:((pattern\:"Print the query parsed in Pattern format"
+ast\:"Print the query in tree-sitter AST format, only named nodes are shown"
+cst\:"Print the query in tree-sitter CST format, both named and unnamed nodes are shown"
+sexp\:"Print the query in S-expression format"))' \
 '*--no-ignore=[Do not respect hidden file system or ignore files (.gitignore, .ignore, etc.)]:FILE_TYPE:((hidden\:"Search hidden files and directories. By default, hidden files and directories are skipped"
 dot\:"Don'\''t respect .ignore files. This does *not* affect whether ast-grep will ignore files and directories whose names begin with a dot. For that, use --no-ignore hidden"
 exclude\:"Don'\''t respect ignore files that are manually configured for the repository such as git'\''s '\''.git/info/exclude'\''"
@@ -166,6 +168,7 @@ never\:"Never emit colors"))' \
 '-i[Start an interactive review to update snapshots selectively]' \
 '--interactive[Start an interactive review to update snapshots selectively]' \
 '--include-off[Include \`severity\:off\` rules in test]' \
+'--follow[Follow symbolic links while searching test YAML files]' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
