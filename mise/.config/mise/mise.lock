@@ -1643,7 +1643,7 @@ version = "1.9.2"
 backend = "npm:htmlhint"
 
 [[tools."npm:intelephense"]]
-version = "1.18.3"
+version = "1.18.4"
 backend = "npm:intelephense"
 
 [[tools."npm:markdownlint-cli"]]
