@@ -1926,7 +1926,7 @@ url = "https://github.com/astral-sh/ruff/releases/download/0.15.14/ruff-x86_64-p
 provenance = "github-attestations"
 
 [[tools.rust]]
-version = "1.95.0"
+version = "1.96.0"
 backend = "core:rust"
 
 [[tools.rust-analyzer]]
