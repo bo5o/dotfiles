@@ -112,7 +112,7 @@
   "vim-syntax-codeowners": { "branch": "master", "commit": "57c1ca9358f1fa82c4adfd8f0f9292da26e01681" },
   "vim-table-mode": { "branch": "master", "commit": "e4365bde024f73e205eefa2fb78e3029ddb92ea9" },
   "vim-tbone": { "branch": "master", "commit": "79d28199d5edf70337957e13942b5d970755d943" },
-  "vim-test": { "branch": "master", "commit": "7062b50979a28e804081f0e82b7321184ec1c20b" },
+  "vim-test": { "branch": "master", "commit": "d29ec9976fd6b684488c908e6c7c72a3a7a0cb7f" },
   "vim-tmux-navigator": { "branch": "master", "commit": "e41c431a0c7b7388ae7ba341f01a0d217eb3a432" },
   "vim-tridactyl": { "branch": "master", "commit": "fdd069bde3a34c786abed4601b6d59a065590ad9" },
   "vim-unimpaired": { "branch": "master", "commit": "db65482581a28e4ccf355be297f1864a4e66985c" },
@@ -121,5 +121,5 @@
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "windows.nvim": { "branch": "main", "commit": "c7492552b23d0ab30325e90b56066ec51242adc8" },
   "wrapping.nvim": { "branch": "master", "commit": "3ecfb37cdc189a4e32d646e1c2ae0f46b9d62740" },
-  "yazi.nvim": { "branch": "main", "commit": "e11edb740cf9e7fee303955f05277d0b94098eb5" }
+  "yazi.nvim": { "branch": "main", "commit": "3902c5d06be1242e6000ef8166ee35fa768c8332" }
 }
