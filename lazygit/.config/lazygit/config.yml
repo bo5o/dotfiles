@@ -27,9 +27,9 @@ gui:
 keybinding:
   universal:
     suspendApp: <disabled>
-    redo: <c-z>
+    redo: <ctrl+z>
 customCommands:
-  - key: '<c-v>'
+  - key: '<ctrl+v>'
     context: 'files'
     command: git diff --staged | llm -t conventional-commit | git commit -e -F -
     description: 'Commit with AI'
