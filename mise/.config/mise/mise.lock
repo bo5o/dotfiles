@@ -638,10 +638,6 @@ url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-wind
 version = "3.4.0"
 backend = "gem:tmuxinator"
 
-[[tools.gemini-cli]]
-version = "0.43.0"
-backend = "npm:@google/gemini-cli"
-
 [[tools.git-cliff]]
 version = "2.13.1"
 backend = "aqua:orhun/git-cliff"
