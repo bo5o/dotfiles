@@ -93,6 +93,7 @@
     "autoAllowBashIfSandboxed": false,
     "allowUnsandboxedCommands": false
   },
+  "plansDirectory": ".claude/plans",
   "autoMemoryEnabled": false,
   "showThinkingSummaries": true,
   "theme": "dark-ansi",
