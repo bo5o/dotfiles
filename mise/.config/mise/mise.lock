@@ -896,43 +896,43 @@ url = "https://github.com/garethgeorge/backrest/releases/download/v1.13.0/backre
 url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/411573952"
 
 [[tools."github:jorgerojas26/lazysql"]]
-version = "0.5.1"
+version = "0.5.2"
 backend = "github:jorgerojas26/lazysql"
 
 [tools."github:jorgerojas26/lazysql"."platforms.linux-arm64"]
-checksum = "sha256:bb44c14c79b6c9378d41db10f0aef71e44a1b87bf7fa210c70c53d346bf82722"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.1/lazysql_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/429019519"
+checksum = "sha256:8ffc5f8ad1270f91e9ec9295f331ad66b153fed0c5fad372716952c6db1e518a"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.2/lazysql_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/433807191"
 
 [tools."github:jorgerojas26/lazysql"."platforms.linux-arm64-musl"]
-checksum = "sha256:bb44c14c79b6c9378d41db10f0aef71e44a1b87bf7fa210c70c53d346bf82722"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.1/lazysql_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/429019519"
+checksum = "sha256:8ffc5f8ad1270f91e9ec9295f331ad66b153fed0c5fad372716952c6db1e518a"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.2/lazysql_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/433807191"
 
 [tools."github:jorgerojas26/lazysql"."platforms.linux-x64"]
-checksum = "sha256:c5b759c0e8e9604ee7249c60ae8d8a5cb4145409f4c16df83e343712b1e31421"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.1/lazysql_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/429019511"
+checksum = "sha256:756b8c5181c45701ce705f2c9b1a0e9b89329d29375137f6448232c569d68588"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.2/lazysql_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/433807189"
 
 [tools."github:jorgerojas26/lazysql"."platforms.linux-x64-musl"]
-checksum = "sha256:c5b759c0e8e9604ee7249c60ae8d8a5cb4145409f4c16df83e343712b1e31421"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.1/lazysql_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/429019511"
+checksum = "sha256:756b8c5181c45701ce705f2c9b1a0e9b89329d29375137f6448232c569d68588"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.2/lazysql_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/433807189"
 
 [tools."github:jorgerojas26/lazysql"."platforms.macos-arm64"]
-checksum = "sha256:c660f32de53486771cbf92152896f6768932d8d5fb3cdf00c90155a7bad2d55c"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.1/lazysql_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/429019520"
+checksum = "sha256:828520c63496e146e7db2eb272e34736764120a2a20cd81fc1b1aa17501ec50d"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.2/lazysql_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/433807198"
 
 [tools."github:jorgerojas26/lazysql"."platforms.macos-x64"]
-checksum = "sha256:0692f5e1694512c9d13a58f232cf586d57eb42375b2b4d7e2e00ac5d7b0d118c"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.1/lazysql_Darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/429019510"
+checksum = "sha256:cd59872104a0463a6524b597529ebdfef37944173be57ecf8fe02b8db16f5c76"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.2/lazysql_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/433807197"
 
 [tools."github:jorgerojas26/lazysql"."platforms.windows-x64"]
-checksum = "sha256:296f8ce410af6d02eff042c31eb26d9c69935dd6120f441962e2c648766c6e05"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.1/lazysql_Windows_x86_64.zip"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/429019516"
+checksum = "sha256:b49ce312606a0e87e5d0cef3be8239817482f32c1928b70fcc3f9935f1f952cf"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.2/lazysql_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/433807192"
 
 [[tools."github:opentofu/tofu-ls"]]
 version = "0.5.0"
