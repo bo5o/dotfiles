@@ -1225,36 +1225,36 @@ checksum = "sha256:2508c549b049b1d4342d08edc1cb42bfac169082b6e3069431b5bab9822db
 url = "https://github.com/sharkdp/hyperfine/releases/download/v1.20.0/hyperfine-v1.20.0-x86_64-pc-windows-msvc.zip"
 
 [[tools.jj]]
-version = "0.41.0"
+version = "0.42.0"
 backend = "aqua:jj-vcs/jj"
 
 [tools.jj."platforms.linux-arm64"]
-checksum = "sha256:cd75d0f920b2674147a48eac84ee4594f476fc8f98cd7e358b25750a51622d91"
-url = "https://github.com/jj-vcs/jj/releases/download/v0.41.0/jj-v0.41.0-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:bc962ac57ec264541a62ed8492f080898380a277222b115e1ed96163196e6fc8"
+url = "https://github.com/jj-vcs/jj/releases/download/v0.42.0/jj-v0.42.0-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.jj."platforms.linux-arm64-musl"]
-checksum = "sha256:cd75d0f920b2674147a48eac84ee4594f476fc8f98cd7e358b25750a51622d91"
-url = "https://github.com/jj-vcs/jj/releases/download/v0.41.0/jj-v0.41.0-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:bc962ac57ec264541a62ed8492f080898380a277222b115e1ed96163196e6fc8"
+url = "https://github.com/jj-vcs/jj/releases/download/v0.42.0/jj-v0.42.0-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.jj."platforms.linux-x64"]
-checksum = "sha256:42181a80d316ac157874c817c9945e104275114fb461d99e06e2312502f08f99"
-url = "https://github.com/jj-vcs/jj/releases/download/v0.41.0/jj-v0.41.0-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:2d91e81d649e617a81608e7401ad1106029c15ece01ac928c4a351abef42be6a"
+url = "https://github.com/jj-vcs/jj/releases/download/v0.42.0/jj-v0.42.0-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.jj."platforms.linux-x64-musl"]
-checksum = "sha256:42181a80d316ac157874c817c9945e104275114fb461d99e06e2312502f08f99"
-url = "https://github.com/jj-vcs/jj/releases/download/v0.41.0/jj-v0.41.0-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:2d91e81d649e617a81608e7401ad1106029c15ece01ac928c4a351abef42be6a"
+url = "https://github.com/jj-vcs/jj/releases/download/v0.42.0/jj-v0.42.0-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.jj."platforms.macos-arm64"]
-checksum = "sha256:e84883b4fb42d1e0cb665efae95b44f387603c1280c893f8cbc7bbac7149ea30"
-url = "https://github.com/jj-vcs/jj/releases/download/v0.41.0/jj-v0.41.0-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:98764966f22b599dc0b19bb9bd00d21df86156aeca5827f8274900356768db08"
+url = "https://github.com/jj-vcs/jj/releases/download/v0.42.0/jj-v0.42.0-aarch64-apple-darwin.tar.gz"
 
 [tools.jj."platforms.macos-x64"]
-checksum = "sha256:b40d238bf9de4379be9bfd629cff92cd3ec14e2d072a8f7f7bbb929dac9d22f6"
-url = "https://github.com/jj-vcs/jj/releases/download/v0.41.0/jj-v0.41.0-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:ec04669e9b8decb4b0d63dc050a4275d2b5422efea502a0c208ebd4e53e7d053"
+url = "https://github.com/jj-vcs/jj/releases/download/v0.42.0/jj-v0.42.0-x86_64-apple-darwin.tar.gz"
 
 [tools.jj."platforms.windows-x64"]
-checksum = "sha256:1c5ac3015caf0b15ae81cbafa1d94024dbd17b5dff933204d489787dfb95f835"
-url = "https://github.com/jj-vcs/jj/releases/download/v0.41.0/jj-v0.41.0-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:866461102d87fb49fc67e6e76682635683963eb9fdd05264edda5f1c894d85a6"
+url = "https://github.com/jj-vcs/jj/releases/download/v0.42.0/jj-v0.42.0-x86_64-pc-windows-msvc.zip"
 
 [[tools.jjui]]
 version = "0.10.6"
