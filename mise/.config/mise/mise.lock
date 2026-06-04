@@ -1727,7 +1727,7 @@ version = "1.4.6"
 backend = "pipx:mbake"
 
 [[tools."pipx:sqlfluff"]]
-version = "4.2.1"
+version = "4.2.2"
 backend = "pipx:sqlfluff"
 
 [[tools."pipx:sqruff"]]
