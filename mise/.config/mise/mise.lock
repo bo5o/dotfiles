@@ -1670,7 +1670,7 @@ version = "4.2.1"
 backend = "npm:mcp-hub"
 
 [[tools."npm:sql-formatter"]]
-version = "15.8.0"
+version = "15.8.1"
 backend = "npm:sql-formatter"
 
 [[tools."npm:stylelint"]]
