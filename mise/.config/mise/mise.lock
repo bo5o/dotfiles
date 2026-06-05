@@ -1705,7 +1705,7 @@ version = "1.39.6"
 backend = "pipx:basedpyright"
 
 [[tools."pipx:djlint"]]
-version = "1.38.1"
+version = "1.39.0"
 backend = "pipx:djlint"
 
 [[tools."pipx:gitlint-core"]]
