@@ -250,6 +250,15 @@ _arguments "${_arguments_options[@]}" : \
 '*::command -- Command to run (everything after --):_default' \
 && ret=0
 ;;
+(reap-agents)
+_arguments "${_arguments_options[@]}" : \
+'--hours=[Age threshold in hours]:HOURS:_default' \
+'-f[Actually exit matching agents instead of showing what would happen]' \
+'--force[Actually exit matching agents instead of showing what would happen]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
 (sync-files)
 _arguments "${_arguments_options[@]}" : \
 '--all[Sync all worktrees instead of just the current one]' \
@@ -267,6 +276,13 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '--hooks[Only set up status tracking hooks]' \
 '--skills[Only install skills]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(uninstall)
+_arguments "${_arguments_options[@]}" : \
+'--dry-run[Show what would be removed without actually removing]' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -821,6 +837,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(reap-agents)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
 (sync-files)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
@@ -830,6 +850,10 @@ _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
 (setup)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(uninstall)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
@@ -1081,9 +1105,11 @@ _workmux_base_commands() {
 'status:Query agent status for worktrees' \
 'wait:Wait for agents to reach a target status' \
 'run:Run a command in a worktree'\''s window' \
+'reap-agents:Exit tracked agent processes older than a configured age' \
 'sync-files:Re-apply file operations (copy/symlink) to worktrees' \
 'init:Generate example .workmux.yaml configuration file' \
 'setup:Set up agent status tracking hooks and install skills' \
+'uninstall:Remove agent status tracking hooks, skills, and cache/state dirs' \
 'docs:Show detailed documentation (renders README.md)' \
 'changelog:Show the changelog (what'\''s new in each version)' \
 'update:Update workmux to the latest version' \
@@ -1312,9 +1338,11 @@ _workmux_base__help_commands() {
 'status:Query agent status for worktrees' \
 'wait:Wait for agents to reach a target status' \
 'run:Run a command in a worktree'\''s window' \
+'reap-agents:Exit tracked agent processes older than a configured age' \
 'sync-files:Re-apply file operations (copy/symlink) to worktrees' \
 'init:Generate example .workmux.yaml configuration file' \
 'setup:Set up agent status tracking hooks and install skills' \
+'uninstall:Remove agent status tracking hooks, skills, and cache/state dirs' \
 'docs:Show detailed documentation (renders README.md)' \
 'changelog:Show the changelog (what'\''s new in each version)' \
 'update:Update workmux to the latest version' \
@@ -1521,6 +1549,11 @@ _workmux_base__help__path_commands() {
     local commands; commands=()
     _describe -t commands 'workmux help path commands' commands "$@"
 }
+(( $+functions[_workmux_base__help__reap-agents_commands] )) ||
+_workmux_base__help__reap-agents_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help reap-agents commands' commands "$@"
+}
 (( $+functions[_workmux_base__help__remove_commands] )) ||
 _workmux_base__help__remove_commands() {
     local commands; commands=()
@@ -1655,6 +1688,11 @@ _workmux_base__help__sync-files_commands() {
     local commands; commands=()
     _describe -t commands 'workmux help sync-files commands' commands "$@"
 }
+(( $+functions[_workmux_base__help__uninstall_commands] )) ||
+_workmux_base__help__uninstall_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help uninstall commands' commands "$@"
+}
 (( $+functions[_workmux_base__help__update_commands] )) ||
 _workmux_base__help__update_commands() {
     local commands; commands=()
@@ -1704,6 +1742,11 @@ _workmux_base__open_commands() {
 _workmux_base__path_commands() {
     local commands; commands=()
     _describe -t commands 'workmux path commands' commands "$@"
+}
+(( $+functions[_workmux_base__reap-agents_commands] )) ||
+_workmux_base__reap-agents_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux reap-agents commands' commands "$@"
 }
 (( $+functions[_workmux_base__remove_commands] )) ||
 _workmux_base__remove_commands() {
@@ -1936,6 +1979,11 @@ _workmux_base__status_commands() {
 _workmux_base__sync-files_commands() {
     local commands; commands=()
     _describe -t commands 'workmux sync-files commands' commands "$@"
+}
+(( $+functions[_workmux_base__uninstall_commands] )) ||
+_workmux_base__uninstall_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux uninstall commands' commands "$@"
 }
 (( $+functions[_workmux_base__update_commands] )) ||
 _workmux_base__update_commands() {
