@@ -1626,7 +1626,7 @@ version = "0.3.0"
 backend = "npm:@vtsls/language-server"
 
 [[tools."npm:@vue/language-server"]]
-version = "3.3.3"
+version = "3.3.4"
 backend = "npm:@vue/language-server"
 
 [[tools."npm:awk-language-server"]]
