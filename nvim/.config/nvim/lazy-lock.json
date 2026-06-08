@@ -11,7 +11,7 @@
   "conform.nvim": { "branch": "master", "commit": "619363c30309d29ffa631e67c8183f2a72caa373" },
   "csvview.nvim": { "branch": "main", "commit": "5c22774c3ecc7f8883af5d143b366e45b1f0875d" },
   "dial.nvim": { "branch": "master", "commit": "f2634758455cfa52a8acea6f142dcd6271a1bf57" },
-  "diffview.nvim": { "branch": "main", "commit": "0be35882a82802d86175ca1c33dba913eb9e5a39" },
+  "diffview.nvim": { "branch": "main", "commit": "276d8a79bd90aece4960cf8bcf292cc7a35a4f57" },
   "emmet-vim": { "branch": "master", "commit": "92ef2f74f4093edc99db5e9e4cf7e40116a85bd6" },
   "flash.nvim": { "branch": "main", "commit": "fcea7ff883235d9024dc41e638f164a450c14ca2" },
   "friendly-snippets": { "branch": "main", "commit": "6cd7280adead7f586db6fccbd15d2cac7e2188b9" },
@@ -74,7 +74,7 @@
   "render-markdown.nvim": { "branch": "main", "commit": "5adf0895310c1904e5abfaad40a2baad7fe44a07" },
   "requirements.txt.vim": { "branch": "master", "commit": "d55452136a162ac31b15876ab98c00bd1b6c312f" },
   "rustaceanvim": { "branch": "master", "commit": "f69c85a955b9a83d495e3dc8d43adb6364a0b765" },
-  "schemastore.nvim": { "branch": "main", "commit": "30d47907079474907f24d4a546932119a8b9f641" },
+  "schemastore.nvim": { "branch": "main", "commit": "8fa7f9cb8805f8abf27432d4b1e7c4be83d76807" },
   "snacks.nvim": { "branch": "main", "commit": "882c996cf28183f4d63640de0b4c02ec886d01f2" },
   "sxhkd-vim": { "branch": "master", "commit": "7b7937ff5c220fbef3bdd883d567513246516e06" },
   "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "680762989e8b05a72e90769959d0fb9a557e6917" },
@@ -121,5 +121,5 @@
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "windows.nvim": { "branch": "main", "commit": "c7492552b23d0ab30325e90b56066ec51242adc8" },
   "wrapping.nvim": { "branch": "master", "commit": "3ecfb37cdc189a4e32d646e1c2ae0f46b9d62740" },
-  "yazi.nvim": { "branch": "main", "commit": "f98b74eac038de111e9b3f5226e5e43fdb7232ac" }
+  "yazi.nvim": { "branch": "main", "commit": "4224f0dd182afb532ebc5b0f9ff74480b80bf9cc" }
 }
