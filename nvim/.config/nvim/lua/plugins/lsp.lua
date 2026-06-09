@@ -576,13 +576,11 @@ return {
           htmldjango = { "djlint" },
           javascript = {
             "oxfmt",
-            "biome",
             lsp_format = "fallback",
             stop_after_first = true,
           },
           typescript = {
             "oxfmt",
-            "biome",
             lsp_format = "fallback",
             stop_after_first = true,
           },
@@ -598,7 +596,7 @@ return {
           html = { "oxfmt", "djlint", stop_after_first = true },
           groovy = { "npm-groovy-lint", "injected" },
           make = { "bake" },
-          json = { "oxfmt", "biome", stop_after_first = true },
+          json = { "oxfmt", stop_after_first = true },
           terraform = { lsp_format = "prefer" },
           markdown = { "oxfmt", "injected" },
           sh = { "shfmt" },
