@@ -114,6 +114,7 @@ lazyjournal = "latest"
 experimental = true
 env_shell_expand = true
 disable_backends = ["asdf"]
+use_versions_host = false
 
 [settings.python]
 compile = true
