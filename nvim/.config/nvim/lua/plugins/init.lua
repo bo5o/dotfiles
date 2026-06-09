@@ -1287,6 +1287,13 @@ return {
     "echasnovski/mini.sessions",
     version = false,
     cmd = "Restart",
+    keys = {
+      {
+        "ZR",
+        "<cmd>Restart<cr>",
+        desc = "Restart Neovim (preserving session)",
+      },
+    },
     config = function()
       require("mini.sessions").setup()
       vim.api.nvim_create_user_command("Restart", function()
