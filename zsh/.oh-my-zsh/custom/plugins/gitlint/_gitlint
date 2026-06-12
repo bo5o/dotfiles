@@ -31,11 +31,5 @@ _gitlint_completion() {
     fi
 }
 
-if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
-    # autoload from fpath, call function directly
-    _gitlint_completion "$@"
-else
-    # eval/source/. command, register function for later
-    compdef _gitlint_completion gitlint
-fi
+compdef _gitlint_completion gitlint;
 
