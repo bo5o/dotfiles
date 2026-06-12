@@ -105,6 +105,7 @@ seturl app.hex.tech superignore true
 seturl mail.proton.me superignore true
 seturl typing.com superignore true
 seturl ast-grep.github.io/playground.html superignore true
+seturl atlassian.net superignore true
 
 " container settings
 set auconcreatecontainer true
