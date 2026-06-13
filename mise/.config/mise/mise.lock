@@ -935,38 +935,38 @@ url = "https://github.com/opentofu/tofu-ls/releases/download/v0.5.0/tofu-ls_Wind
 url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/431091367"
 
 [[tools."github:psviderski/unregistry"]]
-version = "0.4.2"
+version = "0.4.3"
 backend = "github:psviderski/unregistry"
 
 [tools."github:psviderski/unregistry"."platforms.linux-arm64"]
-checksum = "sha256:03aa91b6d3dedea362be1079ef64edaa7769072fba5e3c3ed0e1e0a5bb2702e3"
-url = "https://github.com/psviderski/unregistry/releases/download/v0.4.2/unregistry_0.4.2_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/psviderski/unregistry/releases/assets/360649423"
+checksum = "sha256:2c08138c4217f0d66fb31a50e7ce29aafc92b004aa1066e6fbb4e672ed71210a"
+url = "https://github.com/psviderski/unregistry/releases/download/v0.4.3/unregistry_0.4.3_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/psviderski/unregistry/releases/assets/445403314"
 
 [tools."github:psviderski/unregistry"."platforms.linux-arm64-musl"]
-checksum = "sha256:03aa91b6d3dedea362be1079ef64edaa7769072fba5e3c3ed0e1e0a5bb2702e3"
-url = "https://github.com/psviderski/unregistry/releases/download/v0.4.2/unregistry_0.4.2_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/psviderski/unregistry/releases/assets/360649423"
+checksum = "sha256:2c08138c4217f0d66fb31a50e7ce29aafc92b004aa1066e6fbb4e672ed71210a"
+url = "https://github.com/psviderski/unregistry/releases/download/v0.4.3/unregistry_0.4.3_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/psviderski/unregistry/releases/assets/445403314"
 
 [tools."github:psviderski/unregistry"."platforms.linux-x64"]
-checksum = "sha256:03aa91b6d3dedea362be1079ef64edaa7769072fba5e3c3ed0e1e0a5bb2702e3"
-url = "https://github.com/psviderski/unregistry/releases/download/v0.4.2/unregistry_0.4.2_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/psviderski/unregistry/releases/assets/360649427"
+checksum = "sha256:2c08138c4217f0d66fb31a50e7ce29aafc92b004aa1066e6fbb4e672ed71210a"
+url = "https://github.com/psviderski/unregistry/releases/download/v0.4.3/unregistry_0.4.3_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/psviderski/unregistry/releases/assets/445403315"
 
 [tools."github:psviderski/unregistry"."platforms.linux-x64-musl"]
-checksum = "sha256:03aa91b6d3dedea362be1079ef64edaa7769072fba5e3c3ed0e1e0a5bb2702e3"
-url = "https://github.com/psviderski/unregistry/releases/download/v0.4.2/unregistry_0.4.2_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/psviderski/unregistry/releases/assets/360649427"
+checksum = "sha256:2c08138c4217f0d66fb31a50e7ce29aafc92b004aa1066e6fbb4e672ed71210a"
+url = "https://github.com/psviderski/unregistry/releases/download/v0.4.3/unregistry_0.4.3_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/psviderski/unregistry/releases/assets/445403315"
 
 [tools."github:psviderski/unregistry"."platforms.macos-arm64"]
-checksum = "sha256:03aa91b6d3dedea362be1079ef64edaa7769072fba5e3c3ed0e1e0a5bb2702e3"
-url = "https://github.com/psviderski/unregistry/releases/download/v0.4.2/unregistry_0.4.2_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/psviderski/unregistry/releases/assets/360649426"
+checksum = "sha256:2c08138c4217f0d66fb31a50e7ce29aafc92b004aa1066e6fbb4e672ed71210a"
+url = "https://github.com/psviderski/unregistry/releases/download/v0.4.3/unregistry_0.4.3_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/psviderski/unregistry/releases/assets/445403316"
 
 [tools."github:psviderski/unregistry"."platforms.macos-x64"]
-checksum = "sha256:03aa91b6d3dedea362be1079ef64edaa7769072fba5e3c3ed0e1e0a5bb2702e3"
-url = "https://github.com/psviderski/unregistry/releases/download/v0.4.2/unregistry_0.4.2_darwin_amd64.tar.gz"
-url_api = "https://api.github.com/repos/psviderski/unregistry/releases/assets/360649425"
+checksum = "sha256:2c08138c4217f0d66fb31a50e7ce29aafc92b004aa1066e6fbb4e672ed71210a"
+url = "https://github.com/psviderski/unregistry/releases/download/v0.4.3/unregistry_0.4.3_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/psviderski/unregistry/releases/assets/445403317"
 
 [[tools."github:ribru17/ts_query_ls"]]
 version = "3.16.0"
