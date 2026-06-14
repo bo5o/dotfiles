@@ -1,0 +1,10 @@
+default_provider = "keychain"
+
+[providers.keychain]
+type = "keychain"
+service = "fnox"
+
+[providers.myage]
+type = "age"
+recipients = ["age1e9g50skvyxgqy7uukl27a9axcc4x38lksj5f8y8lnzjkjmz8letsj4rs87"]
+identity = { provider = "keychain", value = "age-key" }
