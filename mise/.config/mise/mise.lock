@@ -1913,32 +1913,32 @@ version = "1.96.0"
 backend = "core:rust"
 
 [[tools.rust-analyzer]]
-version = "2026-06-08"
+version = "2026-06-15"
 backend = "aqua:rust-lang/rust-analyzer"
 
 [tools.rust-analyzer."platforms.linux-arm64"]
-checksum = "sha256:9e8b266654adb4765553b1ce69d442ffa920eff5964f3f5501ea45d7a51a647a"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-06-08/rust-analyzer-aarch64-unknown-linux-gnu.gz"
+checksum = "sha256:42a76674f75cf9cbb504e05738d881d00dba26c85ac2bbdc3719f423b0d0b558"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-06-15/rust-analyzer-aarch64-unknown-linux-gnu.gz"
 
 [tools.rust-analyzer."platforms.linux-x64"]
-checksum = "sha256:57fdc8989fafa6aa59109175a51dd09d456b05d113e74b02d54c06b949a019bb"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-06-08/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+checksum = "sha256:a295578310361680eda4116b90b113126253278b9806b176faa46af3c451905d"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-06-15/rust-analyzer-x86_64-unknown-linux-gnu.gz"
 
 [tools.rust-analyzer."platforms.linux-x64-musl"]
-checksum = "sha256:1adcff720f81df88f4e5da4442cdfa618c1be24e6299dfe12208f6d481d4bcf7"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-06-08/rust-analyzer-x86_64-unknown-linux-musl.gz"
+checksum = "sha256:e05aaeb73deb773d23efaa78bea042b99523444f3244da1bd2bb798af5ecacb1"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-06-15/rust-analyzer-x86_64-unknown-linux-musl.gz"
 
 [tools.rust-analyzer."platforms.macos-arm64"]
-checksum = "sha256:29945197bf80e0c27e7d92c74a9fb97ca196f448ff0559e5877b9771457869c8"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-06-08/rust-analyzer-aarch64-apple-darwin.gz"
+checksum = "sha256:626213c6c91ae76429942d713a53a95513e2fe9938110fecfcb50552f01d608a"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-06-15/rust-analyzer-aarch64-apple-darwin.gz"
 
 [tools.rust-analyzer."platforms.macos-x64"]
-checksum = "sha256:e7cd4f93d8f2dfd7196aa28d3f177f8ed77ee2aa5da54b5835b2ebc03253fafe"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-06-08/rust-analyzer-x86_64-apple-darwin.gz"
+checksum = "sha256:bc97e13bc7747bcda7ae97173fad3f2b8ac32fab21c801684dded4e72871d17d"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-06-15/rust-analyzer-x86_64-apple-darwin.gz"
 
 [tools.rust-analyzer."platforms.windows-x64"]
-checksum = "sha256:32341c16667300a6d33dcfc47596c58bf1269d4b8b0714590af01488ee8b9af2"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-06-08/rust-analyzer-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:0f82e470220986a6b71202f135fe80233fc3baaffb84900f2f19388ba85cbb41"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-06-15/rust-analyzer-x86_64-pc-windows-msvc.zip"
 
 [[tools.shellcheck]]
 version = "0.11.0"
