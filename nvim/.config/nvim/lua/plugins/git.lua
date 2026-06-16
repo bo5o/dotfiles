@@ -211,6 +211,13 @@ return {
         --    |'diff3_mixed'
         --    |'diff4_mixed'
         -- For more info, see |diffview-config-view.x.layout|.
+        inline = {
+          style = "overleaf",
+        },
+        cycle_layouts = {
+          -- Cycle through these with 'g<C-x>'. See |diffview-config-view.cycle_layouts|.
+          default = { "diff2_horizontal", "diff1_inline" },
+        },
         default = {
           -- Config for changed files, and staged files in diff views.
           layout = "diff2_horizontal",
@@ -295,5 +302,25 @@ return {
         end,
       },
     },
+    config = function(_, opts)
+      require("diffview").setup(opts)
+
+      -- Make inline (overleaf) deletions visible without touching diff2's dim look.
+      -- Registered after setup() so it wins over diffview's ColorScheme rebuild.
+      local group = vim.api.nvim_create_augroup("DiffviewColors", { clear = true })
+      local function set_hl()
+        vim.api.nvim_set_hl(0, "DiffviewDiffDeleteInline", {
+          fg = "#ea6962",
+          bg = "#3c1f1e",
+          strikethrough = true,
+        })
+      end
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "*",
+        group = group,
+        callback = set_hl,
+      })
+      set_hl()
+    end,
   },
 }
