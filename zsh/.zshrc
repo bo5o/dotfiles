@@ -18,10 +18,6 @@ COMPLETION_WAITING_DOTS="true"
 export MISE_DATA_DIR="$HOME/.local/share/mise"
 export PATH="$MISE_DATA_DIR/shims:$PATH"
 
-# setup fnox
-export FNOX_SHELL_OUTPUT=none
-eval "$(fnox activate zsh)"
-
 # Plugins
 plugins=(
     # from ~/.oh-my-zsh/plugins
@@ -84,6 +80,10 @@ zstyle :omz:plugins:ssh-agent lazy yes
 zstyle :omz:plugins:ssh-agent lifetime 6h
 
 source $ZSH/oh-my-zsh.sh
+
+# setup fnox
+export FNOX_SHELL_OUTPUT=none
+eval "$(fnox activate zsh)"
 
 # use `zoxide import --from=z "$HOME/.z"` to migrate from z
 eval "$(zoxide init --cmd j zsh)"
