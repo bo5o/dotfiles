@@ -1619,7 +1619,7 @@ version = "1.18.4"
 backend = "npm:intelephense"
 
 [[tools."npm:markdownlint-cli"]]
-version = "0.48.0"
+version = "0.49.0"
 backend = "npm:markdownlint-cli"
 
 [[tools."npm:markuplint"]]
