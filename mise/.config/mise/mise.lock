@@ -2153,32 +2153,38 @@ url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-x8
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-windows-x86_64.zip"
 
 [[tools.tmux]]
-version = "3.6b"
+version = "3.7b"
 backend = "aqua:tmux/tmux-builds"
 
 [tools.tmux."platforms.linux-arm64"]
-checksum = "sha256:fd4a2206c5e468dd2ee4e9a65f2d40e0762551965d7fdbe849c494ab14f513e9"
-url = "https://github.com/tmux/tmux-builds/releases/download/v3.6b/tmux-3.6b-linux-arm64.tar.gz"
+checksum = "sha256:b2955782695283fbc3682a2f77d65616f53b986ee3cf3d80618d3b1cb95b91a6"
+url = "https://github.com/tmux/tmux-builds/releases/download/v3.7b/tmux-3.7b-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/tmux/tmux-builds/releases/assets/465072868"
 
 [tools.tmux."platforms.linux-arm64-musl"]
-checksum = "sha256:fd4a2206c5e468dd2ee4e9a65f2d40e0762551965d7fdbe849c494ab14f513e9"
-url = "https://github.com/tmux/tmux-builds/releases/download/v3.6b/tmux-3.6b-linux-arm64.tar.gz"
+checksum = "sha256:b2955782695283fbc3682a2f77d65616f53b986ee3cf3d80618d3b1cb95b91a6"
+url = "https://github.com/tmux/tmux-builds/releases/download/v3.7b/tmux-3.7b-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/tmux/tmux-builds/releases/assets/465072868"
 
 [tools.tmux."platforms.linux-x64"]
-checksum = "sha256:002a6f4fd52212600fa0d72d865dcf328e5b8b6e83c179788144d8587b75677a"
-url = "https://github.com/tmux/tmux-builds/releases/download/v3.6b/tmux-3.6b-linux-x86_64.tar.gz"
+checksum = "sha256:f85e6c1c412750a774eb3f370f33bad05fc726fb8b6a0b174ad6f0b6d954df58"
+url = "https://github.com/tmux/tmux-builds/releases/download/v3.7b/tmux-3.7b-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/tmux/tmux-builds/releases/assets/465072866"
 
 [tools.tmux."platforms.linux-x64-musl"]
-checksum = "sha256:002a6f4fd52212600fa0d72d865dcf328e5b8b6e83c179788144d8587b75677a"
-url = "https://github.com/tmux/tmux-builds/releases/download/v3.6b/tmux-3.6b-linux-x86_64.tar.gz"
+checksum = "sha256:f85e6c1c412750a774eb3f370f33bad05fc726fb8b6a0b174ad6f0b6d954df58"
+url = "https://github.com/tmux/tmux-builds/releases/download/v3.7b/tmux-3.7b-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/tmux/tmux-builds/releases/assets/465072866"
 
 [tools.tmux."platforms.macos-arm64"]
-checksum = "sha256:88323402bd28d21103239caf009b130086ebf334807de485d4a1e1c7188ee810"
-url = "https://github.com/tmux/tmux-builds/releases/download/v3.6b/tmux-3.6b-macos-arm64.tar.gz"
+checksum = "sha256:ee66dbcd49613eb41dc6b2f3abc5cd39d9135d67b7dfef1fdb180a3dbdc01f1e"
+url = "https://github.com/tmux/tmux-builds/releases/download/v3.7b/tmux-3.7b-macos-arm64.tar.gz"
+url_api = "https://api.github.com/repos/tmux/tmux-builds/releases/assets/465072864"
 
 [tools.tmux."platforms.macos-x64"]
-checksum = "sha256:073f6e2c2baa7eb5d643563600ee6052ca8619f3ec5a0cfdf99c56397fb72c94"
-url = "https://github.com/tmux/tmux-builds/releases/download/v3.6b/tmux-3.6b-macos-x86_64.tar.gz"
+checksum = "sha256:ea90f0d8e8998cf5a3a5921e985685844a13a7c3b5779f36870bd98b7f147fe6"
+url = "https://github.com/tmux/tmux-builds/releases/download/v3.7b/tmux-3.7b-macos-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/tmux/tmux-builds/releases/assets/465072865"
 
 [[tools.tree-sitter]]
 version = "0.26.9"
