@@ -35,11 +35,11 @@ _arguments "${_arguments_options[@]}" : \
 '-p+[AST pattern to match]:PATTERN:_default' \
 '--pattern=[AST pattern to match]:PATTERN:_default' \
 '(-k --kind)--selector=[AST kind to extract sub-part of pattern to match]:KIND:_default' \
-'(-k --kind)--strictness=[The strictness of the pattern]:STRICTNESS:((cst\:"Match exact all node"
-smart\:"Match all node except source trivial nodes"
+'(-k --kind)--strictness=[The strictness of the pattern]:STRICTNESS:((cst\:"Match all nodes exactly"
+smart\:"Match all nodes except source trivial nodes"
 ast\:"Match only ast nodes"
-relaxed\:"Match ast node except comments"
-signature\:"Match ast node except comments, without text"
+relaxed\:"Match ast nodes except comments"
+signature\:"Match ast nodes except comments, without text"
 template\:"Similar to smart but match text only, node kinds are ignored"))' \
 '(-p --pattern)-k+[AST kind to match]:KIND:_default' \
 '(-p --pattern)--kind=[AST kind to match]:KIND:_default' \
@@ -294,6 +294,50 @@ _arguments "${_arguments_options[@]}" : \
 '--help[Print help]' \
 && ret=0
 ;;
+(outline)
+_arguments "${_arguments_options[@]}" : \
+'-l+[Specify the input language]:LANG:_default' \
+'--lang=[Specify the input language]:LANG:_default' \
+'--json=[Output outline entries in structured JSON]::STYLE:((pretty\:"Prints the matches as a pretty-printed JSON array, with indentation and line breaks. This is useful for human readability, but not for parsing by other programs. This is the default value for the \`--json\` option"
+stream\:"Prints each match as a separate JSON object, followed by a newline character. This is useful for streaming the output to other programs that can read one object per line"
+compact\:"Prints the matches as a single-line JSON array, without any whitespace. This is useful for saving space and minimizing the output size"))' \
+'--color=[Controls output color]:WHEN:((auto\:"Try to use colors, but don'\''t force the issue. If the output is piped to another program, or the console isn'\''t available on Windows, or if TERM=dumb, or if \`NO_COLOR\` is defined, for example, then don'\''t use colors"
+always\:"Try very hard to emit colors. This includes emitting ANSI colors on Windows if the console API is unavailable (not implemented yet)"
+ansi\:"Ansi is like Always, except it never tries to use anything other than emitting ANSI color codes"
+never\:"Never emit colors"))' \
+'--items=[Select which top-level items to include]:ITEMS:((auto\:"Use \`structure\` for file or stdin input, \`exports\` when any directory is given"
+structure\:"Top-level items defined locally in the file, excluding imports"
+exports\:"Top-level items exported from the file or module"
+imports\:"Top-level items imported from other files or modules"
+all\:"All top-level items, including imports and exports"))' \
+'--type=[Keep only top-level items with these comma-separated symbol types]:TYPE[,TYPE...]:_default' \
+'--match=[Keep only top-level items matching this regex]:REGEX:_default' \
+'--view=[Select the text presentation]:VIEW:((auto\:"Use \`digest\` for file or stdin input, \`names\` when any directory is given"
+names\:"One grouped name line per symbol type for each file"
+signatures\:"One source/signature line per top-level item"
+digest\:"Signatures plus compact member name digests"
+expanded\:"Signatures plus one source/signature line per direct member"))' \
+'*--outline-rules=[Load additional outline extractor definitions]:FILE:_files' \
+'*--no-ignore=[Do not respect hidden file system or ignore files (.gitignore, .ignore, etc.)]:FILE_TYPE:((hidden\:"Search hidden files and directories. By default, hidden files and directories are skipped"
+dot\:"Don'\''t respect .ignore files. This does *not* affect whether ast-grep will ignore files and directories whose names begin with a dot. For that, use --no-ignore hidden"
+exclude\:"Don'\''t respect ignore files that are manually configured for the repository such as git'\''s '\''.git/info/exclude'\''"
+global\:"Don'\''t respect ignore files that come from "global" sources such as git'\''s \`core.excludesFile\` configuration option (which defaults to \`\$HOME/.config/git/ignore\`)"
+parent\:"Don'\''t respect ignore files (.gitignore, .ignore, etc.) in parent directories"
+vcs\:"Don'\''t respect version control ignore files (.gitignore, etc.). This implies --no-ignore parent for VCS files. Note that .ignore files will continue to be respected"))' \
+'*--globs=[Include or exclude file paths]:GLOBS:_default' \
+'-j+[Set the approximate number of threads to use]:NUM:_default' \
+'--threads=[Set the approximate number of threads to use]:NUM:_default' \
+'-c+[Path to ast-grep root config, default is sgconfig.yml]:CONFIG_FILE:_files' \
+'--config=[Path to ast-grep root config, default is sgconfig.yml]:CONFIG_FILE:_files' \
+'--pub-members[Display only public members in member views]' \
+'--no-default-outline-rules[Do not load bundled outline extractor definitions]' \
+'--follow[Follow symbolic links]' \
+'--stdin[Enable search code from StdIn]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'*::paths -- The paths to search. You can provide multiple paths separated by spaces:_files' \
+&& ret=0
+;;
 (completions)
 _arguments "${_arguments_options[@]}" : \
 '-c+[Path to ast-grep root config, default is sgconfig.yml]:CONFIG_FILE:_files' \
@@ -363,6 +407,10 @@ esac
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(outline)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
 (completions)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
@@ -388,6 +436,7 @@ _ast-grep_commands() {
 'test:Test ast-grep rules' \
 'new:Create new ast-grep project or items like rules/tests' \
 'lsp:Start language server' \
+'outline:Explore code structure for symbols, imports, exports, and members' \
 'completions:Generate shell completion script' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
@@ -406,6 +455,7 @@ _ast-grep__subcmd__help_commands() {
 'test:Test ast-grep rules' \
 'new:Create new ast-grep project or items like rules/tests' \
 'lsp:Start language server' \
+'outline:Explore code structure for symbols, imports, exports, and members' \
 'completions:Generate shell completion script' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
@@ -455,6 +505,11 @@ _ast-grep__subcmd__help__subcmd__new__subcmd__test_commands() {
 _ast-grep__subcmd__help__subcmd__new__subcmd__util_commands() {
     local commands; commands=()
     _describe -t commands 'ast-grep help new util commands' commands "$@"
+}
+(( $+functions[_ast-grep__subcmd__help__subcmd__outline_commands] )) ||
+_ast-grep__subcmd__help__subcmd__outline_commands() {
+    local commands; commands=()
+    _describe -t commands 'ast-grep help outline commands' commands "$@"
 }
 (( $+functions[_ast-grep__subcmd__help__subcmd__run_commands] )) ||
 _ast-grep__subcmd__help__subcmd__run_commands() {
@@ -542,6 +597,11 @@ _ast-grep__subcmd__new__subcmd__test_commands() {
 _ast-grep__subcmd__new__subcmd__util_commands() {
     local commands; commands=()
     _describe -t commands 'ast-grep new util commands' commands "$@"
+}
+(( $+functions[_ast-grep__subcmd__outline_commands] )) ||
+_ast-grep__subcmd__outline_commands() {
+    local commands; commands=()
+    _describe -t commands 'ast-grep outline commands' commands "$@"
 }
 (( $+functions[_ast-grep__subcmd__run_commands] )) ||
 _ast-grep__subcmd__run_commands() {
