@@ -200,42 +200,49 @@ url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/463101262"
 provenance = "github-attestations"
 
 [[tools.bottom]]
-version = "0.12.3"
+version = "0.14.3"
 backend = "aqua:ClementTsang/bottom"
 
 [tools.bottom."platforms.linux-arm64"]
-checksum = "sha256:944f372beeaac326cbe3eb4424d7bae600173cec2b0bba363557cd72cc98a3e2"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:e5926be3775fe4e09df169852181ef7d5e1730427b70830fa6f693bdf69a7b2d"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.3/bottom_aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/463872446"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.linux-arm64-musl"]
-checksum = "sha256:944f372beeaac326cbe3eb4424d7bae600173cec2b0bba363557cd72cc98a3e2"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:e5926be3775fe4e09df169852181ef7d5e1730427b70830fa6f693bdf69a7b2d"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.3/bottom_aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/463872446"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.linux-x64"]
-checksum = "sha256:0d6352079422fda8f4ee242eb849f45a6008db96d6c1cd35e8436babc51bc33f"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:5d57590147c7cfe83b4cb249be0d06b6c31b4efe706cc403d6e8c0806299423e"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.3/bottom_x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/463872434"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.linux-x64-musl"]
-checksum = "sha256:0d6352079422fda8f4ee242eb849f45a6008db96d6c1cd35e8436babc51bc33f"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:5d57590147c7cfe83b4cb249be0d06b6c31b4efe706cc403d6e8c0806299423e"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.3/bottom_x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/463872434"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.macos-arm64"]
-checksum = "sha256:106e9493d20192d18dbe46d4c99f680d817c796724103ee258567070fcd16429"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_aarch64-apple-darwin.tar.gz"
+checksum = "sha256:ef37c83382359e3b098e1311e3ea933c4f5d0e3042709887a68c102d607c973d"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.3/bottom_aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/463872454"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.macos-x64"]
-checksum = "sha256:5744b5c78db14b85e025c31ded93ba038041e6ff2e8c16ea1d2f9bdb6487316f"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_x86_64-apple-darwin.tar.gz"
+checksum = "sha256:98a5b42c274617bae1ecf74e0e8fa03bf56d2c064130c6330a4157c9fff8c25a"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.3/bottom_x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/463872439"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.windows-x64"]
-checksum = "sha256:567879fd7210f8a692cd2657b41eda43c7713bef74dd025b240247accdda14fb"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.12.3/bottom_x86_64-pc-windows-msvc.zip"
+checksum = "sha256:a3f8ccf4b9df889f20118030ccb418ca564d9bf5dcc082c24cbb1ce42ed97ce8"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.3/bottom_x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/463872433"
 provenance = "github-attestations"
 
 [[tools.cargo-binstall]]
