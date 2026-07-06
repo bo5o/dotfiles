@@ -661,7 +661,7 @@ checksum = "sha256:521a974dc32e93404265e55bffaf71a59e05e80abdf8ca4afb21a6030dc76
 url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-windows_amd64.zip"
 
 [[tools."gem:tmuxinator"]]
-version = "3.4.0"
+version = "3.4.1"
 backend = "gem:tmuxinator"
 
 [[tools.git-cliff]]
