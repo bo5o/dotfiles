@@ -140,6 +140,13 @@ _arguments "${_arguments_options[@]}" : \
 '::name -- Worktree name or branch (defaults to current directory):_default' \
 && ret=0
 ;;
+(rebase)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'::name -- Worktree name or branch (defaults to current directory):_default' \
+&& ret=0
+;;
 (rename)
 _arguments "${_arguments_options[@]}" : \
 '-b[Also rename the underlying git branch to match the new handle]' \
@@ -307,6 +314,7 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (sidebar)
 _arguments "${_arguments_options[@]}" : \
+'--position=[Sidebar placement for this toggle]:POSITION:(left top)' \
 '-s[Scope sidebar to this session, or toggle this session off when global sidebar is active]' \
 '--session[Scope sidebar to this session, or toggle this session off when global sidebar is active]' \
 '-h[Print help]' \
@@ -340,6 +348,13 @@ _arguments "${_arguments_options[@]}" : \
 ':index -- Agent number (1-9):_default' \
 && ret=0
 ;;
+(filter)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'::mode -- Filter mode\: "none"/"all" or "session"/"project":_default' \
+&& ret=0
+;;
 (help)
 _arguments "${_arguments_options[@]}" : \
 ":: :_workmux_base__sidebar__help_commands" \
@@ -361,6 +376,10 @@ _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
 (jump)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(filter)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
@@ -398,6 +417,7 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (_sidebar-reflow-all)
 _arguments "${_arguments_options[@]}" : \
+'--exclude=[Exclude this window ID from reflow (e.g. the window that just lost a pane)]:EXCLUDE:_default' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -801,6 +821,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(rebase)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
 (rename)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
@@ -890,6 +914,10 @@ _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
 (jump)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(filter)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
@@ -1094,6 +1122,7 @@ _workmux_base_commands() {
 'close:Close a worktree'\''s tmux window (keeps the worktree and branch)' \
 'resurrect:Restore worktree windows after a tmux or computer crash' \
 'merge:Merge a branch, then clean up the worktree and tmux window' \
+'rebase:Rebase a worktree branch onto its base branch' \
 'rename:Rename a worktree, its tmux window/session, and (optionally) its branch' \
 'remove:Remove a worktree, tmux window, and branch without merging' \
 'rm:Remove a worktree, tmux window, and branch without merging' \
@@ -1329,6 +1358,7 @@ _workmux_base__help_commands() {
 'close:Close a worktree'\''s tmux window (keeps the worktree and branch)' \
 'resurrect:Restore worktree windows after a tmux or computer crash' \
 'merge:Merge a branch, then clean up the worktree and tmux window' \
+'rebase:Rebase a worktree branch onto its base branch' \
 'rename:Rename a worktree, its tmux window/session, and (optionally) its branch' \
 'remove:Remove a worktree, tmux window, and branch without merging' \
 'list:List all worktrees' \
@@ -1554,6 +1584,11 @@ _workmux_base__help__reap-agents_commands() {
     local commands; commands=()
     _describe -t commands 'workmux help reap-agents commands' commands "$@"
 }
+(( $+functions[_workmux_base__help__rebase_commands] )) ||
+_workmux_base__help__rebase_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help rebase commands' commands "$@"
+}
 (( $+functions[_workmux_base__help__remove_commands] )) ||
 _workmux_base__help__remove_commands() {
     local commands; commands=()
@@ -1660,8 +1695,14 @@ _workmux_base__help__sidebar_commands() {
 'next:Switch to the next agent in sidebar order' \
 'prev:Switch to the previous agent in sidebar order' \
 'jump:Jump to the Nth agent in sidebar order (1-indexed)' \
+'filter:Set sidebar filter mode. Toggles if no mode given' \
     )
     _describe -t commands 'workmux help sidebar commands' commands "$@"
+}
+(( $+functions[_workmux_base__help__sidebar__filter_commands] )) ||
+_workmux_base__help__sidebar__filter_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help sidebar filter commands' commands "$@"
 }
 (( $+functions[_workmux_base__help__sidebar__jump_commands] )) ||
 _workmux_base__help__sidebar__jump_commands() {
@@ -1747,6 +1788,11 @@ _workmux_base__path_commands() {
 _workmux_base__reap-agents_commands() {
     local commands; commands=()
     _describe -t commands 'workmux reap-agents commands' commands "$@"
+}
+(( $+functions[_workmux_base__rebase_commands] )) ||
+_workmux_base__rebase_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux rebase commands' commands "$@"
 }
 (( $+functions[_workmux_base__remove_commands] )) ||
 _workmux_base__remove_commands() {
@@ -1921,9 +1967,15 @@ _workmux_base__sidebar_commands() {
 'next:Switch to the next agent in sidebar order' \
 'prev:Switch to the previous agent in sidebar order' \
 'jump:Jump to the Nth agent in sidebar order (1-indexed)' \
+'filter:Set sidebar filter mode. Toggles if no mode given' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'workmux sidebar commands' commands "$@"
+}
+(( $+functions[_workmux_base__sidebar__filter_commands] )) ||
+_workmux_base__sidebar__filter_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux sidebar filter commands' commands "$@"
 }
 (( $+functions[_workmux_base__sidebar__help_commands] )) ||
 _workmux_base__sidebar__help_commands() {
@@ -1931,9 +1983,15 @@ _workmux_base__sidebar__help_commands() {
 'next:Switch to the next agent in sidebar order' \
 'prev:Switch to the previous agent in sidebar order' \
 'jump:Jump to the Nth agent in sidebar order (1-indexed)' \
+'filter:Set sidebar filter mode. Toggles if no mode given' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'workmux sidebar help commands' commands "$@"
+}
+(( $+functions[_workmux_base__sidebar__help__filter_commands] )) ||
+_workmux_base__sidebar__help__filter_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux sidebar help filter commands' commands "$@"
 }
 (( $+functions[_workmux_base__sidebar__help__help_commands] )) ||
 _workmux_base__sidebar__help__help_commands() {
@@ -2089,7 +2147,7 @@ _workmux() {
     # For commands that take handles or branches, offer only those
     # (no file fallback from _default). Flag completion is handled above.
     case "$cmd" in
-        open|remove|rm|rename|path|merge|close)
+        open|remove|rm|rename|path|merge|rebase|close)
             _workmux_handles
             ;;
         send|capture|status|wait|run)
