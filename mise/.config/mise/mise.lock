@@ -814,43 +814,43 @@ url = "https://github.com/Ataraxy-Labs/sem/releases/download/v0.18.0/sem-windows
 url_api = "https://api.github.com/repos/Ataraxy-Labs/sem/releases/assets/465741344"
 
 [[tools."github:Myriad-Dreamin/tinymist"]]
-version = "0.14.20"
+version = "0.15.2"
 backend = "github:Myriad-Dreamin/tinymist"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-arm64"]
-checksum = "sha256:dd27e59984b430f6c134a45f84e317c9142f46565405fa983f1585843eb096d7"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.20/tinymist-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/448134349"
+checksum = "sha256:eba8e14338cf211906d77be6b18102736222da6721e98161133fa0d8ff5ab599"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.2/tinymist-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/454625657"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-arm64-musl"]
-checksum = "sha256:9dd7d14113b313c3809d03160933c860d422164022a2e952c35c7cadebbde73b"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.20/tinymist-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/448134354"
+checksum = "sha256:bfa7e93af0c0761206d810ac4781b0dd17b09fbbba6a26bea8f1b0756fa5132a"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.2/tinymist-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/454625662"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-x64"]
-checksum = "sha256:7c2d975834be4965f2cf61354612a64dc847bc232a56d01ec7c459c3c2ed8c7c"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.20/tinymist-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/448134802"
+checksum = "sha256:9b8a1aea6bb3fc9c39cb70496f0082bd518cfede555757bc3cb5225b05abc99b"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.2/tinymist-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/454625936"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.linux-x64-musl"]
-checksum = "sha256:0c3a9022b2f1e6a4f11aa1a3435c324c9f89d1b77065cf173bc546dd5ea9a5a2"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.20/tinymist-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/448134804"
+checksum = "sha256:46ff973fbc89c89714e7b03488498404da0a517d4686e3f6f870b978c91d5f84"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.2/tinymist-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/454625939"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.macos-arm64"]
-checksum = "sha256:332154c8a7705ffa36e65671b1c44ebf27d9fa0db5d37ba6602d9d33432fe5f7"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.20/tinymist-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/448134328"
+checksum = "sha256:16241868c6752aa5e8f9c162562293c7cdf69e82f54687d7886336daf2c51915"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.2/tinymist-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/454625643"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.macos-x64"]
-checksum = "sha256:15163e547e76b7420bffc42b8c006c6431d9648a49a6589ca41c919e2b4e0e11"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.20/tinymist-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/448134769"
+checksum = "sha256:fcfcfd01376394048443f81de349d165c271c17c36579eb9a08b889b30b8c3b2"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.2/tinymist-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/454625914"
 
 [tools."github:Myriad-Dreamin/tinymist"."platforms.windows-x64"]
-checksum = "sha256:fdceeaf07bb18523a6b721d0133742220ed4c968289a5352ef97f186eb593518"
-url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.14.20/tinymist-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/448134787"
+checksum = "sha256:91edb0d21edca5841b896d702d8086622792d52b71a9b444d8befb0e937969ae"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.2/tinymist-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/454625931"
 
 [[tools."github:bitwarden/sdk-sm"]]
 version = "2.1.0"
