@@ -993,43 +993,43 @@ url = "https://github.com/bitwarden/sdk-sm/releases/download/bws-v2.1.0/bws-x86_
 url_api = "https://api.github.com/repos/bitwarden/sdk-sm/releases/assets/426507247"
 
 [[tools."github:garethgeorge/backrest"]]
-version = "1.13.0"
+version = "1.14.1"
 backend = "github:garethgeorge/backrest"
 
 [tools."github:garethgeorge/backrest"."platforms.linux-arm64"]
-checksum = "sha256:85a72e949d3bd912eb084423d63cb9eba5f28c65be0239135050284c7b0f65e5"
-url = "https://github.com/garethgeorge/backrest/releases/download/v1.13.0/backrest_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/411573942"
+checksum = "sha256:b53718cd6e042e7d99538cb652968ab966a5c53fabd556785648ceb13320a320"
+url = "https://github.com/garethgeorge/backrest/releases/download/v1.14.1/backrest_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/474098510"
 
 [tools."github:garethgeorge/backrest"."platforms.linux-arm64-musl"]
-checksum = "sha256:85a72e949d3bd912eb084423d63cb9eba5f28c65be0239135050284c7b0f65e5"
-url = "https://github.com/garethgeorge/backrest/releases/download/v1.13.0/backrest_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/411573942"
+checksum = "sha256:b53718cd6e042e7d99538cb652968ab966a5c53fabd556785648ceb13320a320"
+url = "https://github.com/garethgeorge/backrest/releases/download/v1.14.1/backrest_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/474098510"
 
 [tools."github:garethgeorge/backrest"."platforms.linux-x64"]
-checksum = "sha256:24102542eceb59054e7714da8cdfd2904c997a8f0bc54f4b2edbcaec38cf337d"
-url = "https://github.com/garethgeorge/backrest/releases/download/v1.13.0/backrest_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/411573924"
+checksum = "sha256:acc7835a9c55b3d254f0fa285cacbe87ac912cb7e069d0211924838020e6921c"
+url = "https://github.com/garethgeorge/backrest/releases/download/v1.14.1/backrest_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/474098512"
 
 [tools."github:garethgeorge/backrest"."platforms.linux-x64-musl"]
-checksum = "sha256:24102542eceb59054e7714da8cdfd2904c997a8f0bc54f4b2edbcaec38cf337d"
-url = "https://github.com/garethgeorge/backrest/releases/download/v1.13.0/backrest_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/411573924"
+checksum = "sha256:acc7835a9c55b3d254f0fa285cacbe87ac912cb7e069d0211924838020e6921c"
+url = "https://github.com/garethgeorge/backrest/releases/download/v1.14.1/backrest_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/474098512"
 
 [tools."github:garethgeorge/backrest"."platforms.macos-arm64"]
-checksum = "sha256:2103b250ef754c7e330570d1c04204eb27afe2b07ee0da6316287ee095d037d8"
-url = "https://github.com/garethgeorge/backrest/releases/download/v1.13.0/backrest_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/411573922"
+checksum = "sha256:ee938b56d796c96a8aaa5e40f8e8deb8c435f152992c541a5f53120892275695"
+url = "https://github.com/garethgeorge/backrest/releases/download/v1.14.1/backrest_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/474098491"
 
 [tools."github:garethgeorge/backrest"."platforms.macos-x64"]
-checksum = "sha256:f91f1662e53139854981af3d53af8b6caa1d6ddf2a94b9e120b5d721ad4ca471"
-url = "https://github.com/garethgeorge/backrest/releases/download/v1.13.0/backrest_Darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/411573925"
+checksum = "sha256:d59cb358f05ddcd265122091f249b0a1df493498909ea91d54f98fe84de27ebb"
+url = "https://github.com/garethgeorge/backrest/releases/download/v1.14.1/backrest_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/474098490"
 
 [tools."github:garethgeorge/backrest"."platforms.windows-x64"]
-checksum = "sha256:2e0d09fe1edb1faff6505810872441361749fb7511566a493ad142b9db00a51f"
-url = "https://github.com/garethgeorge/backrest/releases/download/v1.13.0/backrest_Windows_x86_64.zip"
-url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/411573952"
+checksum = "sha256:16b6d902303df77c14601325eada8656158e8a0531973d6094d22638ff45f545"
+url = "https://github.com/garethgeorge/backrest/releases/download/v1.14.1/backrest_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/garethgeorge/backrest/releases/assets/474098527"
 
 [[tools."github:opentofu/tofu-ls"]]
 version = "0.5.3"
