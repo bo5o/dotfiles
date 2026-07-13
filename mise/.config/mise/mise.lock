@@ -2215,7 +2215,7 @@ url_api = "https://api.github.com/repos/astral-sh/ruff/releases/assets/471700068
 provenance = "github-attestations"
 
 [[tools.rust]]
-version = "1.96.1"
+version = "1.97.0"
 backend = "core:rust"
 
 [[tools.rust-analyzer]]
