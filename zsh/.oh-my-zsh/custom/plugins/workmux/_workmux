@@ -77,6 +77,7 @@ _arguments "${_arguments_options[@]}" : \
 '--wait[Block until the created tmux window is closed]' \
 '(--mode)-s[Create the window in its own tmux session (useful for session-per-project workflows)]' \
 '(--mode)--session[Create the window in its own tmux session (useful for session-per-project workflows)]' \
+'--dry-run[Show what would be created without making persistent changes]' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::branch_name -- Name of the branch (creates if it doesn'\''t exist) or remote ref (e.g., origin/feature). When used with --pr, this becomes the custom local branch name:_default' \
