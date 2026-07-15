@@ -2159,6 +2159,7 @@ version = "4.0.6"
 backend = "core:ruby"
 
 [tools.ruby."platforms.windows-x64"]
+checksum = "sha256:328d7a86bea2f4c432783025050c9ffa1c36fcfc54ebccc466b63450ec3af223"
 url = "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-4.0.6-1/rubyinstaller-4.0.6-1-x64.7z"
 
 [[tools.ruff]]
