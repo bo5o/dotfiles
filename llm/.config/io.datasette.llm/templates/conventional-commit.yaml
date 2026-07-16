@@ -1,5 +1,7 @@
 ---
 extract: true
+options:
+  max_tokens: 2048
 system: |
   Use the Conventional Commit Messages specification to generate a commit message for
   the given changes.
