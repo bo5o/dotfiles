@@ -42,18 +42,23 @@ customCommands:
         command: git absorb
         description: 'Absorb (create fixup commits only)'
         output: terminal
-      - key: 'r'
+      - key: 'B'
         context: 'files'
         command: git absorb --and-rebase
-        description: 'Absorb and rebase'
+        description: 'Absorb and rebase (autosquash)'
+        output: terminal
+      - key: 'w'
+        context: 'files'
+        command: git absorb --whole-file
+        description: 'Absorb whole-file (create fixup commits only)'
+        output: terminal
+      - key: 'W'
+        context: 'files'
+        command: git absorb --whole-file --and-rebase
+        description: 'Absorb whole-file and rebase (autosquash)'
         output: terminal
       - key: 'n'
         context: 'files'
         command: git absorb --dry-run
         description: 'Dry run (preview)'
-        output: terminal
-      - key: 'w'
-        context: 'files'
-        command: git absorb --whole-file --and-rebase
-        description: 'Absorb whole-file and rebase'
         output: terminal
