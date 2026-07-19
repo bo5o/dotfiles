@@ -232,49 +232,49 @@ url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/477504640"
 provenance = "github-attestations"
 
 [[tools.bottom]]
-version = "0.14.4"
+version = "0.14.5"
 backend = "aqua:ClementTsang/bottom"
 
 [tools.bottom."platforms.linux-arm64"]
-checksum = "sha256:1566107df51318216e33b732283c0b98e5b6b08460904cb91d61fd9e2d9275bc"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.4/bottom_aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/471808508"
+checksum = "sha256:7d1b1b6a434e84ce7e87d03698b05653cc9b6fbbfa5600db9f10434e635fdbb4"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.5/bottom_aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/481302187"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.linux-arm64-musl"]
-checksum = "sha256:1566107df51318216e33b732283c0b98e5b6b08460904cb91d61fd9e2d9275bc"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.4/bottom_aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/471808508"
+checksum = "sha256:7d1b1b6a434e84ce7e87d03698b05653cc9b6fbbfa5600db9f10434e635fdbb4"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.5/bottom_aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/481302187"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.linux-x64"]
-checksum = "sha256:caeb19391a2a14c13ed37fc4e7019465256adef0798bbd299be8aaa8a112ee1d"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.4/bottom_x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/471808481"
+checksum = "sha256:a0636d2661e5c9a089e584418c4365b4978f96a338ba00ce897d7f010e57ffa8"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.5/bottom_x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/481302176"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.linux-x64-musl"]
-checksum = "sha256:caeb19391a2a14c13ed37fc4e7019465256adef0798bbd299be8aaa8a112ee1d"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.4/bottom_x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/471808481"
+checksum = "sha256:a0636d2661e5c9a089e584418c4365b4978f96a338ba00ce897d7f010e57ffa8"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.5/bottom_x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/481302176"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.macos-arm64"]
-checksum = "sha256:26133f4dffdda2ba019e50766e4ecbba877043c75625d9eddb2b701416b3a4c6"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.4/bottom_aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/471808505"
+checksum = "sha256:a39bde80615954489f08960bf48292b733e57e2dd141e2f4d61a12f11a7461c0"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.5/bottom_aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/481302191"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.macos-x64"]
-checksum = "sha256:4e6b3a4b5e262708c8a0023d2914d38cb63f8a44aa9ab0284d4f52c2e85d6226"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.4/bottom_x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/471808491"
+checksum = "sha256:fd901f6fa441386911100a905d7ecb288f3934cf28a04e3c4cade4eebfac8570"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.5/bottom_x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/481302185"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.windows-x64"]
-checksum = "sha256:c56e951b8d86be4596133bbbc542bdb1d04bc2ad092f63b97b72b0f8ef65bf4c"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.4/bottom_x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/471808494"
+checksum = "sha256:b9fff7b21beece8fefa69effca9f208e9cfde0809989427ab07dfd412b378faa"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.14.5/bottom_x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/481302184"
 provenance = "github-attestations"
 
 [[tools.cargo-binstall]]
