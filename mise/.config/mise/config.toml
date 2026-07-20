@@ -8,7 +8,7 @@
 "cargo:presenterm" = "0.16.1"
 "cargo:tealdeer" = "1.8.1"
 "cargo:tokei" = "14.0.0"
-"forgejo:forgejo-contrib/forgejo-cli" = "0.5.0"
+"forgejo:forgejo-contrib/forgejo-cli" = "0.6.0"
 "gem:tmuxinator" = "3.4.1"
 "github:Ataraxy-Labs/sem" = "0.21.0"
 "github:Myriad-Dreamin/tinymist" = "0.15.2"
