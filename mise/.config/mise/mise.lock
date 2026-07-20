@@ -1902,7 +1902,7 @@ version = "1.39.9"
 backend = "pipx:basedpyright"
 
 [[tools."pipx:djlint"]]
-version = "1.40.8"
+version = "1.40.9"
 backend = "pipx:djlint"
 
 [[tools."pipx:gitlint-core"]]
