@@ -17,6 +17,8 @@ _fj() {
     _arguments "${_arguments_options[@]}" : \
 '-H+[]:HOST:_default' \
 '--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '--style=[]:STYLE:((fancy\:"Use special characters, and colors"
 minimal\:"No special characters and no colors. Always used in non-terminal contexts (i.e. pipes)"))' \
 '-h[Print help (see more with '\''--help'\'')]' \
@@ -32,6 +34,10 @@ minimal\:"No special characters and no colors. Always used in non-terminal conte
         case $line[1] in
             (repo)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__repo_commands" \
@@ -52,12 +58,16 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[Creates a new remote with the given name for the new repo]:REMOTE:_default' \
 '-S+[Use SSH for the new remote instead of HTTP(S)]::SSH:(true false)' \
 '--ssh=[Use SSH for the new remote instead of HTTP(S)]::SSH:(true false)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-P[]' \
 '--private[]' \
-'-p[Pushes the current branch to the default branch on the new repo. Implies \`--remote=origin\` (setting remote manually overrides this)]' \
-'--push[Pushes the current branch to the default branch on the new repo. Implies \`--remote=origin\` (setting remote manually overrides this)]' \
-'-h[Print help]' \
-'--help[Print help]' \
+'-p[Pushes the current branch to the default branch on the new repo]' \
+'--push[Pushes the current branch to the default branch on the new repo]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 ':repo:_default' \
 && ret=0
 ;;
@@ -66,6 +76,10 @@ _arguments "${_arguments_options[@]}" : \
 '--name=[]:NAME:_default' \
 '-R+[]:REMOTE:_default' \
 '--remote=[]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':repo:_default' \
@@ -79,6 +93,10 @@ _arguments "${_arguments_options[@]}" : \
 '--lfs-endpoint=[The URL to fetch LFS files from]:LFS_ENDPOINT:_default' \
 '-s+[The type of Git service the original repo is on. Defaults to \`git\`]:SERVICE:(git github gitlab forgejo gitea gogs onedev gitbucket codebase)' \
 '--service=[The type of Git service the original repo is on. Defaults to \`git\`]:SERVICE:(git github gitlab forgejo gitea gogs onedev gitbucket codebase)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-m[Whether to mirror the repo instead of migrating it]' \
 '--mirror[Whether to mirror the repo instead of migrating it]' \
 '-p[Whether the new migration should be private]' \
@@ -90,13 +108,17 @@ _arguments "${_arguments_options[@]}" : \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 ':repo -- URL of the repo to migrate:_default' \
-':[OWNER]/NAME -- Name of the new mirror, and optionally which org/user should own it:_default' \
+':[OWNER]/NAME -- URL of the repo to migrate:_default' \
 && ret=0
 ;;
 (view)
 _arguments "${_arguments_options[@]}" : \
 '-R+[]:REMOTE:_default' \
 '--remote=[]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::name:_default' \
@@ -106,6 +128,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[]:REMOTE:_default' \
 '--remote=[]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::name:_default' \
@@ -117,6 +143,10 @@ _arguments "${_arguments_options[@]}" : \
 '--ssh=[Clone the repo over SSH instead of HTTP(S)]::SSH:(true false)' \
 '-I+[An SSH key file to use when cloning over SSH]:IDENTITY_FILE:_files' \
 '--identity-file=[An SSH key file to use when cloning over SSH]:IDENTITY_FILE:_files' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':repo:_default' \
@@ -127,6 +157,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[]:REMOTE:_default' \
 '--remote=[]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::repo:_default' \
@@ -136,6 +170,64 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[]:REMOTE:_default' \
 '--remote=[]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::repo:_default' \
+&& ret=0
+;;
+(star-status)
+_arguments "${_arguments_options[@]}" : \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
+'()--list[List all starred repos instead of checking status]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::repo:_default' \
+&& ret=0
+;;
+(watch)
+_arguments "${_arguments_options[@]}" : \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::repo:_default' \
+&& ret=0
+;;
+(unwatch)
+_arguments "${_arguments_options[@]}" : \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::repo:_default' \
+&& ret=0
+;;
+(watch-status)
+_arguments "${_arguments_options[@]}" : \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
+'()--list[List all watched repos instead of checking status]' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::repo:_default' \
@@ -143,6 +235,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (delete)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 ':repo:_default' \
@@ -152,6 +248,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[]:REMOTE:_default' \
 '--remote=[]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::name:_default' \
@@ -159,6 +259,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (labels)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::repo:_default' \
@@ -174,6 +278,10 @@ _arguments "${_arguments_options[@]}" : \
         case $line[2] in
             (view)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-a[Show archived labels]' \
 '--archived[Show archived labels]' \
 '-h[Print help]' \
@@ -184,6 +292,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-d+[A description for the new label. If no argument is given, open the editor]::DESCRIPTION:_default' \
 '--description=[A description for the new label. If no argument is given, open the editor]::DESCRIPTION:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-e[Make this label exclusive with other labels in the same namespace]' \
 '--exclusive[Make this label exclusive with other labels in the same namespace]' \
 '-a[Create an archived label]' \
@@ -196,6 +308,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (delete)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':id -- The ID or name of the label to delete:_default' \
@@ -213,6 +329,10 @@ _arguments "${_arguments_options[@]}" : \
 '--exclusive=[New exclusive status]:EXCLUSIVE:(true false)' \
 '-a+[New archived status]:ARCHIVED:(true false)' \
 '--archived=[New archived status]:ARCHIVED:(true false)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':id -- The ID or name of the label to edit:_default' \
@@ -274,6 +394,14 @@ _arguments "${_arguments_options[@]}" : \
 '--template=[Set if this repository should be a template repository]:TEMPLATE:(true false)' \
 '-w+[Set a URL for this repository'\''s website]:WEBSITE:_default' \
 '--website=[Set a URL for this repository'\''s website]:WEBSITE:_default' \
+'-a+[Path of the image to set the repository'\''s avatar to]:AVATAR:_files' \
+'--avatar=[Path of the image to set the repository'\''s avatar to]:AVATAR:_files' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
+'(-a --avatar)-u[Remove the repo'\''s currently set avatar]' \
+'(-a --avatar)--unset-avatar[Remove the repo'\''s currently set avatar]' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::repo:_default' \
@@ -281,6 +409,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (units)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::repo:_default' \
@@ -298,6 +430,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-e+[Enable or disable issues]:ENABLE:(true false)' \
 '--enable=[Enable or disable issues]:ENABLE:(true false)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -311,7 +447,7 @@ _arguments "${_arguments_options[@]}" : \
 '--allow-merge-commits=[Allow merge commits]:ALLOW_MERGE_COMMITS:(true false)' \
 '--allow-rebase=[Allow rebase merging]:ALLOW_REBASE:(true false)' \
 '--allow-rebase-explicit=[Allow rebase merging with explicit merge commits]:ALLOW_REBASE_EXPLICIT:(true false)' \
-'--allow-rebase-update=[Allow updating PR branches by rebase]:ALLOW_REBASE_UPDATE:(true false)' \
+'--allow-rebase-update=[help-arg-repo-units-prs-allow-rebase_update]:ALLOW_REBASE_UPDATE:(true false)' \
 '--allow-squash-merge=[Allow squash merging]:ALLOW_SQUASH_MERGE:(true false)' \
 '--autodetect-manual-merge=[Automatically detect manual merges]:AUTODETECT_MANUAL_MERGE:(true false)' \
 '--default-allow-maintainer-edit=[Allow maintainer edits by default]:DEFAULT_ALLOW_MAINTAINER_EDIT:(true false)' \
@@ -319,6 +455,10 @@ _arguments "${_arguments_options[@]}" : \
 '--default-merge-style=[Default merge style]:DEFAULT_MERGE_STYLE:(merge rebase rebase-merge squash fast-forward-only)' \
 '--default-update-style=[Default update style]:DEFAULT_UPDATE_STYLE:(rebase merge)' \
 '--ignore-whitespace-conflicts=[Ignore whitespace merge conflicts]:IGNORE_WHITESPACE_CONFLICTS:(true false)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -327,6 +467,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-e+[Enable or disable actions]:ENABLE:(true false)' \
 '--enable=[Enable or disable actions]:ENABLE:(true false)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -336,16 +480,24 @@ _arguments "${_arguments_options[@]}" : \
 '-e+[Enable or disable the wiki]:ENABLE:(true false)' \
 '--enable=[Enable or disable the wiki]:ENABLE:(true false)' \
 '--branch=[Set the branch used for the wiki]:BRANCH:_default' \
-'--external-url=[Set the URL for an external wiki. If no URL is given, the external wiki is instead disabled]:EXTERNAL_URL:_default' \
+'--external-url=[Set the URL for an external wiki]:EXTERNAL_URL:_default' \
 '--globally-editable=[Set the globally editable state of the wiki]:GLOBALLY_EDITABLE:(true false)' \
-'-h[Print help]' \
-'--help[Print help]' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
 ;;
 (packages)
 _arguments "${_arguments_options[@]}" : \
 '-e+[Enable or disable the package registry]:ENABLE:(true false)' \
 '--enable=[Enable or disable the package registry]:ENABLE:(true false)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -354,14 +506,22 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-e+[Enable or disable the project board]:ENABLE:(true false)' \
 '--enable=[Enable or disable the project board]:ENABLE:(true false)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
 ;;
 (releases)
 _arguments "${_arguments_options[@]}" : \
-'-e+[Enable or disable the releases unit]:ENABLE:(true false)' \
-'--enable=[Enable or disable the releases unit]:ENABLE:(true false)' \
+'-e+[Enable or disable releases]:ENABLE:(true false)' \
+'--enable=[Enable or disable releases]:ENABLE:(true false)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -459,6 +619,22 @@ _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
 (unstar)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(star-status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(watch)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(unwatch)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(watch-status)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
@@ -566,6 +742,10 @@ esac
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__issue_commands" \
@@ -581,23 +761,31 @@ _arguments "${_arguments_options[@]}" : \
             (create)
 _arguments "${_arguments_options[@]}" : \
 '(--template)--body=[The text body of the issue]:BODY:_default' \
-'(--body)--body-file=[The text body of the issue, to read from a file]:BODY_FILE:_files' \
+'(--body)--body-file=[The file to read the text body of the issue from]:BODY_FILE:_files' \
 '--template=[The template to use when creating an issue]:TEMPLATE:_default' \
 '-r+[The repo to create this issue on]:REPO:_default' \
 '--repo=[The repo to create this issue on]:REPO:_default' \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '(--template)--no-template[Don'\''t use a template for this issue]' \
 '--web[Open the issue creation page in your web browser]' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
-'::title -- Title of the issue:_default' \
+':title -- Title of the issue:_default' \
 && ret=0
 ;;
 (edit)
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':issue:_default' \
@@ -615,6 +803,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::new_title:_default' \
@@ -624,6 +816,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::new_body:_default' \
@@ -633,6 +829,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':idx:_default' \
@@ -647,6 +847,10 @@ _arguments "${_arguments_options[@]}" : \
 '*--rm=[The labels to remove]:RM:_default' \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -693,12 +897,16 @@ esac
 ;;
 (comment)
 _arguments "${_arguments_options[@]}" : \
-'()--body-file=[The text content of the comment, to read from a file]:BODY_FILE:_files' \
+'()--body-file=[The file to read the text content of the comment from]:BODY_FILE:_files' \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
-':issue:_default' \
+':issue -- The issue to comment on:_default' \
 '::body -- The text content of the comment:_default' \
 && ret=0
 ;;
@@ -706,9 +914,13 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
-':issue:_default' \
+':issue -- The issue to assign users to:_default' \
 '*::users -- The usernames of the users to assign to this issue:_default' \
 && ret=0
 ;;
@@ -716,9 +928,13 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
-':issue:_default' \
+':issue -- The issue to unassign users from:_default' \
 '*::users -- The usernames of the users to unassign from this issue:_default' \
 && ret=0
 ;;
@@ -728,9 +944,13 @@ _arguments "${_arguments_options[@]}" : \
 '--with-msg=[A comment to leave on the issue before closing it]::WITH_MSG:_default' \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
-':issue:_default' \
+':issue -- The issue to close:_default' \
 && ret=0
 ;;
 (search)
@@ -747,6 +967,10 @@ _arguments "${_arguments_options[@]}" : \
 '--state=[Filter issues by state. Default\: open]:STATE:(open closed all)' \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::query:_default' \
@@ -756,9 +980,13 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
-':id:_default' \
+':id -- The issue to view:_default' \
 ":: :_fj__subcmd__issue__subcmd__view_commands" \
 "*::: :->view" \
 && ret=0
@@ -773,6 +1001,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -781,6 +1013,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':idx:_default' \
@@ -790,6 +1026,22 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(assignees)
+_arguments "${_arguments_options[@]}" : \
+'-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -818,6 +1070,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(assignees)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
 (help)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
@@ -836,6 +1092,10 @@ _arguments "${_arguments_options[@]}" : \
 '--repo=[The repo to view the templates of]:REPO:_default' \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -844,6 +1104,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':id:_default' \
@@ -941,6 +1205,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(assignees)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
         esac
     ;;
 esac
@@ -969,6 +1237,10 @@ esac
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__pr_commands" \
@@ -993,6 +1265,10 @@ _arguments "${_arguments_options[@]}" : \
 '--state=[Filter PRs by state. Default\: open]:STATE:(open closed all)' \
 '-r+[The repo to search in]:REPO:_default' \
 '--repo=[The repo to search in]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::query:_default' \
@@ -1003,9 +1279,13 @@ _arguments "${_arguments_options[@]}" : \
 '--base=[The branch to merge onto]:BASE:_default' \
 '--head=[The branch to pull changes from]:HEAD:_default' \
 '--body=[The text body of the pull request]:BODY:_default' \
-'(--body)--body-file=[The text body of the issue, to read from a file]:BODY_FILE:_files' \
+'(--body)--body-file=[]:BODY_FILE:_files' \
 '-r+[The repo to create this pull request on]:REPO:_default' \
 '--repo=[The repo to create this pull request on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-A[Automatically populate the PR'\''s title and body from its commits]' \
 '--autofill[Automatically populate the PR'\''s title and body from its commits]' \
 '-w[Open the PR creation page in your web browser]' \
@@ -1019,6 +1299,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (view)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::id -- The pull request to view:_default' \
@@ -1034,12 +1318,20 @@ _arguments "${_arguments_options[@]}" : \
         case $line[2] in
             (body)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
 ;;
 (comment)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':idx -- The index of the comment to view, 0-indexed:_default' \
@@ -1047,18 +1339,40 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (comments)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
 ;;
 (labels)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(assignees)
+_arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
 ;;
 (diff)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-p[Get the diff in patch format]' \
 '--patch[Get the diff in patch format]' \
 '-e[View the diff in your text editor]' \
@@ -1069,12 +1383,20 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (files)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
 ;;
 (commits)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-o[View one commit per line]' \
 '--oneline[View one commit per line]' \
 '-h[Print help]' \
@@ -1109,6 +1431,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(assignees)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
 (diff)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
@@ -1135,6 +1461,10 @@ esac
 ;;
 (status)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '--wait[Wait for all checks to finish before exiting]' \
 '-h[Print help]' \
 '--help[Print help]' \
@@ -1148,6 +1478,10 @@ _arguments "${_arguments_options[@]}" : \
 '--ssh=[Pull the commits using SSH instead of HTTP(S)]::SSH:(true false)' \
 '-I+[An SSH key file to use when cloning over SSH]:IDENTITY_FILE:_files' \
 '--identity-file=[An SSH key file to use when cloning over SSH]:IDENTITY_FILE:_files' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 ':ID -- The pull request to check out:_default' \
@@ -1155,7 +1489,11 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (comment)
 _arguments "${_arguments_options[@]}" : \
-'()--body-file=[The text content of the comment, to read from a file]:BODY_FILE:_files' \
+'()--body-file=[The file to read the text content of the comment from]:BODY_FILE:_files' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 '::pr -- The pull request to comment on:_default' \
@@ -1166,6 +1504,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-p+[]:PR:_default' \
 '--pr=[]:PR:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '*::users -- The usernames of the users to assign to this PR:_default' \
@@ -1175,6 +1517,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-p+[]:PR:_default' \
 '--pr=[]:PR:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '*::users -- The usernames of the users to unassign from this PR:_default' \
@@ -1182,6 +1528,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (edit)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::pr -- The pull request to edit:_default' \
@@ -1197,6 +1547,10 @@ _arguments "${_arguments_options[@]}" : \
         case $line[2] in
             (title)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 '::new_title -- New PR title:_default' \
@@ -1204,6 +1558,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (body)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 '::new_body -- New PR body:_default' \
@@ -1211,6 +1569,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (comment)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 ':idx -- The index of the comment to edit, 0-indexed:_default' \
@@ -1223,6 +1585,10 @@ _arguments "${_arguments_options[@]}" : \
 '*--add=[The labels to add]:ADD:_default' \
 '*-r+[The labels to remove]:RM:_default' \
 '*--rm=[The labels to remove]:RM:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -1271,6 +1637,10 @@ esac
 _arguments "${_arguments_options[@]}" : \
 '-w+[A comment to add before closing]::WITH_MSG:_default' \
 '--with-msg=[A comment to add before closing]::WITH_MSG:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 '::pr -- The pull request to close:_default' \
@@ -1284,6 +1654,10 @@ _arguments "${_arguments_options[@]}" : \
 '--title=[The title of the merge or squash commit to be created]:TITLE:_default' \
 '-m+[The body of the merge or squash commit to be created]::MESSAGE:_default' \
 '--message=[The body of the merge or squash commit to be created]::MESSAGE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-d[Option to delete the corresponding branch afterwards]' \
 '--delete[Option to delete the corresponding branch afterwards]' \
 '-h[Print help]' \
@@ -1293,10 +1667,75 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (browse)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::id -- The pull request to open in your browser:_default' \
 && ret=0
+;;
+(review)
+_arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::id -- The pull request to act on:_default' \
+":: :_fj__subcmd__pr__subcmd__review_commands" \
+"*::: :->review" \
+&& ret=0
+
+    case $state in
+    (review)
+        words=($line[2] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:fj-pr-review-command-$line[2]:"
+        case $line[2] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
+'-c[List inline comments in reviews on a pull request]' \
+'--comments[List inline comments in reviews on a pull request]' \
+'-a[Include all reviews, including stale and dismissed ones]' \
+'--all[Include all reviews, including stale and dismissed ones]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_fj__subcmd__pr__subcmd__review__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:fj-pr-review-help-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
 ;;
 (help)
 _arguments "${_arguments_options[@]}" : \
@@ -1343,6 +1782,10 @@ _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
 (labels)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(assignees)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
@@ -1426,6 +1869,26 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(review)
+_arguments "${_arguments_options[@]}" : \
+":: :_fj__subcmd__pr__subcmd__help__subcmd__review_commands" \
+"*::: :->review" \
+&& ret=0
+
+    case $state in
+    (review)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:fj-pr-help-review-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
 (help)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
@@ -1444,6 +1907,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__wiki_commands" \
@@ -1462,6 +1929,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -1472,6 +1943,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':page:_default' \
@@ -1489,6 +1964,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -1499,6 +1978,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':page:_default' \
@@ -1550,6 +2033,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__actions_commands" \
@@ -1570,6 +2057,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -1580,6 +2071,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__actions__subcmd__variables_commands" \
@@ -1598,6 +2093,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-v[Also print owner_id and repo_id]' \
 '--verbose[Also print owner_id and repo_id]' \
 '-h[Print help]' \
@@ -1610,6 +2109,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-f[Override existing variables]' \
 '--force[Override existing variables]' \
 '-h[Print help]' \
@@ -1624,6 +2127,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':name -- The variable to delete:_default' \
@@ -1671,6 +2178,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__actions__subcmd__secrets_commands" \
@@ -1689,6 +2200,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -1699,6 +2214,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':name -- The name of the new secret:_default' \
@@ -1711,6 +2230,10 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':name -- The secret to delete:_default' \
@@ -1754,12 +2277,16 @@ esac
 ;;
 (dispatch)
 _arguments "${_arguments_options[@]}" : \
-'*-I+[]:INPUTS:_default' \
-'*--inputs=[]:INPUTS:_default' \
+'*-I+[Values to give as inputs to the run]:INPUTS:_default' \
+'*--inputs=[Values to give as inputs to the run]:INPUTS:_default' \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '-r+[The repo to operate on]:REPO:_default' \
 '--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':name -- Name of the workflow to dispatch:_default' \
@@ -1858,12 +2385,20 @@ esac
 _arguments "${_arguments_options[@]}" : \
 '-r+[]:REMOTE:_default' \
 '--remote=[]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
 ;;
 (auth)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__auth_commands" \
@@ -1878,27 +2413,40 @@ _arguments "${_arguments_options[@]}" : \
         case $line[1] in
             (login)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
 ;;
 (logout)
 _arguments "${_arguments_options[@]}" : \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':host:_default' \
 && ret=0
 ;;
-(add-key)
+(add-token)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
-':user -- The user that the key is associated with:_default' \
-'::key -- The key to add. If not present, the key will be read in from stdin:_default' \
+'::token -- The key to add. If not present, the key will be read in from stdin:_default' \
 && ret=0
 ;;
 (use-ssh)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::use_ssh:(true false)' \
@@ -1906,6 +2454,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (list)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -1930,7 +2482,7 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
-(add-key)
+(add-token)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
@@ -1956,10 +2508,14 @@ esac
 ;;
 (release)
 _arguments "${_arguments_options[@]}" : \
-'-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-r+[]:REPO:_default' \
+'--repo=[]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__release_commands" \
@@ -1974,8 +2530,8 @@ _arguments "${_arguments_options[@]}" : \
         case $line[1] in
             (create)
 _arguments "${_arguments_options[@]}" : \
-'-T+[Create a new cooresponding tag for this release. Defaults to release'\''s name]::CREATE_TAG:_default' \
-'--create-tag=[Create a new cooresponding tag for this release. Defaults to release'\''s name]::CREATE_TAG:_default' \
+'-T+[Create a new corresponding tag for this release. Defaults to release'\''s name]::CREATE_TAG:_default' \
+'--create-tag=[Create a new corresponding tag for this release. Defaults to release'\''s name]::CREATE_TAG:_default' \
 '-t+[Pre-existing tag to use]:TAG:_default' \
 '--tag=[Pre-existing tag to use]:TAG:_default' \
 '*-a+[Include a file as an attachment]:ATTACH:_default' \
@@ -1984,10 +2540,14 @@ _arguments "${_arguments_options[@]}" : \
 '--body=[Text of the release body]::BODY:_default' \
 '-B+[]:BRANCH:_default' \
 '--branch=[]:BRANCH:_default' \
-'-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-r+[]:REPO:_default' \
+'--repo=[]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-d[]' \
 '--draft[]' \
 '-p[]' \
@@ -2009,10 +2569,14 @@ _arguments "${_arguments_options[@]}" : \
 '--draft=[]:DRAFT:(true false)' \
 '-p+[]:PRERELEASE:(true false)' \
 '--prerelease=[]:PRERELEASE:(true false)' \
-'-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-r+[]:REPO:_default' \
+'--repo=[]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 ':name:_default' \
@@ -2020,10 +2584,14 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (delete)
 _arguments "${_arguments_options[@]}" : \
-'-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-r+[]:REPO:_default' \
+'--repo=[]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-t[]' \
 '--by-tag[]' \
 '-h[Print help]' \
@@ -2033,10 +2601,14 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (list)
 _arguments "${_arguments_options[@]}" : \
-'-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-r+[]:REPO:_default' \
+'--repo=[]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-p[]' \
 '--include-prerelease[]' \
 '-d[]' \
@@ -2047,10 +2619,14 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (view)
 _arguments "${_arguments_options[@]}" : \
-'-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-r+[]:REPO:_default' \
+'--repo=[]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-t[]' \
 '--by-tag[]' \
 '-h[Print help]' \
@@ -2060,10 +2636,14 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (browse)
 _arguments "${_arguments_options[@]}" : \
-'-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-r+[]:REPO:_default' \
+'--repo=[]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::name:_default' \
@@ -2071,10 +2651,14 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (asset)
 _arguments "${_arguments_options[@]}" : \
-'-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-r+[]:REPO:_default' \
+'--repo=[]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__release__subcmd__asset_commands" \
@@ -2089,10 +2673,14 @@ _arguments "${_arguments_options[@]}" : \
         case $line[1] in
             (create)
 _arguments "${_arguments_options[@]}" : \
-'-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-r+[]:REPO:_default' \
+'--repo=[]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':release:_default' \
@@ -2102,10 +2690,14 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (delete)
 _arguments "${_arguments_options[@]}" : \
-'-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-r+[]:REPO:_default' \
+'--repo=[]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':release:_default' \
@@ -2116,12 +2708,16 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-o+[]:OUTPUT:_files' \
 '--output=[]:OUTPUT:_files' \
-'-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
-'-h[Print help (see more with '\''--help'\'')]' \
-'--help[Print help (see more with '\''--help'\'')]' \
+'-R+[]:REMOTE:_default' \
+'--remote=[]:REMOTE:_default' \
+'-r+[]:REPO:_default' \
+'--repo=[]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
+'-h[Print help]' \
+'--help[Print help]' \
 ':release:_default' \
 ':asset:_default' \
 && ret=0
@@ -2242,8 +2838,12 @@ esac
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-r+[The repo to operate on]:REPO:_default' \
+'--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__tag_commands" \
@@ -2264,8 +2864,12 @@ _arguments "${_arguments_options[@]}" : \
 '--branch=[]:BRANCH:_default' \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-r+[The repo to operate on]:REPO:_default' \
+'--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 ':name:_default' \
@@ -2275,8 +2879,12 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-r+[The repo to operate on]:REPO:_default' \
+'--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':name:_default' \
@@ -2288,8 +2896,12 @@ _arguments "${_arguments_options[@]}" : \
 '--page=[]:PAGE:_default' \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-r+[The repo to operate on]:REPO:_default' \
+'--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -2298,8 +2910,12 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
-'-r+[The name of the repository to operate on]:REPO:_default' \
-'--repo=[The name of the repository to operate on]:REPO:_default' \
+'-r+[The repo to operate on]:REPO:_default' \
+'--repo=[The repo to operate on]:REPO:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':name:_default' \
@@ -2349,6 +2965,10 @@ esac
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__user_commands" \
@@ -2365,6 +2985,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-p+[]:PAGE:_default' \
 '--page=[]:PAGE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':query -- The name to search for:_default' \
@@ -2372,6 +2996,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (view)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 '::user -- The name of the user to view:_default' \
@@ -2379,6 +3007,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (browse)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 '::user -- The name of the user to open in your browser:_default' \
@@ -2386,6 +3018,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (follow)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':user -- The name of the user to follow:_default' \
@@ -2393,13 +3029,21 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (unfollow)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
-':user -- The name of the user to follow:_default' \
+':user -- The name of the user to unfollow:_default' \
 && ret=0
 ;;
 (following)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 '::user -- The name of the user whose follows to list:_default' \
@@ -2407,6 +3051,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (followers)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 '::user -- The name of the user whose followers to list:_default' \
@@ -2414,6 +3062,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (block)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':user -- The name of the user to block:_default' \
@@ -2421,6 +3073,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (unblock)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':user -- The name of the user to unblock:_default' \
@@ -2430,6 +3086,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '--sort=[Method by which to sort the list]:SORT:(name modified created stars forks)' \
 '--page=[Page of repos to get]:PAGE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '--starred[List starred repos instead of owned repos]' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
@@ -2438,6 +3098,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (orgs)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 '::user -- The name of the user to view org membership of:_default' \
@@ -2445,13 +3109,21 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (activity)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
-'::user -- The name of the user to view the activity of:_default' \
+'::user -- The name of the user to view org membership of:_default' \
 && ret=0
 ;;
 (edit)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__user__subcmd__edit_commands" \
@@ -2466,6 +3138,10 @@ _arguments "${_arguments_options[@]}" : \
         case $line[1] in
             (bio)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::content -- The new description. Leave this out to open your editor:_default' \
@@ -2473,6 +3149,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (name)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-u[Remove your name from your profile]' \
 '--unset[Remove your name from your profile]' \
 '-h[Print help]' \
@@ -2482,6 +3162,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (pronouns)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-u[Remove your pronouns from your profile]' \
 '--unset[Remove your pronouns from your profile]' \
 '-h[Print help]' \
@@ -2491,6 +3175,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (location)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-u[Remove your location from your profile]' \
 '--unset[Remove your location from your profile]' \
 '-h[Print help]' \
@@ -2502,6 +3190,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-v+[The visibility of your activity]:VISIBILITY:(hidden public)' \
 '--visibility=[The visibility of your activity]:VISIBILITY:(hidden public)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -2514,12 +3206,20 @@ _arguments "${_arguments_options[@]}" : \
 '*--add=[Add a new email address]:ADD:_default' \
 '*-r+[Remove an email address]:RM:_default' \
 '*--rm=[Remove an email address]:RM:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
 ;;
 (website)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-u[Remove your website from your profile]' \
 '--unset[Remove your website from your profile]' \
 '-h[Print help]' \
@@ -2581,6 +3281,10 @@ esac
 ;;
 (key)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__user__subcmd__key_commands" \
@@ -2595,6 +3299,10 @@ _arguments "${_arguments_options[@]}" : \
         case $line[1] in
             (list)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-v[Show detailed information about every key]' \
 '--verbose[Show detailed information about every key]' \
 '-h[Print help]' \
@@ -2603,22 +3311,34 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (view)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
-':id:_default' \
+':id -- The ID of the key to view as shown in `user key list`:_default' \
 && ret=0
 ;;
 (delete)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
-':id:_default' \
+':id -- The ID of the key to delete as shown in `user key list`:_default' \
 && ret=0
 ;;
 (upload)
 _arguments "${_arguments_options[@]}" : \
 '-t+[The title of the key. If omitted, will try to guess from the file content]:TITLE:_default' \
 '--title=[The title of the key. If omitted, will try to guess from the file content]:TITLE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-f[If provided, will skip checks against accidentally uploading private keys]' \
 '--force[If provided, will skip checks against accidentally uploading private keys]' \
 '-r[If provided, the new key will only have read access]' \
@@ -2670,6 +3390,10 @@ esac
 ;;
 (gpg)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__user__subcmd__gpg_commands" \
@@ -2684,6 +3408,10 @@ _arguments "${_arguments_options[@]}" : \
         case $line[1] in
             (list)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-v[Show detailed information about every key]' \
 '--verbose[Show detailed information about every key]' \
 '-h[Print help]' \
@@ -2692,22 +3420,34 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (view)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
-':id -- ID of the GPG key to show as shown in `user gpg list`:_default' \
+':id -- The ID of the GPG key to view as shown in `user gpg list`:_default' \
 && ret=0
 ;;
 (delete)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-f[Don'\''t ask for confirmation]' \
 '--force[Don'\''t ask for confirmation]' \
 '-h[Print help]' \
 '--help[Print help]' \
-':id -- ID of the GPG key to delete as shown in `user gpg list`:_default' \
+':id -- The ID of the GPG key to delete as shown in `user gpg list`:_default' \
 && ret=0
 ;;
 (upload)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-n[Skip the verification step. With this disabled, you can only add keys with emails associated with your account]' \
 '--no-verify[Skip the verification step. With this disabled, you can only add keys with emails associated with your account]' \
 '-h[Print help]' \
@@ -2717,9 +3457,13 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (verify)
 _arguments "${_arguments_options[@]}" : \
-'-h[Print help]' \
-'--help[Print help]' \
-':id -- ID of the GPG key to verify as shown in `user gpg list`:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':id -- The ID of the GPG key to verify as shown in `user gpg list`:_default' \
 && ret=0
 ;;
 (help)
@@ -2954,6 +3698,10 @@ esac
 _arguments "${_arguments_options[@]}" : \
 '-R+[The local git remote that points to the repo to operate on]:REMOTE:_default' \
 '--remote=[The local git remote that points to the repo to operate on]:REMOTE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__org_commands" \
@@ -2970,6 +3718,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-p+[Which page of the results to view]:PAGE:_default' \
 '--page=[Which page of the results to view]:PAGE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '(-p --page)-o[Only list organizations you are a member of]' \
 '(-p --page)--only-member-of[Only list organizations you are a member of]' \
 '-h[Print help]' \
@@ -2978,6 +3730,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (view)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':name -- The name of the organization to view:_default' \
@@ -2999,6 +3755,10 @@ _arguments "${_arguments_options[@]}" : \
 '--visibility=[The visibility of the organization]:VISIBILITY:(private limited public)' \
 '-a+[Whether the admin of a repo can change org teams'\'' access to it]:ADMIN_CAN_CHANGE_TEAM_ACCESS:(true false)' \
 '--admin-can-change-team-access=[Whether the admin of a repo can change org teams'\'' access to it]:ADMIN_CAN_CHANGE_TEAM_ACCESS:(true false)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 ':name -- The username for the organization:_default' \
@@ -3020,6 +3780,10 @@ _arguments "${_arguments_options[@]}" : \
 '--visibility=[The visibility of the organization]:VISIBILITY:(private limited public)' \
 '-a+[Whether the admin of a repo can change org teams'\'' access to it]:ADMIN_CAN_CHANGE_TEAM_ACCESS:(true false)' \
 '--admin-can-change-team-access=[Whether the admin of a repo can change org teams'\'' access to it]:ADMIN_CAN_CHANGE_TEAM_ACCESS:(true false)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 ':name -- The name of the organization to edit:_default' \
@@ -3027,15 +3791,23 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (activity)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
-':name -- The name of the organization to view activity for:_default' \
+':name -- The name of the organization to edit:_default' \
 && ret=0
 ;;
 (members)
 _arguments "${_arguments_options[@]}" : \
 '-p+[Which page of the results to view]:PAGE:_default' \
 '--page=[Which page of the results to view]:PAGE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':org -- The name of the organization to view the members of:_default' \
@@ -3045,6 +3817,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-s+[Set a new visibility for yourself]:SET:(private public)' \
 '--set=[Set a new visibility for yourself]:SET:(private public)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':org -- The name of the organization to view your visibility in:_default' \
@@ -3052,6 +3828,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (team)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__org__subcmd__team_commands" \
@@ -3066,6 +3846,10 @@ _arguments "${_arguments_options[@]}" : \
         case $line[1] in
             (list)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':org -- The name of the organization to list the teams in:_default' \
@@ -3073,12 +3857,16 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (view)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-p[]' \
 '--list-permissions[]' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':org -- The name of the organization the team is part of:_default' \
-':name -- The name of the new team:_default' \
+':name -- The name of the team to view:_default' \
 && ret=0
 ;;
 (create)
@@ -3089,6 +3877,10 @@ _arguments "${_arguments_options[@]}" : \
 '--read-permissions=[A comma-separated list of read permissions to give this team]:READ_PERMISSIONS:_default' \
 '-w+[A comma-separated list of read+write permissions to give this team]:WRITE_PERMISSIONS:_default' \
 '--write-permissions=[A comma-separated list of read+write permissions to give this team]:WRITE_PERMISSIONS:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-c[Allow members of this team to create repos in the organization]' \
 '--can-create-repos[Allow members of this team to create repos in the organization]' \
 '-i[Give this team access to every repo]' \
@@ -3103,8 +3895,8 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (edit)
 _arguments "${_arguments_options[@]}" : \
-'-n+[Can members of this team to create repos in the organization?]:NEW_NAME:_default' \
-'--new-name=[Can members of this team to create repos in the organization?]:NEW_NAME:_default' \
+'-n+[]:NEW_NAME:_default' \
+'--new-name=[]:NEW_NAME:_default' \
 '-c+[Allow members of this team to create repos in the organization]:CAN_CREATE_REPOS:(true false)' \
 '--can-create-repos=[Allow members of this team to create repos in the organization]:CAN_CREATE_REPOS:(true false)' \
 '-i+[Give this team access to every repo]:INCLUDE_ALL_REPOS:(true false)' \
@@ -3117,6 +3909,10 @@ _arguments "${_arguments_options[@]}" : \
 '--read-permissions=[A comma-separated list of read permissions to give this team]:READ_PERMISSIONS:_default' \
 '-w+[A comma-separated list of read+write permissions to give this team]:WRITE_PERMISSIONS:_default' \
 '--write-permissions=[A comma-separated list of read+write permissions to give this team]:WRITE_PERMISSIONS:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 ':org -- The name of the organization the team is in:_default' \
@@ -3125,6 +3921,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (delete)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 ':org -- The name of the organization the team is in:_default' \
@@ -3133,6 +3933,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (repo)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__org__subcmd__team__subcmd__repo_commands" \
@@ -3149,6 +3953,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-p+[Which page of the results to view]:PAGE:_default' \
 '--page=[Which page of the results to view]:PAGE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':org -- The name of the organization the team is in:_default' \
@@ -3157,6 +3965,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (add)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':org -- The name of the organization the team is in:_default' \
@@ -3166,6 +3978,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (rm)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 ':org -- The name of the organization the team is in:_default' \
@@ -3211,6 +4027,10 @@ esac
 ;;
 (member)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__org__subcmd__team__subcmd__member_commands" \
@@ -3227,6 +4047,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-p+[Which page of the results to view]:PAGE:_default' \
 '--page=[Which page of the results to view]:PAGE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':org -- The name of the organization the team is in:_default' \
@@ -3235,6 +4059,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (add)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':org -- The name of the organization the team is in:_default' \
@@ -3244,6 +4072,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (rm)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':org -- The name of the organization the team is in:_default' \
@@ -3389,6 +4221,10 @@ esac
 ;;
 (label)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__org__subcmd__label_commands" \
@@ -3403,6 +4239,10 @@ _arguments "${_arguments_options[@]}" : \
         case $line[1] in
             (list)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':org -- The name of the organization to list the labels of:_default' \
@@ -3412,6 +4252,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-d+[A description of what the label is for]:DESCRIPTION:_default' \
 '--description=[A description of what the label is for]:DESCRIPTION:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-e[If this label is named \`{scope}/{name}\`, make it exclusive with other labels with the same scope]' \
 '--exclusive[If this label is named \`{scope}/{name}\`, make it exclusive with other labels with the same scope]' \
 '-h[Print help]' \
@@ -3431,6 +4275,10 @@ _arguments "${_arguments_options[@]}" : \
 '--description=[Set a description of what the label is for]:DESCRIPTION:_default' \
 '-a+[Set whether this label is archived]:ARCHIVED:(true false)' \
 '--archived=[Set whether this label is archived]:ARCHIVED:(true false)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-e[Set whether this label is exclusive with others of the same scope]' \
 '--exclusive[Set whether this label is exclusive with others of the same scope]' \
 '-h[Print help]' \
@@ -3441,6 +4289,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (rm)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':org -- The name of the organization the label is in:_default' \
@@ -3489,6 +4341,10 @@ esac
 ;;
 (repo)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_fj__subcmd__org__subcmd__repo_commands" \
@@ -3505,6 +4361,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-p+[Which page of the results to view]:PAGE:_default' \
 '--page=[Which page of the results to view]:PAGE:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':org -- The name of the organization to list the repos of:_default' \
@@ -3518,12 +4378,16 @@ _arguments "${_arguments_options[@]}" : \
 '--remote=[Creates a new remote with the given name for the new repo]:REMOTE:_default' \
 '-S+[Use SSH for the new remote instead of HTTP(S)]::SSH:(true false)' \
 '--ssh=[Use SSH for the new remote instead of HTTP(S)]::SSH:(true false)' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-P[]' \
 '--private[]' \
-'-p[Pushes the current branch to the default branch on the new repo. Implies \`--remote=origin\` (setting remote manually overrides this)]' \
-'--push[Pushes the current branch to the default branch on the new repo. Implies \`--remote=origin\` (setting remote manually overrides this)]' \
-'-h[Print help]' \
-'--help[Print help]' \
+'-p[Pushes the current branch to the default branch on the new repo]' \
+'--push[Pushes the current branch to the default branch on the new repo]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 ':org -- The name of the organization to create the repo in:_default' \
 ':repo:_default' \
 && ret=0
@@ -3762,6 +4626,10 @@ esac
 ;;
 (version)
 _arguments "${_arguments_options[@]}" : \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '--check[Checks for updates]' \
 '-v[]' \
 '--verbose[]' \
@@ -3772,6 +4640,10 @@ _arguments "${_arguments_options[@]}" : \
 (completion)
 _arguments "${_arguments_options[@]}" : \
 '--bin-name=[]:BIN_NAME:_default' \
+'-H+[]:HOST:_default' \
+'--host=[]:HOST:_default' \
+'-C+[Sets the working directory to <CWD>]:CWD:_files' \
+'--cwd=[Sets the working directory to <CWD>]:CWD:_files' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':shell:(bash elvish fish power-shell zsh nushell)' \
@@ -3830,6 +4702,22 @@ _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
 (unstar)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(star-status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(watch)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(unwatch)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(watch-status)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
@@ -4017,6 +4905,10 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(assignees)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
         esac
     ;;
 esac
@@ -4078,6 +4970,10 @@ _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
 (labels)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(assignees)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
@@ -4160,6 +5056,26 @@ _arguments "${_arguments_options[@]}" : \
 (browse)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
+;;
+(review)
+_arguments "${_arguments_options[@]}" : \
+":: :_fj__subcmd__help__subcmd__pr__subcmd__review_commands" \
+"*::: :->review" \
+&& ret=0
+
+    case $state in
+    (review)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:fj-help-pr-review-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
 ;;
         esac
     ;;
@@ -4301,7 +5217,7 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
-(add-key)
+(add-token)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
@@ -4831,7 +5747,7 @@ _fj__subcmd__actions_commands() {
     local commands; commands=(
 'tasks:List the tasks on a repo' \
 'variables:List and manage variables' \
-'secrets:' \
+'secrets:List and manage secrets' \
 'dispatch:Dispatch a workflow' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
@@ -4847,7 +5763,7 @@ _fj__subcmd__actions__subcmd__help_commands() {
     local commands; commands=(
 'tasks:List the tasks on a repo' \
 'variables:List and manage variables' \
-'secrets:' \
+'secrets:List and manage secrets' \
 'dispatch:Dispatch a workflow' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
@@ -4867,8 +5783,8 @@ _fj__subcmd__actions__subcmd__help__subcmd__help_commands() {
 _fj__subcmd__actions__subcmd__help__subcmd__secrets_commands() {
     local commands; commands=(
 'list:List secrets' \
-'create:Create a new secret' \
-'delete:' \
+'create:Create a new actions secret' \
+'delete:Delete an actions secret' \
     )
     _describe -t commands 'fj actions help secrets commands' commands "$@"
 }
@@ -4897,7 +5813,7 @@ _fj__subcmd__actions__subcmd__help__subcmd__variables_commands() {
     local commands; commands=(
 'list:List variables' \
 'create:Create a new variable' \
-'delete:' \
+'delete:Delete a variable' \
     )
     _describe -t commands 'fj actions help variables commands' commands "$@"
 }
@@ -4920,8 +5836,8 @@ _fj__subcmd__actions__subcmd__help__subcmd__variables__subcmd__list_commands() {
 _fj__subcmd__actions__subcmd__secrets_commands() {
     local commands; commands=(
 'list:List secrets' \
-'create:Create a new secret' \
-'delete:' \
+'create:Create a new actions secret' \
+'delete:Delete an actions secret' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj actions secrets commands' commands "$@"
@@ -4940,8 +5856,8 @@ _fj__subcmd__actions__subcmd__secrets__subcmd__delete_commands() {
 _fj__subcmd__actions__subcmd__secrets__subcmd__help_commands() {
     local commands; commands=(
 'list:List secrets' \
-'create:Create a new secret' \
-'delete:' \
+'create:Create a new actions secret' \
+'delete:Delete an actions secret' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj actions secrets help commands' commands "$@"
@@ -4981,7 +5897,7 @@ _fj__subcmd__actions__subcmd__variables_commands() {
     local commands; commands=(
 'list:List variables' \
 'create:Create a new variable' \
-'delete:' \
+'delete:Delete a variable' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj actions variables commands' commands "$@"
@@ -5001,7 +5917,7 @@ _fj__subcmd__actions__subcmd__variables__subcmd__help_commands() {
     local commands; commands=(
 'list:List variables' \
 'create:Create a new variable' \
-'delete:' \
+'delete:Delete a variable' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj actions variables help commands' commands "$@"
@@ -5036,34 +5952,34 @@ _fj__subcmd__auth_commands() {
     local commands; commands=(
 'login:Log in to an instance' \
 'logout:Deletes login info for an instance' \
-'add-key:Add an application token for an instance' \
-'use-ssh:' \
+'add-token:Add an application token for an instance' \
+'use-ssh:Enable or disable using SSH by default for certain instances' \
 'list:List all instances you'\''re currently logged into' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj auth commands' commands "$@"
 }
-(( $+functions[_fj__subcmd__auth__subcmd__add-key_commands] )) ||
-_fj__subcmd__auth__subcmd__add-key_commands() {
+(( $+functions[_fj__subcmd__auth__subcmd__add-token_commands] )) ||
+_fj__subcmd__auth__subcmd__add-token_commands() {
     local commands; commands=()
-    _describe -t commands 'fj auth add-key commands' commands "$@"
+    _describe -t commands 'fj auth add-token commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__auth__subcmd__help_commands] )) ||
 _fj__subcmd__auth__subcmd__help_commands() {
     local commands; commands=(
 'login:Log in to an instance' \
 'logout:Deletes login info for an instance' \
-'add-key:Add an application token for an instance' \
-'use-ssh:' \
+'add-token:Add an application token for an instance' \
+'use-ssh:Enable or disable using SSH by default for certain instances' \
 'list:List all instances you'\''re currently logged into' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj auth help commands' commands "$@"
 }
-(( $+functions[_fj__subcmd__auth__subcmd__help__subcmd__add-key_commands] )) ||
-_fj__subcmd__auth__subcmd__help__subcmd__add-key_commands() {
+(( $+functions[_fj__subcmd__auth__subcmd__help__subcmd__add-token_commands] )) ||
+_fj__subcmd__auth__subcmd__help__subcmd__add-token_commands() {
     local commands; commands=()
-    _describe -t commands 'fj auth help add-key commands' commands "$@"
+    _describe -t commands 'fj auth help add-token commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__auth__subcmd__help__subcmd__help_commands] )) ||
 _fj__subcmd__auth__subcmd__help__subcmd__help_commands() {
@@ -5140,7 +6056,7 @@ _fj__subcmd__help__subcmd__actions_commands() {
     local commands; commands=(
 'tasks:List the tasks on a repo' \
 'variables:List and manage variables' \
-'secrets:' \
+'secrets:List and manage secrets' \
 'dispatch:Dispatch a workflow' \
     )
     _describe -t commands 'fj help actions commands' commands "$@"
@@ -5154,8 +6070,8 @@ _fj__subcmd__help__subcmd__actions__subcmd__dispatch_commands() {
 _fj__subcmd__help__subcmd__actions__subcmd__secrets_commands() {
     local commands; commands=(
 'list:List secrets' \
-'create:Create a new secret' \
-'delete:' \
+'create:Create a new actions secret' \
+'delete:Delete an actions secret' \
     )
     _describe -t commands 'fj help actions secrets commands' commands "$@"
 }
@@ -5184,7 +6100,7 @@ _fj__subcmd__help__subcmd__actions__subcmd__variables_commands() {
     local commands; commands=(
 'list:List variables' \
 'create:Create a new variable' \
-'delete:' \
+'delete:Delete a variable' \
     )
     _describe -t commands 'fj help actions variables commands' commands "$@"
 }
@@ -5208,16 +6124,16 @@ _fj__subcmd__help__subcmd__auth_commands() {
     local commands; commands=(
 'login:Log in to an instance' \
 'logout:Deletes login info for an instance' \
-'add-key:Add an application token for an instance' \
-'use-ssh:' \
+'add-token:Add an application token for an instance' \
+'use-ssh:Enable or disable using SSH by default for certain instances' \
 'list:List all instances you'\''re currently logged into' \
     )
     _describe -t commands 'fj help auth commands' commands "$@"
 }
-(( $+functions[_fj__subcmd__help__subcmd__auth__subcmd__add-key_commands] )) ||
-_fj__subcmd__help__subcmd__auth__subcmd__add-key_commands() {
+(( $+functions[_fj__subcmd__help__subcmd__auth__subcmd__add-token_commands] )) ||
+_fj__subcmd__help__subcmd__auth__subcmd__add-token_commands() {
     local commands; commands=()
-    _describe -t commands 'fj help auth add-key commands' commands "$@"
+    _describe -t commands 'fj help auth add-token commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__help__subcmd__auth__subcmd__list_commands] )) ||
 _fj__subcmd__help__subcmd__auth__subcmd__list_commands() {
@@ -5339,10 +6255,16 @@ _fj__subcmd__help__subcmd__issue__subcmd__unassign_commands() {
 _fj__subcmd__help__subcmd__issue__subcmd__view_commands() {
     local commands; commands=(
 'body:View an issue'\''s title and body. The default' \
-'comment:View a specific' \
+'comment:View a specific comment' \
 'comments:List every comment' \
+'assignees:List the users assigned to this issue' \
     )
     _describe -t commands 'fj help issue view commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__help__subcmd__issue__subcmd__view__subcmd__assignees_commands] )) ||
+_fj__subcmd__help__subcmd__issue__subcmd__view__subcmd__assignees_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj help issue view assignees commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__help__subcmd__issue__subcmd__view__subcmd__body_commands] )) ||
 _fj__subcmd__help__subcmd__issue__subcmd__view__subcmd__body_commands() {
@@ -5366,7 +6288,7 @@ _fj__subcmd__help__subcmd__org_commands() {
 'view:View info about an organization' \
 'create:Create a new organization' \
 'edit:Edit an organization'\''s information' \
-'activity:View the activity in an organization' \
+'activity:Edit an organization'\''s information' \
 'members:List the members of an organization' \
 'visibility:View and change the visibility of your membership in an organization' \
 'team:' \
@@ -5552,13 +6474,14 @@ _fj__subcmd__help__subcmd__pr_commands() {
 'view:View the contents of a pull request' \
 'status:View the mergability and CI status of a pull request' \
 'checkout:Checkout a pull request in a new branch' \
-'comment:Add a comment on a pull request' \
+'comment:Checkout a pull request in a new branch' \
 'assign:Assign users to a pull request' \
-'unassign:Unassign users from an issue' \
+'unassign:Unassign users from a pull request' \
 'edit:Edit the contents of a pull request' \
 'close:Close a pull request, without merging' \
 'merge:Merge a pull request' \
 'browse:Open a pull request in your browser' \
+'review:Manage reviews on a pull request' \
     )
     _describe -t commands 'fj help pr commands' commands "$@"
 }
@@ -5598,7 +6521,7 @@ _fj__subcmd__help__subcmd__pr__subcmd__edit_commands() {
 'title:Edit the title' \
 'body:Edit the text body' \
 'comment:Edit a comment' \
-'labels:' \
+'labels:Edit the applied labels' \
     )
     _describe -t commands 'fj help pr edit commands' commands "$@"
 }
@@ -5627,6 +6550,18 @@ _fj__subcmd__help__subcmd__pr__subcmd__merge_commands() {
     local commands; commands=()
     _describe -t commands 'fj help pr merge commands' commands "$@"
 }
+(( $+functions[_fj__subcmd__help__subcmd__pr__subcmd__review_commands] )) ||
+_fj__subcmd__help__subcmd__pr__subcmd__review_commands() {
+    local commands; commands=(
+'list:List reviews on a pull request' \
+    )
+    _describe -t commands 'fj help pr review commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__help__subcmd__pr__subcmd__review__subcmd__list_commands] )) ||
+_fj__subcmd__help__subcmd__pr__subcmd__review__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj help pr review list commands' commands "$@"
+}
 (( $+functions[_fj__subcmd__help__subcmd__pr__subcmd__search_commands] )) ||
 _fj__subcmd__help__subcmd__pr__subcmd__search_commands() {
     local commands; commands=()
@@ -5649,11 +6584,17 @@ _fj__subcmd__help__subcmd__pr__subcmd__view_commands() {
 'comment:View a comment on a pull request' \
 'comments:View all comments on a pull request' \
 'labels:View the labels applied to a pull request' \
+'assignees:List the users assigned to this pull request' \
 'diff:View the diff between the base and head branches of a pull request' \
 'files:View the files changed in a pull request' \
 'commits:View the commits in a pull request' \
     )
     _describe -t commands 'fj help pr view commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__help__subcmd__pr__subcmd__view__subcmd__assignees_commands] )) ||
+_fj__subcmd__help__subcmd__pr__subcmd__view__subcmd__assignees_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj help pr view assignees commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__help__subcmd__pr__subcmd__view__subcmd__body_commands] )) ||
 _fj__subcmd__help__subcmd__pr__subcmd__view__subcmd__body_commands() {
@@ -5760,14 +6701,18 @@ _fj__subcmd__help__subcmd__release__subcmd__view_commands() {
 (( $+functions[_fj__subcmd__help__subcmd__repo_commands] )) ||
 _fj__subcmd__help__subcmd__repo_commands() {
     local commands; commands=(
-'create:Creates a new repository' \
+'create:Create a new repository' \
 'fork:Fork a repository onto your account' \
-'migrate:' \
+'migrate:Migrate or mirror an existing repository' \
 'view:View a repo'\''s info' \
 'readme:View a repo'\''s README' \
 'clone:Clone a repo'\''s code locally' \
 'star:Add a star to a repo' \
 'unstar:Take away a star from a repo' \
+'star-status:Check your current starring status' \
+'watch:Subscribe to a repo' \
+'unwatch:Unsubscribe from a repo' \
+'watch-status:Check your current watch status' \
 'delete:Delete a repository' \
 'browse:Open a repository'\''s page in your browser' \
 'labels:Manage a repo'\''s issue labels' \
@@ -5851,6 +6796,11 @@ _fj__subcmd__help__subcmd__repo__subcmd__star_commands() {
     local commands; commands=()
     _describe -t commands 'fj help repo star commands' commands "$@"
 }
+(( $+functions[_fj__subcmd__help__subcmd__repo__subcmd__star-status_commands] )) ||
+_fj__subcmd__help__subcmd__repo__subcmd__star-status_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj help repo star-status commands' commands "$@"
+}
 (( $+functions[_fj__subcmd__help__subcmd__repo__subcmd__units_commands] )) ||
 _fj__subcmd__help__subcmd__repo__subcmd__units_commands() {
     local commands; commands=(
@@ -5904,10 +6854,25 @@ _fj__subcmd__help__subcmd__repo__subcmd__unstar_commands() {
     local commands; commands=()
     _describe -t commands 'fj help repo unstar commands' commands "$@"
 }
+(( $+functions[_fj__subcmd__help__subcmd__repo__subcmd__unwatch_commands] )) ||
+_fj__subcmd__help__subcmd__repo__subcmd__unwatch_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj help repo unwatch commands' commands "$@"
+}
 (( $+functions[_fj__subcmd__help__subcmd__repo__subcmd__view_commands] )) ||
 _fj__subcmd__help__subcmd__repo__subcmd__view_commands() {
     local commands; commands=()
     _describe -t commands 'fj help repo view commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__help__subcmd__repo__subcmd__watch_commands] )) ||
+_fj__subcmd__help__subcmd__repo__subcmd__watch_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj help repo watch commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__help__subcmd__repo__subcmd__watch-status_commands] )) ||
+_fj__subcmd__help__subcmd__repo__subcmd__watch-status_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj help repo watch-status commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__help__subcmd__tag_commands] )) ||
 _fj__subcmd__help__subcmd__tag_commands() {
@@ -5981,7 +6946,7 @@ _fj__subcmd__help__subcmd__user__subcmd__edit_commands() {
 'bio:Set your bio' \
 'name:Set your full name' \
 'pronouns:Set your pronouns' \
-'location:Set your activity visibility' \
+'location:Set your location' \
 'activity:Set your activity visibility' \
 'email:Manage the email addresses associated with your account' \
 'website:Set your linked website' \
@@ -6042,10 +7007,10 @@ _fj__subcmd__help__subcmd__user__subcmd__following_commands() {
 _fj__subcmd__help__subcmd__user__subcmd__gpg_commands() {
     local commands; commands=(
 'list:List your GPG keys' \
-'view:Show details about a GPG key' \
-'delete:Deletes a GPG key. This will un-verify all commits signed with that key!' \
-'upload:Upload a new GPG key from your local keyring. This command requires \`gpg\` to be installed' \
-'verify:Verifies a GPG key. You need to have the to-be-verified key installed locally in order to sign some data with it. This command requires \`gpg\` to be installed' \
+'view:View a GPG key' \
+'delete:Delete a GPG key. This will un-verify all commits signed with that key!' \
+'upload:Upload a GPG key' \
+'verify:Verifies a GPG key' \
     )
     _describe -t commands 'fj help user gpg commands' commands "$@"
 }
@@ -6379,10 +7344,16 @@ _fj__subcmd__issue__subcmd__help__subcmd__unassign_commands() {
 _fj__subcmd__issue__subcmd__help__subcmd__view_commands() {
     local commands; commands=(
 'body:View an issue'\''s title and body. The default' \
-'comment:View a specific' \
+'comment:View a specific comment' \
 'comments:List every comment' \
+'assignees:List the users assigned to this issue' \
     )
     _describe -t commands 'fj issue help view commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__issue__subcmd__help__subcmd__view__subcmd__assignees_commands] )) ||
+_fj__subcmd__issue__subcmd__help__subcmd__view__subcmd__assignees_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj issue help view assignees commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__issue__subcmd__help__subcmd__view__subcmd__body_commands] )) ||
 _fj__subcmd__issue__subcmd__help__subcmd__view__subcmd__body_commands() {
@@ -6418,11 +7389,17 @@ _fj__subcmd__issue__subcmd__unassign_commands() {
 _fj__subcmd__issue__subcmd__view_commands() {
     local commands; commands=(
 'body:View an issue'\''s title and body. The default' \
-'comment:View a specific' \
+'comment:View a specific comment' \
 'comments:List every comment' \
+'assignees:List the users assigned to this issue' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj issue view commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__issue__subcmd__view__subcmd__assignees_commands] )) ||
+_fj__subcmd__issue__subcmd__view__subcmd__assignees_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj issue view assignees commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__issue__subcmd__view__subcmd__body_commands] )) ||
 _fj__subcmd__issue__subcmd__view__subcmd__body_commands() {
@@ -6443,11 +7420,17 @@ _fj__subcmd__issue__subcmd__view__subcmd__comments_commands() {
 _fj__subcmd__issue__subcmd__view__subcmd__help_commands() {
     local commands; commands=(
 'body:View an issue'\''s title and body. The default' \
-'comment:View a specific' \
+'comment:View a specific comment' \
 'comments:List every comment' \
+'assignees:List the users assigned to this issue' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj issue view help commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__issue__subcmd__view__subcmd__help__subcmd__assignees_commands] )) ||
+_fj__subcmd__issue__subcmd__view__subcmd__help__subcmd__assignees_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj issue view help assignees commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__issue__subcmd__view__subcmd__help__subcmd__body_commands] )) ||
 _fj__subcmd__issue__subcmd__view__subcmd__help__subcmd__body_commands() {
@@ -6476,7 +7459,7 @@ _fj__subcmd__org_commands() {
 'view:View info about an organization' \
 'create:Create a new organization' \
 'edit:Edit an organization'\''s information' \
-'activity:View the activity in an organization' \
+'activity:Edit an organization'\''s information' \
 'members:List the members of an organization' \
 'visibility:View and change the visibility of your membership in an organization' \
 'team:' \
@@ -6508,7 +7491,7 @@ _fj__subcmd__org__subcmd__help_commands() {
 'view:View info about an organization' \
 'create:Create a new organization' \
 'edit:Edit an organization'\''s information' \
-'activity:View the activity in an organization' \
+'activity:Edit an organization'\''s information' \
 'members:List the members of an organization' \
 'visibility:View and change the visibility of your membership in an organization' \
 'team:' \
@@ -7071,13 +8054,14 @@ _fj__subcmd__pr_commands() {
 'view:View the contents of a pull request' \
 'status:View the mergability and CI status of a pull request' \
 'checkout:Checkout a pull request in a new branch' \
-'comment:Add a comment on a pull request' \
+'comment:Checkout a pull request in a new branch' \
 'assign:Assign users to a pull request' \
-'unassign:Unassign users from an issue' \
+'unassign:Unassign users from a pull request' \
 'edit:Edit the contents of a pull request' \
 'close:Close a pull request, without merging' \
 'merge:Merge a pull request' \
 'browse:Open a pull request in your browser' \
+'review:Manage reviews on a pull request' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj pr commands' commands "$@"
@@ -7118,7 +8102,7 @@ _fj__subcmd__pr__subcmd__edit_commands() {
 'title:Edit the title' \
 'body:Edit the text body' \
 'comment:Edit a comment' \
-'labels:' \
+'labels:Edit the applied labels' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj pr edit commands' commands "$@"
@@ -7139,7 +8123,7 @@ _fj__subcmd__pr__subcmd__edit__subcmd__help_commands() {
 'title:Edit the title' \
 'body:Edit the text body' \
 'comment:Edit a comment' \
-'labels:' \
+'labels:Edit the applied labels' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj pr edit help commands' commands "$@"
@@ -7187,13 +8171,14 @@ _fj__subcmd__pr__subcmd__help_commands() {
 'view:View the contents of a pull request' \
 'status:View the mergability and CI status of a pull request' \
 'checkout:Checkout a pull request in a new branch' \
-'comment:Add a comment on a pull request' \
+'comment:Checkout a pull request in a new branch' \
 'assign:Assign users to a pull request' \
-'unassign:Unassign users from an issue' \
+'unassign:Unassign users from a pull request' \
 'edit:Edit the contents of a pull request' \
 'close:Close a pull request, without merging' \
 'merge:Merge a pull request' \
 'browse:Open a pull request in your browser' \
+'review:Manage reviews on a pull request' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj pr help commands' commands "$@"
@@ -7234,7 +8219,7 @@ _fj__subcmd__pr__subcmd__help__subcmd__edit_commands() {
 'title:Edit the title' \
 'body:Edit the text body' \
 'comment:Edit a comment' \
-'labels:' \
+'labels:Edit the applied labels' \
     )
     _describe -t commands 'fj pr help edit commands' commands "$@"
 }
@@ -7268,6 +8253,18 @@ _fj__subcmd__pr__subcmd__help__subcmd__merge_commands() {
     local commands; commands=()
     _describe -t commands 'fj pr help merge commands' commands "$@"
 }
+(( $+functions[_fj__subcmd__pr__subcmd__help__subcmd__review_commands] )) ||
+_fj__subcmd__pr__subcmd__help__subcmd__review_commands() {
+    local commands; commands=(
+'list:List reviews on a pull request' \
+    )
+    _describe -t commands 'fj pr help review commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__pr__subcmd__help__subcmd__review__subcmd__list_commands] )) ||
+_fj__subcmd__pr__subcmd__help__subcmd__review__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj pr help review list commands' commands "$@"
+}
 (( $+functions[_fj__subcmd__pr__subcmd__help__subcmd__search_commands] )) ||
 _fj__subcmd__pr__subcmd__help__subcmd__search_commands() {
     local commands; commands=()
@@ -7290,11 +8287,17 @@ _fj__subcmd__pr__subcmd__help__subcmd__view_commands() {
 'comment:View a comment on a pull request' \
 'comments:View all comments on a pull request' \
 'labels:View the labels applied to a pull request' \
+'assignees:List the users assigned to this pull request' \
 'diff:View the diff between the base and head branches of a pull request' \
 'files:View the files changed in a pull request' \
 'commits:View the commits in a pull request' \
     )
     _describe -t commands 'fj pr help view commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__pr__subcmd__help__subcmd__view__subcmd__assignees_commands] )) ||
+_fj__subcmd__pr__subcmd__help__subcmd__view__subcmd__assignees_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj pr help view assignees commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__pr__subcmd__help__subcmd__view__subcmd__body_commands] )) ||
 _fj__subcmd__pr__subcmd__help__subcmd__view__subcmd__body_commands() {
@@ -7336,6 +8339,37 @@ _fj__subcmd__pr__subcmd__merge_commands() {
     local commands; commands=()
     _describe -t commands 'fj pr merge commands' commands "$@"
 }
+(( $+functions[_fj__subcmd__pr__subcmd__review_commands] )) ||
+_fj__subcmd__pr__subcmd__review_commands() {
+    local commands; commands=(
+'list:List reviews on a pull request' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'fj pr review commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__pr__subcmd__review__subcmd__help_commands] )) ||
+_fj__subcmd__pr__subcmd__review__subcmd__help_commands() {
+    local commands; commands=(
+'list:List reviews on a pull request' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'fj pr review help commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__pr__subcmd__review__subcmd__help__subcmd__help_commands] )) ||
+_fj__subcmd__pr__subcmd__review__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj pr review help help commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__pr__subcmd__review__subcmd__help__subcmd__list_commands] )) ||
+_fj__subcmd__pr__subcmd__review__subcmd__help__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj pr review help list commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__pr__subcmd__review__subcmd__list_commands] )) ||
+_fj__subcmd__pr__subcmd__review__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj pr review list commands' commands "$@"
+}
 (( $+functions[_fj__subcmd__pr__subcmd__search_commands] )) ||
 _fj__subcmd__pr__subcmd__search_commands() {
     local commands; commands=()
@@ -7358,12 +8392,18 @@ _fj__subcmd__pr__subcmd__view_commands() {
 'comment:View a comment on a pull request' \
 'comments:View all comments on a pull request' \
 'labels:View the labels applied to a pull request' \
+'assignees:List the users assigned to this pull request' \
 'diff:View the diff between the base and head branches of a pull request' \
 'files:View the files changed in a pull request' \
 'commits:View the commits in a pull request' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj pr view commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__pr__subcmd__view__subcmd__assignees_commands] )) ||
+_fj__subcmd__pr__subcmd__view__subcmd__assignees_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj pr view assignees commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__pr__subcmd__view__subcmd__body_commands] )) ||
 _fj__subcmd__pr__subcmd__view__subcmd__body_commands() {
@@ -7402,12 +8442,18 @@ _fj__subcmd__pr__subcmd__view__subcmd__help_commands() {
 'comment:View a comment on a pull request' \
 'comments:View all comments on a pull request' \
 'labels:View the labels applied to a pull request' \
+'assignees:List the users assigned to this pull request' \
 'diff:View the diff between the base and head branches of a pull request' \
 'files:View the files changed in a pull request' \
 'commits:View the commits in a pull request' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj pr view help commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__pr__subcmd__view__subcmd__help__subcmd__assignees_commands] )) ||
+_fj__subcmd__pr__subcmd__view__subcmd__help__subcmd__assignees_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj pr view help assignees commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__pr__subcmd__view__subcmd__help__subcmd__body_commands] )) ||
 _fj__subcmd__pr__subcmd__view__subcmd__help__subcmd__body_commands() {
@@ -7629,14 +8675,18 @@ _fj__subcmd__release__subcmd__view_commands() {
 (( $+functions[_fj__subcmd__repo_commands] )) ||
 _fj__subcmd__repo_commands() {
     local commands; commands=(
-'create:Creates a new repository' \
+'create:Create a new repository' \
 'fork:Fork a repository onto your account' \
-'migrate:' \
+'migrate:Migrate or mirror an existing repository' \
 'view:View a repo'\''s info' \
 'readme:View a repo'\''s README' \
 'clone:Clone a repo'\''s code locally' \
 'star:Add a star to a repo' \
 'unstar:Take away a star from a repo' \
+'star-status:Check your current starring status' \
+'watch:Subscribe to a repo' \
+'unwatch:Unsubscribe from a repo' \
+'watch-status:Check your current watch status' \
 'delete:Delete a repository' \
 'browse:Open a repository'\''s page in your browser' \
 'labels:Manage a repo'\''s issue labels' \
@@ -7679,14 +8729,18 @@ _fj__subcmd__repo__subcmd__fork_commands() {
 (( $+functions[_fj__subcmd__repo__subcmd__help_commands] )) ||
 _fj__subcmd__repo__subcmd__help_commands() {
     local commands; commands=(
-'create:Creates a new repository' \
+'create:Create a new repository' \
 'fork:Fork a repository onto your account' \
-'migrate:' \
+'migrate:Migrate or mirror an existing repository' \
 'view:View a repo'\''s info' \
 'readme:View a repo'\''s README' \
 'clone:Clone a repo'\''s code locally' \
 'star:Add a star to a repo' \
 'unstar:Take away a star from a repo' \
+'star-status:Check your current starring status' \
+'watch:Subscribe to a repo' \
+'unwatch:Unsubscribe from a repo' \
+'watch-status:Check your current watch status' \
 'delete:Delete a repository' \
 'browse:Open a repository'\''s page in your browser' \
 'labels:Manage a repo'\''s issue labels' \
@@ -7776,6 +8830,11 @@ _fj__subcmd__repo__subcmd__help__subcmd__star_commands() {
     local commands; commands=()
     _describe -t commands 'fj repo help star commands' commands "$@"
 }
+(( $+functions[_fj__subcmd__repo__subcmd__help__subcmd__star-status_commands] )) ||
+_fj__subcmd__repo__subcmd__help__subcmd__star-status_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj repo help star-status commands' commands "$@"
+}
 (( $+functions[_fj__subcmd__repo__subcmd__help__subcmd__units_commands] )) ||
 _fj__subcmd__repo__subcmd__help__subcmd__units_commands() {
     local commands; commands=(
@@ -7829,10 +8888,25 @@ _fj__subcmd__repo__subcmd__help__subcmd__unstar_commands() {
     local commands; commands=()
     _describe -t commands 'fj repo help unstar commands' commands "$@"
 }
+(( $+functions[_fj__subcmd__repo__subcmd__help__subcmd__unwatch_commands] )) ||
+_fj__subcmd__repo__subcmd__help__subcmd__unwatch_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj repo help unwatch commands' commands "$@"
+}
 (( $+functions[_fj__subcmd__repo__subcmd__help__subcmd__view_commands] )) ||
 _fj__subcmd__repo__subcmd__help__subcmd__view_commands() {
     local commands; commands=()
     _describe -t commands 'fj repo help view commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__repo__subcmd__help__subcmd__watch_commands] )) ||
+_fj__subcmd__repo__subcmd__help__subcmd__watch_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj repo help watch commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__repo__subcmd__help__subcmd__watch-status_commands] )) ||
+_fj__subcmd__repo__subcmd__help__subcmd__watch-status_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj repo help watch-status commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__repo__subcmd__labels_commands] )) ||
 _fj__subcmd__repo__subcmd__labels_commands() {
@@ -7915,6 +8989,11 @@ _fj__subcmd__repo__subcmd__readme_commands() {
 _fj__subcmd__repo__subcmd__star_commands() {
     local commands; commands=()
     _describe -t commands 'fj repo star commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__repo__subcmd__star-status_commands] )) ||
+_fj__subcmd__repo__subcmd__star-status_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj repo star-status commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__repo__subcmd__units_commands] )) ||
 _fj__subcmd__repo__subcmd__units_commands() {
@@ -8024,10 +9103,25 @@ _fj__subcmd__repo__subcmd__unstar_commands() {
     local commands; commands=()
     _describe -t commands 'fj repo unstar commands' commands "$@"
 }
+(( $+functions[_fj__subcmd__repo__subcmd__unwatch_commands] )) ||
+_fj__subcmd__repo__subcmd__unwatch_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj repo unwatch commands' commands "$@"
+}
 (( $+functions[_fj__subcmd__repo__subcmd__view_commands] )) ||
 _fj__subcmd__repo__subcmd__view_commands() {
     local commands; commands=()
     _describe -t commands 'fj repo view commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__repo__subcmd__watch_commands] )) ||
+_fj__subcmd__repo__subcmd__watch_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj repo watch commands' commands "$@"
+}
+(( $+functions[_fj__subcmd__repo__subcmd__watch-status_commands] )) ||
+_fj__subcmd__repo__subcmd__watch-status_commands() {
+    local commands; commands=()
+    _describe -t commands 'fj repo watch-status commands' commands "$@"
 }
 (( $+functions[_fj__subcmd__tag_commands] )) ||
 _fj__subcmd__tag_commands() {
@@ -8139,7 +9233,7 @@ _fj__subcmd__user__subcmd__edit_commands() {
 'bio:Set your bio' \
 'name:Set your full name' \
 'pronouns:Set your pronouns' \
-'location:Set your activity visibility' \
+'location:Set your location' \
 'activity:Set your activity visibility' \
 'email:Manage the email addresses associated with your account' \
 'website:Set your linked website' \
@@ -8168,7 +9262,7 @@ _fj__subcmd__user__subcmd__edit__subcmd__help_commands() {
 'bio:Set your bio' \
 'name:Set your full name' \
 'pronouns:Set your pronouns' \
-'location:Set your activity visibility' \
+'location:Set your location' \
 'activity:Set your activity visibility' \
 'email:Manage the email addresses associated with your account' \
 'website:Set your linked website' \
@@ -8255,10 +9349,10 @@ _fj__subcmd__user__subcmd__following_commands() {
 _fj__subcmd__user__subcmd__gpg_commands() {
     local commands; commands=(
 'list:List your GPG keys' \
-'view:Show details about a GPG key' \
-'delete:Deletes a GPG key. This will un-verify all commits signed with that key!' \
-'upload:Upload a new GPG key from your local keyring. This command requires \`gpg\` to be installed' \
-'verify:Verifies a GPG key. You need to have the to-be-verified key installed locally in order to sign some data with it. This command requires \`gpg\` to be installed' \
+'view:View a GPG key' \
+'delete:Delete a GPG key. This will un-verify all commits signed with that key!' \
+'upload:Upload a GPG key' \
+'verify:Verifies a GPG key' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj user gpg commands' commands "$@"
@@ -8272,10 +9366,10 @@ _fj__subcmd__user__subcmd__gpg__subcmd__delete_commands() {
 _fj__subcmd__user__subcmd__gpg__subcmd__help_commands() {
     local commands; commands=(
 'list:List your GPG keys' \
-'view:Show details about a GPG key' \
-'delete:Deletes a GPG key. This will un-verify all commits signed with that key!' \
-'upload:Upload a new GPG key from your local keyring. This command requires \`gpg\` to be installed' \
-'verify:Verifies a GPG key. You need to have the to-be-verified key installed locally in order to sign some data with it. This command requires \`gpg\` to be installed' \
+'view:View a GPG key' \
+'delete:Delete a GPG key. This will un-verify all commits signed with that key!' \
+'upload:Upload a GPG key' \
+'verify:Verifies a GPG key' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'fj user gpg help commands' commands "$@"
@@ -8373,7 +9467,7 @@ _fj__subcmd__user__subcmd__help__subcmd__edit_commands() {
 'bio:Set your bio' \
 'name:Set your full name' \
 'pronouns:Set your pronouns' \
-'location:Set your activity visibility' \
+'location:Set your location' \
 'activity:Set your activity visibility' \
 'email:Manage the email addresses associated with your account' \
 'website:Set your linked website' \
@@ -8434,10 +9528,10 @@ _fj__subcmd__user__subcmd__help__subcmd__following_commands() {
 _fj__subcmd__user__subcmd__help__subcmd__gpg_commands() {
     local commands; commands=(
 'list:List your GPG keys' \
-'view:Show details about a GPG key' \
-'delete:Deletes a GPG key. This will un-verify all commits signed with that key!' \
-'upload:Upload a new GPG key from your local keyring. This command requires \`gpg\` to be installed' \
-'verify:Verifies a GPG key. You need to have the to-be-verified key installed locally in order to sign some data with it. This command requires \`gpg\` to be installed' \
+'view:View a GPG key' \
+'delete:Delete a GPG key. This will un-verify all commits signed with that key!' \
+'upload:Upload a GPG key' \
+'verify:Verifies a GPG key' \
     )
     _describe -t commands 'fj user help gpg commands' commands "$@"
 }
