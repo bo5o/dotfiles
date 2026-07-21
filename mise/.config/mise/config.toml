@@ -36,7 +36,7 @@
 "npm:markuplint" = "4.18.3"
 "npm:mcp-hub" = "4.2.1"
 "npm:sql-formatter" = "15.8.2"
-"npm:stylelint" = "17.14.0"
+"npm:stylelint" = "17.14.1"
 "npm:vim-language-server" = "2.3.1"
 "npm:vscode-langservers-extracted" = "4.10.0"
 "npm:yaml-language-server" = "1.24.0"
