@@ -83,6 +83,11 @@ upgrade:
         mise x fnox -- fnox completion zsh > {{ plugin_dir }}/fnox/_fnox
     @echo "DONE"
 
+    @echo -n "Updating sem completions..."
+    @mkdir -p {{ plugin_dir }}/sem && \
+        mise x "github:Ataraxy-Labs/sem" -- sem completions zsh > {{ plugin_dir }}/sem/_sem
+    @echo "DONE"
+
     @echo -n "Updating marimo completions..."
     @mkdir -p {{ plugin_dir }}/marimo && \
         _MARIMO_COMPLETE=zsh_source mise x pipx:marimo -- marimo > {{ plugin_dir }}/marimo/_marimo

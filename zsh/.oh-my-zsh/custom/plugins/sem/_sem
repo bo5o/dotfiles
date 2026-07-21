@@ -1,0 +1,1160 @@
+#compdef sem
+
+autoload -U is-at-least
+
+_sem() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_sem_commands" \
+"*::: :->sem" \
+&& ret=0
+    case $state in
+    (sem)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:sem-command-$line[1]:"
+        case $line[1] in
+            (diff)
+_arguments "${_arguments_options[@]}" : \
+'--label=[Display path label for direct file comparison]:LABEL:_default' \
+'--commit=[Show changes from a specific commit]:COMMIT:_default' \
+'--from=[Start of commit range]:FROM:_default' \
+'--to=[End of commit range]:TO:_default' \
+'--format=[Output format]:FORMAT:(terminal plain json markdown)' \
+'*--file-exts=[Only include files with these extensions (e.g. --file-exts .py .rs)]:FILE_EXTS:_default' \
+'--color=[When to use colors]:COLOR:(always auto never)' \
+'-C+[Run as if started in this directory (like git -C)]:DIRECTORY:_default' \
+'--cwd=[Run as if started in this directory (like git -C)]:DIRECTORY:_default' \
+'--staged[Show only staged changes (alias\: --cached)]' \
+'--cached[Show only staged changes (alias for --staged)]' \
+'--stdin[Read FileChange\[\] JSON from stdin instead of git]' \
+'--patch[Read unified diff from stdin (e.g. git diff | sem diff --patch)]' \
+'--json[Shorthand for --format json]' \
+'-v[Show inline content diffs for each entity]' \
+'--verbose[Show inline content diffs for each entity]' \
+'--profile[Show internal timing profile]' \
+'--no-cosmetics[Hide cosmetic changes (formatting, whitespace, comments only)]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'*::args -- Git refs, files, or pathspecs (supports ref1..ref2, ref1...ref2, -- paths):_default' \
+&& ret=0
+;;
+(impact)
+_arguments "${_arguments_options[@]}" : \
+'--entity-id=[Look up entity by its ID (from sem diff --format json output)]:ENTITY_ID:_default' \
+'--file=[File containing the entity (disambiguates if multiple matches)]:FILE:_default' \
+'--format=[Output format]:FORMAT:(terminal json)' \
+'*--file-exts=[Only include files with these extensions (e.g. --file-exts .py .rs)]:FILE_EXTS:_default' \
+'--depth=[Max traversal depth for transitive impact (default 2, 0 = unlimited)]:DEPTH:_default' \
+'--deps[Show direct dependencies only]' \
+'--dependents[Show direct dependents only]' \
+'--tests[Show affected test entities only]' \
+'--json[Output as JSON (shorthand for --format json)]' \
+'--no-cache[Skip the SQLite entity cache (rebuild from scratch)]' \
+'--no-default-excludes[Include files and directories excluded by default (generated, fixtures, vendor, benchmarks)]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::entity -- Name of the entity to analyze, optionally as "type name":_default' \
+&& ret=0
+;;
+(graph)
+_arguments "${_arguments_options[@]}" : \
+'--format=[Output format]:FORMAT:(terminal json)' \
+'*--file-exts=[Only include files with these extensions (e.g. --file-exts .py .rs)]:FILE_EXTS:_default' \
+'--json[Output as JSON (shorthand for --format json)]' \
+'--no-cache[Skip the SQLite entity cache (rebuild from scratch)]' \
+'--no-default-excludes[Include files and directories excluded by default (generated, fixtures, vendor, benchmarks)]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::path -- Repository path (defaults to current directory):_default' \
+&& ret=0
+;;
+(blame)
+_arguments "${_arguments_options[@]}" : \
+'--format=[Output format]:FORMAT:(terminal json)' \
+'--json[Output as JSON (shorthand for --format json)]' \
+'-h[Print help]' \
+'--help[Print help]' \
+':file -- File to blame:_default' \
+&& ret=0
+;;
+(hook)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':kind -- Hook kind, e.g. prompt-submit:_default' \
+&& ret=0
+;;
+(log)
+_arguments "${_arguments_options[@]}" : \
+'--file=[File containing the entity (auto-detected if omitted)]:FILE:_default' \
+'--limit=[Maximum number of commits to scan (0 = unlimited)]:LIMIT:_default' \
+'--format=[Output format]:FORMAT:(terminal json)' \
+'--json[Output as JSON (shorthand for --format json)]' \
+'-v[Show content diff between versions]' \
+'--verbose[Show content diff between versions]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::entity -- Name of the entity to trace (omit for repo hotspots + co-changes):_default' \
+&& ret=0
+;;
+(entities)
+_arguments "${_arguments_options[@]}" : \
+'--format=[Output format]:FORMAT:(terminal json)' \
+'*--file-exts=[Only include files with these extensions (e.g. --file-exts .ts .tsx)]:FILE_EXTS:_default' \
+'*--only=[List only entities of these kinds (repeatable), e.g. --only function --only struct. Kinds are language-dependent; an unknown kind reports the kinds found]:KIND:_default' \
+'(--only)*--except=[List all entities except these kinds (repeatable), e.g. --except import. Cannot be combined with --only]:KIND:_default' \
+'--text=[Search entity bodies for an exact substring instead of listing\: hits come back entity-addressed (file, innermost entity, line, matched text). Use instead of grep for strings in code]:SUBSTRING:_default' \
+'--json[Output as JSON (shorthand for --format json)]' \
+'--no-default-excludes[Include files and directories excluded by default (generated, fixtures, vendor, benchmarks)]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'*::paths -- File or directory paths to extract entities from (defaults to .):_default' \
+&& ret=0
+;;
+(context)
+_arguments "${_arguments_options[@]}" : \
+'--entity-id=[Look up entity by its ID (from sem diff --format json output)]:ENTITY_ID:_default' \
+'--file=[File containing the entity (disambiguates if multiple matches)]:FILE:_default' \
+'--budget=[Token budget]:BUDGET:_default' \
+'--hops=[Bound related entities to this many graph hops from the target (0 = unbounded)]:HOPS:_default' \
+'--format=[Output format]:FORMAT:(terminal json)' \
+'*--file-exts=[Only include files with these extensions (e.g. --file-exts .py .rs)]:FILE_EXTS:_default' \
+'--json[Output as JSON (shorthand for --format json)]' \
+'--no-cache[Skip the SQLite entity cache (rebuild from scratch)]' \
+'--no-default-excludes[Include files and directories excluded by default (generated, fixtures, vendor, benchmarks)]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::entity -- Name of the entity, optionally as "type name":_default' \
+&& ret=0
+;;
+(stats)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(mcp)
+_arguments "${_arguments_options[@]}" : \
+'--resident[Hidden plumbing\: serve only the per-repo socket (no stdio MCP), spawned detached by the CLI so repeat queries answer in milliseconds. Exits when idle or when another server owns the repo'\''s socket]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(setup)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(unsetup)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(login)
+_arguments "${_arguments_options[@]}" : \
+'--endpoint=[API endpoint]:ENDPOINT:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::key -- API key (omit to log in with GitHub):_default' \
+&& ret=0
+;;
+(logout)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(whoami)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(cloud)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_sem__subcmd__cloud_commands" \
+"*::: :->cloud" \
+&& ret=0
+
+    case $state in
+    (cloud)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:sem-cloud-command-$line[1]:"
+        case $line[1] in
+            (enable)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(share)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(preview)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(log)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(never)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(forget)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_sem__subcmd__cloud__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:sem-cloud-help-command-$line[1]:"
+        case $line[1] in
+            (enable)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(share)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(preview)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(log)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(never)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(forget)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(telemetry)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_sem__subcmd__telemetry_commands" \
+"*::: :->telemetry" \
+&& ret=0
+
+    case $state in
+    (telemetry)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:sem-telemetry-command-$line[1]:"
+        case $line[1] in
+            (on)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(local)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(off)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(preview)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_sem__subcmd__telemetry__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:sem-telemetry-help-command-$line[1]:"
+        case $line[1] in
+            (on)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(local)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(off)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(preview)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(xref)
+_arguments "${_arguments_options[@]}" : \
+'--json[JSON output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(repos)
+_arguments "${_arguments_options[@]}" : \
+'--json[JSON output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(update)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(completions)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':shell -- The shell to generate the completions for:(bash elvish fish nushell powershell zsh)' \
+&& ret=0
+;;
+(__telemetry-flush)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(__update-check)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_sem__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:sem-help-command-$line[1]:"
+        case $line[1] in
+            (diff)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(impact)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(graph)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(blame)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(hook)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(log)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(entities)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(context)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(stats)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(mcp)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(setup)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(unsetup)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(login)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(logout)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(whoami)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(cloud)
+_arguments "${_arguments_options[@]}" : \
+":: :_sem__subcmd__help__subcmd__cloud_commands" \
+"*::: :->cloud" \
+&& ret=0
+
+    case $state in
+    (cloud)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:sem-help-cloud-command-$line[1]:"
+        case $line[1] in
+            (enable)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(share)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(preview)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(log)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(never)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(forget)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(telemetry)
+_arguments "${_arguments_options[@]}" : \
+":: :_sem__subcmd__help__subcmd__telemetry_commands" \
+"*::: :->telemetry" \
+&& ret=0
+
+    case $state in
+    (telemetry)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:sem-help-telemetry-command-$line[1]:"
+        case $line[1] in
+            (on)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(local)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(off)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(preview)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(xref)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(repos)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(update)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(completions)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(__telemetry-flush)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(__update-check)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_sem_commands] )) ||
+_sem_commands() {
+    local commands; commands=(
+'diff:Show semantic diff of changes (supports git diff syntax). Untracked files are excluded, matching git behavior' \
+'impact:Show impact of changing an entity (deps, dependents, transitive impact, tests)' \
+'graph:Show the full entity dependency graph' \
+'blame:Show semantic blame — who last modified each entity' \
+'hook:Internal plumbing for agent-harness hooks (hidden)' \
+'log:Show evolution of an entity through git history, or, with no entity, the repo'\''s history analytics\: hotspots and co-change pairs' \
+'entities:List entities under one or more file or directory paths' \
+'context:Show token-budgeted context for an entity' \
+'stats:Show lifetime diff statistics' \
+'mcp:Start the MCP server (stdin/stdout transport)' \
+'setup:Replace \`git diff\` with \`sem diff\` globally' \
+'unsetup:Restore default \`git diff\` behavior' \
+'login:Log in to sem cloud' \
+'logout:Log out of sem cloud' \
+'whoami:Show current sem cloud identity' \
+'cloud:Manage cloud acceleration for a repo (off until you enable it)' \
+'telemetry:Control anonymous usage telemetry (local by default — nothing uploaded)' \
+'xref:Show cross-repo dependencies across your indexed repos (requires sem login)' \
+'repos:Show where your code is stored\: repos indexed on your cloud account and local entity caches' \
+'update:Update sem to the latest released version' \
+'completions:Generate shell completions' \
+'__telemetry-flush:Flush spooled telemetry (internal; spawned in the background)' \
+'__update-check:Refresh the cached latest-version info (internal; spawned in the background)' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'sem commands' commands "$@"
+}
+(( $+functions[_sem__subcmd____telemetry-flush_commands] )) ||
+_sem__subcmd____telemetry-flush_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem __telemetry-flush commands' commands "$@"
+}
+(( $+functions[_sem__subcmd____update-check_commands] )) ||
+_sem__subcmd____update-check_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem __update-check commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__blame_commands] )) ||
+_sem__subcmd__blame_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem blame commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud_commands] )) ||
+_sem__subcmd__cloud_commands() {
+    local commands; commands=(
+'enable:Enable cloud queries for this public repo (shows what'\''s sent, asks first)' \
+'share:Share this private repo'\''s index with the cloud (extra confirmation)' \
+'list:List every repo indexed under your account' \
+'status:Show cloud + telemetry state for this repo (offline; sends nothing)' \
+'preview:Print the exact request a cloud query would send' \
+'log:Print the local ledger of every outbound cloud request' \
+'never:Stop offering cloud for this repo (or suppress the tip globally)' \
+'forget:Delete this repo'\''s cloud index and unregister it' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'sem cloud commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__enable_commands] )) ||
+_sem__subcmd__cloud__subcmd__enable_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud enable commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__forget_commands] )) ||
+_sem__subcmd__cloud__subcmd__forget_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud forget commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__help_commands] )) ||
+_sem__subcmd__cloud__subcmd__help_commands() {
+    local commands; commands=(
+'enable:Enable cloud queries for this public repo (shows what'\''s sent, asks first)' \
+'share:Share this private repo'\''s index with the cloud (extra confirmation)' \
+'list:List every repo indexed under your account' \
+'status:Show cloud + telemetry state for this repo (offline; sends nothing)' \
+'preview:Print the exact request a cloud query would send' \
+'log:Print the local ledger of every outbound cloud request' \
+'never:Stop offering cloud for this repo (or suppress the tip globally)' \
+'forget:Delete this repo'\''s cloud index and unregister it' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'sem cloud help commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__help__subcmd__enable_commands] )) ||
+_sem__subcmd__cloud__subcmd__help__subcmd__enable_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud help enable commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__help__subcmd__forget_commands] )) ||
+_sem__subcmd__cloud__subcmd__help__subcmd__forget_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud help forget commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__help__subcmd__help_commands] )) ||
+_sem__subcmd__cloud__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud help help commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__help__subcmd__list_commands] )) ||
+_sem__subcmd__cloud__subcmd__help__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud help list commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__help__subcmd__log_commands] )) ||
+_sem__subcmd__cloud__subcmd__help__subcmd__log_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud help log commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__help__subcmd__never_commands] )) ||
+_sem__subcmd__cloud__subcmd__help__subcmd__never_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud help never commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__help__subcmd__preview_commands] )) ||
+_sem__subcmd__cloud__subcmd__help__subcmd__preview_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud help preview commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__help__subcmd__share_commands] )) ||
+_sem__subcmd__cloud__subcmd__help__subcmd__share_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud help share commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__help__subcmd__status_commands] )) ||
+_sem__subcmd__cloud__subcmd__help__subcmd__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud help status commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__list_commands] )) ||
+_sem__subcmd__cloud__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud list commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__log_commands] )) ||
+_sem__subcmd__cloud__subcmd__log_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud log commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__never_commands] )) ||
+_sem__subcmd__cloud__subcmd__never_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud never commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__preview_commands] )) ||
+_sem__subcmd__cloud__subcmd__preview_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud preview commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__share_commands] )) ||
+_sem__subcmd__cloud__subcmd__share_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud share commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__cloud__subcmd__status_commands] )) ||
+_sem__subcmd__cloud__subcmd__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem cloud status commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__completions_commands] )) ||
+_sem__subcmd__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem completions commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__context_commands] )) ||
+_sem__subcmd__context_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem context commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__diff_commands] )) ||
+_sem__subcmd__diff_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem diff commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__entities_commands] )) ||
+_sem__subcmd__entities_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem entities commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__graph_commands] )) ||
+_sem__subcmd__graph_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem graph commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help_commands] )) ||
+_sem__subcmd__help_commands() {
+    local commands; commands=(
+'diff:Show semantic diff of changes (supports git diff syntax). Untracked files are excluded, matching git behavior' \
+'impact:Show impact of changing an entity (deps, dependents, transitive impact, tests)' \
+'graph:Show the full entity dependency graph' \
+'blame:Show semantic blame — who last modified each entity' \
+'hook:Internal plumbing for agent-harness hooks (hidden)' \
+'log:Show evolution of an entity through git history, or, with no entity, the repo'\''s history analytics\: hotspots and co-change pairs' \
+'entities:List entities under one or more file or directory paths' \
+'context:Show token-budgeted context for an entity' \
+'stats:Show lifetime diff statistics' \
+'mcp:Start the MCP server (stdin/stdout transport)' \
+'setup:Replace \`git diff\` with \`sem diff\` globally' \
+'unsetup:Restore default \`git diff\` behavior' \
+'login:Log in to sem cloud' \
+'logout:Log out of sem cloud' \
+'whoami:Show current sem cloud identity' \
+'cloud:Manage cloud acceleration for a repo (off until you enable it)' \
+'telemetry:Control anonymous usage telemetry (local by default — nothing uploaded)' \
+'xref:Show cross-repo dependencies across your indexed repos (requires sem login)' \
+'repos:Show where your code is stored\: repos indexed on your cloud account and local entity caches' \
+'update:Update sem to the latest released version' \
+'completions:Generate shell completions' \
+'__telemetry-flush:Flush spooled telemetry (internal; spawned in the background)' \
+'__update-check:Refresh the cached latest-version info (internal; spawned in the background)' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'sem help commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd____telemetry-flush_commands] )) ||
+_sem__subcmd__help__subcmd____telemetry-flush_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help __telemetry-flush commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd____update-check_commands] )) ||
+_sem__subcmd__help__subcmd____update-check_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help __update-check commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__blame_commands] )) ||
+_sem__subcmd__help__subcmd__blame_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help blame commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__cloud_commands] )) ||
+_sem__subcmd__help__subcmd__cloud_commands() {
+    local commands; commands=(
+'enable:Enable cloud queries for this public repo (shows what'\''s sent, asks first)' \
+'share:Share this private repo'\''s index with the cloud (extra confirmation)' \
+'list:List every repo indexed under your account' \
+'status:Show cloud + telemetry state for this repo (offline; sends nothing)' \
+'preview:Print the exact request a cloud query would send' \
+'log:Print the local ledger of every outbound cloud request' \
+'never:Stop offering cloud for this repo (or suppress the tip globally)' \
+'forget:Delete this repo'\''s cloud index and unregister it' \
+    )
+    _describe -t commands 'sem help cloud commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__cloud__subcmd__enable_commands] )) ||
+_sem__subcmd__help__subcmd__cloud__subcmd__enable_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help cloud enable commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__cloud__subcmd__forget_commands] )) ||
+_sem__subcmd__help__subcmd__cloud__subcmd__forget_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help cloud forget commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__cloud__subcmd__list_commands] )) ||
+_sem__subcmd__help__subcmd__cloud__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help cloud list commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__cloud__subcmd__log_commands] )) ||
+_sem__subcmd__help__subcmd__cloud__subcmd__log_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help cloud log commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__cloud__subcmd__never_commands] )) ||
+_sem__subcmd__help__subcmd__cloud__subcmd__never_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help cloud never commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__cloud__subcmd__preview_commands] )) ||
+_sem__subcmd__help__subcmd__cloud__subcmd__preview_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help cloud preview commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__cloud__subcmd__share_commands] )) ||
+_sem__subcmd__help__subcmd__cloud__subcmd__share_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help cloud share commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__cloud__subcmd__status_commands] )) ||
+_sem__subcmd__help__subcmd__cloud__subcmd__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help cloud status commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__completions_commands] )) ||
+_sem__subcmd__help__subcmd__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help completions commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__context_commands] )) ||
+_sem__subcmd__help__subcmd__context_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help context commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__diff_commands] )) ||
+_sem__subcmd__help__subcmd__diff_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help diff commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__entities_commands] )) ||
+_sem__subcmd__help__subcmd__entities_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help entities commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__graph_commands] )) ||
+_sem__subcmd__help__subcmd__graph_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help graph commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__help_commands] )) ||
+_sem__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help help commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__hook_commands] )) ||
+_sem__subcmd__help__subcmd__hook_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help hook commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__impact_commands] )) ||
+_sem__subcmd__help__subcmd__impact_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help impact commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__log_commands] )) ||
+_sem__subcmd__help__subcmd__log_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help log commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__login_commands] )) ||
+_sem__subcmd__help__subcmd__login_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help login commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__logout_commands] )) ||
+_sem__subcmd__help__subcmd__logout_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help logout commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__mcp_commands] )) ||
+_sem__subcmd__help__subcmd__mcp_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help mcp commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__repos_commands] )) ||
+_sem__subcmd__help__subcmd__repos_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help repos commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__setup_commands] )) ||
+_sem__subcmd__help__subcmd__setup_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help setup commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__stats_commands] )) ||
+_sem__subcmd__help__subcmd__stats_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help stats commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__telemetry_commands] )) ||
+_sem__subcmd__help__subcmd__telemetry_commands() {
+    local commands; commands=(
+'on:Record usage locally and upload it to help improve sem' \
+'local:Record usage locally only; never upload (the default)' \
+'off:Record nothing' \
+'preview:Show the current mode and what would be sent' \
+    )
+    _describe -t commands 'sem help telemetry commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__telemetry__subcmd__local_commands] )) ||
+_sem__subcmd__help__subcmd__telemetry__subcmd__local_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help telemetry local commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__telemetry__subcmd__off_commands] )) ||
+_sem__subcmd__help__subcmd__telemetry__subcmd__off_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help telemetry off commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__telemetry__subcmd__on_commands] )) ||
+_sem__subcmd__help__subcmd__telemetry__subcmd__on_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help telemetry on commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__telemetry__subcmd__preview_commands] )) ||
+_sem__subcmd__help__subcmd__telemetry__subcmd__preview_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help telemetry preview commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__unsetup_commands] )) ||
+_sem__subcmd__help__subcmd__unsetup_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help unsetup commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__update_commands] )) ||
+_sem__subcmd__help__subcmd__update_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help update commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__whoami_commands] )) ||
+_sem__subcmd__help__subcmd__whoami_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help whoami commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__xref_commands] )) ||
+_sem__subcmd__help__subcmd__xref_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help xref commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__hook_commands] )) ||
+_sem__subcmd__hook_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem hook commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__impact_commands] )) ||
+_sem__subcmd__impact_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem impact commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__log_commands] )) ||
+_sem__subcmd__log_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem log commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__login_commands] )) ||
+_sem__subcmd__login_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem login commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__logout_commands] )) ||
+_sem__subcmd__logout_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem logout commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__mcp_commands] )) ||
+_sem__subcmd__mcp_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem mcp commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__repos_commands] )) ||
+_sem__subcmd__repos_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem repos commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__setup_commands] )) ||
+_sem__subcmd__setup_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem setup commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__stats_commands] )) ||
+_sem__subcmd__stats_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem stats commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__telemetry_commands] )) ||
+_sem__subcmd__telemetry_commands() {
+    local commands; commands=(
+'on:Record usage locally and upload it to help improve sem' \
+'local:Record usage locally only; never upload (the default)' \
+'off:Record nothing' \
+'preview:Show the current mode and what would be sent' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'sem telemetry commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__telemetry__subcmd__help_commands] )) ||
+_sem__subcmd__telemetry__subcmd__help_commands() {
+    local commands; commands=(
+'on:Record usage locally and upload it to help improve sem' \
+'local:Record usage locally only; never upload (the default)' \
+'off:Record nothing' \
+'preview:Show the current mode and what would be sent' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'sem telemetry help commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__telemetry__subcmd__help__subcmd__help_commands] )) ||
+_sem__subcmd__telemetry__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem telemetry help help commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__telemetry__subcmd__help__subcmd__local_commands] )) ||
+_sem__subcmd__telemetry__subcmd__help__subcmd__local_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem telemetry help local commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__telemetry__subcmd__help__subcmd__off_commands] )) ||
+_sem__subcmd__telemetry__subcmd__help__subcmd__off_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem telemetry help off commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__telemetry__subcmd__help__subcmd__on_commands] )) ||
+_sem__subcmd__telemetry__subcmd__help__subcmd__on_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem telemetry help on commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__telemetry__subcmd__help__subcmd__preview_commands] )) ||
+_sem__subcmd__telemetry__subcmd__help__subcmd__preview_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem telemetry help preview commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__telemetry__subcmd__local_commands] )) ||
+_sem__subcmd__telemetry__subcmd__local_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem telemetry local commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__telemetry__subcmd__off_commands] )) ||
+_sem__subcmd__telemetry__subcmd__off_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem telemetry off commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__telemetry__subcmd__on_commands] )) ||
+_sem__subcmd__telemetry__subcmd__on_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem telemetry on commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__telemetry__subcmd__preview_commands] )) ||
+_sem__subcmd__telemetry__subcmd__preview_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem telemetry preview commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__unsetup_commands] )) ||
+_sem__subcmd__unsetup_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem unsetup commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__update_commands] )) ||
+_sem__subcmd__update_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem update commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__whoami_commands] )) ||
+_sem__subcmd__whoami_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem whoami commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__xref_commands] )) ||
+_sem__subcmd__xref_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem xref commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_sem" ]; then
+    _sem "$@"
+else
+    compdef _sem sem
+fi

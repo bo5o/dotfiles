@@ -65,6 +65,7 @@ plugins=(
     dust
     xh
     fnox
+    sem
     mise
     zsh-syntax-highlighting
 )
