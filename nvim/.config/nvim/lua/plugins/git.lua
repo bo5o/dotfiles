@@ -57,6 +57,38 @@ return {
         )
         map("n", "<leader>hP", gitsigns.preview_hunk, { desc = "Preview hunk" })
 
+        -- change_base()'s internal sign update is throttled per-buffer and can be
+        -- dropped, so force a full refresh from its completion callback to reliably
+        -- re-diff (otherwise a manual :e was needed to update signs).
+        local function set_base(base)
+          gitsigns.change_base(base, false, function()
+            gitsigns.refresh()
+          end)
+        end
+
+        -- Toggle diff base between index/HEAD and a remembered revision (defaults to
+        -- the previous commit, HEAD~1; changed via <leader>hB).
+        map("n", "<leader>hb", function()
+          local to_prev = not vim.b.gitsigns_base_prev
+          vim.b.gitsigns_base_prev = to_prev
+          set_base(to_prev and (vim.b.gitsigns_base_rev or "HEAD~1") or nil)
+        end, { desc = "Toggle diff base (HEAD~1)" })
+
+        -- Set an arbitrary diff base, remembering it so <leader>hb toggles it.
+        map("n", "<leader>hB", function()
+          vim.ui.input(
+            { prompt = "Gitsigns diff base: ", default = "HEAD~1" },
+            function(base)
+              if not base or base == "" then
+                return
+              end
+              vim.b.gitsigns_base_rev = base
+              vim.b.gitsigns_base_prev = true
+              set_base(base)
+            end
+          )
+        end, { desc = "Set diff base" })
+
         -- Toggle line-wise git blame
         map(
           "n",
