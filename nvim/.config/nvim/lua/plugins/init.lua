@@ -1165,6 +1165,8 @@ return {
 
   {
     "mistweaverco/kulala.nvim",
+    -- Load before session save/restore so VimLeavePre and SessionLoadPost hooks are registered.
+    event = { "SessionLoadPost", "VimLeavePre" },
     keys = {
       { "<leader>Rs", desc = "Send request" },
       { "<leader>Ra", desc = "Send all requests" },
