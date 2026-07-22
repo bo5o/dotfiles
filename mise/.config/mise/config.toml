@@ -42,7 +42,7 @@
 "npm:yaml-language-server" = "1.24.0"
 "pipx:ansible" = { version = "14.2.0", uvx_args = "--with-executables-from ansible-core --with-executables-from ansible-dev-tools --with-executables-from ansible-lint --with docker --with bitwarden-sdk" }
 "pipx:basedpyright" = "1.39.9"
-"pipx:djlint" = "1.41.0"
+"pipx:djlint" = "1.42.1"
 "pipx:gitlint-core" = { version = "0.19.1", uvx_args = "--with gitlint" }
 "pipx:llm" = { version = "0.31.1", uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-gemini --with llm-commit --with llm-templates-fabric --with llm-hacker-news --with llm-fragments-pdf --with pymupdf-layout --with llm-docs" }
 "pipx:mbake" = "1.4.6"
