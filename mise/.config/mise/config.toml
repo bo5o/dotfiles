@@ -27,7 +27,7 @@
 "npm:@vue/language-server" = "3.3.7"
 "npm:awk-language-server" = "0.10.6"
 "npm:bash-language-server" = "5.6.0"
-"npm:ccstatusline" = "2.2.24"
+"npm:ccstatusline" = "2.2.25"
 "npm:ccusage" = "20.0.17"
 "npm:dockerfile-language-server-nodejs" = "0.15.0"
 "npm:htmlhint" = "1.9.2"
