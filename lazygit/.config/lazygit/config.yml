@@ -62,3 +62,58 @@ customCommands:
         command: git absorb --dry-run
         description: 'Dry run (preview)'
         output: terminal
+  - key: 'W'
+    description: 'workmux'
+    commandMenu:
+      - key: 'a'
+        context: 'worktrees'
+        command: 'workmux add -o "{{.Form.Branch}}"'
+        description: 'Add worktree + tmux window'
+        prompts:
+          - type: 'input'
+            title: 'Branch name'
+            key: 'Branch'
+        output: terminal
+      - key: 'o'
+        context: 'worktrees'
+        command: 'workmux open "{{.SelectedWorktree.Name}}"'
+        description: 'Open worktree in tmux'
+        output: terminal
+      - key: 'm'
+        context: 'worktrees'
+        command: 'workmux merge "{{.SelectedWorktree.Name}}"'
+        description: 'Merge worktree + cleanup'
+        output: terminal
+      - key: 'd'
+        context: 'worktrees'
+        command: 'workmux remove "{{.SelectedWorktree.Name}}"'
+        description: 'Remove worktree + tmux window + branch'
+        output: terminal
+      - key: 'a'
+        context: 'localBranches'
+        command: 'workmux add -o "{{.SelectedLocalBranch.Name}}"'
+        description: 'Add worktree for this branch + tmux window'
+        output: terminal
+      - key: 'm'
+        context: 'localBranches'
+        command: 'workmux merge "{{.SelectedLocalBranch.Name}}"'
+        description: 'Merge this branch + cleanup worktree'
+        output: terminal
+      - key: 'd'
+        context: 'localBranches'
+        command: >-
+          name=$(workmux list --json | jq -r --arg b "{{.SelectedLocalBranch.Name}}"
+          '.[] | select(.branch==$b) | .handle'); if [ -n "$name" ]; then workmux
+          remove "$name"; else echo "No worktree found for branch {{.SelectedLocalBranch.Name}}";
+          fi
+        description: 'Remove this branch worktree + tmux window + branch'
+        output: terminal
+      - key: 'n'
+        context: 'localBranches'
+        command: 'workmux add -o "{{.Form.Branch}}"'
+        description: 'New branch + worktree'
+        prompts:
+          - type: 'input'
+            title: 'New branch name'
+            key: 'Branch'
+        output: terminal
