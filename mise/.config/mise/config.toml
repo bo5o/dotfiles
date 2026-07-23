@@ -60,7 +60,7 @@ claude-code = "2.1.217"
 delta = "0.19.2"
 difftastic = { version = "0.69.0", exe = "difft" }
 dive = "0.13.1"
-duckdb = "1.5.4"
+duckdb = "1.5.5"
 dust = "1.2.4"
 fd = "10.4.2"
 fnox = "1.31.0"
