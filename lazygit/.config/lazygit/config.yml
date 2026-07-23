@@ -117,11 +117,12 @@ customCommands:
         output: terminal
       - key: 'n'
         context: 'localBranches'
-        command: 'workmux add -o "{{.Form.Branch}}"'
+        command: >-
+          workmux add -o "{{.Form.Branch}}" --base "{{.SelectedLocalBranch.Name}}"
         description: 'New branch + worktree'
         prompts:
           - type: 'input'
-            title: 'New branch name'
+            title: 'New branch name (branch is off of ''{{.SelectedLocalBranch.Name}}'')'
             key: 'Branch'
         output: terminal
       # --- remote branches ---
