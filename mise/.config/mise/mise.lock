@@ -1887,7 +1887,7 @@ version = "1.24.0"
 backend = "npm:yaml-language-server"
 
 [[tools.oxfmt]]
-version = "0.59.0"
+version = "0.60.0"
 backend = "npm:oxfmt"
 
 [[tools."pipx:ansible"]]
