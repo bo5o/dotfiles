@@ -28,6 +28,7 @@ keybinding:
   universal:
     suspendApp: <disabled>
     redo: <ctrl+z>
+    newWorktree: <disabled>
 customCommands:
   - key: '<ctrl+v>'
     context: 'files'
@@ -62,32 +63,38 @@ customCommands:
         command: git absorb --dry-run
         description: 'Dry run (preview)'
         output: terminal
-  - key: 'W'
+  # Worktrees panel: workmux overrides lazygit's native worktree actions
+  - key: 'n'
+    context: 'worktrees'
+    command: 'workmux add -o "{{.Form.Branch}}"'
+    description: 'New worktree + tmux window (workmux)'
+    prompts:
+      - type: 'input'
+        title: 'Branch name'
+        key: 'Branch'
+    output: terminal
+  - key: '<space>'
+    context: 'worktrees'
+    command: 'workmux open "{{.SelectedWorktree.Name}}"'
+    description: 'Open worktree in tmux (workmux)'
+    output: terminal
+  - key: 'd'
+    context: 'worktrees'
+    command: 'workmux remove "{{.SelectedWorktree.Name}}"'
+    description: 'Remove worktree + tmux window + branch (workmux)'
+    output: terminal
+  - key: 'w'
     description: 'workmux'
     commandMenu:
-      - key: 'a'
-        context: 'worktrees'
-        command: 'workmux add -o "{{.Form.Branch}}"'
-        description: 'Add worktree + tmux window'
-        prompts:
-          - type: 'input'
-            title: 'Branch name'
-            key: 'Branch'
-        output: terminal
+      # --- local branches ---
       - key: 'o'
-        context: 'worktrees'
-        command: 'workmux open "{{.SelectedWorktree.Name}}"'
-        description: 'Open worktree in tmux'
-        output: terminal
-      - key: 'm'
-        context: 'worktrees'
-        command: 'workmux merge "{{.SelectedWorktree.Name}}"'
-        description: 'Merge worktree + cleanup'
-        output: terminal
-      - key: 'd'
-        context: 'worktrees'
-        command: 'workmux remove "{{.SelectedWorktree.Name}}"'
-        description: 'Remove worktree + tmux window + branch'
+        context: 'localBranches'
+        command: >-
+          name=$(workmux list --json | jq -r --arg b "{{.SelectedLocalBranch.Name}}"
+          '.[] | select(.branch==$b) | .handle'); if [ -n "$name" ]; then workmux
+          open "$name"; else echo "No worktree found for branch {{.SelectedLocalBranch.Name}}";
+          fi
+        description: 'Open this branch worktree in tmux'
         output: terminal
       - key: 'a'
         context: 'localBranches'
@@ -115,5 +122,62 @@ customCommands:
         prompts:
           - type: 'input'
             title: 'New branch name'
+            key: 'Branch'
+        output: terminal
+      # --- remote branches ---
+      - key: 'a'
+        context: 'remoteBranches'
+        command: >-
+          workmux add -o "{{.SelectedRemoteBranch.RemoteName}}/{{.SelectedRemoteBranch.Name}}"
+        description: 'Add worktree tracking this remote branch'
+        output: terminal
+      # --- tags ---
+      - key: 'a'
+        context: 'tags'
+        command: 'workmux add -o "{{.Form.Branch}}" --base "{{.SelectedTag.Name}}"'
+        description: 'New worktree from this tag'
+        prompts:
+          - type: 'input'
+            title: 'New branch name (from tag {{.SelectedTag.Name}})'
+            key: 'Branch'
+            initialValue: '{{.SelectedTag.Name}}'
+        output: terminal
+      # --- commits / sub-commits / reflog ---
+      - key: 'a'
+        context: 'commits'
+        command: 'workmux add -o "{{.Form.Branch}}" --base "{{.SelectedCommit.Hash}}"'
+        description: 'New worktree from this commit'
+        prompts:
+          - type: 'input'
+            title: 'New branch name (from commit {{.SelectedCommit.Hash}})'
+            key: 'Branch'
+        output: terminal
+      - key: 'a'
+        context: 'subCommits'
+        command: 'workmux add -o "{{.Form.Branch}}" --base "{{.SelectedCommit.Hash}}"'
+        description: 'New worktree from this commit'
+        prompts:
+          - type: 'input'
+            title: 'New branch name (from commit {{.SelectedCommit.Hash}})'
+            key: 'Branch'
+        output: terminal
+      - key: 'a'
+        context: 'reflogCommits'
+        command: 'workmux add -o "{{.Form.Branch}}" --base "{{.SelectedCommit.Hash}}"'
+        description: 'New worktree from this commit'
+        prompts:
+          - type: 'input'
+            title: 'New branch name (from commit {{.SelectedCommit.Hash}})'
+            key: 'Branch'
+        output: terminal
+      # --- stash ---
+      - key: 'a'
+        context: 'stash'
+        command: >-
+          workmux add -o "{{.Form.Branch}}" --base "stash@{{"{"}}{{.SelectedStashEntry.Index}}{{"}"}}"
+        description: 'New worktree from this stash'
+        prompts:
+          - type: 'input'
+            title: 'New branch name (from stash)'
             key: 'Branch'
         output: terminal
