@@ -20,7 +20,7 @@ upgrade:
 
     @echo -n "Updating ast-grep completions..."
     @mkdir -p {{ plugin_dir }}/sg && \
-        mise x ast-grep -- sg completions zsh > {{ plugin_dir }}/sg/_sg
+        mise x ast-grep -- ast-grep completions zsh > {{ plugin_dir }}/sg/_sg
     @echo "DONE"
 
     @echo -n "Updating jj completions..."
