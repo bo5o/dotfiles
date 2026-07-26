@@ -1386,43 +1386,43 @@ url = "https://github.com/jj-vcs/jj/releases/download/v0.43.0/jj-v0.43.0-x86_64-
 url_api = "https://api.github.com/repos/jj-vcs/jj/releases/assets/463827027"
 
 [[tools.jjui]]
-version = "0.10.8"
+version = "0.10.9"
 backend = "aqua:idursun/jjui"
 
 [tools.jjui."platforms.linux-arm64"]
-checksum = "sha256:82eb8ba96a100ee648319e569050be05c28270a438c4a25881a63ab9d636fc07"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.8/jjui-0.10.8-linux-arm64.zip"
-url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/466661617"
+checksum = "sha256:3b5ace0cc6d592f1e0651dce8ee2bd7c257f453bde6d5c43c8ba719bd7899cf2"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.9/jjui-0.10.9-linux-arm64.zip"
+url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/488652213"
 
 [tools.jjui."platforms.linux-arm64-musl"]
-checksum = "sha256:82eb8ba96a100ee648319e569050be05c28270a438c4a25881a63ab9d636fc07"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.8/jjui-0.10.8-linux-arm64.zip"
-url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/466661617"
+checksum = "sha256:3b5ace0cc6d592f1e0651dce8ee2bd7c257f453bde6d5c43c8ba719bd7899cf2"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.9/jjui-0.10.9-linux-arm64.zip"
+url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/488652213"
 
 [tools.jjui."platforms.linux-x64"]
-checksum = "sha256:75dadce1d46dac386e672663ffaa77a009a5069ef5c889ed6bbadb73baac0bc1"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.8/jjui-0.10.8-linux-amd64.zip"
-url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/466661632"
+checksum = "sha256:625732e25be958d21fc740b71b378524cd11b8b64bd705872b6dc5a77ea531e3"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.9/jjui-0.10.9-linux-amd64.zip"
+url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/488652321"
 
 [tools.jjui."platforms.linux-x64-musl"]
-checksum = "sha256:75dadce1d46dac386e672663ffaa77a009a5069ef5c889ed6bbadb73baac0bc1"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.8/jjui-0.10.8-linux-amd64.zip"
-url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/466661632"
+checksum = "sha256:625732e25be958d21fc740b71b378524cd11b8b64bd705872b6dc5a77ea531e3"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.9/jjui-0.10.9-linux-amd64.zip"
+url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/488652321"
 
 [tools.jjui."platforms.macos-arm64"]
-checksum = "sha256:680c594334746a283302fb7418df02a04dd16c52de42142b85dd50fdf9965664"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.8/jjui-0.10.8-darwin-arm64.zip"
-url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/466661623"
+checksum = "sha256:563dd71a0748fe91baae7a31ff42173df1ac82d566dbb6a8ccc3c10e4f739e80"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.9/jjui-0.10.9-darwin-arm64.zip"
+url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/488652209"
 
 [tools.jjui."platforms.macos-x64"]
-checksum = "sha256:9cefa853bf5bb48524fd104f28385722239cd1d1c26b80f5807e1dfea722fb16"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.8/jjui-0.10.8-darwin-amd64.zip"
-url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/466661619"
+checksum = "sha256:67ad87b81a4756f123bf691f96c88526d74c7d115eb972099f3a754ae0e12025"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.9/jjui-0.10.9-darwin-amd64.zip"
+url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/488652240"
 
 [tools.jjui."platforms.windows-x64"]
-checksum = "sha256:7003d23db7165dcf6a7b05dae14f90d578e3609a755d0d316f85657132d3c48f"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.8/jjui-0.10.8-windows-amd64.zip"
-url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/466661598"
+checksum = "sha256:7dfb95f1c8379dade008f84829868f076825f421a1b539f33325883147e2ea64"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.9/jjui-0.10.9-windows-amd64.zip"
+url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/488652249"
 
 [[tools.jq]]
 version = "1.8.2"
