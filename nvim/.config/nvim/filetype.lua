@@ -18,6 +18,7 @@ vim.filetype.add({
     j2 = "jinja",
     jenkins = "groovy",
     crontab = "crontab",
+    hujson = "hujson",
   },
   pattern = {
     ["docker-compose%.ya?ml"] = "yaml.docker-compose",

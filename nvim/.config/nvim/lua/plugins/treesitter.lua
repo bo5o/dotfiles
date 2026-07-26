@@ -88,6 +88,10 @@ return {
 
       require("nvim-treesitter").install(languages)
 
+      -- there is no hujson parser, but json5 covers its additions to json, i.e.
+      -- comments and trailing commas
+      vim.treesitter.language.register("json5", "hujson")
+
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("treesitter.setup", {}),
         callback = function(args)

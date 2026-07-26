@@ -174,7 +174,24 @@ return {
           },
         },
         intelephense = {},
-        jsonls = {},
+        jsonls = {
+          filetypes = { "json", "jsonc", "hujson" },
+          -- jsonls only tolerates comments for jsonc documents
+          get_language_id = function(_, filetype)
+            return filetype == "hujson" and "jsonc" or filetype
+          end,
+          settings = {
+            json = {
+              schemas = {
+                {
+                  -- hujson allows trailing commas, jsonc only tolerates them
+                  fileMatch = { "*.hujson" },
+                  schema = { allowTrailingCommas = true },
+                },
+              },
+            },
+          },
+        },
         just = {},
         lemminx = {
           init_options = {
@@ -597,6 +614,7 @@ return {
           groovy = { "npm-groovy-lint", "injected" },
           make = { "bake" },
           json = { "oxfmt", stop_after_first = true },
+          hujson = { "hujsonfmt" },
           terraform = { lsp_format = "prefer" },
           markdown = { "oxfmt", "injected" },
           sh = { "shfmt" },
@@ -635,6 +653,10 @@ return {
           caddyfmt = {
             command = "caddy",
             args = { "fmt", "-" },
+            stdin = true,
+          },
+          hujsonfmt = {
+            command = "hujsonfmt",
             stdin = true,
           },
         },
