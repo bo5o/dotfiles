@@ -650,6 +650,7 @@ url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.6.0
 url_api = "https://codeberg.org/attachments/fe5494bf-207b-479a-a617-63bf05d49ed4"
 
 [tools."forgejo:forgejo-contrib/forgejo-cli"."platforms.linux-x64"]
+checksum = "blake3:f905e9f10e814b4f61737e9a95a5f16ae7f8f784dc19da488edf3a4f292d8502"
 url = "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.6.0/forgejo-cli-x86_64-linux.tar.gz"
 url_api = "https://codeberg.org/attachments/f3ec0b2c-c4b8-4446-9df8-dee3b391fddd"
 
