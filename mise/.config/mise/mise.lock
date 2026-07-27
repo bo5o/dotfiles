@@ -1839,7 +1839,7 @@ version = "5.6.0"
 backend = "npm:bash-language-server"
 
 [[tools."npm:ccstatusline"]]
-version = "2.2.26"
+version = "2.2.27"
 backend = "npm:ccstatusline"
 
 [[tools."npm:ccusage"]]
