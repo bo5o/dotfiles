@@ -332,7 +332,7 @@ version = "0.5.2"
 backend = "cargo:inlyne"
 
 [[tools."cargo:just-lsp"]]
-version = "0.5.0"
+version = "0.5.1"
 backend = "cargo:just-lsp"
 
 [[tools."cargo:ncspot"]]
