@@ -14,7 +14,7 @@
     ],
     "defaultMode": "default"
   },
-  "model": "fable",
+  "model": "opus",
   "hooks": {
     "Notification": [
       {
