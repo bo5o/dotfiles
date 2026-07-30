@@ -100,7 +100,7 @@ taplo = { version = "0.10.0", matching = "full" }
 tmux = "latest"
 tree-sitter = "0.26.11"
 usage = "4.0.0"
-uv = "0.11.33"
+uv = "0.12.0"
 workmux = "0.1.230"
 xh = "0.26.2"
 yamlfmt = "0.21.0"
