@@ -183,19 +183,33 @@ return {
 
   {
     "brennier/quicktex",
-    event = "InsertCharPre",
+    -- the mapping is installed by the plugin's own FileType autocmd, so it has
+    -- to be loaded on FileType as well, not on the first keypress
+    ft = { "tex", "markdown", "jinja", "javascript" },
     init = function()
-      local jump = vim.api.nvim_replace_termcodes(
-        "<Esc>:call search('<+.*+>')<CR>\"_c/+>/e<CR>",
-        true,
-        false,
-        true
-      )
-      vim.g.quicktex_markdown = {
-        [" "] = jump,
-      }
+      -- expansions are inserted via <C-r>=, so keycodes in the values have to
+      -- be translated into actual keypresses. <+++> and <++> pass through.
+      local function termcodes(dict)
+        local translated = {}
+        for keyword, expansion in pairs(dict) do
+          translated[keyword] =
+            vim.api.nvim_replace_termcodes(expansion, true, false, true)
+        end
+        return translated
+      end
 
-      vim.g.quicktex_jinja = {
+      local jump = "<Esc>:call search('<+.*+>')<CR>\"_c/+>/e<CR>"
+
+      -- only use the math dictionary in tex; the mathmode detection just counts
+      -- dollar signs from the top of the buffer, so in markdown a single stray
+      -- `$` turns every keyword below it (`of`, `to`, `in`, ...) into a trigger
+      vim.g.quicktex_math_filetypes = { "tex" }
+
+      vim.g.quicktex_markdown = termcodes({
+        [" "] = jump,
+      })
+
+      vim.g.quicktex_jinja = termcodes({
         [" "] = jump,
         [";;"] = "{{ <+++> }}",
         [";p"] = "{%- <+++> -%}",
@@ -214,9 +228,9 @@ return {
         [";require"] = "{%- set <+++> = config.require('<++>') -%}",
         [";run"] = "{% set <+++> = run_query(<++>) %}",
         [";dict"] = "{{ dbt_utils.get_query_results_as_dict(<+++>) }}",
-      }
+      })
 
-      vim.g.quicktex_javascript = {
+      vim.g.quicktex_javascript = termcodes({
         [" "] = jump,
         -- docstrings
         [";tod"] = "// TODO: <+++>",
@@ -225,15 +239,15 @@ return {
         [";taf"] = "<<++>>(<+++>): <<++>> => {<++>}",
         -- keywords
         [";im"] = 'import {<++>} from "<+++>"',
-      }
+      })
 
-      vim.g.quicktex_tex = {
+      vim.g.quicktex_tex = termcodes({
         [" "] = jump,
         ["m"] = "( <+++> ) <++>",
         -- Environments
-        ["env"] = [[Bvedi\begin{pa}
+        ["env"] = [[<Esc>Bvedi\begin{<Esc>pa}
 <+++>
-\end{pa}]],
+\end{<Esc>pa}]],
         ["ol"] = [[\begin{enumerate}
 \item <+++>
 \end{enumerate}]],
@@ -265,7 +279,7 @@ return {
         ["para"] = "(<+++>) <++>",
         ["todo"] = [[\todo{<+++>}
 <++>]],
-        ["cmd"] = [[Bi\Ea{<+++>}<++>]],
+        ["cmd"] = [[<Esc>Bi\<Esc>Ea{<+++>}<++>]],
         ["texroot"] = "%! TEX root = .",
         -- Citing and referencing
         ["cref"] = [[\cref{<+++>}<++>]],
@@ -322,9 +336,9 @@ return {
         ["tt"] = [[\texttt{<+++>} <++>]],
         ["bf"] = [[\textbf{<+++>} <++>]],
         [";it"] = [[\textit{<+++>} <++>]],
-      }
+      })
 
-      vim.g.quicktex_math = {
+      vim.g.quicktex_math = termcodes({
         [" "] = jump,
         -- lowercase greek letters
         ["alpha"] = [[\alpha ]],
@@ -414,7 +428,7 @@ return {
         ["hada"] = [[\odot ]],
         ["exp"] = [[<BS>^{<+++>} <++>]],
         ["pow"] = [[<BS>^{<+++>} <++>]],
-        ["tp"] = [[<BS>^{\\top} ]],
+        ["tp"] = [[<BS>^{\top} ]],
         ["sq"] = [[<BS>^2 ]],
         ["inv"] = [[<BS>^{-1} ]],
         ["cross"] = [[\times ]],
@@ -460,12 +474,12 @@ return {
         ["fl"] = [[\mathcal{L} ]],
         ["fv"] = [[\mathcal{V} ]],
         -- encapsulating keywords
-        ["hat"] = [[Bi\\hat{Els} ]],
-        ["bar"] = [[Bi\\overline{Els} ]],
-        ["tild"] = [[Bi\\tilde{Els} ]],
-        ["vec"] = [[Bi\\vect{Els} ]],
-        ["comp"] = [[Bi\\underline{Els} ]],
-        ["adj"] = [[Bi\\adj{Els} ]],
+        ["hat"] = [[<Esc>Bi\hat{<Esc>Els} ]],
+        ["bar"] = [[<Esc>Bi\overline{<Esc>Els} ]],
+        ["tild"] = [[<Esc>Bi\tilde{<Esc>Els} ]],
+        ["vec"] = [[<Esc>Bi\vect{<Esc>Els} ]],
+        ["comp"] = [[<Esc>Bi\underline{<Esc>Els} ]],
+        ["adj"] = [[<Esc>Bi\adj{<Esc>Els} ]],
         ["star"] = [[<BS>^* ]],
         -- linear algebra
         ["matrix"] = [[
@@ -499,7 +513,7 @@ return {
         ["liminf"] = [[\liminf ]],
         ["sup"] = [[\sup ]],
         ["sinf"] = [[\inf ]],
-      }
+      })
     end,
   },
 }
