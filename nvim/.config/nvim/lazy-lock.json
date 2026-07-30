@@ -15,7 +15,7 @@
   "emmet-vim": { "branch": "master", "commit": "92ef2f74f4093edc99db5e9e4cf7e40116a85bd6" },
   "flash.nvim": { "branch": "main", "commit": "b6346946d10d07998efee029fb0f7a593806d0cd" },
   "friendly-snippets": { "branch": "main", "commit": "6cd7280adead7f586db6fccbd15d2cac7e2188b9" },
-  "fzf": { "branch": "master", "commit": "d39595ae66e2835561f6caf2b9478e887a269362" },
+  "fzf": { "branch": "master", "commit": "b66153825fa5186ade46a743e1418253482262bd" },
   "fzf-lua": { "branch": "main", "commit": "28440c741e927592877514fba3db21eb188caec8" },
   "git-messenger.vim": { "branch": "master", "commit": "fd124457378a295a5d1036af4954b35d6b807385" },
   "gitsigns.nvim": { "branch": "main", "commit": "31d6fb2d618bca1482b9f274751ead5f03461408" },
