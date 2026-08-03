@@ -1823,7 +1823,7 @@ version = "26.6.0"
 backend = "npm:@ansible/ansible-language-server"
 
 [[tools."npm:@microsoft/compose-language-service"]]
-version = "0.5.0"
+version = "1.0.0"
 backend = "npm:@microsoft/compose-language-service"
 
 [[tools."npm:@vtsls/language-server"]]
