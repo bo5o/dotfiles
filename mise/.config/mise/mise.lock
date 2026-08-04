@@ -2192,38 +2192,38 @@ version = "1.97.1"
 backend = "core:rust"
 
 [[tools.rust-analyzer]]
-version = "2026-07-27"
+version = "2026-08-03"
 backend = "aqua:rust-lang/rust-analyzer"
 
 [tools.rust-analyzer."platforms.linux-arm64"]
-checksum = "sha256:4cb0ca4675608e8d73a7f4e43ef733d1f69600845d504c35d2f9d9f240bd3486"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-07-27/rust-analyzer-aarch64-unknown-linux-gnu.gz"
-url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/491038274"
+checksum = "sha256:ea5cb460f1532bf3c6f399b079840e968e3c25857669cd65af36dd707ea097e8"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-03/rust-analyzer-aarch64-unknown-linux-gnu.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/499615727"
 
 [tools.rust-analyzer."platforms.linux-x64"]
-checksum = "sha256:ac4f42ddbbd040d75d847e991894776485783e28beb744b9719a660a99abe115"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-07-27/rust-analyzer-x86_64-unknown-linux-gnu.gz"
-url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/491038591"
+checksum = "sha256:769670319df8571dac91b6eab6d3a65b18b69488a6900959f2fb6157181ace9d"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-03/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/499615979"
 
 [tools.rust-analyzer."platforms.linux-x64-musl"]
-checksum = "sha256:4793930e0fe32f18ed7e8e689df3ebb03b632f76c16625c44754fb42ce39fc72"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-07-27/rust-analyzer-x86_64-unknown-linux-musl.gz"
-url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/491038604"
+checksum = "sha256:d63a986d83f1888079549d44d24af89c85ef88f42f520c9c00c01424125e885c"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-03/rust-analyzer-x86_64-unknown-linux-musl.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/499616008"
 
 [tools.rust-analyzer."platforms.macos-arm64"]
-checksum = "sha256:102215ae7e7a41c0dda8f24e910a01e757f58091204863e5e3e6696b743f7e97"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-07-27/rust-analyzer-aarch64-apple-darwin.gz"
-url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/491038215"
+checksum = "sha256:bba6cd8209643cd781f3ee5474fa232d3ee1b77a57f2e77982806e3c80a65207"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-03/rust-analyzer-aarch64-apple-darwin.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/499615689"
 
 [tools.rust-analyzer."platforms.macos-x64"]
-checksum = "sha256:9d1a60991ead6c27baa9d265fc8fd03bba9c39cf0ec2aaf389e37e6155af7cbb"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-07-27/rust-analyzer-x86_64-apple-darwin.gz"
-url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/491038541"
+checksum = "sha256:8966f9429085c243817b9d13afa76e98920668c07a9b432901daaf047397c6cb"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-03/rust-analyzer-x86_64-apple-darwin.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/499615924"
 
 [tools.rust-analyzer."platforms.windows-x64"]
-checksum = "sha256:7abdf50734026de963b3b25eba7714be8acf43a15ffb7f4f9d8b041e796ce2c9"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-07-27/rust-analyzer-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/491038564"
+checksum = "sha256:a446ba5482b2a43d4010180031d2033b6761dd295117f3d0277af5777c4d8ee5"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-03/rust-analyzer-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/499615959"
 
 [[tools.shellcheck]]
 version = "0.11.0"
