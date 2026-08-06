@@ -56,9 +56,8 @@ return {
       },
     },
     opts = function()
-      local default_adapter = vim.env.ANTHROPIC_API_KEY ~= nil and "anthropic"
-        or "gemini"
-      local title_model = default_adapter == "gemini" and "gemini-3-flash-preview"
+      local default_adapter = "claude_code"
+      local title_model = default_adapter == "gemini" and "gemini-3-5-flash-lite"
         or "claude-haiku-4-5"
       return {
         strategies = {
@@ -66,7 +65,10 @@ return {
             adapter = default_adapter,
             keymaps = {
               send = {
-                modes = { n = "<C-s>", i = "<C-s>" },
+                modes = {
+                  n = { "<C-s>", "<C-CR>" },
+                  i = { "<C-s>", "<C-CR>" },
+                },
                 index = 2,
                 callback = "keymaps.send",
                 description = "Send",
@@ -94,12 +96,7 @@ return {
             claude_code = function()
               return require("codecompanion.adapters").extend("claude_code", {
                 env = {
-                  ANTHROPIC_API_KEY = vim.env.ANTHROPIC_API_KEY,
-                },
-                commands = {
-                  default = {
-                    "claude-agent-acp",
-                  },
+                  CLAUDE_CODE_OAUTH_TOKEN = "cmd:fnox -P neovim get CLAUDE_CODE_OAUTH_TOKEN",
                 },
               })
             end,
