@@ -1,7 +1,7 @@
 return {
   {
     "olimorris/codecompanion.nvim",
-    version = "^18.0.0",
+    version = "^19.0.0",
     cmd = {
       "CodeCompanion",
       "CodeCompanionChat",
@@ -184,7 +184,6 @@ return {
                   format_summary = nil, -- custom function to format generated summary e.g to remove <think/> tags from summary
                 },
               },
-
             },
           },
         },
