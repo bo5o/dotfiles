@@ -1,9 +1,10 @@
 ---
 git:
   autoForwardBranches: none
-  pagers:
-    - useExternalDiffGitConfig: false # default pager
-    - externalDiffCommand: difft --color=always --display=inline
+  diffRenderers:
+    - type: rawGit
+    - command: difft --color=always --display=inline
+      type: extDiff
 gui:
   nerdFontsVersion: "3"
   showDivergenceFromBaseBranch: arrowAndNumber
