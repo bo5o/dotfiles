@@ -98,5 +98,6 @@
   "showThinkingSummaries": true,
   "theme": "dark-ansi",
   "editorMode": "vim",
-  "useAutoModeDuringPlan": false
+  "useAutoModeDuringPlan": false,
+  "tui": "fullscreen"
 }
