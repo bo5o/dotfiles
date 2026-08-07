@@ -94,10 +94,10 @@
     "allowUnsandboxedCommands": false
   },
   "plansDirectory": ".claude/plans",
+  "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "showThinkingSummaries": true,
   "theme": "dark-ansi",
   "editorMode": "vim",
-  "useAutoModeDuringPlan": false,
-  "tui": "fullscreen"
+  "useAutoModeDuringPlan": false
 }
