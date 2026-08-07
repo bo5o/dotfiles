@@ -72,8 +72,6 @@ zen_on() {
     tmux set -wt "$zwin" @zen_layout "$layout"
     # If the pane exits there is nothing left to restore.
     tmux set-hook -wt "$zwin" pane-exited "run-shell '$self cleanup $zwin'"
-
-    switch_to "$zwin"
   else
     zwin=$win
   fi
@@ -97,6 +95,13 @@ zen_on() {
   fi
 
   tmux select-pane -t "$pane"
+
+  # Switch only now, once the window is fully built: the terminal then draws a single
+  # transition and the pane's program reflows off screen, instead of one full visible
+  # redraw per split (rapid reflows can crash terminal renderers).
+  if [ "$zwin" != "$win" ]; then
+    switch_to "$zwin"
+  fi
 }
 
 zen_off() {
@@ -109,44 +114,48 @@ zen_off() {
 
   # Drop the hook first, otherwise killing the padding fires cleanup.
   tmux set-hook -uwt "$zwin" pane-exited 2>/dev/null
-  for p in $(tmux list-panes -t "$zwin" -F '#{pane_id} #{@zen_pad}' |
-    awk '$2 == 1 { print $1 }'); do
-    tmux kill-pane -t "$p"
-  done
 
-  tmux set -uwt "$zwin" @zen
-  tmux set -uwt "$zwin" pane-border-style
-  tmux set -uwt "$zwin" pane-active-border-style
+  # Where does the pane go back to? The origin window or the old neighbour may have died
+  # in the meantime: without the window there is nowhere to return to, without the
+  # neighbour the pane goes in first.
+  first=
+  if [ -n "$origin" ]; then
+    opanes=$(tmux list-panes -t "$origin" -F '#{pane_id}' 2>/dev/null)
+    first=$(printf '%s\n' "$opanes" | head -1)
+    printf '%s\n' "$opanes" | grep -qx -- "$before" || before=
+  fi
 
-  # The pane was alone in its window, so it never moved.
-  [ -n "$origin" ] || return 0
+  # The pane never moved (or its home is gone): just unpad in place.
+  if [ -z "$first" ]; then
+    for p in $(tmux list-panes -t "$zwin" -F '#{pane_id} #{@zen_pad}' |
+      awk '$2 == 1 { print $1 }'); do
+      tmux kill-pane -t "$p"
+    done
+    tmux set -uwt "$zwin" @zen
+    tmux set -uwt "$zwin" pane-border-style
+    tmux set -uwt "$zwin" pane-active-border-style
+    return 0
+  fi
 
-  content=$(tmux list-panes -t "$zwin" -F '#{pane_id}' | head -1)
+  content=$(tmux list-panes -t "$zwin" -F '#{pane_id} #{@zen_pad}' |
+    awk '$2 != 1 { print $1; exit }')
 
-  # The origin window or the old neighbour may have died in the meantime. Without the
-  # window there is nowhere to go back to, so the zen window lives on as a plain window;
-  # without the neighbour the pane goes in first.
-  opanes=$(tmux list-panes -t "$origin" -F '#{pane_id}' 2>/dev/null)
-  first=$(printf '%s\n' "$opanes" | head -1)
-  [ -n "$first" ] || return 0
-  printf '%s\n' "$opanes" | grep -qx -- "$before" || before=
+  # Rebuild the origin window while the client still looks at the zen window, so the
+  # terminal draws a single transition and the pane reflows off screen. The padding
+  # keeps the zen window alive until the client has moved home, so the dying zen session
+  # can never detach it. select-layout matches panes to cells in list order, so the pane
+  # has to go back at its old position. join-pane -b would do it, but tmux never acts on
+  # the flag (cmd-join-pane.c leaves `flags` at 0), so the pane always lands after the
+  # target and a swap is needed when it belongs first.
+  tmux join-pane -ds "$content" -t "${before:-$first}" || return 1
+  [ -n "$before" ] || tmux swap-pane -ds "$content" -t "$first"
+  tmux select-layout -t "$origin" "$layout" 2>/dev/null
 
   osess=$(tmux display -pt "$origin" '#{session_id}')
-
-  # Move the client home before the pane, or the zen session losing its last window
-  # would detach it.
-  switch_to "$osess"
-
-  # select-layout matches panes to cells in list order, so the pane has to go back at
-  # its old position. join-pane -b would do it, but tmux never acts on the flag
-  # (cmd-join-pane.c leaves `flags` at 0), so the pane always lands after the target and
-  # a swap is needed when it belongs first.
-  tmux join-pane -s "$content" -t "${before:-$first}" || return 1
-  [ -n "$before" ] || tmux swap-pane -s "$content" -t "$first"
-
-  tmux select-layout -t "$origin" "$layout" 2>/dev/null
   tmux select-window -t "$origin"
   tmux select-pane -t "$content"
+  switch_to "$osess"
+  tmux kill-window -t "$zwin"
 }
 
 # Called from the pane-exited hook: if only padding is left, bin the window.
