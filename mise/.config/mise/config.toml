@@ -46,7 +46,7 @@
 "pipx:gitlint-core" = { version = "0.19.1", uvx_args = "--with gitlint" }
 "pipx:llm" = { version = "0.32", uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-gemini --with llm-commit --with llm-templates-fabric --with llm-hacker-news --with llm-fragments-pdf --with pymupdf-layout --with llm-docs" }
 "pipx:mbake" = "1.4.6"
-"pipx:sqlfluff" = "4.2.2"
+"pipx:sqlfluff" = "4.3.0"
 "pipx:sqruff" = "0.39.0"
 "pipx:vim-vint" = "0.3.21"
 "vfox:mise-plugins/vfox-postgres" = "17.10"
