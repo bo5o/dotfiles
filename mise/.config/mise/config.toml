@@ -58,7 +58,7 @@ bottom = "0.14.7"
 cargo-binstall = "1.21.1"
 claude-code = "2.1.226"
 delta = "0.19.2"
-difftastic = { version = "0.69.0", exe = "difft" }
+difftastic = { version = "0.70.0", exe = "difft" }
 dive = "0.13.1"
 duckdb = "1.5.5"
 dust = "1.2.4"
