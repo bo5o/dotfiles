@@ -121,5 +121,5 @@
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "windows.nvim": { "branch": "main", "commit": "c7492552b23d0ab30325e90b56066ec51242adc8" },
   "wrapping.nvim": { "branch": "master", "commit": "3ecfb37cdc189a4e32d646e1c2ae0f46b9d62740" },
-  "yazi.nvim": { "branch": "main", "commit": "eec9b5e7d8424f0c5bb1c33a598dc0ad773de8d3" }
+  "yazi.nvim": { "branch": "main", "commit": "521eed9b16f110b9de2f783f12c78b18295108d6" }
 }
