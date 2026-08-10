@@ -1,0 +1,35 @@
+---
+# Hetzner AI Inference (OpenAI-compatible)
+# Key: `llm keys set hetzner`
+
+- model_id: hetzner/deepseek-v4-flash
+  model_name: DeepSeek-V4-Flash-0731
+  api_base: https://inference.hetzner.com/api/v1
+  api_key_name: hetzner
+  aliases: [dsv4]
+  supports_tools: true
+  supports_schema: true
+
+- model_id: hetzner/glm-5.2
+  model_name: GLM-5.2-NVFP4
+  api_base: https://inference.hetzner.com/api/v1
+  api_key_name: hetzner
+  aliases: [glm]
+  supports_tools: true
+  supports_schema: true
+
+- model_id: hetzner/kimi-k2.7-code
+  model_name: Kimi-K2.7-Code
+  api_base: https://inference.hetzner.com/api/v1
+  api_key_name: hetzner
+  aliases: [kimi]
+  supports_tools: true
+  supports_schema: true
+
+- model_id: hetzner/qwen3.6-35b-a3b
+  model_name: Qwen/Qwen3.6-35B-A3B-FP8
+  api_base: https://inference.hetzner.com/api/v1
+  api_key_name: hetzner
+  aliases: [qwen]
+  supports_tools: true
+  supports_schema: true
