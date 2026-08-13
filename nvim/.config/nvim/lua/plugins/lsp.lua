@@ -310,6 +310,16 @@ return {
             },
           },
         },
+        rumdl = {
+          filetypes = { "markdown", "markdown.jinja" },
+          root_markers = { ".rumdl.toml", "rumdl.toml", ".git" },
+          init_options = {
+            -- keep rumdl a pure linter, marksman owns navigation and symbols
+            enableLinkCompletions = false,
+            enableLinkNavigation = false,
+            enableSymbols = false,
+          },
+        },
         sqruff = {
           root_markers = { ".sqruff" },
           workspace_required = true,
@@ -538,7 +548,7 @@ return {
         gitcommit = { "gitlint" },
         yaml = { "yamllint" },
         ["yaml.ansible"] = { "ansible_lint" },
-        markdown = { "markdownlint" },
+        -- markdown is linted by the rumdl language server
         vimwiki = { "markdownlint" },
         dockerfile = { "hadolint" },
         html = { "htmlhint" },
@@ -626,6 +636,8 @@ return {
           hujson = { "hujsonfmt" },
           terraform = { lsp_format = "prefer" },
           markdown = { "oxfmt", "injected" },
+          -- oxfmt does not understand jinja blocks, let rumdl format instead
+          ["markdown.jinja"] = { lsp_format = "prefer" },
           sh = { "shfmt" },
           bash = { "shfmt" },
           just = { "just" },
