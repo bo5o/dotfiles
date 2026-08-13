@@ -92,7 +92,16 @@ return {
             "List implementations"
           )
           map("gr", function()
-            require("trouble").toggle({ mode = "lsp_references", auto_refresh = false })
+            local trouble = require("trouble")
+            local opts = { mode = "lsp_references", auto_refresh = false }
+            local was_open = trouble.is_open(opts)
+            local view = trouble.toggle(opts)
+            -- start collapsed, showing only the filenames
+            if view and not was_open then
+              view:wait(function()
+                view:fold_level({ level = 1 })
+              end)
+            end
           end, "Show references")
           map("gY", "<cmd>Lspsaga goto_type_definition<cr>", "Go to t[y]pe definition")
           map("gy", "<cmd>Lspsaga peek_type_definition<cr>", "Peek type definition")
