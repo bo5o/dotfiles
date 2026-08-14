@@ -311,7 +311,8 @@ return {
           },
         },
         rumdl = {
-          filetypes = { "markdown", "markdown.jinja" },
+          -- plain markdown is handled by oxfmt/marksman, rumdl only covers md.j2
+          filetypes = { "markdown.jinja" },
           root_markers = { ".rumdl.toml", "rumdl.toml", ".git" },
           init_options = {
             -- keep rumdl a pure linter, marksman owns navigation and symbols
@@ -548,7 +549,7 @@ return {
         gitcommit = { "gitlint" },
         yaml = { "yamllint" },
         ["yaml.ansible"] = { "ansible_lint" },
-        -- markdown is linted by the rumdl language server
+        -- md.j2 is linted by the rumdl language server
         vimwiki = { "markdownlint" },
         dockerfile = { "hadolint" },
         html = { "htmlhint" },
