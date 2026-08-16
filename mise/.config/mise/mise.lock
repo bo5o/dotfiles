@@ -1868,7 +1868,7 @@ version = "0.63.0"
 backend = "npm:oxfmt"
 
 [[tools."pipx:ansible"]]
-version = "14.3.0"
+version = "14.3.1"
 backend = "pipx:ansible"
 
 [tools."pipx:ansible".options]

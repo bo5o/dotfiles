@@ -40,7 +40,7 @@
 "npm:vim-language-server" = "2.3.1"
 "npm:vscode-langservers-extracted" = "4.10.0"
 "npm:yaml-language-server" = "1.24.0"
-"pipx:ansible" = { version = "14.3.0", uvx_args = "--with-executables-from ansible-core --with-executables-from ansible-dev-tools --with-executables-from ansible-lint --with docker --with bitwarden-sdk" }
+"pipx:ansible" = { version = "14.3.1", uvx_args = "--with-executables-from ansible-core --with-executables-from ansible-dev-tools --with-executables-from ansible-lint --with docker --with bitwarden-sdk" }
 "pipx:basedpyright" = "1.39.10"
 "pipx:djlint" = "1.44.2"
 "pipx:gitlint-core" = { version = "0.19.1", uvx_args = "--with gitlint" }
