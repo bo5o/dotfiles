@@ -47,7 +47,7 @@ return {
           if not bufnr then
             return
           end
-          local inner_name = vim.api.nvim_buf_get_name(bufnr):match("^(.*%.%w+)%.j2$")
+          local inner_name = vim.api.nvim_buf_get_name(bufnr):match("^(.*)%.j2$")
           if not inner_name then
             return
           end

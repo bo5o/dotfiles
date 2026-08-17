@@ -1,9 +1,10 @@
--- Detect `<name>.<ext>.j2` jinja templates as `<inner ft>.jinja` so the file behaves
+-- Detect `<name>.j2` jinja templates as `<inner ft>.jinja` so the file behaves
 -- like its regular filetype while treesitter uses the jinja parser (the inner language
 -- is injected back into jinja `(content)` nodes, see
--- after/queries/jinja/injections.scm)
+-- after/queries/jinja/injections.scm). The inner filetype is resolved from the
+-- name with `.j2` stripped, e.g. `x.md.j2` -> markdown, `Caddyfile.j2` -> caddy
 local function jinja_template_filetype(path)
-  local inner_name = path:match("^(.*%.%w+)%.j2$")
+  local inner_name = path:match("^(.*)%.j2$")
   if not inner_name then
     return nil
   end
@@ -47,7 +48,7 @@ vim.filetype.add({
     [".*/models/.*%.sql"] = "sql.jinja",
     [".*/macros/.*%.sql"] = "sql.jinja",
     [".*/tests/.*%.sql"] = "sql.jinja",
-    [".*%.%w+%.j2"] = jinja_template_filetype,
+    [".*%.j2"] = jinja_template_filetype,
     ["%.env%.(%a+)"] = function(path, bufnr)
       return require("vim.filetype.detect").shell(path, vim.filetype._getlines(bufnr))
     end,
