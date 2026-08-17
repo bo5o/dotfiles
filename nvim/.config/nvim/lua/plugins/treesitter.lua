@@ -37,6 +37,29 @@ return {
         local filename = vim.fn.fnamemodify(filepath, ":t")
         return string.match(filename, ".*mise.*%.toml$") ~= nil
       end, { force = true, all = false })
+
+      -- used in after/queries/jinja/injections.scm to inject the language a jinja
+      -- template renders to, e.g. markdown for *.md.j2
+      require("vim.treesitter.query").add_directive(
+        "set-lang-from-template-name!",
+        function(_, _, source, _, metadata)
+          local bufnr = tonumber(source)
+          if not bufnr then
+            return
+          end
+          local inner_name = vim.api.nvim_buf_get_name(bufnr):match("^(.*%.%w+)%.j2$")
+          if not inner_name then
+            return
+          end
+          local filetype = vim.filetype.match({ filename = inner_name })
+          if not filetype then
+            return
+          end
+          metadata["injection.language"] = vim.treesitter.language.get_lang(filetype)
+            or filetype
+        end,
+        { force = true }
+      )
     end,
     config = function()
       local languages = {
@@ -59,6 +82,8 @@ return {
         "htmldjango",
         "http",
         "javascript",
+        "jinja",
+        "jinja_inline",
         "jsdoc",
         "json",
         "json5",

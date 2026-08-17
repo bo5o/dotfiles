@@ -1,3 +1,21 @@
+-- Detect `<name>.<ext>.j2` jinja templates as `<inner ft>.jinja` so the file behaves
+-- like its regular filetype while treesitter uses the jinja parser (the inner language
+-- is injected back into jinja `(content)` nodes, see
+-- after/queries/jinja/injections.scm)
+local function jinja_template_filetype(path)
+  local inner_name = path:match("^(.*%.%w+)%.j2$")
+  if not inner_name then
+    return nil
+  end
+  local inner = vim.filetype.match({ filename = inner_name })
+  if not inner then
+    return nil
+  end
+  local compound = inner .. ".jinja"
+  vim.treesitter.language.register("jinja", compound)
+  return compound
+end
+
 vim.filetype.add({
   filename = {
     ["sxhkdrc"] = "sxhkd",
@@ -29,7 +47,7 @@ vim.filetype.add({
     [".*/models/.*%.sql"] = "sql.jinja",
     [".*/macros/.*%.sql"] = "sql.jinja",
     [".*/tests/.*%.sql"] = "sql.jinja",
-    [".*%.md%.j2"] = "markdown.jinja",
+    [".*%.%w+%.j2"] = jinja_template_filetype,
     ["%.env%.(%a+)"] = function(path, bufnr)
       return require("vim.filetype.detect").shell(path, vim.filetype._getlines(bufnr))
     end,
@@ -46,12 +64,16 @@ vim.filetype.add({
 -- Vim-Jinja2-Syntax re-runs filetype detection when it is lazy-loaded and its
 -- ftdetect unconditionally sets `jinja`, clobbering compound filetypes
 vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("markdown_jinja", { clear = true }),
+  group = vim.api.nvim_create_augroup("jinja_template", { clear = true }),
   pattern = "jinja",
   callback = function(args)
-    if vim.bo[args.buf].filetype == "jinja" and args.file:match("%.md%.j2$") then
-      vim.bo[args.buf].filetype = "markdown.jinja"
+    if vim.bo[args.buf].filetype ~= "jinja" then
+      return
+    end
+    local compound = jinja_template_filetype(args.file)
+    if compound then
+      vim.bo[args.buf].filetype = compound
     end
   end,
-  desc = "Keep markdown.jinja filetype for *.md.j2 files",
+  desc = "Keep compound filetype for *.<ext>.j2 template files",
 })
