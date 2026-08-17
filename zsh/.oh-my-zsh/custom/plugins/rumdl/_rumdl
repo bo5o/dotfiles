@@ -1,0 +1,1082 @@
+#compdef rumdl
+
+autoload -U is-at-least
+
+_rumdl() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_rumdl_commands" \
+"*::: :->rumdl" \
+&& ret=0
+    case $state in
+    (rumdl)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rumdl-command-$line[1]:"
+        case $line[1] in
+            (check)
+_arguments "${_arguments_options[@]}" : \
+'-d+[Disable specific rules (comma-separated)]:DISABLE:_default' \
+'--disable=[Disable specific rules (comma-separated)]:DISABLE:_default' \
+'-e+[Enable only specific rules (comma-separated)]:ENABLE:_default' \
+'--enable=[Enable only specific rules (comma-separated)]:ENABLE:_default' \
+'--rules=[Enable only specific rules (comma-separated)]:ENABLE:_default' \
+'--extend-enable=[Extend the list of enabled rules (additive with config)]:EXTEND_ENABLE:_default' \
+'--extend-disable=[Extend the list of disabled rules (additive with config)]:EXTEND_DISABLE:_default' \
+'--fixable=[Only allow these rules to be fixed (comma-separated)]:FIXABLE:_default' \
+'--unfixable=[Prevent these rules from being fixed (comma-separated)]:UNFIXABLE:_default' \
+'--exclude=[Exclude specific files or directories (comma-separated glob patterns)]:EXCLUDE:_default' \
+'--include=[Include only specific files or directories (comma-separated glob patterns)]:INCLUDE:_default' \
+'--respect-gitignore=[Respect .gitignore files when scanning directories (does not apply to explicitly provided paths)]::RESPECT_GITIGNORE:(true false)' \
+'--stdin-filename=[Filename to use when reading from stdin (e.g., README.md)]:STDIN_FILENAME:_default' \
+'--cache-dir=[Directory to store cache files (default\: .rumdl_cache, or \$RUMDL_CACHE_DIR, or cache-dir in config)]:CACHE_DIR:_default' \
+'-o+[Legacy alias for --output-format\: text (default) or json]:OUTPUT:(text json)' \
+'--output=[Legacy alias for --output-format\: text (default) or json]:OUTPUT:(text json)' \
+'--output-format=[Output format for diagnostics (default\: text)]:OUTPUT_FORMAT:((text\:"One-line-per-warning with file, line, column, rule, and message (default)"
+full\:"Show source lines with caret underlines highlighting the violation"
+concise\:"Minimal\: file\:line\:col rule message"
+grouped\:"Warnings grouped by file with a header per file"
+json\:"JSON array of all warnings (collected across files)"
+json-lines\:"One JSON object per warning (streaming)"
+github\:"GitHub Actions annotation format (\:\:warning/\:\:error)"
+gitlab\:"GitLab Code Quality report (JSON)"
+pylint\:"Pylint-compatible format"
+azure\:"Azure Pipelines logging commands"
+sarif\:"SARIF 2.1.0 for static analysis tools"
+junit\:"JUnit XML for CI test reporters"))' \
+'--flavor=[Markdown flavor to use\: standard (also accepts gfm/github/commonmark), mkdocs, mdx, pandoc, quarto, obsidian, kramdown, azure_devops (also accepts azure/ado), or myst (also accepts mystmd)]:FLAVOR:(standard mkdocs mdx pandoc quarto obsidian kramdown azure_devops myst hugo)' \
+'--fail-on=[Exit code behavior\: '\''any'\'' (default) exits 1 on any violation, '\''warning'\'' on warning+error, '\''error'\'' only on errors, '\''never'\'' always exits 0]:FAIL_ON:((any\:"Exit 1 on any violation (info, warning, or error)"
+warning\:"Exit 1 on warning or error severity violations"
+error\:"Exit 1 only on error-severity violations"
+never\:"Always exit 0"))' \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'-f[Fix issues automatically where possible]' \
+'--fix[Fix issues automatically where possible]' \
+'--diff[Show diff of what would be fixed instead of fixing files]' \
+'--check[Exit with code 1 if any formatting changes would be made (for CI)]' \
+'-l[Deprecated and hidden\: rule listing moved to \`rumdl rule\`. When passed, \`run_check\` prints guidance to the canonical commands and exits]' \
+'--list-rules[Deprecated and hidden\: rule listing moved to \`rumdl rule\`. When passed, \`run_check\` prints guidance to the canonical commands and exits]' \
+'--no-exclude[Disable all exclude patterns]' \
+'-q[Print diagnostics, but suppress summary lines]' \
+'--quiet[Print diagnostics, but suppress summary lines]' \
+'--show-full-path[Show absolute file paths in output instead of relative paths]' \
+'--stderr[Output diagnostics to stderr instead of stdout]' \
+'--no-cache[Disable caching (re-check all files)]' \
+'--deny-config-warnings[Treat configuration warnings as errors (exit code 2)]' \
+'-v[Show detailed output]' \
+'--verbose[Show detailed output]' \
+'--profile[Show profiling information]' \
+'--statistics[Show statistics summary of rule violations]' \
+'--stdin[Read from stdin instead of files]' \
+'-s[Suppress diagnostics and summaries]' \
+'--silent[Suppress diagnostics and summaries]' \
+'-w[Run in watch mode by re-running whenever files change]' \
+'--watch[Run in watch mode by re-running whenever files change]' \
+'--force-exclude[Deprecated and hidden\: exclude patterns are always respected, including for explicitly provided paths (since v0.0.156), so this flag has no effect. Accepted for backward compatibility; passing it prints a deprecation notice. Use \`--no-exclude\` to disable exclusions instead]' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'*::paths -- Files or directories to check (use '\''-'\'' for stdin):_default' \
+&& ret=0
+;;
+(fmt)
+_arguments "${_arguments_options[@]}" : \
+'-d+[Disable specific rules (comma-separated)]:DISABLE:_default' \
+'--disable=[Disable specific rules (comma-separated)]:DISABLE:_default' \
+'-e+[Enable only specific rules (comma-separated)]:ENABLE:_default' \
+'--enable=[Enable only specific rules (comma-separated)]:ENABLE:_default' \
+'--rules=[Enable only specific rules (comma-separated)]:ENABLE:_default' \
+'--extend-enable=[Extend the list of enabled rules (additive with config)]:EXTEND_ENABLE:_default' \
+'--extend-disable=[Extend the list of disabled rules (additive with config)]:EXTEND_DISABLE:_default' \
+'--fixable=[Only allow these rules to be fixed (comma-separated)]:FIXABLE:_default' \
+'--unfixable=[Prevent these rules from being fixed (comma-separated)]:UNFIXABLE:_default' \
+'--exclude=[Exclude specific files or directories (comma-separated glob patterns)]:EXCLUDE:_default' \
+'--include=[Include only specific files or directories (comma-separated glob patterns)]:INCLUDE:_default' \
+'--respect-gitignore=[Respect .gitignore files when scanning directories (does not apply to explicitly provided paths)]::RESPECT_GITIGNORE:(true false)' \
+'--stdin-filename=[Filename to use when reading from stdin (e.g., README.md)]:STDIN_FILENAME:_default' \
+'--cache-dir=[Directory to store cache files (default\: .rumdl_cache, or \$RUMDL_CACHE_DIR, or cache-dir in config)]:CACHE_DIR:_default' \
+'-o+[Hidden legacy alias for --output-format]:OUTPUT:(text json)' \
+'--output=[Hidden legacy alias for --output-format]:OUTPUT:(text json)' \
+'--output-format=[Output format for remaining diagnostics (default\: text)]:OUTPUT_FORMAT:((text\:"One-line-per-warning with file, line, column, rule, and message (default)"
+full\:"Show source lines with caret underlines highlighting the violation"
+concise\:"Minimal\: file\:line\:col rule message"
+grouped\:"Warnings grouped by file with a header per file"
+json\:"JSON array of all warnings (collected across files)"
+json-lines\:"One JSON object per warning (streaming)"
+github\:"GitHub Actions annotation format (\:\:warning/\:\:error)"
+gitlab\:"GitLab Code Quality report (JSON)"
+pylint\:"Pylint-compatible format"
+azure\:"Azure Pipelines logging commands"
+sarif\:"SARIF 2.1.0 for static analysis tools"
+junit\:"JUnit XML for CI test reporters"))' \
+'--flavor=[Markdown flavor to use while formatting\: standard (also accepts gfm/github/commonmark), mkdocs, mdx, pandoc, quarto, obsidian, kramdown, or azure_devops (also accepts azure/ado)]:FLAVOR:(standard mkdocs mdx pandoc quarto obsidian kramdown azure_devops myst hugo)' \
+'--fail-on=[Hidden compatibility flag; fmt always exits with formatter-style semantics]:FAIL_ON:((any\:"Exit 1 on any violation (info, warning, or error)"
+warning\:"Exit 1 on warning or error severity violations"
+error\:"Exit 1 only on error-severity violations"
+never\:"Always exit 0"))' \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--diff[Show diff of what would be formatted instead of rewriting files]' \
+'--check[Exit with code 1 if any formatting changes would be made (for CI)]' \
+'-l[Deprecated and hidden compatibility flag from check; routed to the same guidance path as \`check --list-rules\`]' \
+'--list-rules[Deprecated and hidden compatibility flag from check; routed to the same guidance path as \`check --list-rules\`]' \
+'--no-exclude[Disable all exclude patterns]' \
+'-q[Print diagnostics, but suppress summary lines]' \
+'--quiet[Print diagnostics, but suppress summary lines]' \
+'--show-full-path[Show absolute file paths in output instead of relative paths]' \
+'--stderr[Output diagnostics to stderr instead of stdout]' \
+'--no-cache[Disable caching (re-check all files)]' \
+'--deny-config-warnings[Treat configuration warnings as errors (exit code 2)]' \
+'-v[Show detailed formatter output]' \
+'--verbose[Show detailed formatter output]' \
+'--profile[Hidden compatibility flag from check]' \
+'--statistics[Hidden compatibility flag from check]' \
+'--stdin[Read Markdown from stdin instead of files]' \
+'-s[Suppress diagnostics and summaries; only formatted content is emitted in stdin/stdout mode]' \
+'--silent[Suppress diagnostics and summaries; only formatted content is emitted in stdin/stdout mode]' \
+'-w[Re-run formatting whenever files change]' \
+'--watch[Re-run formatting whenever files change]' \
+'--force-exclude[Hidden deprecated compatibility flag from check]' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'*::paths -- Files or directories to format (use '\''-'\'' for stdin):_default' \
+&& ret=0
+;;
+(init)
+_arguments "${_arguments_options[@]}" : \
+'--preset=[Use a style preset (default, google, relaxed)]:PRESET:((default\:"Default rumdl configuration"
+google\:"Google developer documentation style"
+relaxed\:"Relaxed rules for existing projects"))' \
+'-o+[Output file path (default\: .rumdl.toml)]:OUTPUT:_default' \
+'--output=[Output file path (default\: .rumdl.toml)]:OUTPUT:_default' \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'(-o --output)--pyproject[Generate configuration for pyproject.toml instead of .rumdl.toml]' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(rule)
+_arguments "${_arguments_options[@]}" : \
+'-o+[Output format]:FORMAT:(text json json-lines)' \
+'--output-format=[Output format]:FORMAT:(text json json-lines)' \
+'--category=[Filter by category (use --list-categories to see options)]:CATEGORY:_default' \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'-f[Filter to only fixable rules]' \
+'--fixable[Filter to only fixable rules]' \
+'--explain[Include full documentation in output (for json/json-lines)]' \
+'--list-categories[List available categories and exit]' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::rule -- Rule name or ID (optional, omit to list all rules):_default' \
+&& ret=0
+;;
+(explain)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':rule -- Rule name or ID to explain:_default' \
+&& ret=0
+;;
+(config)
+_arguments "${_arguments_options[@]}" : \
+'--output=[Output format (e.g. toml, json)]:OUTPUT:_default' \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--defaults[Show only the default configuration values]' \
+'--no-defaults[Show only non-default configuration values (exclude defaults)]' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_rumdl__subcmd__config_commands" \
+"*::: :->config" \
+&& ret=0
+
+    case $state in
+    (config)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rumdl-config-command-$line[1]:"
+        case $line[1] in
+            (get)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':key:_default' \
+&& ret=0
+;;
+(file)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_rumdl__subcmd__config__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rumdl-config-help-command-$line[1]:"
+        case $line[1] in
+            (get)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(file)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(server)
+_arguments "${_arguments_options[@]}" : \
+'--port=[TCP port to listen on (for debugging)]:PORT:_default' \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--stdio[Compatibility flag; stdio is the default when --port is not set]' \
+'-v[Enable verbose logging]' \
+'--verbose[Enable verbose logging]' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(schema)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_rumdl__subcmd__schema_commands" \
+"*::: :->schema" \
+&& ret=0
+
+    case $state in
+    (schema)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rumdl-schema-command-$line[1]:"
+        case $line[1] in
+            (generate)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(check)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(print)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_rumdl__subcmd__schema__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rumdl-schema-help-command-$line[1]:"
+        case $line[1] in
+            (generate)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(check)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(print)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(code-block-tools-docs)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_rumdl__subcmd__code-block-tools-docs_commands" \
+"*::: :->code-block-tools-docs" \
+&& ret=0
+
+    case $state in
+    (code-block-tools-docs)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rumdl-code-block-tools-docs-command-$line[1]:"
+        case $line[1] in
+            (generate)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(check)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(print)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_rumdl__subcmd__code-block-tools-docs__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rumdl-code-block-tools-docs-help-command-$line[1]:"
+        case $line[1] in
+            (generate)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(check)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(print)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(import)
+_arguments "${_arguments_options[@]}" : \
+'-o+[Output file path (default\: .rumdl.toml)]:OUTPUT:_default' \
+'--output=[Output file path (default\: .rumdl.toml)]:OUTPUT:_default' \
+'--format=[Output format]:FORMAT:(toml json)' \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--dry-run[Show converted config without writing to file]' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':file -- Path to markdownlint config file (JSON/JSONC/YAML):_default' \
+&& ret=0
+;;
+(vscode)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--force[Force reinstall the current version even if already installed]' \
+'--update[Update to the latest version (only if newer version available)]' \
+'--status[Show installation status without installing]' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(completions)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'-l[List available shells]' \
+'--list[List available shells]' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::shell -- Shell to generate completions for (detected from $SHELL if omitted):(bash elvish fish powershell zsh)' \
+&& ret=0
+;;
+(clean)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(version)
+_arguments "${_arguments_options[@]}" : \
+'--color=[Control colored output]:COLOR:(auto always never)' \
+'*-c+[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'*--config=[Path to a configuration file, or an inline TOML override (e.g. \`MD013.reflow=true\`). Can be passed multiple times.]:CONFIG_OPTION:_default' \
+'--no-config[Ignore all configuration files and use built-in defaults (--isolated is also accepted)]' \
+'(--no-config)--isolated[Ignore all configuration files (alias for --no-config)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_rumdl__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rumdl-help-command-$line[1]:"
+        case $line[1] in
+            (check)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(fmt)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(init)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(rule)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(explain)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(config)
+_arguments "${_arguments_options[@]}" : \
+":: :_rumdl__subcmd__help__subcmd__config_commands" \
+"*::: :->config" \
+&& ret=0
+
+    case $state in
+    (config)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rumdl-help-config-command-$line[1]:"
+        case $line[1] in
+            (get)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(file)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(server)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(schema)
+_arguments "${_arguments_options[@]}" : \
+":: :_rumdl__subcmd__help__subcmd__schema_commands" \
+"*::: :->schema" \
+&& ret=0
+
+    case $state in
+    (schema)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rumdl-help-schema-command-$line[1]:"
+        case $line[1] in
+            (generate)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(check)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(print)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(code-block-tools-docs)
+_arguments "${_arguments_options[@]}" : \
+":: :_rumdl__subcmd__help__subcmd__code-block-tools-docs_commands" \
+"*::: :->code-block-tools-docs" \
+&& ret=0
+
+    case $state in
+    (code-block-tools-docs)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rumdl-help-code-block-tools-docs-command-$line[1]:"
+        case $line[1] in
+            (generate)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(check)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(print)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(import)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(vscode)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(completions)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(clean)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(version)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_rumdl_commands] )) ||
+_rumdl_commands() {
+    local commands; commands=(
+'check:Lint Markdown files and print warnings/errors' \
+'fmt:Format Markdown files and apply fixes with formatter-style exit codes' \
+'init:Initialize a new configuration file' \
+'rule:Show information about a rule or list all rules' \
+'explain:Explain a rule with detailed information and examples' \
+'config:Show configuration or query a specific key' \
+'server:Start the Language Server Protocol server' \
+'schema:Generate or check JSON schema for rumdl.toml' \
+'code-block-tools-docs:Generate or check the built-in code-block-tools docs table' \
+'import:Import and convert markdownlint configuration files' \
+'vscode:Install the rumdl VS Code extension' \
+'completions:Generate shell completion scripts' \
+'clean:Clear the cache' \
+'version:Show version information' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'rumdl commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__check_commands] )) ||
+_rumdl__subcmd__check_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl check commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__clean_commands] )) ||
+_rumdl__subcmd__clean_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl clean commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__code-block-tools-docs_commands] )) ||
+_rumdl__subcmd__code-block-tools-docs_commands() {
+    local commands; commands=(
+'generate:Generate/update the built-in tools table in docs/code-block-tools.md' \
+'check:Check if the built-in tools docs are up-to-date' \
+'print:Print the generated table to stdout' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'rumdl code-block-tools-docs commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__code-block-tools-docs__subcmd__check_commands] )) ||
+_rumdl__subcmd__code-block-tools-docs__subcmd__check_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl code-block-tools-docs check commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__code-block-tools-docs__subcmd__generate_commands] )) ||
+_rumdl__subcmd__code-block-tools-docs__subcmd__generate_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl code-block-tools-docs generate commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__code-block-tools-docs__subcmd__help_commands] )) ||
+_rumdl__subcmd__code-block-tools-docs__subcmd__help_commands() {
+    local commands; commands=(
+'generate:Generate/update the built-in tools table in docs/code-block-tools.md' \
+'check:Check if the built-in tools docs are up-to-date' \
+'print:Print the generated table to stdout' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'rumdl code-block-tools-docs help commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__code-block-tools-docs__subcmd__help__subcmd__check_commands] )) ||
+_rumdl__subcmd__code-block-tools-docs__subcmd__help__subcmd__check_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl code-block-tools-docs help check commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__code-block-tools-docs__subcmd__help__subcmd__generate_commands] )) ||
+_rumdl__subcmd__code-block-tools-docs__subcmd__help__subcmd__generate_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl code-block-tools-docs help generate commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__code-block-tools-docs__subcmd__help__subcmd__help_commands] )) ||
+_rumdl__subcmd__code-block-tools-docs__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl code-block-tools-docs help help commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__code-block-tools-docs__subcmd__help__subcmd__print_commands] )) ||
+_rumdl__subcmd__code-block-tools-docs__subcmd__help__subcmd__print_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl code-block-tools-docs help print commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__code-block-tools-docs__subcmd__print_commands] )) ||
+_rumdl__subcmd__code-block-tools-docs__subcmd__print_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl code-block-tools-docs print commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__completions_commands] )) ||
+_rumdl__subcmd__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl completions commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__config_commands] )) ||
+_rumdl__subcmd__config_commands() {
+    local commands; commands=(
+'get:Query a specific config key (e.g. global.exclude or MD013.line_length)' \
+'file:Show the absolute path of the configuration file that was loaded' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'rumdl config commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__config__subcmd__file_commands] )) ||
+_rumdl__subcmd__config__subcmd__file_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl config file commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__config__subcmd__get_commands] )) ||
+_rumdl__subcmd__config__subcmd__get_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl config get commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__config__subcmd__help_commands] )) ||
+_rumdl__subcmd__config__subcmd__help_commands() {
+    local commands; commands=(
+'get:Query a specific config key (e.g. global.exclude or MD013.line_length)' \
+'file:Show the absolute path of the configuration file that was loaded' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'rumdl config help commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__config__subcmd__help__subcmd__file_commands] )) ||
+_rumdl__subcmd__config__subcmd__help__subcmd__file_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl config help file commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__config__subcmd__help__subcmd__get_commands] )) ||
+_rumdl__subcmd__config__subcmd__help__subcmd__get_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl config help get commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__config__subcmd__help__subcmd__help_commands] )) ||
+_rumdl__subcmd__config__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl config help help commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__explain_commands] )) ||
+_rumdl__subcmd__explain_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl explain commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__fmt_commands] )) ||
+_rumdl__subcmd__fmt_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl fmt commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help_commands] )) ||
+_rumdl__subcmd__help_commands() {
+    local commands; commands=(
+'check:Lint Markdown files and print warnings/errors' \
+'fmt:Format Markdown files and apply fixes with formatter-style exit codes' \
+'init:Initialize a new configuration file' \
+'rule:Show information about a rule or list all rules' \
+'explain:Explain a rule with detailed information and examples' \
+'config:Show configuration or query a specific key' \
+'server:Start the Language Server Protocol server' \
+'schema:Generate or check JSON schema for rumdl.toml' \
+'code-block-tools-docs:Generate or check the built-in code-block-tools docs table' \
+'import:Import and convert markdownlint configuration files' \
+'vscode:Install the rumdl VS Code extension' \
+'completions:Generate shell completion scripts' \
+'clean:Clear the cache' \
+'version:Show version information' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'rumdl help commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__check_commands] )) ||
+_rumdl__subcmd__help__subcmd__check_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help check commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__clean_commands] )) ||
+_rumdl__subcmd__help__subcmd__clean_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help clean commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__code-block-tools-docs_commands] )) ||
+_rumdl__subcmd__help__subcmd__code-block-tools-docs_commands() {
+    local commands; commands=(
+'generate:Generate/update the built-in tools table in docs/code-block-tools.md' \
+'check:Check if the built-in tools docs are up-to-date' \
+'print:Print the generated table to stdout' \
+    )
+    _describe -t commands 'rumdl help code-block-tools-docs commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__code-block-tools-docs__subcmd__check_commands] )) ||
+_rumdl__subcmd__help__subcmd__code-block-tools-docs__subcmd__check_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help code-block-tools-docs check commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__code-block-tools-docs__subcmd__generate_commands] )) ||
+_rumdl__subcmd__help__subcmd__code-block-tools-docs__subcmd__generate_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help code-block-tools-docs generate commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__code-block-tools-docs__subcmd__print_commands] )) ||
+_rumdl__subcmd__help__subcmd__code-block-tools-docs__subcmd__print_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help code-block-tools-docs print commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__completions_commands] )) ||
+_rumdl__subcmd__help__subcmd__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help completions commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__config_commands] )) ||
+_rumdl__subcmd__help__subcmd__config_commands() {
+    local commands; commands=(
+'get:Query a specific config key (e.g. global.exclude or MD013.line_length)' \
+'file:Show the absolute path of the configuration file that was loaded' \
+    )
+    _describe -t commands 'rumdl help config commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__config__subcmd__file_commands] )) ||
+_rumdl__subcmd__help__subcmd__config__subcmd__file_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help config file commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__config__subcmd__get_commands] )) ||
+_rumdl__subcmd__help__subcmd__config__subcmd__get_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help config get commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__explain_commands] )) ||
+_rumdl__subcmd__help__subcmd__explain_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help explain commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__fmt_commands] )) ||
+_rumdl__subcmd__help__subcmd__fmt_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help fmt commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__help_commands] )) ||
+_rumdl__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help help commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__import_commands] )) ||
+_rumdl__subcmd__help__subcmd__import_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help import commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__init_commands] )) ||
+_rumdl__subcmd__help__subcmd__init_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help init commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__rule_commands] )) ||
+_rumdl__subcmd__help__subcmd__rule_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help rule commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__schema_commands] )) ||
+_rumdl__subcmd__help__subcmd__schema_commands() {
+    local commands; commands=(
+'generate:Generate/update the JSON schema file' \
+'check:Check if the schema is up-to-date' \
+'print:Print the schema to stdout' \
+    )
+    _describe -t commands 'rumdl help schema commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__schema__subcmd__check_commands] )) ||
+_rumdl__subcmd__help__subcmd__schema__subcmd__check_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help schema check commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__schema__subcmd__generate_commands] )) ||
+_rumdl__subcmd__help__subcmd__schema__subcmd__generate_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help schema generate commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__schema__subcmd__print_commands] )) ||
+_rumdl__subcmd__help__subcmd__schema__subcmd__print_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help schema print commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__server_commands] )) ||
+_rumdl__subcmd__help__subcmd__server_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help server commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__version_commands] )) ||
+_rumdl__subcmd__help__subcmd__version_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help version commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__help__subcmd__vscode_commands] )) ||
+_rumdl__subcmd__help__subcmd__vscode_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl help vscode commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__import_commands] )) ||
+_rumdl__subcmd__import_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl import commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__init_commands] )) ||
+_rumdl__subcmd__init_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl init commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__rule_commands] )) ||
+_rumdl__subcmd__rule_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl rule commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__schema_commands] )) ||
+_rumdl__subcmd__schema_commands() {
+    local commands; commands=(
+'generate:Generate/update the JSON schema file' \
+'check:Check if the schema is up-to-date' \
+'print:Print the schema to stdout' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'rumdl schema commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__schema__subcmd__check_commands] )) ||
+_rumdl__subcmd__schema__subcmd__check_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl schema check commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__schema__subcmd__generate_commands] )) ||
+_rumdl__subcmd__schema__subcmd__generate_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl schema generate commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__schema__subcmd__help_commands] )) ||
+_rumdl__subcmd__schema__subcmd__help_commands() {
+    local commands; commands=(
+'generate:Generate/update the JSON schema file' \
+'check:Check if the schema is up-to-date' \
+'print:Print the schema to stdout' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'rumdl schema help commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__schema__subcmd__help__subcmd__check_commands] )) ||
+_rumdl__subcmd__schema__subcmd__help__subcmd__check_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl schema help check commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__schema__subcmd__help__subcmd__generate_commands] )) ||
+_rumdl__subcmd__schema__subcmd__help__subcmd__generate_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl schema help generate commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__schema__subcmd__help__subcmd__help_commands] )) ||
+_rumdl__subcmd__schema__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl schema help help commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__schema__subcmd__help__subcmd__print_commands] )) ||
+_rumdl__subcmd__schema__subcmd__help__subcmd__print_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl schema help print commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__schema__subcmd__print_commands] )) ||
+_rumdl__subcmd__schema__subcmd__print_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl schema print commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__server_commands] )) ||
+_rumdl__subcmd__server_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl server commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__version_commands] )) ||
+_rumdl__subcmd__version_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl version commands' commands "$@"
+}
+(( $+functions[_rumdl__subcmd__vscode_commands] )) ||
+_rumdl__subcmd__vscode_commands() {
+    local commands; commands=()
+    _describe -t commands 'rumdl vscode commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_rumdl" ]; then
+    _rumdl "$@"
+else
+    compdef _rumdl rumdl
+fi
