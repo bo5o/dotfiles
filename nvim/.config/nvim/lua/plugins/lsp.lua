@@ -331,7 +331,18 @@ return {
             formatterMode = "typstyle",
           },
         },
-        taplo = {},
+        taplo = {
+          settings = {
+            evenBetterToml = {
+              schema = {
+                associations = {
+                  ["fnox(\\.[^./\\\\]+)?\\.toml$"] = "https://fnox.jdx.dev/schema.json",
+                  ["fnox/config\\.toml$"] = "https://fnox.jdx.dev/schema.json",
+                },
+              },
+            },
+          },
+        },
         tofu_ls = {},
         ts_query_ls = {
           settings = {
