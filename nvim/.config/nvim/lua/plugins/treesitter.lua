@@ -329,7 +329,12 @@ return {
   -- Comments
   {
     "folke/ts-comments.nvim",
-    opts = {},
+    opts = {
+      lang = {
+        jinja = "{# %s #}",
+        jinja_inline = "{# %s #}",
+      },
+    },
     event = "VeryLazy",
     enabled = vim.fn.has("nvim-0.10.0") == 1,
   },

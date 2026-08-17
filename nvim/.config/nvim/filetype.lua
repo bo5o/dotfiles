@@ -60,20 +60,3 @@ vim.filetype.add({
     ["Jenkinsfile%.(%a+)"] = "groovy",
   },
 })
-
--- Vim-Jinja2-Syntax re-runs filetype detection when it is lazy-loaded and its
--- ftdetect unconditionally sets `jinja`, clobbering compound filetypes
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("jinja_template", { clear = true }),
-  pattern = "jinja",
-  callback = function(args)
-    if vim.bo[args.buf].filetype ~= "jinja" then
-      return
-    end
-    local compound = jinja_template_filetype(args.file)
-    if compound then
-      vim.bo[args.buf].filetype = compound
-    end
-  end,
-  desc = "Keep compound filetype for *.<ext>.j2 template files",
-})
