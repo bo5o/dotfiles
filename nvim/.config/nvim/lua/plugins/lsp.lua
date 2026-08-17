@@ -562,6 +562,7 @@ return {
         ["yaml.ansible"] = { "ansible_lint" },
         ["yaml.jinja"] = {},
         ["yaml.docker-compose.jinja"] = {},
+        ["caddy.jinja"] = {},
         -- md.j2 is linted by the rumdl language server
         vimwiki = { "markdownlint" },
         dockerfile = { "hadolint" },
@@ -661,6 +662,7 @@ return {
           ["yaml.ansible"] = { "yamlfmt" },
           ["yaml.jinja"] = { lsp_format = "never" },
           ["yaml.docker-compose.jinja"] = { lsp_format = "never" },
+          ["caddy.jinja"] = { lsp_format = "never" },
           toml = { "taplo" },
           ocaml = { "ocamlformat" },
           query = { lsp_format = "prefer" },
