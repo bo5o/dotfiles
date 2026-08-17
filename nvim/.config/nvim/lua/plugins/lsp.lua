@@ -560,9 +560,6 @@ return {
         gitcommit = { "gitlint" },
         yaml = { "yamllint" },
         ["yaml.ansible"] = { "ansible_lint" },
-        ["yaml.jinja"] = {},
-        ["yaml.docker-compose.jinja"] = {},
-        ["caddy.jinja"] = {},
         -- md.j2 is linted by the rumdl language server
         vimwiki = { "markdownlint" },
         dockerfile = { "hadolint" },
@@ -574,7 +571,13 @@ return {
         group = vim.api.nvim_create_augroup("lint", { clear = true }),
         callback = function()
           local lint = require("lint")
-          lint.try_lint()
+          -- jinja templates (`<ft>.jinja`) are only linted when the full compound
+          -- filetype is explicitly configured, otherwise nvim-lint unions the linters
+          -- of all filetype components
+          local ft = vim.bo.filetype
+          if not ft:find("%.jinja$") or lint.linters_by_ft[ft] then
+            lint.try_lint()
+          end
           -- run sqlfluff only if config file exists
           if
             vim.startswith(vim.bo.filetype, "sql")
@@ -625,6 +628,10 @@ return {
           end,
           ["html.jinja"] = { "djlint" },
           htmldjango = { "djlint" },
+          -- conform checks the jinja component of compound `<ft>.jinja` filetypes
+          -- before falling through to `<ft>`, so this disables formatting for all jinja
+          -- templates that are not explicitly configured with their full filetype
+          jinja = { lsp_format = "never" },
           javascript = {
             "oxfmt",
             lsp_format = "fallback",
@@ -660,9 +667,6 @@ return {
           http = { lsp_format = "prefer" },
           yaml = { "yamlfmt" },
           ["yaml.ansible"] = { "yamlfmt" },
-          ["yaml.jinja"] = { lsp_format = "never" },
-          ["yaml.docker-compose.jinja"] = { lsp_format = "never" },
-          ["caddy.jinja"] = { lsp_format = "never" },
           toml = { "taplo" },
           ocaml = { "ocamlformat" },
           query = { lsp_format = "prefer" },
