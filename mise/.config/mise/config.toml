@@ -10,7 +10,7 @@
 "cargo:tokei" = "14.0.0"
 "forgejo:forgejo-contrib/forgejo-cli" = "0.6.0"
 "gem:tmuxinator" = "3.4.1"
-"github:Ataraxy-Labs/sem" = "0.21.1"
+"github:Ataraxy-Labs/sem" = "0.22.1"
 "github:Myriad-Dreamin/tinymist" = "0.15.2"
 "github:bitwarden/sdk-sm" = { version = "2.1.0", version_prefix = "bws-v" }
 "github:garethgeorge/backrest" = "1.14.1"
