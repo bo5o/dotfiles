@@ -48,8 +48,8 @@ _arguments "${_arguments_options[@]}" : \
 '--verbose[Show inline content diffs for each entity]' \
 '--profile[Show internal timing profile]' \
 '--no-cosmetics[Hide cosmetic changes (formatting, whitespace, comments only)]' \
-'-h[Print help]' \
-'--help[Print help]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 '*::args -- Git refs, files, or pathspecs (supports ref1..ref2, ref1...ref2, -- paths):_default' \
 && ret=0
 ;;
@@ -69,6 +69,43 @@ _arguments "${_arguments_options[@]}" : \
 '-h[Print help]' \
 '--help[Print help]' \
 '::entity -- Name of the entity to analyze, optionally as "type name":_default' \
+&& ret=0
+;;
+(find)
+_arguments "${_arguments_options[@]}" : \
+'--file=[Restrict to entities defined in this file]:FILE:_default' \
+'--json[Output as JSON]' \
+'-h[Print help]' \
+'--help[Print help]' \
+':query -- Entity name, optionally as "type name" (e.g. "function createProgram"):_default' \
+&& ret=0
+;;
+(callers)
+_arguments "${_arguments_options[@]}" : \
+'--file=[Disambiguate by defining file]:FILE:_default' \
+'--json[Output as JSON]' \
+'-h[Print help]' \
+'--help[Print help]' \
+':query -- Entity name or id:_default' \
+&& ret=0
+;;
+(refs)
+_arguments "${_arguments_options[@]}" : \
+'--file=[Disambiguate by defining file]:FILE:_default' \
+'--json[Output as JSON]' \
+'-h[Print help]' \
+'--help[Print help]' \
+':query -- Entity name or id:_default' \
+&& ret=0
+;;
+(grep)
+_arguments "${_arguments_options[@]}" : \
+'-i[Case-insensitive match (disables the trigram prefilter — see QUERY-INDEX.md'\''s out-of-scope list)]' \
+'--ignore-case[Case-insensitive match (disables the trigram prefilter — see QUERY-INDEX.md'\''s out-of-scope list)]' \
+'--json[Output as JSON (one object\: hits, candidate_files, total_files, origin)]' \
+'-h[Print help]' \
+'--help[Print help]' \
+':pattern -- Regex or literal pattern:_default' \
 && ret=0
 ;;
 (graph)
@@ -150,7 +187,7 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (mcp)
 _arguments "${_arguments_options[@]}" : \
-'--resident[Hidden plumbing\: serve only the per-repo socket (no stdio MCP), spawned detached by the CLI so repeat queries answer in milliseconds. Exits when idle or when another server owns the repo'\''s socket]' \
+'--resident[Removed (QUERY-INDEX.md §7 item 5 / semx-woe)\: used to spawn the per-repo sidecar socket. The mmap query index answers cold in 6-7ms, deleting the sidecar'\''s reason to exist. Kept as a backward-compatible no-op (exits immediately, does nothing) so an existing \`sem setup\` SessionStart hook that still invokes \`sem mcp --resident\` doesn'\''t error]' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -305,6 +342,56 @@ esac
     ;;
 esac
 ;;
+(review)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_sem__subcmd__review_commands" \
+"*::: :->review" \
+&& ret=0
+
+    case $state in
+    (review)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:sem-review-command-$line[1]:"
+        case $line[1] in
+            (listen)
+_arguments "${_arguments_options[@]}" : \
+'--dry-run[Print the assembled command and environment (secrets masked) instead of launching]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':diff_id_or_url -- Diff id, or a hosted review URL (…/diffs/{id}, optionally /canvas):_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_sem__subcmd__review__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:sem-review-help-command-$line[1]:"
+        case $line[1] in
+            (listen)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
 (telemetry)
 _arguments "${_arguments_options[@]}" : \
 '-h[Print help]' \
@@ -442,6 +529,22 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(find)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(callers)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(refs)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(grep)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
 (graph)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
@@ -542,6 +645,26 @@ _arguments "${_arguments_options[@]}" : \
     ;;
 esac
 ;;
+(review)
+_arguments "${_arguments_options[@]}" : \
+":: :_sem__subcmd__help__subcmd__review_commands" \
+"*::: :->review" \
+&& ret=0
+
+    case $state in
+    (review)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:sem-help-review-command-$line[1]:"
+        case $line[1] in
+            (listen)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
 (telemetry)
 _arguments "${_arguments_options[@]}" : \
 ":: :_sem__subcmd__help__subcmd__telemetry_commands" \
@@ -616,6 +739,10 @@ _sem_commands() {
     local commands; commands=(
 'diff:Show semantic diff of changes (supports git diff syntax). Untracked files are excluded, matching git behavior' \
 'impact:Show impact of changing an entity (deps, dependents, transitive impact, tests)' \
+'find:Find entity definitions by name — answers from the mmap query index when one exists (cold-process, <10ms on a large repo); falls back to a fresh build otherwise, which then leaves an index for next time' \
+'callers:Show direct callers of an entity (who calls/references it) — the index'\''s reverse postings, same freshness/fallback discipline as \`find\`' \
+'refs:Show direct refs of an entity (what it calls/references) — the index'\''s forward postings, same freshness/fallback discipline as \`find\`' \
+'grep:Search file text — rg-compatible \`file\:line\:text\` output, served from the mmap query index'\''s trigram postings when one exists (cold process, target <50ms on a large repo); falls back to a plain scan otherwise. Pattern is always a regex (same default as rg without \`-F\`); patterns with no usable trigram (e.g. \`-i\`, short literals, unconstrained alternation) degrade to an honest full scan rather than a wrong answer. See QUERY-INDEX.md'\''s trigram section' \
 'graph:Show the full entity dependency graph' \
 'blame:Show semantic blame — who last modified each entity' \
 'hook:Internal plumbing for agent-harness hooks (hidden)' \
@@ -630,6 +757,7 @@ _sem_commands() {
 'logout:Log out of sem cloud' \
 'whoami:Show current sem cloud identity' \
 'cloud:Manage cloud acceleration for a repo (off until you enable it)' \
+'review:Attach an agent to a sem-cloud code review' \
 'telemetry:Control anonymous usage telemetry (local by default — nothing uploaded)' \
 'xref:Show cross-repo dependencies across your indexed repos (requires sem login)' \
 'repos:Show where your code is stored\: repos indexed on your cloud account and local entity caches' \
@@ -655,6 +783,11 @@ _sem__subcmd____update-check_commands() {
 _sem__subcmd__blame_commands() {
     local commands; commands=()
     _describe -t commands 'sem blame commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__callers_commands] )) ||
+_sem__subcmd__callers_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem callers commands' commands "$@"
 }
 (( $+functions[_sem__subcmd__cloud_commands] )) ||
 _sem__subcmd__cloud_commands() {
@@ -791,16 +924,30 @@ _sem__subcmd__entities_commands() {
     local commands; commands=()
     _describe -t commands 'sem entities commands' commands "$@"
 }
+(( $+functions[_sem__subcmd__find_commands] )) ||
+_sem__subcmd__find_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem find commands' commands "$@"
+}
 (( $+functions[_sem__subcmd__graph_commands] )) ||
 _sem__subcmd__graph_commands() {
     local commands; commands=()
     _describe -t commands 'sem graph commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__grep_commands] )) ||
+_sem__subcmd__grep_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem grep commands' commands "$@"
 }
 (( $+functions[_sem__subcmd__help_commands] )) ||
 _sem__subcmd__help_commands() {
     local commands; commands=(
 'diff:Show semantic diff of changes (supports git diff syntax). Untracked files are excluded, matching git behavior' \
 'impact:Show impact of changing an entity (deps, dependents, transitive impact, tests)' \
+'find:Find entity definitions by name — answers from the mmap query index when one exists (cold-process, <10ms on a large repo); falls back to a fresh build otherwise, which then leaves an index for next time' \
+'callers:Show direct callers of an entity (who calls/references it) — the index'\''s reverse postings, same freshness/fallback discipline as \`find\`' \
+'refs:Show direct refs of an entity (what it calls/references) — the index'\''s forward postings, same freshness/fallback discipline as \`find\`' \
+'grep:Search file text — rg-compatible \`file\:line\:text\` output, served from the mmap query index'\''s trigram postings when one exists (cold process, target <50ms on a large repo); falls back to a plain scan otherwise. Pattern is always a regex (same default as rg without \`-F\`); patterns with no usable trigram (e.g. \`-i\`, short literals, unconstrained alternation) degrade to an honest full scan rather than a wrong answer. See QUERY-INDEX.md'\''s trigram section' \
 'graph:Show the full entity dependency graph' \
 'blame:Show semantic blame — who last modified each entity' \
 'hook:Internal plumbing for agent-harness hooks (hidden)' \
@@ -815,6 +962,7 @@ _sem__subcmd__help_commands() {
 'logout:Log out of sem cloud' \
 'whoami:Show current sem cloud identity' \
 'cloud:Manage cloud acceleration for a repo (off until you enable it)' \
+'review:Attach an agent to a sem-cloud code review' \
 'telemetry:Control anonymous usage telemetry (local by default — nothing uploaded)' \
 'xref:Show cross-repo dependencies across your indexed repos (requires sem login)' \
 'repos:Show where your code is stored\: repos indexed on your cloud account and local entity caches' \
@@ -840,6 +988,11 @@ _sem__subcmd__help__subcmd____update-check_commands() {
 _sem__subcmd__help__subcmd__blame_commands() {
     local commands; commands=()
     _describe -t commands 'sem help blame commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__callers_commands] )) ||
+_sem__subcmd__help__subcmd__callers_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help callers commands' commands "$@"
 }
 (( $+functions[_sem__subcmd__help__subcmd__cloud_commands] )) ||
 _sem__subcmd__help__subcmd__cloud_commands() {
@@ -915,10 +1068,20 @@ _sem__subcmd__help__subcmd__entities_commands() {
     local commands; commands=()
     _describe -t commands 'sem help entities commands' commands "$@"
 }
+(( $+functions[_sem__subcmd__help__subcmd__find_commands] )) ||
+_sem__subcmd__help__subcmd__find_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help find commands' commands "$@"
+}
 (( $+functions[_sem__subcmd__help__subcmd__graph_commands] )) ||
 _sem__subcmd__help__subcmd__graph_commands() {
     local commands; commands=()
     _describe -t commands 'sem help graph commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__grep_commands] )) ||
+_sem__subcmd__help__subcmd__grep_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help grep commands' commands "$@"
 }
 (( $+functions[_sem__subcmd__help__subcmd__help_commands] )) ||
 _sem__subcmd__help__subcmd__help_commands() {
@@ -955,10 +1118,27 @@ _sem__subcmd__help__subcmd__mcp_commands() {
     local commands; commands=()
     _describe -t commands 'sem help mcp commands' commands "$@"
 }
+(( $+functions[_sem__subcmd__help__subcmd__refs_commands] )) ||
+_sem__subcmd__help__subcmd__refs_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help refs commands' commands "$@"
+}
 (( $+functions[_sem__subcmd__help__subcmd__repos_commands] )) ||
 _sem__subcmd__help__subcmd__repos_commands() {
     local commands; commands=()
     _describe -t commands 'sem help repos commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__review_commands] )) ||
+_sem__subcmd__help__subcmd__review_commands() {
+    local commands; commands=(
+'listen:Join a sem-cloud code review as a live listener (the one-command agent attach)' \
+    )
+    _describe -t commands 'sem help review commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__help__subcmd__review__subcmd__listen_commands] )) ||
+_sem__subcmd__help__subcmd__review__subcmd__listen_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem help review listen commands' commands "$@"
 }
 (( $+functions[_sem__subcmd__help__subcmd__setup_commands] )) ||
 _sem__subcmd__help__subcmd__setup_commands() {
@@ -1050,10 +1230,46 @@ _sem__subcmd__mcp_commands() {
     local commands; commands=()
     _describe -t commands 'sem mcp commands' commands "$@"
 }
+(( $+functions[_sem__subcmd__refs_commands] )) ||
+_sem__subcmd__refs_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem refs commands' commands "$@"
+}
 (( $+functions[_sem__subcmd__repos_commands] )) ||
 _sem__subcmd__repos_commands() {
     local commands; commands=()
     _describe -t commands 'sem repos commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__review_commands] )) ||
+_sem__subcmd__review_commands() {
+    local commands; commands=(
+'listen:Join a sem-cloud code review as a live listener (the one-command agent attach)' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'sem review commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__review__subcmd__help_commands] )) ||
+_sem__subcmd__review__subcmd__help_commands() {
+    local commands; commands=(
+'listen:Join a sem-cloud code review as a live listener (the one-command agent attach)' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'sem review help commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__review__subcmd__help__subcmd__help_commands] )) ||
+_sem__subcmd__review__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem review help help commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__review__subcmd__help__subcmd__listen_commands] )) ||
+_sem__subcmd__review__subcmd__help__subcmd__listen_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem review help listen commands' commands "$@"
+}
+(( $+functions[_sem__subcmd__review__subcmd__listen_commands] )) ||
+_sem__subcmd__review__subcmd__listen_commands() {
+    local commands; commands=()
+    _describe -t commands 'sem review listen commands' commands "$@"
 }
 (( $+functions[_sem__subcmd__setup_commands] )) ||
 _sem__subcmd__setup_commands() {
