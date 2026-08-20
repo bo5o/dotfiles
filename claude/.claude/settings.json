@@ -96,6 +96,7 @@
     "autoAllowBashIfSandboxed": false,
     "allowUnsandboxedCommands": false
   },
+  "autoCompactWindow": 300000,
   "plansDirectory": ".claude/plans",
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
