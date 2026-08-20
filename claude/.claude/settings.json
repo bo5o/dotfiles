@@ -1,4 +1,7 @@
 {
+  "env": {
+    "CLAUDE_CODE_DISABLE_MOUSE_CLICKS": "1"
+  },
   "permissions": {
     "deny": [
       "Read(.env)",
@@ -15,9 +18,6 @@
     "defaultMode": "default"
   },
   "model": "opus",
-  "env": {
-    "CLAUDE_CODE_DISABLE_MOUSE_CLICKS": "1"
-  },
   "hooks": {
     "Notification": [
       {
@@ -103,5 +103,6 @@
   "showThinkingSummaries": true,
   "theme": "dark-ansi",
   "editorMode": "vim",
-  "useAutoModeDuringPlan": false
+  "useAutoModeDuringPlan": false,
+  "autoCompactEnabled": true
 }
