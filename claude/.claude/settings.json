@@ -15,6 +15,9 @@
     "defaultMode": "default"
   },
   "model": "opus",
+  "env": {
+    "CLAUDE_CODE_DISABLE_MOUSE_CLICKS": "1"
+  },
   "hooks": {
     "Notification": [
       {
