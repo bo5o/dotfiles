@@ -312,7 +312,7 @@ return {
         },
         rumdl = {
           -- plain markdown is handled by oxfmt/marksman, rumdl only covers md.j2
-          filetypes = { "markdown.jinja" },
+          filetypes = { "markdown.jinja", "markdown" },
           root_markers = { ".rumdl.toml", "rumdl.toml", ".git" },
           init_options = {
             -- keep rumdl a pure linter, marksman owns navigation and symbols
