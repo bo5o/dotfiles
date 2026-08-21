@@ -489,43 +489,43 @@ url = "https://github.com/duckdb/duckdb/releases/download/v1.5.5/duckdb_cli-wind
 url_api = "https://api.github.com/repos/duckdb/duckdb/releases/assets/485847051"
 
 [[tools.dust]]
-version = "1.2.4"
+version = "1.2.5"
 backend = "aqua:bootandy/dust"
 
 [tools.dust."platforms.linux-arm64"]
-checksum = "sha256:e09b0d24b5da0fa06aecf1561849c13ae41ef055c1ce7077e35e9a46744b16af"
-url = "https://github.com/bootandy/dust/releases/download/v1.2.4/dust-v1.2.4-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/338101084"
+checksum = "sha256:83b8d5b068bdbfd1952a55c8419e77c413d1c084ce7f7369d28f9be36d66dd6a"
+url = "https://github.com/bootandy/dust/releases/download/v1.2.5/dust-v1.2.5-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/521927389"
 
 [tools.dust."platforms.linux-arm64-musl"]
-checksum = "sha256:e09b0d24b5da0fa06aecf1561849c13ae41ef055c1ce7077e35e9a46744b16af"
-url = "https://github.com/bootandy/dust/releases/download/v1.2.4/dust-v1.2.4-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/338101084"
+checksum = "sha256:331b328233a70e56f0509ff962b2a6ea606eb2e654ce8a0e9a3bebe1bd54a2be"
+url = "https://github.com/bootandy/dust/releases/download/v1.2.5/dust-v1.2.5-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/521290452"
 
 [tools.dust."platforms.linux-x64"]
-checksum = "sha256:4e313f9f854017e58a2ada4c0d1774677b8cf53d63ab55a991d5871d5f504452"
-url = "https://github.com/bootandy/dust/releases/download/v1.2.4/dust-v1.2.4-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/338099991"
+checksum = "sha256:64b16f5c10cc4c25d2eaa144e9d2d44b3ed8f72ee63b3bc0a92c85e21e9e0932"
+url = "https://github.com/bootandy/dust/releases/download/v1.2.5/dust-v1.2.5-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/521290571"
 
 [tools.dust."platforms.linux-x64-musl"]
-checksum = "sha256:4e313f9f854017e58a2ada4c0d1774677b8cf53d63ab55a991d5871d5f504452"
-url = "https://github.com/bootandy/dust/releases/download/v1.2.4/dust-v1.2.4-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/338099991"
+checksum = "sha256:79813b5743fab1e04c1d9c34042aab865dbe09efb76719e7c7d260568850fabc"
+url = "https://github.com/bootandy/dust/releases/download/v1.2.5/dust-v1.2.5-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/521291194"
 
 [tools.dust."platforms.macos-arm64"]
-checksum = "sha256:bf84d3ff7f58e325d3eb5bb7696df6b22ef1e01fec80c2d8f7c9d3e611be66f4"
-url = "https://github.com/bootandy/dust/releases/download/v1.2.4/dust-v1.2.4-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/338099240"
+checksum = "sha256:29566236d7a5e2afbc3fcf2d365845a4eaf0fc969a4ed9f8b878bc1a4fc7d2b8"
+url = "https://github.com/bootandy/dust/releases/download/v1.2.5/dust-v1.2.5-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/521290141"
 
 [tools.dust."platforms.macos-x64"]
-checksum = "sha256:bf84d3ff7f58e325d3eb5bb7696df6b22ef1e01fec80c2d8f7c9d3e611be66f4"
-url = "https://github.com/bootandy/dust/releases/download/v1.2.4/dust-v1.2.4-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/338099240"
+checksum = "sha256:29566236d7a5e2afbc3fcf2d365845a4eaf0fc969a4ed9f8b878bc1a4fc7d2b8"
+url = "https://github.com/bootandy/dust/releases/download/v1.2.5/dust-v1.2.5-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/521290141"
 
 [tools.dust."platforms.windows-x64"]
-checksum = "sha256:eb08d642f016787bb9fc918a4dc5f34665463657fddf83a40f2441cbf020fb4c"
-url = "https://github.com/bootandy/dust/releases/download/v1.2.4/dust-v1.2.4-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/338102043"
+checksum = "sha256:b2731d92066d5787a106c0c835b96c6a4ba186d81abc0ead0a906f75d5f09aee"
+url = "https://github.com/bootandy/dust/releases/download/v1.2.5/dust-v1.2.5-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/bootandy/dust/releases/assets/521291124"
 
 [[tools.fd]]
 version = "10.4.2"
