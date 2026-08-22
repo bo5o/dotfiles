@@ -1,0 +1,93 @@
+#compdef hl
+
+autoload -U is-at-least
+
+_hl() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" : \
+'*--config=[Configuration file path]:FILE:_default' \
+'--tail=[Number of last entries to preload from each file in --follow mode]:N:_default' \
+'--sync-interval-ms=[Synchronization interval for live streaming mode enabled by --follow option]:MILLISECONDS:_default' \
+'--paging=[Control pager usage (HL_PAGER or PAGER)]:WHEN:(auto always never)' \
+'-l+[Display entries with level >= <LEVEL>]:LEVEL:_default' \
+'--level=[Display entries with level >= <LEVEL>]:LEVEL:_default' \
+'--since=[Display entries with timestamp >= <TIME>]:TIME:_default' \
+'--until=[Display entries with timestamp <= <TIME>]:TIME:_default' \
+'*-f+[Filter entries by matching field values \[k=v, k~=v, k~~=v, '\''k!=v'\'', '\''k?!=v'\'', etc\]]:FILTER:_default' \
+'*--filter=[Filter entries by matching field values \[k=v, k~=v, k~~=v, '\''k!=v'\'', '\''k?!=v'\'', etc\]]:FILTER:_default' \
+'*-q+[Filter entries using a query expression \['\''status>=400 or duration>=15'\'', etc\]]:QUERY:_default' \
+'*--query=[Filter entries using a query expression \['\''status>=400 or duration>=15'\'', etc\]]:QUERY:_default' \
+'--color=[Whether to use ANSI colors and styles]::WHEN:(auto always never)' \
+'--theme=[Color theme]:THEME:_default' \
+'*-h+[Hide or reveal fields with the specified keys, prefix with ! to reveal, provide '\''!*'\'' to reveal all]:KEY:_default' \
+'*--hide=[Hide or reveal fields with the specified keys, prefix with ! to reveal, provide '\''!*'\'' to reveal all]:KEY:_default' \
+'--flatten=[Whether to flatten objects]:WHEN:(never always)' \
+'-t+[Time format, see https\://man7.org/linux/man-pages/man1/date.1.html]:FORMAT:_default' \
+'--time-format=[Time format, see https\://man7.org/linux/man-pages/man1/date.1.html]:FORMAT:_default' \
+'-Z+[Time zone name, see column "TZ identifier" at https\://en.wikipedia.org/wiki/List_of_tz_database_time_zones]:TZ:_default' \
+'--time-zone=[Time zone name, see column "TZ identifier" at https\://en.wikipedia.org/wiki/List_of_tz_database_time_zones]:TZ:_default' \
+'--input-info=[Input number and filename layouts]:LAYOUTS:(auto none minimal compact full)' \
+'--ascii=[Whether to restrict punctuation to ASCII characters only]::WHEN:(auto never always)' \
+'-x+[Whether to expand fields and messages]::MODE:(never inline auto always)' \
+'--expansion=[Whether to expand fields and messages]::MODE:(never inline auto always)' \
+'-o+[Output file]:FILE:_default' \
+'--output=[Output file]:FILE:_default' \
+'--output-delimiter=[Output entry delimiter]:D:(newline nul)' \
+'--input-format=[Input format]:FORMAT:(auto json logfmt)' \
+'--unix-timestamp-unit=[Unix timestamp unit]:UNIT:(auto s ms us ns)' \
+'--delimiter=[Log entry delimiter]:DELIMITER:(auto cr lf crlf newline nul)' \
+'--interrupt-ignore-count=[Number of interrupts to ignore, i.e. Ctrl-C (SIGINT)]:N:_default' \
+'--buffer-size=[Buffer size]:SIZE:_default' \
+'--max-message-size=[Maximum log entry size]:SIZE:_default' \
+'-C+[Number of processing threads]:N:_default' \
+'--concurrency=[Number of processing threads]:N:_default' \
+'--shell-completions=[Print shell auto-completion script and exit]:SHELL:(bash elvish fish powershell zsh)' \
+'--list-themes=[Print available themes optionally filtered by tags]::TAGS:(dark light 16color 256color truecolor overlay base)' \
+'--help=[Print help]::VERBOSITY:(short long)' \
+'-s[Sort entries chronologically]' \
+'--sort[Sort entries chronologically]' \
+'-F[Follow input streams and sort entries chronologically within time frame set by --sync-interval-ms option]' \
+'--follow[Follow input streams and sort entries chronologically within time frame set by --sync-interval-ms option]' \
+'-P[Handful alias for --paging=never, overrides --paging option]' \
+'-c[Handful alias for --color=always, overrides --color option]' \
+'-r[Output raw source entries instead of formatted entries]' \
+'--raw[Output raw source entries instead of formatted entries]' \
+'--no-raw[Disable raw source entries output, overrides --raw option]' \
+'--raw-fields[Output field values as is, without unescaping or prettifying]' \
+'-L[Use local time zone, overrides --time-zone option]' \
+'--local[Use local time zone, overrides --time-zone option]' \
+'--no-local[Disable local time zone, overrides --local option]' \
+'-e[Hide empty fields, applies for null, string, object and array fields only]' \
+'--hide-empty-fields[Hide empty fields, applies for null, string, object and array fields only]' \
+'-E[Show empty fields, overrides --hide-empty-fields option]' \
+'--show-empty-fields[Show empty fields, overrides --hide-empty-fields option]' \
+'--allow-prefix[Allow non-JSON prefixes before JSON log entries]' \
+'--man-page[Print man page and exit]' \
+'--dump-index[Print debug index metadata (in --sort mode) and exit]' \
+'-V[Print version]' \
+'--version[Print version]' \
+'*::FILE -- Files to process:_files' \
+&& ret=0
+}
+
+(( $+functions[_hl_commands] )) ||
+_hl_commands() {
+    local commands; commands=()
+    _describe -t commands 'hl commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_hl" ]; then
+    _hl "$@"
+else
+    compdef _hl hl
+fi

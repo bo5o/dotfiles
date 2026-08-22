@@ -67,6 +67,7 @@ plugins=(
     fnox
     sem
     rumdl
+    hl
     mise
     zsh-syntax-highlighting
 )

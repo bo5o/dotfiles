@@ -108,6 +108,11 @@ upgrade:
         mise x rumdl -- rumdl completions zsh > {{ plugin_dir }}/rumdl/_rumdl
     @echo "DONE"
 
+    @echo -n "Updating hl completions..."
+    @mkdir -p {{ plugin_dir }}/hl && \
+        mise x "github:pamburus/hl" -- hl --shell-completions zsh > {{ plugin_dir }}/hl/_hl
+    @echo "DONE"
+
     @echo -n "Updating tldr completions..."
     @mkdir -p {{ plugin_dir }}/tldr && \
         curl -s {{ githubusercontent }}/tealdeer-rs/tealdeer/refs/heads/main/completion/zsh_tealdeer \
