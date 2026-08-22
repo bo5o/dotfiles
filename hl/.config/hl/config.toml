@@ -14,7 +14,7 @@ time-zone = "Europe/Berlin"
 theme-overlays = []
 
 [formatting.expansion]
-mode = "always"
+mode = "auto"
 
 [fields.predefined.time]
 names = [
