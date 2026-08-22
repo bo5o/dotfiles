@@ -15,6 +15,7 @@
 "github:bitwarden/sdk-sm" = { version = "2.1.0", version_prefix = "bws-v" }
 "github:garethgeorge/backrest" = "1.14.1"
 "github:opentofu/tofu-ls" = "0.5.3"
+"github:pamburus/hl" = "latest"
 "github:psviderski/unregistry" = { version = "0.4.3", exe = "docker-pussh" }
 "github:ribru17/ts_query_ls" = "3.16.0"
 "github:supabase-community/postgres-language-server" = { version = "0.25.7", rename_exe = "postgrestools" }

@@ -1036,6 +1036,53 @@ checksum = "sha256:e326da584f855010445c7cc1d190e8ac9918546a6f4317d378bfea1e76f97
 url = "https://github.com/opentofu/tofu-ls/releases/download/v0.5.3/tofu-ls_Windows_x86_64.tar.gz"
 url_api = "https://api.github.com/repos/opentofu/tofu-ls/releases/assets/470198137"
 
+[[tools."github:pamburus/hl"]]
+version = "0.36.3"
+backend = "github:pamburus/hl"
+
+[tools."github:pamburus/hl"."platforms.linux-arm64"]
+checksum = "sha256:dabffd22a0ea80b149ae6c500a9eb5b7112c280a305172e9cc3879a29bd03f65"
+url = "https://github.com/pamburus/hl/releases/download/v0.36.3/hl-linux-arm64-gnu.tar.gz"
+url_api = "https://api.github.com/repos/pamburus/hl/releases/assets/446082980"
+provenance = "github-attestations"
+
+[tools."github:pamburus/hl"."platforms.linux-arm64-musl"]
+checksum = "sha256:b8d2a90a42ec6cd0f78b478903a7d94730a6bd0732e2bf911b03f581a508cfdf"
+url = "https://github.com/pamburus/hl/releases/download/v0.36.3/hl-linux-arm64-musl.tar.gz"
+url_api = "https://api.github.com/repos/pamburus/hl/releases/assets/446080358"
+provenance = "github-attestations"
+
+[tools."github:pamburus/hl"."platforms.linux-x64"]
+checksum = "sha256:b8e9de61f003a8879d619adce5b3253021678888ee4b616b7cda756c4d4c84b2"
+url = "https://github.com/pamburus/hl/releases/download/v0.36.3/hl-linux-x86_64-gnu.tar.gz"
+url_api = "https://api.github.com/repos/pamburus/hl/releases/assets/446079785"
+provenance = "github-attestations"
+provenance_verified = true
+
+[tools."github:pamburus/hl"."platforms.linux-x64-musl"]
+checksum = "sha256:28f9330d4b84339c84d7d2053480c003bdca0cc98247171185ebb1df90b637d0"
+url = "https://github.com/pamburus/hl/releases/download/v0.36.3/hl-linux-x86_64-musl.tar.gz"
+url_api = "https://api.github.com/repos/pamburus/hl/releases/assets/446080300"
+provenance = "github-attestations"
+
+[tools."github:pamburus/hl"."platforms.macos-arm64"]
+checksum = "sha256:613a787040fcf77026b9a0c49b9873a2f8466bf8dd40b098bd3333918d26b6b5"
+url = "https://github.com/pamburus/hl/releases/download/v0.36.3/hl-macos-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pamburus/hl/releases/assets/446079901"
+provenance = "github-attestations"
+
+[tools."github:pamburus/hl"."platforms.macos-x64"]
+checksum = "sha256:fadaf64345f0967e241ff3016058c04b5021fe0d37e053078ceb87a4e2f9a859"
+url = "https://github.com/pamburus/hl/releases/download/v0.36.3/hl-macos-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/pamburus/hl/releases/assets/446080083"
+provenance = "github-attestations"
+
+[tools."github:pamburus/hl"."platforms.windows-x64"]
+checksum = "sha256:0e72090c62bd6fc13de37691d410312affe6437d04f2eee11814077cb34627f2"
+url = "https://github.com/pamburus/hl/releases/download/v0.36.3/hl-windows.zip"
+url_api = "https://api.github.com/repos/pamburus/hl/releases/assets/446081485"
+provenance = "github-attestations"
+
 [[tools."github:psviderski/unregistry"]]
 version = "0.4.3"
 backend = "github:psviderski/unregistry"
