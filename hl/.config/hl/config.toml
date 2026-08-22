@@ -16,10 +16,6 @@ theme-overlays = []
 [formatting.expansion]
 mode = "auto"
 
-[fields]
-# `mfa` = Erlang/OTP module-function-arity, redundant with the caller location.
-hide = ["mfa"]
-
 [fields.predefined.time]
 names = [
   "ts",
@@ -39,17 +35,23 @@ names = [
 [fields.predefined.message]
 names = ["msg", "message", "MESSAGE", "Message", "event"] # `event` = structlog
 
-# Source location for python logging (`%(filename)s` / `%(pathname)s` + `%(lineno)d`)
-# and Erlang/OTP logger (`file` / `line`, e.g. RabbitMQ JSON logs).
+# `func_name` = postgres jsonlog (only with `log_error_verbosity = verbose`).
+[fields.predefined.caller]
+names = ["caller", "CALLER", "Caller", "func_name"]
+
+# Source location for python logging (`%(filename)s` / `%(pathname)s` + `%(lineno)d`),
+# Erlang/OTP logger (`file` / `line`, e.g. RabbitMQ JSON logs) and postgres jsonlog
+# (`file_name` / `file_line_num`).
 [fields.predefined.caller-file]
-names = ["filename", "pathname", "file"]
+names = ["filename", "pathname", "file", "file_name"]
 
 [fields.predefined.caller-line]
-names = ["lineno", "line"]
+names = ["lineno", "line", "file_line_num"]
 
-# `domain` = Erlang/OTP logger category (RabbitMQ: `rabbitmq.connection`, ...).
+# `domain` = Erlang/OTP logger category (RabbitMQ: `rabbitmq.connection`, ...),
+# `backend_type` = postgres process kind (`client backend`, `checkpointer`, ...).
 [fields.predefined.logger]
-names = ["logger", "LOGGER", "Logger", "span.name", "domain"]
+names = ["logger", "LOGGER", "Logger", "span.name", "domain", "backend_type"]
 
 # Common levels + python logging (`levelname`), GCP/OTel (`severity`) and numeric
 # pino/bunyan levels.
