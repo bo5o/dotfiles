@@ -30,7 +30,7 @@ _workmux_base() {
         case $line[1] in
             (add)
 _arguments "${_arguments_options[@]}" : \
-'(--base -A --auto-name)--pr=[Pull request number or full GitHub pull request URL to checkout]:NUMBER|URL:_default' \
+'(--base -A --auto-name)--pr=[Pull request number or full GitHub or GitHub Enterprise pull request URL to checkout]:NUMBER|URL:_default' \
 '--base=[Base branch/commit/tag to branch from (overrides config base_branch; config may use "auto"; defaults to current branch)]:BASE:_default' \
 '--name=[Explicit name for the worktree directory and tmux window (overrides worktree_naming strategy and worktree_prefix)]:NAME:_default' \
 '--target-name=[Explicit name for the workmux-managed tmux target]:TARGET_NAME:_default' \
