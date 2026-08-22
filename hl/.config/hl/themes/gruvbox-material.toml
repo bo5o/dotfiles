@@ -1,0 +1,99 @@
+#:schema https://raw.githubusercontent.com/pamburus/hl/v0.36.3/schema/json/theme.schema.v1.json
+
+# Gruvbox Material (medium background, material foreground)
+# Palette matches sainnhe/gruvbox-material as configured in nvim.
+#
+#   bg0 #282828  bg3 #45403d  fg0 #d4be98
+#   grey0 #7c6f64  grey1 #928374  grey2 #a89984
+#   red #ea6962  orange #e78a4e  yellow #d8a657
+#   green #a9b665  aqua #89b482  blue #7daea3  purple #d3869b
+
+version = "1.1"
+tags = ["dark", "truecolor"]
+
+#
+# Styles define general purpose styles used throughout the theme.
+#
+[styles]
+[styles.primary]
+foreground = "#d4be98"
+
+[styles.secondary]
+modes = ["-faint"]
+foreground = "#928374"
+
+[styles.muted]
+foreground = "#7c6f64"
+
+# Bold is disabled in nvim (gruvbox_material_enable_bold = 0), keep it off here too.
+[styles.strong]
+modes = ["-bold"]
+foreground = "#d4be98"
+
+[styles.accent]
+foreground = "#7daea3"
+
+[styles.accent-secondary]
+style = "secondary"
+foreground = "#5a7d75"
+
+[styles.syntax]
+modes = ["-bold"]
+foreground = "#928374"
+
+[styles.unknown]
+foreground = "#7c6f64"
+
+[styles.trace]
+foreground = "#7c6f64"
+
+[styles.debug]
+foreground = "#d3869b"
+
+[styles.info]
+foreground = "#89b482"
+
+[styles.warning]
+foreground = "#d8a657"
+
+[styles.error]
+foreground = "#ea6962"
+
+#
+# Elements define specific styles for different log elements.
+#
+[elements]
+[elements.level]
+style = "accent-secondary"
+
+[elements.field]
+style = "accent-secondary"
+
+[elements.string]
+foreground = "#a9b665"
+
+[elements.number]
+foreground = "#d3869b"
+
+[elements.boolean]
+foreground = "#e78a4e"
+
+[elements.null]
+foreground = "#ea6962"
+
+#
+# Levels define styles for different log levels.
+#
+[levels]
+[levels.warning]
+message.style = ["message", "warning"]
+
+[levels.error]
+message.style = ["message", "error"]
+
+#
+# Indicators define styles for various status indicators.
+#
+[indicators.sync.failed.inner.style]
+foreground = "#d8a657"
+modes = ["bold"]

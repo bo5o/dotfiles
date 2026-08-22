@@ -1,0 +1,9 @@
+#:schema https://raw.githubusercontent.com/pamburus/hl/v0.36.3/schema/json/config.schema.json
+#
+# Only overrides are listed here, everything else falls back to the defaults:
+# https://github.com/pamburus/hl/blob/master/etc/defaults/config.toml
+
+theme = "gruvbox-material"
+
+# No italic accents (like gruvbox_material_enable_italic = 0 in nvim).
+theme-overlays = []
