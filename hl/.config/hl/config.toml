@@ -2,6 +2,9 @@
 #
 # Only overrides are listed here, everything else falls back to the defaults:
 # https://github.com/pamburus/hl/blob/master/etc/defaults/config.toml
+#
+# NOTE: scalars are merged with the defaults, but arrays are REPLACED. Lists below
+# therefore repeat hl's defaults and add to them.
 
 theme = "gruvbox-material"
 
@@ -9,3 +12,54 @@ time-zone = "Europe/Berlin"
 
 # No italic accents (like gruvbox_material_enable_italic = 0 in nvim).
 theme-overlays = []
+
+[formatting.expansion]
+mode = "always"
+
+[fields.predefined.time]
+names = [
+  "ts",
+  "TS",
+  "time",
+  "TIME",
+  "Time",
+  "timestamp",
+  "Timestamp",
+  "TIMESTAMP",
+  "@timestamp",
+  "asctime",                    # python logging (needs an ISO datefmt, the default comma-ms is unparseable)
+  "_SOURCE_REALTIME_TIMESTAMP",
+  "__REALTIME_TIMESTAMP",
+]
+
+[fields.predefined.message]
+names = ["msg", "message", "MESSAGE", "Message", "event"] # `event` = structlog
+
+# Source location for python logging (`%(filename)s` / `%(pathname)s` + `%(lineno)d`).
+[fields.predefined.caller-file]
+names = ["filename", "pathname"]
+
+[fields.predefined.caller-line]
+names = ["lineno"]
+
+# Common levels + python logging (`levelname`), GCP/OTel (`severity`) and numeric
+# pino/bunyan levels.
+[[fields.predefined.level.variants]]
+names = ["level", "LEVEL", "Level", "levelname", "severity", "SEVERITY", "Severity"]
+
+[fields.predefined.level.variants.values]
+error = ["error", "err", "fatal", "critical", "crit", "panic", "emerg", "alert", 50, 60]
+warning = ["warning", "warn", 40]
+info = ["info", "information", "notice", 30]
+debug = ["debug", 20]
+trace = ["trace", 10]
+
+# Systemd levels.
+[[fields.predefined.level.variants]]
+names = ["PRIORITY"]
+
+[fields.predefined.level.variants.values]
+error = [3, 2, 1]
+warning = [5, 4]
+info = [6]
+debug = [7]
