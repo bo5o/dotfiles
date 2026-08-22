@@ -311,11 +311,12 @@ return {
           },
         },
         rumdl = {
-          -- plain markdown is handled by oxfmt/marksman, rumdl only covers md.j2
+          -- rumdl owns markdown formatting; md.j2 formats through this server, plain
+          -- markdown through the rumdl CLI in conform
           filetypes = { "markdown.jinja", "markdown" },
           root_markers = { ".rumdl.toml", "rumdl.toml", ".git" },
           init_options = {
-            -- keep rumdl a pure linter, marksman owns navigation and symbols
+            -- marksman owns navigation and symbols
             enableLinkCompletions = false,
             enableLinkNavigation = false,
             enableSymbols = false,
@@ -657,8 +658,9 @@ return {
           json = { "oxfmt", stop_after_first = true },
           hujson = { "hujsonfmt" },
           terraform = { lsp_format = "prefer" },
-          markdown = { "oxfmt", "injected" },
-          -- oxfmt does not understand jinja blocks, let rumdl format instead
+          markdown = { "rumdl", "injected" },
+          -- md.j2 keeps going through the rumdl language server, which is already
+          -- attached for this filetype, so `injected` never touches jinja blocks
           ["markdown.jinja"] = { lsp_format = "prefer" },
           sh = { "shfmt" },
           bash = { "shfmt" },
