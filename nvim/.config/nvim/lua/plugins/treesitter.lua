@@ -100,6 +100,7 @@ return {
         "rst",
         "rust",
         "sql",
+        "terraform",
         "toml",
         "yaml",
         "typescript",
