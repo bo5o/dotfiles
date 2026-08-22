@@ -35,12 +35,17 @@ names = [
 [fields.predefined.message]
 names = ["msg", "message", "MESSAGE", "Message", "event"] # `event` = structlog
 
-# Source location for python logging (`%(filename)s` / `%(pathname)s` + `%(lineno)d`).
+# Source location for python logging (`%(filename)s` / `%(pathname)s` + `%(lineno)d`)
+# and Erlang/OTP logger (`file` / `line`, e.g. RabbitMQ JSON logs).
 [fields.predefined.caller-file]
-names = ["filename", "pathname"]
+names = ["filename", "pathname", "file"]
 
 [fields.predefined.caller-line]
-names = ["lineno"]
+names = ["lineno", "line"]
+
+# `domain` = Erlang/OTP logger category (RabbitMQ: `rabbitmq.connection`, ...).
+[fields.predefined.logger]
+names = ["logger", "LOGGER", "Logger", "span.name", "domain"]
 
 # Common levels + python logging (`levelname`), GCP/OTel (`severity`) and numeric
 # pino/bunyan levels.
