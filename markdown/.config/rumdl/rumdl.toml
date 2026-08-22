@@ -1,0 +1,6 @@
+[global]
+line-length = 88
+
+[MD013]
+reflow = true
+reflow-length-exemptions = true
