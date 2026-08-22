@@ -16,6 +16,10 @@ theme-overlays = []
 [formatting.expansion]
 mode = "auto"
 
+[fields]
+# `mfa` = Erlang/OTP module-function-arity, redundant with the caller location.
+hide = ["mfa"]
+
 [fields.predefined.time]
 names = [
   "ts",
