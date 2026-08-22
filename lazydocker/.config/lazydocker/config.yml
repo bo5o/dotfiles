@@ -1,4 +1,6 @@
 ---
+gui:
+  returnImmediately: true
 customCommands:
   containers:
     - name: 'human logs'
