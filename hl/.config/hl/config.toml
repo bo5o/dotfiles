@@ -5,5 +5,7 @@
 
 theme = "gruvbox-material"
 
+time-zone = "Europe/Berlin"
+
 # No italic accents (like gruvbox_material_enable_italic = 0 in nvim).
 theme-overlays = []
