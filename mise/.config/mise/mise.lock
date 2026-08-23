@@ -1105,44 +1105,44 @@ url = "https://github.com/idursun/jjui/releases/download/v0.10.9/jjui-0.10.9-win
 url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/488652249"
 
 [[tools."aqua:jdx/usage"]]
-version = "6.0.0"
+version = "6.1.0"
 backend = "aqua:jdx/usage"
-specifiers = ["6.0.0"]
+specifiers = ["6.1.0"]
 
 [tools."aqua:jdx/usage"."platforms.linux-arm64"]
-checksum = "sha256:08846226281e22335210ebcf3cfd4ac09d8c235d3cadf26db7097cc96e419f8d"
-url = "https://github.com/jdx/usage/releases/download/v6.0.0/usage-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/524599529"
+checksum = "sha256:77b74109523198364ffb3a1a03435a8eb1067dd850d4086ffe9270bc18ea00c6"
+url = "https://github.com/jdx/usage/releases/download/v6.1.0/usage-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/usage/releases/assets/525531193"
 
 [tools."aqua:jdx/usage"."platforms.linux-arm64-musl"]
-checksum = "sha256:121d8e95025b27372f62ea0ebab0cdca27669673614dee923353928043d63764"
-url = "https://github.com/jdx/usage/releases/download/v6.0.0/usage-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/524599521"
+checksum = "sha256:bb52c86367cabd59d455debdc8402434a7863cc5d24b506e9230409a187ceb57"
+url = "https://github.com/jdx/usage/releases/download/v6.1.0/usage-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/usage/releases/assets/525532817"
 
 [tools."aqua:jdx/usage"."platforms.linux-x64"]
-checksum = "sha256:b9090b15b7ea96885a89b9b54259fb2955fe163d0de7f28116960a54b98cb69d"
-url = "https://github.com/jdx/usage/releases/download/v6.0.0/usage-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/524599434"
+checksum = "sha256:8ccb3a674cd1147d88e72663f670ff91d9ac3c772b30483a051bebed5d75d675"
+url = "https://github.com/jdx/usage/releases/download/v6.1.0/usage-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/usage/releases/assets/525532046"
 
 [tools."aqua:jdx/usage"."platforms.linux-x64-musl"]
-checksum = "sha256:57272557fec13663e4aa686cd0fd1673f35983f6fc6c85a276cf4c3c701323b3"
-url = "https://github.com/jdx/usage/releases/download/v6.0.0/usage-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/524599382"
+checksum = "sha256:2ceec78d071d66a5dcdcc6ad68a5ee79c64fc6c2fbe0050d4f013dfbc3308ba2"
+url = "https://github.com/jdx/usage/releases/download/v6.1.0/usage-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/usage/releases/assets/525532821"
 
 [tools."aqua:jdx/usage"."platforms.macos-arm64"]
-checksum = "sha256:51d2d1ce57568f3174bf0e92683cec95be87df8591dc5f2d1bfabc3eed565a3a"
-url = "https://github.com/jdx/usage/releases/download/v6.0.0/usage-universal-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/524600254"
+checksum = "sha256:317156bbd740ce95195e1016eb6800145944b4dbd2bd7e4f874684761b989524"
+url = "https://github.com/jdx/usage/releases/download/v6.1.0/usage-universal-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/usage/releases/assets/525531450"
 
 [tools."aqua:jdx/usage"."platforms.macos-x64"]
-checksum = "sha256:51d2d1ce57568f3174bf0e92683cec95be87df8591dc5f2d1bfabc3eed565a3a"
-url = "https://github.com/jdx/usage/releases/download/v6.0.0/usage-universal-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/524600254"
+checksum = "sha256:317156bbd740ce95195e1016eb6800145944b4dbd2bd7e4f874684761b989524"
+url = "https://github.com/jdx/usage/releases/download/v6.1.0/usage-universal-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/usage/releases/assets/525531450"
 
 [tools."aqua:jdx/usage"."platforms.windows-x64"]
-checksum = "sha256:24cfc537928534fbf8b2553925c1ade701de7723ece93806ff82291dd52df953"
-url = "https://github.com/jdx/usage/releases/download/v6.0.0/usage-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/524600191"
+checksum = "sha256:816843e71bf5ecc2d458b328b89edc771ca0a1f8b1777ff7be254007920a64bf"
+url = "https://github.com/jdx/usage/releases/download/v6.1.0/usage-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/usage/releases/assets/525535418"
 
 [[tools."aqua:jesseduffield/lazydocker"]]
 version = "0.25.2"
@@ -2772,24 +2772,31 @@ backend = "http:ncdu"
 specifiers = ["2.9.1"]
 
 [tools."http:ncdu"."platforms.linux-arm64"]
+checksum = "sha256:0c6c84b3f763c33baa051c8327f0e736f46f33a8cc061bb951d24517a8c5d73e"
 url = "https://dev.yorhel.nl/download/ncdu-2.9.1-linux-x86_64.tar.gz"
 
 [tools."http:ncdu"."platforms.linux-arm64-musl"]
+checksum = "sha256:0c6c84b3f763c33baa051c8327f0e736f46f33a8cc061bb951d24517a8c5d73e"
 url = "https://dev.yorhel.nl/download/ncdu-2.9.1-linux-x86_64.tar.gz"
 
 [tools."http:ncdu"."platforms.linux-x64"]
+checksum = "sha256:0c6c84b3f763c33baa051c8327f0e736f46f33a8cc061bb951d24517a8c5d73e"
 url = "https://dev.yorhel.nl/download/ncdu-2.9.1-linux-x86_64.tar.gz"
 
 [tools."http:ncdu"."platforms.linux-x64-musl"]
+checksum = "sha256:0c6c84b3f763c33baa051c8327f0e736f46f33a8cc061bb951d24517a8c5d73e"
 url = "https://dev.yorhel.nl/download/ncdu-2.9.1-linux-x86_64.tar.gz"
 
 [tools."http:ncdu"."platforms.macos-arm64"]
+checksum = "sha256:0c6c84b3f763c33baa051c8327f0e736f46f33a8cc061bb951d24517a8c5d73e"
 url = "https://dev.yorhel.nl/download/ncdu-2.9.1-linux-x86_64.tar.gz"
 
 [tools."http:ncdu"."platforms.macos-x64"]
+checksum = "sha256:0c6c84b3f763c33baa051c8327f0e736f46f33a8cc061bb951d24517a8c5d73e"
 url = "https://dev.yorhel.nl/download/ncdu-2.9.1-linux-x86_64.tar.gz"
 
 [tools."http:ncdu"."platforms.windows-x64"]
+checksum = "sha256:0c6c84b3f763c33baa051c8327f0e736f46f33a8cc061bb951d24517a8c5d73e"
 url = "https://dev.yorhel.nl/download/ncdu-2.9.1-linux-x86_64.tar.gz"
 
 [[tools.node]]
@@ -3077,6 +3084,15 @@ version = "4.0.6"
 backend = "core:ruby"
 specifiers = ["4.0.6"]
 
+[tools.ruby."platforms.windows-x64"]
+checksum = "sha256:328d7a86bea2f4c432783025050c9ffa1c36fcfc54ebccc466b63450ec3af223"
+url = "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-4.0.6-1/rubyinstaller-4.0.6-1-x64.7z"
+
+[[tools.ruby]]
+version = "4.0.6"
+backend = "core:ruby"
+specifiers = ["4.0.6"]
+
 [tools.ruby.options]
 compile = "false"
 precompiled_url = "jdx/ruby"
@@ -3109,15 +3125,6 @@ provenance = "github-attestations"
 [tools.ruby."platforms.macos-x64"]
 checksum = "sha256:837d299e8f7ddf2be31a229a7a7e019d354979825117989acb3b32b1a9be262a"
 url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.6.tar.gz"
-
-[[tools.ruby]]
-version = "4.0.6"
-backend = "core:ruby"
-specifiers = ["4.0.6"]
-
-[tools.ruby."platforms.windows-x64"]
-checksum = "sha256:328d7a86bea2f4c432783025050c9ffa1c36fcfc54ebccc466b63450ec3af223"
-url = "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-4.0.6-1/rubyinstaller-4.0.6-1-x64.7z"
 
 [[tools.rust]]
 version = "1.98.0"
