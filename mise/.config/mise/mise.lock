@@ -290,7 +290,7 @@ version = "0.6.2"
 backend = "cargo:just-lsp"
 
 [[tools."cargo:ncspot"]]
-version = "1.3.4"
+version = "1.4.0"
 backend = "cargo:ncspot"
 
 [[tools."cargo:presenterm"]]
