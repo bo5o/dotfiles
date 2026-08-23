@@ -79,7 +79,6 @@
 "github:ribru17/ts_query_ls" = "3.16.0"
 "github:supabase-community/postgres-language-server" = { version = "0.25.7", rename_exe = "postgrestools" }
 "github:tummychow/git-absorb" = "0.9.0"
-"http:ncdu" = { url = "https://dev.yorhel.nl/download/ncdu-2.9.1-linux-x86_64.tar.gz", version = "2.9.1" }
 "npm:@agentclientprotocol/claude-agent-acp" = "0.70.0"
 "npm:@ansible/ansible-language-server" = "26.6.0"
 "npm:@microsoft/compose-language-service" = "1.0.0"
@@ -113,6 +112,13 @@
 "pipx:xonsh-lsp" = { version = "0.2.2", uvx_args = "--with-requirements {{ xdg_config_home }}/mise/pipx/xonsh-lsp.txt" }
 "pipx:yamllint" = { version = "1.38.0", uvx_args = "--with-requirements {{ xdg_config_home }}/mise/pipx/yamllint.txt" }
 "vfox:mise-plugins/vfox-postgres" = "17.10"
+
+[tools."http:ncdu"]
+version = "2.9.1"
+url = "https://dev.yorhel.nl/download/ncdu-{{ version }}-linux-x86_64.tar.gz"
+checksum_url = "https://dev.yorhel.nl/download/ncdu-{{ version }}-linux-x86_64.tar.gz.sha256"
+version_list_url = "https://dev.yorhel.nl/ncdu"
+version_regex = 'ncdu-(2\.[0-9.]+)-linux-x86_64\.tar\.gz'
 
 [tools."pipx:ansible"]
 version = "14.3.1"
