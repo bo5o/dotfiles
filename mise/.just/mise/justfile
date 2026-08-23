@@ -14,7 +14,7 @@ install *args:
 
 # compile pipx requirements (<pkg>.in -> <pkg>.txt with hashes)
 [script('xonsh')]
-lock *packages:
+pipx-bump *packages:
     pipx_dir = p'{{ pipx_dir }}'
     packages = '{{ packages }}'.split() or [infile.stem for infile in pipx_dir.glob('*.in')]
     tools = $(@toml cat @(pipx_dir.parent / 'config.toml'))['tools']
