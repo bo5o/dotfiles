@@ -1,4 +1,4 @@
-pipx_dir := canonicalize(home_directory() / ".config/mise" / "pipx")
+pipx_dir := canonicalize(config_directory() / "mise" / "pipx")
 
 [private]
 default:
