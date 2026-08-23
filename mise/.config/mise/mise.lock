@@ -1963,6 +1963,10 @@ backend = "pipx:vim-vint"
 version = "0.24.1"
 backend = "pipx:xonsh"
 
+[[tools."pipx:xonsh-lsp"]]
+version = "0.2.2"
+backend = "pipx:xonsh-lsp"
+
 [[tools.pre-commit]]
 version = "4.6.2"
 backend = "aqua:pre-commit/pre-commit"
