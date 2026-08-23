@@ -1,8 +1,18 @@
 ; Replaces (not extends) nvim-treesitter's just injections to add support for
-; `[script("lang")]` recipe attributes, which need an exclusion in the default
-; bash rule below (queries cannot negate a sibling pattern structurally, hence
-; the text-based #not-lua-match? on the whole recipe)
-
+; `[script("lang")]` recipe attributes, which need an exclusion in the default bash rule
+; below (queries cannot negate a sibling pattern structurally, hence the text-based
+; #not-lua-match? on the whole recipe)
+;
+; NOTE: since this file fully shadows the upstream queries, diff it against
+; https://github.com/nvim-treesitter/nvim-treesitter/blob/main/runtime/queries/just/injections.scm
+; every once in a while and port over any changes (based on upstream as of 2026-08; only
+; the bash-default exclusion and the script attribute rule are local additions).
+; Upstream may eventually gain `[script(...)]` support itself, at which point this file
+; can likely be deleted. Watch https://github.com/casey/tree-sitter-just/pull/211, which
+; adds injections for the bare `[script]` attribute (via `set script-interpreter`) but
+; not the inline `[script("lang")]` form handled here; it also exposes string_content
+; nodes, which would make the #offset! quote-stripping below unnecessary once
+; nvim-treesitter bumps its pinned just revision.
 ((comment) @injection.content
   (#set! injection.language "comment"))
 
