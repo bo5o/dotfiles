@@ -1987,7 +1987,7 @@ backend = "pipx:gitlint-core"
 uvx_args = "--with-requirements /home/boso/.config/mise/pipx/gitlint-core.txt"
 
 [[tools."pipx:llm"]]
-version = "0.32"
+version = "0.33"
 backend = "pipx:llm"
 
 [tools."pipx:llm".options]
