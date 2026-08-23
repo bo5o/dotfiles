@@ -582,7 +582,6 @@ return {
         yaml = { "yamllint" },
         ["yaml.ansible"] = { "ansible_lint" },
         -- md.j2 is linted by the rumdl language server
-        vimwiki = { "markdownlint" },
         dockerfile = { "hadolint" },
         html = { "htmlhint" },
         css = { "stylelint" },

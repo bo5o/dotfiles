@@ -362,7 +362,6 @@ return {
       exclude = {
         filetypes = {
           "help",
-          "vimwiki",
           "markdown",
           "startify",
           "NvimTree",
