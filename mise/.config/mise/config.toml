@@ -91,7 +91,6 @@
 "npm:dockerfile-language-server-nodejs" = "0.15.0"
 "npm:htmlhint" = "1.9.2"
 "npm:intelephense" = "1.18.5"
-"npm:markdownlint-cli" = "0.49.1"
 "npm:markuplint" = "4.18.3"
 "npm:oxfmt" = "0.64.0"
 "npm:sql-formatter" = "15.8.2"
