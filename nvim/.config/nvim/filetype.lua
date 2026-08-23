@@ -30,8 +30,11 @@ vim.filetype.add({
     [".markdownlintrc"] = "json",
     ["Caddyfile"] = "caddy",
     ["Jenkinsfile"] = "groovy",
+    [".xonshrc"] = "xonsh",
+    ["xonshrc"] = "xonsh",
   },
   extension = {
+    xsh = "xonsh",
     jinja = "jinja",
     jinja2 = "jinja",
     j2 = "jinja",

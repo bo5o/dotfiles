@@ -62,6 +62,20 @@ return {
       )
     end,
     config = function()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "TSUpdate",
+        callback = function()
+          require("nvim-treesitter.parsers").xonsh = {
+            install_info = {
+              url = "https://github.com/FoamScience/tree-sitter-xonsh",
+              revision = "e6811e882eff67819ab4d724929a1766eb4cb606",
+              queries = "queries",
+            },
+            tier = 3,
+          }
+        end,
+      })
+
       local languages = {
         "bash",
         "caddy",
@@ -108,9 +122,10 @@ return {
         "vim",
         "vue",
         "xml",
+        "xonsh",
       }
 
-      local highlight_disable = { just = true }
+      local highlight_disable = {}
 
       require("nvim-treesitter").install(languages)
 
