@@ -444,6 +444,26 @@ return {
             end, { desc = "Organize imports", buffer = bufnr, silent = true })
           end,
         },
+        -- not in the nvim-lspconfig registry yet, so the full config lives here
+        -- (https://github.com/FoamScience/xonsh-language-server)
+        xonsh_lsp = {
+          cmd = { "xonsh-lsp" },
+          filetypes = { "xonsh" },
+          root_markers = { ".xonshrc", "xonshrc", ".git" },
+          init_options = {
+            pythonBackend = "basedpyright",
+          },
+          -- forwarded transparently to the basedpyright backend
+          ---@type lspconfig.settings.basedpyright
+          settings = {
+            basedpyright = {
+              disableOrganizeImports = true,
+              analysis = {
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+        },
         yamlls = {
           ---@type lspconfig.settings.yamlls
           settings = {
