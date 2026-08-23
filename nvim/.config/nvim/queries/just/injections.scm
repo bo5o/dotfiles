@@ -11,7 +11,7 @@
 ; can likely be deleted. Watch https://github.com/casey/tree-sitter-just/pull/211, which
 ; adds injections for the bare `[script]` attribute (via `set script-interpreter`) but
 ; not the inline `[script("lang")]` form handled here; it also exposes string_content
-; nodes, which would make the #offset! quote-stripping below unnecessary once
+; nodes, which would make the #gsub! quote-stripping below unnecessary once
 ; nvim-treesitter bumps its pinned just revision.
 ((comment) @injection.content
   (#set! injection.language "comment"))
@@ -35,7 +35,10 @@
   (#set! injection.language "bash"))
 
 ; Recipes with a `[script("lang")]` attribute are written in that language;
-; the #offset! strips the quotes from the attribute argument
+; the #gsub! strips the quotes from the attribute argument. It must be #gsub!
+; (which sets metadata.text) rather than #offset! (which adjusts the range):
+; range metadata is ignored by get_node_text for string sources, and conform's
+; injected formatter resolves injections through a string parser
 (recipe
   (attribute
     (identifier) @_attr
@@ -43,7 +46,7 @@
     argument: (string) @injection.language)
   (recipe_body) @injection.content
   (#eq? @_attr "script")
-  (#offset! @injection.language 0 1 0 -1)
+  (#gsub! @injection.language "^[\"'](.*)[\"']$" "%1")
   (#set! injection.include-children))
 
 ; For shebang recipes, use the shebang executable name as the language by default
