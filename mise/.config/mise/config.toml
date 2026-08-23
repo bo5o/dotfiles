@@ -56,7 +56,7 @@ age = "1.3.1"
 ast-grep = "0.45.1"
 bat = "0.26.1"
 bottom = "0.14.8"
-cargo-binstall = "1.21.1"
+cargo-binstall = "1.22.0"
 claude-code = "2.1.239"
 delta = "0.19.2"
 difftastic = { version = "0.70.0", exe = "difft" }
