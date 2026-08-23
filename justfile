@@ -16,6 +16,9 @@ upgrade:
     -just yazi upgrade
     -just zsh upgrade
 
+audit:
+    just mise audit
+
 install:
     -just mise install
     -just yazi install
