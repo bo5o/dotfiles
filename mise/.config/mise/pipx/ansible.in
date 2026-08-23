@@ -1,0 +1,6 @@
+ansible
+ansible-core
+ansible-dev-tools
+ansible-lint
+docker
+bitwarden-sdk

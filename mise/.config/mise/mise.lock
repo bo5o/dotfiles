@@ -1958,53 +1958,82 @@ version = "14.3.1"
 backend = "pipx:ansible"
 
 [tools."pipx:ansible".options]
-uvx_args = "--with-executables-from ansible-core --with-executables-from ansible-dev-tools --with-executables-from ansible-lint --with docker --with bitwarden-sdk"
+uvx_args = """
+--with-executables-from ansible-core
+--with-executables-from ansible-dev-tools
+--with-executables-from ansible-lint
+--with-requirements /home/boso/.config/mise/pipx/ansible.txt
+"""
 
 [[tools."pipx:basedpyright"]]
 version = "1.39.10"
 backend = "pipx:basedpyright"
 
+[tools."pipx:basedpyright".options]
+uvx_args = "--with-requirements /home/boso/.config/mise/pipx/basedpyright.txt"
+
 [[tools."pipx:djlint"]]
 version = "1.44.2"
 backend = "pipx:djlint"
+
+[tools."pipx:djlint".options]
+uvx_args = "--with-requirements /home/boso/.config/mise/pipx/djlint.txt"
 
 [[tools."pipx:gitlint-core"]]
 version = "0.19.1"
 backend = "pipx:gitlint-core"
 
 [tools."pipx:gitlint-core".options]
-uvx_args = "--with gitlint"
+uvx_args = "--with-requirements /home/boso/.config/mise/pipx/gitlint-core.txt"
 
 [[tools."pipx:llm"]]
 version = "0.32"
 backend = "pipx:llm"
 
 [tools."pipx:llm".options]
-uvx_args = "--with llm-fragments-github --with llm-anthropic --with llm-gemini --with llm-commit --with llm-templates-fabric --with llm-hacker-news --with llm-fragments-pdf --with pymupdf-layout --with llm-docs"
+uvx_args = "--with-requirements /home/boso/.config/mise/pipx/llm.txt"
 
 [[tools."pipx:mbake"]]
 version = "1.4.6"
 backend = "pipx:mbake"
 
+[tools."pipx:mbake".options]
+uvx_args = "--with-requirements /home/boso/.config/mise/pipx/mbake.txt"
+
 [[tools."pipx:sqlfluff"]]
 version = "4.3.0"
 backend = "pipx:sqlfluff"
+
+[tools."pipx:sqlfluff".options]
+uvx_args = "--with-requirements /home/boso/.config/mise/pipx/sqlfluff.txt"
 
 [[tools."pipx:sqruff"]]
 version = "0.40.0"
 backend = "pipx:sqruff"
 
+[tools."pipx:sqruff".options]
+uvx_args = "--with-requirements /home/boso/.config/mise/pipx/sqruff.txt"
+
 [[tools."pipx:vim-vint"]]
 version = "0.3.21"
 backend = "pipx:vim-vint"
+
+[tools."pipx:vim-vint".options]
+uvx_args = "--with-requirements /home/boso/.config/mise/pipx/vim-vint.txt"
 
 [[tools."pipx:xonsh"]]
 version = "0.24.1"
 backend = "pipx:xonsh"
 
+[tools."pipx:xonsh".options]
+uvx_args = "--with-requirements /home/boso/.config/mise/pipx/xonsh.txt"
+
 [[tools."pipx:xonsh-lsp"]]
 version = "0.2.2"
 backend = "pipx:xonsh-lsp"
+
+[tools."pipx:xonsh-lsp".options]
+uvx_args = "--with-requirements /home/boso/.config/mise/pipx/xonsh-lsp.txt"
 
 [[tools.pre-commit]]
 version = "4.6.2"

@@ -1,3 +1,5 @@
+pipx_dir := canonicalize(home_directory() / ".config/mise" / "pipx")
+
 [private]
 default:
     @just --justfile {{ source_file() }} --list --unsorted
@@ -9,3 +11,23 @@ upgrade:
 # install mise tools
 install *args:
     mise i {{ args }}
+
+# compile pipx requirements (<pkg>.in -> <pkg>.txt with hashes)
+[script('xonsh')]
+lock *packages:
+    pipx_dir = p'{{ pipx_dir }}'
+    packages = '{{ packages }}'.split() or [infile.stem for infile in pipx_dir.glob('*.in')]
+    tools = $(@toml cat @(pipx_dir.parent / 'config.toml'))['tools']
+    for pkg in packages:
+        spec = tools[f'pipx:{pkg}']
+        version = spec['version'] if isinstance(spec, dict) else spec
+        uv pip compile --quiet --universal --generate-hashes --upgrade \
+            --no-header --no-annotate \
+            --upgrade-package @(f'{pkg}=={version}') \
+            --output-file @(pipx_dir / f'{pkg}.txt') \
+            @(pipx_dir / f'{pkg}.in')
+        print(f'locked {pkg}=={version}')
+
+# scan pipx requirements for vulnerabilities
+audit:
+    trivy fs --scanners vuln --file-patterns 'pip:.*\.txt' --exit-code 1 {{ quote(pipx_dir) }}

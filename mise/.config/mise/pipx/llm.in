@@ -1,0 +1,12 @@
+llm
+llm-fragments-github
+llm-anthropic
+llm-gemini
+llm-commit
+llm-templates-fabric
+llm-hacker-news
+llm-fragments-pdf
+llm-docs
+pymupdf-layout
+# llm-anthropic 0.26 still passes temperature=, which anthropic SDK 1.x removed
+anthropic<1
