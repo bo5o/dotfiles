@@ -673,6 +673,7 @@ return {
           ocaml = { "ocamlformat" },
           query = { lsp_format = "prefer" },
           caddy = { "caddyfmt" },
+          xonsh = { "xonsh_format" },
           vue = { "oxfmt", lsp_format = "never" },
           ["_"] = { "trim_whitespace" },
         },
@@ -702,6 +703,11 @@ return {
           },
           hujsonfmt = {
             command = "hujsonfmt",
+            stdin = true,
+          },
+          xonsh_format = {
+            command = "xonsh",
+            args = { "format", "-" },
             stdin = true,
           },
         },
