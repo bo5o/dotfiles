@@ -279,10 +279,30 @@ __xonsh__.commands_cache.predict_threadable(['ssh'])   # False
 
 ```xsh
 $(@lines ls /)              # ['/bin', '/etc', '/home']
+$(@stream cat file)         # str even when $XONSH_SUBPROC_OUTPUT_FORMAT = 'list_lines'
 $(@json curl -s httpbin.org/json)   # parsed dict
+$(@jsonl cat data.jsonl)    # list of parsed objects, one per line
 y = $(@yaml dig +yaml google.com)   # parsed yaml
+$(@toml cat pyproject.toml) # parsed dict
 podman exec -it @($(@json podman ps --format json)['ID']) bash
+
+# Path objects from output
+$(@path echo '/bin').exists()
+[p.exists() for p in $(@paths echo '/bin\n/etc')]
+
+# XML -> xml.etree.ElementTree.Element (.tag .attrib .text .find() .findall())
+feed = $(@xml curl -s https://github.com/xonsh/xonsh/releases.atom)
+ns = {'a': 'http://www.w3.org/2005/Atom'}
+[e.find('a:title', ns).text for e in feed.findall('a:entry', ns)[:5]]
+# @lxml: same but lxml.etree._Element with full XPath (needs `xpip install lxml`)
+$(@lxml curl -s url).xpath('//a:entry/a:title/text()', namespaces=ns)
+
+# per-command error control (see also $XONSH_SUBPROC_*_RAISE_ERROR)
+r = !(@error_raise ls nonono)    # raise on nonzero exit, even inside &&/|| chains
+r = !(@error_ignore ls nonono)   # never raise; wins over $XONSH_SUBPROC_RAISE_ERROR
 ```
+
+`@thread` / `@unthread` are also command decorators — see Threading gotchas above.
 
 ## Bash → xonsh quick map
 
