@@ -1914,6 +1914,45 @@ backend = "npm:yaml-language-server"
 version = "0.64.0"
 backend = "npm:oxfmt"
 
+[[tools.oxlint]]
+version = "1.79.0"
+backend = "aqua:oxc-project/oxc/oxlint"
+
+[tools.oxlint."platforms.linux-arm64"]
+checksum = "sha256:47ae11cb1745202e26652a633449065f85bb974b5404d932d673995f39e9a724"
+url = "https://github.com/oxc-project/oxc/releases/download/apps_v1.79.0/oxlint-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/519609915"
+
+[tools.oxlint."platforms.linux-arm64-musl"]
+checksum = "sha256:f3d9d662cc686c4f774663121da89dba4af10a5248bfbb6cf98db49cc27546e7"
+url = "https://github.com/oxc-project/oxc/releases/download/apps_v1.79.0/oxlint-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/519609917"
+
+[tools.oxlint."platforms.linux-x64"]
+checksum = "sha256:c7ddeff22c8d5ebd23648ff0917dd67a85178d86937acc3300ff4e974faaa042"
+url = "https://github.com/oxc-project/oxc/releases/download/apps_v1.79.0/oxlint-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/519609967"
+
+[tools.oxlint."platforms.linux-x64-musl"]
+checksum = "sha256:cdecc9297885c2e88c510c52d32f880cdd3e7372041d654fde2525be5235492a"
+url = "https://github.com/oxc-project/oxc/releases/download/apps_v1.79.0/oxlint-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/519609969"
+
+[tools.oxlint."platforms.macos-arm64"]
+checksum = "sha256:930e3656277ca6ad135fe7bda18e1f64886e0f8d0755df8b19cd6b499f12931b"
+url = "https://github.com/oxc-project/oxc/releases/download/apps_v1.79.0/oxlint-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/519609912"
+
+[tools.oxlint."platforms.macos-x64"]
+checksum = "sha256:debd377ff3e7929743c440c6f23546a99658f7b0271725718c45197ace49bc5a"
+url = "https://github.com/oxc-project/oxc/releases/download/apps_v1.79.0/oxlint-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/519609954"
+
+[tools.oxlint."platforms.windows-x64"]
+checksum = "sha256:bd706727f9fb5e5e343fe3ad8166dfd4755b6843673c7451eb40a58a7df384c8"
+url = "https://github.com/oxc-project/oxc/releases/download/apps_v1.79.0/oxlint-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/519609957"
+
 [[tools."pipx:ansible"]]
 version = "14.3.1"
 backend = "pipx:ansible"
