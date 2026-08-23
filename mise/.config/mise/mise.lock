@@ -2902,11 +2902,6 @@ version = "4.18.3"
 backend = "npm:markuplint"
 specifiers = ["4.18.3"]
 
-[[tools."npm:mcp-hub"]]
-version = "4.2.1"
-backend = "npm:mcp-hub"
-specifiers = ["4.2.1"]
-
 [[tools."npm:oxfmt"]]
 version = "0.64.0"
 backend = "npm:oxfmt"
