@@ -103,6 +103,6 @@
   "showThinkingSummaries": true,
   "theme": "dark-ansi",
   "editorMode": "vim",
-  "useAutoModeDuringPlan": false,
-  "autoCompactEnabled": true
+  "autoCompactEnabled": true,
+  "useAutoModeDuringPlan": false
 }
