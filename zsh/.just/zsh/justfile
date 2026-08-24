@@ -10,27 +10,27 @@ tool_dir := join(env("ZSH", "~/.oh-my-zsh"), "tools")
 upgrade:
     @echo -n "Updating github-cli completions..."
     @mkdir -p {{ plugin_dir }}/gh && \
-        mise x github-cli -- gh completion -s zsh > {{ plugin_dir }}/gh/_gh
+        mise x "aqua:cli/cli" -- gh completion -s zsh > {{ plugin_dir }}/gh/_gh
     @echo "DONE"
 
     @echo -n "Updating just completions..."
     @mkdir -p {{ plugin_dir }}/just && \
-        mise x just -- env JUST_COMPLETE=zsh just > {{ plugin_dir }}/just/_just
+        mise x "aqua:casey/just" -- env JUST_COMPLETE=zsh just > {{ plugin_dir }}/just/_just
     @echo "DONE"
 
     @echo -n "Updating ast-grep completions..."
     @mkdir -p {{ plugin_dir }}/sg && \
-        mise x ast-grep -- ast-grep completions zsh > {{ plugin_dir }}/sg/_sg
+        mise x "aqua:ast-grep/ast-grep" -- ast-grep completions zsh > {{ plugin_dir }}/sg/_sg
     @echo "DONE"
 
     @echo -n "Updating jj completions..."
     @mkdir -p {{ plugin_dir }}/jj && \
-        mise x jj -- jj util completion zsh > {{ plugin_dir }}/jj/_jj
+        mise x "aqua:jj-vcs/jj" -- jj util completion zsh > {{ plugin_dir }}/jj/_jj
     @echo "DONE"
 
     @echo -n "Updating restic completions..."
     @mkdir -p {{ plugin_dir }}/restic && \
-        mise x restic -- restic -q generate --zsh-completion {{ plugin_dir }}/restic/_restic
+        mise x "aqua:restic/restic" -- restic -q generate --zsh-completion {{ plugin_dir }}/restic/_restic
     @echo "DONE"
 
     @echo -n "Updating hcloud completions..."
@@ -40,7 +40,7 @@ upgrade:
 
     @echo -n "Updating ruff completions..."
     @mkdir -p {{ plugin_dir }}/ruff && \
-        mise x ruff -- ruff generate-shell-completion zsh > {{ plugin_dir }}/ruff/_ruff
+        mise x "aqua:astral-sh/ruff" -- ruff generate-shell-completion zsh > {{ plugin_dir }}/ruff/_ruff
     @echo "DONE"
 
     @echo -n "Updating gitlint completions..."
@@ -55,22 +55,22 @@ upgrade:
 
     @echo -n "Updating ripgrep completions..."
     @mkdir -p {{ plugin_dir }}/rg && \
-        mise x ripgrep -- rg --generate complete-zsh > {{ plugin_dir }}/rg/_rg
+        mise x "aqua:BurntSushi/ripgrep" -- rg --generate complete-zsh > {{ plugin_dir }}/rg/_rg
     @echo "DONE"
 
     @echo -n "Updating workmux completions..."
     @mkdir -p {{ plugin_dir }}/workmux && \
-        mise x workmux -- workmux completions zsh > {{ plugin_dir }}/workmux/_workmux
+        mise x "github:raine/workmux" -- workmux completions zsh > {{ plugin_dir }}/workmux/_workmux
     @echo "DONE"
 
     @echo -n "Updating lima completions..."
     @mkdir -p {{ plugin_dir }}/lima && \
-        mise x lima -- limactl completion zsh > {{ plugin_dir }}/lima/_lima
+        mise x "aqua:lima-vm/lima" -- limactl completion zsh > {{ plugin_dir }}/lima/_lima
     @echo "DONE"
 
     @echo -n "Updating bat completions..."
     @mkdir -p {{ plugin_dir }}/bat && \
-        mise x bat -- bat --completion zsh > {{ plugin_dir }}/bat/_bat
+        mise x "aqua:sharkdp/bat" -- bat --completion zsh > {{ plugin_dir }}/bat/_bat
     @echo "DONE"
 
     @echo -n "Updating fj completions..."
@@ -80,7 +80,7 @@ upgrade:
 
     @echo -n "Updating fnox completions..."
     @mkdir -p {{ plugin_dir }}/fnox && \
-        mise x fnox -- fnox completion zsh > {{ plugin_dir }}/fnox/_fnox
+        mise x "github:jdx/fnox" -- fnox completion zsh > {{ plugin_dir }}/fnox/_fnox
     @echo "DONE"
 
     @echo -n "Updating sem completions..."
@@ -90,22 +90,22 @@ upgrade:
 
     @echo -n "Updating marimo completions..."
     @mkdir -p {{ plugin_dir }}/marimo && \
-        _MARIMO_COMPLETE=zsh_source mise x pipx:marimo -- marimo > {{ plugin_dir }}/marimo/_marimo
+        _MARIMO_COMPLETE=zsh_source mise x "pipx:marimo" -- marimo > {{ plugin_dir }}/marimo/_marimo
     @echo "DONE"
 
     @echo -n "Updating xh completions..."
     @mkdir -p {{ plugin_dir }}/xh && \
-        mise x xh -- xh --generate complete-zsh > {{ plugin_dir }}/xh/_xh
+        mise x "aqua:ducaale/xh" -- xh --generate complete-zsh > {{ plugin_dir }}/xh/_xh
     @echo "DONE"
 
     @echo -n "Updating dive completions..."
     @mkdir -p {{ plugin_dir }}/dive && \
-        mise x dive -- dive completion zsh > {{ plugin_dir }}/dive/_dive
+        mise x "aqua:wagoodman/dive" -- dive completion zsh > {{ plugin_dir }}/dive/_dive
     @echo "DONE"
 
     @echo -n "Updating rumdl completions..."
     @mkdir -p {{ plugin_dir }}/rumdl && \
-        mise x rumdl -- rumdl completions zsh > {{ plugin_dir }}/rumdl/_rumdl
+        mise x "aqua:rvben/rumdl" -- rumdl completions zsh > {{ plugin_dir }}/rumdl/_rumdl
     @echo "DONE"
 
     @echo -n "Updating hl completions..."
