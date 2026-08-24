@@ -18,6 +18,20 @@ Use [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) to symlink th
 stow nvim
 ```
 
+## mise
+
+The `pipx:` tools pin their dependencies with hash-locked requirements files in
+`mise/.config/mise/pipx/`. mise expands templates in tool options before writing
+`mise.lock`, so referencing them via `{{ xdg_config_home }}` would bake the
+current machine's home directory into the lockfile. Instead `uvx_args` points at
+the machine-independent path `/usr/local/share/dotfiles/mise/pipx`, which each
+machine links once:
+
+```sh
+just stow mise
+just mise link-pipx
+```
+
 ## GNOME
 
 ### Keybindings

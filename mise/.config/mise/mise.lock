@@ -2938,7 +2938,7 @@ uvx_args = """
 --with-executables-from ansible-core
 --with-executables-from ansible-dev-tools
 --with-executables-from ansible-lint
---with-requirements /home/boso/.config/mise/pipx/ansible.txt
+--with-requirements /usr/local/share/dotfiles/mise/pipx/ansible.txt
 """
 
 [[tools."pipx:basedpyright"]]
@@ -2947,7 +2947,7 @@ backend = "pipx:basedpyright"
 specifiers = ["1.39.10"]
 
 [tools."pipx:basedpyright".options]
-uvx_args = "--with-requirements /home/boso/.config/mise/pipx/basedpyright.txt"
+uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/basedpyright.txt"
 
 [[tools."pipx:djlint"]]
 version = "1.44.2"
@@ -2955,7 +2955,7 @@ backend = "pipx:djlint"
 specifiers = ["1.44.2"]
 
 [tools."pipx:djlint".options]
-uvx_args = "--with-requirements /home/boso/.config/mise/pipx/djlint.txt"
+uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/djlint.txt"
 
 [[tools."pipx:gitlint-core"]]
 version = "0.19.1"
@@ -2963,7 +2963,7 @@ backend = "pipx:gitlint-core"
 specifiers = ["0.19.1"]
 
 [tools."pipx:gitlint-core".options]
-uvx_args = "--with-requirements /home/boso/.config/mise/pipx/gitlint-core.txt"
+uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/gitlint-core.txt"
 
 [[tools."pipx:llm"]]
 version = "0.33"
@@ -2971,7 +2971,7 @@ backend = "pipx:llm"
 specifiers = ["0.33"]
 
 [tools."pipx:llm".options]
-uvx_args = "--with-requirements /home/boso/.config/mise/pipx/llm.txt"
+uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/llm.txt"
 
 [[tools."pipx:mbake"]]
 version = "1.4.6"
@@ -2979,7 +2979,7 @@ backend = "pipx:mbake"
 specifiers = ["1.4.6"]
 
 [tools."pipx:mbake".options]
-uvx_args = "--with-requirements /home/boso/.config/mise/pipx/mbake.txt"
+uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/mbake.txt"
 
 [[tools."pipx:sqlfluff"]]
 version = "4.3.0"
@@ -2987,7 +2987,7 @@ backend = "pipx:sqlfluff"
 specifiers = ["4.3.0"]
 
 [tools."pipx:sqlfluff".options]
-uvx_args = "--with-requirements /home/boso/.config/mise/pipx/sqlfluff.txt"
+uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/sqlfluff.txt"
 
 [[tools."pipx:sqruff"]]
 version = "0.40.0"
@@ -2995,7 +2995,7 @@ backend = "pipx:sqruff"
 specifiers = ["0.40.0"]
 
 [tools."pipx:sqruff".options]
-uvx_args = "--with-requirements /home/boso/.config/mise/pipx/sqruff.txt"
+uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/sqruff.txt"
 
 [[tools."pipx:vim-vint"]]
 version = "0.3.21"
@@ -3003,7 +3003,7 @@ backend = "pipx:vim-vint"
 specifiers = ["0.3.21"]
 
 [tools."pipx:vim-vint".options]
-uvx_args = "--with-requirements /home/boso/.config/mise/pipx/vim-vint.txt"
+uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/vim-vint.txt"
 
 [[tools."pipx:xonsh"]]
 version = "0.24.1"
@@ -3011,7 +3011,7 @@ backend = "pipx:xonsh"
 specifiers = ["0.24.1"]
 
 [tools."pipx:xonsh".options]
-uvx_args = "--with-requirements /home/boso/.config/mise/pipx/xonsh.txt"
+uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/xonsh.txt"
 
 [[tools."pipx:xonsh-lsp"]]
 version = "0.2.2"
@@ -3019,7 +3019,7 @@ backend = "pipx:xonsh-lsp"
 specifiers = ["0.2.2"]
 
 [tools."pipx:xonsh-lsp".options]
-uvx_args = "--with-requirements /home/boso/.config/mise/pipx/xonsh-lsp.txt"
+uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/xonsh-lsp.txt"
 
 [[tools."pipx:yamllint"]]
 version = "1.38.0"
@@ -3027,7 +3027,7 @@ backend = "pipx:yamllint"
 specifiers = ["1.38.0"]
 
 [tools."pipx:yamllint".options]
-uvx_args = "--with-requirements /home/boso/.config/mise/pipx/yamllint.txt"
+uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/yamllint.txt"
 
 [[tools.python]]
 version = "3.14.7"

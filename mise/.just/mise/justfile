@@ -1,4 +1,6 @@
 pipx_dir := canonicalize(config_directory() / "mise" / "pipx")
+# machine-independent path referenced by uvx_args, keeps mise.lock portable
+pipx_link := "/usr/local/share/dotfiles/mise/pipx"
 
 [private]
 default:
@@ -11,6 +13,12 @@ upgrade:
 # install mise tools
 install *args:
     mise i {{ args }}
+
+# link the pipx requirements to a machine-independent path (run once per machine)
+link-pipx:
+    sudo mkdir -p {{ quote(parent_directory(pipx_link)) }}
+    sudo ln -sfnT {{ quote(pipx_dir) }} {{ quote(pipx_link) }}
+    @ls -l {{ quote(pipx_link) }}
 
 # compile pipx requirements (<pkg>.in -> <pkg>.txt with hashes)
 [script('xonsh')]

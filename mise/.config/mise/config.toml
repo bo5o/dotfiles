@@ -98,17 +98,17 @@
 "npm:vim-language-server" = "2.3.1"
 "npm:vscode-langservers-extracted" = "4.10.0"
 "npm:yaml-language-server" = "1.24.0"
-"pipx:basedpyright" = { version = "1.39.10", uvx_args = "--with-requirements {{ xdg_config_home }}/mise/pipx/basedpyright.txt" }
-"pipx:djlint" = { version = "1.44.2", uvx_args = "--with-requirements {{ xdg_config_home }}/mise/pipx/djlint.txt" }
-"pipx:gitlint-core" = { version = "0.19.1", uvx_args = "--with-requirements {{ xdg_config_home }}/mise/pipx/gitlint-core.txt" }
-"pipx:llm" = { version = "0.33", uvx_args = "--with-requirements {{ xdg_config_home }}/mise/pipx/llm.txt" }
-"pipx:mbake" = { version = "1.4.6", uvx_args = "--with-requirements {{ xdg_config_home }}/mise/pipx/mbake.txt" }
-"pipx:sqlfluff" = { version = "4.3.0", uvx_args = "--with-requirements {{ xdg_config_home }}/mise/pipx/sqlfluff.txt" }
-"pipx:sqruff" = { version = "0.40.0", uvx_args = "--with-requirements {{ xdg_config_home }}/mise/pipx/sqruff.txt" }
-"pipx:vim-vint" = { version = "0.3.21", uvx_args = "--with-requirements {{ xdg_config_home }}/mise/pipx/vim-vint.txt" }
-"pipx:xonsh" = { version = "0.24.1", uvx_args = "--with-requirements {{ xdg_config_home }}/mise/pipx/xonsh.txt" }
-"pipx:xonsh-lsp" = { version = "0.2.2", uvx_args = "--with-requirements {{ xdg_config_home }}/mise/pipx/xonsh-lsp.txt" }
-"pipx:yamllint" = { version = "1.38.0", uvx_args = "--with-requirements {{ xdg_config_home }}/mise/pipx/yamllint.txt" }
+"pipx:basedpyright" = { version = "1.39.10", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/basedpyright.txt" }
+"pipx:djlint" = { version = "1.44.2", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/djlint.txt" }
+"pipx:gitlint-core" = { version = "0.19.1", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/gitlint-core.txt" }
+"pipx:llm" = { version = "0.33", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/llm.txt" }
+"pipx:mbake" = { version = "1.4.6", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/mbake.txt" }
+"pipx:sqlfluff" = { version = "4.3.0", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/sqlfluff.txt" }
+"pipx:sqruff" = { version = "0.40.0", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/sqruff.txt" }
+"pipx:vim-vint" = { version = "0.3.21", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/vim-vint.txt" }
+"pipx:xonsh" = { version = "0.24.1", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/xonsh.txt" }
+"pipx:xonsh-lsp" = { version = "0.2.2", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/xonsh-lsp.txt" }
+"pipx:yamllint" = { version = "1.38.0", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/yamllint.txt" }
 "vfox:mise-plugins/vfox-postgres" = "17.10"
 
 [tools."http:ncdu"]
@@ -124,7 +124,7 @@ uvx_args = """
 --with-executables-from ansible-core
 --with-executables-from ansible-dev-tools
 --with-executables-from ansible-lint
---with-requirements {{ xdg_config_home }}/mise/pipx/ansible.txt
+--with-requirements /usr/local/share/dotfiles/mise/pipx/ansible.txt
 """
 
 [settings]
