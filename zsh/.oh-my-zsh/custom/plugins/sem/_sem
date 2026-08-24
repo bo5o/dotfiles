@@ -100,8 +100,8 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (grep)
 _arguments "${_arguments_options[@]}" : \
-'-i[Case-insensitive match (disables the trigram prefilter — see QUERY-INDEX.md'\''s out-of-scope list)]' \
-'--ignore-case[Case-insensitive match (disables the trigram prefilter — see QUERY-INDEX.md'\''s out-of-scope list)]' \
+'-i[Case-insensitive match (disables the trigram prefilter)]' \
+'--ignore-case[Case-insensitive match (disables the trigram prefilter)]' \
 '--json[Output as JSON (one object\: hits, candidate_files, total_files, origin)]' \
 '-h[Print help]' \
 '--help[Print help]' \
@@ -187,7 +187,7 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (mcp)
 _arguments "${_arguments_options[@]}" : \
-'--resident[Removed (QUERY-INDEX.md §7 item 5 / semx-woe)\: used to spawn the per-repo sidecar socket. The mmap query index answers cold in 6-7ms, deleting the sidecar'\''s reason to exist. Kept as a backward-compatible no-op (exits immediately, does nothing) so an existing \`sem setup\` SessionStart hook that still invokes \`sem mcp --resident\` doesn'\''t error]' \
+'--resident[Removed\: used to spawn the per-repo sidecar socket. The mmap query index answers cold in 6-7ms, deleting the sidecar'\''s reason to exist. Kept as a backward-compatible no-op (exits immediately, does nothing) so an existing \`sem setup\` SessionStart hook that still invokes \`sem mcp --resident\` doesn'\''t error]' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
@@ -742,7 +742,7 @@ _sem_commands() {
 'find:Find entity definitions by name — answers from the mmap query index when one exists (cold-process, <10ms on a large repo); falls back to a fresh build otherwise, which then leaves an index for next time' \
 'callers:Show direct callers of an entity (who calls/references it) — the index'\''s reverse postings, same freshness/fallback discipline as \`find\`' \
 'refs:Show direct refs of an entity (what it calls/references) — the index'\''s forward postings, same freshness/fallback discipline as \`find\`' \
-'grep:Search file text — rg-compatible \`file\:line\:text\` output, served from the mmap query index'\''s trigram postings when one exists (cold process, target <50ms on a large repo); falls back to a plain scan otherwise. Pattern is always a regex (same default as rg without \`-F\`); patterns with no usable trigram (e.g. \`-i\`, short literals, unconstrained alternation) degrade to an honest full scan rather than a wrong answer. See QUERY-INDEX.md'\''s trigram section' \
+'grep:Search file text — rg-compatible \`file\:line\:text\` output, served from the mmap query index'\''s trigram postings when one exists (cold process, target <50ms on a large repo); falls back to a plain scan otherwise. Pattern is always a regex (same default as rg without \`-F\`); patterns with no usable trigram (e.g. \`-i\`, short literals, unconstrained alternation) degrade to an honest full scan rather than a wrong answer' \
 'graph:Show the full entity dependency graph' \
 'blame:Show semantic blame — who last modified each entity' \
 'hook:Internal plumbing for agent-harness hooks (hidden)' \
@@ -947,7 +947,7 @@ _sem__subcmd__help_commands() {
 'find:Find entity definitions by name — answers from the mmap query index when one exists (cold-process, <10ms on a large repo); falls back to a fresh build otherwise, which then leaves an index for next time' \
 'callers:Show direct callers of an entity (who calls/references it) — the index'\''s reverse postings, same freshness/fallback discipline as \`find\`' \
 'refs:Show direct refs of an entity (what it calls/references) — the index'\''s forward postings, same freshness/fallback discipline as \`find\`' \
-'grep:Search file text — rg-compatible \`file\:line\:text\` output, served from the mmap query index'\''s trigram postings when one exists (cold process, target <50ms on a large repo); falls back to a plain scan otherwise. Pattern is always a regex (same default as rg without \`-F\`); patterns with no usable trigram (e.g. \`-i\`, short literals, unconstrained alternation) degrade to an honest full scan rather than a wrong answer. See QUERY-INDEX.md'\''s trigram section' \
+'grep:Search file text — rg-compatible \`file\:line\:text\` output, served from the mmap query index'\''s trigram postings when one exists (cold process, target <50ms on a large repo); falls back to a plain scan otherwise. Pattern is always a regex (same default as rg without \`-F\`); patterns with no usable trigram (e.g. \`-i\`, short literals, unconstrained alternation) degrade to an honest full scan rather than a wrong answer' \
 'graph:Show the full entity dependency graph' \
 'blame:Show semantic blame — who last modified each entity' \
 'hook:Internal plumbing for agent-harness hooks (hidden)' \
