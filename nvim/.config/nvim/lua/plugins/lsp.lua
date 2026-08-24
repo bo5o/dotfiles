@@ -446,24 +446,50 @@ return {
         },
         -- not in the nvim-lspconfig registry yet, so the full config lives here
         -- (https://github.com/FoamScience/xonsh-language-server)
-        xonsh_lsp = {
-          cmd = { "xonsh-lsp" },
-          filetypes = { "xonsh" },
-          root_markers = { ".xonshrc", "xonshrc", ".git" },
-          init_options = {
-            pythonBackend = "basedpyright",
-          },
-          -- forwarded transparently to the basedpyright backend
+        xonsh_lsp = (function()
           ---@type lspconfig.settings.basedpyright
-          settings = {
+          local backend_settings = {
             basedpyright = {
               disableOrganizeImports = true,
               analysis = {
                 useLibraryCodeForTypes = true,
+                -- resolve `import xonsh` from the mise pipx install (inert in projects
+                -- that set top-level extraPaths)
+                extraPaths = vim.fn.glob(
+                  "~/.local/share/mise/installs/pipx-xonsh/latest/xonsh/lib/python3.*/site-packages",
+                  false,
+                  true
+                ),
+                diagnosticSeverityOverrides = {
+                  -- the xonsh-lsp stubs type most placeholders as Any, and xonsh itself
+                  -- is untyped, so the Unknown/Any strictness rules only produce noise
+                  -- in xonsh buffers
+                  reportAny = "none",
+                  reportGeneralTypeIssues = "none",
+                  reportUnknownVariableType = "none",
+                  reportUnknownMemberType = "none",
+                  reportUnknownArgumentType = "none",
+                  reportArgumentType = "none",
+                  reportMissingTypeStubs = "none",
+                },
               },
             },
-          },
-        },
+          }
+          return {
+            cmd = { "xonsh-lsp" },
+            filetypes = { "xonsh" },
+            root_markers = { ".xonshrc", "xonshrc", ".git" },
+            init_options = {
+              pythonBackend = "basedpyright",
+              -- xonsh-lsp 0.2.2 cannot forward workspace/configuration pulls to the
+              -- editor (pygls 2 dropped send_request_async) and drops settings sent
+              -- via didChangeConfiguration before the backend is up, so the settings
+              -- must ride along here as the fallback the pulls resolve against
+              backendSettings = backend_settings,
+            },
+            settings = backend_settings,
+          }
+        end)(),
         yamlls = {
           ---@type lspconfig.settings.yamlls
           settings = {
@@ -692,7 +718,8 @@ return {
           ocaml = { "ocamlformat" },
           query = { lsp_format = "prefer" },
           caddy = { "caddyfmt" },
-          xonsh = { "xonsh_format" },
+          -- is not working reliably
+          -- xonsh = { "xonsh_format" },
           vue = { "oxfmt", lsp_format = "never" },
           ["_"] = { "trim_whitespace" },
         },
