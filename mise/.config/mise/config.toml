@@ -7,7 +7,7 @@
 "aqua:LuaLS/lua-language-server" = "3.19.1"
 "aqua:Wilfred/difftastic" = { version = "0.70.0", exe = "difft" }
 "aqua:ajeetdsouza/zoxide" = "0.10.0"
-"aqua:anthropics/claude-code" = "2.1.240"
+"aqua:anthropics/claude-code" = "2.1.241"
 "aqua:antonmedv/fx" = "39.2.0"
 "aqua:apache/maven" = "3.9.16"
 "aqua:aquasecurity/trivy" = "0.74.0"
