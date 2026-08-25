@@ -36,7 +36,7 @@
 "aqua:lima-vm/lima" = "2.2.0"
 "aqua:mikefarah/yq" = "4.53.6"
 "aqua:mvdan/sh" = "3.13.1"
-"aqua:neovim/neovim" = "0.12.4"
+"aqua:neovim/neovim" = "0.12.5"
 "aqua:orhun/git-cliff" = "2.13.1"
 "aqua:oxc-project/oxc/oxlint" = "1.79.0"
 "aqua:pre-commit/pre-commit" = "4.6.2"
