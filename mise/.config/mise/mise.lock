@@ -3006,9 +3006,9 @@ specifiers = ["0.3.21"]
 uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/vim-vint.txt"
 
 [[tools."pipx:xonsh"]]
-version = "0.24.1"
+version = "0.24.2"
 backend = "pipx:xonsh"
-specifiers = ["0.24.1"]
+specifiers = ["0.24.2"]
 
 [tools."pipx:xonsh".options]
 uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/xonsh.txt"

@@ -106,7 +106,7 @@
 "pipx:sqlfluff" = { version = "4.3.0", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/sqlfluff.txt" }
 "pipx:sqruff" = { version = "0.40.0", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/sqruff.txt" }
 "pipx:vim-vint" = { version = "0.3.21", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/vim-vint.txt" }
-"pipx:xonsh" = { version = "0.24.1", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/xonsh.txt" }
+"pipx:xonsh" = { version = "0.24.2", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/xonsh.txt" }
 "pipx:xonsh-lsp" = { version = "0.2.2", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/xonsh-lsp.txt" }
 "pipx:yamllint" = { version = "1.38.0", uvx_args = "--with-requirements /usr/local/share/dotfiles/mise/pipx/yamllint.txt" }
 "vfox:mise-plugins/vfox-postgres" = "17.10"
