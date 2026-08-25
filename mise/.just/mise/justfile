@@ -31,10 +31,9 @@ pipx-bump *packages:
         version = spec['version'] if isinstance(spec, dict) else spec
         uv pip compile --quiet --universal --generate-hashes --upgrade \
             --no-header --no-annotate \
-            --upgrade-package @(f'{pkg}=={version}') \
             --output-file @(pipx_dir / f'{pkg}.txt') \
             @(pipx_dir / f'{pkg}.in')
-        print(f'locked {pkg}=={version}')
+        print(f'bumped {pkg}')
 
 # scan pipx requirements for vulnerabilities
 audit:
