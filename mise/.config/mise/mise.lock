@@ -1715,39 +1715,39 @@ url = "https://github.com/restic/restic/releases/download/v0.19.1/restic_0.19.1_
 url_api = "https://api.github.com/repos/restic/restic/releases/assets/466998668"
 
 [[tools."aqua:rust-lang/rust-analyzer"]]
-version = "2026-08-17"
+version = "2026-08-24"
 backend = "aqua:rust-lang/rust-analyzer"
-specifiers = ["2026-08-17"]
+specifiers = ["2026-08-24"]
 
 [tools."aqua:rust-lang/rust-analyzer"."platforms.linux-arm64"]
-checksum = "sha256:941ad31c4256eec3c8457257b0fcfb696d2b4f80c0e5a996f7375a92130c2447"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17/rust-analyzer-aarch64-unknown-linux-gnu.gz"
-url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/517708500"
+checksum = "sha256:3463f9115c725fc5dfb002431833ec83d1f1f9c4c35b76ad5f47b92c58a521f1"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-24/rust-analyzer-aarch64-unknown-linux-gnu.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/527179314"
 
 [tools."aqua:rust-lang/rust-analyzer"."platforms.linux-x64"]
-checksum = "sha256:a559eaa29920e4c12718fba101f2055f1da0ad8bc458ef9dc1a670778cc66901"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17/rust-analyzer-x86_64-unknown-linux-gnu.gz"
-url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/517708809"
+checksum = "sha256:c4d409690b98d84ce98174829362a59214825d72304fe2504f4b906a116b51fe"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-24/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/527179627"
 
 [tools."aqua:rust-lang/rust-analyzer"."platforms.linux-x64-musl"]
-checksum = "sha256:1b1aa9426883caa6a2fac24f9aa8da31556394f27779591b749b01732b6914c5"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17/rust-analyzer-x86_64-unknown-linux-musl.gz"
-url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/517708829"
+checksum = "sha256:8f495b8b68a91c4335789f47f020584a2309e62ff71aae874816f396b141a8dd"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-24/rust-analyzer-x86_64-unknown-linux-musl.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/527179665"
 
 [tools."aqua:rust-lang/rust-analyzer"."platforms.macos-arm64"]
-checksum = "sha256:ece932daf2f077be87bf745d2eb0a62cbc550f4b1e2e31ca76dfafdd0cc599b3"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17/rust-analyzer-aarch64-apple-darwin.gz"
-url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/517708451"
+checksum = "sha256:5f4557c2ea4d62f80f1ffeea2646d0d56fab7172a0db11f3065c4d246b763989"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-24/rust-analyzer-aarch64-apple-darwin.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/527179278"
 
 [tools."aqua:rust-lang/rust-analyzer"."platforms.macos-x64"]
-checksum = "sha256:134a7d305991de776864e43d1e6c291f60fa2888d4b9b7749864c562c5dc28b7"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17/rust-analyzer-x86_64-apple-darwin.gz"
-url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/517708766"
+checksum = "sha256:822cc4369562fc2ed26d1cf3953ef93927d8fdda4302d82e2eec407e2734eefd"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-24/rust-analyzer-x86_64-apple-darwin.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/527179576"
 
 [tools."aqua:rust-lang/rust-analyzer"."platforms.windows-x64"]
-checksum = "sha256:3212cc9e7ab3f6b07f97be681c2a7200f73fb0463e6f8055c214ebe0b00901f2"
-url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17/rust-analyzer-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/517708783"
+checksum = "sha256:f6d80045e6f475606f62d294fa3b618304fd24d2ff86160495440f23d5f7fcdb"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-24/rust-analyzer-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/527179606"
 
 [[tools."aqua:rvben/rumdl"]]
 version = "0.2.60"
