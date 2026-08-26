@@ -695,6 +695,22 @@ return {
           },
         },
       })
+
+      -- display symlink destinations inside the home directory as ~/...
+      local home = vim.uv.os_homedir()
+      if home then
+        for _, node_class in ipairs({
+          require("nvim-tree.node.directory-link"),
+          require("nvim-tree.node.file-link"),
+        }) do
+          local highlighted_name = node_class.highlighted_name
+          node_class.highlighted_name = function(self)
+            local name = highlighted_name(self)
+            name.str = name.str:gsub(vim.pesc(home), "~", 1)
+            return name
+          end
+        end
+      end
     end,
   },
 
