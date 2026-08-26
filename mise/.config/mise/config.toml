@@ -38,7 +38,7 @@
 "aqua:mvdan/sh" = "3.13.1"
 "aqua:neovim/neovim" = "0.12.5"
 "aqua:orhun/git-cliff" = "2.13.1"
-"aqua:oxc-project/oxc/oxlint" = "1.79.0"
+"aqua:oxc-project/oxc/oxlint" = "1.80.0"
 "aqua:pre-commit/pre-commit" = "4.6.2"
 "aqua:restic/restic" = "0.19.1"
 "aqua:rust-lang/rust-analyzer" = "2026-08-24"
