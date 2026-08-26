@@ -279,7 +279,8 @@ return {
       {
         "<leader>gg",
         function()
-          require("snacks").lazygit()
+          local root = vim.fs.root(0, ".git")
+          require("snacks").lazygit(root and { cwd = root } or nil)
         end,
         desc = "Lazygit",
       },
