@@ -22,9 +22,20 @@ local diff_worktree = function(file, worktree)
   vim.cmd("diffsplit " .. target:absolute())
 end
 
+---Find the git root of the current buffer, ignoring nested personal notes
+---repos (.notes) in favor of the surrounding project
+---@return string | nil
+local get_git_root = function()
+  local root = vim.fs.root(0, ".git")
+  if root and vim.fs.basename(root) == ".notes" then
+    return vim.fs.root(vim.fs.dirname(root), ".git")
+  end
+  return root
+end
+
 local get_base_dir = function()
   local project = require("project_nvim.project")
-  return vim.fs.root(0, ".git") or project.get_project_root() or vim.fs.getcwd()
+  return get_git_root() or project.get_project_root() or vim.fs.getcwd()
 end
 
 return {

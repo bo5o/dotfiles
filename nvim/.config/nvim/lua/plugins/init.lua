@@ -244,6 +244,20 @@ return {
       {
         "<leader>fn",
         function()
+          local root = Snacks.git.get_root() or vim.fn.getcwd()
+          -- when already inside the notes repo, the git root is the notes dir
+          local notes = vim.fs.basename(root) == ".notes" and root or root .. "/.notes"
+          if not vim.uv.fs_stat(notes) then
+            vim.notify("No .notes directory in " .. root, vim.log.levels.WARN)
+            return
+          end
+          require("snacks").picker.files({ cwd = notes, follow = true, hidden = true })
+        end,
+        desc = "Find notes",
+      },
+      {
+        "<leader>fN",
+        function()
           require("snacks").picker.notifications()
         end,
         desc = "Find notifications",
@@ -1073,6 +1087,8 @@ return {
         "!^site-packages",
         "!^node_modules",
         "!=src",
+        "!=.notes",
+        "!^.notes",
         ".git",
         "_darcs",
         ".hg",
