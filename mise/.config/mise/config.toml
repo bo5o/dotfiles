@@ -58,7 +58,7 @@
 "cargo:just-lsp" = "0.6.2"
 "cargo:ncspot" = "1.4.0"
 "cargo:presenterm" = "0.16.1"
-"cargo:tealdeer" = "1.8.1"
+"cargo:tealdeer" = "1.9.0"
 "cargo:tokei" = "14.0.0"
 "core:go" = "1.27.0"
 "core:node" = "26.7.0"
