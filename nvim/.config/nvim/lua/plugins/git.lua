@@ -223,6 +223,9 @@ return {
       use_icons = true, -- Requires nvim-web-devicons
       show_help_hints = true, -- Show hints for how to open the help panel
       watch_index = true, -- Update views and index buffers when the git index changes.
+      persist_selections = {
+        enabled = true, -- Persist file selections and hide-reviewed state across restarts.
+      },
       icons = { -- Only applies when use_icons is true.
         folder_closed = "",
         folder_open = "",
