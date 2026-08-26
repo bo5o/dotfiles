@@ -2899,9 +2899,9 @@ backend = "npm:markuplint"
 specifiers = ["4.18.3"]
 
 [[tools."npm:oxfmt"]]
-version = "0.64.0"
+version = "0.65.0"
 backend = "npm:oxfmt"
-specifiers = ["0.64.0"]
+specifiers = ["0.65.0"]
 
 [[tools."npm:sql-formatter"]]
 version = "15.8.2"
