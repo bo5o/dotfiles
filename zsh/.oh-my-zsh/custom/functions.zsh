@@ -120,3 +120,15 @@ backup-restore() {
 backup-init() {
     restic init
 }
+
+# Initialize a git-tracked personal notes repo inside the current repo, excluded from
+# the outer repo via .git/info/exclude.
+git-notes-init() {
+    local root exclude
+    root=$(git rev-parse --show-toplevel) || return 1
+    exclude=$(git rev-parse --path-format=absolute --git-path info/exclude)
+    mkdir -p "$root/.notes"
+    # no trailing slash: must also match .notes symlinks in worktrees
+    grep -qxF '.notes' "$exclude" 2>/dev/null || echo '.notes' >> "$exclude"
+    git -C "$root/.notes" init
+}
