@@ -673,6 +673,9 @@ return {
         filters = {
           dotfiles = false,
           custom = { "^\\.git", "^node_modules", "^\\.cache", "__pycache__" },
+          -- always show personal notes, even though they are git-ignored (matched as
+          -- lua pattern against the full path)
+          exclude = { "/%.notes$" },
         },
         view = {
           width = {},
