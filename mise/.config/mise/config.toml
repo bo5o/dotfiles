@@ -61,7 +61,7 @@
 "cargo:tealdeer" = "1.9.0"
 "cargo:tokei" = "14.0.0"
 "core:go" = "1.27.0"
-"core:node" = "26.7.0"
+"core:node" = "26.8.0"
 "core:python" = "3.14.7"
 "core:ruby" = "4.0.6"
 "core:rust" = "1.98.0"
