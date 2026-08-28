@@ -71,7 +71,7 @@
 "github:Myriad-Dreamin/tinymist" = "0.15.2"
 "github:bitwarden/sdk-sm" = { version = "2.1.0", version_prefix = "bws-v" }
 "github:garethgeorge/backrest" = "1.14.1"
-"github:jdx/fnox" = "1.34.0"
+"github:jdx/fnox" = "1.34.1"
 "github:opentofu/tofu-ls" = "0.5.3"
 "github:pamburus/hl" = "latest"
 "github:psviderski/unregistry" = { version = "0.4.3", exe = "docker-pussh" }
