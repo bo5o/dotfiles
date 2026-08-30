@@ -4,8 +4,8 @@ default:
 
 # upgrade yazi plugins
 upgrade:
-    mise x yazi -- ya pkg upgrade
+    mise x aqua:sxyazi/yazi -- ya pkg upgrade
 
 # install yazi plugins
 install:
-    mise x yazi -- ya pkg install
+    mise x aqua:sxyazi/yazi -- ya pkg install
