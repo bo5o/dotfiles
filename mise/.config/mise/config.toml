@@ -22,7 +22,7 @@
 "aqua:dandavison/delta" = "0.19.2"
 "aqua:ducaale/xh" = "0.26.2"
 "aqua:duckdb/duckdb" = "1.5.5"
-"aqua:git-lfs/git-lfs" = "3.7.1"
+"aqua:git-lfs/git-lfs" = "3.8.0"
 "aqua:google/yamlfmt" = "0.21.0"
 "aqua:hadolint/hadolint" = "2.15.1"
 "aqua:idursun/jjui" = "0.10.9"
