@@ -63,7 +63,7 @@ pylint\:"Pylint-compatible format"
 azure\:"Azure Pipelines logging commands"
 sarif\:"SARIF 2.1.0 for static analysis tools"
 junit\:"JUnit XML for CI test reporters"))' \
-'--flavor=[Markdown flavor to use\: standard (also accepts gfm/github/commonmark), mkdocs, mdx, pandoc, quarto, obsidian, kramdown, azure_devops (also accepts azure/ado), or myst (also accepts mystmd)]:FLAVOR:(standard mkdocs mdx pandoc quarto obsidian kramdown azure_devops myst hugo)' \
+'--flavor=[Markdown flavor to use\: standard (also accepts gfm/github/commonmark), mkdocs, mdx, pandoc, quarto, obsidian, kramdown, azure_devops (also accepts azure/ado), myst (also accepts mystmd), or mdg (also accepts markdown_with_gherkin)]:FLAVOR:(standard mkdocs mdx pandoc quarto obsidian kramdown azure_devops myst hugo mdg)' \
 '--fail-on=[Exit code behavior\: '\''any'\'' (default) exits 1 on any violation, '\''warning'\'' on warning+error, '\''error'\'' only on errors, '\''never'\'' always exits 0]:FAIL_ON:((any\:"Exit 1 on any violation (info, warning, or error)"
 warning\:"Exit 1 on warning or error severity violations"
 error\:"Exit 1 only on error-severity violations"
@@ -133,7 +133,7 @@ pylint\:"Pylint-compatible format"
 azure\:"Azure Pipelines logging commands"
 sarif\:"SARIF 2.1.0 for static analysis tools"
 junit\:"JUnit XML for CI test reporters"))' \
-'--flavor=[Markdown flavor to use while formatting\: standard (also accepts gfm/github/commonmark), mkdocs, mdx, pandoc, quarto, obsidian, kramdown, or azure_devops (also accepts azure/ado)]:FLAVOR:(standard mkdocs mdx pandoc quarto obsidian kramdown azure_devops myst hugo)' \
+'--flavor=[Markdown flavor to use while formatting\: standard (also accepts gfm/github/commonmark), mkdocs, mdx, pandoc, quarto, obsidian, kramdown, azure_devops (also accepts azure/ado), or mdg (also accepts markdown_with_gherkin)]:FLAVOR:(standard mkdocs mdx pandoc quarto obsidian kramdown azure_devops myst hugo mdg)' \
 '--fail-on=[Hidden compatibility flag; fmt always exits with formatter-style semantics]:FAIL_ON:((any\:"Exit 1 on any violation (info, warning, or error)"
 warning\:"Exit 1 on warning or error severity violations"
 error\:"Exit 1 only on error-severity violations"
