@@ -30,6 +30,14 @@
   model_name: Qwen/Qwen3.6-35B-A3B-FP8
   api_base: https://inference.hetzner.com/api/v1
   api_key_name: hetzner
+  aliases: [qwen36]
+  supports_tools: true
+  supports_schema: true
+
+- model_id: hetzner/qwen3.8-27b
+  model_name: Qwen3.8-27B
+  api_base: https://inference.hetzner.com/api/v1
+  api_key_name: hetzner
   aliases: [qwen]
   supports_tools: true
   supports_schema: true
