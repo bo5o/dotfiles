@@ -35,7 +35,7 @@
 "aqua:koalaman/shellcheck" = "0.11.0"
 "aqua:lima-vm/lima" = "2.2.0"
 "aqua:mikefarah/yq" = "4.53.6"
-"aqua:mvdan/sh" = "3.13.1"
+"aqua:mvdan/sh" = "3.14.0"
 "aqua:neovim/neovim" = "0.12.5"
 "aqua:orhun/git-cliff" = "2.13.1"
 "aqua:oxc-project/oxc/oxlint" = "1.80.0"
