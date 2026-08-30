@@ -52,7 +52,7 @@
 "aqua:tree-sitter/tree-sitter" = "0.26.13"
 "aqua:tstack/lnav" = "latest"
 "aqua:wagoodman/dive" = "0.13.1"
-"aqua:zellij-org/zellij" = "0.45.0"
+"aqua:zellij-org/zellij" = "0.45.1"
 "cargo:bandwhich" = "0.23.1"
 "cargo:inlyne" = "0.5.3"
 "cargo:just-lsp" = "0.6.2"
