@@ -35,6 +35,13 @@ pipx-bump *packages:
             @(pipx_dir / f'{pkg}.in')
         print(f'bumped {pkg}')
 
+# re-install pipx tools (e.g. after a pipx-bump)
+[script('xonsh')]
+pipx-reinstall *packages:
+    pipx_dir = p'{{ pipx_dir }}'
+    packages = '{{ packages }}'.split() or [infile.stem for infile in pipx_dir.glob('*.in')]
+    mise install --force @([f'pipx:{pkg}' for pkg in packages])
+
 # scan pipx requirements for vulnerabilities
 audit:
     trivy fs --scanners vuln --file-patterns 'pip:.*\.txt' --exit-code 1 {{ quote(pipx_dir) }}
