@@ -246,7 +246,8 @@ return {
         function()
           local root = Snacks.git.get_root() or vim.fn.getcwd()
           -- when already inside the notes repo, the git root is the notes dir
-          local notes_dir = vim.fs.basename(root) == ".notes" and root or root .. "/.notes"
+          local notes_dir = vim.fs.basename(root) == ".notes" and root
+            or root .. "/.notes"
           if not vim.uv.fs_stat(notes_dir) then
             vim.notify("No .notes directory in " .. root, vim.log.levels.WARN)
             return
@@ -255,7 +256,12 @@ return {
             cwd = notes_dir,
             follow = true,
             hidden = true,
-            matcher = { frecency = true, sort_empty = true },
+            transform = function(item)
+              local stat = vim.uv.fs_stat(Snacks.picker.util.path(item) or "")
+              item.mtime = stat and stat.mtime.sec or 0
+            end,
+            matcher = { sort_empty = true },
+            sort = { fields = { "score:desc", "mtime:desc", "idx" } },
           })
         end,
         desc = "Find notes",
