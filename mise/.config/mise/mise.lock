@@ -211,6 +211,11 @@ checksum = "sha256:0134a1c51685661d406d126210391c6c06e577dd65ed433ef2124b339fb9b
 url = "https://github.com/Lifailon/lazyjournal/releases/download/0.8.6/lazyjournal-0.8.6-darwin-amd64"
 url_api = "https://api.github.com/repos/Lifailon/lazyjournal/releases/assets/374974917"
 
+[tools."aqua:Lifailon/lazyjournal"."platforms.windows-x64"]
+checksum = "sha256:24270caab92b8e8b30fd8e4d6cb78f98c6696e0b8fe8b299807260ad9ee4d785"
+url = "https://github.com/Lifailon/lazyjournal/releases/download/0.8.6/lazyjournal-0.8.6-windows-amd64.exe"
+url_api = "https://api.github.com/repos/Lifailon/lazyjournal/releases/assets/374974887"
+
 [[tools."aqua:LuaLS/lua-language-server"]]
 version = "3.19.1"
 backend = "aqua:LuaLS/lua-language-server"
@@ -1432,6 +1437,12 @@ url = "https://github.com/lima-vm/lima/releases/download/v2.2.0/lima-2.2.0-Darwi
 url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/484813996"
 provenance = "github-attestations"
 
+[tools."aqua:lima-vm/lima"."platforms.windows-x64"]
+checksum = "sha256:e7bf7dd2d2e7ab7ce020631f8f7533665f6e6f9068686d3ffcd0f3c438856ea9"
+url = "https://github.com/lima-vm/lima/releases/download/v2.2.0/lima-2.2.0-Windows-AMD64.zip"
+url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/484814002"
+provenance = "github-attestations"
+
 [[tools."aqua:mikefarah/yq"]]
 version = "4.53.6"
 backend = "aqua:mikefarah/yq"
@@ -1963,7 +1974,6 @@ url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-aar
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322597"
 
 [tools."aqua:tamasfe/taplo"."platforms.linux-x64"]
-checksum = "blake3:4871fab0e60275a1eb46e7190726e144f56c9a9527f59b0d1da5a042baead8e2"
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86_64.gz"
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322600"
 
@@ -3067,8 +3077,8 @@ specifiers = ["3.14.7"]
 compile = "true"
 
 [tools.python."platforms.linux-x64"]
-checksum = "sha256:cefba034445d2875408d1fd4d5700ae6731563aeb54dcb39fd8164ab5c457533"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260814/cpython-3.14.7+20260814-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
+checksum = "sha256:a0f39e822fd3b96a2605f30f954acf9a2cdf91faa1385a13e24bc407a41e05ea"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260825/cpython-3.14.7+20260825-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
 
 [[tools.ruby]]
 version = "4.0.6"
