@@ -105,7 +105,22 @@ return {
 
   {
     "tpope/vim-fugitive",
-    cmd = { "Git", "Gwrite", "Gedit", "Gdiffsplit", "Gvdiffsplit", "Gvsplit" },
+    cmd = {
+      "Git",
+      "Gwrite",
+      "Gedit",
+      "Gdiffsplit",
+      "Gvdiffsplit",
+      "Gvsplit",
+      "GBrowse",
+    },
+    -- The forge integrations only register :GBrowse URL handlers, so they load with
+    -- fugitive instead of claiming :GBrowse themselves: when two lazy plugins share
+    -- a cmd trigger, lazy deletes fugitive's real :GBrowse while loading the second.
+    dependencies = {
+      "tpope/vim-rhubarb", -- GitHub
+      "tommcdo/vim-fubitive", -- Bitbucket
+    },
     keys = {
       { "<leader>gco", "<cmd>Git checkout<cr>", desc = "Checkout" },
       { "<leader>gcc", "<cmd>Git commit -v -q<cr>", desc = "Commit" },
@@ -117,15 +132,12 @@ return {
       { "<leader>gp", "<cmd>Git pull<cr>", desc = "Pull" },
       { "<leader>gP", "<cmd>Git push<cr>", desc = "Push" },
       { "<leader>gs", "<cmd>Git<cr>", desc = "Status" },
+      { "<leader>go", "<cmd>GBrowse<cr>", desc = "Open on forge" },
+      -- Visual mode inserts the range, so the URL gets a line anchor
+      { "<leader>go", ":GBrowse<cr>", mode = "v", desc = "Open on forge" },
       { "<leader>g<space>", ":Git<space>", desc = "Enter git command", silent = false },
     },
   },
-
-  -- Github integration
-  { "tpope/vim-rhubarb", cmd = { "GBrowse" }, dependencies = "vim-fugitive" },
-
-  -- Bitbucket integration
-  { "tommcdo/vim-fubitive", cmd = { "GBrowse" }, dependencies = "vim-fugitive" },
 
   -- Jira integration
   {
