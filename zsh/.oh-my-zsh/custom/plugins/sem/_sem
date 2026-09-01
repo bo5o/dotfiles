@@ -77,16 +77,17 @@ _arguments "${_arguments_options[@]}" : \
 '--json[Output as JSON]' \
 '-h[Print help]' \
 '--help[Print help]' \
-':query -- Entity name, optionally as "type name" (e.g. "function createProgram"):_default' \
+'*::queries -- Entity name(s), each optionally as "type name" (e.g. "function createProgram"). Several names run as one batch\: each resolves independently, and a miss on one doesn'\''t affect the others:_default' \
 && ret=0
 ;;
 (callers)
 _arguments "${_arguments_options[@]}" : \
 '--file=[Disambiguate by defining file]:FILE:_default' \
+'--limit=[Show at most this many callers (all by default)]:LIMIT:_default' \
 '--json[Output as JSON]' \
 '-h[Print help]' \
 '--help[Print help]' \
-':query -- Entity name or id:_default' \
+':query -- Entity name or id. Must resolve to exactly one definition — an ambiguous name is refused with the candidate list:_default' \
 && ret=0
 ;;
 (refs)
@@ -100,12 +101,14 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (grep)
 _arguments "${_arguments_options[@]}" : \
+'()*-e+[Pattern to search for, repeatable (rg-style \`-e p1 -e p2\`); each pattern'\''s hits are reported separately rather than merged]:PATTERNS:_default' \
+'()*--regexp=[Pattern to search for, repeatable (rg-style \`-e p1 -e p2\`); each pattern'\''s hits are reported separately rather than merged]:PATTERNS:_default' \
 '-i[Case-insensitive match (disables the trigram prefilter)]' \
 '--ignore-case[Case-insensitive match (disables the trigram prefilter)]' \
 '--json[Output as JSON (one object\: hits, candidate_files, total_files, origin)]' \
 '-h[Print help]' \
 '--help[Print help]' \
-':pattern -- Regex or literal pattern:_default' \
+'::pattern -- Regex or literal pattern:_default' \
 && ret=0
 ;;
 (graph)
@@ -158,6 +161,7 @@ _arguments "${_arguments_options[@]}" : \
 '--text=[Search entity bodies for an exact substring instead of listing\: hits come back entity-addressed (file, innermost entity, line, matched text). Use instead of grep for strings in code]:SUBSTRING:_default' \
 '--json[Output as JSON (shorthand for --format json)]' \
 '--no-default-excludes[Include files and directories excluded by default (generated, fixtures, vendor, benchmarks)]' \
+'--signatures[Show each entity'\''s header under its row\: the signature up to the body plus the first doc-comment line — more than a name, far less than a body]' \
 '-h[Print help]' \
 '--help[Print help]' \
 '*::paths -- File or directory paths to extract entities from (defaults to .):_default' \
@@ -165,6 +169,7 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (context)
 _arguments "${_arguments_options[@]}" : \
+'(--entity-id)*--entity=[Entity name, repeatable (--entity A --entity B) to pack context for several entities in one invocation under one --budget; each name resolves (and refuses on ambiguity) exactly like the single-entity form]:ENTITIES:_default' \
 '--entity-id=[Look up entity by its ID (from sem diff --format json output)]:ENTITY_ID:_default' \
 '--file=[File containing the entity (disambiguates if multiple matches)]:FILE:_default' \
 '--budget=[Token budget]:BUDGET:_default' \
@@ -174,6 +179,7 @@ _arguments "${_arguments_options[@]}" : \
 '--json[Output as JSON (shorthand for --format json)]' \
 '--no-cache[Skip the SQLite entity cache (rebuild from scratch)]' \
 '--no-default-excludes[Include files and directories excluded by default (generated, fixtures, vendor, benchmarks)]' \
+'--headers[Render each packed entity as its header (signature plus first doc-comment line) instead of its body — the same budget buys a much wider map]' \
 '-h[Print help]' \
 '--help[Print help]' \
 '::entity -- Name of the entity, optionally as "type name":_default' \
