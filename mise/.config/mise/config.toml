@@ -41,7 +41,7 @@
 "aqua:oxc-project/oxc/oxlint" = "1.80.0"
 "aqua:pre-commit/pre-commit" = "4.6.2"
 "aqua:restic/restic" = "0.19.1"
-"aqua:rust-lang/rust-analyzer" = "2026-08-24"
+"aqua:rust-lang/rust-analyzer" = "2026-08-31"
 "aqua:rvben/rumdl" = "0.2.62"
 "aqua:sharkdp/bat" = "0.26.1"
 "aqua:sharkdp/fd" = "10.5.0"
