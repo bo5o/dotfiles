@@ -741,6 +741,12 @@ done\:"Set status to "done" (agent finished) - auto-clears on window focus"
 clear\:"Clear the status"))' \
 && ret=0
 ;;
+(register-agent)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
 (set-base)
 _arguments "${_arguments_options[@]}" : \
 '-h[Print help]' \
@@ -1090,6 +1096,10 @@ esac
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(register-agent)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
 (set-base)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
@@ -1190,6 +1200,7 @@ _workmux_base_commands() {
 'claude:Claude Code integration commands' \
 'sandbox:Manage sandbox settings' \
 'set-window-status:Set agent status for the current tmux window (used by hooks)' \
+'register-agent:Register the agent in the current multiplexer pane (used by hooks)' \
 'set-base:Set the base branch for the current worktree (used after rebasing)' \
 '_exec:Execute a run spec (internal use)' \
 'last-done:Switch to the agent that most recently completed or is waiting for input' \
@@ -1424,6 +1435,7 @@ _workmux_base__help_commands() {
 'claude:Claude Code integration commands' \
 'sandbox:Manage sandbox settings' \
 'set-window-status:Set agent status for the current tmux window (used by hooks)' \
+'register-agent:Register the agent in the current multiplexer pane (used by hooks)' \
 'set-base:Set the base branch for the current worktree (used after rebasing)' \
 '_exec:Execute a run spec (internal use)' \
 'last-done:Switch to the agent that most recently completed or is waiting for input' \
@@ -1625,6 +1637,11 @@ _workmux_base__help__reap-agents_commands() {
 _workmux_base__help__rebase_commands() {
     local commands; commands=()
     _describe -t commands 'workmux help rebase commands' commands "$@"
+}
+(( $+functions[_workmux_base__help__register-agent_commands] )) ||
+_workmux_base__help__register-agent_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux help register-agent commands' commands "$@"
 }
 (( $+functions[_workmux_base__help__remove_commands] )) ||
 _workmux_base__help__remove_commands() {
@@ -1842,6 +1859,11 @@ _workmux_base__reap-agents_commands() {
 _workmux_base__rebase_commands() {
     local commands; commands=()
     _describe -t commands 'workmux rebase commands' commands "$@"
+}
+(( $+functions[_workmux_base__register-agent_commands] )) ||
+_workmux_base__register-agent_commands() {
+    local commands; commands=()
+    _describe -t commands 'workmux register-agent commands' commands "$@"
 }
 (( $+functions[_workmux_base__remove_commands] )) ||
 _workmux_base__remove_commands() {
