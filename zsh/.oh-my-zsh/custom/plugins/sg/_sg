@@ -103,6 +103,7 @@ _arguments "${_arguments_options[@]}" : \
 medium\:"Output a condensed diagnostic, with a line number, severity, message and notes (if any)"
 short\:"Output a short diagnostic, with a line number, severity, and message"))' \
 '(-r --rule)--filter=[Scan the codebase with rules with ids matching REGEX]:REGEX:_default' \
+'--min-severity=[Set the minimum severity of rules to scan]:SEVERITY:_default' \
 '*--error=[Set rule severity to error]::RULE_ID:_default' \
 '*--warning=[Set rule severity to warning]::RULE_ID:_default' \
 '*--info=[Set rule severity to info]::RULE_ID:_default' \
