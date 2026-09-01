@@ -49,7 +49,7 @@
 "aqua:sxyazi/yazi" = "26.8.15"
 "aqua:tamasfe/taplo" = { version = "0.10.0", matching = "full" }
 "aqua:tmux/tmux-builds" = "latest"
-"aqua:tree-sitter/tree-sitter" = "0.26.13"
+"aqua:tree-sitter/tree-sitter" = "0.27.0"
 "aqua:tstack/lnav" = "latest"
 "aqua:wagoodman/dive" = "0.13.1"
 "aqua:zellij-org/zellij" = "0.45.1"
